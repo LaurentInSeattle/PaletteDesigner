@@ -1,0 +1,122 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20" Background="Black">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+	<!--
+	<Style Selector="ListBox">
+		<Setter Property="Foreground" Value="{StaticResource LightAqua_0_120}"/>
+		<Setter Property="Background" Value="Blue"/>
+		<Setter Property="BorderBrush" Value="{StaticResource OrangePeel_0_040}"/>
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="IsEnabled" Value="True"/>
+	</Style>
+    -->
+</Styles>
+
+<!--
+	
+
+  <ControlTheme x:Key="{x:Type ListBox}" TargetType="ListBox">
+    <Setter Property="Foreground" Value="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+    <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource SystemControlForegroundBaseHighBrush}" />
+    <Setter Property="BorderThickness" Value="{DynamicResource ListBoxBorderThemeThickness}" />
+    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+    <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+    <Setter Property="ScrollViewer.IsScrollChainingEnabled" Value="True" />
+    <Setter Property="ScrollViewer.IsScrollInertiaEnabled" Value="True" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Name="border"
+                ClipToBounds="{TemplateBinding ClipToBounds}"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{TemplateBinding CornerRadius}">
+          <ScrollViewer Name="PART_ScrollViewer"
+                        VerticalSnapPointsType="{TemplateBinding (ScrollViewer.VerticalSnapPointsType)}"
+                        HorizontalSnapPointsType="{TemplateBinding (ScrollViewer.HorizontalSnapPointsType)}"
+                        HorizontalScrollBarVisibility="{TemplateBinding (ScrollViewer.HorizontalScrollBarVisibility)}"
+                        VerticalScrollBarVisibility="{TemplateBinding (ScrollViewer.VerticalScrollBarVisibility)}"
+                        IsScrollChainingEnabled="{TemplateBinding (ScrollViewer.IsScrollChainingEnabled)}"
+                        IsScrollInertiaEnabled="{TemplateBinding (ScrollViewer.IsScrollInertiaEnabled)}"
+											  IsDeferredScrollingEnabled="{TemplateBinding (ScrollViewer.IsDeferredScrollingEnabled)}"
+                        AllowAutoHide="{TemplateBinding (ScrollViewer.AllowAutoHide)}"
+                        BringIntoViewOnFocusChange="{TemplateBinding (ScrollViewer.BringIntoViewOnFocusChange)}">
+            <ItemsPresenter Name="PART_ItemsPresenter"
+                            ItemsPanel="{TemplateBinding ItemsPanel}"
+                            Margin="{TemplateBinding Padding}"/>
+          </ScrollViewer>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </ControlTheme>
+  
+  <Thickness x:Key="ListBoxItemPadding">12,9,12,12</Thickness>
+  <ControlTheme x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Padding" Value="{DynamicResource ListBoxItemPadding}" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <ContentPresenter Name="PART_ContentPresenter"
+                          Background="{TemplateBinding Background}"
+                          BorderBrush="{TemplateBinding BorderBrush}"
+                          BorderThickness="{TemplateBinding BorderThickness}"
+                          CornerRadius="{TemplateBinding CornerRadius}"
+                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                          Content="{TemplateBinding Content}"
+                          Padding="{TemplateBinding Padding}"
+                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" />
+      </ControlTemplate>
+    </Setter>
+
+    <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="Foreground" Value="{DynamicResource SystemControlDisabledBaseMediumLowBrush}" />
+    </Style>
+
+    !- PointerOver State  -
+  <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+	  <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListLowBrush}" />
+	  <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+  </Style>
+
+  !-  Pressed State  -
+  <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+	  <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListMediumBrush}" />
+	  <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+  </Style>
+
+  <!-  Selected State  -
+  <Style Selector="^:selected">
+
+	  <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+		  <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentLowBrush}" />
+		  <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+	  </Style>
+
+	  <!-  Selected Unfocused State  -
+	  <Style Selector="^:not(:focus) /template/ ContentPresenter#PART_ContentPresenter">
+		  <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentLowBrush}" />
+		  <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+	  </Style>
+
+	  <!-  Selected PointerOver State  -
+	  <Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+		  <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentMediumBrush}" />
+		  <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+	  </Style>
+
+	  <!-  Selected Pressed State  -
+	  <Style Selector="^:pressed /template/ ContentPresenter#PART_ContentPresenter">
+		  <Setter Property="Background" Value="{DynamicResource SystemControlHighlightListAccentHighBrush}" />
+		  <Setter Property="Foreground" Value="{DynamicResource SystemControlHighlightAltBaseHighBrush}" />
+	  </Style>
+  </Style>
+  </ControlTheme>
+
+  -->

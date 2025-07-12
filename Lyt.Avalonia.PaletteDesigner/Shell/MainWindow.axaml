@@ -1,0 +1,17 @@
+<Window 
+    x:Class="Lyt.Avalonia.PaletteDesigner.Shell.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="800"
+    Title="Palette Designer"
+    Width="1680" Height="1000"
+    MinWidth="800" MinHeight="600"
+    SizeToContent="Manual"
+    WindowStartupLocation="CenterScreen"
+    ExtendClientAreaTitleBarHeightHint="50"
+    ExtendClientAreaToDecorationsHint="False"
+    Icon="/Assets/Images/Designer.ico"
+    >
+</Window>

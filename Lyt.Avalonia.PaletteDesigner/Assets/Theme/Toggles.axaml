@@ -1,0 +1,57 @@
+<ResourceDictionary 
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:toggle="clr-namespace:Lyt.Avalonia.Controls.Toggle;assembly=Lyt.Avalonia.Controls"
+	xmlns:glyphs="clr-namespace:Lyt.Avalonia.Controls.Glyphs;assembly=Lyt.Avalonia.Controls"
+	>
+	<Design.PreviewWith>
+		<Border Padding="20" Background="Transparent">
+			<toggle:ToggleSwitch
+				Theme="{StaticResource StandardToggleSwitch}"
+				TrueText="There"
+				FalseText="Here"
+				/>
+		</Border>
+	</Design.PreviewWith>
+
+	<ControlTheme x:Key="ToggleTypography" TargetType="TextBlock">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Foreground" Value="{StaticResource LightAqua_0_100}"/>
+		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="FontFamily" Value="InterV" />
+		<Setter Property="FontWeight" Value="Normal"/>
+	</ControlTheme>
+
+	<glyphs:VisualState x:Key="StandardToggleSwitchGeneralVisualState" 
+		Normal="{StaticResource LightAqua_1_100}"
+		Disabled="{StaticResource LightAqua_2_040}"
+		Selected="{StaticResource FreshGreen_2_100}"
+		Pressed="{StaticResource OrangePeel_1_100}"
+		Hot="{StaticResource OrangePeel_0_100}"
+		/>
+
+	<glyphs:VisualState x:Key="StandardToggleSwitchBackgroundVisualState"
+		Normal="{StaticResource   LightAqua_3_020}"
+		Disabled="{StaticResource LightAqua_3_020}"
+		Selected="{StaticResource LightAqua_3_040}"
+		Pressed="{StaticResource  LightAqua_3_040}"
+		Hot="{StaticResource      LightAqua_2_040}"
+		/>
+
+	<glyphs:VisualState x:Key="StandardToggleSwitchBackgroundBorderVisualState"
+		Normal="{StaticResource   LightAqua_2_040}"
+		Disabled="{StaticResource LightAqua_3_040}"
+		Selected="{StaticResource LightAqua_2_100}"
+		Pressed="{StaticResource  LightAqua_1_040}"
+		Hot="{StaticResource      LightAqua_0_040}"
+		/>
+
+	<ControlTheme x:Key="StandardToggleSwitch" TargetType="toggle:ToggleSwitch">
+		<Setter Property="Typography" Value="{StaticResource ToggleTypography}"/>
+		<Setter Property="BackgroundCornerRadius" Value="8" />
+		<Setter Property="GeneralVisualState" Value="{StaticResource StandardToggleSwitchGeneralVisualState}"/>
+		<Setter Property="BackgroundVisualState" Value="{StaticResource StandardToggleSwitchBackgroundVisualState}"/>
+		<Setter Property="BackgroundBorderVisualState" Value="{StaticResource StandardToggleSwitchBackgroundBorderVisualState}"/>
+		<Setter Property="IsDisabled" Value="False" />
+	</ControlTheme>		
+</ResourceDictionary>

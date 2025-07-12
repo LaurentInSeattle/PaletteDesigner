@@ -1,0 +1,51 @@
+<Window
+    x:Class="Lyt.Avalonia.PaletteDesigner.Shell.SplashWindow"
+    
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+    WindowStartupLocation="CenterScreen"
+    SystemDecorations="None"
+    ShowInTaskbar="False"
+    WindowState="Normal"
+    Width="800" Height="450"
+    Background="Transparent"
+    >
+    <!-- Palette is not loaded yet: We can only use hard coded colours-->
+    <Grid>
+        <Image
+            x:Name="Image"
+            Stretch="UniformToFill"
+            Source="\Assets\Images\sky.jpg"
+            Opacity="1"
+            />
+        <Rectangle
+            Fill="#30000010"
+            Stretch="Fill"
+            />
+        <TextBlock
+            Text="Benvenuti! ~ Welcome! ~ Bienvenue! ~ ¡Bienvenido!"
+            Margin="60 60 0 0 "
+            FontSize="20"
+            Foreground="#ECfac8b2"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            />
+        <TextBlock
+            Text="Palette Designer"
+            Margin="0"
+            FontSize="74"
+            FontWeight="DemiBold"
+            Foreground="#FFa8efff"
+            HorizontalAlignment="Center" VerticalAlignment="Center"
+            />
+        <TextBlock
+            Text="Attendere prego ~ Please wait. ~ Patientez svp. ~ Espere por favor"
+            Margin="0 0 60 60 "
+            FontSize="20"
+            Foreground="#ECfac8b2"
+            HorizontalAlignment="Right" VerticalAlignment="Bottom"
+            />
+    </Grid>
+</Window>

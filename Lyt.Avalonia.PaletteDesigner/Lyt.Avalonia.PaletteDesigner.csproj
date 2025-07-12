@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+		<ApplicationIcon>Assets\Images\Designer.ico</ApplicationIcon>
+		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<NoWarn>IDE0079</NoWarn>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<NoWarn>IDE0079</NoWarn>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<AvaloniaResource Include="Assets\**" />
+		<AvaloniaResource Include="Assets\Languages\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AvaloniaXaml Remove="Assets\Languages\Lang_fr-FR.axaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Avalonia" Version="11.3.1" />
+		<PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.1" />
+		<PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.1" />
+		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+		<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.3.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Lyt.Avalonia\Lyt.Avalonia.Controls\Lyt.Avalonia.Controls.csproj" />
+		<ProjectReference Include="..\..\Lyt.Avalonia\Lyt.Avalonia.Interfaces\Lyt.Avalonia.Interfaces.csproj" />
+		<ProjectReference Include="..\..\Lyt.Avalonia\Lyt.Avalonia.Localizer\Lyt.Avalonia.Localizer.csproj" />
+		<ProjectReference Include="..\..\Lyt.Avalonia\Lyt.Avalonia.Mvvm\Lyt.Avalonia.Mvvm.csproj" />
+		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Framework.Interfaces\Lyt.Framework.Interfaces.csproj" />
+		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Messenger\Lyt.Messenger.csproj" />
+		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Model\Lyt.Model.csproj" />
+		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Mvvm\Lyt.Mvvm.csproj" />
+		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Persistence\Lyt.Persistence.csproj" />
+		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Utilities\Lyt.Utilities.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Workflow\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <AvaloniaResource Update="Assets\Languages\Lang_fr-FR.axaml">
+	    <SubType>Designer</SubType>
+	  </AvaloniaResource>
+	</ItemGroup>
+</Project>

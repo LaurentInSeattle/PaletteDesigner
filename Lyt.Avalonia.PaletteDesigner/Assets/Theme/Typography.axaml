@@ -1,0 +1,83 @@
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:Double x:Key="Title.FontSize">32</system:Double>
+    <system:Double x:Key="H1.FontSize">28</system:Double>
+    <system:Double x:Key="H2.FontSize">24</system:Double>
+    <system:Double x:Key="H3.FontSize">18</system:Double>
+    <system:Double x:Key="Alert.FontSize">20</system:Double>
+    <system:Double x:Key="Large.FontSize">16</system:Double>
+    <system:Double x:Key="Medium.FontSize">14</system:Double>
+    <system:Double x:Key="Small.FontSize">12</system:Double>
+
+    <SolidColorBrush x:Key="Primary.TextColor" Color="{StaticResource PastelOrchid_0_080_Color}" />
+    <SolidColorBrush x:Key="Secondary.TextColor" Color="{StaticResource LightAqua_1_100_Color}" />
+    <SolidColorBrush x:Key="Ternary.TextColor" Color="{StaticResource FreshGreen_0_080_Color}" />
+    <SolidColorBrush x:Key="Alert.TextColor" Color="{StaticResource PastelOrchid_2_100_Color}" />
+    <SolidColorBrush x:Key="Data.TextColor" Color="{StaticResource LightAqua_0_080_Color}" />
+
+    <ControlTheme x:Key="TextBlockBase" TargetType="TextBlock" >
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource Primary.TextColor}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </ControlTheme>
+
+    <ControlTheme x:Key="Title" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="FontSize" Value="{StaticResource Title.FontSize}" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+    </ControlTheme>
+
+    <ControlTheme x:Key="H1" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="FontSize" Value="{StaticResource H1.FontSize}" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+    </ControlTheme>
+
+    <ControlTheme x:Key="H2" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="FontSize" Value="{StaticResource H2.FontSize}" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+    </ControlTheme>
+
+    <ControlTheme x:Key="H3" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="FontSize" Value="{StaticResource H3.FontSize}" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+    </ControlTheme>
+
+    <ControlTheme x:Key="Data" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="FontSize" Value="{StaticResource H1.FontSize}" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+        <Setter Property="Foreground" Value="{StaticResource Data.TextColor}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="TextAlignment" Value="Left" />
+    </ControlTheme>
+
+    <ControlTheme x:Key="Large" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="FontSize" Value="{StaticResource Large.FontSize}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="TextAlignment" Value="Left" />
+    </ControlTheme>
+
+    <ControlTheme x:Key="Medium" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="FontSize" Value="{StaticResource Medium.FontSize}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="TextAlignment" Value="Left" />
+    </ControlTheme>
+
+    <ControlTheme x:Key="Small" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="FontSize" Value="{StaticResource Small.FontSize}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="TextAlignment" Value="Left" />
+    </ControlTheme>
+
+    <ControlTheme x:Key="Alert" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="FontSize" Value="{StaticResource Alert.FontSize}" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+        <Setter Property="Foreground" Value="{StaticResource Alert.TextColor}" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="TextAlignment" Value="Left" />
+    </ControlTheme>
+</ResourceDictionary>

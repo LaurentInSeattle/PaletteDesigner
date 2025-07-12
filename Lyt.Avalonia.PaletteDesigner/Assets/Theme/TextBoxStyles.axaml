@@ -1,0 +1,50 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20" Background="Transparent" >
+            <TextBox Text="Some Text" 
+                     Margin="4"
+                     />
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- TextBox -->
+    <Style Selector="TextBox">
+        <Setter Property="Foreground" Value="{StaticResource LightAqua_0_120}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="CaretBrush" Value="{StaticResource LightAqua_0_120}" />
+        <Setter Property="BorderBrush" Value="{StaticResource OrangePeel_0_040}"/>
+        <Setter Property="SelectionBrush" Value="{StaticResource PastelOrchid_0_080}" />
+        <Setter Property="IsEnabled" Value="True"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+        <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+    </Style>
+
+    <Style Selector="TextBox /template/ Border#PART_BorderElement">
+        <Setter Property="BorderBrush" Value="{StaticResource PastelOrchid_0_040}"/>
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+    <!-- Hover State -->
+    <Style Selector="TextBox:pointerover">
+        <Setter Property="Foreground" Value="{StaticResource LightAqua_0_120}"/>
+    </Style>
+
+    <!-- Focused State -->
+    <Style Selector="TextBox:focus">
+        <Setter Property="Foreground" Value="{StaticResource LightAqua_0_120}"/>
+    </Style>
+
+    <!-- Hover State -->
+    <Style Selector="TextBox:pointerover /template/ Border#PART_BorderElement">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{StaticResource LightAqua_0_080}"/>
+    </Style>
+
+    <!-- Focused State -->
+    <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{StaticResource LightAqua_0_100}"/>
+    </Style>
+</Styles>

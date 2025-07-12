@@ -1,0 +1,232 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Shell.ShellView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Shell"
+	x:DataType="vm:ShellViewModel" 
+
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:glyphs="clr-namespace:Lyt.Avalonia.Controls.Glyphs;assembly=Lyt.Avalonia.Controls"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	Background="Transparent"
+	>
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
+		 to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+		<vm:ShellViewModel />
+	</Design.DataContext>
+
+	<Border
+		BorderBrush="#80000020"
+		BorderThickness="1"
+		>
+		<Grid>
+			<!-- Extra row for eventually using it merged with the chrome -->
+			<Grid.RowDefinitions>
+				<RowDefinition Height="0"/>
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<Grid
+				x:Name="InnerGrid"
+				Grid.Row="1"
+				Background="Transparent"
+				>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="100"/>
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="74"/>
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<Image
+					Stretch="UniformToFill"
+					Source="\Assets\Images\sky.jpg"
+					Grid.ColumnSpan="999" Grid.RowSpan="999"
+					/>
+				<Rectangle
+					Fill="#58000020"
+					Grid.ColumnSpan="999" Grid.RowSpan="999"
+					/>
+				<Rectangle
+					Fill="#70000020"
+					Grid.Column="1" Grid.ColumnSpan="999" Grid.RowSpan="1"
+					/>
+				<Rectangle
+					Fill="#70000020"
+					Grid.Column="0" Grid.RowSpan="999" 
+					/>
+				<Rectangle
+					Fill="#70000020"
+					Grid.ColumnSpan="1" Grid.RowSpan="999"
+					/>
+				<Rectangle
+					Grid.Column="0" Grid.ColumnSpan="999"
+					VerticalAlignment="Top" HorizontalAlignment="Stretch"
+					Fill="{StaticResource OrangePeel_1_100}"
+					Height="1"
+					Opacity="0.4"
+					Margin="0 0 0 0"
+					/>
+				<Rectangle
+					Grid.Column="0" Grid.ColumnSpan="999"
+					VerticalAlignment="Bottom" HorizontalAlignment="Stretch"
+					Fill="{StaticResource OrangePeel_1_100}"
+					Height="1"
+					Opacity="0.4"
+					Margin="0 0 0 0"
+					/>
+				<Rectangle
+					Grid.Column="0" Grid.Row="0" Grid.RowSpan="999"
+					VerticalAlignment="Stretch" HorizontalAlignment="Right"
+					Fill="{StaticResource OrangePeel_1_100}"
+					Width="1"
+					Opacity="0.4"
+					Margin="0 -1 0 0"
+					/>
+				<Image
+					Stretch="UniformToFill"
+					Source="\Assets\Images\Designer.png"
+					Grid.Row="0" Grid.Column="0" 
+					Width="48" Height="48"
+					HorizontalAlignment="Center" VerticalAlignment="Center"
+					Margin="0"
+					/>
+				<TextBlock 
+					Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+					Theme="{StaticResource Title}"
+					Text="{DynamicResource Shell.AppName}" 
+					HorizontalAlignment="Left" VerticalAlignment="Center"
+					Margin="12 0 0 0"
+					Foreground="{StaticResource PastelOrchid_0_080}"
+					/>
+				<!-- View Selector - Main toolbar - Vertical left -->
+				<!--
+				<StackPanel
+					IsVisible="{Binding MainToolbarIsVisible}"
+					Orientation="Vertical"
+					Grid.Column="0" Grid.Row="0" Grid.RowSpan="999"
+					Margin="0 80 0 0"
+					HorizontalAlignment="Center"
+					>
+					<glyphs:SelectionGroup x:Name="SelectionGroup" />
+					<glyphs:GlyphButton
+						x:Name="TodayButton"
+						Style="{StaticResource ToolbarIconButton}"
+						Behaviour="Tap"
+						HorizontalAlignment="Center" 
+						Width="82" Height="56"
+						Margin="4 8 4 8"
+						GlyphSource="calendar_today"
+						ButtonBackground="BorderlessRectangle"
+						GlyphStrokeThickness="0"
+						GlyphAngle="0"
+						Text="{DynamicResource Shell.Today}"
+						IsSelected="True"
+						Command="{Binding OnToday}"
+						Group="{Binding ElementName=SelectionGroup}"
+						/>
+					<glyphs:GlyphButton
+						x:Name="CollectionButton"
+						Style="{StaticResource ToolbarIconButton}"
+						Behaviour="Tap"
+						HorizontalAlignment="Center" 
+						Width="82" Height="56"
+						Margin="4 8 4 8"
+						GlyphSource="collections"
+						ButtonBackground="BorderlessRectangle"
+						GlyphStrokeThickness="0"
+						GlyphAngle="0"
+						Text="{DynamicResource Shell.Collection}"
+						Command="{Binding OnCollection}"
+						Group="{Binding ElementName=SelectionGroup}"
+						/>
+					<glyphs:GlyphButton
+						x:Name="SettingsButton"
+						Style="{StaticResource ToolbarIconButton}"
+						Behaviour="Tap"
+						HorizontalAlignment="Center" 
+						Width="82" Height="56"
+						Margin="4 8 4 8"
+						GlyphSource="settings"
+						ButtonBackground="BorderlessRectangle"
+						GlyphStrokeThickness="0"
+						GlyphAngle="20"
+						Text="{DynamicResource Shell.Settings}"
+						Command="{Binding OnSettings}"
+						Group="{Binding ElementName=SelectionGroup}"
+						/>
+					<glyphs:GlyphButton
+						x:Name="FlagButton"
+						Style="{StaticResource ToolbarIconButton}"
+						Behaviour="Tap"
+						HorizontalAlignment="Center" 
+						Width="82" Height="56"
+						Margin="4 8 4 8"
+						GlyphSource="flag"
+						ButtonBackground="BorderlessRectangle"
+						GlyphStrokeThickness="0"
+						Text="{DynamicResource Shell.Language}"
+						Command="{Binding OnLanguage}"
+						Group="{Binding ElementName=SelectionGroup}"
+						/>
+					<glyphs:GlyphButton
+						x:Name="IntroButton"
+						Style="{StaticResource ToolbarIconButton}"
+						Behaviour="Tap"
+						HorizontalAlignment="Center" 
+						Width="82" Height="56"
+						Margin="4 8 4 8"
+						GlyphSource="arrow_up"
+						ButtonBackground="BorderlessRectangle"
+						GlyphStrokeThickness="0"
+						Text="{DynamicResource Shell.About}"
+						Command="{Binding OnInfo}"
+						Group="{Binding ElementName=SelectionGroup}"
+						/>
+				</StackPanel>
+				-->
+				<!-- View Selector - Close tool bar - Aligned Right -->
+				<StackPanel
+					Orientation="Horizontal"
+					Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="999" Grid.RowSpan="1"
+					Margin="0 0 16 0"
+					HorizontalAlignment="Right"
+					>
+					<glyphs:GlyphButton
+						Style="{StaticResource ToolbarIconButton}"
+						Behaviour="Tap"
+						HorizontalAlignment="Left" VerticalAlignment="Center"
+						Width="140" Height="56"
+						Margin="8 4 8 4"
+						GlyphSource="dismiss"
+						ButtonBackground="BorderlessRectangle"
+						GlyphStrokeThickness="0"
+						Text="{DynamicResource Shell.Close}"
+						Command="{Binding OnClose}"
+						/>
+				</StackPanel>
+
+				<!-- View Specific toolbar - Aligned Center -->
+				<Grid
+					x:Name="ShellViewToolbar"
+					Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="999" Grid.RowSpan="1"
+					Margin="500 0 0 0"
+					VerticalAlignment="Stretch" HorizontalAlignment="Left"
+					/>
+				<!-- Do not add rows and/or columns to the toaster host-->
+				<Grid
+					x:Name="ToasterHost"
+					Grid.Column="1" Grid.Row="1"
+					VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+					> 			
+					<Grid
+						x:Name="ShellViewContent"
+						VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+						/>
+				</Grid>
+			</Grid>
+		</Grid>
+	</Border>
+</UserControl>

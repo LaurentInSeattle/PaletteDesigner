@@ -1,0 +1,383 @@
+﻿<Styles 
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	>
+	<Design.PreviewWith>
+		<Border 
+			Padding="20"
+			Background="{StaticResource OrangePeel_2_100}"	
+			>
+			<!-- Add Controls for Previewer Here -->
+		</Border>
+	</Design.PreviewWith>
+
+	<Style>
+		<Style.Resources>
+
+			<!-- DeepBlue -->
+			<Color x:Key="DeepBlue_0_100_Color">#FF030014</Color>
+			<SolidColorBrush x:Key="DeepBlue_0_100" Color="{StaticResource DeepBlue_0_100_Color}" />
+
+			<Color x:Key="DeepBlue_0_080_Color">#CC030014</Color>
+			<SolidColorBrush x:Key="DeepBlue_0_080" Color="{StaticResource DeepBlue_0_080_Color}" />
+
+			<Color x:Key="DeepBlue_0_040_Color">#66030014</Color>
+			<SolidColorBrush x:Key="DeepBlue_0_040" Color="{StaticResource DeepBlue_0_040_Color}" />
+
+			<Color x:Key="DeepBlue_0_020_Color">#33030014</Color>
+			<SolidColorBrush x:Key="DeepBlue_0_020" Color="{StaticResource DeepBlue_0_020_Color}" />
+
+			<Color x:Key="DeepBlue_1_100_Color">#FF070227</Color>
+			<SolidColorBrush x:Key="DeepBlue_1_100" Color="{StaticResource DeepBlue_1_100_Color}" />
+
+			<Color x:Key="DeepBlue_1_080_Color">#CC070227</Color>
+			<SolidColorBrush x:Key="DeepBlue_1_080" Color="{StaticResource DeepBlue_1_080_Color}" />
+
+			<Color x:Key="DeepBlue_1_040_Color">#6608002e</Color>
+			<SolidColorBrush x:Key="DeepBlue_1_040" Color="{StaticResource DeepBlue_1_040_Color}" />
+
+			<Color x:Key="DeepBlue_1_020_Color">#3308002e</Color>
+			<SolidColorBrush x:Key="DeepBlue_1_020" Color="{StaticResource DeepBlue_1_020_Color}" />
+
+			<Color x:Key="DeepBlue_2_100_Color">#FF110849</Color>
+			<SolidColorBrush x:Key="DeepBlue_2_100" Color="{StaticResource DeepBlue_2_100_Color}" />
+
+			<Color x:Key="DeepBlue_2_080_Color">#CC130849</Color>
+			<SolidColorBrush x:Key="DeepBlue_2_080" Color="{StaticResource DeepBlue_2_080_Color}" />
+
+			<Color x:Key="DeepBlue_2_040_Color">#66130849</Color>
+			<SolidColorBrush x:Key="DeepBlue_2_040" Color="{StaticResource DeepBlue_2_040_Color}" />
+
+			<Color x:Key="DeepBlue_2_020_Color">#33130849</Color>
+			<SolidColorBrush x:Key="DeepBlue_2_020" Color="{StaticResource DeepBlue_2_020_Color}" />
+
+			<Color x:Key="DeepBlue_3_100_Color">#FF31257e</Color>
+			<SolidColorBrush x:Key="DeepBlue_3_100" Color="{StaticResource DeepBlue_3_100_Color}" />
+
+			<Color x:Key="DeepBlue_3_080_Color">#CC312183</Color>
+			<SolidColorBrush x:Key="DeepBlue_3_080" Color="{StaticResource DeepBlue_3_080_Color}" />
+
+			<Color x:Key="DeepBlue_3_040_Color">#66312183</Color>
+			<SolidColorBrush x:Key="DeepBlue_3_040" Color="{StaticResource DeepBlue_3_040_Color}" />
+
+			<Color x:Key="DeepBlue_3_020_Color">#33312183</Color>
+			<SolidColorBrush x:Key="DeepBlue_3_020" Color="{StaticResource DeepBlue_3_020_Color}" />
+
+			<Color x:Key="DeepBlue_4_100_Color">#FF5a4db2</Color>
+			<SolidColorBrush x:Key="DeepBlue_4_100" Color="{StaticResource DeepBlue_4_100_Color}" />
+
+			<Color x:Key="DeepBlue_4_080_Color">#CC5540bf</Color>
+			<SolidColorBrush x:Key="DeepBlue_4_080" Color="{StaticResource DeepBlue_4_080_Color}" />
+
+			<Color x:Key="DeepBlue_4_040_Color">#665540bf</Color>
+			<SolidColorBrush x:Key="DeepBlue_4_040" Color="{StaticResource DeepBlue_4_040_Color}" />
+
+			<Color x:Key="DeepBlue_4_020_Color">#335540bf</Color>
+			<SolidColorBrush x:Key="DeepBlue_4_020" Color="{StaticResource DeepBlue_4_020_Color}" />
+
+			<Color x:Key="DeepBlue_5_100_Color">#FF897cde</Color>
+			<SolidColorBrush x:Key="DeepBlue_5_100" Color="{StaticResource DeepBlue_5_100_Color}" />
+
+			<Color x:Key="DeepBlue_5_080_Color">#CC8773e7</Color>
+			<SolidColorBrush x:Key="DeepBlue_5_080" Color="{StaticResource DeepBlue_5_080_Color}" />
+
+			<Color x:Key="DeepBlue_5_040_Color">#668774e7</Color>
+			<SolidColorBrush x:Key="DeepBlue_5_040" Color="{StaticResource DeepBlue_5_040_Color}" />
+
+			<Color x:Key="DeepBlue_5_020_Color">#338774e7</Color>
+			<SolidColorBrush x:Key="DeepBlue_5_020" Color="{StaticResource DeepBlue_5_020_Color}" />
+
+			<Color x:Key="DeepBlue_6_100_Color">#FFbeb6f7</Color>
+			<SolidColorBrush x:Key="DeepBlue_6_100" Color="{StaticResource DeepBlue_6_100_Color}" />
+
+			<Color x:Key="DeepBlue_6_080_Color">#CCbfb4f9</Color>
+			<SolidColorBrush x:Key="DeepBlue_6_080" Color="{StaticResource DeepBlue_6_080_Color}" />
+
+			<Color x:Key="DeepBlue_6_040_Color">#66bfb4f9</Color>
+			<SolidColorBrush x:Key="DeepBlue_6_040" Color="{StaticResource DeepBlue_6_040_Color}" />
+
+			<Color x:Key="DeepBlue_6_020_Color">#33bfb4f9</Color>
+			<SolidColorBrush x:Key="DeepBlue_6_020" Color="{StaticResource DeepBlue_6_020_Color}" />
+
+			<Color x:Key="DeepBlue_7_100_Color">#FFddd8fd</Color>
+			<SolidColorBrush x:Key="DeepBlue_7_100" Color="{StaticResource DeepBlue_7_100_Color}" />
+
+			<Color x:Key="DeepBlue_7_080_Color">#CCeeebff</Color>
+			<SolidColorBrush x:Key="DeepBlue_7_080" Color="{StaticResource DeepBlue_7_080_Color}" />
+
+			<Color x:Key="DeepBlue_7_040_Color">#66eeebff</Color>
+			<SolidColorBrush x:Key="DeepBlue_7_040" Color="{StaticResource DeepBlue_7_040_Color}" />
+
+			<Color x:Key="DeepBlue_7_020_Color">#33eeebff</Color>
+			<SolidColorBrush x:Key="DeepBlue_7_020" Color="{StaticResource DeepBlue_7_020_Color}" />
+
+			<Color x:Key="DeepBlue_8_100_Color">#FFffffff</Color>
+			<SolidColorBrush x:Key="DeepBlue_8_100" Color="{StaticResource DeepBlue_8_100_Color}" />
+
+			<Color x:Key="DeepBlue_8_080_Color">#CCffffff</Color>
+			<SolidColorBrush x:Key="DeepBlue_8_080" Color="{StaticResource DeepBlue_8_080_Color}" />
+
+			<Color x:Key="DeepBlue_8_040_Color">#66ffffff</Color>
+			<SolidColorBrush x:Key="DeepBlue_8_040" Color="{StaticResource DeepBlue_8_040_Color}" />
+
+			<Color x:Key="DeepBlue_8_020_Color">#33ffffff</Color>
+			<SolidColorBrush x:Key="DeepBlue_8_020" Color="{StaticResource DeepBlue_8_020_Color}" />
+
+
+
+			<!-- Light Aqua -->
+			<Color x:Key="LightAqua_0_120_Color">#FFa8efff</Color>
+			<SolidColorBrush x:Key="LightAqua_0_120" Color="{StaticResource LightAqua_0_120_Color}" />
+
+			<Color x:Key="LightAqua_0_100_Color">#FF98e5f0</Color>
+			<SolidColorBrush x:Key="LightAqua_0_100" Color="{StaticResource LightAqua_0_100_Color}" />
+
+			<Color x:Key="LightAqua_0_080_Color">#CC98e5f0</Color>
+			<SolidColorBrush x:Key="LightAqua_0_080" Color="{StaticResource LightAqua_0_080_Color}" />
+
+			<Color x:Key="LightAqua_0_040_Color">#6698e5f0</Color>
+			<SolidColorBrush x:Key="LightAqua_0_040" Color="{StaticResource LightAqua_0_040_Color}" />
+
+			<Color x:Key="LightAqua_0_020_Color">#3398e5f0</Color>
+			<SolidColorBrush x:Key="LightAqua_0_020" Color="{StaticResource LightAqua_0_020_Color}" />
+
+			<Color x:Key="LightAqua_1_100_Color">#FF00bedb</Color>
+			<SolidColorBrush x:Key="LightAqua_1_100" Color="{StaticResource LightAqua_1_100_Color}" />
+
+			<Color x:Key="LightAqua_1_080_Color">#CC00bedb</Color>
+			<SolidColorBrush x:Key="LightAqua_1_080" Color="{StaticResource LightAqua_1_080_Color}" />
+
+			<Color x:Key="LightAqua_1_040_Color">#6600bedb</Color>
+			<SolidColorBrush x:Key="LightAqua_1_040" Color="{StaticResource LightAqua_1_040_Color}" />
+
+			<Color x:Key="LightAqua_1_020_Color">#3300bedb</Color>
+			<SolidColorBrush x:Key="LightAqua_1_020" Color="{StaticResource LightAqua_1_020_Color}" />
+
+			<Color x:Key="LightAqua_2_100_Color">#FF0198b7</Color>
+			<SolidColorBrush x:Key="LightAqua_2_100" Color="{StaticResource LightAqua_2_100_Color}" />
+
+			<Color x:Key="LightAqua_2_080_Color">#CC0198b7</Color>
+			<SolidColorBrush x:Key="LightAqua_2_080" Color="{StaticResource LightAqua_2_080_Color}" />
+
+			<Color x:Key="LightAqua_2_040_Color">#660198b7</Color>
+			<SolidColorBrush x:Key="LightAqua_2_040" Color="{StaticResource LightAqua_2_040_Color}" />
+
+			<Color x:Key="LightAqua_2_020_Color">#330198b7</Color>
+			<SolidColorBrush x:Key="LightAqua_2_020" Color="{StaticResource LightAqua_2_020_Color}" />
+
+			<Color x:Key="LightAqua_3_100_Color">#FF044f71</Color>
+			<SolidColorBrush x:Key="LightAqua_3_100" Color="{StaticResource LightAqua_3_100_Color}" />
+
+			<Color x:Key="LightAqua_3_080_Color">#CC044f71</Color>
+			<SolidColorBrush x:Key="LightAqua_3_080" Color="{StaticResource LightAqua_3_080_Color}" />
+
+			<Color x:Key="LightAqua_3_040_Color">#66044f71</Color>
+			<SolidColorBrush x:Key="LightAqua_3_040" Color="{StaticResource LightAqua_3_040_Color}" />
+
+			<Color x:Key="LightAqua_3_020_Color">#33044f71</Color>
+			<SolidColorBrush x:Key="LightAqua_3_020" Color="{StaticResource LightAqua_3_020_Color}" />
+
+			<Color x:Key="LightAqua_4_100_Color">#FF06294c</Color>
+			<SolidColorBrush x:Key="LightAqua_4_100" Color="{StaticResource LightAqua_4_100_Color}" />
+
+			<Color x:Key="LightAqua_4_080_Color">#CC06294c</Color>
+			<SolidColorBrush x:Key="LightAqua_4_080" Color="{StaticResource LightAqua_4_080_Color}" />
+
+			<Color x:Key="LightAqua_4_040_Color">#6606294c</Color>
+			<SolidColorBrush x:Key="LightAqua_4_040" Color="{StaticResource LightAqua_4_040_Color}" />
+
+			<Color x:Key="LightAqua_4_020_Color">#3306294c</Color>
+			<SolidColorBrush x:Key="LightAqua_4_020" Color="{StaticResource LightAqua_4_020_Color}" />
+
+
+
+			<!-- Fresh Green -->
+			<Color x:Key="FreshGreen_0_100_Color">#FFccefb9</Color>
+			<SolidColorBrush x:Key="FreshGreen_0_100" Color="{StaticResource FreshGreen_0_100_Color}" />
+
+			<Color x:Key="FreshGreen_0_080_Color">#CCccefb9</Color>
+			<SolidColorBrush x:Key="FreshGreen_0_080" Color="{StaticResource FreshGreen_0_080_Color}" />
+
+			<Color x:Key="FreshGreen_0_040_Color">#66ccefb9</Color>
+			<SolidColorBrush x:Key="FreshGreen_0_040" Color="{StaticResource FreshGreen_0_040_Color}" />
+
+			<Color x:Key="FreshGreen_0_020_Color">#33ccefb9</Color>
+			<SolidColorBrush x:Key="FreshGreen_0_020" Color="{StaticResource FreshGreen_0_020_Color}" />
+
+			<Color x:Key="FreshGreen_1_100_Color">#FF7fd54d</Color>
+			<SolidColorBrush x:Key="FreshGreen_1_100" Color="{StaticResource FreshGreen_1_100_Color}" />
+
+			<Color x:Key="FreshGreen_1_080_Color">#CC7fd54d</Color>
+			<SolidColorBrush x:Key="FreshGreen_1_080" Color="{StaticResource FreshGreen_1_080_Color}" />
+
+			<Color x:Key="FreshGreen_1_040_Color">#667fd54d</Color>
+			<SolidColorBrush x:Key="FreshGreen_1_040" Color="{StaticResource FreshGreen_1_040_Color}" />
+
+			<Color x:Key="FreshGreen_1_020_Color">#337fd54d</Color>
+			<SolidColorBrush x:Key="FreshGreen_1_020" Color="{StaticResource FreshGreen_1_020_Color}" />
+
+			<Color x:Key="FreshGreen_2_100_Color">#FF67aa46</Color>
+			<SolidColorBrush x:Key="FreshGreen_2_100" Color="{StaticResource FreshGreen_2_100_Color}" />
+
+			<Color x:Key="FreshGreen_2_080_Color">#CC67aa46</Color>
+			<SolidColorBrush x:Key="FreshGreen_2_080" Color="{StaticResource FreshGreen_2_080_Color}" />
+
+			<Color x:Key="FreshGreen_2_040_Color">#6667aa46</Color>
+			<SolidColorBrush x:Key="FreshGreen_2_040" Color="{StaticResource FreshGreen_2_040_Color}" />
+
+			<Color x:Key="FreshGreen_2_020_Color">#3367aa46</Color>
+			<SolidColorBrush x:Key="FreshGreen_2_020" Color="{StaticResource FreshGreen_2_020_Color}" />
+
+			<Color x:Key="FreshGreen_3_100_Color">#FF385837</Color>
+			<SolidColorBrush x:Key="FreshGreen_3_100" Color="{StaticResource FreshGreen_3_100_Color}" />
+
+			<Color x:Key="FreshGreen_3_080_Color">#CC385837</Color>
+			<SolidColorBrush x:Key="FreshGreen_3_080" Color="{StaticResource FreshGreen_3_080_Color}" />
+
+			<Color x:Key="FreshGreen_3_040_Color">#66385837</Color>
+			<SolidColorBrush x:Key="FreshGreen_3_040" Color="{StaticResource FreshGreen_3_040_Color}" />
+
+			<Color x:Key="FreshGreen_3_020_Color">#33385837</Color>
+			<SolidColorBrush x:Key="FreshGreen_3_020" Color="{StaticResource FreshGreen_3_020_Color}" />
+
+			<Color x:Key="FreshGreen_4_100_Color">#FF1f2c2e</Color>
+			<SolidColorBrush x:Key="FreshGreen_4_100" Color="{StaticResource FreshGreen_4_100_Color}" />
+
+			<Color x:Key="FreshGreen_4_080_Color">#CC1f2c2e</Color>
+			<SolidColorBrush x:Key="FreshGreen_4_080" Color="{StaticResource FreshGreen_4_080_Color}" />
+
+			<Color x:Key="FreshGreen_4_040_Color">#661f2c2e</Color>
+			<SolidColorBrush x:Key="FreshGreen_4_040" Color="{StaticResource FreshGreen_4_040_Color}" />
+
+			<Color x:Key="FreshGreen_4_020_Color">#331f2c2e</Color>
+			<SolidColorBrush x:Key="FreshGreen_4_020" Color="{StaticResource FreshGreen_4_020_Color}" />
+
+
+			<!-- Pastel Orchid -->
+			<Color x:Key="PastelOrchid_0_100_Color">#FFffb8c6</Color>
+			<SolidColorBrush x:Key="PastelOrchid_0_100" Color="{StaticResource PastelOrchid_0_100_Color}" />
+
+			<Color x:Key="PastelOrchid_0_080_Color">#CCffb8c6</Color>
+			<SolidColorBrush x:Key="PastelOrchid_0_080" Color="{StaticResource PastelOrchid_0_080_Color}" />
+
+			<Color x:Key="PastelOrchid_0_040_Color">#66ffb8c6</Color>
+			<SolidColorBrush x:Key="PastelOrchid_0_040" Color="{StaticResource PastelOrchid_0_040_Color}" />
+
+			<Color x:Key="PastelOrchid_0_020_Color">#33ffb8c6</Color>
+			<SolidColorBrush x:Key="PastelOrchid_0_020" Color="{StaticResource PastelOrchid_0_020_Color}" />
+
+			<Color x:Key="PastelOrchid_1_100_Color">#FFff476c</Color>
+			<SolidColorBrush x:Key="PastelOrchid_1_100" Color="{StaticResource PastelOrchid_1_100_Color}" />
+
+			<Color x:Key="PastelOrchid_1_080_Color">#CCff476c</Color>
+			<SolidColorBrush x:Key="PastelOrchid_1_080" Color="{StaticResource PastelOrchid_1_080_Color}" />
+
+			<Color x:Key="PastelOrchid_1_040_Color">#66ff476c</Color>
+			<SolidColorBrush x:Key="PastelOrchid_1_040" Color="{StaticResource PastelOrchid_1_040_Color}" />
+
+			<Color x:Key="PastelOrchid_1_020_Color">#33ff476c</Color>
+			<SolidColorBrush x:Key="PastelOrchid_1_020" Color="{StaticResource PastelOrchid_1_020_Color}" />
+
+			<Color x:Key="PastelOrchid_2_100_Color">#FFce3b60</Color>
+			<SolidColorBrush x:Key="PastelOrchid_2_100" Color="{StaticResource PastelOrchid_2_100_Color}" />
+
+			<Color x:Key="PastelOrchid_2_080_Color">#CCce3b60</Color>
+			<SolidColorBrush x:Key="PastelOrchid_2_080" Color="{StaticResource PastelOrchid_2_080_Color}" />
+
+			<Color x:Key="PastelOrchid_2_040_Color">#66ce3b60</Color>
+			<SolidColorBrush x:Key="PastelOrchid_2_040" Color="{StaticResource PastelOrchid_2_040_Color}" />
+
+			<Color x:Key="PastelOrchid_2_020_Color">#33ce3b60</Color>
+			<SolidColorBrush x:Key="PastelOrchid_2_020" Color="{StaticResource PastelOrchid_2_020_Color}" />
+
+			<Color x:Key="PastelOrchid_3_100_Color">#FF6b1e44</Color>
+			<SolidColorBrush x:Key="PastelOrchid_3_100" Color="{StaticResource PastelOrchid_3_100_Color}" />
+
+			<Color x:Key="PastelOrchid_3_080_Color">#CC6b1e44</Color>
+			<SolidColorBrush x:Key="PastelOrchid_3_080" Color="{StaticResource PastelOrchid_3_080_Color}" />
+
+			<Color x:Key="PastelOrchid_3_040_Color">#666b1e44</Color>
+			<SolidColorBrush x:Key="PastelOrchid_3_040" Color="{StaticResource PastelOrchid_3_040_Color}" />
+
+			<Color x:Key="PastelOrchid_3_020_Color">#336b1e44</Color>
+			<SolidColorBrush x:Key="PastelOrchid_3_020" Color="{StaticResource PastelOrchid_3_020_Color}" />
+
+			<Color x:Key="PastelOrchid_4_100_Color">#FF381034</Color>
+			<SolidColorBrush x:Key="PastelOrchid_4_100" Color="{StaticResource PastelOrchid_4_100_Color}" />
+
+			<Color x:Key="PastelOrchid_4_080_Color">#CC381034</Color>
+			<SolidColorBrush x:Key="PastelOrchid_4_080" Color="{StaticResource PastelOrchid_4_080_Color}" />
+
+			<Color x:Key="PastelOrchid_4_040_Color">#66381034</Color>
+			<SolidColorBrush x:Key="PastelOrchid_4_040" Color="{StaticResource PastelOrchid_4_040_Color}" />
+
+			<Color x:Key="PastelOrchid_4_020_Color">#33381034</Color>
+			<SolidColorBrush x:Key="PastelOrchid_4_020" Color="{StaticResource PastelOrchid_4_020_Color}" />
+
+
+
+			<!-- Orange Peel -->
+			<Color x:Key="OrangePeel_0_100_Color">#FFfac8b2</Color>
+			<SolidColorBrush x:Key="OrangePeel_0_100" Color="{StaticResource OrangePeel_0_100_Color}" />
+
+			<Color x:Key="OrangePeel_0_080_Color">#CCfac8b2</Color>
+			<SolidColorBrush x:Key="OrangePeel_0_080" Color="{StaticResource OrangePeel_0_080_Color}" />
+
+			<Color x:Key="OrangePeel_0_040_Color">#66fac8b2</Color>
+			<SolidColorBrush x:Key="OrangePeel_0_040" Color="{StaticResource OrangePeel_0_040_Color}" />
+
+			<Color x:Key="OrangePeel_0_020_Color">#33fac8b2</Color>
+			<SolidColorBrush x:Key="OrangePeel_0_020" Color="{StaticResource OrangePeel_0_020_Color}" />
+
+			<Color x:Key="OrangePeel_1_100_Color">#FFf37944</Color>
+			<SolidColorBrush x:Key="OrangePeel_1_100" Color="{StaticResource OrangePeel_1_100_Color}" />
+
+			<Color x:Key="OrangePeel_1_080_Color">#CCf37944</Color>
+			<SolidColorBrush x:Key="OrangePeel_1_080" Color="{StaticResource OrangePeel_1_080_Color}" />
+
+			<Color x:Key="OrangePeel_1_040_Color">#66f37944</Color>
+			<SolidColorBrush x:Key="OrangePeel_1_040" Color="{StaticResource OrangePeel_1_040_Color}" />
+
+			<Color x:Key="OrangePeel_1_020_Color">#33f37944</Color>
+			<SolidColorBrush x:Key="OrangePeel_1_020" Color="{StaticResource OrangePeel_1_020_Color}" />
+
+			<Color x:Key="OrangePeel_2_100_Color">#FFc46340</Color>
+			<SolidColorBrush x:Key="OrangePeel_2_100" Color="{StaticResource OrangePeel_2_100_Color}" />
+
+			<Color x:Key="OrangePeel_2_080_Color">#CCc46340</Color>
+			<SolidColorBrush x:Key="OrangePeel_2_080" Color="{StaticResource OrangePeel_2_080_Color}" />
+
+			<Color x:Key="OrangePeel_2_040_Color">#66c46340</Color>
+			<SolidColorBrush x:Key="OrangePeel_2_040" Color="{StaticResource OrangePeel_2_040_Color}" />
+
+			<Color x:Key="OrangePeel_2_020_Color">#33c46340</Color>
+			<SolidColorBrush x:Key="OrangePeel_2_020" Color="{StaticResource OrangePeel_2_020_Color}" />
+
+			<Color x:Key="OrangePeel_3_100_Color">#FF673233</Color>
+			<SolidColorBrush x:Key="OrangePeel_3_100" Color="{StaticResource OrangePeel_3_100_Color}" />
+
+			<Color x:Key="OrangePeel_3_080_Color">#CC673233</Color>
+			<SolidColorBrush x:Key="OrangePeel_3_080" Color="{StaticResource OrangePeel_3_080_Color}" />
+
+			<Color x:Key="OrangePeel_3_040_Color">#66673233</Color>
+			<SolidColorBrush x:Key="OrangePeel_3_040" Color="{StaticResource OrangePeel_3_040_Color}" />
+
+			<Color x:Key="OrangePeel_3_020_Color">#33673233</Color>
+			<SolidColorBrush x:Key="OrangePeel_3_020" Color="{StaticResource OrangePeel_3_020_Color}" />
+
+			<Color x:Key="OrangePeel_4_100_Color">#FF371a2d</Color>
+			<SolidColorBrush x:Key="OrangePeel_4_100" Color="{StaticResource OrangePeel_4_100_Color}" />
+
+			<Color x:Key="OrangePeel_4_080_Color">#CC371a2d</Color>
+			<SolidColorBrush x:Key="OrangePeel_4_080" Color="{StaticResource OrangePeel_4_080_Color}" />
+
+			<Color x:Key="OrangePeel_4_040_Color">#66371a2d</Color>
+			<SolidColorBrush x:Key="OrangePeel_4_040" Color="{StaticResource OrangePeel_4_040_Color}" />
+
+			<Color x:Key="OrangePeel_4_020_Color">#33371a2d</Color>
+			<SolidColorBrush x:Key="OrangePeel_4_020" Color="{StaticResource OrangePeel_4_020_Color}" />
+	
+		</Style.Resources>
+
+	</Style>
+</Styles>

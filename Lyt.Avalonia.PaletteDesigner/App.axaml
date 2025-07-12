@@ -1,0 +1,39 @@
+<Application
+    x:Class="Lyt.Avalonia.PaletteDesigner.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    RequestedThemeVariant="Dark"
+    >
+    <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="/Assets/Icons/Icons.axaml" />
+        <StyleInclude Source="/Assets/Palette/DeepBluePalette.axaml" />
+        <StyleInclude Source="/Assets/Theme/TextBoxStyles.axaml" />
+        <StyleInclude Source="/Assets/Theme/AutoCompleteBoxStyles.axaml" />
+        <StyleInclude Source="/Assets/Theme/Sliders.axaml"/>
+        <!--
+        <StyleInclude Source="avares://TextoCopier/Assets/Theme/ListBoxStyles.axaml" />
+        <StyleInclude Source="avares://TextoCopier/Assets/Theme/ListBoxItemStyles.axaml" />
+        -->
+    </Application.Styles>
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="/Assets/Icons/PathResourceDictionary.axaml"/>
+                <ResourceInclude Source="/Assets/Icons/FluentSvgResourceDictionary.axaml"/>
+                <ResourceInclude Source="/Assets/Theme/Buttons.axaml"/>
+                <ResourceInclude Source="/Assets/Theme/Toggles.axaml"/>
+                <ResourceInclude Source="/Assets/Theme/Typography.axaml"/>
+                <!--
+                These are loaded dynamically, when the localizer is tasked to load a language.
+                <ResourceInclude Source="/Assets/Languages/en-US.axaml" />
+                <ResourceInclude Source="/Assets/Languages/fr-FR.axaml" />
+                <ResourceInclude Source="/Assets/Languages/it-IT.axaml" />
+                -->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
