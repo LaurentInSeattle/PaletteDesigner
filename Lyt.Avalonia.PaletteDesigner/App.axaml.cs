@@ -17,7 +17,7 @@ public partial class App : ApplicationBase
         [
             // Models 
             typeof(FileManagerModel),
-            // typeof(PaletteDesignerModel),
+            typeof(PaletteDesignerModel),
         ],
         [
            // Singletons
@@ -33,7 +33,6 @@ public partial class App : ApplicationBase
            //typeof(LanguageViewModel),
            //typeof(LanguageToolbarViewModel),
 
-           // typeof(TranslatorService),
         ],
         [
             // Services 
@@ -89,7 +88,7 @@ public partial class App : ApplicationBase
                 AssemblyName = App.AssemblyName,
                 Languages =
                 [
-                    "en-US", "fr-FR"
+                    "en-US", "fr-FR" // need at least two
                     //"hu-HU",
                     //"fr-FR", "it-IT", "es-ES", "de-DE",
                     //"uk-UA", "bg-BG", "el-GR", "hy-AM",
@@ -120,6 +119,5 @@ public partial class App : ApplicationBase
         return Task.CompletedTask;
     }
 
-    // Why does it need to be there ??? 
     public override void Initialize() => AvaloniaXamlLoader.Load(this);
 }

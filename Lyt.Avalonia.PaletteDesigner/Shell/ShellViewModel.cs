@@ -1,22 +1,19 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Shell;
 
-// https://stackoverflow.com/questions/385793/programmatically-start-application-on-login 
-// using static MessagingExtensions;
+using static ViewActivationMessage;
+using static MessagingExtensions;
 
 public sealed partial class ShellViewModel : ViewModel<ShellView>
 {
-    //private const int MinutesToMillisecs = 60 * 1_000;
-
-    //private readonly AstroPicModel astroPicModel;
-    //private readonly IToaster toaster;
-    //private readonly TimeoutTimer rotatorTimer;
-    //private readonly TimeoutTimer downloadRetriesTimer;
+    private readonly PaletteDesignerModel paletteDesignerModel;
+    private readonly IToaster toaster;
 
     [ObservableProperty]
     public bool mainToolbarIsVisible;
 
-    //private ViewSelector<ActivatedView>? viewSelector;
-    //public bool isFirstActivation;
+    private ViewSelector<ActivatedView>? viewSelector;
+    
+    private bool isFirstActivation;
 
     #region To please the XAML viewer 
 
@@ -29,29 +26,17 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
     #endregion To please the XAML viewer 
 
-    public ShellViewModel(/* AstroPicModel astroPicModel, */ IToaster toaster)
+    public ShellViewModel(PaletteDesignerModel paletteDesignerModel, IToaster toaster)
     {
-        //this.astroPicModel = astroPicModel;
-        //this.toaster = toaster;
+        this.paletteDesignerModel = paletteDesignerModel;
+        this.toaster = toaster;
 
-        //this.downloadRetriesTimer = new TimeoutTimer(this.OnDownloadRetriesTimer, 1 * MinutesToMillisecs);
-        //this.rotatorTimer = new TimeoutTimer(this.OnRotatorTimer, 3 * MinutesToMillisecs);
-        //if (this.astroPicModel.ShouldRotateWallpapers)
-        //{
-        //    this.rotatorTimer.Change(this.astroPicModel.WallpaperRotationMinutes * MinutesToMillisecs);
-        //    this.rotatorTimer.Start();
-        //}
-
-        ////this.Messenger.Subscribe<ViewActivationMessage>(this.OnViewActivation);
-        //this.Messenger.Subscribe<ToolbarCommandMessage>(this.OnToolbarCommand);
-        //this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
+        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
     }
 
     private void OnLanguageChanged(LanguageChangedMessage message)
     {
     }
-
-    // private void OnToolbarCommand(ToolbarCommandMessage _) => this.rotatorTimer.Reset();
 
     public override void OnViewLoaded()
     {
@@ -76,16 +61,14 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         this.SetupWorkflow();
         this.Logger.Debug("OnViewLoaded SetupWorkflow complete");
 
-
-
-        //// Ready 
-        //this.toaster.Host = this.View.ToasterHost;
-        //if (true)
-        //{
-        //    this.toaster.Show(
-        //        this.Localize("Shell.Ready"), this.Localize("Shell.Greetings"),
-        //        1_600, InformationLevel.Info);
-        //}
+        // Ready 
+        this.toaster.Host = this.View.ToasterHost;
+        if (true)
+        {
+            this.toaster.Show(
+                this.Localize("Shell.Ready"), this.Localize("Shell.Greetings"),
+                1_600, InformationLevel.Info);
+        }
 
         // Delay a bit the launch of the gallery so that there is time to ping 
         // this.Logger.Debug("OnViewLoaded: Internet connected: " + this.astroPicModel.IsInternetConnected);
@@ -94,31 +77,14 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         this.Logger.Debug("OnViewLoaded complete");
     }
 
-    private async void ActivateInitialView()
+    private void ActivateInitialView()
     {
-        //this.isFirstActivation = true;
+        this.isFirstActivation = true;
 
-        //if (this.astroPicModel.IsFirstRun)
-        //{
-        //    Select(ActivatedView.Language);
-        //}
-        //else
-        //{
-        //    int retries = 3;
-        //    while (retries > 0)
-        //    {
-        //        this.Logger.Debug("ActivateInitialView: Internet connected: " + this.astroPicModel.IsInternetConnected);
-        //        if (this.astroPicModel.IsInternetConnected)
-        //        {
-        //            Select(ActivatedView.Gallery);
-        //            this.Logger.Debug("OnViewLoaded OnViewActivation complete");
-        //            return;
-        //        }
-
-        //        await Task.Delay(100);
-        //        --retries;
-        //    }
-        //}
+        if (this.paletteDesignerModel.IsFirstRun)
+        {
+            // Select(ActivatedView.Language);
+        }
 
         this.Logger.Debug("OnViewLoaded OnViewActivation complete");
     }
@@ -130,22 +96,22 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
             throw new Exception("No view: Failed to startup...");
         }
 
-        //var selectableViews = new List<SelectableView<ActivatedView>>();
+        var selectableViews = new List<SelectableView<ActivatedView>>();
 
-        //void Setup<TViewModel, TControl, TToolbarViewModel, TToolbarControl>(
-        //        ActivatedView activatedView, Control control)
-        //    where TViewModel : ViewModel<TControl>
-        //    where TControl : Control, IView, new()
-        //    where TToolbarViewModel : ViewModel<TToolbarControl>
-        //    where TToolbarControl : Control, IView, new()
-        //{
-        //    var vm = App.GetRequiredService<TViewModel>();
-        //    vm.CreateViewAndBind();
-        //    var vmToolbar = App.GetRequiredService<TToolbarViewModel>();
-        //    vmToolbar.CreateViewAndBind();
-        //    selectableViews.Add(
-        //        new SelectableView<ActivatedView>(activatedView, vm, control, vmToolbar));
-        //}
+        void Setup<TViewModel, TControl, TToolbarViewModel, TToolbarControl>(
+                ActivatedView activatedView, Control control)
+            where TViewModel : ViewModel<TControl>
+            where TControl : Control, IView, new()
+            where TToolbarViewModel : ViewModel<TToolbarControl>
+            where TToolbarControl : Control, IView, new()
+        {
+            var vm = App.GetRequiredService<TViewModel>();
+            vm.CreateViewAndBind();
+            var vmToolbar = App.GetRequiredService<TToolbarViewModel>();
+            vmToolbar.CreateViewAndBind();
+            selectableViews.Add(
+                new SelectableView<ActivatedView>(activatedView, vm, control, vmToolbar));
+        }
 
         //Setup<GalleryViewModel, GalleryView, GalleryToolbarViewModel, GalleryToolbarView>(
         //    ActivatedView.Gallery, view.TodayButton);
@@ -162,56 +128,46 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         //Setup<SettingsViewModel, SettingsView, SettingsToolbarViewModel, SettingsToolbarView>(
         //    ActivatedView.Settings, view.SettingsButton);
 
-        //// Needs to be kept alive as a class member, or else callbacks will die (and wont work) 
-        //this.viewSelector =
-        //    new ViewSelector<ActivatedView>(
-        //        this.Messenger,
-        //        this.View.ShellViewContent,
-        //        this.View.ShellViewToolbar,
-        //        this.View.SelectionGroup,
-        //        selectableViews,
-        //        this.OnViewSelected);
+        // Needs to be kept alive as a class member, or else callbacks will die (and wont work) 
+        this.viewSelector =
+            new ViewSelector<ActivatedView>(
+                this.Messenger,
+                this.View.ShellViewContent,
+                this.View.ShellViewToolbar,
+                this.View.SelectionGroup,
+                selectableViews,
+                this.OnViewSelected);
     }
 
-    //private void OnViewSelected(ActivatedView activatedView)
-    //{
-    //    if (this.viewSelector is null)
-    //    {
-    //        throw new Exception("No view selector");
-    //    }
+    private void OnViewSelected(ActivatedView activatedView)
+    {
+        if (this.viewSelector is null)
+        {
+            throw new Exception("No view selector");
+        }
 
-    //    var newViewModel = this.viewSelector.CurrentPrimaryViewModel;
-    //    if (newViewModel is not null)
-    //    {
-    //        bool mainToolbarIsHidden = 
-    //            this.astroPicModel.IsFirstRun || newViewModel is IntroViewModel;
-    //        this.MainToolbarIsVisible = !mainToolbarIsHidden;
-    //        if (this.isFirstActivation)
-    //        {
-    //            this.Profiler.MemorySnapshot(newViewModel.ViewBase!.GetType().Name + ":  Activated");
-    //        }
-    //    }
+        var newViewModel = this.viewSelector.CurrentPrimaryViewModel;
+        //if (newViewModel is not null)
+        //{
+        //    bool mainToolbarIsHidden =
+        //        this.astroPicModel.IsFirstRun || newViewModel is IntroViewModel;
+        //    this.MainToolbarIsVisible = !mainToolbarIsHidden;
+        //    if (this.isFirstActivation)
+        //    {
+        //        this.Profiler.MemorySnapshot(newViewModel.ViewBase!.GetType().Name + ":  Activated");
+        //    }
+        //}
 
-    //    this.isFirstActivation = false;
-    //}
+        this.isFirstActivation = false;
+    }
 
-#pragma warning disable IDE0079 
 #pragma warning disable CA1822 // Mark members as static
 
-    //[RelayCommand]
-    //public void OnToday() => Select(ActivatedView.Gallery);
+    [RelayCommand]
+    public void OnSettings() => Select(ActivatedView.Settings);
 
-    //[RelayCommand]
-    //public void OnCollection() => Select(ActivatedView.Collection);
-
-    //[RelayCommand]
-    //public void OnSettings() => Select(ActivatedView.Settings);
-
-    //[RelayCommand]
-    //public void OnInfo() => Select(ActivatedView.Intro);
-
-    //[RelayCommand]
-    //public void OnLanguage() => Select(ActivatedView.Language);
+    [RelayCommand]
+    public void OnLanguage() => Select(ActivatedView.Language);
 
     [RelayCommand]
     public void OnClose() => OnExit();
@@ -223,5 +179,4 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
     }
 
 #pragma warning restore CA1822
-#pragma warning restore IDE0079
 }

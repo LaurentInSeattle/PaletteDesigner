@@ -102,7 +102,6 @@
 					Foreground="{StaticResource PastelOrchid_0_080}"
 					/>
 				<!-- View Selector - Main toolbar - Vertical left -->
-				<!--
 				<StackPanel
 					IsVisible="{Binding MainToolbarIsVisible}"
 					Orientation="Vertical"
@@ -111,6 +110,37 @@
 					HorizontalAlignment="Center"
 					>
 					<glyphs:SelectionGroup x:Name="SelectionGroup" />
+					<glyphs:GlyphButton
+						x:Name="SettingsButton"
+						Style="{StaticResource ToolbarIconButton}"
+						Behaviour="Tap"
+						HorizontalAlignment="Center"
+						Width="82" Height="56"
+						Margin="4 8 4 8"
+						GlyphSource="settings"
+						ButtonBackground="BorderlessRectangle"
+						GlyphStrokeThickness="0"
+						GlyphAngle="20"
+						Text="{DynamicResource Shell.Settings}"
+						Command="{Binding OnSettings}"
+						Group="{Binding ElementName=SelectionGroup}"
+						/>
+					<glyphs:GlyphButton
+						x:Name="FlagButton"
+						Style="{StaticResource ToolbarIconButton}"
+						Behaviour="Tap"
+						HorizontalAlignment="Center"
+						Width="82" Height="56"
+						Margin="4 8 4 8"
+						GlyphSource="flag"
+						ButtonBackground="BorderlessRectangle"
+						GlyphStrokeThickness="0"
+						Text="{DynamicResource Shell.Language}"
+						Command="{Binding OnLanguage}"
+						Group="{Binding ElementName=SelectionGroup}"
+						/>
+
+					<!--
 					<glyphs:GlyphButton
 						x:Name="TodayButton"
 						Style="{StaticResource ToolbarIconButton}"
@@ -143,35 +173,6 @@
 						Group="{Binding ElementName=SelectionGroup}"
 						/>
 					<glyphs:GlyphButton
-						x:Name="SettingsButton"
-						Style="{StaticResource ToolbarIconButton}"
-						Behaviour="Tap"
-						HorizontalAlignment="Center" 
-						Width="82" Height="56"
-						Margin="4 8 4 8"
-						GlyphSource="settings"
-						ButtonBackground="BorderlessRectangle"
-						GlyphStrokeThickness="0"
-						GlyphAngle="20"
-						Text="{DynamicResource Shell.Settings}"
-						Command="{Binding OnSettings}"
-						Group="{Binding ElementName=SelectionGroup}"
-						/>
-					<glyphs:GlyphButton
-						x:Name="FlagButton"
-						Style="{StaticResource ToolbarIconButton}"
-						Behaviour="Tap"
-						HorizontalAlignment="Center" 
-						Width="82" Height="56"
-						Margin="4 8 4 8"
-						GlyphSource="flag"
-						ButtonBackground="BorderlessRectangle"
-						GlyphStrokeThickness="0"
-						Text="{DynamicResource Shell.Language}"
-						Command="{Binding OnLanguage}"
-						Group="{Binding ElementName=SelectionGroup}"
-						/>
-					<glyphs:GlyphButton
 						x:Name="IntroButton"
 						Style="{StaticResource ToolbarIconButton}"
 						Behaviour="Tap"
@@ -185,8 +186,8 @@
 						Command="{Binding OnInfo}"
 						Group="{Binding ElementName=SelectionGroup}"
 						/>
-				</StackPanel>
-				-->
+						-->
+					</StackPanel>
 				<!-- View Selector - Close tool bar - Aligned Right -->
 				<StackPanel
 					Orientation="Horizontal"

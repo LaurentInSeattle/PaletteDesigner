@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Persistence", "..\Lyt.F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Utilities", "..\Lyt.Framework\Lyt.Utilities\Lyt.Utilities.csproj", "{BC6D8381-2225-FC48-9C07-EE5C4FCADF7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.PaletteDesigner.Model", "Lyt.Avalonia.PaletteDesigner.Model\Lyt.Avalonia.PaletteDesigner.Model.csproj", "{07346C87-33C1-4D88-A6EB-81665C61360D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{BC6D8381-2225-FC48-9C07-EE5C4FCADF7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC6D8381-2225-FC48-9C07-EE5C4FCADF7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC6D8381-2225-FC48-9C07-EE5C4FCADF7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07346C87-33C1-4D88-A6EB-81665C61360D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07346C87-33C1-4D88-A6EB-81665C61360D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07346C87-33C1-4D88-A6EB-81665C61360D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07346C87-33C1-4D88-A6EB-81665C61360D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
