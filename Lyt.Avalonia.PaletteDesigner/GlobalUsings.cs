@@ -90,6 +90,8 @@ global using Lyt.Avalonia.PaletteDesigner;
 global using Lyt.Avalonia.PaletteDesigner.Shell;
 global using Lyt.Avalonia.PaletteDesigner.Messaging;
 global using Lyt.Avalonia.PaletteDesigner.Model;
+global using Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
+global using Lyt.Avalonia.PaletteDesigner.Utilities;
 // global using Lyt.Avalonia.PaletteDesigner.Workflow;
 
 
