@@ -54,6 +54,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Workflow\Palette\PalettePreviewView.axaml.cs">
+	    <DependentUpon>PalettePreviewView.axaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Workflow\Palette\PaletteColorView.axaml.cs">
 	    <DependentUpon>PaletteColorView.axaml</DependentUpon>
 	  </Compile>

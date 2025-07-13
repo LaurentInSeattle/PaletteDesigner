@@ -1,9 +1,10 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
 
-// See: https://en.wikipedia.org/wiki/HSL_and_HSV 
+using Lyt.Avalonia.PaletteDesigner.Model.Utilities;
 
 public sealed class HsvColor
 {
+    /// <summary> Hue Angle in degrees </summary>
     public double H { get; set; } = 0.0;
 
     public double S { get; set; } = 0.5;
@@ -61,15 +62,15 @@ public sealed class HsvColor
     /// <summary> Returns the complementary color of this color  </summary>
     public HsvColor Complementary()
     {
-        double complementaryHue = (this.HueToWheel() + 180.0) % 360.0;
+        double complementaryHue = ((this.HueToWheel() + 180.0) % 360.0).WheelToHue();
         return this.WithH(complementaryHue);
     }
 
     /// <summary> Returns the colors adjacent to this color at the provided angular distance </summary>
     public Tuple<HsvColor, HsvColor> Triad(double angularDistance)
     {
-        double secondaryHuePlus = (this.HueToWheel() + angularDistance) % 360.0;
-        double secondaryHueMinus = (this.HueToWheel() - angularDistance) % 360.0;
+        double secondaryHuePlus = (this.H + angularDistance) % 360.0;
+        double secondaryHueMinus = (this.H - angularDistance) % 360.0;
         return new(this.WithH(secondaryHuePlus), this.WithH(secondaryHueMinus));
     }
 
@@ -79,8 +80,8 @@ public sealed class HsvColor
     /// </summary>
     public Tuple<HsvColor, HsvColor> Squared(double angularDistance)
     {
-        double secondaryHue = (this.HueToWheel() + angularDistance) % 360.0;
-        double secondaryHueComplementary = (this.HueToWheel() + angularDistance + 180.0) % 360.0;
+        double secondaryHue = (this.H + angularDistance) % 360.0;
+        double secondaryHueComplementary = (this.H + angularDistance + 180.0) % 360.0;
         return new(this.WithH(secondaryHue), this.WithH(secondaryHueComplementary));
     }
 
@@ -88,60 +89,64 @@ public sealed class HsvColor
 
     public double HueToWheel() => this.H.HueToWheel();
 
-    public static RgbColor ToRgb(double h, double s, double v)
+    public static RgbColor ToRgb(double hue, double saturation, double brightness)
     {
-        if (s == 0)
+        if (saturation == 0)
         {
-            double x = Math.Round(v * 2.55);
+            // No saturation: gray 
+            double x = Math.Round(brightness * 255.0);
             return new RgbColor(x, x, x);
         }
 
-        s /= 100;
-        v /= 100;
-        h /= 60;
+        // the color wheel consists of 6 sectors. Figure out which sector you're in.
+        double sectorPosition = hue / 60.0;
+        int sectorIndex = (int)(Math.Floor(sectorPosition));
 
-        double i = Math.Floor(h);
-        double f = h - i;
-        double p = v * (1 - s);
-        double q = v * (1 - s * f);
-        double t = v * (1 - s * (1 - f));
+        // get the fractional part of the sector
+        double fractionalSector = sectorPosition - sectorIndex;
+
+        // calculate values for the three axes of the color. 
+        double p = brightness * (1.0 - saturation);
+        double q = brightness * (1.0 - (saturation * fractionalSector));
+        double t = brightness * (1.0 - (saturation * (1 - fractionalSector)));
+
         double r;
         double g;
         double b;
-        switch ((int)i)
+        switch (sectorIndex )
         {
             case 0:
-                r = v;
+                r = brightness;
                 g = t;
                 b = p;
                 break;
 
             case 1:
                 r = q;
-                g = v;
+                g = brightness;
                 b = p;
                 break;
 
             case 2:
                 r = p;
-                g = v;
+                g = brightness;
                 b = t;
                 break;
 
             case 3:
                 r = p;
                 g = q;
-                b = v;
+                b = brightness;
                 break;
 
             case 4:
                 r = t;
                 g = p;
-                b = v;
+                b = brightness;
                 break;
 
             default:
-                r = v;
+                r = brightness;
                 g = p;
                 b = q;
                 break;

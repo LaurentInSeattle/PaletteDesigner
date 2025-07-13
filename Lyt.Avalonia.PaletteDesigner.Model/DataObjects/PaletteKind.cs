@@ -1,16 +1,18 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
 
+// See: https://en.wikipedia.org/wiki/HSL_and_HSV 
 // http://paletton.com/
 // https://color.adobe.com/create/color-wheel/
+
 
 public enum PaletteKind
 {
     Unknown,
 
-    FreeMonochromatic,                          // One free color
-    FreeDuochromatic,                           // Two free colors
-    FreeTriChromatic,                           // Three free colors
-    FreeQuadrichromatic,                        // Four free colors
+    Monochromatic,                          // One free color
+    Duochromatic,                           // Two free colors
+    Trichromatic,                           // Three free colors
+    Quadrichromatic,                        // Four free colors
 
     MonochromaticComplementary,             // One free color and complementary
 
@@ -25,10 +27,10 @@ public static class PaletteKindExtensions
     public static int ColorCount(this PaletteKind kind)
         => kind switch
         {
-            PaletteKind.FreeMonochromatic => 1,
-            PaletteKind.MonochromaticComplementary or PaletteKind.FreeDuochromatic => 2,
-            PaletteKind.Triad or PaletteKind.FreeTriChromatic => 3,
-            PaletteKind.TriadComplementary or PaletteKind.FreeQuadrichromatic or PaletteKind.Square => 4,
+            PaletteKind.Monochromatic => 1,
+            PaletteKind.MonochromaticComplementary or PaletteKind.Duochromatic => 2,
+            PaletteKind.Triad or PaletteKind.Trichromatic => 3,
+            PaletteKind.TriadComplementary or PaletteKind.Quadrichromatic or PaletteKind.Square => 4,
             _ => 0, // Unknown 
         };
 }

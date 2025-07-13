@@ -86,7 +86,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
             // Select(ActivatedView.Language);
         }
 
-        Select(ActivatedView.Settings);
+        Select(ActivatedView.Language);
         this.MainToolbarIsVisible = true; 
         this.Logger.Debug("OnViewLoaded OnViewActivation complete");
     }
@@ -126,6 +126,8 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
                 new SelectableView<ActivatedView>(activatedView, vm, control));
         }
 
+        SetupNoToolbar<PalettePreviewViewModel, PalettePreviewView>(
+            ActivatedView.Language, view.FlagButton);
         SetupNoToolbar<PaletteColorViewModel, PaletteColorView>(
             ActivatedView.Settings, view.SettingsButton);
 

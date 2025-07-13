@@ -1,4 +1,4 @@
-﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Palette;
+﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Shading;
 
 public partial class PaletteColorViewModel : ViewModel<PaletteColorView>
 {
