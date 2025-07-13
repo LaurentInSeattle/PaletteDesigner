@@ -48,12 +48,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Workflow\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <AvaloniaResource Update="Assets\Languages\Lang_fr-FR.axaml">
 	    <SubType>Designer</SubType>
 	  </AvaloniaResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Workflow\Palette\PaletteColorView.axaml.cs">
+	    <DependentUpon>PaletteColorView.axaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 </Project>

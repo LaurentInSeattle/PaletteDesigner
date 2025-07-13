@@ -86,6 +86,8 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
             // Select(ActivatedView.Language);
         }
 
+        Select(ActivatedView.Settings);
+        this.MainToolbarIsVisible = true; 
         this.Logger.Debug("OnViewLoaded OnViewActivation complete");
     }
 
@@ -113,8 +115,19 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
                 new SelectableView<ActivatedView>(activatedView, vm, control, vmToolbar));
         }
 
-        //Setup<GalleryViewModel, GalleryView, GalleryToolbarViewModel, GalleryToolbarView>(
-        //    ActivatedView.Gallery, view.TodayButton);
+        void SetupNoToolbar<TViewModel, TControl>(
+                ActivatedView activatedView, Control control)
+            where TViewModel : ViewModel<TControl>
+            where TControl : Control, IView, new()
+        {
+            var vm = App.GetRequiredService<TViewModel>();
+            vm.CreateViewAndBind();
+            selectableViews.Add(
+                new SelectableView<ActivatedView>(activatedView, vm, control));
+        }
+
+        SetupNoToolbar<PaletteColorViewModel, PaletteColorView>(
+            ActivatedView.Settings, view.SettingsButton);
 
         //Setup<CollectionViewModel, CollectionView, CollectionToolbarViewModel, CollectionToolbarView>(
         //    ActivatedView.Collection, view.CollectionButton);
