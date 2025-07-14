@@ -126,8 +126,10 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
                 new SelectableView<ActivatedView>(activatedView, vm, control));
         }
 
-        SetupNoToolbar<PalettePreviewViewModel, PalettePreviewView>(
+        SetupNoToolbar<ColorWheelViewModel, ColorWheelView>(
             ActivatedView.Language, view.FlagButton);
+        //SetupNoToolbar<PalettePreviewViewModel, PalettePreviewView>(
+        //    ActivatedView.Language, view.FlagButton);
         SetupNoToolbar<PaletteColorViewModel, PaletteColorView>(
             ActivatedView.Settings, view.SettingsButton);
 

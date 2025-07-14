@@ -24,9 +24,8 @@ public partial class App : ApplicationBase
            typeof(ShellViewModel),
            typeof(PaletteColorViewModel),
            typeof(PalettePreviewViewModel),
-           //typeof(GalleryToolbarViewModel),
-           //typeof(CollectionViewModel),
-           //typeof(CollectionToolbarViewModel),
+           typeof(ColorWheelViewModel),
+
            //typeof(SettingsViewModel),
            //typeof(SettingsToolbarViewModel),
            //typeof(IntroViewModel),

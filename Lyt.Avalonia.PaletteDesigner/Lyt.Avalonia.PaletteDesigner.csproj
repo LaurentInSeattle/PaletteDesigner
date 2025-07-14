@@ -6,6 +6,7 @@
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
 		<ApplicationIcon>Assets\Images\Designer.ico</ApplicationIcon>
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,6 +24,10 @@
 
 	<ItemGroup>
 	  <AvaloniaXaml Remove="Assets\Languages\Lang_fr-FR.axaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\Images\wheel.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -54,10 +59,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Workflow\Palette\PalettePreviewView.axaml.cs">
+	  <Compile Update="Workflow\Shading\PalettePreviewView.axaml.cs">
 	    <DependentUpon>PalettePreviewView.axaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Workflow\Palette\PaletteColorView.axaml.cs">
+	  <Compile Update="Workflow\Shading\PaletteColorView.axaml.cs">
 	    <DependentUpon>PaletteColorView.axaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>

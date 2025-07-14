@@ -14,6 +14,8 @@ global using System.Linq;
 global using System.Reflection;
 global using System.Runtime.CompilerServices;
 global using System.Runtime.InteropServices;
+global using System.Text.Json;
+global using System.Text.Json.Serialization;
 global using System.Threading;
 global using System.Threading.Tasks;
 global using System.Windows.Input;
@@ -94,5 +96,7 @@ global using Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
 global using Lyt.Avalonia.PaletteDesigner.Utilities;
 global using Lyt.Avalonia.PaletteDesigner.Workflow;
 global using Lyt.Avalonia.PaletteDesigner.Workflow.Shading;
+global using Lyt.Avalonia.PaletteDesigner.Workflow.Wheel;
+
 
 // global using Lyt.Translator.Service; 
