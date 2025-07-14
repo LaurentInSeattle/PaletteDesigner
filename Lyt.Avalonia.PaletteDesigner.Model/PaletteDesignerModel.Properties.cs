@@ -32,6 +32,8 @@ public sealed partial class PaletteDesignerModel : ModelBase
         LastUpdated = DateTime.Now,
     };
 
+    public Dictionary<int, RgbColor> ColorLookupTable { get; set; } = [] ;
+
     #endregion Not serialized - No model changed event
 
 

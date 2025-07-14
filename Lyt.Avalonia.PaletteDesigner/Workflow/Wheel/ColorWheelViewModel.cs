@@ -1,32 +1,33 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Wheel;
 
-using global::Avalonia.Media.Imaging;
+// using global::Avalonia.Media.Imaging;
 
 public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
 {
-    private readonly Dictionary<int, RgbColor> colorLookupTable;
+    private readonly PaletteDesignerModel paletteDesignerModel;
 
     [ObservableProperty]
     private WriteableBitmap imageSource;
 
-    public ColorWheelViewModel()
+    public ColorWheelViewModel(PaletteDesignerModel paletteDesignerModel)
     {
+        this.paletteDesignerModel = paletteDesignerModel;
         byte[] imageBytes = SerializationUtilities.LoadEmbeddedBinaryResource(
             "wheel.png", out string? _);
         var bitmap = WriteableBitmap.Decode(new MemoryStream(imageBytes));
         this.imageSource = bitmap;
-        this.colorLookupTable = new(360 * 10);
     }
 
     public override void OnViewLoaded()
     {
         base.OnViewLoaded();
-
         this.CreateColorLookupTable();
     }
 
     private void CreateColorLookupTable()
     {
+        Dictionary<int, RgbColor> colorLookupTable = new(360 * 10);
+
         using ILockedFramebuffer lockedFramebuffer = this.ImageSource.Lock();
         unsafe
         {
@@ -57,8 +58,10 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
                 byte green = p[pixelOffset++];
                 byte red = p[pixelOffset];
 
-                this.colorLookupTable.Add(angle, new RgbColor(red, green, blue)); 
+                colorLookupTable.Add(angle, new RgbColor(red, green, blue)); 
             }
         }
+
+        this.paletteDesignerModel.ColorLookupTable = colorLookupTable;
     }
 }

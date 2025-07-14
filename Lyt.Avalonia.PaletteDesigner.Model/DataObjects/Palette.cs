@@ -19,7 +19,9 @@ public sealed class Palette
     public Palette(
         string name,
         PaletteKind kind,
-        double hue, double saturation, double brightness,
+        double huePrimary,
+        double hueComplementary,
+        double saturation, double brightness,
         double saturationFactor, double brightnessFactor)
     {
         this.Name = name;
@@ -31,7 +33,7 @@ public sealed class Palette
                 throw new Exception("Missing kind");
 
             case PaletteKind.Monochromatic:
-                this.GenerateMonochromatic(hue, saturation, brightness, saturationFactor, brightnessFactor);
+                this.GenerateMonochromatic(huePrimary, saturation, brightness, saturationFactor, brightnessFactor);
                 return;
 
             case PaletteKind.Duochromatic:
@@ -44,7 +46,7 @@ public sealed class Palette
                 break;
 
             case PaletteKind.MonochromaticComplementary:
-                this.GenerateMonochromaticComplementary(hue, saturation, brightness, saturationFactor, brightnessFactor);
+                this.GenerateMonochromaticComplementary(huePrimary, hueComplementary, saturation, brightness, saturationFactor, brightnessFactor);
                 return;
 
             case PaletteKind.Triad:
@@ -69,11 +71,14 @@ public sealed class Palette
     }
 
     private void GenerateMonochromaticComplementary(
-        double hue, double saturation, double brightness,
+        double huePrimary, double hueComplementary, 
+        double saturation, double brightness,
         double saturationFactor, double brightnessFactor)
     {
-        HsvColor primary = new(hue, saturation, brightness);
-        HsvColor complementary = primary.Complementary();
+        HsvColor primary = new(huePrimary, saturation, brightness);
+        HsvColor complementary = new(hueComplementary, saturation, brightness);
+
+        // TODO !
         this.Primary = new Shades(primary, saturationFactor, brightnessFactor);
         this.Complementary = new Shades(complementary, saturationFactor, brightnessFactor);
     }

@@ -105,14 +105,17 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     [ObservableProperty]
     private double brightnessSliderValue;
 
+    private readonly PaletteDesignerModel paletteDesignerModel;
+
     private double hue;
 
     private double saturation;
 
     private double brightness;
 
-    public PalettePreviewViewModel()
+    public PalettePreviewViewModel(PaletteDesignerModel paletteDesignerModel)
     {
+        this.paletteDesignerModel = paletteDesignerModel;
     }
 
     public override void OnViewLoaded()
@@ -142,12 +145,35 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 
     public void Update()
     {
-        Debug.WriteLine(string.Format("Saturation: {0:F2}   Brightness: {1:F2}", this.saturation, this.brightness));
-        var palette = new Palette(
-            "Test", PaletteKind.MonochromaticComplementary,
-            this.hue, this.saturation, this.brightness,
-            0.05, 0.30);
-        this.Update(palette);
+        var lookup = this.paletteDesignerModel.ColorLookupTable;
+        if (lookup is null) 
+        {
+            return;
+        } 
+
+        int anglePrimary = (int)Math.Round(this.hue* 10.0);
+        double oppposite = (this.hue + 180.0).NormalizeAngleDegrees();
+        int angleComplementary = (int)Math.Round(oppposite *10.0);
+        if (lookup.TryGetValue(anglePrimary, out RgbColor? rgbColorPrimary) &&
+            lookup.TryGetValue(angleComplementary, out RgbColor? rgbColorComplementary))
+        {
+            if ((rgbColorPrimary is null)|| (rgbColorComplementary is null))
+            {
+                return;
+            }
+
+            var hsvColorPrimary = rgbColorPrimary.ToHsv();
+            var hsvColorComplementary = rgbColorComplementary.ToHsv();
+
+            Debug.WriteLine(string.Format("Saturation: {0:F2}   Brightness: {1:F2}", this.saturation, this.brightness));
+            var palette = new Palette(
+                "Test", PaletteKind.MonochromaticComplementary,
+                hsvColorPrimary.H,
+                hsvColorComplementary.H,
+                this.saturation, this.brightness,
+                0.05, 0.30);
+            this.Update(palette);
+        } 
     }
 
     public void Update(Palette palette)
