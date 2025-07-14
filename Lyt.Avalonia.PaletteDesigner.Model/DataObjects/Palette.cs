@@ -19,8 +19,7 @@ public sealed class Palette
     public Palette(
         string name,
         PaletteKind kind,
-        double hueAngle,
-        double saturation, double brightness,
+        double hue, double saturation, double brightness,
         double saturationFactor, double brightnessFactor)
     {
         this.Name = name;
@@ -32,7 +31,7 @@ public sealed class Palette
                 throw new Exception("Missing kind");
 
             case PaletteKind.Monochromatic:
-                this.GenerateMonochromatic(hueAngle, saturation, brightness, saturationFactor, brightnessFactor);
+                this.GenerateMonochromatic(hue, saturation, brightness, saturationFactor, brightnessFactor);
                 return;
 
             case PaletteKind.Duochromatic:
@@ -45,7 +44,7 @@ public sealed class Palette
                 break;
 
             case PaletteKind.MonochromaticComplementary:
-                this.GenerateMonochromaticComplementary(hueAngle, saturation, brightness, saturationFactor, brightnessFactor);
+                this.GenerateMonochromaticComplementary(hue, saturation, brightness, saturationFactor, brightnessFactor);
                 return;
 
             case PaletteKind.Triad:
@@ -62,20 +61,18 @@ public sealed class Palette
     }
 
     private void GenerateMonochromatic(
-        double hueAngle,
-        double saturation, double brightness,
+        double hue, double saturation, double brightness,
         double saturationFactor, double brightnessFactor)
     {
-        HsvColor primary = new(hueAngle, saturation, brightness);
+        HsvColor primary = new(hue, saturation, brightness);
         this.Primary = new Shades(primary, saturationFactor, brightnessFactor);
     }
 
     private void GenerateMonochromaticComplementary(
-        double hueAngle,
-        double saturation, double brightness,
+        double hue, double saturation, double brightness,
         double saturationFactor, double brightnessFactor)
     {
-        HsvColor primary = new(hueAngle, saturation, brightness);
+        HsvColor primary = new(hue, saturation, brightness);
         HsvColor complementary = primary.Complementary();
         this.Primary = new Shades(primary, saturationFactor, brightnessFactor);
         this.Complementary = new Shades(complementary, saturationFactor, brightnessFactor);

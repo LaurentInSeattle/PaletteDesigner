@@ -30,8 +30,6 @@ public sealed class Shades
     public Shades(HsvColor baseColor, double saturationFactor, double brightnessFactor)
     {
         this.Base = baseColor;
-        double saturation = baseColor.S;
-        double brightness = baseColor.V;
 
         HsvColor Shade(double multiply)
         {

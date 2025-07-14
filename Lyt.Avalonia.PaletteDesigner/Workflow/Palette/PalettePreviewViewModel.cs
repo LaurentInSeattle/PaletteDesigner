@@ -5,102 +5,167 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     #region The 20 observable brush properties 
 
     [ObservableProperty]
-    private SolidColorBrush baseBaseBrush; 
+    private  SolidColorBrush primaryBaseBrush = new (); 
 
     [ObservableProperty]
-    private SolidColorBrush baseLighterBrush;
+    private SolidColorBrush primaryLighterBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush baseLightBrush;
+    private SolidColorBrush primaryLightBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush baseDarkBrush;
+    private SolidColorBrush primaryDarkBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush baseDarkerBrush;
+    private SolidColorBrush primaryDarkerBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush complementaryBaseBrush;
+    private SolidColorBrush complementaryBaseBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush complementaryLighterBrush;
+    private SolidColorBrush complementaryLighterBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush complementaryLightBrush;
+    private SolidColorBrush complementaryLightBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush complementaryDarkBrush;
+    private SolidColorBrush complementaryDarkBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush complementaryDarkerBrush;
+    private SolidColorBrush complementaryDarkerBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryTopBaseBrush;
+    private SolidColorBrush secondaryTopBaseBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryTopLighterBrush;
+    private SolidColorBrush secondaryTopLighterBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryTopLightBrush;
+    private SolidColorBrush secondaryTopLightBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryTopDarkBrush;
+    private SolidColorBrush secondaryTopDarkBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryTopDarkerBrush;
+    private SolidColorBrush secondaryTopDarkerBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryBotBaseBrush;
+    private SolidColorBrush secondaryBotBaseBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryBotLighterBrush;
+    private SolidColorBrush secondaryBotLighterBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryBotLightBrush;
+    private SolidColorBrush secondaryBotLightBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryBotDarkBrush;
+    private SolidColorBrush secondaryBotDarkBrush = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryBotDarkerBrush;
+    private SolidColorBrush secondaryBotDarkerBrush = new();
 
     #endregion 20 observable brush properties 
 
+    [ObservableProperty]
+    private string primaryLighter = string.Empty;
+
+    [ObservableProperty]
+    private  string primaryLight = string.Empty;
+
+    [ObservableProperty]
+    private string primaryBase = string.Empty;
+
+    [ObservableProperty]
+    private string primaryDark = string.Empty;
+
+    [ObservableProperty]
+    private string primaryDarker = string.Empty;
+
+    [ObservableProperty]
+    private string complementaryLighter = string.Empty;
+
+    [ObservableProperty]
+    private string complementaryLight = string.Empty;
+
+    [ObservableProperty]
+    private string complementaryBase = string.Empty;
+
+    [ObservableProperty]
+    private string complementaryDark = string.Empty;
+
+    [ObservableProperty]
+    private string complementaryDarker = string.Empty;
+
+    [ObservableProperty]
+    private double hueSliderValue;
+
+    [ObservableProperty]
+    private double saturationSliderValue;
+
+    [ObservableProperty]
+    private double brightnessSliderValue;
+
+    private double hue;
+
+    private double saturation;
+
+    private double brightness;
+
     public PalettePreviewViewModel()
     {
-        this.BaseLighterBrush = new SolidColorBrush(Colors.AntiqueWhite);
-        this.BaseLightBrush = new SolidColorBrush(Colors.LightBlue);
-        this.BaseBaseBrush = new SolidColorBrush(Colors.Blue);
-        this.BaseDarkBrush = new SolidColorBrush(Colors.DarkSlateBlue);
-        this.BaseDarkerBrush = new SolidColorBrush(Colors.DarkBlue);
+    }
 
-        this.ComplementaryLighterBrush = new SolidColorBrush(Colors.AntiqueWhite);
-        this.ComplementaryLightBrush = new SolidColorBrush(Colors.LightBlue);
-        this.ComplementaryBaseBrush = new SolidColorBrush(Colors.Blue);
-        this.ComplementaryDarkBrush = new SolidColorBrush(Colors.DarkSlateBlue);
-        this.ComplementaryDarkerBrush = new SolidColorBrush(Colors.DarkBlue);
+    public override void OnViewLoaded()
+    {
+        base.OnViewLoaded();
+        this.SaturationSliderValue = 0.67;
+        this.BrightnessSliderValue = 0.67;
+    }
 
-        this.SecondaryTopLighterBrush = new SolidColorBrush(Colors.AntiqueWhite);
-        this.SecondaryTopLightBrush = new SolidColorBrush(Colors.LightBlue);
-        this.SecondaryTopBaseBrush = new SolidColorBrush(Colors.Blue);
-        this.SecondaryTopDarkBrush = new SolidColorBrush(Colors.DarkSlateBlue);
-        this.SecondaryTopDarkerBrush = new SolidColorBrush(Colors.DarkBlue);
+    partial void OnHueSliderValueChanged(double value)
+    {
+        this.hue = value;
+        this.Update();
+    }
 
-        this.SecondaryBotLighterBrush = new SolidColorBrush(Colors.AntiqueWhite);
-        this.SecondaryBotLightBrush = new SolidColorBrush(Colors.LightBlue);
-        this.SecondaryBotBaseBrush = new SolidColorBrush(Colors.Blue);
-        this.SecondaryBotDarkBrush = new SolidColorBrush(Colors.DarkSlateBlue);
-        this.SecondaryBotDarkerBrush = new SolidColorBrush(Colors.DarkBlue);
+    partial void OnSaturationSliderValueChanged(double value)
+    {
+        this.saturation = value;
+        this.Update(); 
+    }
 
-        var palette = new Palette (
+    partial void OnBrightnessSliderValueChanged(double value)
+    {
+        this.brightness = value;
+        this.Update();
+    }
+
+    public void Update()
+    {
+        Debug.WriteLine(string.Format("Saturation: {0:F2}   Brightness: {1:F2}", this.saturation, this.brightness));
+        var palette = new Palette(
             "Test", PaletteKind.MonochromaticComplementary,
-            0.0, 1.0, 1.0, 
-            0.15, 0.15);
+            this.hue, this.saturation, this.brightness,
+            0.05, 0.30);
         this.Update(palette);
     }
 
     public void Update(Palette palette)
     {
+        // For pure red, shades in Paletton (hue==0)
+        // FF AA AA
+        // D4 6A 6A
+        // AA 39 39
+        // 80 15 15
+        // 55 00 00
+
+        // For pure green, shades in Paletton (hue==180)
+        // 88 CC 88
+        // 55 AA 55
+        // 2D 88 2D
+        // 11 66 11 
+        // 00 44 00
+
         int colorCount = palette.Kind.ColorCount();
         if ((colorCount < 1) || (colorCount > 4))
         {
@@ -109,11 +174,18 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         }
 
         Shades shades = palette.Primary;
-        this.BaseLighterBrush = shades.Lighter.ToBrush();
-        this.BaseLightBrush = shades.Light.ToBrush();
-        this.BaseBaseBrush = shades.Base.ToBrush();
-        this.BaseDarkBrush = shades.Dark.ToBrush();
-        this.BaseDarkerBrush = shades.Darker.ToBrush();
+        this.PrimaryLighterBrush = shades.Lighter.ToBrush();
+        this.PrimaryLightBrush = shades.Light.ToBrush();
+        this.PrimaryBaseBrush = shades.Base.ToBrush();
+        this.PrimaryDarkBrush = shades.Dark.ToBrush();
+        this.PrimaryDarkerBrush = shades.Darker.ToBrush();
+
+        this.PrimaryLighter = shades.Lighter.ToRgbHexString();
+        this.PrimaryLight= shades.Light.ToRgbHexString();
+        this.PrimaryBase= shades.Base.ToRgbHexString();
+        this.PrimaryDark= shades.Dark.ToRgbHexString();
+        this.PrimaryDarker= shades.Darker.ToRgbHexString();
+        bool hasComplementary = false; 
 
         if ((colorCount == 1) || (colorCount == 2))
         {
@@ -134,6 +206,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             {
                 // colorCount == 1 => Complementary same as primary 
                 shades = palette.Complementary;
+                hasComplementary = true;
             }
 
             this.ComplementaryLighterBrush = shades.Lighter.ToBrush();
@@ -148,6 +221,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             {
                 // colorCount == 3 => Complementary same as primary 
                 shades = palette.Complementary;
+                hasComplementary = true;
             }
 
             this.ComplementaryLighterBrush = shades.Lighter.ToBrush();
@@ -170,5 +244,12 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             this.SecondaryBotDarkBrush = shades.Dark.ToBrush();
             this.SecondaryBotDarkerBrush = shades.Darker.ToBrush();
         }
+
+        shades = palette.Complementary;
+        this.ComplementaryLighter = ! hasComplementary ? string.Empty : shades.Lighter.ToRgbHexString();
+        this.ComplementaryLight   = ! hasComplementary ? string.Empty : shades.Light.ToRgbHexString();
+        this.ComplementaryBase    = ! hasComplementary ? string.Empty : shades.Base.ToRgbHexString();
+        this.ComplementaryDark    = ! hasComplementary ? string.Empty : shades.Dark.ToRgbHexString();
+        this.ComplementaryDarker  = ! hasComplementary ? string.Empty : shades.Darker.ToRgbHexString();
     }
 }

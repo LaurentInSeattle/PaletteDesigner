@@ -9,8 +9,9 @@
     <system:Double x:Key="H2.FontSize">24</system:Double>
     <system:Double x:Key="H3.FontSize">18</system:Double>
     <system:Double x:Key="Alert.FontSize">20</system:Double>
-    <system:Double x:Key="Large.FontSize">16</system:Double>
-    <system:Double x:Key="Medium.FontSize">14</system:Double>
+	<system:Double x:Key="ExtraLarge.FontSize">20</system:Double>
+	<system:Double x:Key="MediumLarge.FontSize">16</system:Double>
+	<system:Double x:Key="Medium.FontSize">14</system:Double>
     <system:Double x:Key="Small.FontSize">12</system:Double>
 
     <SolidColorBrush x:Key="Primary.TextColor" Color="{StaticResource PastelOrchid_0_080_Color}" />
@@ -55,8 +56,14 @@
         <Setter Property="TextAlignment" Value="Left" />
     </ControlTheme>
 
-    <ControlTheme x:Key="Large" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
-        <Setter Property="FontSize" Value="{StaticResource Large.FontSize}" />
+	<ControlTheme x:Key="ExtraLarge" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
+		<Setter Property="FontSize" Value="{StaticResource ExtraLarge.FontSize}" />
+		<Setter Property="HorizontalAlignment" Value="Left" />
+		<Setter Property="TextAlignment" Value="Left" />
+	</ControlTheme>
+
+	<ControlTheme x:Key="MediumLarge" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="FontSize" Value="{StaticResource MediumLarge.FontSize}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="TextAlignment" Value="Left" />
     </ControlTheme>
