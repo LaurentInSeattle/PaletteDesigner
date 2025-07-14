@@ -12,9 +12,9 @@
     Background="Transparent"
     >
     <UserControl.Resources>
-        <sys:Double x:Key="Spacer">16</sys:Double>
-        <sys:Double x:Key="Small">56</sys:Double>
-        <sys:Double x:Key="Large">88</sys:Double>
+        <sys:Double x:Key="SpacingWidth">16</sys:Double>
+        <sys:Double x:Key="SmallWidth">56</sys:Double>
+        <sys:Double x:Key="LargeWidth">88</sys:Double>
     </UserControl.Resources>
     <Grid
         Width="800" Height="800"
@@ -235,7 +235,7 @@
             <TextBlock
                 Text="Primary:"
                 Margin="8 0 0 0"
-                Theme="{StaticResource MediumLarge}"
+                Theme="{StaticResource Large}"
                 />
             <TextBlock
                 Grid.Row="1"
@@ -271,7 +271,7 @@
                 Grid.Row="7"
                 Text="Complementary:"
                 Margin="8 0 0 0"
-                Theme="{StaticResource MediumLarge}"
+                Theme="{StaticResource Large}"
                 />
             <TextBlock
                 Grid.Row="8"
