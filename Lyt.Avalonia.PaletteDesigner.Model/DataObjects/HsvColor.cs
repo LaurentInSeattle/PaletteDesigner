@@ -35,6 +35,13 @@ public sealed class HsvColor
         this.V = hsv.V;
     }
 
+    public void Set (double h, double s, double v)
+    {
+        this.H = h;
+        this.S = s;
+        this.V = v;
+    }
+
     public HsvColor WithH(double h) => new(h, this.S, this.V);
 
     public HsvColor WithS(double s) => new(this.H, s, this.V);

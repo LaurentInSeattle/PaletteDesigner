@@ -9,12 +9,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
     >
-	<Grid
-		Width="800" Height="800"
-		> 
+    <Grid
+        Width="800" Height="800"
+        > 
         <Image
-            x:Name="Image"
-            Source="{Binding ImageSource}"
+            x:Name="Wheel"
+            Source="{Binding ColorWheel}"
+            />
+        <Image
+            x:Name="Shades"
+            Width="260" Height="260"
+            Source="{Binding Shades}"
             />
     </Grid>
 </UserControl>

@@ -6,16 +6,16 @@ public partial class ColorWheelView : View
 {
     public ColorWheelView() : base()
     {
-        this.Image.PointerPressed += this.OnPointerPressed;
-        this.Image.PointerMoved += this.OnPointerMoved;
-        this.Image.PointerReleased += this.OnPointerReleased;
+        this.Wheel.PointerPressed += this.OnPointerPressed;
+        this.Wheel.PointerMoved += this.OnPointerMoved;
+        this.Wheel.PointerReleased += this.OnPointerReleased;
     }
 
     ~ColorWheelView()
     {
-        this.Image.PointerPressed -= this.OnPointerPressed;
-        this.Image.PointerMoved -= this.OnPointerMoved;
-        this.Image.PointerReleased -= this.OnPointerReleased;
+        this.Wheel.PointerPressed -= this.OnPointerPressed;
+        this.Wheel.PointerMoved -= this.OnPointerMoved;
+        this.Wheel.PointerReleased -= this.OnPointerReleased;
     }
 
     private void OnPointerReleased(object? sender, PointerReleasedEventArgs e)
