@@ -13,9 +13,9 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
     {
         this.paletteDesignerModel = paletteDesignerModel;
 
-        SerializationUtilities.SetResourcesPath("Lyt.Avalonia.PaletteDesigner.Resources");
-        SerializationUtilities.SetExecutingAssembly(Assembly.GetExecutingAssembly());        
-        byte[] imageBytes = SerializationUtilities.LoadEmbeddedBinaryResource(
+        ResourcesUtilities.SetResourcesPath("Lyt.Avalonia.PaletteDesigner.Resources");
+        ResourcesUtilities.SetExecutingAssembly(Assembly.GetExecutingAssembly());        
+        byte[] imageBytes = ResourcesUtilities.LoadEmbeddedBinaryResource(
             "wheel.png", out string? _);
         var bitmap = WriteableBitmap.Decode(new MemoryStream(imageBytes));
         this.imageSource = bitmap;

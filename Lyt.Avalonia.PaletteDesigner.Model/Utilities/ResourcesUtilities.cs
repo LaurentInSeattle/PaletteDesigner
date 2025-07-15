@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Utilities;
 
-public static class SerializationUtilities
+public static class ResourcesUtilities
 {
     private static string ResourcesPath = "Lyt.Avalonia.PaletteDesigner.Resources";
     private static Assembly ExecutingAssembly;
@@ -9,7 +9,7 @@ public static class SerializationUtilities
 
     private static readonly JsonSerializerOptions jsonSerializerOptions;
 
-    static SerializationUtilities()
+    static ResourcesUtilities()
     {
         ExecutingAssembly = Assembly.GetExecutingAssembly();
 
@@ -35,11 +35,11 @@ public static class SerializationUtilities
     }
 
     public static void SetResourcesPath(string resourcePath )
-        => SerializationUtilities.ResourcesPath = resourcePath;
+        => ResourcesUtilities.ResourcesPath = resourcePath;
 
     public static void SetExecutingAssembly(Assembly executingAssembly)
     {
-        SerializationUtilities.ExecutingAssembly = executingAssembly;
+        ResourcesUtilities.ExecutingAssembly = executingAssembly;
         DumpEmbeddedResourceNames();
     } 
 
@@ -51,7 +51,7 @@ public static class SerializationUtilities
 
     public static string LoadEmbeddedTextResource(string name, out string? resourceName)
     {
-        resourceName = SerializationUtilities.GetFullResourceName(name);
+        resourceName = ResourcesUtilities.GetFullResourceName(name);
         if (!string.IsNullOrEmpty(resourceName))
         {
             var stream = ExecutingAssembly.GetManifestResourceStream(resourceName);
@@ -70,7 +70,7 @@ public static class SerializationUtilities
 
     public static byte[] LoadEmbeddedBinaryResource(string name, out string? resourceName)
     {
-        resourceName = SerializationUtilities.GetFullResourceName(name);
+        resourceName = ResourcesUtilities.GetFullResourceName(name);
         if (!string.IsNullOrEmpty(resourceName))
         {
             var stream = ExecutingAssembly.GetManifestResourceStream(resourceName);

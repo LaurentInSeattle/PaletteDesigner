@@ -6,7 +6,7 @@ using static Lyt.Persistence.FileManagerModel;
 public sealed partial class PaletteDesignerModel : ModelBase
 {
     public const string DefaultLanguage = "it-IT";
-    private const string AstroPicModelFilename = "AstroPicData";
+    private const string AstroPicModelFilename = "PaletteDesignerData";
 
     private static readonly PaletteDesignerModel DefaultData =
         new()
@@ -87,9 +87,9 @@ public sealed partial class PaletteDesignerModel : ModelBase
 
     private void LoadColorWheel()
     {
-        SerializationUtilities.SetResourcesPath("Lyt.Avalonia.PaletteDesigner.Model.Resources"); 
-        string serialized = SerializationUtilities.LoadEmbeddedTextResource("ColorWheel.json", out string? _);
-        var colorWheel = SerializationUtilities.Deserialize<Dictionary<int, RgbColor>>(serialized);
+        ResourcesUtilities.SetResourcesPath("Lyt.Avalonia.PaletteDesigner.Model.Resources"); 
+        string serialized = ResourcesUtilities.LoadEmbeddedTextResource("ColorWheel.json", out string? _);
+        var colorWheel = ResourcesUtilities.Deserialize<Dictionary<int, RgbColor>>(serialized);
         if (colorWheel is null) 
         {
             throw new Exception("Failed to load color wheel");
