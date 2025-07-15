@@ -8,19 +8,21 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+
+    IsVisible="{Binding IsVisible}"
     >
-    <Grid>		
+    <Grid
+        >		
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Rectangle
-            Grid.RowSpan="3"
+            Grid.RowSpan="2"
             Fill="{Binding BaseBrush}"
             />
         <Grid
-            Grid.Row="2" Margin="8"
+            Grid.Row="1" Margin="4 8 4 4"
             >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -30,19 +32,19 @@
             </Grid.ColumnDefinitions>
             <Rectangle
                 Grid.Column="0"
-                Fill="{Binding LighterBrush}"
+                Fill="{Binding DarkerBrush}"
                 />
             <Rectangle
                 Grid.Column="1"
-                Fill="{Binding LightBrush}"
-                />
-            <Rectangle
-                Grid.Column="2"
                 Fill="{Binding DarkBrush}"
                 />
             <Rectangle
+                Grid.Column="2"
+                Fill="{Binding LightBrush}"
+                />
+            <Rectangle
                 Grid.Column="3"
-                Fill="{Binding DarkerBrush}"
+                Fill="{Binding LighterBrush}"
                 />
         </Grid>
     </Grid>

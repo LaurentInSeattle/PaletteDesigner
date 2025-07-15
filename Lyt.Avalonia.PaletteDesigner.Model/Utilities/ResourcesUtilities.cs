@@ -2,17 +2,16 @@
 
 public static class SerializationUtilities
 {
-    public const string ResourcesExtension = ".json";
-    private const string ResourcesPath = "Lyt.Avalonia.PaletteDesigner.Resources";
+    private static string ResourcesPath = "Lyt.Avalonia.PaletteDesigner.Resources";
+    private static Assembly ExecutingAssembly;
 
-    private static readonly Assembly executingAssembly;
-    private static string[]? resourceNames;
+    public const string ResourcesExtension = ".json";
 
     private static readonly JsonSerializerOptions jsonSerializerOptions;
 
     static SerializationUtilities()
     {
-        executingAssembly = Assembly.GetExecutingAssembly();
+        ExecutingAssembly = Assembly.GetExecutingAssembly();
 
         jsonSerializerOptions =
             new JsonSerializerOptions
@@ -35,9 +34,18 @@ public static class SerializationUtilities
         jsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     }
 
+    public static void SetResourcesPath(string resourcePath )
+        => SerializationUtilities.ResourcesPath = resourcePath;
+
+    public static void SetExecutingAssembly(Assembly executingAssembly)
+    {
+        SerializationUtilities.ExecutingAssembly = executingAssembly;
+        DumpEmbeddedResourceNames();
+    } 
+
     public static string? GetFullResourceName(string name)
     {
-        resourceNames ??= executingAssembly.GetManifestResourceNames();
+        var resourceNames = ExecutingAssembly.GetManifestResourceNames().ToList();
         return resourceNames.Single(str => str.EndsWith(name));
     }
 
@@ -46,7 +54,7 @@ public static class SerializationUtilities
         resourceName = SerializationUtilities.GetFullResourceName(name);
         if (!string.IsNullOrEmpty(resourceName))
         {
-            var stream = executingAssembly.GetManifestResourceStream(resourceName);
+            var stream = ExecutingAssembly.GetManifestResourceStream(resourceName);
             if (stream is not null)
             {
                 using (stream)
@@ -65,7 +73,7 @@ public static class SerializationUtilities
         resourceName = SerializationUtilities.GetFullResourceName(name);
         if (!string.IsNullOrEmpty(resourceName))
         {
-            var stream = executingAssembly.GetManifestResourceStream(resourceName);
+            var stream = ExecutingAssembly.GetManifestResourceStream(resourceName);
             if (stream is not null)
             {
                 using (stream)
@@ -123,11 +131,11 @@ public static class SerializationUtilities
         }
     }
 
-    public static List<string> GetEmbeddedResourceNames()
+    [Conditional("DEBUG")]
+    public static void DumpEmbeddedResourceNames()
     {
         List<string> resourceNames = [];
-        var assembly = Assembly.GetExecutingAssembly();
-        var list = assembly.GetManifestResourceNames().ToList();
+        var list = ExecutingAssembly.GetManifestResourceNames().ToList();
         foreach (string name in list)
         {
             Debug.WriteLine(name);
@@ -139,7 +147,5 @@ public static class SerializationUtilities
                 resourceNames.Add(name);
             }
         }
-
-        return resourceNames;
     }
 }

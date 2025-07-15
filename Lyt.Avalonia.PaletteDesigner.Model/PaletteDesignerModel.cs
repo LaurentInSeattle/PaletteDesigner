@@ -1,5 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
+using Lyt.Avalonia.PaletteDesigner.Utilities;
 using static Lyt.Persistence.FileManagerModel;
 
 public sealed partial class PaletteDesignerModel : ModelBase
@@ -73,6 +74,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
             // Copy all properties with attribute [JsonRequired]
             base.CopyJSonRequiredProperties<PaletteDesignerModel>(model);
 
+            this.LoadColorWheel();
             return Task.CompletedTask;
         }
         catch (Exception ex)
@@ -81,6 +83,19 @@ public sealed partial class PaletteDesignerModel : ModelBase
             this.Logger.Fatal(msg);
             throw new Exception("", ex);
         }
+    }
+
+    private void LoadColorWheel()
+    {
+        SerializationUtilities.SetResourcesPath("Lyt.Avalonia.PaletteDesigner.Model.Resources"); 
+        string serialized = SerializationUtilities.LoadEmbeddedTextResource("ColorWheel.json", out string? _);
+        var colorWheel = SerializationUtilities.Deserialize<Dictionary<int, RgbColor>>(serialized);
+        if (colorWheel is null) 
+        {
+            throw new Exception("Failed to load color wheel");
+        }
+
+        this.ColorLookupTable = colorWheel;
     }
 
     public override Task Save()

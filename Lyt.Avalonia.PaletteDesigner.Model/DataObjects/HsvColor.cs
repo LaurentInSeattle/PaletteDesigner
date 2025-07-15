@@ -59,13 +59,6 @@ public sealed class HsvColor
         return this.WithS(saturation.Clip());
     }
 
-    /// <summary> Returns the complementary color of this color  </summary>
-    public HsvColor Complementary()
-    {
-        double complementaryHue = ((this.HueToWheel() + 180.0) % 360.0).WheelToHue();
-        return this.WithH(complementaryHue);
-    }
-
     /// <summary> Returns the colors adjacent to this color at the provided angular distance </summary>
     public Tuple<HsvColor, HsvColor> Triad(double angularDistance)
     {
@@ -86,8 +79,6 @@ public sealed class HsvColor
     }
 
     public RgbColor ToRgb() => HsvColor.ToRgb(this.H, this.S, this.V);
-
-    public double HueToWheel() => this.H.HueToWheel();
 
     public static RgbColor ToRgb(double hue, double saturation, double brightness)
     {

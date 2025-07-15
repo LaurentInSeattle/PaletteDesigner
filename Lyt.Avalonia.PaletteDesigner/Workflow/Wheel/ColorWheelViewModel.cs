@@ -12,6 +12,9 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
     public ColorWheelViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
+
+        SerializationUtilities.SetResourcesPath("Lyt.Avalonia.PaletteDesigner.Resources");
+        SerializationUtilities.SetExecutingAssembly(Assembly.GetExecutingAssembly());        
         byte[] imageBytes = SerializationUtilities.LoadEmbeddedBinaryResource(
             "wheel.png", out string? _);
         var bitmap = WriteableBitmap.Decode(new MemoryStream(imageBytes));
@@ -21,7 +24,7 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
     public override void OnViewLoaded()
     {
         base.OnViewLoaded();
-        this.CreateColorLookupTable();
+        // this.CreateColorLookupTable();
     }
 
     private void CreateColorLookupTable()
@@ -36,7 +39,7 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
             int stride = lockedFramebuffer.RowBytes;
 
             // angle in tenth of degree 
-            double radius = 170.0; 
+            double radius = 210.0; 
             for (int angle = 0; angle < 3600; ++angle)
             {
                 // convert to radians
@@ -63,5 +66,10 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         }
 
         this.paletteDesignerModel.ColorLookupTable = colorLookupTable;
+
+        var fileManager = App.GetRequiredService<FileManagerModel>();
+        string colorLookupTableSeralized = fileManager.Serialize(colorLookupTable);
+        fileManager.Save(
+            FileManagerModel.Area.User, FileManagerModel.Kind.Json, "ColorWheel.json", colorLookupTable); 
     }
 }

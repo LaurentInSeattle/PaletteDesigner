@@ -70,7 +70,13 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     private ShadesValuesViewModel primaryShadesValues;
 
     [ObservableProperty] 
-    private ShadesValuesViewModel complementaryShadesValues; 
+    private ShadesValuesViewModel complementaryShadesValues;
+
+    [ObservableProperty]
+    private PaletteColorViewModel primaryShades;
+
+    [ObservableProperty]
+    private PaletteColorViewModel complementaryShades;
 
     [ObservableProperty]
     private double hueSliderValue;
@@ -101,8 +107,10 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     public PalettePreviewViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
-        this.primaryShadesValues = new ShadesValuesViewModel("Primary: ");
-        this.complementaryShadesValues = new ShadesValuesViewModel("Complementary: ");
+        this.PrimaryShadesValues = new ShadesValuesViewModel("Primary: ");
+        this.ComplementaryShadesValues = new ShadesValuesViewModel("Complementary: ");
+        this.PrimaryShades = new ();
+        this.ComplementaryShades = new();
     }
 
     public override void OnViewLoaded()
@@ -203,6 +211,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         this.PrimaryDarkerBrush = shades.Darker.ToBrush();
 
         this.PrimaryShadesValues.Update(shades);
+        this.PrimaryShades.Update(shades);
 
         bool hasComplementary = false;
 
@@ -267,9 +276,11 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         shades = palette.Complementary;
         if (hasComplementary)
         {
+            this.ComplementaryShades.Update(shades);
             this.ComplementaryShadesValues.Update(shades);
         }
 
+        this.ComplementaryShades.Show(show: hasComplementary);
         this.ComplementaryShadesValues.Show(show: hasComplementary);
     }
 }

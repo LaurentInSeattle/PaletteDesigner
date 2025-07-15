@@ -18,10 +18,7 @@ public partial class PaletteColorViewModel : ViewModel<PaletteColorView>
     private SolidColorBrush darkerBrush;
 
     [ObservableProperty]
-    private bool isFlatLayout;
-
-    [ObservableProperty]
-    private bool isPrimaryLayout;
+    private bool isVisible;
 
     public PaletteColorViewModel()
     {
@@ -31,11 +28,15 @@ public partial class PaletteColorViewModel : ViewModel<PaletteColorView>
         this.darkBrush = new SolidColorBrush(Colors.DarkSlateBlue);
         this.darkerBrush = new SolidColorBrush(Colors.DarkBlue);
 
-        this.IsPrimaryLayout = true;
+        this.Show();
     }
+
+    public void Show(bool show = true) => this.IsVisible = show;
 
     public void Update(Shades shades)
     {
+        this.Show();
+
         this.LighterBrush = shades.Lighter.ToBrush();
         this.LightBrush = shades.Light.ToBrush();
         this.BaseBrush = shades.Base.ToBrush();
