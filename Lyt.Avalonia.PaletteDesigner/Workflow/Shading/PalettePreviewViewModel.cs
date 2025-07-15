@@ -5,7 +5,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     #region The 20 observable brush properties 
 
     [ObservableProperty]
-    private  SolidColorBrush primaryBaseBrush = new (); 
+    private SolidColorBrush primaryBaseBrush = new();
 
     [ObservableProperty]
     private SolidColorBrush primaryLighterBrush = new();
@@ -66,35 +66,11 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 
     #endregion 20 observable brush properties 
 
-    [ObservableProperty]
-    private string primaryLighter = string.Empty;
+    [ObservableProperty] 
+    private ShadesValuesViewModel primaryShadesValues;
 
-    [ObservableProperty]
-    private  string primaryLight = string.Empty;
-
-    [ObservableProperty]
-    private string primaryBase = string.Empty;
-
-    [ObservableProperty]
-    private string primaryDark = string.Empty;
-
-    [ObservableProperty]
-    private string primaryDarker = string.Empty;
-
-    [ObservableProperty]
-    private string complementaryLighter = string.Empty;
-
-    [ObservableProperty]
-    private string complementaryLight = string.Empty;
-
-    [ObservableProperty]
-    private string complementaryBase = string.Empty;
-
-    [ObservableProperty]
-    private string complementaryDark = string.Empty;
-
-    [ObservableProperty]
-    private string complementaryDarker = string.Empty;
+    [ObservableProperty] 
+    private ShadesValuesViewModel complementaryShadesValues; 
 
     [ObservableProperty]
     private double hueSliderValue;
@@ -104,6 +80,15 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 
     [ObservableProperty]
     private double brightnessSliderValue;
+
+    [ObservableProperty]
+    private string hueValue = string.Empty;
+
+    [ObservableProperty]
+    private string saturationValue = string.Empty;
+
+    [ObservableProperty]
+    private string brightnessValue = string.Empty;
 
     private readonly PaletteDesignerModel paletteDesignerModel;
 
@@ -116,13 +101,20 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     public PalettePreviewViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
+        this.primaryShadesValues = new ShadesValuesViewModel("Primary: ");
+        this.complementaryShadesValues = new ShadesValuesViewModel("Complementary: ");
     }
 
     public override void OnViewLoaded()
     {
         base.OnViewLoaded();
+        this.HueSliderValue = 0.0;
         this.SaturationSliderValue = 0.67;
         this.BrightnessSliderValue = 0.67;
+        this.HueValue = string.Empty;
+        this.SaturationValue = string.Empty;
+        this.BrightnessValue = string.Empty;
+        this.Update();
     }
 
     partial void OnHueSliderValueChanged(double value)
@@ -134,7 +126,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     partial void OnSaturationSliderValueChanged(double value)
     {
         this.saturation = value;
-        this.Update(); 
+        this.Update();
     }
 
     partial void OnBrightnessSliderValueChanged(double value)
@@ -145,19 +137,23 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 
     public void Update()
     {
+        this.HueValue = string.Format("{0:F1} \u00B0", this.hue);
+        this.SaturationValue = string.Format("{0:F1} %", this.saturation * 100.0);
+        this.BrightnessValue = string.Format("{0:F1} %", this.brightness * 100.0);
+
         var lookup = this.paletteDesignerModel.ColorLookupTable;
-        if (lookup is null) 
+        if (lookup is null)
         {
             return;
-        } 
+        }
 
-        int anglePrimary = (int)Math.Round(this.hue* 10.0);
+        int anglePrimary = (int)Math.Round(this.hue * 10.0);
         double oppposite = (this.hue + 180.0).NormalizeAngleDegrees();
-        int angleComplementary = (int)Math.Round(oppposite *10.0);
+        int angleComplementary = (int)Math.Round(oppposite * 10.0);
         if (lookup.TryGetValue(anglePrimary, out RgbColor? rgbColorPrimary) &&
             lookup.TryGetValue(angleComplementary, out RgbColor? rgbColorComplementary))
         {
-            if ((rgbColorPrimary is null)|| (rgbColorComplementary is null))
+            if ((rgbColorPrimary is null) || (rgbColorComplementary is null))
             {
                 return;
             }
@@ -165,7 +161,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             var hsvColorPrimary = rgbColorPrimary.ToHsv();
             var hsvColorComplementary = rgbColorComplementary.ToHsv();
 
-            Debug.WriteLine(string.Format("Saturation: {0:F2}   Brightness: {1:F2}", this.saturation, this.brightness));
+            //Debug.WriteLine(string.Format("Saturation: {0:F2}   Brightness: {1:F2}", this.saturation, this.brightness));
             var palette = new Palette(
                 "Test", PaletteKind.MonochromaticComplementary,
                 hsvColorPrimary.H,
@@ -173,7 +169,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
                 this.saturation, this.brightness,
                 0.05, 0.30);
             this.Update(palette);
-        } 
+        }
     }
 
     public void Update(Palette palette)
@@ -206,12 +202,9 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         this.PrimaryDarkBrush = shades.Dark.ToBrush();
         this.PrimaryDarkerBrush = shades.Darker.ToBrush();
 
-        this.PrimaryLighter = shades.Lighter.ToRgbHexString();
-        this.PrimaryLight= shades.Light.ToRgbHexString();
-        this.PrimaryBase= shades.Base.ToRgbHexString();
-        this.PrimaryDark= shades.Dark.ToRgbHexString();
-        this.PrimaryDarker= shades.Darker.ToRgbHexString();
-        bool hasComplementary = false; 
+        this.PrimaryShadesValues.Update(shades);
+
+        bool hasComplementary = false;
 
         if ((colorCount == 1) || (colorCount == 2))
         {
@@ -272,10 +265,11 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         }
 
         shades = palette.Complementary;
-        this.ComplementaryLighter = ! hasComplementary ? string.Empty : shades.Lighter.ToRgbHexString();
-        this.ComplementaryLight   = ! hasComplementary ? string.Empty : shades.Light.ToRgbHexString();
-        this.ComplementaryBase    = ! hasComplementary ? string.Empty : shades.Base.ToRgbHexString();
-        this.ComplementaryDark    = ! hasComplementary ? string.Empty : shades.Dark.ToRgbHexString();
-        this.ComplementaryDarker  = ! hasComplementary ? string.Empty : shades.Darker.ToRgbHexString();
+        if (hasComplementary)
+        {
+            this.ComplementaryShadesValues.Update(shades);
+        }
+
+        this.ComplementaryShadesValues.Show(show: hasComplementary);
     }
 }

@@ -65,5 +65,8 @@
 	  <Compile Update="Workflow\Shading\PaletteColorView.axaml.cs">
 	    <DependentUpon>PaletteColorView.axaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Workflow\Shading\ShadesValuesView.axaml.cs">
+	    <DependentUpon>ShadesValuesView.axaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 </Project>

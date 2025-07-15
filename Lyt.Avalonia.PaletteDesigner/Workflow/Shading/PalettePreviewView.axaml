@@ -17,7 +17,7 @@
         <sys:Double x:Key="LargeWidth">88</sys:Double>
     </UserControl.Resources>
     <Grid
-        Width="800" Height="800"
+        Width="900" Height="800"
         >
         <Grid.RowDefinitions>
             <RowDefinition Height="1.6*" />
@@ -26,14 +26,15 @@
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.6*" />
+			<ColumnDefinition Width="150" />
+			<ColumnDefinition Width="1.6*" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="200" />
-        </Grid.ColumnDefinitions>
+			<ColumnDefinition Width="150" />
+		</Grid.ColumnDefinitions>
         
         <Grid
             x:Name="Primary"
-            Grid.Row="0" Grid.Column="0"
+            Grid.Row="0" Grid.Column="1"
             >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="16" />
@@ -77,7 +78,7 @@
 
         <Grid
             x:Name="Complementary"
-            Grid.Row="1" Grid.Column="1"
+            Grid.Row="1" Grid.Column="2"
             >
             <Rectangle
                 Fill="{Binding ComplementaryBaseBrush}"
@@ -125,7 +126,7 @@
 
         <Grid
             x:Name="SecondaryTop"
-            Grid.Row="0" Grid.Column="1"
+            Grid.Row="0" Grid.Column="2"
             >
             <Rectangle
                 Fill="{Binding SecondaryTopBaseBrush}"
@@ -169,7 +170,7 @@
 
         <Grid
             x:Name="SecondaryBot"
-            Grid.Row="1" Grid.Column="0"
+            Grid.Row="1" Grid.Column="1"
             >
             <Rectangle
                 Fill="{Binding SecondaryBotBaseBrush}"
@@ -212,100 +213,43 @@
         </Grid>
 
         <Grid
-            Grid.Column="2" Grid.RowSpan="999"
+            Grid.Column="0" Grid.RowSpan="2"
             >
             <Grid.RowDefinitions>
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
-                <RowDefinition Height="26" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <TextBlock
-                Text="Primary:"
-                Margin="8 0 0 0"
-                Theme="{StaticResource Large}"
-                />
-            <TextBlock
-                Grid.Row="1"
-                Margin="16 0 0 0"
-                Text="{Binding PrimaryLighter}"
-                Theme="{StaticResource Medium}"
-                />
-            <TextBlock
-                Grid.Row="2"
-                Margin="16 0 0 0"
-                Text="{Binding PrimaryLight}"
-                Theme="{StaticResource Medium}"
-                />
-            <TextBlock
-                Grid.Row="3"
-                Margin="16 0 0 0"
-                Text="{Binding PrimaryBase}"
-                Theme="{StaticResource Medium}"
-                />
-            <TextBlock
-                Grid.Row="4"
-                Margin="16 0 0 0"
-                Text="{Binding PrimaryDark}"
-                Theme="{StaticResource Medium}"
-                />
-            <TextBlock
-                Grid.Row="5"
-                Margin="16 0 0 0"
-                Text="{Binding PrimaryDarker}"
-                Theme="{StaticResource Medium}"
-                />
-            <TextBlock
-                Grid.Row="7"
-                Text="Complementary:"
-                Margin="8 0 0 0"
-                Theme="{StaticResource Large}"
-                />
-            <TextBlock
-                Grid.Row="8"
-                Margin="16 0 0 0"
-                Text="{Binding ComplementaryLighter}"
-                Theme="{StaticResource Medium}"
-                />
-            <TextBlock
-                Grid.Row="9"
-                Margin="16 0 0 0"
-                Text="{Binding ComplementaryLight}"
-                Theme="{StaticResource Medium}"
-                />
-            <TextBlock
-                Grid.Row="10"
-                Margin="16 0 0 0"
-                Text="{Binding ComplementaryBase}"
-                Theme="{StaticResource Medium}"
-                />
-            <TextBlock
-                Grid.Row="11"
-                Margin="16 0 0 0"
-                Text="{Binding ComplementaryDark}"
-                Theme="{StaticResource Medium}"
-                />
-            <TextBlock
-                Grid.Row="12"
-                Margin="16 0 0 0"
-                Text="{Binding ComplementaryDarker}"
-                Theme="{StaticResource Medium}"
-                />
-        </Grid>
+			<vm:ShadesValuesView
+				Grid.Row="0"
+				DataContext="{Binding PrimaryShadesValues}"
+				HorizontalAlignment="Left"  VerticalAlignment="Top" 
+				/>
+			<vm:ShadesValuesView
+				Grid.Row="1"
+				DataContext="{Binding ComplementaryShadesValues}"
+				HorizontalAlignment="Left"  VerticalAlignment="Bottom" 
+				/>
+		</Grid>
+		<Grid
+            Grid.Column="3" Grid.RowSpan="2"
+            >
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<vm:ShadesValuesView
+				Grid.Row="0"
+				DataContext="{Binding PrimaryShadesValues}"
+				HorizontalAlignment="Left"  VerticalAlignment="Center"
+				/>
+			<vm:ShadesValuesView
+				Grid.Row="1"
+				DataContext="{Binding ComplementaryShadesValues}"
+				HorizontalAlignment="Left"  VerticalAlignment="Center"
+				/>
+		</Grid>
 
-        <Grid
+		<Grid
             Grid.Row="2" Grid.ColumnSpan="999"
             >
             <Grid.RowDefinitions>
@@ -313,7 +257,18 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Text="Hue"
+                Theme="{StaticResource Medium}"
+                />
             <Slider
+                Grid.Column="1"
                 Margin="8 4 8 4"
                 Minimum="0.0" Maximum="359.99"
                 SmallChange="0.5" LargeChange="10.0"
@@ -321,23 +276,48 @@
                 Value="{Binding HueSliderValue}"
                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                 />
-            <Slider
+            <TextBlock
+                Grid.Row="0" Grid.Column="2"
+                Text="{Binding HueValue}"
+                Theme="{StaticResource Medium}"
+                />
+            <TextBlock
                 Grid.Row="1"
+                Text="Saturation"
+                Theme="{StaticResource Medium}"
+                />
+            <Slider
+                Grid.Row="1" Grid.Column="1"
                 Margin="8 4 8 4"
                 Minimum="0.0" Maximum="1.0" 
-                SmallChange="0.05" LargeChange="0.1"
+                SmallChange="0.01" LargeChange="0.05"
                 TickFrequency="0.1" TickPlacement="BottomRight"
                 Value="{Binding SaturationSliderValue}"
                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                 />
-            <Slider
+            <TextBlock
+                Grid.Row="1" Grid.Column="2"
+                Text="{Binding SaturationValue}"
+                Theme="{StaticResource Medium}"
+                />
+            <TextBlock
                 Grid.Row="2"
+                Text="Brightness"
+                Theme="{StaticResource Medium}"
+                />
+            <Slider
+                Grid.Row="2" Grid.Column="1"
                 Margin="8 4 8 4"
                 Minimum="0.0" Maximum="1.0"
-                SmallChange="0.05" LargeChange="0.1"
+                SmallChange="0.01" LargeChange="0.05"
                 TickFrequency="0.1" TickPlacement="BottomRight"
                 Value="{Binding BrightnessSliderValue}"
                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                />
+            <TextBlock
+                Grid.Row="2" Grid.Column="2"
+                Text="{Binding BrightnessValue}"
+                Theme="{StaticResource Medium}"
                 />
         </Grid>
     </Grid>

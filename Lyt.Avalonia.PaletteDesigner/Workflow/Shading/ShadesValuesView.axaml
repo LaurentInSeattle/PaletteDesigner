@@ -1,0 +1,61 @@
+<UserControl 
+    x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Shading.ShadesValuesView"
+    xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Shading"
+    x:DataType="vm:ShadesValuesViewModel" 
+
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+    >
+
+    <Grid
+        Grid.Column="2" Grid.RowSpan="999"
+		IsVisible="{Binding IsVisible}"
+        >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+            <RowDefinition Height="26" />
+        </Grid.RowDefinitions>
+        <TextBlock
+            Text="{Binding Name}"
+            Margin="8 0 0 0"
+            Theme="{StaticResource Large}"
+            />
+        <TextBlock
+            Grid.Row="1"
+            Margin="16 0 0 0"
+            Text="{Binding Lighter}"
+            Theme="{StaticResource Medium}"
+            />
+        <TextBlock
+            Grid.Row="2"
+            Margin="16 0 0 0"
+            Text="{Binding Light}"
+            Theme="{StaticResource Medium}"
+            />
+        <TextBlock
+            Grid.Row="3"
+            Margin="16 0 0 0"
+            Text="{Binding Medium}"
+            Theme="{StaticResource Medium}"
+            />
+        <TextBlock
+            Grid.Row="4"
+            Margin="16 0 0 0"
+            Text="{Binding Dark}"
+            Theme="{StaticResource Medium}"
+            />
+        <TextBlock
+            Grid.Row="5"
+            Margin="16 0 0 0"
+            Text="{Binding Darker}"
+            Theme="{StaticResource Medium}"
+            />
+    </Grid>
+</UserControl>
