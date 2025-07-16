@@ -8,6 +8,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
+    
+    xmlns:images="using:Lyt.Avalonia.Controls.Images"	
     >
     <Grid
         Width="800" Height="800"
@@ -16,9 +18,10 @@
             x:Name="Wheel"
             Source="{Binding ColorWheel}"
             />
-        <Image
+        <images:RoundedImage
             x:Name="Shades"
-            Width="260" Height="260"
+            Width="300" Height="300"
+            CornerRadius="150"
             Source="{Binding Shades}"
             />
     </Grid>
