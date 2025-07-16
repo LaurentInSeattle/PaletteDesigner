@@ -10,12 +10,19 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
     private const byte alpha = 255;
 
     private readonly PaletteDesignerModel paletteDesignerModel;
+    private double hue;
 
     [ObservableProperty]
     private WriteableBitmap colorWheel;
 
     [ObservableProperty]
     private WriteableBitmap shades;
+
+    [ObservableProperty]
+    private bool hasComplementary;
+
+    [ObservableProperty]
+    private bool canMoveComplementary;
 
     public ColorWheelViewModel(PaletteDesignerModel paletteDesignerModel)
     {
@@ -31,31 +38,55 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         var dpi = new Vector(96, 96);
         var bitmap = new WriteableBitmap(pixelSize, dpi, PixelFormat.Bgra8888, AlphaFormat.Opaque);
         this.shades = bitmap;
+        this.hue = double.NaN;
     }
 
     public override void OnViewLoaded()
     {
         base.OnViewLoaded();
-        this.UpdateShadesBitmap(0.7); 
+        this.UpdateShadesBitmap(0.7);
     }
 
-    public unsafe void UpdateShadesBitmap(double hue)
+    public void OnAngleChanged(double wheelAngle)
     {
+        this.paletteDesignerModel.UpdatePalettePrimaryWheel(wheelAngle);
+    }
+
+    public void Update(Palette palette)
+    {
+        this.HasComplementary = palette.Kind.HasComplementary();
+        this.CanMoveComplementary = palette.Kind.CanMoveComplementary();
+        this.UpdateShadesBitmap(palette.Primary.Base.H);
+        if (this.HasComplementary)
+        {
+            double complementaryWheel = (palette.PrimaryWheel + 180.0).NormalizeAngleDegrees();
+            this.View.ComplementaryMarker.Move(complementaryWheel);
+        }
+    }
+
+    public unsafe void UpdateShadesBitmap(double newHue)
+    {
+        if (Math.Abs(this.hue - newHue) < 0.000_001)
+        {
+            return;
+        }
+
+        this.hue = newHue;
         double step = 1.0 / 255.0;
-        HsvColor hsvColor = new(hue, 0.0, 0.0);
+        HsvColor hsvColor = new(this.hue, 0.0, 0.0);
         using var frameBuffer = this.Shades.Lock();
         {
-            byte* p = (byte *) frameBuffer.Address;
+            byte* p = (byte*)frameBuffer.Address;
             for (int row = 0; row < height; ++row)
             {
                 for (int col = 0; col < width; ++col)
                 {
                     double saturation = col * step;
                     const double baseBrightness = 0.18;
-                    double rawBrightness = row * step - baseBrightness ;
-                    rawBrightness = MathExtensions.Clip(rawBrightness); 
+                    double rawBrightness = row * step - baseBrightness;
+                    rawBrightness = MathExtensions.Clip(rawBrightness);
                     double brightness = 1.0 - rawBrightness;
-                    hsvColor.Set(hue, saturation, brightness);
+                    hsvColor.Set(this.hue, saturation, brightness);
                     var rgb = hsvColor.ToRgb();
                     byte blu = (byte)rgb.B;
                     byte gre = (byte)rgb.G;
@@ -68,7 +99,7 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
             }
         }
 
-        this.View.Shades.InvalidateVisual(); 
+        this.View.Shades.InvalidateVisual();
     }
 
     private void CreateColorLookupTable()
@@ -83,19 +114,19 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
             int stride = lockedFramebuffer.RowBytes;
 
             // angle in tenth of degree 
-            double radius = 210.0; 
+            double radius = 210.0;
             for (int angle = 0; angle < 3600; ++angle)
             {
                 // convert to radians
                 double radian = 2.0 * Math.PI * angle / 3600.0;
-                
+
                 // Coordinates at wheel center 
                 double x = radius * Math.Cos(radian);
                 double y = radius * Math.Sin(radian);
 
                 // Translate to top left 
-                int pixelX = (int )( x + 320.0) ;
-                int pixelY = (int) ( 320.0 - y) ;
+                int pixelX = (int)(x + 320.0);
+                int pixelY = (int)(320.0 - y);
 
                 // Calculate the offset to the desired pixel
                 int pixelOffset = (pixelY * stride) + (pixelX * bytesPerPixel);
@@ -105,7 +136,7 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
                 byte green = p[pixelOffset++];
                 byte red = p[pixelOffset];
 
-                colorLookupTable.Add(angle, new RgbColor(red, green, blue)); 
+                colorLookupTable.Add(angle, new RgbColor(red, green, blue));
             }
         }
 
@@ -114,6 +145,6 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         var fileManager = App.GetRequiredService<FileManagerModel>();
         string colorLookupTableSeralized = fileManager.Serialize(colorLookupTable);
         fileManager.Save(
-            FileManagerModel.Area.User, FileManagerModel.Kind.Json, "ColorWheel.json", colorLookupTable); 
+            FileManagerModel.Area.User, FileManagerModel.Kind.Json, "ColorWheel.json", colorLookupTable);
     }
 }

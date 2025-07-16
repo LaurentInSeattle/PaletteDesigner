@@ -2,12 +2,12 @@
 
 public sealed partial class DesignViewModel : ViewModel<DesignView>
 {
-    private readonly PaletteDesignerModel paletteDesignerModel; 
+    private readonly PaletteDesignerModel paletteDesignerModel;
 
-    [ObservableProperty] 
+    [ObservableProperty]
     private ColorWheelViewModel colorWheelViewModel;
 
-    [ObservableProperty] 
+    [ObservableProperty]
     private PalettePreviewViewModel palettePreviewViewModel;
 
     public DesignViewModel(PaletteDesignerModel paletteDesignerModel)
@@ -16,14 +16,21 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
         this.ColorWheelViewModel = new ColorWheelViewModel(paletteDesignerModel);
         this.PalettePreviewViewModel = new PalettePreviewViewModel(paletteDesignerModel);
 
-        this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated); 
+        this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated);
+    }
+
+    public override void OnViewLoaded()
+    {
+        base.OnViewLoaded();
+        this.OnModelUpdated(null);
     }
 
     public Palette Palette => this.paletteDesignerModel.ActiveProject.Palette;
 
-    private void OnModelUpdated(ModelUpdatedMessage message)
+    private void OnModelUpdated(ModelUpdatedMessage? _)
     {
-        this.ColorWheelViewModel.UpdateShadesBitmap(this.Palette.Primary.Base.H);
-        this.PalettePreviewViewModel.Update(this.Palette);
+        var palette = this.Palette;
+        this.ColorWheelViewModel.Update(palette);
+        this.PalettePreviewViewModel.Update(palette);
     }
 }

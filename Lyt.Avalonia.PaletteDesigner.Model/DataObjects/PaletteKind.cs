@@ -33,6 +33,15 @@ public static class PaletteKindExtensions
             PaletteKind.TriadComplementary or PaletteKind.Quadrichromatic or PaletteKind.Square => 4,
             _ => 0, // Unknown 
         };
+
+    public static bool HasComplementary(this PaletteKind kind)
+        => kind == PaletteKind.MonochromaticComplementary ||
+           kind == PaletteKind.TriadComplementary ||
+           kind == PaletteKind.Square;
+
+    public static bool CanMoveComplementary(this PaletteKind kind)
+        => kind == PaletteKind.Duochromatic ||
+           kind == PaletteKind.Quadrichromatic;
 }
 
 //public class PaletteKindComboBoxItem

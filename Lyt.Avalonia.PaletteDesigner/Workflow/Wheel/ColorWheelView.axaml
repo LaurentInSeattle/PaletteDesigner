@@ -10,15 +10,16 @@
     mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
     
     xmlns:images="using:Lyt.Avalonia.Controls.Images"	
+    xmlns:controls="clr-namespace:Lyt.Avalonia.PaletteDesigner.Controls"
     >
     <Grid
-        Width="600" Height="600"
+        Width="700" Height="700"
         > 
         <Image
             x:Name="Wheel"
-            Width="600" Height="600"
+            Width="700" Height="700"
             Source="{Binding ColorWheel}"
-			Stretch="UniformToFill"
+            Stretch="UniformToFill"
             />
         <images:RoundedImage
             x:Name="Shades"
@@ -26,5 +27,32 @@
             CornerRadius="140"
             Source="{Binding Shades}"
             />
+        <Canvas
+            Width="700" Height="700"
+            >
+            <controls:MarkerControl 
+                x:Name="PrimaryMarker"
+                IsVisible="True"				
+                CanMove="True"				
+                Canvas.Top="200" Canvas.Left="150"
+                />
+            <controls:MarkerControl
+                x:Name="ComplementaryMarker"
+                IsVisible="{Binding HasComplementary}"				
+                CanMove="{Binding CanMoveComplementary}"				
+                Canvas.Top="400" Canvas.Left="350"
+                />
+            <controls:MarkerControl
+                x:Name="Secondary1Marker"
+                IsVisible="False"
+                Canvas.Top="200" Canvas.Left="150"
+                />
+            <controls:MarkerControl
+                x:Name="Secondary2Marker"
+                IsVisible="False"
+                Canvas.Top="200" Canvas.Left="150"
+                />
+        </Canvas>
+            
     </Grid>
 </UserControl>

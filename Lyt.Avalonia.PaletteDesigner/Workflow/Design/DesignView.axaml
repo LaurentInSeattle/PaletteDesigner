@@ -15,6 +15,7 @@
 	Background="Transparent"
 	>
 	<Grid
+		Margin="12"
 		>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="600" />
