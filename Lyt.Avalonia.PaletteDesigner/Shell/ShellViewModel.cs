@@ -126,12 +126,12 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
                 new SelectableView<ActivatedView>(activatedView, vm, control));
         }
 
-        SetupNoToolbar<ColorWheelViewModel, ColorWheelView>(
-            ActivatedView.Language, view.FlagButton);
+        SetupNoToolbar<DesignViewModel, DesignView>(
+            ActivatedView.Design, view.DesignButton);
         SetupNoToolbar<PalettePreviewViewModel, PalettePreviewView>(
             ActivatedView.Settings, view.SettingsButton);
-        //SetupNoToolbar<PaletteColorViewModel, PaletteColorView>(
-        //    ActivatedView.Settings, view.SettingsButton);
+        SetupNoToolbar<ColorWheelViewModel, ColorWheelView>(
+            ActivatedView.Language, view.FlagButton);
 
         //Setup<CollectionViewModel, CollectionView, CollectionToolbarViewModel, CollectionToolbarView>(
         //    ActivatedView.Collection, view.CollectionButton);
@@ -179,6 +179,9 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
     }
 
 #pragma warning disable CA1822 // Mark members as static
+
+    [RelayCommand]
+    public void OnDesign() => Select(ActivatedView.Design);
 
     [RelayCommand]
     public void OnSettings() => Select(ActivatedView.Settings);

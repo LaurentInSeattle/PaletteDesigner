@@ -22,6 +22,7 @@ public partial class App : ApplicationBase
         [
            // Singletons
            typeof(ShellViewModel),
+           typeof(DesignViewModel),
            typeof(PaletteColorViewModel),
            typeof(PalettePreviewViewModel),
            typeof(ColorWheelViewModel),

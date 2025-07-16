@@ -9,7 +9,9 @@
 	<!-- Shell -->
 	<system:String x:Key="Shell.AppName">Palette Designer</system:String>
 	<system:String x:Key="Shell.About">About...</system:String>
-	<system:String x:Key="Shell.Today">Today</system:String>
+	
+	<system:String x:Key="Shell.Design">Designer</system:String>
+
 	<system:String x:Key="Shell.Collection">Collection</system:String>
 	<system:String x:Key="Shell.Settings">Settings</system:String>
 	<system:String x:Key="Shell.Language">Language</system:String>

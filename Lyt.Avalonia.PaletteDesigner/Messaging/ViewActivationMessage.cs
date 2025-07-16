@@ -5,6 +5,7 @@ public sealed record class ViewActivationMessage(
 {
     public enum ActivatedView
     {
+        Design,
         Language,
         Settings, 
 

@@ -89,6 +89,7 @@ global using Lyt.Utilities.Randomizing;
 #endregion Framework 
 
 global using Lyt.Avalonia.PaletteDesigner;
+global using Lyt.Avalonia.PaletteDesigner.Workflow.Design;
 global using Lyt.Avalonia.PaletteDesigner.Shell;
 global using Lyt.Avalonia.PaletteDesigner.Messaging;
 global using Lyt.Avalonia.PaletteDesigner.Utilities;
