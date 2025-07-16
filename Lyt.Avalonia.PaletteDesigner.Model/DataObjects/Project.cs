@@ -17,6 +17,8 @@ public sealed class Project
     [JsonRequired]
     public required string FolderPath { get; set; } = string.Empty;
 
+    public Palette Palette { get; set; } = new(); 
+
     public bool IsInvalid
         =>
             this.Format == ResourceFormat.Unknown ||

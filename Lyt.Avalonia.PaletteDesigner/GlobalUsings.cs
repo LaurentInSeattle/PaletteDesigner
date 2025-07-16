@@ -99,8 +99,7 @@ global using Lyt.Avalonia.PaletteDesigner.Workflow.Wheel;
 
 global using Lyt.Avalonia.PaletteDesigner.Model;
 global using Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
+global using Lyt.Avalonia.PaletteDesigner.Model.Messaging;
 global using Lyt.Avalonia.PaletteDesigner.Model.Utilities;
-
-
 
 // global using Lyt.Translator.Service; 

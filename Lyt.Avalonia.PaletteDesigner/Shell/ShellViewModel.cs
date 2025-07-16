@@ -13,7 +13,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
     private ViewSelector<ActivatedView>? viewSelector;
     
-    private bool isFirstActivation;
+    // private bool isFirstActivation;
 
     #region To please the XAML viewer 
 
@@ -79,14 +79,14 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
     private void ActivateInitialView()
     {
-        this.isFirstActivation = true;
+        // this.isFirstActivation = true;
 
         if (this.paletteDesignerModel.IsFirstRun)
         {
             // Select(ActivatedView.Language);
         }
 
-        Select(ActivatedView.Language);
+        Select(ActivatedView.Design);
         this.MainToolbarIsVisible = true; 
         this.Logger.Debug("OnViewLoaded OnViewActivation complete");
     }
@@ -100,20 +100,21 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
         var selectableViews = new List<SelectableView<ActivatedView>>();
 
-        void Setup<TViewModel, TControl, TToolbarViewModel, TToolbarControl>(
-                ActivatedView activatedView, Control control)
-            where TViewModel : ViewModel<TControl>
-            where TControl : Control, IView, new()
-            where TToolbarViewModel : ViewModel<TToolbarControl>
-            where TToolbarControl : Control, IView, new()
-        {
-            var vm = App.GetRequiredService<TViewModel>();
-            vm.CreateViewAndBind();
-            var vmToolbar = App.GetRequiredService<TToolbarViewModel>();
-            vmToolbar.CreateViewAndBind();
-            selectableViews.Add(
-                new SelectableView<ActivatedView>(activatedView, vm, control, vmToolbar));
-        }
+        // SOON 
+        //void Setup<TViewModel, TControl, TToolbarViewModel, TToolbarControl>(
+        //        ActivatedView activatedView, Control control)
+        //    where TViewModel : ViewModel<TControl>
+        //    where TControl : Control, IView, new()
+        //    where TToolbarViewModel : ViewModel<TToolbarControl>
+        //    where TToolbarControl : Control, IView, new()
+        //{
+        //    var vm = App.GetRequiredService<TViewModel>();
+        //    vm.CreateViewAndBind();
+        //    var vmToolbar = App.GetRequiredService<TToolbarViewModel>();
+        //    vmToolbar.CreateViewAndBind();
+        //    selectableViews.Add(
+        //        new SelectableView<ActivatedView>(activatedView, vm, control, vmToolbar));
+        //}
 
         void SetupNoToolbar<TViewModel, TControl>(
                 ActivatedView activatedView, Control control)
@@ -175,7 +176,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         //    }
         //}
 
-        this.isFirstActivation = false;
+        // this.isFirstActivation = false;
     }
 
 #pragma warning disable CA1822 // Mark members as static

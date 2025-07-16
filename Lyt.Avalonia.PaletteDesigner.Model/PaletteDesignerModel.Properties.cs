@@ -30,6 +30,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
         FolderPath = string.Empty,
         Created = DateTime.Now,
         LastUpdated = DateTime.Now,
+        Palette = new(),
     };
 
     public Dictionary<int, RgbColor> ColorLookupTable { get; set; } = [] ;

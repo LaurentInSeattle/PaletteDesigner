@@ -20,9 +20,13 @@ public enum Shade
 public sealed class Shades
 {
     public HsvColor Lighter { get; set; } = new();
+
     public HsvColor Light { get; set; } = new();
+    
     public HsvColor Base { get; set; } = new();
+    
     public HsvColor Dark { get; set; } = new();
+    
     public HsvColor Darker { get; set; } = new();
 
     public Shades() { /* needed for serialization */ }

@@ -37,7 +37,6 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
     {
         base.OnViewLoaded();
         this.UpdateShadesBitmap(0.7); 
-        // this.CreateColorLookupTable();
     }
 
     public unsafe void UpdateShadesBitmap(double hue)
@@ -68,6 +67,8 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
                 }
             }
         }
+
+        this.View.Shades.InvalidateVisual(); 
     }
 
     private void CreateColorLookupTable()

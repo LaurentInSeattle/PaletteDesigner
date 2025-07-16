@@ -4,8 +4,20 @@ public sealed class Palette
 {
     public string Name { get; set; } = string.Empty;
 
-    public PaletteKind Kind { get; set; }
+    public PaletteKind Kind { get; set; } = PaletteKind.MonochromaticComplementary;
 
+    public double PrimaryWheel { get; set; }
+
+    public double ComplementaryWheel { get; set; }
+
+    public double Secondary1Wheel { get; set; } = new();
+
+    public double Secondary2Wheel { get; set; } = new();
+
+    public double SecondaryWheelDistance { get; set; } = new();
+
+    public List<SvColor> SvColors { get; set; } = new();
+        
     public Shades Primary { get; set; } = new();
 
     public Shades Secondary1 { get; set; } = new();

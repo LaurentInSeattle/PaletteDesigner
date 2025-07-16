@@ -3,6 +3,9 @@
 	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Design"
 	x:DataType="vm:DesignViewModel" 
 
+	xmlns:shading="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Shading"
+	xmlns:wheel="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Wheel"
+
 	xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -12,8 +15,17 @@
 	Background="Transparent"
 	>
 	<Grid
-		Background="DarkSlateBlue"
-		> 
-		
+		>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="600" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<wheel:ColorWheelView
+			DataContext="{Binding ColorWheelViewModel}"
+			/>
+		<shading:PalettePreviewView
+			Grid.Column="1"
+			DataContext="{Binding PalettePreviewViewModel}"
+			/>
 	</Grid>
 </UserControl>
