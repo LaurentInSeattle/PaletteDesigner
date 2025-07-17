@@ -12,7 +12,7 @@
 
     <Grid
         Grid.Column="2" Grid.RowSpan="999"
-		IsVisible="{Binding IsVisible}"
+        IsVisible="{Binding IsVisible}"
         >
         <Grid.RowDefinitions>
             <RowDefinition Height="26" />
@@ -26,36 +26,39 @@
             Text="{Binding Name}"
             Margin="8 0 0 0"
             Theme="{StaticResource Large}"
+			FontWeight="DemiBold"
+			TextAlignment="Center"
+			HorizontalAlignment="Center"
             />
         <TextBlock
             Grid.Row="1"
             Margin="16 0 0 0"
             Text="{Binding Lighter}"
-            Theme="{StaticResource Medium}"
+            Theme="{StaticResource MediumMono}"
             />
         <TextBlock
             Grid.Row="2"
             Margin="16 0 0 0"
             Text="{Binding Light}"
-            Theme="{StaticResource Medium}"
+            Theme="{StaticResource MediumMono}"
             />
         <TextBlock
             Grid.Row="3"
             Margin="16 0 0 0"
             Text="{Binding Medium}"
-            Theme="{StaticResource Medium}"
+            Theme="{StaticResource MediumMono}"
             />
         <TextBlock
             Grid.Row="4"
             Margin="16 0 0 0"
             Text="{Binding Dark}"
-            Theme="{StaticResource Medium}"
+            Theme="{StaticResource MediumMono}"
             />
         <TextBlock
             Grid.Row="5"
             Margin="16 0 0 0"
             Text="{Binding Darker}"
-            Theme="{StaticResource Medium}"
+            Theme="{StaticResource MediumMono}"
             />
     </Grid>
 </UserControl>

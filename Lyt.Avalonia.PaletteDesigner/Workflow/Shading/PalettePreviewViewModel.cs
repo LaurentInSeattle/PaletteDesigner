@@ -107,8 +107,8 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     public PalettePreviewViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
-        this.PrimaryShadesValues = new ShadesValuesViewModel("Primary: ");
-        this.ComplementaryShadesValues = new ShadesValuesViewModel("Complementary: ");
+        this.PrimaryShadesValues = new ShadesValuesViewModel("Primary");
+        this.ComplementaryShadesValues = new ShadesValuesViewModel("Complementary");
         this.PrimaryShades = new ();
         this.ComplementaryShades = new();
     }

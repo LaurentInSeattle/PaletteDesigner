@@ -41,12 +41,6 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         this.hue = double.NaN;
     }
 
-    public override void OnViewLoaded()
-    {
-        base.OnViewLoaded();
-        this.UpdateShadesBitmap(0.7);
-    }
-
     public void OnAngleChanged(double wheelAngle)
     {
         this.paletteDesignerModel.UpdatePalettePrimaryWheel(wheelAngle);
@@ -56,6 +50,7 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
     {
         this.HasComplementary = palette.Kind.HasComplementary();
         this.CanMoveComplementary = palette.Kind.CanMoveComplementary();
+        this.View.PrimaryMarker.Move(palette.PrimaryWheel);
         this.UpdateShadesBitmap(palette.Primary.Base.H);
         if (this.HasComplementary)
         {

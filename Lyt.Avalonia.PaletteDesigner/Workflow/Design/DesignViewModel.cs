@@ -22,7 +22,14 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
     public override void OnViewLoaded()
     {
         base.OnViewLoaded();
-        this.OnModelUpdated(null);
+
+        // Need to wait so that canvas is ready 
+        Schedule.OnUiThread(250, () =>
+        {
+            // For now 
+            this.paletteDesignerModel.UpdatePalettePrimaryWheel(90.0);
+        }, DispatcherPriority.Background);
+        
     }
 
     public Palette Palette => this.paletteDesignerModel.ActiveProject.Palette;

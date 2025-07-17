@@ -3,6 +3,7 @@ namespace Lyt.Avalonia.PaletteDesigner.Controls;
 public partial class MarkerControl : UserControl
 {
     private Canvas? parentCanvas;
+    private IBrush? brush;
     private bool isDragging;
     private bool canMove;
 
@@ -18,16 +19,13 @@ public partial class MarkerControl : UserControl
     private void OnLoaded(object? sender, RoutedEventArgs e)
     {
         var canvas = MiscUtilities.FindParentControl<Canvas>(this);
-        if (canvas == null)
+        if (canvas is null)
         {
+            Debugger.Break();
             throw new ArgumentNullException("No canvas");
         }
 
         this.parentCanvas = canvas;
-
-        //this.ellipse.Fill = new SolidColorBrush(Colors.White);
-        //this.ellipse.Stroke = new SolidColorBrush(Colors.White);
-        //this.ellipse.StrokeThickness = 0;
     }
 
     ~MarkerControl()
@@ -50,6 +48,8 @@ public partial class MarkerControl : UserControl
             return; 
         }
 
+        this.brush = this.ellipse.Stroke; 
+        this.ellipse.Stroke = new SolidColorBrush(Colors.DarkOrchid);
         this.isDragging = true; 
     }
 
@@ -66,6 +66,7 @@ public partial class MarkerControl : UserControl
             return;
         }
 
+        this.ellipse.Stroke = this.brush;
         this.isDragging = false;
     }
 
@@ -163,32 +164,60 @@ public partial class MarkerControl : UserControl
         return newCanMove;
     }
 
-    /*
-    /// <summary> BackgroundBorderThickness Styled Property </summary>
-    public static readonly StyledProperty<double> BackgroundBorderThicknessProperty =
-        AvaloniaProperty.Register<GlyphButton, double>(
-            nameof(BackgroundBorderThickness),
+    /// <summary> FillBrush Styled Property </summary>
+    public static readonly StyledProperty<IBrush> FillBrushProperty =
+        AvaloniaProperty.Register<MarkerControl, IBrush>(nameof(FillBrush), defaultValue: Brushes.Aquamarine);
+
+    /// <summary> Gets or sets the FillBrush property.</summary>
+    public IBrush FillBrush
+    {
+        get => this.GetValue(FillBrushProperty);
+        set
+        {
+            this.SetValue(FillBrushProperty, value);
+            this.ellipse.Fill = value;
+        }
+    }
+
+    /// <summary> StrokeBrush Styled Property </summary>
+    public static readonly StyledProperty<IBrush> StrokeBrushProperty =
+        AvaloniaProperty.Register<MarkerControl, IBrush>(nameof(StrokeBrush), defaultValue: Brushes.Aquamarine);
+
+    /// <summary> Gets or sets the StrokeBrush property.</summary>
+    public IBrush StrokeBrush
+    {
+        get => this.GetValue(FillBrushProperty);
+        set
+        {
+            this.SetValue(StrokeBrushProperty, value);
+            this.ellipse.Stroke = value;
+        }
+    }
+
+    /// <summary> StrokeBrushThickness Styled Property </summary>
+    public static readonly StyledProperty<double> StrokeBrushThicknessProperty =
+        AvaloniaProperty.Register<MarkerControl, double>(
+            nameof(StrokeBrushThickness),
             defaultValue: 1.0,
             inherits: false,
             defaultBindingMode: BindingMode.OneWay,
             validate: null,
-            coerce: CoerceBackgroundBorderThickness,
+            coerce: CoerceStrokeBrushThickness,
             enableDataValidation: false);
 
 
-    /// <summary> Gets or sets the BackgroundBorderThickness property.</summary>
-    public double BackgroundBorderThickness
+    /// <summary> Gets or sets the StrokeBrushThickness property.</summary>
+    public double StrokeBrushThickness
     {
-        get => this.GetValue(BackgroundBorderThicknessProperty);
+        get => this.GetValue(StrokeBrushThicknessProperty);
         set
         {
-            this.SetValue(BackgroundBorderThicknessProperty, value);
-            this.border.BorderThickness = new Thickness(value);
-            this.rectangleBackground.StrokeThickness = value;
+            this.SetValue(StrokeBrushThicknessProperty, value);
+            this.ellipse.StrokeThickness = value;
         }
     }
 
-    /// <summary> Coerces the BackgroundBorderThickness value. </summary>
-    private static double CoerceBackgroundBorderThickness(AvaloniaObject sender, double newBackgroundBorderThickness) => newBackgroundBorderThickness;
-     */
+    /// <summary> Coerces the StrokeBrushThickness value. </summary>
+    private static double CoerceStrokeBrushThickness(
+        AvaloniaObject sender, double newBackgroundBorderThickness) => newBackgroundBorderThickness;     
 }

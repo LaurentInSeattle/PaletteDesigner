@@ -34,23 +34,31 @@
                 x:Name="PrimaryMarker"
                 IsVisible="True"				
                 CanMove="True"				
-                Canvas.Top="200" Canvas.Left="150"
+				FillBrush="#404040"
+				StrokeBrush="Aquamarine"
+                Canvas.Top="0" Canvas.Left="0"
                 />
             <controls:MarkerControl
                 x:Name="ComplementaryMarker"
                 IsVisible="{Binding HasComplementary}"				
                 CanMove="{Binding CanMoveComplementary}"				
-                Canvas.Top="400" Canvas.Left="350"
+				FillBrush="#A0A0A0"
+				StrokeBrush="Aquamarine"
+                Canvas.Top="0" Canvas.Left="0"
                 />
             <controls:MarkerControl
                 x:Name="Secondary1Marker"
                 IsVisible="False"
-                Canvas.Top="200" Canvas.Left="150"
+				FillBrush="#A0A0A0"
+				StrokeBrush="Aquamarine"
+                Canvas.Top="0" Canvas.Left="0"
                 />
             <controls:MarkerControl
                 x:Name="Secondary2Marker"
                 IsVisible="False"
-                Canvas.Top="200" Canvas.Left="150"
+				FillBrush="#A0A0A0"
+				StrokeBrush="Aquamarine"
+                Canvas.Top="0" Canvas.Left="0"
                 />
         </Canvas>
             

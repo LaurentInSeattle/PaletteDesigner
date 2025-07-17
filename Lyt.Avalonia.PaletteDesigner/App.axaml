@@ -20,8 +20,9 @@
     </Application.Styles>
 
     <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary>
+			<FontFamily x:Key="Monospaced">avares://Lyt.Avalonia.PaletteDesigner/Assets/Fonts#Roboto Mono</FontFamily>
+			<ResourceDictionary.MergedDictionaries>
                 <ResourceInclude Source="/Assets/Icons/PathResourceDictionary.axaml"/>
                 <ResourceInclude Source="/Assets/Icons/FluentSvgResourceDictionary.axaml"/>
                 <ResourceInclude Source="/Assets/Theme/Buttons.axaml"/>

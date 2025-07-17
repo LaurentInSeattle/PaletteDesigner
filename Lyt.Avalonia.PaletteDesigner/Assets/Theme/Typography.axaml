@@ -80,7 +80,28 @@
         <Setter Property="TextAlignment" Value="Left" />
     </ControlTheme>
 
-    <ControlTheme x:Key="Alert" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
+	<ControlTheme x:Key="LargeMono" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
+		<Setter Property="FontFamily" Value="{StaticResource Monospaced}" />
+		<Setter Property="FontSize" Value="{StaticResource Large.FontSize}" />
+		<Setter Property="HorizontalAlignment" Value="Left" />
+		<Setter Property="TextAlignment" Value="Left" />
+	</ControlTheme>
+
+	<ControlTheme x:Key="MediumMono" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
+		<Setter Property="FontFamily" Value="{StaticResource Monospaced}" />
+		<Setter Property="FontSize" Value="{StaticResource Medium.FontSize}" />
+		<Setter Property="HorizontalAlignment" Value="Left" />
+		<Setter Property="TextAlignment" Value="Left" />
+	</ControlTheme>
+
+	<ControlTheme x:Key="SmallMono" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
+		<Setter Property="FontFamily" Value="{StaticResource Monospaced}" />
+		<Setter Property="FontSize" Value="{StaticResource Small.FontSize}" />
+		<Setter Property="HorizontalAlignment" Value="Left" />
+		<Setter Property="TextAlignment" Value="Left" />
+	</ControlTheme>
+	
+	<ControlTheme x:Key="Alert" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
         <Setter Property="FontSize" Value="{StaticResource Alert.FontSize}" />
         <Setter Property="FontWeight" Value="DemiBold" />
         <Setter Property="Foreground" Value="{StaticResource Alert.TextColor}" />
