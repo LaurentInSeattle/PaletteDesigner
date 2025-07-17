@@ -67,6 +67,7 @@ global using Lyt.Framework.Interfaces.Dispatching;
 global using Lyt.Avalonia.Interfaces.UserInterface;
 global using Lyt.Avalonia.Controls;
 global using Lyt.Avalonia.Controls.Glyphs;
+global using Lyt.Avalonia.Controls.Images;
 
 global using Lyt.Avalonia.Mvvm;
 global using Lyt.Avalonia.Mvvm.Animations;
@@ -96,6 +97,7 @@ global using Lyt.Avalonia.PaletteDesigner.Utilities;
 global using Lyt.Avalonia.PaletteDesigner.Workflow;
 global using Lyt.Avalonia.PaletteDesigner.Workflow.Shading;
 global using Lyt.Avalonia.PaletteDesigner.Workflow.Wheel;
+
 
 global using Lyt.Avalonia.PaletteDesigner.Model;
 global using Lyt.Avalonia.PaletteDesigner.Model.DataObjects;

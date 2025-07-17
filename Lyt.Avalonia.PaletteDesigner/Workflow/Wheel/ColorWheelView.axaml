@@ -23,8 +23,8 @@
             />
         <images:RoundedImage
             x:Name="Shades"
-            Width="280" Height="280"
-            CornerRadius="140"
+            Width="300" Height="300"
+            CornerRadius="10"
             Source="{Binding Shades}"
             />
         <Canvas
@@ -60,7 +60,17 @@
 				StrokeBrush="Aquamarine"
                 Canvas.Top="0" Canvas.Left="0"
                 />
-        </Canvas>
+			<controls:MarkerControl
+                x:Name="PrimaryShadeMarker"
+                IsVisible="True"
+                CanMove="True"
+				IsWheel="False"
+				Dimension="13"
+				FillBrush="#404040"
+				StrokeBrush="DarkOrange"
+                Canvas.Top="300" Canvas.Left="300"
+                />
+		</Canvas>
             
     </Grid>
 </UserControl>

@@ -270,12 +270,12 @@
             <vm:ShadesValuesView
                 Grid.Row="0"
                 DataContext="{Binding PrimaryShadesValues}"
-                HorizontalAlignment="Left"  VerticalAlignment="Center" 
+                HorizontalAlignment="Stretch"  VerticalAlignment="Center" 
                 />
             <vm:ShadesValuesView
                 Grid.Row="1"
                 DataContext="{Binding ComplementaryShadesValues}"
-                HorizontalAlignment="Left"  VerticalAlignment="Center" 
+                HorizontalAlignment="Stretch"  VerticalAlignment="Center" 
                 />
         </Grid>
         
@@ -289,12 +289,12 @@
             <vm:ShadesValuesView
                 Grid.Row="0"
                 DataContext="{Binding PrimaryShadesValues}"
-                HorizontalAlignment="Left"  VerticalAlignment="Center"
+                HorizontalAlignment="Stretch"  VerticalAlignment="Center"
                 />
             <vm:ShadesValuesView
                 Grid.Row="1"
                 DataContext="{Binding ComplementaryShadesValues}"
-                HorizontalAlignment="Left"  VerticalAlignment="Center"
+                HorizontalAlignment="Stretch"  VerticalAlignment="Center"
                 />
         </Grid>
 
@@ -315,6 +315,7 @@
                 Grid.Row="0"
                 Text="Hue"
                 Theme="{StaticResource Medium}"
+                HorizontalAlignment="Right" 
                 />
             <Slider
                 Grid.Column="1"
@@ -334,6 +335,7 @@
                 Grid.Row="1"
                 Text="Saturation"
                 Theme="{StaticResource Medium}"
+                HorizontalAlignment="Right" 
                 />
             <Slider
                 Grid.Row="1" Grid.Column="1"
@@ -353,6 +355,7 @@
                 Grid.Row="2"
                 Text="Brightness"
                 Theme="{StaticResource Medium}"
+                HorizontalAlignment="Right" 
                 />
             <Slider
                 Grid.Row="2" Grid.Column="1"

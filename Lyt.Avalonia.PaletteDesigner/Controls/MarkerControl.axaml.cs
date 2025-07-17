@@ -3,9 +3,11 @@ namespace Lyt.Avalonia.PaletteDesigner.Controls;
 public partial class MarkerControl : UserControl
 {
     private Canvas? parentCanvas;
+    private RoundedImage? parentShades;
     private IBrush? brush;
     private bool isDragging;
     private bool canMove;
+    private bool isWheel;
 
     public MarkerControl()
     {
@@ -14,6 +16,7 @@ public partial class MarkerControl : UserControl
         this.PointerMoved += this.OnPointerMoved;
         this.PointerReleased += this.OnPointerReleased;
         this.Loaded += this.OnLoaded;
+        this.isWheel = true;
     }
 
     private void OnLoaded(object? sender, RoutedEventArgs e)
@@ -26,6 +29,22 @@ public partial class MarkerControl : UserControl
         }
 
         this.parentCanvas = canvas;
+
+        var grid = MiscUtilities.FindParentControl<Grid>(this);
+        if (grid is null)
+        {
+            Debugger.Break();
+            throw new ArgumentNullException("No shades image");
+        }
+
+        var image = MiscUtilities.FindChildControl<RoundedImage>(grid);
+        if (image is null)
+        {
+            Debugger.Break();
+            throw new ArgumentNullException("No shades image");
+        }
+
+        this.parentShades = image;
     }
 
     ~MarkerControl()
@@ -45,12 +64,12 @@ public partial class MarkerControl : UserControl
 
         if (!this.canMove)
         {
-            return; 
+            return;
         }
 
-        this.brush = this.ellipse.Stroke; 
+        this.brush = this.ellipse.Stroke;
         this.ellipse.Stroke = new SolidColorBrush(Colors.DarkOrchid);
-        this.isDragging = true; 
+        this.isDragging = true;
     }
 
     private void OnPointerReleased(object? sender, PointerReleasedEventArgs e)
@@ -79,12 +98,12 @@ public partial class MarkerControl : UserControl
 
         if (!this.isDragging)
         {
-            return; 
+            return;
         }
 
-        if ( this.parentCanvas is null )
+        if (this.parentCanvas is null || this.parentShades is null)
         {
-            Debug.WriteLine("No canvas");
+            Debug.WriteLine("No parent controls");
             return;
         }
 
@@ -94,34 +113,83 @@ public partial class MarkerControl : UserControl
             return;
         }
 
-        var mousePosition = e.GetPosition(this.parentCanvas);
-        int pixelX = (int)mousePosition.X;
-        int pixelY = (int)mousePosition.Y;
-
-        // Recenter and move the maker 
-        Rect bounds = this.parentCanvas.Bounds;
-        double x = pixelX - bounds.Width / 2;
-        double y = bounds.Height / 2 - pixelY;
-        double angleRadians = Math.Atan2(y, x);
-        double angleDegrees = (360.0 * angleRadians / Math.Tau).NormalizeAngleDegrees();
-        this.Move(angleDegrees);
-
-        if (this.parentCanvas.DataContext is ColorWheelViewModel colorWheelViewModel)
+        if (this.parentCanvas.DataContext is not ColorWheelViewModel colorWheelViewModel)
         {
+            Debug.WriteLine("No data context on canvas");
+            return;
+        }
+
+
+        if (this.isWheel)
+        {
+            var mousePosition = e.GetPosition(this.parentCanvas);
+            int pixelX = (int)mousePosition.X;
+            int pixelY = (int)mousePosition.Y;
+
+            // Recenter and move the maker 
+            Rect bounds = this.parentCanvas.Bounds;
+            double x = pixelX - bounds.Width / 2;
+            double y = bounds.Height / 2 - pixelY;
+            double angleRadians = Math.Atan2(y, x);
+            double angleDegrees = (360.0 * angleRadians / Math.Tau).NormalizeAngleDegrees();
+            this.MoveWheelMarker(angleDegrees);
             colorWheelViewModel.OnAngleChanged(angleDegrees);
+        }
+        else
+        {
+            var mousePosition = e.GetPosition(this.parentShades);
+            int pixelX = (int)mousePosition.X;
+            int pixelY = (int)mousePosition.Y;
+            // Debug.WriteLine(string.Format("Mouse - X: {0}  Y: {1}", pixelX, pixelY));
+
+            // Translate to bottom left and move the maker so it follows the mouse 
+            Rect bounds = this.parentShades.Bounds;
+            double x = pixelX;
+            double y = bounds.Height - pixelY;
+
+            // Debug.WriteLine(string.Format("Bound - x: {0:F1}  y: {1:F1}", x, y));
+
+            double saturation = x / bounds.Width;
+            double brightness = y / bounds.Height;
+            // Debug.WriteLine(string.Format("Values - Sat: {0:F1}  Bright: {1:F1}", saturation, brightness));
+
+            saturation = saturation.Clip();
+            brightness = brightness.Clip();
+            // Debug.WriteLine(string.Format("Clipped - Sat: {0:F1}  Bright: {1:F1}", saturation, brightness));
+
+            this.MoveShadeMarker(saturation, brightness);
+            colorWheelViewModel.OnShadeChanged(saturation, brightness);
         }
     }
 
-    public void Move(double angleDegrees)
+    public void MoveShadeMarker(double saturation, double brightness)
     {
-        if (this.parentCanvas is null)
+        if (this.parentCanvas is null || this.parentShades is null)
         {
-            Debug.WriteLine("No canvas");
+            Debug.WriteLine("MoveShadeMarker: No parent controls");
+            return;
+        }
+
+        // Translate to top / left 
+        Rect bounds = this.parentShades.Bounds;
+        int pixelX = 200 + (int)(saturation * bounds.Width);
+        int pixelY = 200 + (int)((1.0 - brightness) * bounds.Height);
+
+        // Move the marker 
+        this.SetValue(Canvas.LeftProperty, pixelX);
+        this.SetValue(Canvas.TopProperty, pixelY);
+    }
+
+    public void MoveWheelMarker(double angleDegrees)
+    {
+        if (this.parentCanvas is null || this.parentShades is null)
+        {
+            Debug.WriteLine("MoveWheelMarker: No parent controls");
             return;
         }
 
         // Keep the marker at a fixed distance from the center 
-        double angleRadians = angleDegrees * Math.Tau / 360.0; 
+        double angleRadians = angleDegrees * Math.Tau / 360.0;
         double radius = 260;
         double x = radius * Math.Cos(angleRadians);
         double y = radius * Math.Sin(angleRadians);
@@ -134,6 +202,36 @@ public partial class MarkerControl : UserControl
         // Move the marker 
         this.SetValue(Canvas.LeftProperty, pixelX);
         this.SetValue(Canvas.TopProperty, pixelY);
+    }
+
+    #region Styled Properties 
+
+    /// <summary> IsWheel Styled Property </summary>
+    public static readonly StyledProperty<bool> IsWheelProperty =
+        AvaloniaProperty.Register<MarkerControl, bool>(
+            nameof(IsWheel),
+            defaultValue: true,
+            inherits: false,
+            defaultBindingMode: BindingMode.OneWay,
+            validate: null,
+            coerce: CoerceIsWheel,
+            enableDataValidation: false);
+
+    /// <summary> Gets or sets the IsWheel property.</summary>
+    public bool IsWheel
+    {
+        get => this.GetValue(IsWheelProperty);
+        set => this.SetValue(IsWheelProperty, value);
+    }
+
+    private static bool CoerceIsWheel(AvaloniaObject sender, bool newIsWheel)
+    {
+        if (sender is MarkerControl markerControl)
+        {
+            markerControl.isWheel = newIsWheel;
+        }
+
+        return newIsWheel;
     }
 
     /// <summary> CanMove Styled Property </summary>
@@ -219,5 +317,34 @@ public partial class MarkerControl : UserControl
 
     /// <summary> Coerces the StrokeBrushThickness value. </summary>
     private static double CoerceStrokeBrushThickness(
-        AvaloniaObject sender, double newBackgroundBorderThickness) => newBackgroundBorderThickness;     
+        AvaloniaObject sender, double newBackgroundBorderThickness) => newBackgroundBorderThickness;
+
+    /// <summary> Dimension Styled Property </summary>
+    public static readonly StyledProperty<double> DimensionProperty =
+        AvaloniaProperty.Register<MarkerControl, double>(
+            nameof(Dimension),
+            defaultValue: 16.0,
+            inherits: false,
+            defaultBindingMode: BindingMode.OneWay,
+            validate: null,
+            coerce: CoerceDimension,
+            enableDataValidation: false);
+
+    /// <summary> Gets or sets the Dimension property.</summary>
+    public double Dimension
+    {
+        get => this.GetValue(DimensionProperty);
+        set
+        {
+            this.SetValue(DimensionProperty, value);
+            this.ellipse.Width = value;
+            this.ellipse.Height = value;
+        }
+    }
+
+    /// <summary> Coerces the Dimension value. </summary>
+    private static double CoerceDimension(
+        AvaloniaObject sender, double newDimension) => newDimension;
+
+    #endregion Styled Properties 
 }

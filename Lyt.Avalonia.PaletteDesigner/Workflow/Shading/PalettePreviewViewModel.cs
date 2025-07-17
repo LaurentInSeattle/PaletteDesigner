@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Shading;
 
+using static GeneralExtensions; 
+
 public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 {
     #region The 20 observable brush properties 
@@ -98,6 +100,8 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 
     private readonly PaletteDesignerModel paletteDesignerModel;
 
+    private bool isProgrammaticUpdate; 
+
     private double hue;
 
     private double saturation;
@@ -122,86 +126,72 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         this.HueValue = string.Empty;
         this.SaturationValue = string.Empty;
         this.BrightnessValue = string.Empty;
-        this.Update();
+        this.UpdateLabels();
     }
 
     partial void OnHueSliderValueChanged(double value)
     {
+        if (this.isProgrammaticUpdate)
+        {
+            return; 
+        } 
+
         this.hue = value;
-        this.HueValue = string.Format("{0:F1} \u00B0", this.hue);
-        this.paletteDesignerModel.UpdatePalettePrimaryWheel(value); 
+        this.UpdateLabels();
+        this.paletteDesignerModel.UpdatePalettePrimaryWheel(value);
     }
 
     partial void OnSaturationSliderValueChanged(double value)
     {
+        if (this.isProgrammaticUpdate)
+        {
+            return;
+        }
+
         this.saturation = value;
-        this.Update();
+        this.UpdateLabels();
+        this.paletteDesignerModel.UpdatePalettePrimaryShade(this.saturation, this.brightness);
     }
 
     partial void OnBrightnessSliderValueChanged(double value)
     {
+        if (this.isProgrammaticUpdate)
+        {
+            return;
+        }
+
         this.brightness = value;
-        this.Update();
+        this.UpdateLabels();
+        this.paletteDesignerModel.UpdatePalettePrimaryShade(this.saturation, this.brightness);
     }
 
-    public void Update()
+    public void UpdateLabels()
     {
+        this.HueValue = string.Format("{0:F1} \u00B0", this.hue);
         this.SaturationValue = string.Format("{0:F1} %", this.saturation * 100.0);
         this.BrightnessValue = string.Format("{0:F1} %", this.brightness * 100.0);
-
-        //var lookup = this.paletteDesignerModel.ColorLookupTable;
-        //if (lookup is null)
-        //{
-        //    return;
-        //}
-
-        //int anglePrimary = (int)Math.Round(this.hue * 10.0);
-        //double oppposite = (this.hue + 180.0).NormalizeAngleDegrees();
-        //int angleComplementary = (int)Math.Round(oppposite * 10.0);
-        //if (lookup.TryGetValue(anglePrimary, out RgbColor? rgbColorPrimary) &&
-        //    lookup.TryGetValue(angleComplementary, out RgbColor? rgbColorComplementary))
-        //{
-        //    if ((rgbColorPrimary is null) || (rgbColorComplementary is null))
-        //    {
-        //        return;
-        //    }
-
-        //    var hsvColorPrimary = rgbColorPrimary.ToHsv();
-        //    var hsvColorComplementary = rgbColorComplementary.ToHsv();
-
-        //    //Debug.WriteLine(string.Format("Saturation: {0:F2}   Brightness: {1:F2}", this.saturation, this.brightness));
-        //    var palette = new Palette(
-        //        "Test", PaletteKind.MonochromaticComplementary,
-        //        hsvColorPrimary.H,
-        //        hsvColorComplementary.H,
-        //        this.saturation, this.brightness,
-        //        0.05, 0.30);
-        //    this.Update(palette);
-        //}
     }
 
     public void Update(Palette palette)
     {
-        // For pure red, shades in Paletton (hue==0)
-        // FF AA AA
-        // D4 6A 6A
-        // AA 39 39
-        // 80 15 15
-        // 55 00 00
-
-        // For pure green, shades in Paletton (hue==180)
-        // 88 CC 88
-        // 55 AA 55
-        // 2D 88 2D
-        // 11 66 11 
-        // 00 44 00
-
         int colorCount = palette.Kind.ColorCount();
         if ((colorCount < 1) || (colorCount > 4))
         {
             // Not ready ? Should throw ? 
             return;
         }
+
+        With(ref this.isProgrammaticUpdate, () =>
+        {
+            var primary = palette.Primary.Base;
+            this.hue = primary.H; 
+            this.HueSliderValue = primary.H;
+            this.saturation = primary.S; 
+            this.SaturationSliderValue = primary.S;
+            this.brightness = primary.V;
+            this.BrightnessSliderValue = primary.V;
+            this.UpdateLabels();
+        });
 
         Shades shades = palette.Primary;
         this.PrimaryLighterBrush = shades.Lighter.ToBrush();

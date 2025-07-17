@@ -26,39 +26,44 @@
             Text="{Binding Name}"
             Margin="8 0 0 0"
             Theme="{StaticResource Large}"
-			FontWeight="DemiBold"
-			TextAlignment="Center"
-			HorizontalAlignment="Center"
+            FontWeight="DemiBold"
+            TextAlignment="Center"
+            HorizontalAlignment="Center"
             />
         <TextBlock
             Grid.Row="1"
-            Margin="16 0 0 0"
             Text="{Binding Lighter}"
             Theme="{StaticResource MediumMono}"
+            TextAlignment="Center"
+            HorizontalAlignment="Center"
             />
         <TextBlock
             Grid.Row="2"
-            Margin="16 0 0 0"
             Text="{Binding Light}"
             Theme="{StaticResource MediumMono}"
+            TextAlignment="Center"
+            HorizontalAlignment="Center"
             />
         <TextBlock
             Grid.Row="3"
-            Margin="16 0 0 0"
             Text="{Binding Medium}"
             Theme="{StaticResource MediumMono}"
+            TextAlignment="Center"
+            HorizontalAlignment="Center"
             />
         <TextBlock
             Grid.Row="4"
-            Margin="16 0 0 0"
             Text="{Binding Dark}"
             Theme="{StaticResource MediumMono}"
+            TextAlignment="Center"
+            HorizontalAlignment="Center"
             />
         <TextBlock
             Grid.Row="5"
-            Margin="16 0 0 0"
             Text="{Binding Darker}"
             Theme="{StaticResource MediumMono}"
+            TextAlignment="Center"
+            HorizontalAlignment="Center"
             />
     </Grid>
 </UserControl>

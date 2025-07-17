@@ -1,0 +1,15 @@
+        // For pure red, shades in Paletton (hue==0)
+        // FF AA AA
+        // D4 6A 6A
+        // AA 39 39
+        // 80 15 15
+        // 55 00 00
+
+        // For pure green, shades in Paletton (hue==180)
+        // 88 CC 88
+        // 55 AA 55
+        // 2D 88 2D
+        // 11 66 11 
+        // 00 44 00
+
+

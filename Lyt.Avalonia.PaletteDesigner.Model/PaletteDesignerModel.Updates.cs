@@ -20,6 +20,9 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 return false;
             }
 
+            double saturationPrimary = palette.Primary.Base.S;
+            double brightnessPrimary = palette.Primary.Base.V;
+
             int anglePrimary = (int)Math.Round(wheel * 10.0);
             double oppposite = (wheel + 180.0).NormalizeAngleDegrees();
             int angleComplementary = (int)Math.Round(oppposite * 10.0);
@@ -35,10 +38,10 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 var hsvColorComplementary = rgbColorComplementary.ToHsv();
 
                 var p = new Palette(
-                    "Test", PaletteKind.MonochromaticComplementary,
+                    "Temp", PaletteKind.MonochromaticComplementary,
                     hsvColorPrimary.H,
                     hsvColorComplementary.H,
-                    0.6, 0.7,
+                    saturationPrimary, brightnessPrimary,
                     0.05, 0.30);
                 palette.Primary = p.Primary;
                 palette.Complementary = p.Complementary;
@@ -50,7 +53,15 @@ public sealed partial class PaletteDesignerModel : ModelBase
     public void UpdatePalettePrimaryShade(double saturation, double brightness)
         => this.UpdatePalette((Palette palette) =>
         {
-            // TODO
+            double huePrimary = palette.Primary.Base.H;
+            double hueComplementary = palette.Complementary.Base.H;
+            var p = new Palette(
+                "Temp", PaletteKind.MonochromaticComplementary,
+                huePrimary, hueComplementary, 
+                saturation, brightness,
+                0.05, 0.30);
+            palette.Primary = p.Primary;
+            palette.Complementary = p.Complementary;
             return true;
         });
 

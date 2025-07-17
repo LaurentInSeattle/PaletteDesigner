@@ -46,21 +46,30 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         this.paletteDesignerModel.UpdatePalettePrimaryWheel(wheelAngle);
     }
 
+    public void OnShadeChanged(double saturation, double brightness)
+    {
+        this.paletteDesignerModel.UpdatePalettePrimaryShade(saturation, brightness);
+    }
+
     public void Update(Palette palette)
     {
         this.HasComplementary = palette.Kind.HasComplementary();
         this.CanMoveComplementary = palette.Kind.CanMoveComplementary();
-        this.View.PrimaryMarker.Move(palette.PrimaryWheel);
+        this.View.PrimaryMarker.MoveWheelMarker(palette.PrimaryWheel);
+        var hsv = palette.Primary.Base; 
+        this.View.PrimaryShadeMarker.MoveShadeMarker(hsv.S, hsv.V);
         this.UpdateShadesBitmap(palette.Primary.Base.H);
         if (this.HasComplementary)
         {
             double complementaryWheel = (palette.PrimaryWheel + 180.0).NormalizeAngleDegrees();
-            this.View.ComplementaryMarker.Move(complementaryWheel);
+            this.View.ComplementaryMarker.MoveWheelMarker(complementaryWheel);
         }
     }
 
     public unsafe void UpdateShadesBitmap(double newHue)
     {
+        const double baseBrightness = 0.0;
+
         if (Math.Abs(this.hue - newHue) < 0.000_001)
         {
             return;
@@ -77,7 +86,6 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
                 for (int col = 0; col < width; ++col)
                 {
                     double saturation = col * step;
-                    const double baseBrightness = 0.18;
                     double rawBrightness = row * step - baseBrightness;
                     rawBrightness = MathExtensions.Clip(rawBrightness);
                     double brightness = 1.0 - rawBrightness;
