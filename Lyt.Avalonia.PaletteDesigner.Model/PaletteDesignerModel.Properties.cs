@@ -33,7 +33,11 @@ public sealed partial class PaletteDesignerModel : ModelBase
         Palette = new(),
     };
 
+    [JsonIgnore]
     public Dictionary<int, RgbColor> ColorLookupTable { get; set; } = [] ;
+
+    [JsonIgnore]
+    public NestedDictionary<int, int, HsvColor> ShadeColorMap { get; set; } = new ();
 
     #endregion Not serialized - No model changed event
 

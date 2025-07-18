@@ -313,7 +313,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock
                 Grid.Row="0"
-                Text="Hue"
+                Text="Wheel Hue"
                 Theme="{StaticResource Medium}"
                 HorizontalAlignment="Right" 
                 />
@@ -323,12 +323,12 @@
                 Minimum="0.0" Maximum="359.99"
                 SmallChange="0.5" LargeChange="10.0"
                 TickFrequency="30.0" TickPlacement="BottomRight"
-                Value="{Binding HueSliderValue}"
+                Value="{Binding WheelSliderValue}"
                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                 />
             <TextBlock
                 Grid.Row="0" Grid.Column="2"
-                Text="{Binding HueValue}"
+                Text="{Binding WheelValue}"
                 Theme="{StaticResource Medium}"
                 />
             <TextBlock

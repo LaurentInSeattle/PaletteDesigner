@@ -21,12 +21,18 @@
             Source="{Binding ColorWheel}"
             Stretch="UniformToFill"
             />
-        <images:RoundedImage
+		<images:RoundedImage
             x:Name="Shades"
             Width="300" Height="300"
-            CornerRadius="10"
+            CornerRadius="150"
             Source="{Binding Shades}"
-            />
+            >
+			<!--
+			<images:RoundedImage.RenderTransform>
+				<RotateTransform Angle="0" CenterX="0" CenterY="0" />
+			</images:RoundedImage.RenderTransform>
+			-->
+		</images:RoundedImage>
         <Canvas
             Width="700" Height="700"
             >
@@ -34,43 +40,43 @@
                 x:Name="PrimaryMarker"
                 IsVisible="True"				
                 CanMove="True"				
-				FillBrush="#404040"
-				StrokeBrush="Aquamarine"
+                FillBrush="#404040"
+                StrokeBrush="Aquamarine"
                 Canvas.Top="0" Canvas.Left="0"
                 />
             <controls:MarkerControl
                 x:Name="ComplementaryMarker"
                 IsVisible="{Binding HasComplementary}"				
                 CanMove="{Binding CanMoveComplementary}"				
-				FillBrush="#A0A0A0"
-				StrokeBrush="Aquamarine"
+                FillBrush="#A0A0A0"
+                StrokeBrush="Aquamarine"
                 Canvas.Top="0" Canvas.Left="0"
                 />
             <controls:MarkerControl
                 x:Name="Secondary1Marker"
                 IsVisible="False"
-				FillBrush="#A0A0A0"
-				StrokeBrush="Aquamarine"
+                FillBrush="#A0A0A0"
+                StrokeBrush="Aquamarine"
                 Canvas.Top="0" Canvas.Left="0"
                 />
             <controls:MarkerControl
                 x:Name="Secondary2Marker"
                 IsVisible="False"
-				FillBrush="#A0A0A0"
-				StrokeBrush="Aquamarine"
+                FillBrush="#A0A0A0"
+                StrokeBrush="Aquamarine"
                 Canvas.Top="0" Canvas.Left="0"
                 />
-			<controls:MarkerControl
+            <controls:MarkerControl
                 x:Name="PrimaryShadeMarker"
                 IsVisible="True"
                 CanMove="True"
-				IsWheel="False"
-				Dimension="13"
-				FillBrush="#404040"
-				StrokeBrush="DarkOrange"
+                IsWheel="False"
+                Dimension="13"
+                FillBrush="#404040"
+                StrokeBrush="DarkOrange"
                 Canvas.Top="300" Canvas.Left="300"
                 />
-		</Canvas>
+        </Canvas>
             
     </Grid>
 </UserControl>

@@ -81,7 +81,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     private PaletteColorViewModel complementaryShades;
 
     [ObservableProperty]
-    private double hueSliderValue;
+    private double wheelSliderValue;
 
     [ObservableProperty]
     private double saturationSliderValue;
@@ -90,7 +90,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     private double brightnessSliderValue;
 
     [ObservableProperty]
-    private string hueValue = string.Empty;
+    private string wheelValue = string.Empty;
 
     [ObservableProperty]
     private string saturationValue = string.Empty;
@@ -102,7 +102,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 
     private bool isProgrammaticUpdate; 
 
-    private double hue;
+    private double wheel;
 
     private double saturation;
 
@@ -120,23 +120,23 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     public override void OnViewLoaded()
     {
         base.OnViewLoaded();
-        this.HueSliderValue = 0.0;
+        this.WheelSliderValue = 0.0;
         this.SaturationSliderValue = 0.67;
         this.BrightnessSliderValue = 0.67;
-        this.HueValue = string.Empty;
+        this.WheelValue = string.Empty;
         this.SaturationValue = string.Empty;
         this.BrightnessValue = string.Empty;
         this.UpdateLabels();
     }
 
-    partial void OnHueSliderValueChanged(double value)
+    partial void OnWheelSliderValueChanged(double value)
     {
         if (this.isProgrammaticUpdate)
         {
             return; 
         } 
 
-        this.hue = value;
+        this.wheel = value;
         this.UpdateLabels();
         this.paletteDesignerModel.UpdatePalettePrimaryWheel(value);
     }
@@ -167,7 +167,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 
     public void UpdateLabels()
     {
-        this.HueValue = string.Format("{0:F1} \u00B0", this.hue);
+        this.WheelValue = string.Format("{0:F1} \u00B0", this.wheel);
         this.SaturationValue = string.Format("{0:F1} %", this.saturation * 100.0);
         this.BrightnessValue = string.Format("{0:F1} %", this.brightness * 100.0);
     }
@@ -183,9 +183,9 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 
         With(ref this.isProgrammaticUpdate, () =>
         {
+            this.wheel = palette.PrimaryWheel; 
+            this.WheelSliderValue = palette.PrimaryWheel;
             var primary = palette.Primary.Base;
-            this.hue = primary.H; 
-            this.HueSliderValue = primary.H;
             this.saturation = primary.S; 
             this.SaturationSliderValue = primary.S;
             this.brightness = primary.V;

@@ -21,8 +21,10 @@ global using Lyt.Framework.Interfaces.Localizing;
 global using Lyt.Framework.Interfaces.Logging;
 global using Lyt.Framework.Interfaces.Modeling;
 global using Lyt.Framework.Interfaces.Messaging;
+
 global using Lyt.Model;
 global using Lyt.Persistence;
+global using Lyt.Utilities.DataStructures;
 
 global using Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.Messaging;

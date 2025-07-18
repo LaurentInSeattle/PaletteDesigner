@@ -1,5 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Wheel;
 
+using Lyt.Utilities.DataStructures;
 using HsvColor = Model.DataObjects.HsvColor;
 
 public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
@@ -41,6 +42,8 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         this.hue = double.NaN;
     }
 
+    public NestedDictionary<int, int, HsvColor> Map => this.paletteDesignerModel.ShadeColorMap;
+
     public void OnAngleChanged(double wheelAngle)
     {
         this.paletteDesignerModel.UpdatePalettePrimaryWheel(wheelAngle);
@@ -56,7 +59,7 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         this.HasComplementary = palette.Kind.HasComplementary();
         this.CanMoveComplementary = palette.Kind.CanMoveComplementary();
         this.View.PrimaryMarker.MoveWheelMarker(palette.PrimaryWheel);
-        var hsv = palette.Primary.Base; 
+        var hsv = palette.Primary.Base;
         this.View.PrimaryShadeMarker.MoveShadeMarker(hsv.S, hsv.V);
         this.UpdateShadesBitmap(palette.Primary.Base.H);
         if (this.HasComplementary)
@@ -68,15 +71,13 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
 
     public unsafe void UpdateShadesBitmap(double newHue)
     {
-        const double baseBrightness = 0.0;
-
         if (Math.Abs(this.hue - newHue) < 0.000_001)
         {
             return;
         }
 
+        var map = this.paletteDesignerModel.ShadeColorMap;
         this.hue = newHue;
-        double step = 1.0 / 255.0;
         HsvColor hsvColor = new(this.hue, 0.0, 0.0);
         using var frameBuffer = this.Shades.Lock();
         {
@@ -85,11 +86,27 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
             {
                 for (int col = 0; col < width; ++col)
                 {
-                    double saturation = col * step;
-                    double rawBrightness = row * step - baseBrightness;
-                    rawBrightness = MathExtensions.Clip(rawBrightness);
-                    double brightness = 1.0 - rawBrightness;
-                    hsvColor.Set(this.hue, saturation, brightness);
+                    if (!map.TryGetValue(row, col, out HsvColor? mapColor) || (mapColor is null))
+                    {
+                        Debugger.Break();
+
+                        *p++ = 0;
+                        *p++ = 0;
+                        *p++ = 0;
+                        *p++ = 0;
+                        continue;
+                    }
+
+                    if (mapColor.H < 0.0)
+                    {
+                        *p++ = 0;
+                        *p++ = 0;
+                        *p++ = 0;
+                        *p++ = 0;
+                        continue;
+                    }
+
+                    hsvColor.Set(this.hue, mapColor.S, mapColor.V);
                     var rgb = hsvColor.ToRgb();
                     byte blu = (byte)rgb.B;
                     byte gre = (byte)rgb.G;

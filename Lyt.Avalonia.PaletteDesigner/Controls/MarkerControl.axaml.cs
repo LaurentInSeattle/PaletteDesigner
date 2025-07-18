@@ -119,9 +119,11 @@ public partial class MarkerControl : UserControl
             return;
         }
 
+        var map = colorWheelViewModel.Map;
 
         if (this.isWheel)
         {
+            // Relative to Canvas 
             var mousePosition = e.GetPosition(this.parentCanvas);
             int pixelX = (int)mousePosition.X;
             int pixelY = (int)mousePosition.Y;
@@ -137,27 +139,32 @@ public partial class MarkerControl : UserControl
         }
         else
         {
+            // Relative to Inner image 
             var mousePosition = e.GetPosition(this.parentShades);
             int pixelX = (int)mousePosition.X;
             int pixelY = (int)mousePosition.Y;
+            
             // Debug.WriteLine(string.Format("Mouse - X: {0}  Y: {1}", pixelX, pixelY));
 
-            // Translate to bottom left and move the maker so it follows the mouse 
-            Rect bounds = this.parentShades.Bounds;
-            double x = pixelX;
-            double y = bounds.Height - pixelY;
+            if (!map.TryGetValue(pixelY, pixelX, out Model.DataObjects.HsvColor? mapColor) ||
+                (mapColor is null))
+            {
+                return;
+            }
 
-            // Debug.WriteLine(string.Format("Bound - x: {0:F1}  y: {1:F1}", x, y));
+            if (mapColor.H < 0.0)
+            {
+                return;
+            }
 
-            double saturation = x / bounds.Width;
-            double brightness = y / bounds.Height;
-            // Debug.WriteLine(string.Format("Values - Sat: {0:F1}  Bright: {1:F1}", saturation, brightness));
+            // Move the marker so that it will follow the mouse 
+            // Need to limit the move so that the marker stays inside the inner circle 
+            this.SetValue(Canvas.LeftProperty, 200 + pixelX);
+            this.SetValue(Canvas.TopProperty, 200 + pixelY);
 
-            saturation = saturation.Clip();
-            brightness = brightness.Clip();
-            // Debug.WriteLine(string.Format("Clipped - Sat: {0:F1}  Bright: {1:F1}", saturation, brightness));
-
-            this.MoveShadeMarker(saturation, brightness);
+            // Update model 
+            double saturation = mapColor.S;
+            double brightness = mapColor.V;
             colorWheelViewModel.OnShadeChanged(saturation, brightness);
         }
     }
@@ -176,8 +183,8 @@ public partial class MarkerControl : UserControl
         int pixelY = 200 + (int)((1.0 - brightness) * bounds.Height);
 
         // Move the marker 
-        this.SetValue(Canvas.LeftProperty, pixelX);
-        this.SetValue(Canvas.TopProperty, pixelY);
+        //this.SetValue(Canvas.LeftProperty, pixelX);
+        //this.SetValue(Canvas.TopProperty, pixelY);
     }
 
     public void MoveWheelMarker(double angleDegrees)

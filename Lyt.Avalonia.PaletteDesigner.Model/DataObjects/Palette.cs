@@ -16,7 +16,7 @@ public sealed class Palette
 
     public double SecondaryWheelDistance { get; set; } = new();
 
-    public List<SvColor> SvColors { get; set; } = new();
+    // public List<SvColor> SvColors { get; set; } = new();
         
     public Shades Primary { get; set; } = new();
 
