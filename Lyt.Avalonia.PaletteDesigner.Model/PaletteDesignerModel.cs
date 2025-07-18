@@ -75,7 +75,9 @@ public sealed partial class PaletteDesignerModel : ModelBase
             base.CopyJSonRequiredProperties<PaletteDesignerModel>(model);
 
             this.LoadColorWheel();
-            this.ShadeColorMap = ShadeMap.Create(300); 
+            this.ShadeColorMap = ShadeMap.Create(300);
+            this.ReverseShadeColorMap = ShadeMap.CreateReverseShadeMap(this.ShadeColorMap);
+
             return Task.CompletedTask;
         }
         catch (Exception ex)

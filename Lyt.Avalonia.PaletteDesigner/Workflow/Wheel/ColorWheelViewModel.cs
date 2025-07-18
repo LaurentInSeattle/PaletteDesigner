@@ -42,7 +42,11 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         this.hue = double.NaN;
     }
 
-    public NestedDictionary<int, int, HsvColor> Map => this.paletteDesignerModel.ShadeColorMap;
+    public NestedDictionary<int, int, HsvColor> Map 
+            => this.paletteDesignerModel.ShadeColorMap;
+
+    public NestedDictionary<int, int, Tuple<int,int>> ReverseMap 
+            => this.paletteDesignerModel.ReverseShadeColorMap;
 
     public void OnAngleChanged(double wheelAngle)
     {
@@ -60,7 +64,7 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         this.CanMoveComplementary = palette.Kind.CanMoveComplementary();
         this.View.PrimaryMarker.MoveWheelMarker(palette.PrimaryWheel);
         var hsv = palette.Primary.Base;
-        this.View.PrimaryShadeMarker.MoveShadeMarker(hsv.S, hsv.V);
+        this.View.PrimaryShadeMarker.MoveShadeMarker(this.ReverseMap, hsv.S, hsv.V);
         this.UpdateShadesBitmap(palette.Primary.Base.H);
         if (this.HasComplementary)
         {

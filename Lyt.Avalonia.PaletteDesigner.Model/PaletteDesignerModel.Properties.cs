@@ -37,8 +37,11 @@ public sealed partial class PaletteDesignerModel : ModelBase
     public Dictionary<int, RgbColor> ColorLookupTable { get; set; } = [] ;
 
     [JsonIgnore]
-    public NestedDictionary<int, int, HsvColor> ShadeColorMap { get; set; } = new ();
+    public NestedDictionary<int, int, HsvColor> ShadeColorMap { get; set; } = [];
 
+    [JsonIgnore]
+    public NestedDictionary<int, int, Tuple<int,int>> ReverseShadeColorMap { get; set; } = [];
+    
     #endregion Not serialized - No model changed event
 
 

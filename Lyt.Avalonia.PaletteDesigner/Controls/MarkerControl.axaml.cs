@@ -1,5 +1,7 @@
 namespace Lyt.Avalonia.PaletteDesigner.Controls;
 
+using Lyt.Utilities.DataStructures;
+
 public partial class MarkerControl : UserControl
 {
     private Canvas? parentCanvas;
@@ -120,6 +122,7 @@ public partial class MarkerControl : UserControl
         }
 
         var map = colorWheelViewModel.Map;
+        var reverseMap = colorWheelViewModel.ReverseMap;
 
         if (this.isWheel)
         {
@@ -143,7 +146,7 @@ public partial class MarkerControl : UserControl
             var mousePosition = e.GetPosition(this.parentShades);
             int pixelX = (int)mousePosition.X;
             int pixelY = (int)mousePosition.Y;
-            
+
             // Debug.WriteLine(string.Format("Mouse - X: {0}  Y: {1}", pixelX, pixelY));
 
             if (!map.TryGetValue(pixelY, pixelX, out Model.DataObjects.HsvColor? mapColor) ||
@@ -157,19 +160,20 @@ public partial class MarkerControl : UserControl
                 return;
             }
 
-            // Move the marker so that it will follow the mouse 
-            // Need to limit the move so that the marker stays inside the inner circle 
-            this.SetValue(Canvas.LeftProperty, 200 + pixelX);
-            this.SetValue(Canvas.TopProperty, 200 + pixelY);
-
-            // Update model 
             double saturation = mapColor.S;
             double brightness = mapColor.V;
+
+            // Move the marker so that it will follow the mouse 
+            // Need to limit the move so that the marker stays inside the inner circle 
+            this.MoveShadeMarker(reverseMap, saturation, brightness);
+
+            // Update model 
             colorWheelViewModel.OnShadeChanged(saturation, brightness);
         }
     }
 
-    public void MoveShadeMarker(double saturation, double brightness)
+    public void MoveShadeMarker(
+        NestedDictionary<int, int, Tuple<int, int>> reverseMap, double saturation, double brightness)
     {
         if (this.parentCanvas is null || this.parentShades is null)
         {
@@ -177,14 +181,13 @@ public partial class MarkerControl : UserControl
             return;
         }
 
-        // Translate to top / left 
-        Rect bounds = this.parentShades.Bounds;
-        int pixelX = 200 + (int)(saturation * bounds.Width);
-        int pixelY = 200 + (int)((1.0 - brightness) * bounds.Height);
+        var location = reverseMap.Lookup(saturation, brightness);
+        int pixelX = 200 + location.Item2;
+        int pixelY = 200 + location.Item1;
 
         // Move the marker 
-        //this.SetValue(Canvas.LeftProperty, pixelX);
-        //this.SetValue(Canvas.TopProperty, pixelY);
+        this.SetValue(Canvas.LeftProperty, pixelX);
+        this.SetValue(Canvas.TopProperty, pixelY);
     }
 
     public void MoveWheelMarker(double angleDegrees)
