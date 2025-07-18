@@ -6,7 +6,7 @@ public enum ShadeMode
     Unlocked,
 }
 
-public enum Shade
+public enum ShadeKind
 {
     None,
 
@@ -17,32 +17,43 @@ public enum Shade
     Darker,
 }
 
+// Mutable 
+public sealed class Shade
+{
+    public Shade( /* required for serialization */)
+    {
+        this.Color = new () ;
+        this.Position = new();
+    }
+
+    public Shade(HsvColor color , Position position)
+    {
+        this.Color = color;
+        this.Position = position;
+    }
+
+    public HsvColor Color { get; set; } = new();
+
+    public Position Position { get; set; } = new();
+}
+
 public sealed class Shades
 {
-    public HsvColor Lighter { get; set; } = new();
-    public Position LighterPosition { get; set; } = new();
+    public Shade Lighter { get; set; } = new();
 
+    public Shade Light { get; set; } = new();
 
-    public HsvColor Light { get; set; } = new();
-    public Position LightPosition { get; set; } = new();
+    public Shade Base { get; set; } = new();
 
+    public Shade Dark { get; set; } = new();
 
-    public HsvColor Base { get; set; } = new();
-    public Position BasePosition { get; set; } = new();
-
-    public HsvColor Dark { get; set; } = new();
-    public Position DarkPosition { get; set; } = new();
-
-
-    public HsvColor Darker { get; set; } = new();
-    public Position DarkerPosition { get; set; } = new();
-
+    public Shade Darker { get; set; } = new();
 
     public Shades() { /* needed for serialization */ }
 
     public Shades(HsvColor baseColor, double saturationFactor, double brightnessFactor)
     {
-        this.Base = baseColor;
+        this.Base.Color = baseColor;
 
         HsvColor Shade(double multiply)
         {
@@ -50,9 +61,9 @@ public sealed class Shades
             return color.Saturate(1.0 + multiply * saturationFactor);
         }
 
-        this.Light = Shade(1.0);
-        this.Lighter = Shade(2.0);
-        this.Dark = Shade(-1.0);
-        this.Darker = Shade(-2.0);
+        this.Light.Color = Shade(1.0);
+        this.Lighter.Color = Shade(2.0);
+        this.Dark.Color = Shade(-1.0);
+        this.Darker.Color = Shade(-2.0);
     }
 }

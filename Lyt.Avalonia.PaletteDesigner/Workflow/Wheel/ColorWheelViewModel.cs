@@ -60,9 +60,9 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         this.HasComplementary = palette.Kind.HasComplementary();
         this.CanMoveComplementary = palette.Kind.CanMoveComplementary();
         this.View.PrimaryMarker.MoveWheelMarker(palette.PrimaryWheel);
-        var position = palette.Primary.BasePosition;
+        var position = palette.Primary.Base.Position;
         this.View.PrimaryShadeMarker.MoveShadeMarker(position.X, position.Y);
-        var hsv = palette.Primary.Base;
+        var hsv = palette.Primary.Base.Color;
         this.UpdateShadesBitmap(hsv.H);
         if (this.HasComplementary)
         {

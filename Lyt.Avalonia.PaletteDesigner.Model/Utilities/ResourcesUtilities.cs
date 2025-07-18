@@ -1,4 +1,4 @@
-﻿namespace Lyt.Avalonia.PaletteDesigner.Utilities;
+﻿namespace Lyt.Avalonia.PaletteDesigner.Model.Utilities;
 
 public static class ResourcesUtilities
 {

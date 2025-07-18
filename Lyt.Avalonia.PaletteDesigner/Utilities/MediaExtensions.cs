@@ -31,4 +31,7 @@ public static class MediaExtensions
                 (int)Math.Round(rgb.B));
     }
 
+    public static SolidColorBrush ToBrush(this Shade shade) => shade.Color.ToBrush();
+
+    public static string ToRgbHexString(this Shade shade) => shade.Color.ToRgbHexString();
 }

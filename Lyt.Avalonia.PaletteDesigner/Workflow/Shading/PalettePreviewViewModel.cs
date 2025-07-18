@@ -185,11 +185,12 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         {
             this.wheel = palette.PrimaryWheel; 
             this.WheelSliderValue = palette.PrimaryWheel;
-            var primary = palette.Primary.Base;
-            this.saturation = primary.S; 
-            this.SaturationSliderValue = primary.S;
-            this.brightness = primary.V;
-            this.BrightnessSliderValue = primary.V;
+            var primaryColor = palette.Primary.Base.Color;
+
+            this.saturation = primaryColor.S; 
+            this.SaturationSliderValue = primaryColor.S;
+            this.brightness = primaryColor.V;
+            this.BrightnessSliderValue = primaryColor.V;
             this.UpdateLabels();
         });
 

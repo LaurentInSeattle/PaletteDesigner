@@ -30,4 +30,3 @@ global using Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.Messaging;
 global using Lyt.Avalonia.PaletteDesigner.Model.Utilities;
 
-

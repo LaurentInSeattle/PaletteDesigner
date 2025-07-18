@@ -37,10 +37,10 @@ public partial class PaletteColorViewModel : ViewModel<PaletteColorView>
     {
         this.Show();
 
-        this.LighterBrush = shades.Lighter.ToBrush();
-        this.LightBrush = shades.Light.ToBrush();
-        this.BaseBrush = shades.Base.ToBrush();
-        this.DarkBrush = shades.Dark.ToBrush();
-        this.DarkerBrush = shades.Darker.ToBrush();
+        this.LighterBrush = shades.Lighter.Color.ToBrush();
+        this.LightBrush = shades.Light.Color.ToBrush();
+        this.BaseBrush = shades.Base.Color.ToBrush();
+        this.DarkBrush = shades.Dark.Color.ToBrush();
+        this.DarkerBrush = shades.Darker.Color.ToBrush();
     }
 }

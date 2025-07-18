@@ -178,11 +178,11 @@ public partial class MarkerControl : UserControl
         }
 
         // Need to limit the move so that the marker stays inside the inner circle 
-        double half = 150.0; 
+        double half = PaletteDesignerModel.ShadesImageDimension / 2.0;
         double x = (pixelX - half) / half;
         double y = (half - pixelY) / half;
-        double radius = Math.Min( 1.0, Math.Sqrt(x * x + y * y));
-        double angle = Math.Atan2(y,x);
+        double radius = Math.Min(1.0, Math.Sqrt(x * x + y * y));
+        double angle = Math.Atan2(y, x);
         x = radius * Math.Cos(angle);
         y = radius * Math.Sin(angle);
 
@@ -190,8 +190,12 @@ public partial class MarkerControl : UserControl
         pixelY = (int)(half - y * half);
 
         // Translate into canvas 
-        pixelX += 200 ;
-        pixelY += 200 ;
+        pixelX += 200;
+        pixelY += 200;
+
+        // Adjust for marker size  
+        pixelX -= (int)(this.Dimension / 2.0);
+        pixelY -= (int)(this.Dimension / 2.0);
 
         // Move the marker 
         this.SetValue(Canvas.LeftProperty, pixelX);
@@ -216,6 +220,10 @@ public partial class MarkerControl : UserControl
         Rect bounds = this.parentCanvas.Bounds;
         int pixelX = (int)(x + bounds.Width / 2);
         int pixelY = (int)(bounds.Height / 2 - y);
+
+        // Adjust for marker size  
+        pixelX -= (int)(this.Dimension / 2.0);
+        pixelY -= (int)(this.Dimension / 2.0);
 
         // Move the marker 
         this.SetValue(Canvas.LeftProperty, pixelX);

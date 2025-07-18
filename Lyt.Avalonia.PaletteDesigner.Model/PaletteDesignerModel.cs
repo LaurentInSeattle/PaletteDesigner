@@ -1,10 +1,10 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
-using Lyt.Avalonia.PaletteDesigner.Utilities;
 using static Lyt.Persistence.FileManagerModel;
 
 public sealed partial class PaletteDesignerModel : ModelBase
 {
+    public const int ShadesImageDimension = 300; 
     public const string DefaultLanguage = "it-IT";
     private const string AstroPicModelFilename = "PaletteDesignerData";
 
@@ -75,7 +75,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
             base.CopyJSonRequiredProperties<PaletteDesignerModel>(model);
 
             this.LoadColorWheel();
-            this.ShadeColorMap = ShadeMap.Create(300);
+            this.ShadeColorMap = ShadeMap.Create(PaletteDesignerModel.ShadesImageDimension);
 
             return Task.CompletedTask;
         }
