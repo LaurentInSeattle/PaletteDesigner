@@ -1,6 +1,6 @@
 namespace Lyt.Avalonia.PaletteDesigner.Controls;
 
-using Lyt.Utilities.DataStructures;
+using System;
 
 public partial class MarkerControl : UserControl
 {
@@ -122,7 +122,6 @@ public partial class MarkerControl : UserControl
         }
 
         var map = colorWheelViewModel.Map;
-        var reverseMap = colorWheelViewModel.ReverseMap;
 
         if (this.isWheel)
         {
@@ -160,20 +159,17 @@ public partial class MarkerControl : UserControl
                 return;
             }
 
-            double saturation = mapColor.S;
-            double brightness = mapColor.V;
-
             // Move the marker so that it will follow the mouse 
-            // Need to limit the move so that the marker stays inside the inner circle 
-            this.MoveShadeMarker(reverseMap, saturation, brightness);
+            this.MoveShadeMarker(pixelX, pixelY);
 
             // Update model 
-            colorWheelViewModel.OnShadeChanged(saturation, brightness);
+            double saturation = mapColor.S;
+            double brightness = mapColor.V;
+            colorWheelViewModel.OnShadeChanged(pixelX, pixelY, saturation, brightness);
         }
     }
 
-    public void MoveShadeMarker(
-        NestedDictionary<int, int, Tuple<int, int>> reverseMap, double saturation, double brightness)
+    public void MoveShadeMarker(int pixelX, int pixelY)
     {
         if (this.parentCanvas is null || this.parentShades is null)
         {
@@ -181,9 +177,21 @@ public partial class MarkerControl : UserControl
             return;
         }
 
-        var location = reverseMap.Lookup(saturation, brightness);
-        int pixelX = 200 + location.Item2;
-        int pixelY = 200 + location.Item1;
+        // Need to limit the move so that the marker stays inside the inner circle 
+        double half = 150.0; 
+        double x = (pixelX - half) / half;
+        double y = (half - pixelY) / half;
+        double radius = Math.Min( 1.0, Math.Sqrt(x * x + y * y));
+        double angle = Math.Atan2(y,x);
+        x = radius * Math.Cos(angle);
+        y = radius * Math.Sin(angle);
+
+        pixelX = (int)(x * half + half);
+        pixelY = (int)(half - y * half);
+
+        // Translate into canvas 
+        pixelX += 200 ;
+        pixelY += 200 ;
 
         // Move the marker 
         this.SetValue(Canvas.LeftProperty, pixelX);

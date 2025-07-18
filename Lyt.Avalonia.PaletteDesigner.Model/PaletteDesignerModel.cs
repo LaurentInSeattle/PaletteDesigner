@@ -76,7 +76,6 @@ public sealed partial class PaletteDesignerModel : ModelBase
 
             this.LoadColorWheel();
             this.ShadeColorMap = ShadeMap.Create(300);
-            this.ReverseShadeColorMap = ShadeMap.CreateReverseShadeMap(this.ShadeColorMap);
 
             return Task.CompletedTask;
         }

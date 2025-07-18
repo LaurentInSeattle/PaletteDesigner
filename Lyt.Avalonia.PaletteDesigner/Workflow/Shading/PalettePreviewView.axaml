@@ -23,7 +23,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="100" />
             <RowDefinition Height="600" />
-            <RowDefinition Height="150" />
+            <RowDefinition Height="120" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150" />
@@ -319,7 +319,7 @@
                 />
             <Slider
                 Grid.Column="1"
-                Margin="8 4 8 4"
+                Margin="8 0 8 0"
                 Minimum="0.0" Maximum="359.99"
                 SmallChange="0.5" LargeChange="10.0"
                 TickFrequency="30.0" TickPlacement="BottomRight"
@@ -339,7 +339,7 @@
                 />
             <Slider
                 Grid.Row="1" Grid.Column="1"
-                Margin="8 4 8 4"
+                Margin="8 0 8 0"
                 Minimum="0.0" Maximum="1.0" 
                 SmallChange="0.01" LargeChange="0.05"
                 TickFrequency="0.1" TickPlacement="BottomRight"
@@ -359,7 +359,7 @@
                 />
             <Slider
                 Grid.Row="2" Grid.Column="1"
-                Margin="8 4 8 4"
+                Margin="8 0 8 0"
                 Minimum="0.0" Maximum="1.0"
                 SmallChange="0.01" LargeChange="0.05"
                 TickFrequency="0.1" TickPlacement="BottomRight"

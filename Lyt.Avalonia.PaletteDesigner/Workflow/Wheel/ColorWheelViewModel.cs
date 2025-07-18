@@ -45,17 +45,14 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
     public NestedDictionary<int, int, HsvColor> Map 
             => this.paletteDesignerModel.ShadeColorMap;
 
-    public NestedDictionary<int, int, Tuple<int,int>> ReverseMap 
-            => this.paletteDesignerModel.ReverseShadeColorMap;
-
     public void OnAngleChanged(double wheelAngle)
     {
         this.paletteDesignerModel.UpdatePalettePrimaryWheel(wheelAngle);
     }
 
-    public void OnShadeChanged(double saturation, double brightness)
+    public void OnShadeChanged(int pixelX, int pixelY, double saturation, double brightness)
     {
-        this.paletteDesignerModel.UpdatePalettePrimaryShade(saturation, brightness);
+        this.paletteDesignerModel.UpdatePalettePrimaryShade(pixelX, pixelY, saturation, brightness);
     }
 
     public void Update(Palette palette)
@@ -63,9 +60,10 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         this.HasComplementary = palette.Kind.HasComplementary();
         this.CanMoveComplementary = palette.Kind.CanMoveComplementary();
         this.View.PrimaryMarker.MoveWheelMarker(palette.PrimaryWheel);
+        var position = palette.Primary.BasePosition;
+        this.View.PrimaryShadeMarker.MoveShadeMarker(position.X, position.Y);
         var hsv = palette.Primary.Base;
-        this.View.PrimaryShadeMarker.MoveShadeMarker(this.ReverseMap, hsv.S, hsv.V);
-        this.UpdateShadesBitmap(palette.Primary.Base.H);
+        this.UpdateShadesBitmap(hsv.H);
         if (this.HasComplementary)
         {
             double complementaryWheel = (palette.PrimaryWheel + 180.0).NormalizeAngleDegrees();
@@ -82,7 +80,6 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
 
         var map = this.paletteDesignerModel.ShadeColorMap;
         this.hue = newHue;
-        HsvColor hsvColor = new(this.hue, 0.0, 0.0);
         using var frameBuffer = this.Shades.Lock();
         {
             byte* p = (byte*)frameBuffer.Address;
@@ -110,13 +107,11 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
                         continue;
                     }
 
-                    hsvColor.Set(this.hue, mapColor.S, mapColor.V);
-                    var rgb = hsvColor.ToRgb();
-                    byte blu = (byte)rgb.B;
-                    byte gre = (byte)rgb.G;
-                    byte red = (byte)rgb.R;
-                    *p++ = blu;
-                    *p++ = gre;
+                    HsvColor.ToRgb(
+                        this.hue, mapColor.S, mapColor.V,
+                        out byte red, out byte green, out byte blue);
+                    *p++ = blue;
+                    *p++ = green;
                     *p++ = red;
                     *p++ = alpha;
                 }

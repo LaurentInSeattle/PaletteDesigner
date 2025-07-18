@@ -89,11 +89,22 @@ public sealed class HsvColor
 
     public static RgbColor ToRgb(double hue, double saturation, double brightness)
     {
+        ToRgb(hue, saturation, brightness, out byte red, out byte green, out byte blue);
+        return new RgbColor(red, green,blue);
+    }
+
+    public static void ToRgb(
+        double hue, double saturation, double brightness,
+        out byte red, out byte green, out byte blue)
+    {
         if (saturation == 0)
         {
             // No saturation: gray 
             double x = Math.Round(brightness * 255.0);
-            return new RgbColor(x, x, x);
+            red = (byte)x; 
+            green = (byte)x; 
+            blue = (byte)x;
+            return ;
         }
 
         // the color wheel consists of 6 sectors. Figure out which sector you're in.
@@ -150,6 +161,9 @@ public sealed class HsvColor
                 break;
         }
 
-        return new RgbColor(Math.Round(r * 255.0), Math.Round(g * 255.0), Math.Round(b * 255.0));
+        red = (byte)Math.Round(r * 255.0);
+        green = (byte)Math.Round(g * 255.0);
+        blue = (byte)Math.Round(b * 255.0);
+
     }
 }

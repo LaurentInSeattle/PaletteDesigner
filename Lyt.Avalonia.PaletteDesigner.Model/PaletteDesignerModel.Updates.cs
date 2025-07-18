@@ -50,7 +50,9 @@ public sealed partial class PaletteDesignerModel : ModelBase
             return true;
         });
 
-    public void UpdatePalettePrimaryShade(double saturation, double brightness)
+    public void UpdatePalettePrimaryShade(
+        int pixelX, int pixelY,
+        double saturation, double brightness)
         => this.UpdatePalette((Palette palette) =>
         {
             double huePrimary = palette.Primary.Base.H;
@@ -58,6 +60,23 @@ public sealed partial class PaletteDesignerModel : ModelBase
             var p = new Palette(
                 "Temp", PaletteKind.MonochromaticComplementary,
                 huePrimary, hueComplementary, 
+                saturation, brightness,
+                0.05, 0.30);
+            palette.Primary = p.Primary;
+            palette.Primary.BasePosition = new Position(pixelX, pixelY);
+            palette.Complementary = p.Complementary;
+            return true;
+        });
+
+    public void UpdatePalettePrimaryShade(
+        double saturation, double brightness)
+        => this.UpdatePalette((Palette palette) =>
+        {
+            double huePrimary = palette.Primary.Base.H;
+            double hueComplementary = palette.Complementary.Base.H;
+            var p = new Palette(
+                "Temp", PaletteKind.MonochromaticComplementary,
+                huePrimary, hueComplementary,
                 saturation, brightness,
                 0.05, 0.30);
             palette.Primary = p.Primary;
