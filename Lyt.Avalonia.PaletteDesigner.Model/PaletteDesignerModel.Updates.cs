@@ -66,6 +66,8 @@ public sealed partial class PaletteDesignerModel : ModelBase
             palette.Primary = p.Primary;
             palette.Primary.Base.Position = new Position(pixelX, pixelY);
             palette.Complementary = p.Complementary;
+            huePrimary = palette.Primary.Base.Color.H;
+            hueComplementary = palette.Complementary.Base.Color.H;
             this.UpdateShades(huePrimary, palette.Primary, pixelX, pixelY);
             this.UpdateShades(hueComplementary, palette.Complementary, pixelX, pixelY);
             return true;
@@ -84,6 +86,8 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 0.05, 0.30);
             palette.Primary = p.Primary;
             palette.Complementary = p.Complementary;
+            huePrimary = palette.Primary.Base.Color.H;
+            hueComplementary = palette.Complementary.Base.Color.H;
             var position = palette.Primary.Base.Position;
             this.UpdateShades(huePrimary, palette.Primary, position.X, position.Y);
             this.UpdateShades(hueComplementary, palette.Complementary, position.X, position.Y);
@@ -117,10 +121,10 @@ public sealed partial class PaletteDesignerModel : ModelBase
 
     private void UpdateShades(double hue, Shades shades, int X, int Y)
     {
-        const double More = 1.5;
-        const double Less = 1.2;
-        const double brightnessStep = 0.15;
-        const double saturationStep = 0.15;
+        const double More = 1.25;
+        const double Less = 1.0;
+        const double brightnessStep = 0.1;
+        const double saturationStep = 0.1;
         const int brightnessStepPixel = (int)(brightnessStep * PaletteDesignerModel.ShadesImageDimension);
         const int saturationStepPixel = (int)(saturationStep * PaletteDesignerModel.ShadesImageDimension); ;
 
@@ -150,7 +154,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
             if (this.ShadeColorMap.TryGetValue(position.X, position.Y, out HsvColor? shadeColor) &&
                 shadeColor is not null)
             {
-                shadeColor = shadeColor.WithH(hue);
+                shadeColor.H = hue;
                 return new Shade(shadeColor, position);
             }
 
