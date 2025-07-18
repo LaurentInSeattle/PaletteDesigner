@@ -27,11 +27,6 @@
             CornerRadius="150"
             Source="{Binding Shades}"
             >
-			<!--
-			<images:RoundedImage.RenderTransform>
-				<RotateTransform Angle="0" CenterX="0" CenterY="0" />
-			</images:RoundedImage.RenderTransform>
-			-->
 		</images:RoundedImage>
         <Canvas
             Width="700" Height="700"
@@ -66,8 +61,49 @@
                 StrokeBrush="Aquamarine"
                 Canvas.Top="0" Canvas.Left="0"
                 />
-            <controls:MarkerControl
-                x:Name="PrimaryShadeMarker"
+			<controls:MarkerControl
+                x:Name="LighterShadeMarker"
+                IsVisible="True"
+                CanMove="False"
+                IsWheel="False"
+                Dimension="13"
+                FillBrush="#A0A0A0"
+                StrokeBrush="Aquamarine"
+                Canvas.Top="300" Canvas.Left="300"
+                />
+			<controls:MarkerControl
+                x:Name="LightShadeMarker"
+                IsVisible="True"
+                CanMove="False"
+                IsWheel="False"
+                Dimension="13"
+                FillBrush="#A0A0A0"
+                StrokeBrush="Aquamarine"
+                Canvas.Top="300" Canvas.Left="300"
+                />
+			<controls:MarkerControl
+                x:Name="DarkShadeMarker"
+                IsVisible="True"
+                CanMove="False"
+                IsWheel="False"
+                Dimension="13"
+                FillBrush="#A0A0A0"
+                StrokeBrush="Aquamarine"
+                Canvas.Top="300" Canvas.Left="300"
+                />
+			<controls:MarkerControl
+                x:Name="DarkerShadeMarker"
+                IsVisible="True"
+                CanMove="False"
+                IsWheel="False"
+                Dimension="13"
+                FillBrush="#A0A0A0"
+                StrokeBrush="Aquamarine"
+                Canvas.Top="300" Canvas.Left="300"
+                />
+			<!-- This one on top so that it can be moved -->
+			<controls:MarkerControl
+                x:Name="BaseShadeMarker"
                 IsVisible="True"
                 CanMove="True"
                 IsWheel="False"
@@ -76,7 +112,7 @@
                 StrokeBrush="DarkOrange"
                 Canvas.Top="300" Canvas.Left="300"
                 />
-        </Canvas>
+		</Canvas>
             
     </Grid>
 </UserControl>

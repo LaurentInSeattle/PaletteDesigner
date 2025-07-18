@@ -4,7 +4,8 @@ using static Lyt.Persistence.FileManagerModel;
 
 public sealed partial class PaletteDesignerModel : ModelBase
 {
-    public const int ShadesImageDimension = 300; 
+    public const int ShadesImageDimension = 300;
+    public const int ShadesImageMax = ShadesImageDimension-1;
     public const string DefaultLanguage = "it-IT";
     private const string AstroPicModelFilename = "PaletteDesignerData";
 

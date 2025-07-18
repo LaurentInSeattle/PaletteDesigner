@@ -61,9 +61,9 @@ public sealed class Shades
             return color.Saturate(1.0 + multiply * saturationFactor);
         }
 
-        this.Light.Color = Shade(1.0);
-        this.Lighter.Color = Shade(2.0);
-        this.Dark.Color = Shade(-1.0);
-        this.Darker.Color = Shade(-2.0);
+        //this.Light.Color = Shade(1.0);
+        //this.Lighter.Color = Shade(2.0);
+        //this.Dark.Color = Shade(-1.0);
+        //this.Darker.Color = Shade(-2.0);
     }
 }

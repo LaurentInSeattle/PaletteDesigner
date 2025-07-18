@@ -1,7 +1,5 @@
 namespace Lyt.Avalonia.PaletteDesigner.Controls;
 
-using System;
-
 public partial class MarkerControl : UserControl
 {
     private Canvas? parentCanvas;
@@ -19,6 +17,7 @@ public partial class MarkerControl : UserControl
         this.PointerReleased += this.OnPointerReleased;
         this.Loaded += this.OnLoaded;
         this.isWheel = true;
+        this.canMove = true;
     }
 
     private void OnLoaded(object? sender, RoutedEventArgs e)

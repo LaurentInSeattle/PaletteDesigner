@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
-using Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
-
 public sealed partial class PaletteDesignerModel : ModelBase
 {
     public bool UpdatePaletteKind(PaletteKind paletteKind)
@@ -48,7 +46,6 @@ public sealed partial class PaletteDesignerModel : ModelBase
                     0.05, 0.30);
                 palette.Primary = p.Primary;
                 palette.Complementary = p.Complementary;
-
             }
 
             return true;
@@ -69,6 +66,8 @@ public sealed partial class PaletteDesignerModel : ModelBase
             palette.Primary = p.Primary;
             palette.Primary.Base.Position = new Position(pixelX, pixelY);
             palette.Complementary = p.Complementary;
+            this.UpdateShades(huePrimary, palette.Primary, pixelX, pixelY);
+            this.UpdateShades(hueComplementary, palette.Complementary, pixelX, pixelY);
             return true;
         });
 
@@ -85,8 +84,12 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 0.05, 0.30);
             palette.Primary = p.Primary;
             palette.Complementary = p.Complementary;
-            var position = palette.Primary.Base.Position; 
-            this.UpdateShades(palette.Primary, position.X, position.Y); 
+            var position = palette.Primary.Base.Position;
+            this.UpdateShades(huePrimary, palette.Primary, position.X, position.Y);
+            this.UpdateShades(hueComplementary, palette.Complementary, position.X, position.Y);
+            //this.UpdateShades(palette.Primary, position.X, position.Y);
+            //this.UpdateShades(palette.Primary, position.X, position.Y);
+            //this.UpdateShades(palette.Primary, position.X, position.Y);
             return true;
         });
 
@@ -112,10 +115,12 @@ public sealed partial class PaletteDesignerModel : ModelBase
         return result;
     }
 
-    private void UpdateShades(Shades shades, int X, int Y)
+    private void UpdateShades(double hue, Shades shades, int X, int Y)
     {
-        const double brightnessStep = 0.2;
-        const double saturationStep = 0.2;
+        const double More = 1.5;
+        const double Less = 1.2;
+        const double brightnessStep = 0.15;
+        const double saturationStep = 0.15;
         const int brightnessStepPixel = (int)(brightnessStep * PaletteDesignerModel.ShadesImageDimension);
         const int saturationStepPixel = (int)(saturationStep * PaletteDesignerModel.ShadesImageDimension); ;
 
@@ -130,6 +135,8 @@ public sealed partial class PaletteDesignerModel : ModelBase
             y = radius * Math.Sin(angle);
             int newX = (int)(x * half + half);
             int newY = (int)(half - y * half);
+            newX = newX.Clip(PaletteDesignerModel.ShadesImageMax);
+            newY = newY.Clip(PaletteDesignerModel.ShadesImageMax);
             return new Position { X = newX, Y = newY };
         }
 
@@ -143,15 +150,16 @@ public sealed partial class PaletteDesignerModel : ModelBase
             if (this.ShadeColorMap.TryGetValue(position.X, position.Y, out HsvColor? shadeColor) &&
                 shadeColor is not null)
             {
+                shadeColor = shadeColor.WithH(hue);
                 return new Shade(shadeColor, position);
             }
 
             throw new Exception("Ouch!");
         }
 
-        shades.Lighter = CreateShade(-2.0, -2.0);
-        shades.Light = CreateShade(-1.0, -1.0);
-        shades.Dark = CreateShade(1.0, 1.0);
-        shades.Darker = CreateShade(2.0, 2.0);
+        shades.Lighter = CreateShade(-More, -More);
+        shades.Light = CreateShade(-Less, -Less);
+        shades.Dark = CreateShade(Less, Less);
+        shades.Darker = CreateShade(More, More);
     }
 }

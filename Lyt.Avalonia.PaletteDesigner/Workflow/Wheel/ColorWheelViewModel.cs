@@ -1,6 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Wheel;
 
-using Lyt.Utilities.DataStructures;
 using HsvColor = Model.DataObjects.HsvColor;
 
 public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
@@ -60,8 +59,18 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         this.HasComplementary = palette.Kind.HasComplementary();
         this.CanMoveComplementary = palette.Kind.CanMoveComplementary();
         this.View.PrimaryMarker.MoveWheelMarker(palette.PrimaryWheel);
+
         var position = palette.Primary.Base.Position;
-        this.View.PrimaryShadeMarker.MoveShadeMarker(position.X, position.Y);
+        this.View.BaseShadeMarker.MoveShadeMarker(position.X, position.Y);
+        position = palette.Primary.Lighter.Position;
+        this.View.LighterShadeMarker.MoveShadeMarker(position.X, position.Y);
+        position = palette.Primary.Light.Position;
+        this.View.LightShadeMarker.MoveShadeMarker(position.X, position.Y);
+        position = palette.Primary.Dark.Position;
+        this.View.DarkShadeMarker.MoveShadeMarker(position.X, position.Y);
+        position = palette.Primary.Darker.Position;
+        this.View.DarkerShadeMarker.MoveShadeMarker(position.X, position.Y);
+
         var hsv = palette.Primary.Base.Color;
         this.UpdateShadesBitmap(hsv.H);
         if (this.HasComplementary)
