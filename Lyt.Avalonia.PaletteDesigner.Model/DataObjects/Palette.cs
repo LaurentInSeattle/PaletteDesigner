@@ -49,7 +49,7 @@ public sealed class Palette
         this.shadeMap = shadeMap;
     }
 
-    public void UpdateMonochromatic(
+    public void UpdatePrimaryWheelMonochromatic(
         double primaryWheel )
     {
         this.PrimaryWheel = primaryWheel;
@@ -67,8 +67,15 @@ public sealed class Palette
             this.Primary.Base.Color = hsvColorPrimary;
         }
 
-        this.Primary.Update(this.shadeMap);
+        var position = this.Primary.Base.Position; 
+        this.Primary.Update(this.shadeMap, position.X, position.Y);
     }
+
+    public void UpdatePrimaryShadeMonochromatic(int pixelX, int pixelY)
+    {
+        this.Primary.Update(this.shadeMap, pixelX, pixelY);
+    }
+
 
     public void UpdateMonochromaticComplementary(double huePrimary)
     {
@@ -120,32 +127,11 @@ public sealed class Palette
     //    throw new NotImplementedException("Later...");
     //}
 
-    //private void GenerateMonochromatic(
-    //    double hue, double saturation, double brightness,
-    //    double saturationFactor, double brightnessFactor)
-    //{
-    //    HsvColor primary = new(hue, saturation, brightness);
-    //    this.Primary = new Shades(primary, saturationFactor, brightnessFactor);
-    //}
-
-    //private void GenerateMonochromaticComplementary(
-    //    double huePrimary, double hueComplementary, 
-    //    double saturation, double brightness,
-    //    double saturationFactor, double brightnessFactor)
-    //{
-    //    HsvColor primary = new(huePrimary, saturation, brightness);
-    //    HsvColor complementary = new(hueComplementary, saturation, brightness);
-
-    //    // TODO !
-    //    this.Primary = new Shades(primary, saturationFactor, brightnessFactor);
-    //    this.Complementary = new Shades(complementary, saturationFactor, brightnessFactor);
-    //}
-
     public int PrimaryAngle () => (int)Math.Round(this.PrimaryWheel * 10.0);
 
     public int ComplementaryAngle()
     {
         double oppposite = (this.PrimaryWheel + 180.0).NormalizeAngleDegrees();
         return (int)Math.Round(oppposite * 10.0);
-    } 
+    }
 }

@@ -12,7 +12,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
     public void UpdatePalettePrimaryWheel(double primaryWheel)
         => this.UpdatePalette((Palette palette) =>
         {
-            palette.UpdateMonochromatic(primaryWheel);
+            palette.UpdatePrimaryWheelMonochromatic(primaryWheel);
 
 
             //var lookup = this.ColorLookupTable;
@@ -46,42 +46,10 @@ public sealed partial class PaletteDesignerModel : ModelBase
             return true;
         });
 
-    public void UpdatePalettePrimaryShade(
-        int pixelX, int pixelY,
-        double saturation, double brightness)
+    public void UpdatePalettePrimaryShade(int pixelX, int pixelY)
         => this.UpdatePalette((Palette palette) =>
         {
-            //double huePrimary = palette.Primary.Base.Color.H;
-            //double hueComplementary = palette.Complementary.Base.Color.H;
-            //palette.Primary.Base.Position = new Position(pixelX, pixelY);
-            //huePrimary = palette.Primary.Base.Color.H;
-            //hueComplementary = palette.Complementary.Base.Color.H;
-            //this.UpdateShades(huePrimary, palette.Primary, pixelX, pixelY);
-            //this.UpdateShades(hueComplementary, palette.Complementary, pixelX, pixelY);
-            return true;
-        });
-
-    public void UpdatePalettePrimaryShade(
-        double saturation, double brightness)
-        => this.UpdatePalette((Palette palette) =>
-        {
-            //double huePrimary = palette.Primary.Base.Color.H;
-            //double hueComplementary = palette.Complementary.Base.Color.H;
-            //var p = new Palette(
-            //    "Temp", PaletteKind.MonochromaticComplementary,
-            //    huePrimary, hueComplementary,
-            //    saturation, brightness,
-            //    0.05, 0.30);
-            //palette.Primary = p.Primary;
-            //palette.Complementary = p.Complementary;
-            //huePrimary = palette.Primary.Base.Color.H;
-            //hueComplementary = palette.Complementary.Base.Color.H;
-            //var position = palette.Primary.Base.Position;
-            //this.UpdateShades(huePrimary, palette.Primary, position.X, position.Y);
-            //this.UpdateShades(hueComplementary, palette.Complementary, position.X, position.Y);
-            ////this.UpdateShades(palette.Primary, position.X, position.Y);
-            ////this.UpdateShades(palette.Primary, position.X, position.Y);
-            ////this.UpdateShades(palette.Primary, position.X, position.Y);
+            palette.UpdatePrimaryShadeMonochromatic(pixelX, pixelY);
             return true;
         });
 

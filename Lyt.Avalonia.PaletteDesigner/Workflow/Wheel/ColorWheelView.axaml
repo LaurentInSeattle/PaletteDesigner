@@ -1,118 +1,118 @@
 <UserControl 
-    x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Wheel.ColorWheelView"
-    xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Wheel"
-    x:DataType="vm:ColorWheelViewModel" 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Wheel.ColorWheelView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Wheel"
+	x:DataType="vm:ColorWheelViewModel" 
 
-    xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
-    
-    xmlns:images="using:Lyt.Avalonia.Controls.Images"	
-    xmlns:controls="clr-namespace:Lyt.Avalonia.PaletteDesigner.Controls"
-    >
-    <Grid
-        Width="700" Height="700"
-        > 
-        <Image
-            x:Name="Wheel"
-            Width="700" Height="700"
-            Source="{Binding ColorWheel}"
-            Stretch="UniformToFill"
-            />
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
+	
+	xmlns:images="using:Lyt.Avalonia.Controls.Images"	
+	xmlns:controls="clr-namespace:Lyt.Avalonia.PaletteDesigner.Controls"
+	>
+	<Grid
+		Width="700" Height="700"
+		> 
+		<Image
+			x:Name="Wheel"
+			Width="700" Height="700"
+			Source="{Binding ColorWheel}"
+			Stretch="UniformToFill"
+			/>
 		<images:RoundedImage
-            x:Name="Shades"
-            Width="300" Height="300"
-            CornerRadius="150"
-            Source="{Binding Shades}"
-            >
+			x:Name="Shades"
+			Width="300" Height="300"
+			CornerRadius="150"
+			Source="{Binding Shades}"
+			>
 		</images:RoundedImage>
-        <Canvas
-            Width="700" Height="700"
-            >
-            <controls:MarkerControl 
-                x:Name="PrimaryMarker"
-                IsVisible="True"				
-                CanMove="True"				
-                FillBrush="#404040"
-                StrokeBrush="Aquamarine"
-                Canvas.Top="0" Canvas.Left="0"
-                />
-            <controls:MarkerControl
-                x:Name="ComplementaryMarker"
-                IsVisible="{Binding HasComplementary}"				
-                CanMove="{Binding CanMoveComplementary}"				
-                FillBrush="#A0A0A0"
-                StrokeBrush="Aquamarine"
-                Canvas.Top="0" Canvas.Left="0"
-                />
-            <controls:MarkerControl
-                x:Name="Secondary1Marker"
-                IsVisible="False"
-                FillBrush="#A0A0A0"
-                StrokeBrush="Aquamarine"
-                Canvas.Top="0" Canvas.Left="0"
-                />
-            <controls:MarkerControl
-                x:Name="Secondary2Marker"
-                IsVisible="False"
-                FillBrush="#A0A0A0"
-                StrokeBrush="Aquamarine"
-                Canvas.Top="0" Canvas.Left="0"
-                />
+		<Canvas
+			Width="700" Height="700"
+			>
+			<controls:MarkerControl 
+				x:Name="PrimaryMarker"
+				IsVisible="True"				
+				CanMove="True"				
+				FillBrush="#404040"
+				StrokeBrush="Aquamarine"
+				Canvas.Top="0" Canvas.Left="0"
+				/>
 			<controls:MarkerControl
-                x:Name="LighterShadeMarker"
-                IsVisible="True"
-                CanMove="False"
-                IsWheel="False"
-                Dimension="13"
-                FillBrush="#A0A0A0"
-                StrokeBrush="Aquamarine"
-                Canvas.Top="300" Canvas.Left="300"
-                />
+				x:Name="ComplementaryMarker"
+				IsVisible="{Binding HasComplementary}"				
+				CanMove="{Binding CanMoveComplementary}"				
+				FillBrush="#A0A0A0"
+				StrokeBrush="Aquamarine"
+				Canvas.Top="0" Canvas.Left="0"
+				/>
 			<controls:MarkerControl
-                x:Name="LightShadeMarker"
-                IsVisible="True"
-                CanMove="False"
-                IsWheel="False"
-                Dimension="13"
-                FillBrush="#A0A0A0"
-                StrokeBrush="Aquamarine"
-                Canvas.Top="300" Canvas.Left="300"
-                />
+				x:Name="Secondary1Marker"
+				IsVisible="False"
+				FillBrush="#A0A0A0"
+				StrokeBrush="Aquamarine"
+				Canvas.Top="0" Canvas.Left="0"
+				/>
 			<controls:MarkerControl
-                x:Name="DarkShadeMarker"
-                IsVisible="True"
-                CanMove="False"
-                IsWheel="False"
-                Dimension="13"
-                FillBrush="#A0A0A0"
-                StrokeBrush="Aquamarine"
-                Canvas.Top="300" Canvas.Left="300"
-                />
+				x:Name="Secondary2Marker"
+				IsVisible="False"
+				FillBrush="#A0A0A0"
+				StrokeBrush="Aquamarine"
+				Canvas.Top="0" Canvas.Left="0"
+				/>
 			<controls:MarkerControl
-                x:Name="DarkerShadeMarker"
-                IsVisible="True"
-                CanMove="False"
-                IsWheel="False"
-                Dimension="13"
-                FillBrush="#A0A0A0"
-                StrokeBrush="Aquamarine"
-                Canvas.Top="300" Canvas.Left="300"
-                />
+				x:Name="LighterShadeMarker"
+				IsVisible="True"
+				CanMove="False"
+				IsWheel="False"
+				Dimension="13"
+				FillBrush="#A0A0A0"
+				StrokeBrush="DarkGreen"
+				Canvas.Top="300" Canvas.Left="300"
+				/>
+			<controls:MarkerControl
+				x:Name="LightShadeMarker"
+				IsVisible="True"
+				CanMove="False"
+				IsWheel="False"
+				Dimension="13"
+				FillBrush="#A0A0A0"
+				StrokeBrush="DarkGreen"
+				Canvas.Top="300" Canvas.Left="300"
+				/>
+			<controls:MarkerControl
+				x:Name="DarkShadeMarker"
+				IsVisible="True"
+				CanMove="False"
+				IsWheel="False"
+				Dimension="13"
+				FillBrush="#A0A0A0"
+				StrokeBrush="DarkGreen"
+				Canvas.Top="300" Canvas.Left="300"
+				/>
+			<controls:MarkerControl
+				x:Name="DarkerShadeMarker"
+				IsVisible="True"
+				CanMove="False"
+				IsWheel="False"
+				Dimension="13"
+				FillBrush="#A0A0A0"
+				StrokeBrush="DarkGreen"
+				Canvas.Top="300" Canvas.Left="300"
+				/>
 			<!-- This one on top so that it can be moved -->
 			<controls:MarkerControl
-                x:Name="BaseShadeMarker"
-                IsVisible="True"
-                CanMove="True"
-                IsWheel="False"
-                Dimension="13"
-                FillBrush="#404040"
-                StrokeBrush="DarkOrange"
-                Canvas.Top="300" Canvas.Left="300"
-                />
+				x:Name="BaseShadeMarker"
+				IsVisible="True"
+				CanMove="True"
+				IsWheel="False"
+				Dimension="13"
+				FillBrush="#404040"
+				StrokeBrush="DarkOrange"
+				Canvas.Top="300" Canvas.Left="300"
+				/>
 		</Canvas>
-            
-    </Grid>
+			
+	</Grid>
 </UserControl>

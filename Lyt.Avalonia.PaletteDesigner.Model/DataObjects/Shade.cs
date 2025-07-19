@@ -21,39 +21,21 @@ public sealed class Shade
     [JsonRequired]
     public Position Position { get; set; }
 
-    public void Update(
-        double baseHue,
-        ShadeMap shadeColorMap)
+    public void Update(double baseHue, ShadeMap shadeMap, int x, int y)
     {
-        Update( baseHue,shadeColorMap,100, 100,1.0, 1.0); 
-    } 
-
-    public void Update(
-        double baseHue, 
-        ShadeMap shadeColorMap, 
-        int X, int Y,
-        double saturationFactor, double brightnessFactor)
-    {
-        //const double More = 1.25;
-        //const double Less = 1.0;
-        const double brightnessStep = 0.1;
-        const double saturationStep = 0.1;
-        const int brightnessStepPixel = (int)(brightnessStep * PaletteDesignerModel.ShadesImageDimension);
-        const int saturationStepPixel = (int)(saturationStep * PaletteDesignerModel.ShadesImageDimension); ;
-
-        var position =
-            new Position(
-                (int)(X + saturationFactor * saturationStepPixel),
-                (int)(Y + brightnessFactor * brightnessStepPixel));
+        var position =new Position(x, y);
         position.Adjust();
-        if (shadeColorMap.TryGetValue(position.X, position.Y, out HsvColor? shadeColor) &&
-            shadeColor is not null)
+
+        // Shade map organized in row / col 
+        if (shadeMap.TryGetValue(position, out SvShade? svShade) &&
+            svShade is not null)
         {
-            this.Color = new HsvColor( baseHue, shadeColor.S, shadeColor.V);
+            this.Color = new HsvColor( baseHue, svShade.S, svShade.V);
             this.Position = position;
         }
         else
         {
+            // Should never happen ! 
             throw new Exception("Ouch!");
         }
     } 

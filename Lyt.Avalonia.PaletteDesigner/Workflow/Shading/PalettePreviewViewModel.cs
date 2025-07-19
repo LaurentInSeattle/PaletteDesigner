@@ -77,6 +77,18 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     [ObservableProperty]
     private PaletteColorViewModel primaryShades;
 
+    // Cannot be an observable property because DataContext is set programmatically 
+    private int PrimaryShadesColumnSpan
+    {
+        set
+        {
+            if (this.IsBound)
+            {
+                this.View.PrimaryShades.SetValue(Grid.ColumnSpanProperty, value);
+            } 
+        } 
+    }
+
     [ObservableProperty]
     private PaletteColorViewModel complementaryShades;
 
@@ -114,6 +126,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         this.PrimaryShadesValues = new ShadesValuesViewModel("Primary");
         this.ComplementaryShadesValues = new ShadesValuesViewModel("Complementary");
         this.PrimaryShades = new ();
+        this.PrimaryShadesColumnSpan = 4;
         this.ComplementaryShades = new();
     }
 
@@ -150,7 +163,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 
         this.saturation = value;
         this.UpdateLabels();
-        this.paletteDesignerModel.UpdatePalettePrimaryShade(this.saturation, this.brightness);
+        //this.paletteDesignerModel.UpdatePalettePrimaryShade(this.saturation, this.brightness);
     }
 
     partial void OnBrightnessSliderValueChanged(double value)
@@ -162,7 +175,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 
         this.brightness = value;
         this.UpdateLabels();
-        this.paletteDesignerModel.UpdatePalettePrimaryShade(this.saturation, this.brightness);
+        //this.paletteDesignerModel.UpdatePalettePrimaryShade(this.saturation, this.brightness);
     }
 
     public void UpdateLabels()
@@ -226,6 +239,11 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
                 // colorCount == 1 => Complementary same as primary 
                 shades = palette.Complementary;
                 hasComplementary = true;
+                this.PrimaryShadesColumnSpan = 3;
+            }
+            else
+            {
+                this.PrimaryShadesColumnSpan = 4;
             }
 
             this.ComplementaryLighterBrush = shades.Lighter.ToBrush();
@@ -236,11 +254,14 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         }
         else // colorCount == 3 or 4 
         {
+            this.PrimaryShadesColumnSpan = 1;
+
             if (colorCount == 4)
             {
                 // colorCount == 3 => Complementary same as primary 
                 shades = palette.Complementary;
                 hasComplementary = true;
+                this.PrimaryShadesColumnSpan = 1;
             }
 
             this.ComplementaryLighterBrush = shades.Lighter.ToBrush();

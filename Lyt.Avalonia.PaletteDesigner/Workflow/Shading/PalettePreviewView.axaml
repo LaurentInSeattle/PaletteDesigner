@@ -52,8 +52,8 @@
                 HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
                 />
             <vm:PaletteColorView
+				x:Name="PrimaryShades"
                 Grid.Column="0"
-                Grid.ColumnSpan="3"
                 DataContext="{Binding PrimaryShades}"
                 HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
                 />

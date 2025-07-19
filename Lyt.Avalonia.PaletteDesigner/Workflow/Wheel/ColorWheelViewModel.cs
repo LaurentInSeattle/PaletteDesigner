@@ -1,5 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Wheel;
 
+using Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
 using HsvColor = Model.DataObjects.HsvColor;
 
 public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
@@ -39,6 +40,8 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         var bitmap = new WriteableBitmap(pixelSize, dpi, PixelFormat.Bgra8888, AlphaFormat.Opaque);
         this.shades = bitmap;
         this.hue = double.NaN;
+        this.HasComplementary = false;
+        this.CanMoveComplementary = false;
     }
 
     public NestedDictionary<int, int, HsvColor> Map => this.paletteDesignerModel.ShadeColorMap;
@@ -50,7 +53,7 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
 
     public void OnShadeChanged(int pixelX, int pixelY, double saturation, double brightness)
     {
-        this.paletteDesignerModel.UpdatePalettePrimaryShade(pixelX, pixelY, saturation, brightness);
+        this.paletteDesignerModel.UpdatePalettePrimaryShade(pixelX, pixelY);
     }
 
     public void Update(Palette palette)

@@ -36,4 +36,19 @@ public sealed class ShadeMap : NestedDictionary<int, int, HsvColor>
             }
         }
     }
+
+    public bool TryGetValue(Position position, out SvShade? svShade)
+    {
+        svShade = null;
+        if (this.TryGetValue(position.Y, position.X, out HsvColor? hsvColor))
+        {
+            if (hsvColor is not null)
+            {
+                svShade = new SvShade(hsvColor.S, hsvColor.V);
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
