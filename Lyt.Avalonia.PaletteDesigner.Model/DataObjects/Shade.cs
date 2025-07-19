@@ -24,7 +24,8 @@ public sealed class Shade
     public void Update(
         double baseHue,
         ShadeMap shadeColorMap)
-    { 
+    {
+        Update( baseHue,shadeColorMap,100, 100,1.0, 1.0); 
     } 
 
     public void Update(
@@ -48,8 +49,7 @@ public sealed class Shade
         if (shadeColorMap.TryGetValue(position.X, position.Y, out HsvColor? shadeColor) &&
             shadeColor is not null)
         {
-            shadeColor.H = baseHue;
-            this.Color = shadeColor;
+            this.Color = new HsvColor( baseHue, shadeColor.S, shadeColor.V);
             this.Position = position;
         }
         else
