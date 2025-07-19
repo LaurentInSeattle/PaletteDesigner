@@ -27,7 +27,7 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
         Schedule.OnUiThread(250, () =>
         {
             // For now 
-            this.paletteDesignerModel.UpdatePalettePrimaryWheel(90.0);
+            this.OnModelUpdated(null);
         }, DispatcherPriority.Background);
         
     }

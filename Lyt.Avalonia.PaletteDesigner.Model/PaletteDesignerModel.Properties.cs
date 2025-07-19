@@ -23,21 +23,13 @@ public sealed partial class PaletteDesignerModel : ModelBase
     public bool ModelLoadedNotified { get; set; } = false;
 
     [JsonIgnore]
-    public Project ActiveProject { get; set; } = new()
-    {
-        Name = "Empty",
-        Format = ResourceFormat.Unknown,
-        FolderPath = string.Empty,
-        Created = DateTime.Now,
-        LastUpdated = DateTime.Now,
-        Palette = new(),
-    };
+    public Project? ActiveProject { get; set; } 
 
     [JsonIgnore]
     public Dictionary<int, RgbColor> ColorLookupTable { get; set; } = [] ;
 
     [JsonIgnore]
-    public NestedDictionary<int, int, HsvColor> ShadeColorMap { get; set; } = [];
+    public ShadeMap ShadeColorMap { get; set; } = new(1);
     
     #endregion Not serialized - No model changed event
 

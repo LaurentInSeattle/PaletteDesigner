@@ -5,7 +5,9 @@ using static Lyt.Persistence.FileManagerModel;
 public sealed partial class PaletteDesignerModel : ModelBase
 {
     public const int ShadesImageDimension = 300;
-    public const int ShadesImageMax = ShadesImageDimension-1;
+    public const int ShadesImageMax = ShadesImageDimension - 1;
+    public const int ShadesImageCenter = ShadesImageDimension / 2;
+
     public const string DefaultLanguage = "it-IT";
     private const string AstroPicModelFilename = "PaletteDesignerData";
 
@@ -76,7 +78,20 @@ public sealed partial class PaletteDesignerModel : ModelBase
             base.CopyJSonRequiredProperties<PaletteDesignerModel>(model);
 
             this.LoadColorWheel();
-            this.ShadeColorMap = ShadeMap.Create(PaletteDesignerModel.ShadesImageDimension);
+            this.ShadeColorMap = new ShadeMap(PaletteDesignerModel.ShadesImageDimension);
+            Project project = new()
+            {
+                Name = "Empty",
+                Format = ResourceFormat.Unknown,
+                FolderPath = string.Empty,
+                Created = DateTime.Now,
+                LastUpdated = DateTime.Now,
+                Palette = new Palette(this.ColorLookupTable, this.ShadeColorMap)
+                {
+                    Name = "Default"
+                },
+            }; 
+            this.ActiveProject = project;
 
             return Task.CompletedTask;
         }

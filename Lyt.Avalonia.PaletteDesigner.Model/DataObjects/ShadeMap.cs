@@ -1,15 +1,13 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
 
-public static class ShadeMap
+public sealed class ShadeMap : NestedDictionary<int, int, HsvColor>
 {
     private const double SqrtOfTwo = 1.414_213_6;
     private const double SqrtOfTwoByTwo = SqrtOfTwo / 2.0;
     private const double BaseBrightness = 0.0;
 
-    public static NestedDictionary<int, int, HsvColor> Create(int dimension)
+    public ShadeMap(int dimension) : base(dimension, dimension)
     {
-        NestedDictionary<int, int, HsvColor> map = new(dimension, dimension);
-
         double step = 1.0 / dimension;
         double half = dimension / 2.0;
         for (int row = 0; row < dimension; ++row)
@@ -34,10 +32,8 @@ public static class ShadeMap
                 double brightness = (1.0 - row * step) * SqrtOfTwo;
                 brightness = BaseBrightness + brightness;
                 brightness = MathExtensions.Clip(brightness);
-                map.Add(row, col, new HsvColor(1.0, saturation, brightness));
+                this.Add(row, col, new HsvColor(1.0, saturation, brightness));
             }
         }
-
-        return map;
     }
 }

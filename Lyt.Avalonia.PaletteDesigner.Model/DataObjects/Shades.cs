@@ -17,53 +17,49 @@ public enum ShadeKind
     Darker,
 }
 
-// Mutable 
-public sealed class Shade
-{
-    public Shade( /* required for serialization */)
-    {
-        this.Color = new () ;
-        this.Position = new();
-    }
-
-    public Shade(HsvColor color , Position position)
-    {
-        this.Color = color;
-        this.Position = position;
-    }
-
-    public HsvColor Color { get; set; } = new();
-
-    public Position Position { get; set; } = new();
-}
-
 public sealed class Shades
 {
+    [JsonRequired]
     public Shade Lighter { get; set; } = new();
 
+    [JsonRequired]
     public Shade Light { get; set; } = new();
 
+    [JsonRequired]
     public Shade Base { get; set; } = new();
 
+    [JsonRequired]
     public Shade Dark { get; set; } = new();
 
+    [JsonRequired]
     public Shade Darker { get; set; } = new();
 
     public Shades() { /* needed for serialization */ }
 
-    public Shades(HsvColor baseColor, double saturationFactor, double brightnessFactor)
+    public void Update (ShadeMap shadeMap )
     {
-        this.Base.Color = baseColor;
-
-        HsvColor Shade(double multiply)
-        {
-            HsvColor color = baseColor.Intensify(1.0 + multiply * brightnessFactor);
-            return color.Saturate(1.0 + multiply * saturationFactor);
-        }
-
-        //this.Light.Color = Shade(1.0);
-        //this.Lighter.Color = Shade(2.0);
-        //this.Dark.Color = Shade(-1.0);
-        //this.Darker.Color = Shade(-2.0);
+        double baseHue = this.Base.Color.H; 
+        this.Lighter.Update(baseHue, shadeMap);
+        this.Light.Update(baseHue, shadeMap);
+        this.Dark.Update(baseHue, shadeMap);
+        this.Darker.Update(baseHue, shadeMap);
     }
+
+    //public Shades(HsvColor baseColor, double saturationFactor, double brightnessFactor)
+    //{
+    //    this.Base = new();
+    //    this.Base.Color = baseColor;
+
+    //    //const double More = 1.0;
+    //    //const double Less = 1.0;
+
+    //    this.Light = new();
+    //    this.Light.Update(
+    //        baseColor.H, 
+
+    //        saturationFactor, brightnessFactor);
+    //    this.Lighter = new();
+    //    this.Dark = new();
+    //    this.Darker = new();
+    //}
 }

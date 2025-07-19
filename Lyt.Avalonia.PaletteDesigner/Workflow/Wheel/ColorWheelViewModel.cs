@@ -41,8 +41,7 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         this.hue = double.NaN;
     }
 
-    public NestedDictionary<int, int, HsvColor> Map 
-            => this.paletteDesignerModel.ShadeColorMap;
+    public NestedDictionary<int, int, HsvColor> Map => this.paletteDesignerModel.ShadeColorMap;
 
     public void OnAngleChanged(double wheelAngle)
     {
