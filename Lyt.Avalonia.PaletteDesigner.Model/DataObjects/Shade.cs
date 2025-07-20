@@ -21,24 +21,41 @@ public sealed class Shade
     [JsonRequired]
     public Position Position { get; set; }
 
-    public void Update(double baseHue, ShadeMap shadeMap, int x, int y)
+    // new absolute position 
+    public void MoveTo(double baseHue, ShadeMap shadeMap, int x, int y)
     {
-        var position =new Position(x, y);
+        var position = new Position(x, y);
         position.Adjust();
+        this.Position = position;
+        this.UpdateColors(baseHue, shadeMap);
+    }
 
+    // new relative position 
+    public void MoveBy(double baseHue, ShadeMap shadeMap, Position delta)
+    {
+        var position = this.Position.MoveBy(delta);
+        position.Adjust();
+        this.Position = position;
+        this.UpdateColors(baseHue, shadeMap); 
+    }
+
+    // new base hue , no position change 
+    public void UpdateColors(double baseHue, ShadeMap shadeMap)
+    {
         // Shade map organized in row / col 
-        if (shadeMap.TryGetValue(position, out SvShade? svShade) &&
-            svShade is not null)
+        var position = this.Position;
+        if (shadeMap.TryGetValue(position, out SvShade? svShade) && svShade is not null)
         {
-            this.Color = new HsvColor( baseHue, svShade.S, svShade.V);
-            this.Position = position;
+            this.Color = new HsvColor(baseHue, svShade.S, svShade.V);
         }
         else
         {
             // Should never happen ! 
             throw new Exception("Ouch!");
         }
-    } 
+    }
+
+    public Position Delta(Position position) => this.Position.Delta(position);
 }
 
 

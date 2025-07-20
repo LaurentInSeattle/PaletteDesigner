@@ -63,8 +63,9 @@
 				/>
 			<controls:MarkerControl
 				x:Name="LighterShadeMarker"
+				Tag="Lighter"
 				IsVisible="True"
-				CanMove="False"
+				CanMove="True"
 				IsWheel="False"
 				Dimension="13"
 				FillBrush="#A0A0A0"
@@ -73,8 +74,9 @@
 				/>
 			<controls:MarkerControl
 				x:Name="LightShadeMarker"
+				Tag="Light"
 				IsVisible="True"
-				CanMove="False"
+				CanMove="True"
 				IsWheel="False"
 				Dimension="13"
 				FillBrush="#A0A0A0"
@@ -83,8 +85,9 @@
 				/>
 			<controls:MarkerControl
 				x:Name="DarkShadeMarker"
+				Tag="Dark"
 				IsVisible="True"
-				CanMove="False"
+				CanMove="True"
 				IsWheel="False"
 				Dimension="13"
 				FillBrush="#A0A0A0"
@@ -93,8 +96,9 @@
 				/>
 			<controls:MarkerControl
 				x:Name="DarkerShadeMarker"
+				Tag="Darker"
 				IsVisible="True"
-				CanMove="False"
+				CanMove="True"
 				IsWheel="False"
 				Dimension="13"
 				FillBrush="#A0A0A0"

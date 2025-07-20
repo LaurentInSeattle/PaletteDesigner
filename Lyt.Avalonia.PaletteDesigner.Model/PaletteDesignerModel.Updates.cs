@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
+using Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
+
 public sealed partial class PaletteDesignerModel : ModelBase
 {
     public bool UpdatePaletteKind(PaletteKind paletteKind)
@@ -46,10 +48,24 @@ public sealed partial class PaletteDesignerModel : ModelBase
             return true;
         });
 
-    public void UpdatePalettePrimaryShade(int pixelX, int pixelY)
+    public void ResetShades()
         => this.UpdatePalette((Palette palette) =>
         {
-            palette.UpdatePrimaryShadeMonochromatic(pixelX, pixelY);
+            palette.ResetShades();
+            return true;
+        });
+
+    public void UpdateAllPalettePrimaryShade(int pixelX, int pixelY)
+        => this.UpdatePalette((Palette palette) =>
+        {
+            palette.UpdateAllPrimaryShadeMonochromatic(pixelX, pixelY);
+            return true;
+        });
+
+    public void UpdateOnePalettePrimaryShade(ShadeKind shadeKind, int pixelX, int pixelY)
+        => this.UpdatePalette((Palette palette) =>
+        {
+            palette.UpdateOnePrimaryShadeMonochromatic(shadeKind, pixelX, pixelY);
             return true;
         });
 

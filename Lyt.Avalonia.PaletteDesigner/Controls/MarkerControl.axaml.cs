@@ -162,9 +162,13 @@ public partial class MarkerControl : UserControl
             this.MoveShadeMarker(pixelX, pixelY);
 
             // Update model 
-            double saturation = mapColor.S;
-            double brightness = mapColor.V;
-            colorWheelViewModel.OnShadeChanged(pixelX, pixelY, saturation, brightness);
+            ShadeKind shadeKind = ShadeKind.None;
+            if (  this.Tag is string tag )
+            {
+                shadeKind = Enum.TryParse(tag, out ShadeKind kind) ? kind : ShadeKind.None;                
+            }
+
+            colorWheelViewModel.OnShadeChanged(shadeKind, pixelX, pixelY);
         }
     }
 
@@ -225,6 +229,7 @@ public partial class MarkerControl : UserControl
         pixelY -= (int)(this.Dimension / 2.0);
 
         // Move the marker 
+        // Debug.WriteLine("Move wheel to X:{0}  Y: {1}", pixelX, pixelY);
         this.SetValue(Canvas.LeftProperty, pixelX);
         this.SetValue(Canvas.TopProperty, pixelY);
     }

@@ -24,7 +24,18 @@ public sealed class Position(
         int newY = (int)(half - y * half);
         newX = newX.Clip(PaletteDesignerModel.ShadesImageMax);
         newY = newY.Clip(PaletteDesignerModel.ShadesImageMax);
-        this.X = newX; 
-        this.Y = newY ;
+        this.X = newX;
+        this.Y = newY;
     }
+
+    public Position MoveBy(Position position)
+        => new(this.X + position.X, this.Y + position.Y);
+
+    public Position Delta(Position position)
+        => new(this.X - position.X, this.Y - position.Y);
+
+    public double Distance(Position position)
+        => Math.Sqrt(
+            (this.X - position.X) * (this.X - position.X) +
+            (this.Y - position.Y) * (this.Y - position.Y));
 }

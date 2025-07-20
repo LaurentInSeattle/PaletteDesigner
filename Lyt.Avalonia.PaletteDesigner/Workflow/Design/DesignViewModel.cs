@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Design;
 
+using Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
+
 public sealed partial class DesignViewModel : ViewModel<DesignView>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
@@ -24,15 +26,26 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
         base.OnViewLoaded();
 
         // Need to wait so that canvas is ready 
-        Schedule.OnUiThread(250, () =>
+        Schedule.OnUiThread(550, () =>
         {
             // For now 
+            if (this.paletteDesignerModel.ActiveProject is null )
+            {
+                Debugger.Break();
+                return;
+            }
+
+            var palette = this.Palette;
+            palette.Reset();
             this.OnModelUpdated(null);
         }, DispatcherPriority.Background);
         
     }
 
-    public Palette Palette => this.paletteDesignerModel.ActiveProject.Palette;
+    public Palette Palette => 
+        this.paletteDesignerModel.ActiveProject == null ? 
+            throw new Exception("No active project")  :
+            this.paletteDesignerModel.ActiveProject.Palette;
 
     private void OnModelUpdated(ModelUpdatedMessage? _)
     {

@@ -46,14 +46,26 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
 
     public NestedDictionary<int, int, HsvColor> Map => this.paletteDesignerModel.ShadeColorMap;
 
+    public void OnResetShades()
+    {
+        this.paletteDesignerModel.ResetShades();
+    }
+
     public void OnAngleChanged(double wheelAngle)
     {
         this.paletteDesignerModel.UpdatePalettePrimaryWheel(wheelAngle);
     }
 
-    public void OnShadeChanged(int pixelX, int pixelY, double saturation, double brightness)
+    public void OnShadeChanged(ShadeKind shadeKind, int pixelX, int pixelY)
     {
-        this.paletteDesignerModel.UpdatePalettePrimaryShade(pixelX, pixelY);
+        if (shadeKind == ShadeKind.None)
+        {
+            this.paletteDesignerModel.UpdateAllPalettePrimaryShade(pixelX, pixelY);
+        }
+        else
+        {
+            this.paletteDesignerModel.UpdateOnePalettePrimaryShade(shadeKind, pixelX, pixelY);
+        }
     }
 
     public void Update(Palette palette)

@@ -49,8 +49,21 @@ public sealed class Palette
         this.shadeMap = shadeMap;
     }
 
-    public void UpdatePrimaryWheelMonochromatic(
-        double primaryWheel )
+    public void Reset ()
+    {
+        this.PrimaryWheel = 90.0;
+        this.ResetShades(); 
+    }
+
+    public void ResetShades()
+    {
+        this.Primary.Reset(this.shadeMap);
+        this.Complementary.Reset(this.shadeMap);
+        this.Secondary1.Reset(this.shadeMap);
+        this.Secondary2.Reset(this.shadeMap);
+    }
+
+    public void UpdatePrimaryWheelMonochromatic(double primaryWheel )
     {
         this.PrimaryWheel = primaryWheel;
         if (this.colorWheel.TryGetValue(this.PrimaryAngle(), out RgbColor? rgbColorPrimary))
@@ -68,12 +81,17 @@ public sealed class Palette
         }
 
         var position = this.Primary.Base.Position; 
-        this.Primary.Update(this.shadeMap, position.X, position.Y);
+        this.Primary.UpdateAllShadeColors(this.shadeMap);
     }
 
-    public void UpdatePrimaryShadeMonochromatic(int pixelX, int pixelY)
+    public void UpdateAllPrimaryShadeMonochromatic(int pixelX, int pixelY)
     {
-        this.Primary.Update(this.shadeMap, pixelX, pixelY);
+        this.Primary.UpdateAll(this.shadeMap, pixelX, pixelY);
+    }
+
+    public void UpdateOnePrimaryShadeMonochromatic(ShadeKind shadeKind, int pixelX, int pixelY)
+    {
+        this.Primary.UpdateOne(this.shadeMap, shadeKind, pixelX, pixelY);
     }
 
 
