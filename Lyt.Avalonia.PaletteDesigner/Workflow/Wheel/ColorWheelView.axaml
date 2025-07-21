@@ -126,12 +126,29 @@
 			Behaviour="Tap"
 			VerticalAlignment="Top" HorizontalAlignment="Center"
 			Width="82" Height="56"
-			Margin="4 8 4 8"
+			Margin="-80 0 0 0"
 			ButtonBackground="BorderlessRectangle"
 			Text="Monochrome"
 			>
 			<glyphs:GlyphButton.XamlContent>
 				<controls:MonoChromeControl
+					Foreground="BlueViolet"
+					VerticalAlignment="Top" HorizontalAlignment="Center"
+					/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			VerticalAlignment="Top" HorizontalAlignment="Center"
+			Width="82" Height="56"
+			Margin="80 0 0 0"
+			ButtonBackground="BorderlessRectangle"
+			Text="Mono. Compl."
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:MonoChromeComplementaryControl
 					Foreground="BlueViolet"
 					VerticalAlignment="Top" HorizontalAlignment="Center"
 					/>

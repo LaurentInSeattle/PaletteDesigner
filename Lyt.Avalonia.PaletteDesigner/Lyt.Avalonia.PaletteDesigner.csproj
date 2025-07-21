@@ -59,6 +59,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Controls\QuattroChromeControl.axaml.cs">
+	    <DependentUpon>QuattroChromeControl.axaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Controls\TriChromeControl.axaml.cs">
+	    <DependentUpon>TriChromeControl.axaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Controls\SquareControl.axaml.cs">
+	    <DependentUpon>SquareControl.axaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Controls\TriadComplementaryControl.axaml.cs">
+	    <DependentUpon>TriadComplementaryControl.axaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Controls\TriadControl.axaml.cs">
+	    <DependentUpon>TriadControl.axaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Controls\DuoChromeControl.axaml.cs">
+	    <DependentUpon>DuoChromeControl.axaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Controls\MonoChromeComplementaryControl.axaml.cs">
+	    <DependentUpon>MonoChromeComplementaryControl.axaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Workflow\Shading\PalettePreviewView.axaml.cs">
 	    <DependentUpon>PalettePreviewView.axaml</DependentUpon>
 	  </Compile>
