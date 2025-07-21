@@ -6,8 +6,11 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d" d:DesignWidth="80" d:DesignHeight="80"
+	Foreground="{StaticResource LightAqua_0_100}"
 	>
-	<Grid>
+	<Grid
+		Width="80" Height="80"
+		>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="16"/>
 			<RowDefinition Height="*"/>
@@ -17,23 +20,15 @@
 			Margin="6"
 			Grid.RowSpan="3"
 			Fill="Transparent"
-			Stroke="{StaticResource LightAqua_1_100}"
+			Stroke="{ReflectionBinding $parent[UserControl].Foreground}"
 			StrokeThickness="2.0"
 			/>
 		<Ellipse
 			Margin="0"
 			Height="14" Width="14"
 			Grid.RowSpan="1"
-			Fill="{StaticResource LightAqua_0_100}"
-			Stroke="{StaticResource LightAqua_0_100}"
-			StrokeThickness="2.0"
-			/>
-		<Ellipse			
-			Margin="0"
-			Height="14" Width="14"
-			Grid.Row="2" Grid.RowSpan="1"
-			Fill="{StaticResource OrangePeel_1_100}"
-			Stroke="{StaticResource OrangePeel_1_100}"
+			Fill="{ReflectionBinding $parent[UserControl].Foreground}"
+			Stroke="{ReflectionBinding $parent[UserControl].Foreground}"
 			StrokeThickness="2.0"
 			/>
 	</Grid>

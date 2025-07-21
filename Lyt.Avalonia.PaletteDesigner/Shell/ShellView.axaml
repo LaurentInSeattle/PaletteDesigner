@@ -219,7 +219,7 @@
 						GlyphSource="swipe_down"
 						ButtonBackground="BorderlessRectangle"
 						GlyphStrokeThickness="0"
-						Text="{DynamicResource Shell.Debug}"
+						Text="{DynamicResource Shell.Dump}"
 						Command="{Binding OnDebug}"
 						/>
 					<glyphs:GlyphButton
