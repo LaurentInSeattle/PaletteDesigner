@@ -56,6 +56,16 @@ public sealed class Shade
     }
 
     public Position Delta(Position position) => this.Position.Delta(position);
+
+    [Conditional("DEBUG")]
+    public void Dump(string name)
+    {
+        Debug.WriteLine(name);
+        Debug.Indent();
+        Debug.WriteLine(this.Position.ToString());
+        Debug.WriteLine(this.Color.ToString());
+        Debug.Unindent();
+    }
 }
 
 

@@ -22,6 +22,17 @@ public enum PaletteKind
     Square,                                 // Two free colors, two complementaries
 }
 
+// Identify the wheel marker 
+public enum WheelKind
+{
+    Unknown,
+
+    Primary,
+    Complementary,  
+    Secondary1, 
+    Secondary2, 
+}
+
 public static class PaletteKindExtensions
 {
     public static int ColorCount(this PaletteKind kind)
@@ -34,13 +45,25 @@ public static class PaletteKindExtensions
             _ => 0, // Unknown 
         };
 
+    // All except Triad and Monochromatic
+    public static bool HasComplementaryMarker(this PaletteKind kind)
+        => kind == PaletteKind.MonochromaticComplementary ||
+           kind == PaletteKind.Duochromatic ||
+           kind == PaletteKind.Trichromatic ||
+           kind == PaletteKind.Quadrichromatic ||
+           kind == PaletteKind.TriadComplementary ||
+           kind == PaletteKind.Square;
+
+    // True when complementary is automatically set 
     public static bool HasComplementary(this PaletteKind kind)
         => kind == PaletteKind.MonochromaticComplementary ||
            kind == PaletteKind.TriadComplementary ||
            kind == PaletteKind.Square;
 
-    public static bool CanMoveComplementary(this PaletteKind kind)
+    // Only for free color models 
+    public static bool CanMoveComplementaryMarker(this PaletteKind kind)
         => kind == PaletteKind.Duochromatic ||
+           kind == PaletteKind.Trichromatic ||
            kind == PaletteKind.Quadrichromatic;
 }
 

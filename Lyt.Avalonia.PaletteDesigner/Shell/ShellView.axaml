@@ -216,6 +216,18 @@
 						HorizontalAlignment="Left" VerticalAlignment="Center"
 						Width="140" Height="56"
 						Margin="8 4 8 4"
+						GlyphSource="swipe_down"
+						ButtonBackground="BorderlessRectangle"
+						GlyphStrokeThickness="0"
+						Text="{DynamicResource Shell.Debug}"
+						Command="{Binding OnDebug}"
+						/>
+					<glyphs:GlyphButton
+						Style="{StaticResource ToolbarIconButton}"
+						Behaviour="Tap"
+						HorizontalAlignment="Left" VerticalAlignment="Center"
+						Width="140" Height="56"
+						Margin="8 4 8 4"
 						GlyphSource="dismiss"
 						ButtonBackground="BorderlessRectangle"
 						GlyphStrokeThickness="0"

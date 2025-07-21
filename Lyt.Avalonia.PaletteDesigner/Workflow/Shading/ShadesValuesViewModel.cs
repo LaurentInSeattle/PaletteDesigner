@@ -26,10 +26,10 @@ public sealed partial class ShadesValuesViewModel : ViewModel<ShadesValuesView>
     public ShadesValuesViewModel(string name)
     {
         this.Name = name;
-        this.Show(); 
+        this.Show();
     }
 
-    public void Show ( bool show = true ) => this.IsVisible = show;
+    public void Show(bool show = true) => this.IsVisible = show;
 
     public void Update(Shades shades)
     {
@@ -40,4 +40,6 @@ public sealed partial class ShadesValuesViewModel : ViewModel<ShadesValuesView>
         this.Dark = shades.Dark.ToRgbHexString();
         this.Darker = shades.Darker.ToRgbHexString();
     }
+
+    public void Update(string name) => this.Name = name;
 }

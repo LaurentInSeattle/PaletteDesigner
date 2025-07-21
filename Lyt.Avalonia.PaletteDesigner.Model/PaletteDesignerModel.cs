@@ -88,7 +88,8 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 LastUpdated = DateTime.Now,
                 Palette = new Palette(this.ColorLookupTable, this.ShadeColorMap)
                 {
-                    Name = "Default"
+                    Name = "Default", 
+                    Kind = PaletteKind.Duochromatic,
                 },
             }; 
             this.ActiveProject = project;

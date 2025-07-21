@@ -4,6 +4,14 @@ using static GeneralExtensions;
 
 public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 {
+    private readonly ShadesValuesViewModel PrimaryShadesValues;
+
+    private readonly ShadesValuesViewModel Secondary1ShadesValues;
+
+    private readonly ShadesValuesViewModel Secondary2ShadesValues;
+
+    private readonly ShadesValuesViewModel ComplementaryShadesValues;
+
     #region The 20 observable brush properties 
 
     [ObservableProperty]
@@ -68,14 +76,20 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 
     #endregion 20 observable brush properties 
 
-    [ObservableProperty] 
-    private ShadesValuesViewModel primaryShadesValues;
-
-    [ObservableProperty] 
-    private ShadesValuesViewModel complementaryShadesValues;
-
     [ObservableProperty]
     private PaletteColorViewModel primaryShades;
+
+    [ObservableProperty]
+    private ShadesValuesViewModel topLeftShadesValues;
+
+    [ObservableProperty]
+    private ShadesValuesViewModel bottomLeftShadesValues;
+
+    [ObservableProperty]
+    private ShadesValuesViewModel topRightShadesValues;
+
+    [ObservableProperty]
+    private ShadesValuesViewModel bottomRightShadesValues;
 
     // Cannot be an observable property because DataContext is set programmatically 
     private int PrimaryShadesColumnSpan
@@ -120,11 +134,19 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 
     private double brightness;
 
+
     public PalettePreviewViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
         this.PrimaryShadesValues = new ShadesValuesViewModel("Primary");
         this.ComplementaryShadesValues = new ShadesValuesViewModel("Complementary");
+        this.Secondary1ShadesValues = new ShadesValuesViewModel("Secondary #1");
+        this.Secondary2ShadesValues = new ShadesValuesViewModel("Secondary #2");
+        this.TopLeftShadesValues     = this.PrimaryShadesValues;
+        this.BottomLeftShadesValues  = this.PrimaryShadesValues;
+        this.TopRightShadesValues    = this.PrimaryShadesValues;
+        this.BottomRightShadesValues = this.PrimaryShadesValues;
+
         this.PrimaryShades = new ();
         this.PrimaryShadesColumnSpan = 4;
         this.ComplementaryShades = new();
@@ -196,8 +218,8 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 
         With(ref this.isProgrammaticUpdate, () =>
         {
-            this.wheel = palette.PrimaryWheel; 
-            this.WheelSliderValue = palette.PrimaryWheel;
+            this.wheel = palette.Primary.Wheel; 
+            this.WheelSliderValue = palette.Primary.Wheel;
             var primaryColor = palette.Primary.Base.Color;
 
             this.saturation = primaryColor.S; 
@@ -217,8 +239,6 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         this.PrimaryShadesValues.Update(shades);
         this.PrimaryShades.Update(shades);
 
-        bool hasComplementary = false;
-
         if ((colorCount == 1) || (colorCount == 2))
         {
             // Secondary shades same as Primary 
@@ -234,16 +254,25 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             this.SecondaryBotDarkBrush = shades.Dark.ToBrush();
             this.SecondaryBotDarkerBrush = shades.Darker.ToBrush();
 
+            this.TopLeftShadesValues = this.PrimaryShadesValues;
+            this.BottomLeftShadesValues = this.PrimaryShadesValues;
+            this.TopRightShadesValues = this.PrimaryShadesValues;
             if (colorCount == 2)
             {
                 // colorCount == 1 => Complementary same as primary 
                 shades = palette.Complementary;
-                hasComplementary = true;
                 this.PrimaryShadesColumnSpan = 3;
+                this.BottomRightShadesValues = this.ComplementaryShadesValues;
+                this.ComplementaryShades.Update(shades);
+                string name = 
+                    palette.Kind == PaletteKind.Duochromatic ? "Accent" : "Complementary"; 
+                this.ComplementaryShadesValues.Update(name);
+                this.ComplementaryShadesValues.Update(shades);
             }
             else
             {
                 this.PrimaryShadesColumnSpan = 4;
+                this.BottomRightShadesValues = this.PrimaryShadesValues;
             }
 
             this.ComplementaryLighterBrush = shades.Lighter.ToBrush();
@@ -256,12 +285,22 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         {
             this.PrimaryShadesColumnSpan = 1;
 
+            this.TopLeftShadesValues = this.PrimaryShadesValues;
+            this.BottomLeftShadesValues = this.Secondary2ShadesValues;
+            this.TopRightShadesValues = this.Secondary1ShadesValues;
+
             if (colorCount == 4)
             {
                 // colorCount == 3 => Complementary same as primary 
                 shades = palette.Complementary;
-                hasComplementary = true;
                 this.PrimaryShadesColumnSpan = 1;
+                this.BottomRightShadesValues = this.ComplementaryShadesValues;
+                this.ComplementaryShades.Update(shades);
+                this.ComplementaryShadesValues.Update(shades);
+            }
+            else
+            {
+                this.BottomRightShadesValues = this.PrimaryShadesValues;
             }
 
             this.ComplementaryLighterBrush = shades.Lighter.ToBrush();
@@ -276,6 +315,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             this.SecondaryTopBaseBrush = shades.Base.ToBrush();
             this.SecondaryTopDarkBrush = shades.Dark.ToBrush();
             this.SecondaryTopDarkerBrush = shades.Darker.ToBrush();
+            this.Secondary1ShadesValues.Update(shades);
 
             shades = palette.Secondary2;
             this.SecondaryBotLighterBrush = shades.Lighter.ToBrush();
@@ -283,16 +323,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             this.SecondaryBotBaseBrush = shades.Base.ToBrush();
             this.SecondaryBotDarkBrush = shades.Dark.ToBrush();
             this.SecondaryBotDarkerBrush = shades.Darker.ToBrush();
+            this.Secondary1ShadesValues.Update(shades);
         }
-
-        shades = palette.Complementary;
-        if (hasComplementary)
-        {
-            this.ComplementaryShades.Update(shades);
-            this.ComplementaryShadesValues.Update(shades);
-        }
-
-        this.ComplementaryShades.Show(show: hasComplementary);
-        this.ComplementaryShadesValues.Show(show: hasComplementary);
     }
 }

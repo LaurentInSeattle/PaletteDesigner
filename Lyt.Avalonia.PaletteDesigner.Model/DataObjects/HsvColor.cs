@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
 
-using Lyt.Avalonia.PaletteDesigner.Model.Utilities;
-
 public sealed class HsvColor
 {
     /// <summary> Hue Angle in degrees </summary>
@@ -164,6 +162,8 @@ public sealed class HsvColor
         red = (byte)Math.Round(r * 255.0);
         green = (byte)Math.Round(g * 255.0);
         blue = (byte)Math.Round(b * 255.0);
-
     }
+
+    public override string ToString() 
+        => string.Format ("Hue: {0:F1}  Sat: {1:F1}  Bri: {2:F1}", this.H, this.S, this.V);
 }

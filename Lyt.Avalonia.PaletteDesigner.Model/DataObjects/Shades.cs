@@ -20,6 +20,9 @@ public enum ShadeKind
 public sealed class Shades
 {
     [JsonRequired]
+    public double Wheel { get; set; }
+
+    [JsonRequired]
     public Shade Lighter { get; set; } = new();
 
     [JsonRequired]
@@ -35,6 +38,25 @@ public sealed class Shades
     public Shade Darker { get; set; } = new();
 
     public Shades() { /* needed for serialization */ }
+
+/*
+Primary
+    Lighter
+        X: 65  Y: 71
+        Hue: 351.0  Sat: 0.3  Bri: 1.0
+    Light
+        X: 124  Y: 85
+        Hue: 351.0  Sat: 0.6  Bri: 1.0
+    Base
+        X: 167  Y: 124
+        Hue: 351.0  Sat: 0.8  Bri: 0.8
+    Dark
+        X: 194  Y: 169
+        Hue: 351.0  Sat: 0.9  Bri: 0.6
+    Darker
+        X: 203  Y: 225
+        Hue: 351.0  Sat: 1.0  Bri: 0.4
+*/
 
     public void Reset(ShadeMap shadeMap)
     {
@@ -137,5 +159,18 @@ public sealed class Shades
         this.Light.UpdateColors(baseHue, shadeMap);
         this.Dark.UpdateColors(baseHue, shadeMap);
         this.Darker.UpdateColors(baseHue, shadeMap);
+    }
+
+    [Conditional("DEBUG")]
+    public void Dump(string name)
+    {
+        Debug.WriteLine(name);
+        Debug.Indent();
+        this.Lighter.Dump("Lighter");
+        this.Light.Dump("Light");
+        this.Base.Dump("Base");
+        this.Dark.Dump("Dark");
+        this.Darker.Dump("Darker");
+        Debug.Unindent();
     }
 }

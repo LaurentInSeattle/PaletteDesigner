@@ -12,18 +12,6 @@ public sealed class Palette
     public PaletteKind Kind { get; set; } = PaletteKind.MonochromaticComplementary;
 
     [JsonRequired]
-    public double PrimaryWheel { get; set; }
-
-    [JsonRequired]
-    public double ComplementaryWheel { get; set; }
-
-    [JsonRequired]
-    public double Secondary1Wheel { get; set; } = new();
-
-    [JsonRequired]
-    public double Secondary2Wheel { get; set; } = new();
-
-    [JsonRequired]
     public double SecondaryWheelDistance { get; set; } = new();
 
     [JsonRequired]
@@ -51,7 +39,7 @@ public sealed class Palette
 
     public void Reset()
     {
-        this.PrimaryWheel = 90.0;
+        this.Primary.Wheel = 90.0;
         this.ResetShades();
     }
 
@@ -65,7 +53,7 @@ public sealed class Palette
 
     public void UpdatePrimaryWheelMonochromatic(double primaryWheel)
     {
-        this.PrimaryWheel = primaryWheel;
+        this.Primary.Wheel = primaryWheel;
         if (this.colorWheel.TryGetValue(this.PrimaryAngle(), out RgbColor? rgbColorPrimary))
         {
             if (rgbColorPrimary is null)
@@ -79,6 +67,25 @@ public sealed class Palette
             hsvColorPrimary.V = color.V;
             this.Primary.Base.Color = hsvColorPrimary;
             this.Primary.UpdateAllShadeColors(this.shadeMap);
+        }
+    }
+
+    public void UpdateShadesWheel(Shades shades, double wheel)
+    {
+        shades.Wheel = wheel;
+        if (this.colorWheel.TryGetValue(this.ToAngle(wheel), out RgbColor? rgbColor))
+        {
+            if (rgbColor is null)
+            {
+                throw new Exception("No such angle");
+            }
+
+            var hsvColor = rgbColor.ToHsv();
+            var color = shades.Base.Color;
+            hsvColor.S = color.S;
+            hsvColor.V = color.V;
+            shades.Base.Color = hsvColor;
+            shades.UpdateAllShadeColors(this.shadeMap);
         }
     }
 
@@ -123,11 +130,22 @@ public sealed class Palette
         this.Complementary.UpdateOne(this.shadeMap, shadeKind, pixelX, pixelY);
     }
 
-    public int PrimaryAngle() => (int)Math.Round(this.PrimaryWheel * 10.0);
+    public int PrimaryAngle() => (int)Math.Round(this.Primary.Wheel * 10.0);
 
     public int ComplementaryAngle()
     {
-        double oppposite = (this.PrimaryWheel + 180.0).NormalizeAngleDegrees();
+        double oppposite = (this.Primary.Wheel + 180.0).NormalizeAngleDegrees();
         return (int)Math.Round(oppposite * 10.0);
+    }
+
+    public int ToAngle(double wheel) => (int)Math.Round(wheel * 10.0);
+
+    [Conditional("DEBUG")]
+    public void Dump()
+    {
+        this.Primary.Dump("Primary");
+        this.Complementary.Dump("Complementary");
+        this.Secondary1.Dump("Secondary1");
+        this.Secondary2.Dump("Secondary2");
     }
 }

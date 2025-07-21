@@ -136,7 +136,15 @@ public partial class MarkerControl : UserControl
             double angleRadians = Math.Atan2(y, x);
             double angleDegrees = (360.0 * angleRadians / Math.Tau).NormalizeAngleDegrees();
             this.MoveWheelMarker(angleDegrees);
-            colorWheelViewModel.OnAngleChanged(angleDegrees);
+
+            // Update model 
+            WheelKind wheelKind = WheelKind.Unknown;
+            if (this.Tag is string tag)
+            {
+                wheelKind = Enum.TryParse(tag, out WheelKind kind) ? kind : WheelKind.Unknown;
+            }
+
+            colorWheelViewModel.OnAngleChanged(wheelKind, angleDegrees);
         }
         else
         {

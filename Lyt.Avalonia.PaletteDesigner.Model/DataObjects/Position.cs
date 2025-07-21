@@ -46,4 +46,6 @@ public sealed class Position(
         => Math.Sqrt(
             (this.X - position.X) * (this.X - position.X) +
             (this.Y - position.Y) * (this.Y - position.Y));
+
+    public override string ToString() => string.Format("X: {0}  Y: {1}" , this.X, this.Y);
 }

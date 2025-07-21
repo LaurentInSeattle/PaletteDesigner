@@ -1,6 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Wheel;
 
-using Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
 using HsvColor = Model.DataObjects.HsvColor;
 
 public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
@@ -20,7 +19,7 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
     private WriteableBitmap shades;
 
     [ObservableProperty]
-    private bool hasComplementary;
+    private bool hasComplementaryMarker;
 
     [ObservableProperty]
     private bool canMoveComplementary;
@@ -40,7 +39,7 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         var bitmap = new WriteableBitmap(pixelSize, dpi, PixelFormat.Bgra8888, AlphaFormat.Opaque);
         this.shades = bitmap;
         this.hue = double.NaN;
-        this.HasComplementary = false;
+        this.HasComplementaryMarker = false;
         this.CanMoveComplementary = false;
     }
 
@@ -51,9 +50,9 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         this.paletteDesignerModel.ResetShades();
     }
 
-    public void OnAngleChanged(double wheelAngle)
+    public void OnAngleChanged(WheelKind wheelKind, double wheelAngle)
     {
-        this.paletteDesignerModel.UpdatePalettePrimaryWheel(wheelAngle);
+        this.paletteDesignerModel.UpdatePaletteWheel(wheelKind, wheelAngle);
     }
 
     public void OnShadeChanged(ShadeKind shadeKind, int pixelX, int pixelY)
@@ -70,9 +69,10 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
 
     public void Update(Palette palette)
     {
-        this.HasComplementary = palette.Kind.HasComplementary();
-        this.CanMoveComplementary = palette.Kind.CanMoveComplementary();
-        this.View.PrimaryMarker.MoveWheelMarker(palette.PrimaryWheel);
+        this.HasComplementaryMarker = palette.Kind.HasComplementaryMarker();
+        this.CanMoveComplementary = palette.Kind.CanMoveComplementaryMarker();
+        this.View.PrimaryMarker.MoveWheelMarker(palette.Primary.Wheel);
+        this.View.ComplementaryMarker.MoveWheelMarker(palette.Complementary.Wheel);
 
         var position = palette.Primary.Base.Position;
         this.View.BaseShadeMarker.MoveShadeMarker(position.X, position.Y);
@@ -87,11 +87,6 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
 
         var hsv = palette.Primary.Base.Color;
         this.UpdateShadesBitmap(hsv.H);
-        if (this.HasComplementary)
-        {
-            double complementaryWheel = (palette.PrimaryWheel + 180.0).NormalizeAngleDegrees();
-            this.View.ComplementaryMarker.MoveWheelMarker(complementaryWheel);
-        }
     }
 
     public unsafe void UpdateShadesBitmap(double newHue)

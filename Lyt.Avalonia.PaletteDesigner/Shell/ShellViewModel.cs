@@ -193,6 +193,12 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
     [RelayCommand]
     public void OnClose() => OnExit();
 
+    [RelayCommand]
+    public void OnDebug()
+    {
+        this.paletteDesignerModel.Dump();
+    }
+
     private static async void OnExit()
     {
         var application = App.GetRequiredService<IApplicationBase>();
