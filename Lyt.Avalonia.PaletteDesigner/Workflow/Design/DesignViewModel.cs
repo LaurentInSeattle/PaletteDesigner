@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Design;
 
-using Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
-
 public sealed partial class DesignViewModel : ViewModel<DesignView>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
@@ -12,12 +10,15 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
     [ObservableProperty]
     private PalettePreviewViewModel palettePreviewViewModel;
 
+    [ObservableProperty]
+    private ModelSelectionToolbarViewModel modelSelectionToolbarViewModel;
+
     public DesignViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
-        this.ColorWheelViewModel = new ColorWheelViewModel(paletteDesignerModel);
-        this.PalettePreviewViewModel = new PalettePreviewViewModel(paletteDesignerModel);
-
+        this.ColorWheelViewModel = new(paletteDesignerModel);
+        this.PalettePreviewViewModel = new(paletteDesignerModel);
+        this.modelSelectionToolbarViewModel = new();
         this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated);
     }
 
@@ -29,7 +30,7 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
         Schedule.OnUiThread(550, () =>
         {
             // For now 
-            if (this.paletteDesignerModel.ActiveProject is null )
+            if (this.paletteDesignerModel.ActiveProject is null)
             {
                 Debugger.Break();
                 return;
@@ -39,12 +40,12 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
             palette.Reset();
             this.OnModelUpdated(null);
         }, DispatcherPriority.Background);
-        
+
     }
 
-    public Palette Palette => 
-        this.paletteDesignerModel.ActiveProject == null ? 
-            throw new Exception("No active project")  :
+    public Palette Palette =>
+        this.paletteDesignerModel.ActiveProject == null ?
+            throw new Exception("No active project") :
             this.paletteDesignerModel.ActiveProject.Palette;
 
     private void OnModelUpdated(ModelUpdatedMessage? _)

@@ -17,15 +17,23 @@
 	<Grid
 		Margin="12"
 		>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="100" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="600" />
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
+		<vm:ModelSelectionToolbarView
+			DataContext="{Binding ModelSelectionToolbarViewModel}"
+			/>
 		<wheel:ColorWheelView
+			Grid.Row="1"
 			DataContext="{Binding ColorWheelViewModel}"
 			/>
 		<shading:PalettePreviewView
-			Grid.Column="1"
+			Grid.Row="1" Grid.Column="1"
 			DataContext="{Binding PalettePreviewViewModel}"
 			/>
 	</Grid>

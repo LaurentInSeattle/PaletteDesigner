@@ -1,0 +1,83 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Design.ModelSelectionToolbarView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Design"
+	x:DataType="vm:ModelSelectionToolbarViewModel" 
+			 
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	
+	xmlns:glyphs="using:Lyt.Avalonia.Controls.Glyphs"	
+	xmlns:controls="clr-namespace:Lyt.Avalonia.PaletteDesigner.Controls"
+	>
+	<!--
+    Monochromatic,                          // One free color
+    Duochromatic,                           // Two free colors
+    Trichromatic,                           // Three free colors
+    Quadrichromatic,                        // Four free colors
+
+    MonochromaticComplementary,             // One free color and complementary
+
+    Triad,                                  // Two free colors, one symmetrical (Aka Adjacent or Triad) 
+    TriadComplementary,                     // Two free colors, one symmetrical and complementary
+
+    Square,                                 // Two free colors, two complementaries
+	-->
+	<StackPanel
+		Orientation="Horizontal"
+		>
+		<glyphs:SelectionGroup x:Name="SelectionGroup" />
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			VerticalAlignment="Top" HorizontalAlignment="Center"
+			Width="82" Height="56"
+			Margin="8 4 8 4"
+			ButtonBackground="BorderlessRectangle"
+			Text="Monochrome"
+			Group="{Binding ElementName=SelectionGroup}"
+			Command="{Binding OnModelSelect}"
+			CommandParameter="Monochromatic"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:MonoChromeControl/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			VerticalAlignment="Top" HorizontalAlignment="Center"
+			Width="82" Height="56"
+			Margin="8 4 8 4"
+			ButtonBackground="BorderlessRectangle"
+			Text="Mono. Compl."
+			Group="{Binding ElementName=SelectionGroup}"
+			Command="{Binding OnModelSelect}"
+			CommandParameter="MonochromaticComplementary"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:MonoChromeComplementaryControl/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			VerticalAlignment="Top" HorizontalAlignment="Center"
+			Width="82" Height="56"
+			Margin="8 4 8 4"
+			ButtonBackground="BorderlessRectangle"
+			Text="Duochromatic"
+			Group="{Binding ElementName=SelectionGroup}"
+			Command="{Binding OnModelSelect}"
+			CommandParameter="Duochromatic"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:DuoChromeControl/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+	</StackPanel>
+</UserControl>
