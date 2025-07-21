@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
-using Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
-
 public sealed partial class PaletteDesignerModel : ModelBase
 {
     public bool UpdatePaletteKind(PaletteKind paletteKind)
@@ -14,36 +12,38 @@ public sealed partial class PaletteDesignerModel : ModelBase
     public void UpdatePalettePrimaryWheel(double primaryWheel)
         => this.UpdatePalette((Palette palette) =>
         {
-            palette.UpdatePrimaryWheelMonochromatic(primaryWheel);
+            switch (palette.Kind)
+            {
+                default:
+                case PaletteKind.Unknown:
+                    throw new Exception("Missing kind");
 
+                case PaletteKind.Monochromatic:
+                    palette.UpdatePrimaryWheelMonochromatic(primaryWheel);
+                    break; 
 
-            //var lookup = this.ColorLookupTable;
-            //if (lookup is null)
-            //{
-            //    return false;
-            //}
+                case PaletteKind.Duochromatic:
+                    break;
 
-            //var color = palette.Primary.Base.Color;
-            //double saturationPrimary = color.S;
-            //double brightnessPrimary = color.V;
+                case PaletteKind.Trichromatic:
+                    break;
 
-            //int anglePrimary = (int)Math.Round(primaryWheel * 10.0);
-            //double oppposite = (primaryWheel + 180.0).NormalizeAngleDegrees();
-            //int angleComplementary = (int)Math.Round(oppposite * 10.0);
-            //if (lookup.TryGetValue(anglePrimary, out RgbColor? rgbColorPrimary) &&
-            //    lookup.TryGetValue(angleComplementary, out RgbColor? rgbColorComplementary))
-            //{
-            //    if ((rgbColorPrimary is null) || (rgbColorComplementary is null))
-            //    {
-            //        return false;
-            //    }
+                case PaletteKind.Quadrichromatic:
+                    break;
 
-            //    var hsvColorPrimary = rgbColorPrimary.ToHsv();
-            //    var hsvColorComplementary = rgbColorComplementary.ToHsv();
+                case PaletteKind.MonochromaticComplementary:
+                    palette.UpdatePrimaryWheelMonochromaticComplementary(primaryWheel);
+                    break;
 
-            //    palette.Primary = p.Primary;
-            //    palette.Complementary = p.Complementary;
-            //}
+                case PaletteKind.Triad:
+                    break;
+
+                case PaletteKind.TriadComplementary:
+                    break;
+
+                case PaletteKind.Square:
+                    break;
+            }
 
             return true;
         });
@@ -58,14 +58,78 @@ public sealed partial class PaletteDesignerModel : ModelBase
     public void UpdateAllPalettePrimaryShade(int pixelX, int pixelY)
         => this.UpdatePalette((Palette palette) =>
         {
-            palette.UpdateAllPrimaryShadeMonochromatic(pixelX, pixelY);
+            switch (palette.Kind)
+            {
+                default:
+                case PaletteKind.Unknown:
+                    throw new Exception("Missing kind");
+
+                case PaletteKind.Monochromatic:
+                    palette.UpdateAllPrimaryShadeMonochromatic(pixelX, pixelY);
+                    break;
+
+                case PaletteKind.Duochromatic:
+                    break;
+
+                case PaletteKind.Trichromatic:
+                    break;
+
+                case PaletteKind.Quadrichromatic:
+                    break;
+
+                case PaletteKind.MonochromaticComplementary:
+                    palette.UpdateAllPrimaryShadeMonochromaticComplementary(pixelX, pixelY);
+                    break;
+
+                case PaletteKind.Triad:
+                    break;
+
+                case PaletteKind.TriadComplementary:
+                    break;
+
+                case PaletteKind.Square:
+                    break;
+            }
+
             return true;
         });
 
     public void UpdateOnePalettePrimaryShade(ShadeKind shadeKind, int pixelX, int pixelY)
         => this.UpdatePalette((Palette palette) =>
         {
-            palette.UpdateOnePrimaryShadeMonochromatic(shadeKind, pixelX, pixelY);
+            switch (palette.Kind)
+            {
+                default:
+                case PaletteKind.Unknown:
+                    throw new Exception("Missing kind");
+
+                case PaletteKind.Monochromatic:
+                    palette.UpdateOnePrimaryShadeMonochromatic(shadeKind, pixelX, pixelY);
+                    break;
+
+                case PaletteKind.Duochromatic:
+                    break;
+
+                case PaletteKind.Trichromatic:
+                    break;
+
+                case PaletteKind.Quadrichromatic:
+                    break;
+
+                case PaletteKind.MonochromaticComplementary:
+                    palette.UpdateOnePrimaryShadeMonochromaticComplementary(shadeKind, pixelX, pixelY);
+                    break;
+
+                case PaletteKind.Triad:
+                    break;
+
+                case PaletteKind.TriadComplementary:
+                    break;
+
+                case PaletteKind.Square:
+                    break;
+            }
+
             return true;
         });
 
@@ -89,53 +153,5 @@ public sealed partial class PaletteDesignerModel : ModelBase
         }
 
         return result;
-    }
-
-    private void UpdateShades(double hue, Shades shades, int X, int Y)
-    {
-        const double More = 1.25;
-        const double Less = 1.0;
-        const double brightnessStep = 0.1;
-        const double saturationStep = 0.1;
-        const int brightnessStepPixel = (int)(brightnessStep * PaletteDesignerModel.ShadesImageDimension);
-        const int saturationStepPixel = (int)(saturationStep * PaletteDesignerModel.ShadesImageDimension); ;
-
-        Position Adjust(Position position)
-        {
-            double half = PaletteDesignerModel.ShadesImageDimension / 2.0;
-            double x = (position.X - half) / half;
-            double y = (half - position.Y) / half;
-            double radius = Math.Min(1.0, Math.Sqrt(x * x + y * y));
-            double angle = Math.Atan2(y, x);
-            x = radius * Math.Cos(angle);
-            y = radius * Math.Sin(angle);
-            int newX = (int)(x * half + half);
-            int newY = (int)(half - y * half);
-            newX = newX.Clip(PaletteDesignerModel.ShadesImageMax);
-            newY = newY.Clip(PaletteDesignerModel.ShadesImageMax);
-            return new Position { X = newX, Y = newY };
-        }
-
-        Shade CreateShade(double saturationFactor, double brightnessFactor)
-        {
-            var position = 
-                new Position(
-                    (int)(X + saturationFactor * saturationStepPixel),
-                    (int)(Y + brightnessFactor * brightnessStepPixel));
-            position = Adjust(position);
-            if (this.ShadeColorMap.TryGetValue(position.X, position.Y, out HsvColor? shadeColor) &&
-                shadeColor is not null)
-            {
-                shadeColor.H = hue;
-                return new Shade(shadeColor, position);
-            }
-
-            throw new Exception("Ouch!");
-        }
-
-        shades.Lighter = CreateShade(-More, -More);
-        shades.Light = CreateShade(-Less, -Less);
-        shades.Dark = CreateShade(Less, Less);
-        shades.Darker = CreateShade(More, More);
     }
 }

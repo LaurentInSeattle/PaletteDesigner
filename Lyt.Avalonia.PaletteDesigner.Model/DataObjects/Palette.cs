@@ -2,17 +2,17 @@
 
 public sealed class Palette
 {
-    private readonly Dictionary<int, RgbColor> colorWheel; 
-    private readonly ShadeMap shadeMap ; 
+    private readonly Dictionary<int, RgbColor> colorWheel;
+    private readonly ShadeMap shadeMap;
 
     [JsonRequired]
     public string Name { get; set; } = string.Empty;
 
     [JsonRequired]
-    public PaletteKind Kind { get; set; } = PaletteKind.Monochromatic;
+    public PaletteKind Kind { get; set; } = PaletteKind.MonochromaticComplementary;
 
     [JsonRequired]
-    public double PrimaryWheel { get; set; } 
+    public double PrimaryWheel { get; set; }
 
     [JsonRequired]
     public double ComplementaryWheel { get; set; }
@@ -44,15 +44,15 @@ public sealed class Palette
 #pragma warning restore CS8618 
 
     public Palette(Dictionary<int, RgbColor> colorWheel, ShadeMap shadeMap)
-    { 
+    {
         this.colorWheel = colorWheel;
         this.shadeMap = shadeMap;
     }
 
-    public void Reset ()
+    public void Reset()
     {
         this.PrimaryWheel = 90.0;
-        this.ResetShades(); 
+        this.ResetShades();
     }
 
     public void ResetShades()
@@ -63,14 +63,14 @@ public sealed class Palette
         this.Secondary2.Reset(this.shadeMap);
     }
 
-    public void UpdatePrimaryWheelMonochromatic(double primaryWheel )
+    public void UpdatePrimaryWheelMonochromatic(double primaryWheel)
     {
         this.PrimaryWheel = primaryWheel;
         if (this.colorWheel.TryGetValue(this.PrimaryAngle(), out RgbColor? rgbColorPrimary))
         {
-            if (rgbColorPrimary is null) 
+            if (rgbColorPrimary is null)
             {
-                throw new Exception("No such angle"); 
+                throw new Exception("No such angle");
             }
 
             var hsvColorPrimary = rgbColorPrimary.ToHsv();
@@ -78,10 +78,27 @@ public sealed class Palette
             hsvColorPrimary.S = color.S;
             hsvColorPrimary.V = color.V;
             this.Primary.Base.Color = hsvColorPrimary;
+            this.Primary.UpdateAllShadeColors(this.shadeMap);
         }
+    }
 
-        var position = this.Primary.Base.Position; 
-        this.Primary.UpdateAllShadeColors(this.shadeMap);
+    public void UpdatePrimaryWheelMonochromaticComplementary(double primaryWheel)
+    {
+        this.UpdatePrimaryWheelMonochromatic(primaryWheel); 
+        if (this.colorWheel.TryGetValue(this.ComplementaryAngle(), out RgbColor? rgbColor))
+        {
+            if (rgbColor is null)
+            {
+                throw new Exception("No such angle");
+            }
+
+            var hsvColor = rgbColor.ToHsv();
+            var color = this.Complementary.Base.Color;
+            hsvColor.S = color.S;
+            hsvColor.V = color.V;
+            this.Complementary.Base.Color = hsvColor;
+            this.Complementary.UpdateAllShadeColors(this.shadeMap);
+        }
     }
 
     public void UpdateAllPrimaryShadeMonochromatic(int pixelX, int pixelY)
@@ -89,63 +106,24 @@ public sealed class Palette
         this.Primary.UpdateAll(this.shadeMap, pixelX, pixelY);
     }
 
+    public void UpdateAllPrimaryShadeMonochromaticComplementary(int pixelX, int pixelY)
+    {
+        this.Primary.UpdateAll(this.shadeMap, pixelX, pixelY);
+        this.Complementary.UpdateAll(this.shadeMap, pixelX, pixelY);
+    }
+
     public void UpdateOnePrimaryShadeMonochromatic(ShadeKind shadeKind, int pixelX, int pixelY)
     {
         this.Primary.UpdateOne(this.shadeMap, shadeKind, pixelX, pixelY);
     }
 
-
-    public void UpdateMonochromaticComplementary(double huePrimary)
+    public void UpdateOnePrimaryShadeMonochromaticComplementary(ShadeKind shadeKind, int pixelX, int pixelY)
     {
-
+        this.Primary.UpdateOne(this.shadeMap, shadeKind, pixelX, pixelY);
+        this.Complementary.UpdateOne(this.shadeMap, shadeKind, pixelX, pixelY);
     }
 
-    //public void Update (
-    //    string name,
-    //    PaletteKind kind,
-    //    double hueComplementary,
-    //    double saturation, double brightness,
-    //    double saturationFactor, double brightnessFactor)
-    //{
-    //    this.Name = name;
-    //    this.Kind = kind;
-    //    switch (kind)
-    //    {
-    //        default:
-    //        case PaletteKind.Unknown:
-    //            throw new Exception("Missing kind");
-
-    //        case PaletteKind.Monochromatic:
-    //            this.GenerateMonochromatic(huePrimary, saturation, brightness, saturationFactor, brightnessFactor);
-    //            return;
-
-    //        case PaletteKind.Duochromatic:
-    //            break;
-
-    //        case PaletteKind.Trichromatic:
-    //            break;
-
-    //        case PaletteKind.Quadrichromatic:
-    //            break;
-
-    //        case PaletteKind.MonochromaticComplementary:
-    //            this.GenerateMonochromaticComplementary(huePrimary, hueComplementary, saturation, brightness, saturationFactor, brightnessFactor);
-    //            return;
-
-    //        case PaletteKind.Triad:
-    //            break;
-
-    //        case PaletteKind.TriadComplementary:
-    //            break;
-
-    //        case PaletteKind.Square:
-    //            break;
-    //    }
-
-    //    throw new NotImplementedException("Later...");
-    //}
-
-    public int PrimaryAngle () => (int)Math.Round(this.PrimaryWheel * 10.0);
+    public int PrimaryAngle() => (int)Math.Round(this.PrimaryWheel * 10.0);
 
     public int ComplementaryAngle()
     {
