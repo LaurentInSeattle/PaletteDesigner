@@ -7,15 +7,15 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="100"
+	mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="90"
 	
 	xmlns:glyphs="using:Lyt.Avalonia.Controls.Glyphs"	
 	xmlns:controls="clr-namespace:Lyt.Avalonia.PaletteDesigner.Controls"
 	>
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="80" />
-			<RowDefinition Height="16" />
+			<RowDefinition Height="72" />
+			<RowDefinition Height="18" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<!-- Classic -->
@@ -24,14 +24,14 @@
 			<ColumnDefinition Width="112" />
 			<ColumnDefinition Width="112" />
 			<!-- Spacer -->
-			<ColumnDefinition Width="42" />
+			<ColumnDefinition Width="22" />
 			<!-- Free Style -->
 			<ColumnDefinition Width="112" />
 			<ColumnDefinition Width="112" />
 			<ColumnDefinition Width="112" />
 			<ColumnDefinition Width="112" />
 			<!-- Spacer -->
-			<ColumnDefinition Width="42" />
+			<ColumnDefinition Width="54" />
 			<!-- Shades  -->
 			<ColumnDefinition Width="112" />
 			<ColumnDefinition Width="112" />
@@ -246,6 +246,7 @@
 			ButtonBackground="BorderlessRectangle"
 			Text="Locked Together"
 			GlyphSource="lock_closed"
+			GlyphStrokeThickness="0.2"
 			Group="{Binding ElementName=ShadesSelectionGroup}"
 			IsSelected="True"
 			Command="{Binding OnLockSelect}"
@@ -262,6 +263,7 @@
 			Margin="0"
 			ButtonBackground="BorderlessRectangle"
 			GlyphSource="lock_open"
+			GlyphStrokeThickness="0.2"
 			Text="No Constraints"
 			Group="{Binding ElementName=ShadesSelectionGroup}"
 			Command="{Binding OnLockSelect}"
