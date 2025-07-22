@@ -52,14 +52,15 @@
 				HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
 				/>
 			<vm:PaletteColorView
+				Grid.Column="3"
+				DataContext="{Binding ComplementaryShades}"
+				HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
+				/>
+			<!-- Primary needs to be on top of all others-->
+			<vm:PaletteColorView
 				x:Name="PrimaryShades"
 				Grid.Column="0"
 				DataContext="{Binding PrimaryShades}"
-				HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
-				/>
-			<vm:PaletteColorView
-				Grid.Column="3"
-				DataContext="{Binding ComplementaryShades}"
 				HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
 				/>
 		</Grid>

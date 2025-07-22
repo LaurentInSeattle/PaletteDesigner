@@ -15,6 +15,9 @@ public sealed class Palette
     public double SecondaryWheelDistance { get; set; } = new();
 
     [JsonRequired]
+    public bool AreShadesLocked { get; set; } = true;
+
+    [JsonRequired]
     public Shades Primary { get; set; } = new();
 
     [JsonRequired]
@@ -91,7 +94,7 @@ public sealed class Palette
 
     public void UpdatePrimaryWheelMonochromaticComplementary(double primaryWheel)
     {
-        this.UpdatePrimaryWheelMonochromatic(primaryWheel); 
+        this.Complementary.Wheel = this.ComplementaryWheel();
         if (this.colorWheel.TryGetValue(this.ComplementaryAngle(), out RgbColor? rgbColor))
         {
             if (rgbColor is null)
@@ -106,6 +109,14 @@ public sealed class Palette
             this.Complementary.Base.Color = hsvColor;
             this.Complementary.UpdateAllShadeColors(this.shadeMap);
         }
+    }
+
+    public void UpdateAllShades(int pixelX, int pixelY)
+    {
+        this.Primary.UpdateAll(this.shadeMap, pixelX, pixelY);
+        this.Complementary.UpdateAll(this.shadeMap, pixelX, pixelY);
+        this.Secondary1.UpdateAll(this.shadeMap, pixelX, pixelY);
+        this.Secondary2.UpdateAll(this.shadeMap, pixelX, pixelY);
     }
 
     public void UpdateAllPrimaryShadeMonochromatic(int pixelX, int pixelY)
@@ -131,6 +142,9 @@ public sealed class Palette
     }
 
     public int PrimaryAngle() => (int)Math.Round(this.Primary.Wheel * 10.0);
+
+    public double ComplementaryWheel()
+        => (this.Primary.Wheel + 180.0).NormalizeAngleDegrees();
 
     public int ComplementaryAngle()
     {

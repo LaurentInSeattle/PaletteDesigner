@@ -2,6 +2,11 @@
 
 public sealed partial class ModelSelectionToolbarViewModel : ViewModel<ModelSelectionToolbarView>
 {
+    private readonly PaletteDesignerModel paletteDesignerModel; 
+
+    public ModelSelectionToolbarViewModel()
+        => this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();
+
     [RelayCommand]
     public void OnModelSelect(object? parameter)
     {
@@ -12,9 +17,20 @@ public sealed partial class ModelSelectionToolbarViewModel : ViewModel<ModelSele
             paletteKind = Enum.TryParse(tag, out PaletteKind kind) ? kind : PaletteKind.Unknown;
             if (paletteKind != PaletteKind.Unknown)
             {
-                var model = App.GetRequiredService<PaletteDesignerModel>();
-                model.UpdatePaletteKind(paletteKind);
+                this.paletteDesignerModel.UpdatePaletteKind(paletteKind);
             }
+        }
+    }
+
+    [RelayCommand]
+    public void OnLockSelect(object? parameter)
+    {
+        // Update model 
+        ShadeMode shadeMode = ShadeMode.Locked;
+        if (parameter is string tag)
+        {
+            shadeMode = Enum.TryParse(tag, out ShadeMode kind) ? kind : ShadeMode.Locked;
+            this.paletteDesignerModel.UpdatePaletteShadeMode(shadeMode);
         }
     }
 }

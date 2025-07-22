@@ -7,53 +7,46 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="100"
 	
 	xmlns:glyphs="using:Lyt.Avalonia.Controls.Glyphs"	
 	xmlns:controls="clr-namespace:Lyt.Avalonia.PaletteDesigner.Controls"
 	>
-	<!--
-    Monochromatic,                          // One free color
-    Duochromatic,                           // Two free colors
-    Trichromatic,                           // Three free colors
-    Quadrichromatic,                        // Four free colors
-
-    MonochromaticComplementary,             // One free color and complementary
-
-    Triad,                                  // Two free colors, one symmetrical (Aka Adjacent or Triad) 
-    TriadComplementary,                     // Two free colors, one symmetrical and complementary
-
-    Square,                                 // Two free colors, two complementaries
-	-->
-	<StackPanel
-		Orientation="Horizontal"
-		>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="80" />
+			<RowDefinition Height="16" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<!-- Classic -->
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="42" />
+			<!-- Free Style -->
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="42" />
+			<!-- Shades  -->
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
+		</Grid.ColumnDefinitions>
 		<glyphs:SelectionGroup x:Name="SelectionGroup" />
+		<!-- Classic -->
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
 			Behaviour="Tap"
-			VerticalAlignment="Top" HorizontalAlignment="Center"
-			Width="82" Height="56"
-			Margin="8 4 8 4"
+			Grid.Column="0"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
 			ButtonBackground="BorderlessRectangle"
-			Text="Monochrome"
-			Group="{Binding ElementName=SelectionGroup}"
-			Command="{Binding OnModelSelect}"
-			CommandParameter="Monochromatic"
-			>
-			<glyphs:GlyphButton.XamlContent>
-				<controls:MonoChromeControl/>
-			</glyphs:GlyphButton.XamlContent>
-		</glyphs:GlyphButton>
-
-		<glyphs:GlyphButton
-			Style="{StaticResource ToolbarIconButton}"
-			Behaviour="Tap"
-			VerticalAlignment="Top" HorizontalAlignment="Center"
-			Width="82" Height="56"
-			Margin="8 4 8 4"
-			ButtonBackground="BorderlessRectangle"
-			Text="Mono. Compl."
+			Text="Complementary"
 			Group="{Binding ElementName=SelectionGroup}"
 			Command="{Binding OnModelSelect}"
 			CommandParameter="MonochromaticComplementary"
@@ -66,9 +59,109 @@
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
 			Behaviour="Tap"
-			VerticalAlignment="Top" HorizontalAlignment="Center"
-			Width="82" Height="56"
-			Margin="8 4 8 4"
+			Grid.Column="1"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Text="Triad"
+			Group="{Binding ElementName=SelectionGroup}"
+			Command="{Binding OnModelSelect}"
+			CommandParameter="Triad"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:TriadControl/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			Grid.Column="2"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Text="Triad Compl."
+			Group="{Binding ElementName=SelectionGroup}"
+			Command="{Binding OnModelSelect}"
+			CommandParameter="MonochromaticComplementary"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:TriadComplementaryControl/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			Grid.Column="3"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Text="Square"
+			Group="{Binding ElementName=SelectionGroup}"
+			Command="{Binding OnModelSelect}"
+			CommandParameter="Square"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:SquareControl/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+
+		<Rectangle
+			Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
+			Margin="8 0 8 0"
+			VerticalAlignment="Center" HorizontalAlignment="Left"
+			Height="1" Width="160"
+			Fill="{StaticResource PastelOrchid_0_080_Color}"
+			Opacity="0.3"
+			/>
+		<Rectangle
+			Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1"
+			Margin="8 0 8 0"
+			VerticalAlignment="Center" HorizontalAlignment="Right"
+			Height="1" Width="160"
+			Fill="{StaticResource PastelOrchid_0_080_Color}"
+			Opacity="0.3"
+			/>
+		<TextBlock
+			Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
+			Text="Classic"
+			Margin="0 0 0 0"
+			Theme="{StaticResource Medium}"
+			TextAlignment="Center"
+			HorizontalAlignment="Center"
+			/>
+
+		<!-- Free Style -->
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			Grid.Column="5"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Text="Monochromatic"
+			Group="{Binding ElementName=SelectionGroup}"
+			IsSelected="True"
+			Command="{Binding OnModelSelect}"
+			CommandParameter="Monochromatic"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:MonoChromeControl/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			Grid.Column="6"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
 			ButtonBackground="BorderlessRectangle"
 			Text="Duochromatic"
 			Group="{Binding ElementName=SelectionGroup}"
@@ -79,5 +172,126 @@
 				<controls:DuoChromeControl/>
 			</glyphs:GlyphButton.XamlContent>
 		</glyphs:GlyphButton>
-	</StackPanel>
+
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			Grid.Column="7"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Text="Trichromatic"
+			Group="{Binding ElementName=SelectionGroup}"
+			Command="{Binding OnModelSelect}"
+			CommandParameter="Trichromatic"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:TriChromeControl/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			Grid.Column="8"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Text="Quadrichromatic"
+			Group="{Binding ElementName=SelectionGroup}"
+			Command="{Binding OnModelSelect}"
+			CommandParameter="Quadrichromatic"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:QuattroChromeControl/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+
+		<Rectangle
+			Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="1"
+			Margin="8 0 8 0"
+			VerticalAlignment="Center" HorizontalAlignment="Left"
+			Height="1" Width="160"
+			Fill="{StaticResource PastelOrchid_0_080_Color}"
+			Opacity="0.3"
+			/>
+		<Rectangle
+			Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="1"
+			Margin="8 0 8 0"
+			VerticalAlignment="Center" HorizontalAlignment="Right"
+			Height="1" Width="160"
+			Fill="{StaticResource PastelOrchid_0_080_Color}"
+			Opacity="0.3"
+			/>
+		<TextBlock
+			Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="4"
+			Text="Free Style"
+			Margin="0 0 0 0"
+			Theme="{StaticResource Medium}"
+			TextAlignment="Center"
+			HorizontalAlignment="Center"
+			/>
+
+		<!-- Shades / Tints -->
+		<glyphs:SelectionGroup x:Name="ShadesSelectionGroup" />
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			Grid.Column="10"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Text="Locked Together"
+			GlyphSource="lock_closed"
+			Group="{Binding ElementName=ShadesSelectionGroup}"
+			IsSelected="True"
+			Command="{Binding OnLockSelect}"
+			CommandParameter="Locked"
+			>
+		</glyphs:GlyphButton>
+
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			Grid.Column="11"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			GlyphSource="lock_open"
+			Text="No Constraints"
+			Group="{Binding ElementName=ShadesSelectionGroup}"
+			Command="{Binding OnLockSelect}"
+			CommandParameter="Open"
+			>
+		</glyphs:GlyphButton>
+
+		<Rectangle
+			Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="1"
+			Margin="8 0 8 0"
+			VerticalAlignment="Center" HorizontalAlignment="Left"
+			Height="1" Width="40"
+			Fill="{StaticResource PastelOrchid_0_080_Color}"
+			Opacity="0.3"
+			/>
+		<Rectangle
+			Grid.Column="12" Grid.ColumnSpan="2" Grid.Row="1"
+			Margin="8 0 8 0"
+			VerticalAlignment="Center" HorizontalAlignment="Right"
+			Height="1" Width="40"
+			Fill="{StaticResource PastelOrchid_0_080_Color}"
+			Opacity="0.3"
+			/>
+		<TextBlock
+			Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="2"
+			Text="Shades / Tints"
+			Margin="0 0 0 0"
+			Theme="{StaticResource Medium}"
+			TextAlignment="Center"
+			HorizontalAlignment="Center"
+			/>
+	</Grid>
 </UserControl>

@@ -6,6 +6,18 @@ public sealed partial class PaletteDesignerModel : ModelBase
         => this.UpdatePalette((Palette palette) =>
         {
             palette.Kind = paletteKind;
+            if (paletteKind.HasComplementary())
+            {
+                palette.UpdatePrimaryWheelMonochromaticComplementary(palette.Primary.Wheel);
+            }
+            
+            return true;
+        });
+
+    public void UpdatePaletteShadeMode(ShadeMode shadeMode) 
+        => this.UpdatePalette((Palette palette) =>
+        {
+            palette.AreShadesLocked = shadeMode == ShadeMode.Locked;
             return true;
         });
 
@@ -50,6 +62,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
                     break; 
 
                 case PaletteKind.MonochromaticComplementary:
+                    palette.UpdatePrimaryWheelMonochromatic(primaryWheel);
                     palette.UpdatePrimaryWheelMonochromaticComplementary(primaryWheel);
                     break;
 
@@ -113,32 +126,39 @@ public sealed partial class PaletteDesignerModel : ModelBase
     public void UpdateAllPalettePrimaryShade(int pixelX, int pixelY)
         => this.UpdatePalette((Palette palette) =>
         {
-            switch (palette.Kind)
+            if (palette.AreShadesLocked)
             {
-                default:
-                case PaletteKind.Unknown:
-                    throw new Exception("Missing kind");
-
-                case PaletteKind.Monochromatic:
-                case PaletteKind.Duochromatic:
-                case PaletteKind.Trichromatic:
-                case PaletteKind.Quadrichromatic:
-                    palette.UpdateAllPrimaryShadeMonochromatic(pixelX, pixelY);
-                    break;
-
-                case PaletteKind.MonochromaticComplementary:
-                    palette.UpdateAllPrimaryShadeMonochromaticComplementary(pixelX, pixelY);
-                    break;
-
-                case PaletteKind.Triad:
-                    break;
-
-                case PaletteKind.TriadComplementary:
-                    break;
-
-                case PaletteKind.Square:
-                    break;
+                palette.UpdateAllShades(pixelX, pixelY);
             }
+            else
+            {
+                switch (palette.Kind)
+                {
+                    default:
+                    case PaletteKind.Unknown:
+                        throw new Exception("Missing kind");
+
+                    case PaletteKind.Monochromatic:
+                    case PaletteKind.Duochromatic:
+                    case PaletteKind.Trichromatic:
+                    case PaletteKind.Quadrichromatic:
+                        palette.UpdateAllPrimaryShadeMonochromatic(pixelX, pixelY);
+                        break;
+
+                    case PaletteKind.MonochromaticComplementary:
+                        palette.UpdateAllPrimaryShadeMonochromaticComplementary(pixelX, pixelY);
+                        break;
+
+                    case PaletteKind.Triad:
+                        break;
+
+                    case PaletteKind.TriadComplementary:
+                        break;
+
+                    case PaletteKind.Square:
+                        break;
+                }
+            } 
 
             return true;
         });

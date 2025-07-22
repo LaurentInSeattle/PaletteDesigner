@@ -15,17 +15,18 @@
 	Background="Transparent"
 	>
 	<Grid
-		Margin="12"
+		Margin="8"
 		>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="100" />
+			<RowDefinition Height="140" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="600" />
+			<ColumnDefinition Width="700" />
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
 		<vm:ModelSelectionToolbarView
+			Grid.ColumnSpan="2"
 			DataContext="{Binding ModelSelectionToolbarViewModel}"
 			/>
 		<wheel:ColorWheelView
