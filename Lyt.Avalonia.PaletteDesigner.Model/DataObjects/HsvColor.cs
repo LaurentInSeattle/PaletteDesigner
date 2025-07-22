@@ -3,10 +3,13 @@
 public sealed class HsvColor
 {
     /// <summary> Hue Angle in degrees </summary>
+    [JsonRequired]
     public double H { get; set; } = 0.0;
 
+    [JsonRequired]
     public double S { get; set; } = 0.5;
 
+    [JsonRequired]
     public double V { get; set; } = 0.5;
 
     public HsvColor() { }

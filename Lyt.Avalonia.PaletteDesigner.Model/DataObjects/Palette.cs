@@ -2,9 +2,6 @@
 
 public sealed class Palette
 {
-    private readonly Dictionary<int, RgbColor> colorWheel;
-    private readonly ShadeMap shadeMap;
-
     [JsonRequired]
     public string Name { get; set; } = string.Empty;
 
@@ -28,6 +25,9 @@ public sealed class Palette
 
     [JsonRequired]
     public Shades Complementary { get; set; } = new();
+
+    private readonly Dictionary<int, RgbColor> colorWheel;
+    private readonly ShadeMap shadeMap;
 
 #pragma warning disable CS8618 
     // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
