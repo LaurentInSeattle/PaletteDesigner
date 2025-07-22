@@ -3,6 +3,12 @@
 // Mutable 
 public sealed class Shade
 {
+    [JsonIgnore]
+    public HsvColor Color { get; set; }
+
+    [JsonRequired]
+    public Position Position { get; set; }
+
     public Shade( /* required for serialization */)
     {
         this.Color = new(0, 0.7, 0.7);
@@ -15,11 +21,11 @@ public sealed class Shade
         this.Position = position;
     }
 
-    [JsonIgnore]
-    public HsvColor Color { get; set; }
-
-    [JsonRequired]
-    public Position Position { get; set; }
+    public Shade (Shade shade)
+    {
+        this.Color = new HsvColor(shade.Color);
+        this.Position = new Position(shade.Position);
+    }
 
     // new absolute position 
     public void MoveTo(double baseHue, ShadeMap shadeMap, int x, int y)

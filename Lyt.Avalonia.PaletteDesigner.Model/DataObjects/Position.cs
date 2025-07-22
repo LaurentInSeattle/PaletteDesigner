@@ -3,13 +3,31 @@
 // Screen position or a marker on the shades image:
 //      0,0 at top left, 300, 300 at bottom right
 //      defaults to center of the Shades Image circle 
-public sealed class Position(
-    int x = PaletteDesignerModel.ShadesImageDimension / 2,
-    int y = PaletteDesignerModel.ShadesImageDimension / 2)
+public sealed class Position
 {
-    public int X { get; set; } = x;
+    [JsonRequired]
+    public int X { get; set; }
 
-    public int Y { get; set; } = y;
+    [JsonRequired]
+    public int Y { get; set; }
+
+    public Position()
+    {
+        this.X = PaletteDesignerModel.ShadesImageDimension / 2;
+        this.Y = PaletteDesignerModel.ShadesImageDimension / 2; 
+    }
+
+    public Position(Position position)
+    {
+        this.X = position.X;
+        this.Y = position.Y;
+    }
+
+    public Position(int x, int y)
+    {
+        this.X = x;
+        this.Y = y;
+    }
 
     // Constrain point to be located inside the Shades Image circle 
     public void Adjust()

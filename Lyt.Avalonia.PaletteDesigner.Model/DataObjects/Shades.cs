@@ -96,6 +96,16 @@ Primary
         this.Darker.MoveTo(baseHue, shadeMap, darkerX, darkerY);
     }
 
+    public void CopyShadesFrom(ShadeMap shadeMap, Shades shades)
+    {
+        //foreach (var shade in
+        //    new[] { this.Lighter, this.Light, this.Base, this.Dark, this.Darker })
+        //{
+        //    var position = shade.Position; 
+        //    shade.MoveTo(shade.Color.H, shadeMap, position.X, position.Y);
+        //}
+    }
+
     // Moving base marker to absolute position 
     // All four others follow by the same offset 
     public void UpdateAll(ShadeMap shadeMap, int pixelX, int pixelY)
