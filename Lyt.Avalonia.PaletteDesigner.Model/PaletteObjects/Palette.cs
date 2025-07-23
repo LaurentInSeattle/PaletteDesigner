@@ -1,4 +1,4 @@
-﻿namespace Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
+﻿namespace Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 
 public sealed class Palette
 {
@@ -8,11 +8,16 @@ public sealed class Palette
     [JsonRequired]
     public PaletteKind Kind { get; set; } = PaletteKind.MonochromaticComplementary;
 
+    // for both Triad and Square, otherwise ignored 
     [JsonRequired]
     public double SecondaryWheelDistance { get; set; } = new();
 
     [JsonRequired]
     public bool AreShadesLocked { get; set; } = true;
+
+    // If shades are unlocked, the shades user wants to edit  
+    [JsonRequired]
+    public WheelKind SelectedWheel { get; set; } = WheelKind.Unknown;
 
     [JsonRequired]
     public Shades Primary { get; set; } = new();
@@ -39,6 +44,16 @@ public sealed class Palette
         this.colorWheel = colorWheel;
         this.shadeMap = shadeMap;
     }
+
+    public Shades FromWheel (WheelKind wheelKind)
+        => wheelKind switch
+        {
+            WheelKind.Primary => this.Primary,
+            WheelKind.Complementary => this.Complementary,
+            WheelKind.Secondary1 => this.Secondary1,
+            WheelKind.Secondary2 => this.Secondary2,
+            _ => this.Primary,
+        };
 
     public void Reset()
     {

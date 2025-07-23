@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
+using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
+
 public sealed partial class PaletteDesignerModel : ModelBase
 {
     public bool UpdatePaletteKind(PaletteKind paletteKind)
@@ -18,6 +20,29 @@ public sealed partial class PaletteDesignerModel : ModelBase
         => this.UpdatePalette((Palette palette) =>
         {
             palette.AreShadesLocked = shadeMode == ShadeMode.Locked;
+            if (palette.AreShadesLocked)
+            {
+                palette.SelectedWheel = WheelKind.Primary;
+            } 
+
+            return true;
+        });
+
+    // Select the set of shades the user wants to edit 
+    public void UpdatePaletteWheelShadeMode(WheelKind wheel)
+        => this.UpdatePalette((Palette palette) =>
+        {
+            if ( palette.AreShadesLocked )
+            {
+                return false; 
+            }
+
+            if (wheel == WheelKind.Unknown)
+            {
+                return false;
+            }
+
+            palette.SelectedWheel = wheel;
             return true;
         });
 

@@ -155,7 +155,7 @@ public partial class MarkerControl : UserControl
 
             // Debug.WriteLine(string.Format("Mouse - X: {0}  Y: {1}", pixelX, pixelY));
 
-            if (!map.TryGetValue(pixelY, pixelX, out Model.DataObjects.HsvColor? mapColor) ||
+            if (!map.TryGetValue(pixelY, pixelX, out Model.PaletteObjects.HsvColor? mapColor) ||
                 (mapColor is null))
             {
                 return;

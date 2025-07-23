@@ -92,7 +92,7 @@
 			Text="Triad Compl."
 			Group="{Binding ElementName=SelectionGroup}"
 			Command="{Binding OnModelSelect}"
-			CommandParameter="MonochromaticComplementary"
+			CommandParameter="TriadComplementary"
 			>
 			<glyphs:GlyphButton.XamlContent>
 				<controls:TriadComplementaryControl/>
@@ -274,7 +274,7 @@
 			Text="No Constraints"
 			Group="{Binding ElementName=ShadesSelectionGroup}"
 			Command="{Binding OnLockSelect}"
-			CommandParameter="Open"
+			CommandParameter="Unlocked"
 			>
 		</glyphs:GlyphButton>
 
@@ -282,25 +282,29 @@
 		<glyphs:SelectionGroup x:Name="ColorsSelectionGroup" />
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
+			Text="Primary"
+			IsVisible="{Binding IsPrimaryVisible}"
+			IsDisabled="{Binding IsShadingDisabled}"
 			Behaviour="Tap"
 			Grid.Column="13"
 			VerticalAlignment="Center" HorizontalAlignment="Center"
 			Width="100" Height="60"
 			Margin="0"
-			Text="Primary"
 			ButtonBackground="BorderlessRectangle"
 			Group="{Binding ElementName=ColorsSelectionGroup}"
-			Command="{Binding OnLockSelect}"
-			CommandParameter="Open"
+			Command="{Binding OnColorSelect}"
+			CommandParameter="Primary"
 			>
 			<glyphs:GlyphButton.XamlContent>
 				<controls:ColoredControl
-					BorderBrush="Aquamarine"
+					BorderBrush="{Binding PrimaryBaseBrush}"
 					/>
 			</glyphs:GlyphButton.XamlContent>
 		</glyphs:GlyphButton>
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
+			IsVisible="{Binding IsComplementaryVisible}"
+			IsDisabled="{Binding IsShadingDisabled}"
 			Text="Complementary"
 			Behaviour="Tap"
 			Grid.Column="14"
@@ -309,12 +313,12 @@
 			Margin="0"
 			ButtonBackground="BorderlessRectangle"
 			Group="{Binding ElementName=ColorsSelectionGroup}"
-			Command="{Binding OnLockSelect}"
-			CommandParameter="Open"
+			Command="{Binding OnColorSelect}"
+			CommandParameter="Complementary"
 			>
 			<glyphs:GlyphButton.XamlContent>
 				<controls:ColoredControl
-					BorderBrush="DarkOrange"
+					BorderBrush="{Binding ComplementaryBaseBrush}"
 					/>
 			</glyphs:GlyphButton.XamlContent>
 		</glyphs:GlyphButton>
@@ -322,6 +326,8 @@
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
 			Text="Secondary #1"
+			IsVisible="{Binding IsSecondary1Visible}"
+			IsDisabled="{Binding IsShadingDisabled}"
 			Behaviour="Tap"
 			Grid.Column="15"
 			VerticalAlignment="Center" HorizontalAlignment="Center"
@@ -329,17 +335,19 @@
 			Margin="0"
 			ButtonBackground="BorderlessRectangle"
 			Group="{Binding ElementName=ColorsSelectionGroup}"
-			Command="{Binding OnLockSelect}"
-			CommandParameter="Open"
+			Command="{Binding OnColorSelect}"
+			CommandParameter="Secondary1"
 			>
 			<glyphs:GlyphButton.XamlContent>
 				<controls:ColoredControl
-					BorderBrush="Firebrick"
+					BorderBrush="{Binding Secondary1BaseBrush}"
 					/>
 			</glyphs:GlyphButton.XamlContent>
 		</glyphs:GlyphButton>
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
+			IsVisible="{Binding IsSecondary2Visible}"
+			IsDisabled="{Binding IsShadingDisabled}"
 			Text="Secondary #2"
 			Behaviour="Tap"
 			Grid.Column="16"
@@ -348,12 +356,12 @@
 			Margin="0"
 			ButtonBackground="BorderlessRectangle"
 			Group="{Binding ElementName=ColorsSelectionGroup}"
-			Command="{Binding OnLockSelect}"
-			CommandParameter="Open"
+			Command="{Binding OnColorSelect}"
+			CommandParameter="Secondary1"
 			>
 			<glyphs:GlyphButton.XamlContent>
 				<controls:ColoredControl
-					BorderBrush="DodgerBlue"
+					BorderBrush="{Binding Secondary2BaseBrush}"
 					/>
 			</glyphs:GlyphButton.XamlContent>
 		</glyphs:GlyphButton>

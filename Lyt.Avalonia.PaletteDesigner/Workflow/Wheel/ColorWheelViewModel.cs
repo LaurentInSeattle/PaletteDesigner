@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Wheel;
 
-using HsvColor = Model.DataObjects.HsvColor;
+using HsvColor = Model.PaletteObjects.HsvColor;
 
 public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
 {
@@ -85,7 +85,8 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         position = palette.Primary.Darker.Position;
         this.View.DarkerShadeMarker.MoveShadeMarker(position.X, position.Y);
 
-        var hsv = palette.Primary.Base.Color;
+        Shades shades = palette.FromWheel(palette.SelectedWheel);
+        HsvColor hsv = shades.Base.Color;
         this.UpdateShadesBitmap(hsv.H);
     }
 

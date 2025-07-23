@@ -1,4 +1,4 @@
-﻿namespace Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
+﻿namespace Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 
 // Screen position or a marker on the shades image:
 //      0,0 at top left, 300, 300 at bottom right

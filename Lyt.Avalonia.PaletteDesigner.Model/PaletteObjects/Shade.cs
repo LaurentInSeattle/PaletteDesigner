@@ -1,4 +1,4 @@
-﻿namespace Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
+﻿namespace Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 
 // Mutable 
 public sealed class Shade

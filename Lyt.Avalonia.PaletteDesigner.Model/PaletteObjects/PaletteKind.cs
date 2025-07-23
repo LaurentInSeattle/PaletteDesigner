@@ -1,4 +1,4 @@
-﻿namespace Lyt.Avalonia.PaletteDesigner.Model.DataObjects;
+﻿namespace Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 
 // See: https://en.wikipedia.org/wiki/HSL_and_HSV 
 // http://paletton.com/
@@ -65,37 +65,17 @@ public static class PaletteKindExtensions
         => kind == PaletteKind.Duochromatic ||
            kind == PaletteKind.Trichromatic ||
            kind == PaletteKind.Quadrichromatic;
+
+    public static bool HasSecondary1Marker(this PaletteKind kind)
+        => kind == PaletteKind.Trichromatic ||
+           kind == PaletteKind.Quadrichromatic ||
+           kind == PaletteKind.Triad ||
+           kind == PaletteKind.TriadComplementary ||
+           kind == PaletteKind.Square;
+
+    public static bool HasSecondary2Marker(this PaletteKind kind)
+        => kind == PaletteKind.Quadrichromatic ||
+           kind == PaletteKind.Triad ||
+           kind == PaletteKind.TriadComplementary ||
+           kind == PaletteKind.Square;
 }
-
-//public class PaletteKindComboBoxItem
-//{
-//    public PaletteKindComboBoxItem(PaletteKind kind, string displayString, string tip)
-//    {
-//        this.Kind = kind;
-//        this.DisplayString = displayString;
-//        this.Tip = tip;
-//    }
-
-//    public string DisplayString { get; private set; }
-//    public PaletteKind Kind { get; private set; }
-//    public string Tip { get; private set; }
-
-//    public static List<PaletteKindComboBoxItem> All()
-//    {
-//        var list = new List<PaletteKindComboBoxItem>(10)
-//        {
-//            new PaletteKindComboBoxItem ( PaletteKind.Monochromatic,                        "Monochromatic",    "One free color." ) ,
-//            new PaletteKindComboBoxItem ( PaletteKind.MonochromaticComplementary,           "Monochromatic with Complementary", "One free color and its complementary." ) ,
-//            new PaletteKindComboBoxItem ( PaletteKind.Duochromatic,                         "Duochromatic", "Two free colors." ) ,
-//            new PaletteKindComboBoxItem ( PaletteKind.DuochromaticComplementary,            "Duochromatic with Complementary", "Two free colors and one complementary." ) ,
-//            new PaletteKindComboBoxItem ( PaletteKind.TriChromatic,                         "Free Triad", "Three free colors." ) ,
-//            new PaletteKindComboBoxItem ( PaletteKind.TriChromaticSymmetrical,               "Symmetrical Triad", "Two free colors, one symetrical." ) ,
-//            new PaletteKindComboBoxItem ( PaletteKind.TriChromaticSymmetricalComplementary,  "Symmetrical Triad with Complementary", "Two free colors, one symetrical and one complementary." ) ,
-//            new PaletteKindComboBoxItem ( PaletteKind.TriChromaticComplementary,            "Free Triad with Complementary", "Three free colors, one complementary" ) ,
-//            new PaletteKindComboBoxItem ( PaletteKind.Quadrichromatic,                      "Free Quadrichromatic", "Four free colors." ) ,
-//            new PaletteKindComboBoxItem ( PaletteKind.QuadrichromaticComplementary,         "Quadrichromatic with Complementaries", "Two free colors, two complementary colors." ) ,
-//        };
-
-//        return list;
-//    }
-//}
