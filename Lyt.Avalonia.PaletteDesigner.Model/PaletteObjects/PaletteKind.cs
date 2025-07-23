@@ -73,9 +73,23 @@ public static class PaletteKindExtensions
            kind == PaletteKind.TriadComplementary ||
            kind == PaletteKind.Square;
 
+    public static bool CanMoveSecondary1Marker(this PaletteKind kind)
+        => kind == PaletteKind.Trichromatic ||
+           kind == PaletteKind.Quadrichromatic ||
+           kind == PaletteKind.Triad ||
+           kind == PaletteKind.TriadComplementary ||
+           kind == PaletteKind.Square;
+
     public static bool HasSecondary2Marker(this PaletteKind kind)
         => kind == PaletteKind.Quadrichromatic ||
            kind == PaletteKind.Triad ||
            kind == PaletteKind.TriadComplementary ||
            kind == PaletteKind.Square;
+
+    public static bool CanMoveSecondary2Marker(this PaletteKind kind)
+        => kind == PaletteKind.Trichromatic ||
+           kind == PaletteKind.Quadrichromatic;
+
 }
+
+// 

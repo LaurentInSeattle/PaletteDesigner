@@ -22,7 +22,19 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
     private bool hasComplementaryMarker;
 
     [ObservableProperty]
+    private bool hasSecondary1Marker;
+
+    [ObservableProperty]
+    private bool hasSecondary2Marker;
+
+    [ObservableProperty]
     private bool canMoveComplementary;
+
+    [ObservableProperty]
+    private bool canMoveSecondary1;
+
+    [ObservableProperty]
+    private bool canMoveSecondary2;
 
     public ColorWheelViewModel(PaletteDesignerModel paletteDesignerModel)
     {
@@ -41,6 +53,10 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         this.hue = double.NaN;
         this.HasComplementaryMarker = false;
         this.CanMoveComplementary = false;
+        this.HasSecondary1Marker = false;
+        this.CanMoveSecondary1 = false;
+        this.HasSecondary2Marker = false;
+        this.CanMoveSecondary2 = false;
     }
 
     public NestedDictionary<int, int, HsvColor> Map => this.paletteDesignerModel.ShadeColorMap;
@@ -70,9 +86,15 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
     public void Update(Palette palette)
     {
         this.HasComplementaryMarker = palette.Kind.HasComplementaryMarker();
+        this.HasSecondary1Marker = palette.Kind.HasSecondary1Marker();
+        this.HasSecondary2Marker = palette.Kind.HasSecondary2Marker();
         this.CanMoveComplementary = palette.Kind.CanMoveComplementaryMarker();
+        this.CanMoveSecondary1 = palette.Kind.CanMoveSecondary1Marker();
+        this.CanMoveSecondary2 = palette.Kind.CanMoveSecondary2Marker();
         this.View.PrimaryMarker.MoveWheelMarker(palette.Primary.Wheel);
         this.View.ComplementaryMarker.MoveWheelMarker(palette.Complementary.Wheel);
+        this.View.Secondary1Marker.MoveWheelMarker(palette.Secondary1.Wheel);
+        this.View.Secondary2Marker.MoveWheelMarker(palette.Secondary2.Wheel);
 
         var position = palette.Primary.Base.Position;
         this.View.BaseShadeMarker.MoveShadeMarker(position.X, position.Y);

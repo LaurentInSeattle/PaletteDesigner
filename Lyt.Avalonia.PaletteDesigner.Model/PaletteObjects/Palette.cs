@@ -9,8 +9,9 @@ public sealed class Palette
     public PaletteKind Kind { get; set; } = PaletteKind.MonochromaticComplementary;
 
     // for both Triad and Square, otherwise ignored 
+    // Degrees on the wheel 
     [JsonRequired]
-    public double SecondaryWheelDistance { get; set; } = new();
+    public double SecondaryWheelDistance { get; set; } = 27.0;
 
     [JsonRequired]
     public bool AreShadesLocked { get; set; } = true;
