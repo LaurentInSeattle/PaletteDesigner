@@ -80,6 +80,9 @@
 	  <Compile Update="Controls\MonoChromeComplementaryControl.axaml.cs">
 	    <DependentUpon>MonoChromeComplementaryControl.axaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Workflow\Design\ShadeSelectionToolbarView.axaml.cs">
+	    <DependentUpon>ShadeSelectionToolbarView.axaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Workflow\Shading\PalettePreviewView.axaml.cs">
 	    <DependentUpon>PalettePreviewView.axaml</DependentUpon>
 	  </Compile>

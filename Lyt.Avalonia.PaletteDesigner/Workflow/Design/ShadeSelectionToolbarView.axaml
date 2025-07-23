@@ -1,0 +1,184 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Design.ShadeSelectionToolbarView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Design"
+	x:DataType="vm:ShadeSelectionToolbarViewModel" 
+			 
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="1680" d:DesignHeight="90"
+	
+	xmlns:glyphs="using:Lyt.Avalonia.Controls.Glyphs"	
+	xmlns:controls="clr-namespace:Lyt.Avalonia.PaletteDesigner.Controls"
+	>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="72" />
+			<RowDefinition Height="18" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<!-- Shades  -->
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="22" />
+			<!-- Colours  -->
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
+		</Grid.ColumnDefinitions>
+		<glyphs:SelectionGroup x:Name="SelectionGroup" />
+		<!-- Shades / Tints -->
+		<glyphs:SelectionGroup x:Name="ShadesSelectionGroup" />
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			Grid.Column="0"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Text="Locked Together"
+			GlyphSource="lock_closed"
+			GlyphStrokeThickness="0.2"
+			Group="{Binding ElementName=ShadesSelectionGroup}"
+			IsSelected="True"
+			Command="{Binding OnLockSelect}"
+			CommandParameter="Locked"
+			>
+		</glyphs:GlyphButton>
+
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			Grid.Column="1"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			GlyphSource="lock_open"
+			GlyphStrokeThickness="0.2"
+			Text="No Constraints"
+			Group="{Binding ElementName=ShadesSelectionGroup}"
+			Command="{Binding OnLockSelect}"
+			CommandParameter="Unlocked"
+			>
+		</glyphs:GlyphButton>
+
+		<!-- Colours -->
+		<glyphs:SelectionGroup x:Name="ColorsSelectionGroup" />
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Text="Primary"
+			IsVisible="{Binding IsPrimaryVisible}"
+			IsDisabled="{Binding IsShadingDisabled}"
+			IsSelected="True"
+			Behaviour="Tap"
+			Grid.Column="3"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Group="{Binding ElementName=ColorsSelectionGroup}"
+			Command="{Binding OnColorSelect}"
+			CommandParameter="Primary"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:ColoredControl
+					BorderBrush="{Binding PrimaryBaseBrush}"
+					/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			IsVisible="{Binding IsComplementaryVisible}"
+			IsDisabled="{Binding IsShadingDisabled}"
+			Text="Complementary"
+			Behaviour="Tap"
+			Grid.Column="4"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Group="{Binding ElementName=ColorsSelectionGroup}"
+			Command="{Binding OnColorSelect}"
+			CommandParameter="Complementary"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:ColoredControl
+					BorderBrush="{Binding ComplementaryBaseBrush}"
+					/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Text="Secondary #1"
+			IsVisible="{Binding IsSecondary1Visible}"
+			IsDisabled="{Binding IsShadingDisabled}"
+			Behaviour="Tap"
+			Grid.Column="5"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Group="{Binding ElementName=ColorsSelectionGroup}"
+			Command="{Binding OnColorSelect}"
+			CommandParameter="Secondary1"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:ColoredControl
+					BorderBrush="{Binding Secondary1BaseBrush}"
+					/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			IsVisible="{Binding IsSecondary2Visible}"
+			IsDisabled="{Binding IsShadingDisabled}"
+			Text="Secondary #2"
+			Behaviour="Tap"
+			Grid.Column="6"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Group="{Binding ElementName=ColorsSelectionGroup}"
+			Command="{Binding OnColorSelect}"
+			CommandParameter="Secondary2"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:ColoredControl
+					BorderBrush="{Binding Secondary2BaseBrush}"
+					/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+
+		<Rectangle
+			Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
+			Margin="8 0 8 0"
+			VerticalAlignment="Center" HorizontalAlignment="Left"
+			Height="1" Width="40"
+			Fill="{StaticResource PastelOrchid_0_080_Color}"
+			Opacity="0.3"
+			/>
+		<Rectangle
+			Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
+			Margin="8 0 8 0"
+			VerticalAlignment="Center" HorizontalAlignment="Right"
+			Height="1" Width="40"
+			Fill="{StaticResource PastelOrchid_0_080_Color}"
+			Opacity="0.3"
+			/>
+		<TextBlock
+			Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+			Text="Shades / Tints"
+			Margin="0 0 0 0"
+			Theme="{StaticResource Medium}"
+			TextAlignment="Center"
+			HorizontalAlignment="Center"
+			/>
+	</Grid>
+</UserControl>

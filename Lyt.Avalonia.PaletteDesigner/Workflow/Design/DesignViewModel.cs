@@ -13,12 +13,16 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
     [ObservableProperty]
     private ModelSelectionToolbarViewModel modelSelectionToolbarViewModel;
 
+    [ObservableProperty]
+    private ShadeSelectionToolbarViewModel shadeSelectionToolbarViewModel;
+
     public DesignViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
         this.ColorWheelViewModel = new(paletteDesignerModel);
         this.PalettePreviewViewModel = new(paletteDesignerModel);
-        this.modelSelectionToolbarViewModel = new();
+        this.ModelSelectionToolbarViewModel = new();
+        this.ShadeSelectionToolbarViewModel = new();
         this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated);
     }
 

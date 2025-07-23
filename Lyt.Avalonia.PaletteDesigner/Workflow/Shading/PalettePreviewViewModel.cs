@@ -311,19 +311,19 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             this.PrimaryShadesColumnSpan = 1;
 
             this.TopLeftShadesValues = this.PrimaryShadesValues;
-            this.BottomLeftShadesValues = this.Secondary2ShadesValues;
-            this.TopRightShadesValues = this.Secondary1ShadesValues;
-
             this.LeftShades = this.PrimaryShades;
-            this.MiddleLeftShades = this.Secondary1Shades;
-            this.MiddleRightShades = this.Secondary2Shades;
 
             shades = palette.Secondary1;
             this.Secondary1Shades.Update(shades);
             this.Secondary1ShadesValues.Update(shades);
+            this.TopRightShadesValues = this.Secondary1ShadesValues;
+            this.MiddleLeftShades = this.Secondary1Shades;
+
             shades = palette.Secondary2;
             this.Secondary2Shades.Update(shades);
             this.Secondary2ShadesValues.Update(shades);
+            this.BottomLeftShadesValues = this.Secondary2ShadesValues;
+            this.MiddleRightShades = this.Secondary2Shades;
 
             if (colorCount == 4)
             {
@@ -341,7 +341,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
                 this.RightShades = this.PrimaryShades; 
             }
 
-            // Use shades set when checking color count 
+            // Use brushes for all shades set when checking color count 
             this.ComplementaryLighterBrush = shades.Lighter.ToBrush();
             this.ComplementaryLightBrush = shades.Light.ToBrush();
             this.ComplementaryBaseBrush = shades.Base.ToBrush();
@@ -354,7 +354,6 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             this.SecondaryTopBaseBrush = shades.Base.ToBrush();
             this.SecondaryTopDarkBrush = shades.Dark.ToBrush();
             this.SecondaryTopDarkerBrush = shades.Darker.ToBrush();
-            this.Secondary1ShadesValues.Update(shades);
 
             shades = palette.Secondary2;
             this.SecondaryBotLighterBrush = shades.Lighter.ToBrush();
@@ -362,7 +361,6 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             this.SecondaryBotBaseBrush = shades.Base.ToBrush();
             this.SecondaryBotDarkBrush = shades.Dark.ToBrush();
             this.SecondaryBotDarkerBrush = shades.Darker.ToBrush();
-            this.Secondary1ShadesValues.Update(shades);
         }
     }
 }

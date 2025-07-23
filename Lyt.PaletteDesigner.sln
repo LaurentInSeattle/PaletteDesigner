@@ -41,6 +41,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Utilities", "..\Lyt.Fra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.PaletteDesigner.Model", "Lyt.Avalonia.PaletteDesigner.Model\Lyt.Avalonia.PaletteDesigner.Model.csproj", "{07346C87-33C1-4D88-A6EB-81665C61360D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Screenshots", "Screenshots", "{E4A2AD44-3643-E664-FD45-63B4927C5605}"
+	ProjectSection(SolutionItems) = preProject
+		Screenshots\FirstScreenshot 2025-07-23.png = Screenshots\FirstScreenshot 2025-07-23.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
