@@ -7,7 +7,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="90"
+	mc:Ignorable="d" d:DesignWidth="1680" d:DesignHeight="90"
 	
 	xmlns:glyphs="using:Lyt.Avalonia.Controls.Glyphs"	
 	xmlns:controls="clr-namespace:Lyt.Avalonia.PaletteDesigner.Controls"
@@ -33,6 +33,13 @@
 			<!-- Spacer -->
 			<ColumnDefinition Width="54" />
 			<!-- Shades  -->
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="22" />
+			<!-- Colours  -->
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
 			<ColumnDefinition Width="112" />
 			<ColumnDefinition Width="112" />
 		</Grid.ColumnDefinitions>
@@ -271,6 +278,87 @@
 			>
 		</glyphs:GlyphButton>
 
+		<!-- Colours -->
+		<glyphs:SelectionGroup x:Name="ColorsSelectionGroup" />
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			Grid.Column="13"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			Text="Primary"
+			ButtonBackground="BorderlessRectangle"
+			Group="{Binding ElementName=ColorsSelectionGroup}"
+			Command="{Binding OnLockSelect}"
+			CommandParameter="Open"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:ColoredControl
+					BorderBrush="Aquamarine"
+					/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Text="Complementary"
+			Behaviour="Tap"
+			Grid.Column="14"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Group="{Binding ElementName=ColorsSelectionGroup}"
+			Command="{Binding OnLockSelect}"
+			CommandParameter="Open"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:ColoredControl
+					BorderBrush="DarkOrange"
+					/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Text="Secondary #1"
+			Behaviour="Tap"
+			Grid.Column="15"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Group="{Binding ElementName=ColorsSelectionGroup}"
+			Command="{Binding OnLockSelect}"
+			CommandParameter="Open"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:ColoredControl
+					BorderBrush="Firebrick"
+					/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Text="Secondary #2"
+			Behaviour="Tap"
+			Grid.Column="16"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Group="{Binding ElementName=ColorsSelectionGroup}"
+			Command="{Binding OnLockSelect}"
+			CommandParameter="Open"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<controls:ColoredControl
+					BorderBrush="DodgerBlue"
+					/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+
+
 		<Rectangle
 			Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="1"
 			Margin="8 0 8 0"
@@ -280,7 +368,7 @@
 			Opacity="0.3"
 			/>
 		<Rectangle
-			Grid.Column="12" Grid.ColumnSpan="2" Grid.Row="1"
+			Grid.Column="10" Grid.ColumnSpan="2" Grid.Row="1"
 			Margin="8 0 8 0"
 			VerticalAlignment="Center" HorizontalAlignment="Right"
 			Height="1" Width="40"

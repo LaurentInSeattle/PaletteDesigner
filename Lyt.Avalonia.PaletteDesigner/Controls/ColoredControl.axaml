@@ -1,0 +1,25 @@
+<UserControl
+	x:Class="Lyt.Avalonia.PaletteDesigner.Controls.ColoredControl"
+
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	BorderThickness="0"
+	>
+	<Grid
+		Height="60" Width="80"
+		>
+		<Border
+			BorderBrush="{ReflectionBinding $parent[UserControl].Foreground}"
+			BorderThickness="2"
+			Background="Transparent"
+			>
+			<Rectangle
+				Margin="12"
+				Fill="{ReflectionBinding $parent[UserControl].BorderBrush}"
+				/>
+		</Border>
+	</Grid>
+</UserControl>
