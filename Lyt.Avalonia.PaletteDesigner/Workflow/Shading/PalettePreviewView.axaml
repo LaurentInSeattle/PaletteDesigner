@@ -43,24 +43,24 @@
 			</Grid.ColumnDefinitions>
 			<vm:PaletteColorView
 				Grid.Column="1"
-				DataContext="{Binding ComplementaryShades}"
+				DataContext="{Binding MiddleLeftShades}"
 				HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
 				/>
 			<vm:PaletteColorView
 				Grid.Column="2"
-				DataContext="{Binding ComplementaryShades}"
+				DataContext="{Binding MiddleRightShades}"
 				HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
 				/>
 			<vm:PaletteColorView
 				Grid.Column="3"
-				DataContext="{Binding ComplementaryShades}"
+				DataContext="{Binding RightShades}"
 				HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
 				/>
 			<!-- Primary needs to be on top of all others-->
 			<vm:PaletteColorView
 				x:Name="PrimaryShades"
 				Grid.Column="0"
-				DataContext="{Binding PrimaryShades}"
+				DataContext="{Binding LeftShades}"
 				HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
 				/>
 		</Grid>

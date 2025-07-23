@@ -8,22 +8,28 @@ public sealed partial class PaletteDesignerModel : ModelBase
         => this.UpdatePalette((Palette palette) =>
         {
             palette.Kind = paletteKind;
+            if (paletteKind == PaletteKind.Triad ||
+                paletteKind == PaletteKind.TriadComplementary)
+            {
+                palette.UpdatePrimaryWheelTriad(palette.Primary.Wheel);
+            }
+
             if (paletteKind.HasComplementary())
             {
-                palette.UpdatePrimaryWheelMonochromaticComplementary(palette.Primary.Wheel);
+                palette.UpdatePrimaryWheelComplementary(palette.Primary.Wheel);
             }
-            
+
             return true;
         });
 
-    public void UpdatePaletteShadeMode(ShadeMode shadeMode) 
+    public void UpdatePaletteShadeMode(ShadeMode shadeMode)
         => this.UpdatePalette((Palette palette) =>
         {
             palette.AreShadesLocked = shadeMode == ShadeMode.Locked;
             if (palette.AreShadesLocked)
             {
                 palette.SelectedWheel = WheelKind.Primary;
-            } 
+            }
 
             return true;
         });
@@ -32,9 +38,9 @@ public sealed partial class PaletteDesignerModel : ModelBase
     public void UpdatePaletteWheelShadeMode(WheelKind wheel)
         => this.UpdatePalette((Palette palette) =>
         {
-            if ( palette.AreShadesLocked )
+            if (palette.AreShadesLocked)
             {
-                return false; 
+                return false;
             }
 
             if (wheel == WheelKind.Unknown)
@@ -59,7 +65,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 break;
 
             case WheelKind.Complementary:
-                this.UpdatePaletteComplementaryWheel(wheel); 
+                this.UpdatePaletteComplementaryWheel(wheel);
                 break;
 
             case WheelKind.Secondary1:
@@ -84,11 +90,11 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 case PaletteKind.Trichromatic:
                 case PaletteKind.Quadrichromatic:
                     palette.UpdatePrimaryWheelMonochromatic(primaryWheel);
-                    break; 
+                    break;
 
                 case PaletteKind.MonochromaticComplementary:
                     palette.UpdatePrimaryWheelMonochromatic(primaryWheel);
-                    palette.UpdatePrimaryWheelMonochromaticComplementary(primaryWheel);
+                    palette.UpdatePrimaryWheelComplementary(primaryWheel);
                     break;
 
                 case PaletteKind.Triad:
@@ -127,7 +133,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 case PaletteKind.Duochromatic:
                 case PaletteKind.Trichromatic:
                 case PaletteKind.Quadrichromatic:
-                    palette.UpdateShadesWheel(palette.Complementary , complementaryWheel);
+                    palette.UpdateShadesWheel(palette.Complementary, complementaryWheel);
                     break;
             }
 
@@ -183,7 +189,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
                     case PaletteKind.Square:
                         break;
                 }
-            } 
+            }
 
             return true;
         });

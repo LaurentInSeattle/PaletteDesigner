@@ -92,7 +92,7 @@ public sealed class Palette
     public void UpdateShadesWheel(Shades shades, double wheel)
     {
         shades.Wheel = wheel;
-        if (this.colorWheel.TryGetValue(this.ToAngle(wheel), out RgbColor? rgbColor))
+        if (this.colorWheel.TryGetValue(Palette.ToAngle(wheel), out RgbColor? rgbColor))
         {
             if (rgbColor is null)
             {
@@ -108,7 +108,17 @@ public sealed class Palette
         }
     }
 
-    public void UpdatePrimaryWheelMonochromaticComplementary(double primaryWheel)
+    public void UpdatePrimaryWheelTriad(double primaryWheel)
+    {
+        this.Secondary1.UpdateFromWheel(this.TriadWheel1(), this.colorWheel, this.shadeMap);
+        this.Secondary2.UpdateFromWheel(this.TriadWheel2(), this.colorWheel, this.shadeMap);
+        if (this.Kind.HasComplementary())
+        {
+            this.Complementary.UpdateFromWheel(this.ComplementaryWheel(), this.colorWheel, this.shadeMap);
+        } 
+    }
+
+    public void UpdatePrimaryWheelComplementary(double primaryWheel)
     {
         this.Complementary.Wheel = this.ComplementaryWheel();
         if (this.colorWheel.TryGetValue(this.ComplementaryAngle(), out RgbColor? rgbColor))
@@ -157,7 +167,9 @@ public sealed class Palette
         this.Complementary.UpdateOne(this.shadeMap, shadeKind, pixelX, pixelY);
     }
 
-    public int PrimaryAngle() => (int)Math.Round(this.Primary.Wheel * 10.0);
+    public static int ToAngle(double wheel) => (int)Math.Round(wheel * 10.0);
+
+    public int PrimaryAngle() => Palette.ToAngle(this.Primary.Wheel);
 
     public double ComplementaryWheel()
         => (this.Primary.Wheel + 180.0).NormalizeAngleDegrees();
@@ -168,7 +180,11 @@ public sealed class Palette
         return (int)Math.Round(oppposite * 10.0);
     }
 
-    public int ToAngle(double wheel) => (int)Math.Round(wheel * 10.0);
+    public double TriadWheel1()
+        => (this.Primary.Wheel + this.SecondaryWheelDistance).NormalizeAngleDegrees();
+
+    public double TriadWheel2()
+        => (this.Primary.Wheel - this.SecondaryWheelDistance).NormalizeAngleDegrees();
 
     [Conditional("DEBUG")]
     public void Dump()

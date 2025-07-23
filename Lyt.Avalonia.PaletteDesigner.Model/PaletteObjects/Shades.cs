@@ -106,6 +106,25 @@ Primary
         //}
     }
 
+    public void UpdateFromWheel(double wheel, Dictionary<int, RgbColor> colorWheel, ShadeMap shadeMap)
+    {
+        this.Wheel = wheel;
+        if (colorWheel.TryGetValue(Palette.ToAngle(this.Wheel), out RgbColor? rgbColor))
+        {
+            if (rgbColor is null)
+            {
+                throw new Exception("No such angle");
+            }
+
+            var hsvColor = rgbColor.ToHsv();
+            var color = this.Base.Color;
+            hsvColor.S = color.S;
+            hsvColor.V = color.V;
+            this.Base.Color = hsvColor;
+            this.UpdateAllShadeColors(shadeMap);
+        }
+    }
+
     // Moving base marker to absolute position 
     // All four others follow by the same offset 
     public void UpdateAll(ShadeMap shadeMap, int pixelX, int pixelY)

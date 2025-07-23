@@ -12,6 +12,15 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 
     private readonly ShadesValuesViewModel ComplementaryShadesValues;
 
+    private readonly PaletteColorViewModel PrimaryShades;
+
+    private readonly PaletteColorViewModel ComplementaryShades;
+
+    private readonly PaletteColorViewModel Secondary1Shades;
+
+    private readonly PaletteColorViewModel Secondary2Shades;
+
+
     #region The 20 observable brush properties 
 
     [ObservableProperty]
@@ -77,7 +86,16 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     #endregion 20 observable brush properties 
 
     [ObservableProperty]
-    private PaletteColorViewModel primaryShades;
+    private PaletteColorViewModel leftShades;
+
+    [ObservableProperty]
+    private PaletteColorViewModel middleLeftShades;
+
+    [ObservableProperty]
+    private PaletteColorViewModel middleRightShades;
+
+    [ObservableProperty]
+    private PaletteColorViewModel rightShades;
 
     [ObservableProperty]
     private ShadesValuesViewModel topLeftShadesValues;
@@ -102,9 +120,6 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             } 
         } 
     }
-
-    [ObservableProperty]
-    private PaletteColorViewModel complementaryShades;
 
     [ObservableProperty]
     private double wheelSliderValue;
@@ -147,9 +162,15 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         this.TopRightShadesValues    = this.PrimaryShadesValues;
         this.BottomRightShadesValues = this.PrimaryShadesValues;
 
-        this.PrimaryShades = new ();
         this.PrimaryShadesColumnSpan = 4;
+        this.PrimaryShades = new ();
         this.ComplementaryShades = new();
+        this.Secondary1Shades = new();
+        this.Secondary2Shades = new();
+        this.LeftShades = this.PrimaryShades;
+        this.MiddleLeftShades = this.PrimaryShades;
+        this.MiddleRightShades = this.PrimaryShades;
+        this.RightShades = this.PrimaryShades;
     }
 
     public override void OnViewLoaded()
@@ -257,12 +278,16 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             this.TopLeftShadesValues = this.PrimaryShadesValues;
             this.BottomLeftShadesValues = this.PrimaryShadesValues;
             this.TopRightShadesValues = this.PrimaryShadesValues;
+            this.LeftShades = this.PrimaryShades;
+            this.MiddleLeftShades = this.PrimaryShades;
+            this.MiddleRightShades = this.PrimaryShades;
             if (colorCount == 2)
             {
                 // colorCount == 1 => Complementary same as primary 
                 shades = palette.Complementary;
                 this.PrimaryShadesColumnSpan = 3;
                 this.BottomRightShadesValues = this.ComplementaryShadesValues;
+                this.RightShades = this.ComplementaryShades;
                 this.ComplementaryShades.Update(shades);
                 string name = 
                     palette.Kind == PaletteKind.Duochromatic ? "Accent" : "Complementary"; 
@@ -289,20 +314,34 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             this.BottomLeftShadesValues = this.Secondary2ShadesValues;
             this.TopRightShadesValues = this.Secondary1ShadesValues;
 
+            this.LeftShades = this.PrimaryShades;
+            this.MiddleLeftShades = this.Secondary1Shades;
+            this.MiddleRightShades = this.Secondary2Shades;
+
+            shades = palette.Secondary1;
+            this.Secondary1Shades.Update(shades);
+            this.Secondary1ShadesValues.Update(shades);
+            shades = palette.Secondary2;
+            this.Secondary2Shades.Update(shades);
+            this.Secondary2ShadesValues.Update(shades);
+
             if (colorCount == 4)
             {
-                // colorCount == 3 => Complementary same as primary 
                 shades = palette.Complementary;
-                this.PrimaryShadesColumnSpan = 1;
                 this.BottomRightShadesValues = this.ComplementaryShadesValues;
                 this.ComplementaryShades.Update(shades);
                 this.ComplementaryShadesValues.Update(shades);
+                this.RightShades = this.ComplementaryShades;
             }
             else
             {
+                // colorCount == 3 => Complementary same as primary 
+                shades = palette.Primary;
                 this.BottomRightShadesValues = this.PrimaryShadesValues;
+                this.RightShades = this.PrimaryShades; 
             }
 
+            // Use shades set when checking color count 
             this.ComplementaryLighterBrush = shades.Lighter.ToBrush();
             this.ComplementaryLightBrush = shades.Light.ToBrush();
             this.ComplementaryBaseBrush = shades.Base.ToBrush();
