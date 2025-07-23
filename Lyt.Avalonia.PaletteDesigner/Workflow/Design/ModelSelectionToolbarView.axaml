@@ -358,7 +358,7 @@
 			ButtonBackground="BorderlessRectangle"
 			Group="{Binding ElementName=ColorsSelectionGroup}"
 			Command="{Binding OnColorSelect}"
-			CommandParameter="Secondary1"
+			CommandParameter="Secondary2"
 			>
 			<glyphs:GlyphButton.XamlContent>
 				<controls:ColoredControl
