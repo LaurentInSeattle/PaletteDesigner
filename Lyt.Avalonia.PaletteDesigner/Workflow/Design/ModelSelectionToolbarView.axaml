@@ -285,6 +285,7 @@
 			Text="Primary"
 			IsVisible="{Binding IsPrimaryVisible}"
 			IsDisabled="{Binding IsShadingDisabled}"
+			IsSelected="True"
 			Behaviour="Tap"
 			Grid.Column="13"
 			VerticalAlignment="Center" HorizontalAlignment="Center"
