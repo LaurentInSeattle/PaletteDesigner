@@ -24,6 +24,7 @@ See: https://theme.xaml.live/
   </FluentTheme.Palettes>
 </FluentTheme>
 
+https://github.com/cl2raul66/MauiPaletteCreator
 
 ADOBE file formats ASE / ACO / ACT 
 
@@ -73,7 +74,15 @@ Paint.Net
 
 Colorblindness simulation 
 https://github.com/SOHNE/Colorblindness 
+https://davidmathlogic.com/colorblind/#%23000000-%23E69F00-%2356B4E9-%23009E73-%23F0E442-%230072B2-%23D55E00-%23CC79A7
 
 Palette from image 
 https://github.com/ookii-tsuki/wpf-color-palette
 https://github.com/nor0x/NetPalette
+https://github.com/Krzysztofz01/Alchemy-ColorShaper
+https://github.com/YousefSameh25/Image_Quantization
+
+Paletton Shades Presets : 24
+
+- 3 Categories
+- 8 Variants => Light to Dark 
