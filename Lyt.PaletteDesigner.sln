@@ -44,6 +44,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Screenshots", "Screenshots", "{E4A2AD44-3643-E664-FD45-63B4927C5605}"
 	ProjectSection(SolutionItems) = preProject
 		Screenshots\FirstScreenshot 2025-07-23.png = Screenshots\FirstScreenshot 2025-07-23.png
+		Screenshots\Screenshot 2025-07-24.png = Screenshots\Screenshot 2025-07-24.png
 	EndProjectSection
 EndProject
 Global

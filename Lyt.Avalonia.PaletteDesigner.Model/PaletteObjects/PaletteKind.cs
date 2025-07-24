@@ -49,7 +49,6 @@ public static class PaletteKindExtensions
     public static bool HasComplementaryMarker(this PaletteKind kind)
         => kind == PaletteKind.MonochromaticComplementary ||
            kind == PaletteKind.Duochromatic ||
-           kind == PaletteKind.Trichromatic ||
            kind == PaletteKind.Quadrichromatic ||
            kind == PaletteKind.TriadComplementary ||
            kind == PaletteKind.Square;
@@ -63,7 +62,6 @@ public static class PaletteKindExtensions
     // Only for free color models 
     public static bool CanMoveComplementaryMarker(this PaletteKind kind)
         => kind == PaletteKind.Duochromatic ||
-           kind == PaletteKind.Trichromatic ||
            kind == PaletteKind.Quadrichromatic;
 
     public static bool HasSecondary1Marker(this PaletteKind kind)
@@ -81,7 +79,8 @@ public static class PaletteKindExtensions
            kind == PaletteKind.Square;
 
     public static bool HasSecondary2Marker(this PaletteKind kind)
-        => kind == PaletteKind.Quadrichromatic ||
+        => kind == PaletteKind.Trichromatic ||
+           kind == PaletteKind.Quadrichromatic ||
            kind == PaletteKind.Triad ||
            kind == PaletteKind.TriadComplementary ||
            kind == PaletteKind.Square;
