@@ -6,16 +6,17 @@ public sealed partial class PaletteDesignerModel : ModelBase
         => this.UpdatePalette((Palette palette) =>
         {
             palette.Kind = paletteKind;
-            if (paletteKind == PaletteKind.Triad ||
-                paletteKind == PaletteKind.TriadComplementary)
-            {
-                palette.UpdatePrimaryWheelTriad(palette.Primary.Wheel);
-            }
+            this.UpdatePalettePrimaryWheel(palette.Primary.Wheel);
+            //if (paletteKind == PaletteKind.Triad ||
+            //    paletteKind == PaletteKind.TriadComplementary)
+            //{
+            //    palette.UpdatePrimaryWheelTriad(palette.Primary.Wheel);
+            //}
 
-            if (paletteKind.HasComplementary())
-            {
-                palette.UpdatePrimaryWheelComplementary(palette.Primary.Wheel);
-            }
+            //if (paletteKind.HasComplementary())
+            //{
+            //    palette.UpdatePrimaryWheelComplementary(palette.Primary.Wheel);
+            //}
 
             return true;
         });
@@ -101,7 +102,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
                     break;
 
                 case PaletteKind.Square:
-                    // TODO 
+                    palette.UpdateSecondaryWheelSquare(wheel);
                     break;
             }
 
@@ -133,7 +134,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
                     break;
 
                 case PaletteKind.Square:
-                    // TODO 
+                    palette.UpdateSecondaryWheelSquare(wheel);
                     break;
             }
 
@@ -168,6 +169,8 @@ public sealed partial class PaletteDesignerModel : ModelBase
                     break;
 
                 case PaletteKind.Square:
+                    palette.UpdatePrimaryWheelMonochromatic(primaryWheel);
+                    palette.UpdatePrimaryWheelSquare(primaryWheel);
                     break;
             }
 
@@ -302,6 +305,11 @@ public sealed partial class PaletteDesignerModel : ModelBase
         if (palette is null)
         {
             return false;
+        }
+
+        if (( Palette.ColorWheel is null ) || (Palette.ShadeMap is null))
+        {
+            throw new Exception("Palette has not been setup");
         }
 
         bool result = action(palette);

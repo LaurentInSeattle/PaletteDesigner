@@ -120,7 +120,9 @@ public partial class MarkerControl : UserControl
             return;
         }
 
-        var map = colorWheelViewModel.Map;
+        var map =
+            Palette.ShadeMap ??
+            throw new ArgumentException("Palette has not been setup.");
 
         if (this.isWheel)
         {

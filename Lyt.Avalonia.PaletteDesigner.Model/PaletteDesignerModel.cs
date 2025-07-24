@@ -77,8 +77,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
             // Copy all properties with attribute [JsonRequired]
             base.CopyJSonRequiredProperties<PaletteDesignerModel>(model);
 
-            this.LoadColorWheel();
-            this.ShadeColorMap = new ShadeMap(PaletteDesignerModel.ShadesImageDimension);
+            // Create a default project and make it active 
             Project project = new()
             {
                 Name = "Empty",
@@ -86,12 +85,14 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 FolderPath = string.Empty,
                 Created = DateTime.Now,
                 LastUpdated = DateTime.Now,
-                Palette = new Palette(this.ColorLookupTable, this.ShadeColorMap)
+                Palette = new()
                 {
                     Name = "Default", 
                     Kind = PaletteKind.Duochromatic,
                 },
-            }; 
+            };
+
+            this.LoadStaticColorData();
             this.ActiveProject = project;
 
             return Task.CompletedTask;
@@ -104,7 +105,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
         }
     }
 
-    private void LoadColorWheel()
+    private void LoadStaticColorData()
     {
         ResourcesUtilities.SetResourcesPath("Lyt.Avalonia.PaletteDesigner.Model.Resources"); 
         string serialized = ResourcesUtilities.LoadEmbeddedTextResource("ColorWheel.json", out string? _);
@@ -114,7 +115,8 @@ public sealed partial class PaletteDesignerModel : ModelBase
             throw new Exception("Failed to load color wheel");
         }
 
-        this.ColorLookupTable = colorWheel;
+        var shadeMap = new ShadeMap(PaletteDesignerModel.ShadesImageDimension);
+        Palette.Setup(colorWheel, shadeMap);
     }
 
     public override Task Save()

@@ -58,8 +58,9 @@ Primary
         Hue: 351.0  Sat: 1.0  Bri: 0.4
 */
 
-    public void Reset(ShadeMap shadeMap)
+    public void Reset()
     {
+        ShadeMap shadeMap = Palette.ShadeMap; 
         int pixelX = PaletteDesignerModel.ShadesImageCenter;
         int pixelY = PaletteDesignerModel.ShadesImageCenter;
         const double brightnessStep = 0.1;
@@ -96,7 +97,7 @@ Primary
         this.Darker.MoveTo(baseHue, shadeMap, darkerX, darkerY);
     }
 
-    public void CopyShadesFrom(ShadeMap shadeMap, Shades shades)
+    public void CopyShadesFrom(Shades shades)
     {
         //foreach (var shade in
         //    new[] { this.Lighter, this.Light, this.Base, this.Dark, this.Darker })
@@ -106,10 +107,10 @@ Primary
         //}
     }
 
-    public void UpdateFromWheel(double wheel, Dictionary<int, RgbColor> colorWheel, ShadeMap shadeMap)
+    public void UpdateFromWheel(double wheel)
     {
         this.Wheel = wheel;
-        if (colorWheel.TryGetValue(Palette.ToAngle(this.Wheel), out RgbColor? rgbColor))
+        if (Palette.ColorWheel.TryGetValue(Palette.ToAngle(this.Wheel), out RgbColor? rgbColor))
         {
             if (rgbColor is null)
             {
@@ -121,14 +122,15 @@ Primary
             hsvColor.S = color.S;
             hsvColor.V = color.V;
             this.Base.Color = hsvColor;
-            this.UpdateAllShadeColors(shadeMap);
+            this.UpdateAllShadeColors(Palette.ShadeMap);
         }
     }
 
     // Moving base marker to absolute position 
     // All four others follow by the same offset 
-    public void UpdateAll(ShadeMap shadeMap, int pixelX, int pixelY)
+    public void UpdateAll(int pixelX, int pixelY)
     {
+        ShadeMap shadeMap = Palette.ShadeMap;
         var oldPosition = this.Base.Position; 
         var newPosition = new Position(pixelX, pixelY);
         newPosition.Adjust();
@@ -146,8 +148,9 @@ Primary
 
     // Moving ONE marker, but NOT the base, to an absolute position 
     // All other unchanged 
-    public void UpdateOne(ShadeMap shadeMap, ShadeKind shadeKind, int pixelX, int pixelY)
+    public void UpdateOne(ShadeKind shadeKind, int pixelX, int pixelY)
     {
+        ShadeMap shadeMap = Palette.ShadeMap;
         var position = new Position(pixelX, pixelY);
         position.Adjust();
         pixelX = position.X;

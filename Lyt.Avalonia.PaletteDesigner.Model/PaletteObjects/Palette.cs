@@ -2,6 +2,24 @@
 
 public sealed class Palette
 {
+#pragma warning disable CS8618 
+    // Non-nullable field must contain a non-null value when exiting constructor.
+#pragma warning disable CA2211 
+    // Non-constant fields should not be visible
+
+    public static Dictionary<int, RgbColor> ColorWheel;
+
+    public static ShadeMap ShadeMap;
+
+    public static void Setup(Dictionary<int, RgbColor> colorWheel, ShadeMap shadeMap)
+    {
+        Palette.ColorWheel = colorWheel;
+        Palette.ShadeMap = shadeMap;
+    }
+
+#pragma warning restore CA2211 
+#pragma warning restore CS8618 
+
     [JsonRequired]
     public string Name { get; set; } = string.Empty;
 
@@ -32,19 +50,10 @@ public sealed class Palette
     [JsonRequired]
     public Shades Complementary { get; set; } = new();
 
-    private readonly Dictionary<int, RgbColor> colorWheel;
-    private readonly ShadeMap shadeMap;
-
 #pragma warning disable CS8618 
     // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     public Palette() { /* needed for serialization */ }
 #pragma warning restore CS8618 
-
-    public Palette(Dictionary<int, RgbColor> colorWheel, ShadeMap shadeMap)
-    {
-        this.colorWheel = colorWheel;
-        this.shadeMap = shadeMap;
-    }
 
     public Shades FromWheel (WheelKind wheelKind)
         => wheelKind switch
@@ -64,35 +73,21 @@ public sealed class Palette
 
     public void ResetShades()
     {
-        this.Primary.Reset(this.shadeMap);
-        this.Complementary.Reset(this.shadeMap);
-        this.Secondary1.Reset(this.shadeMap);
-        this.Secondary2.Reset(this.shadeMap);
+        this.Primary.Reset();
+        this.Complementary.Reset();
+        this.Secondary1.Reset();
+        this.Secondary2.Reset();
     }
 
     public void UpdatePrimaryWheelMonochromatic(double primaryWheel)
     {
-        this.Primary.Wheel = primaryWheel;
-        if (this.colorWheel.TryGetValue(this.PrimaryAngle(), out RgbColor? rgbColorPrimary))
-        {
-            if (rgbColorPrimary is null)
-            {
-                throw new Exception("No such angle");
-            }
-
-            var hsvColorPrimary = rgbColorPrimary.ToHsv();
-            var color = this.Primary.Base.Color;
-            hsvColorPrimary.S = color.S;
-            hsvColorPrimary.V = color.V;
-            this.Primary.Base.Color = hsvColorPrimary;
-            this.Primary.UpdateAllShadeColors(this.shadeMap);
-        }
+        this.Primary.UpdateFromWheel(primaryWheel);
     }
 
     public void UpdateShadesWheel(Shades shades, double wheel)
     {
         shades.Wheel = wheel;
-        if (this.colorWheel.TryGetValue(Palette.ToAngle(wheel), out RgbColor? rgbColor))
+        if (Palette.ColorWheel.TryGetValue(Palette.ToAngle(wheel), out RgbColor? rgbColor))
         {
             if (rgbColor is null)
             {
@@ -104,37 +99,34 @@ public sealed class Palette
             hsvColor.S = color.S;
             hsvColor.V = color.V;
             shades.Base.Color = hsvColor;
-            shades.UpdateAllShadeColors(this.shadeMap);
+            shades.UpdateAllShadeColors(Palette.ShadeMap);
         }
     }
 
     public void UpdatePrimaryWheelTriad(double primaryWheel)
     {
-        this.Secondary1.UpdateFromWheel(this.TriadWheel1(), this.colorWheel, this.shadeMap);
-        this.Secondary2.UpdateFromWheel(this.TriadWheel2(), this.colorWheel, this.shadeMap);
+        this.Secondary1.UpdateFromWheel(this.TriadWheel1());
+        this.Secondary2.UpdateFromWheel(this.TriadWheel2());
         if (this.Kind.HasComplementary())
         {
-            this.Complementary.UpdateFromWheel(this.ComplementaryWheel(), this.colorWheel, this.shadeMap);
+            this.Complementary.UpdateFromWheel(this.ComplementaryWheel());
         } 
     }
 
     public void UpdatePrimaryWheelComplementary(double primaryWheel)
     {
-        this.Complementary.Wheel = this.ComplementaryWheel();
-        if (this.colorWheel.TryGetValue(this.ComplementaryAngle(), out RgbColor? rgbColor))
-        {
-            if (rgbColor is null)
-            {
-                throw new Exception("No such angle");
-            }
+        this.Complementary.UpdateFromWheel(this.ComplementaryWheel());
+    }
 
-            var hsvColor = rgbColor.ToHsv();
-            var color = this.Complementary.Base.Color;
-            hsvColor.S = color.S;
-            hsvColor.V = color.V;
-            this.Complementary.Base.Color = hsvColor;
-            this.Complementary.UpdateAllShadeColors(this.shadeMap);
-        }
+    public void UpdatePrimaryWheelSquare(double primaryWheel)
+    {
+        this.UpdatePrimaryWheelComplementary(primaryWheel);
+        double secondary1Wheel = 
+            (primaryWheel + this.SecondaryWheelDistance).NormalizeAngleDegrees();
+        this.Secondary1.UpdateFromWheel(secondary1Wheel);
+        double secondary2Wheel =
+            (this.Secondary1.Wheel + 180.0).NormalizeAngleDegrees();
+        this.Secondary2.UpdateFromWheel(secondary2Wheel);
     }
 
     public void UpdateSecondaryWheelTriad(double wheel)
@@ -144,34 +136,43 @@ public sealed class Palette
         this.UpdatePrimaryWheelTriad(this.Primary.Wheel);
     }
 
+    public void UpdateSecondaryWheelSquare(double wheel)
+    {
+        double delta = this.Primary.Wheel - wheel;
+        this.SecondaryWheelDistance = Math.Abs(delta);
+        this.Secondary1.UpdateFromWheel(wheel);
+        double secondary2Wheel = (wheel + 180.0).NormalizeAngleDegrees();
+        this.Secondary2.UpdateFromWheel(secondary2Wheel);
+    }
+
     public void UpdateAllShades(int pixelX, int pixelY)
     {
-        this.Primary.UpdateAll(this.shadeMap, pixelX, pixelY);
-        this.Complementary.UpdateAll(this.shadeMap, pixelX, pixelY);
-        this.Secondary1.UpdateAll(this.shadeMap, pixelX, pixelY);
-        this.Secondary2.UpdateAll(this.shadeMap, pixelX, pixelY);
+        this.Primary.UpdateAll(pixelX, pixelY);
+        this.Complementary.UpdateAll(pixelX, pixelY);
+        this.Secondary1.UpdateAll(pixelX, pixelY);
+        this.Secondary2.UpdateAll(pixelX, pixelY);
     }
 
     public void UpdateAllPrimaryShadeMonochromatic(int pixelX, int pixelY)
     {
-        this.Primary.UpdateAll(this.shadeMap, pixelX, pixelY);
+        this.Primary.UpdateAll(pixelX, pixelY);
     }
 
     public void UpdateAllPrimaryShadeMonochromaticComplementary(int pixelX, int pixelY)
     {
-        this.Primary.UpdateAll(this.shadeMap, pixelX, pixelY);
-        this.Complementary.UpdateAll(this.shadeMap, pixelX, pixelY);
+        this.Primary.UpdateAll(pixelX, pixelY);
+        this.Complementary.UpdateAll(pixelX, pixelY);
     }
 
     public void UpdateOnePrimaryShadeMonochromatic(ShadeKind shadeKind, int pixelX, int pixelY)
     {
-        this.Primary.UpdateOne(this.shadeMap, shadeKind, pixelX, pixelY);
+        this.Primary.UpdateOne(shadeKind, pixelX, pixelY);
     }
 
     public void UpdateOnePrimaryShadeMonochromaticComplementary(ShadeKind shadeKind, int pixelX, int pixelY)
     {
-        this.Primary.UpdateOne(this.shadeMap, shadeKind, pixelX, pixelY);
-        this.Complementary.UpdateOne(this.shadeMap, shadeKind, pixelX, pixelY);
+        this.Primary.UpdateOne(shadeKind, pixelX, pixelY);
+        this.Complementary.UpdateOne(shadeKind, pixelX, pixelY);
     }
 
     public static int ToAngle(double wheel) => (int)Math.Round(wheel * 10.0);

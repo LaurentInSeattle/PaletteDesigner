@@ -50,8 +50,6 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         this.CanMoveSecondary2 = false;
     }
 
-    public NestedDictionary<int, int, HsvColor> Map => this.paletteDesignerModel.ShadeColorMap;
-
     public void OnResetShades()
     {
         this.paletteDesignerModel.ResetShades();
@@ -110,7 +108,9 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
             return;
         }
 
-        var map = this.paletteDesignerModel.ShadeColorMap;
+        var map = 
+            Palette.ShadeMap ?? 
+            throw new ArgumentException("Palette has not been setup.");
         this.hue = newHue;
         using var frameBuffer = this.Shades.Lock();
         {
