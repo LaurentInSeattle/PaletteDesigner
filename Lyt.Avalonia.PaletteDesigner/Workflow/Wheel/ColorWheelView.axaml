@@ -15,11 +15,12 @@
 	>
 	<Grid
 		Width="700" Height="700"
+		Margin="16"
 		>
 		<Image
 			x:Name="Wheel"
 			Width="700" Height="700"
-			Source="{Binding ColorWheel}"
+			Source="\Assets\Images\wheel.png"
 			Stretch="UniformToFill"
 			/>
 		<images:RoundedImage

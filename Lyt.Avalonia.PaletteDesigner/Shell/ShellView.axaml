@@ -125,6 +125,23 @@
 						Command="{Binding OnDesign}"
 						Group="{Binding ElementName=SelectionGroup}"
 						/>
+
+					<!-- Just to try out icons -->
+					<glyphs:GlyphButton
+						x:Name="ExportButton"
+						Style="{StaticResource ToolbarIconButton}"
+						Behaviour="Tap"
+						HorizontalAlignment="Center"
+						Width="82" Height="56"
+						Margin="4 8 4 8"
+						GlyphSource="arrow_export"
+						ButtonBackground="BorderlessRectangle"
+						GlyphStrokeThickness="0"
+						GlyphAngle="20"
+						Text="Export"
+						Command="{Binding OnDesign}"
+						Group="{Binding ElementName=SelectionGroup}"
+						/>					
 					<glyphs:GlyphButton
 						x:Name="SettingsButton"
 						Style="{StaticResource ToolbarIconButton}"

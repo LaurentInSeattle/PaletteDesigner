@@ -13,9 +13,6 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
     private double hue;
 
     [ObservableProperty]
-    private WriteableBitmap colorWheel;
-
-    [ObservableProperty]
     private WriteableBitmap shades;
 
     [ObservableProperty]
@@ -39,12 +36,6 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
     public ColorWheelViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
-
-        ResourcesUtilities.SetResourcesPath("Lyt.Avalonia.PaletteDesigner.Resources");
-        ResourcesUtilities.SetExecutingAssembly(Assembly.GetExecutingAssembly());
-        byte[] imageBytes = ResourcesUtilities.LoadEmbeddedBinaryResource(
-            "wheel.png", out string? _);
-        this.colorWheel = WriteableBitmap.Decode(new MemoryStream(imageBytes));
 
         var pixelSize = new PixelSize(width, height);
         var dpi = new Vector(96, 96);
@@ -162,6 +153,15 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         this.View.Shades.InvalidateVisual();
     }
 
+    #region Color Wheel from resources
+    /* 
+     
+    ResourcesUtilities.SetResourcesPath("Lyt.Avalonia.PaletteDesigner.Resources");
+        ResourcesUtilities.SetExecutingAssembly(Assembly.GetExecutingAssembly());
+        byte[] imageBytes = ResourcesUtilities.LoadEmbeddedBinaryResource(
+            "wheel.png", out string? _);
+        this.colorWheel = WriteableBitmap.Decode(new MemoryStream(imageBytes));
+
     private void CreateColorLookupTable()
     {
         Dictionary<int, RgbColor> colorLookupTable = new(360 * 10);
@@ -207,4 +207,8 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         fileManager.Save(
             FileManagerModel.Area.User, FileManagerModel.Kind.Json, "ColorWheel.json", colorLookupTable);
     }
+
+    */
+
+    #endregion Color Wheel from resources
 }

@@ -32,10 +32,12 @@
 			/>
 		<wheel:ColorWheelView
 			Grid.Row="1"
+			VerticalAlignment="Top"
 			DataContext="{Binding ColorWheelViewModel}"
 			/>
 		<shading:PalettePreviewView
 			Grid.Row="1" Grid.Column="1"
+			VerticalAlignment="Top"
 			DataContext="{Binding PalettePreviewViewModel}"
 			/>
 		<vm:ShadeSelectionToolbarView
