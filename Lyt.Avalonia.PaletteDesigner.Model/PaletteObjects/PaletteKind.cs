@@ -88,6 +88,8 @@ public static class PaletteKindExtensions
 
     public static bool CanMoveSecondary2Marker(this PaletteKind kind)
         => kind == PaletteKind.Trichromatic ||
+           kind == PaletteKind.Triad ||
+           kind == PaletteKind.TriadComplementary ||
            kind == PaletteKind.Quadrichromatic;
 
 }

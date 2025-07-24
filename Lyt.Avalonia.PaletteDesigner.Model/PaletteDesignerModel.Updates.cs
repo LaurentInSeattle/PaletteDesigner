@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
-using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
-
 public sealed partial class PaletteDesignerModel : ModelBase
 {
     public bool UpdatePaletteKind(PaletteKind paletteKind)
@@ -69,12 +67,78 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 break;
 
             case WheelKind.Secondary1:
+                this.UpdatePaletteSecondary1Wheel(wheel);
                 break;
 
             case WheelKind.Secondary2:
+                this.UpdatePaletteSecondary2Wheel(wheel);
                 break;
         }
     }
+
+    public void UpdatePaletteSecondary1Wheel(double wheel)
+        => this.UpdatePalette((Palette palette) =>
+        {
+            switch (palette.Kind)
+            {
+                default:
+                case PaletteKind.Unknown:
+                    throw new Exception("Missing kind");
+
+                case PaletteKind.Monochromatic:
+                case PaletteKind.MonochromaticComplementary:
+                case PaletteKind.Duochromatic:
+                    throw new Exception("Invalid palette kind");
+
+                case PaletteKind.Trichromatic:
+                case PaletteKind.Quadrichromatic:
+                    // TODO 
+                    break;
+
+                case PaletteKind.Triad:
+                case PaletteKind.TriadComplementary:
+                    palette.UpdateSecondaryWheelTriad(wheel);
+                    break;
+
+                case PaletteKind.Square:
+                    // TODO 
+                    break;
+            }
+
+            return true;
+        });
+
+    public void UpdatePaletteSecondary2Wheel(double wheel)
+        => this.UpdatePalette((Palette palette) =>
+        {
+            switch (palette.Kind)
+            {
+                default:
+                case PaletteKind.Unknown:
+                    throw new Exception("Missing kind");
+
+                case PaletteKind.Monochromatic:
+                case PaletteKind.MonochromaticComplementary:
+                case PaletteKind.Duochromatic:
+                    throw new Exception("Invalid palette kind");
+
+                case PaletteKind.Trichromatic:
+                case PaletteKind.Quadrichromatic:
+                    // TODO 
+                    break;
+
+                case PaletteKind.Triad:
+                case PaletteKind.TriadComplementary:
+                    palette.UpdateSecondaryWheelTriad(wheel);
+                    break;
+
+                case PaletteKind.Square:
+                    // TODO 
+                    break;
+            }
+
+            return true;
+        });
 
     public void UpdatePalettePrimaryWheel(double primaryWheel)
         => this.UpdatePalette((Palette palette) =>
@@ -98,9 +162,9 @@ public sealed partial class PaletteDesignerModel : ModelBase
                     break;
 
                 case PaletteKind.Triad:
-                    break;
-
                 case PaletteKind.TriadComplementary:
+                    palette.UpdatePrimaryWheelMonochromatic(primaryWheel);
+                    palette.UpdatePrimaryWheelTriad(primaryWheel);
                     break;
 
                 case PaletteKind.Square:

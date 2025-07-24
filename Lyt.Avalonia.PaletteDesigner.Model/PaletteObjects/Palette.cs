@@ -137,6 +137,13 @@ public sealed class Palette
         }
     }
 
+    public void UpdateSecondaryWheelTriad(double wheel)
+    {
+        double delta = this.Primary.Wheel - wheel;
+        this.SecondaryWheelDistance = Math.Abs(delta);
+        this.UpdatePrimaryWheelTriad(this.Primary.Wheel);
+    }
+
     public void UpdateAllShades(int pixelX, int pixelY)
     {
         this.Primary.UpdateAll(this.shadeMap, pixelX, pixelY);
