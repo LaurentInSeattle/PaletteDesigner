@@ -24,3 +24,56 @@ See: https://theme.xaml.live/
   </FluentTheme.Palettes>
 </FluentTheme>
 
+
+ADOBE file formats ASE / ACO / ACT 
+
+https://www.selapa.net/swatches/colors/fileformats.php#adobe_ase
+
+https://community.adobe.com/t5/illustrator-discussions/create-an-ase-file-starting-from-a-csv-file/m-p/14571460#M405198
+
+
+ * More information here:
+ * - https://www.cyotek.com/blog/reading-adobe-swatch-exchange-ase-files-using-csharp
+ * - https://www.cyotek.com/blog/writing-adobe-swatch-exchange-ase-files-using-csharp
+ * - http://www.selapa.net/swatches/colors/fileformats.php#adobe_ase
+ https://github.com/marcauberer/adobe-color-tool/blob/main/adobecolor/src/main/java/com/chillibits/adobecolor/generator/ASEBinaryGenerator.kt
+
+
+ CSS: 
+
+ Color vars example
+ :root {
+    --red: #ff0000; 
+}
+
+html, body {
+    background-color: var(--red); 
+}
+
+File formats (Color Slurp)
+
+Plain Text Plain text output of each color's hex and rgb values
+.clr Apple color list
+.ase Adobe swatch exchange
+.pdf A PDF file with the palette's colors
+.png An image of the palette's colors with their names
+Wallpaper Create an iPhone wallpaper to showcase your palette!
+Swift UIColor Export a palette for use in UIKIt.
+Swift NSColor Export a palette for use in Cocoa.
+Swift SwiftUI Color Export a palette for use in SwiftUI.
+HTML Export a webpage with the palette's colors.
+JSON Export as a json file.
+CSS Export as CSS variables.
+sass Export as sass variables.
+scss Export as scss variables.
+less Export as less css variables.
+XML Color Resource for use in Android development.
+GIMP 
+Paint.Net
+
+Colorblindness simulation 
+https://github.com/SOHNE/Colorblindness 
+
+Palette from image 
+https://github.com/ookii-tsuki/wpf-color-palette
+https://github.com/nor0x/NetPalette
