@@ -3,7 +3,7 @@
 // Mutable 
 public sealed class Shade
 {
-    [JsonIgnore]
+    [JsonRequired]
     public HsvColor Color { get; set; }
 
     [JsonRequired]

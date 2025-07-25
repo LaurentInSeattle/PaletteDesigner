@@ -18,7 +18,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
             IsFirstRun = true,
         };
 
-    private readonly FileManagerModel fileManager;
+    internal readonly FileManagerModel fileManager;
     private readonly ILocalizer localizer; 
     private readonly Lock lockObject = new();
     private readonly FileId modelFileId;
@@ -116,7 +116,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
         }
 
         var shadeMap = new ShadeMap(PaletteDesignerModel.ShadesImageDimension);
-        Palette.Setup(colorWheel, shadeMap);
+        Palette.Setup(this, colorWheel, shadeMap);
     }
 
     public override Task Save()

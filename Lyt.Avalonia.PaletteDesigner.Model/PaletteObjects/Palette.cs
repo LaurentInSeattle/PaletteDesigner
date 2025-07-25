@@ -7,12 +7,16 @@ public sealed class Palette
 #pragma warning disable CA2211 
     // Non-constant fields should not be visible
 
+    public static PaletteDesignerModel Model;
+
     public static Dictionary<int, RgbColor> ColorWheel;
 
     public static ShadeMap ShadeMap;
 
-    public static void Setup(Dictionary<int, RgbColor> colorWheel, ShadeMap shadeMap)
+    public static void Setup(
+        PaletteDesignerModel model, Dictionary<int, RgbColor> colorWheel, ShadeMap shadeMap)
     {
+        Palette.Model = model;
         Palette.ColorWheel = colorWheel;
         Palette.ShadeMap = shadeMap;
     }
@@ -201,5 +205,11 @@ public sealed class Palette
         this.Complementary.Dump("Complementary");
         this.Secondary1.Dump("Secondary1");
         this.Secondary2.Dump("Secondary2");
+
+        // Create a JSON from the palette, save on disk with time stamp
+        var fm = Model.fileManager;
+        string name = "Palette_" + FileManagerModel.TimestampString(); 
+        fm.Save<Palette>(
+            FileManagerModel.Area.User, FileManagerModel.Kind.Json, name, this);
     }
 }
