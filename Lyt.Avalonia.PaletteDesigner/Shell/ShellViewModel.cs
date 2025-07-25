@@ -2,6 +2,7 @@
 
 using static ViewActivationMessage;
 using static MessagingExtensions;
+using Lyt.Avalonia.PaletteDesigner.Model;
 
 public sealed partial class ShellViewModel : ViewModel<ShellView>
 {

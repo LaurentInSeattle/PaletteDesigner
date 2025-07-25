@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner;
 
+using Lyt.Avalonia.PaletteDesigner.Model;
+
 public partial class App : ApplicationBase
 {
     public const string Organization = "Lyt";

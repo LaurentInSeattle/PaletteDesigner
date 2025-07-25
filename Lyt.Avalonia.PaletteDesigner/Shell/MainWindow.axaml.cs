@@ -11,7 +11,8 @@ public partial class MainWindow : Window
         this.InitializeComponent();
 
         this.Closing += this.OnMainWindowClosing;
-        this.Loaded += (s, e) => { Dispatch.OnUiThread(this.OnLoadedOnUi); }; 
+        this.Loaded += (s, e) => { Dispatch.OnUiThread(this.OnLoadedOnUi); };
+        this.Activated += (s, e) => this.Focus(); 
     }
 
     private void OnLoadedOnUi()

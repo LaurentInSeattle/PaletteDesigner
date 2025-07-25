@@ -22,17 +22,6 @@ public enum PaletteKind
     Square,                                 // Two free colors, two complementaries
 }
 
-// Identify the wheel marker 
-public enum WheelKind
-{
-    Unknown,
-
-    Primary,
-    Complementary,  
-    Secondary1, 
-    Secondary2, 
-}
-
 public static class PaletteKindExtensions
 {
     public static int ColorCount(this PaletteKind kind)

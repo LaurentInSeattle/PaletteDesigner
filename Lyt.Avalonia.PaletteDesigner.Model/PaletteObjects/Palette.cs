@@ -1,65 +1,8 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 
-public sealed class Palette
+public sealed partial class Palette
 {
-#pragma warning disable CS8618 
-    // Non-nullable field must contain a non-null value when exiting constructor.
-#pragma warning disable CA2211 
-    // Non-constant fields should not be visible
-
-    public static PaletteDesignerModel Model;
-
-    public static Dictionary<int, RgbColor> ColorWheel;
-
-    public static ShadeMap ShadeMap;
-
-    public static void Setup(
-        PaletteDesignerModel model, Dictionary<int, RgbColor> colorWheel, ShadeMap shadeMap)
-    {
-        Palette.Model = model;
-        Palette.ColorWheel = colorWheel;
-        Palette.ShadeMap = shadeMap;
-    }
-
-#pragma warning restore CA2211 
-#pragma warning restore CS8618 
-
-    [JsonRequired]
-    public string Name { get; set; } = string.Empty;
-
-    [JsonRequired]
-    public PaletteKind Kind { get; set; } = PaletteKind.MonochromaticComplementary;
-
-    // for both Triad and Square, otherwise ignored 
-    // Degrees on the wheel 
-    [JsonRequired]
-    public double SecondaryWheelDistance { get; set; } = 27.0;
-
-    [JsonRequired]
-    public bool AreShadesLocked { get; set; } = true;
-
-    // If shades are unlocked, the shades user wants to edit  
-    [JsonRequired]
-    public WheelKind SelectedWheel { get; set; } = WheelKind.Unknown;
-
-    [JsonRequired]
-    public Shades Primary { get; set; } = new();
-
-    [JsonRequired]
-    public Shades Secondary1 { get; set; } = new();
-
-    [JsonRequired]
-    public Shades Secondary2 { get; set; } = new();
-
-    [JsonRequired]
-    public Shades Complementary { get; set; } = new();
-
-#pragma warning disable CS8618 
-    // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
-    public Palette() { /* needed for serialization */ }
-#pragma warning restore CS8618 
-
-    public Shades FromWheel (WheelKind wheelKind)
+    public Shades FromWheel(WheelKind wheelKind)
         => wheelKind switch
         {
             WheelKind.Primary => this.Primary,
@@ -71,22 +14,16 @@ public sealed class Palette
 
     public void Reset()
     {
+        this.Kind = PaletteKind.Monochromatic;
         this.Primary.Wheel = 90.0;
-        this.ResetShades();
+        this.ResetAllShades();
+        this.Primary.UpdateFromWheel(this.Primary.Wheel);
     }
 
-    public void ResetShades()
-    {
-        this.Primary.Reset();
-        this.Complementary.Reset();
-        this.Secondary1.Reset();
-        this.Secondary2.Reset();
-    }
+    #region Wheel Updates 
 
-    public void UpdatePrimaryWheelMonochromatic(double primaryWheel)
-    {
-        this.Primary.UpdateFromWheel(primaryWheel);
-    }
+    public void UpdatePrimaryWheelMonochromatic(double primaryWheel) 
+        => this.Primary.UpdateFromWheel(primaryWheel);
 
     public void UpdateShadesWheel(Shades shades, double wheel)
     {
@@ -114,18 +51,16 @@ public sealed class Palette
         if (this.Kind.HasComplementary())
         {
             this.Complementary.UpdateFromWheel(this.ComplementaryWheel());
-        } 
+        }
     }
 
-    public void UpdatePrimaryWheelComplementary(double primaryWheel)
-    {
-        this.Complementary.UpdateFromWheel(this.ComplementaryWheel());
-    }
+    public void UpdatePrimaryWheelComplementary(double primaryWheel) 
+        => this.Complementary.UpdateFromWheel(this.ComplementaryWheel());
 
     public void UpdatePrimaryWheelSquare(double primaryWheel)
     {
         this.UpdatePrimaryWheelComplementary(primaryWheel);
-        double secondary1Wheel = 
+        double secondary1Wheel =
             (primaryWheel + this.SecondaryWheelDistance).NormalizeAngleDegrees();
         this.Secondary1.UpdateFromWheel(secondary1Wheel);
         double secondary2Wheel =
@@ -149,6 +84,36 @@ public sealed class Palette
         this.Secondary2.UpdateFromWheel(secondary2Wheel);
     }
 
+    #endregion Wheel Updates 
+
+    #region Shade Updates 
+
+    public void UpdateAllPrimaryShadeMonochromatic(int pixelX, int pixelY) 
+        => this.Primary.UpdateAll(pixelX, pixelY);
+
+    public void UpdateAllPrimaryShadeMonochromaticComplementary(int pixelX, int pixelY)
+    {
+        this.Primary.UpdateAll(pixelX, pixelY);
+        this.Complementary.UpdateAll(pixelX, pixelY);
+    }
+
+    public void UpdateOnePrimaryShadeMonochromatic(ShadeKind shadeKind, int pixelX, int pixelY) 
+        => this.Primary.UpdateOne(shadeKind, pixelX, pixelY);
+
+    public void UpdateOnePrimaryShadeMonochromaticComplementary(ShadeKind shadeKind, int pixelX, int pixelY)
+    {
+        this.Primary.UpdateOne(shadeKind, pixelX, pixelY);
+        this.Complementary.UpdateOne(shadeKind, pixelX, pixelY);
+    }
+
+    public void ResetAllShades()
+    {
+        this.Primary.Reset();
+        this.Complementary.Reset();
+        this.Secondary1.Reset();
+        this.Secondary2.Reset();
+    }
+
     public void UpdateAllShades(int pixelX, int pixelY)
     {
         this.Primary.UpdateAll(pixelX, pixelY);
@@ -157,27 +122,7 @@ public sealed class Palette
         this.Secondary2.UpdateAll(pixelX, pixelY);
     }
 
-    public void UpdateAllPrimaryShadeMonochromatic(int pixelX, int pixelY)
-    {
-        this.Primary.UpdateAll(pixelX, pixelY);
-    }
-
-    public void UpdateAllPrimaryShadeMonochromaticComplementary(int pixelX, int pixelY)
-    {
-        this.Primary.UpdateAll(pixelX, pixelY);
-        this.Complementary.UpdateAll(pixelX, pixelY);
-    }
-
-    public void UpdateOnePrimaryShadeMonochromatic(ShadeKind shadeKind, int pixelX, int pixelY)
-    {
-        this.Primary.UpdateOne(shadeKind, pixelX, pixelY);
-    }
-
-    public void UpdateOnePrimaryShadeMonochromaticComplementary(ShadeKind shadeKind, int pixelX, int pixelY)
-    {
-        this.Primary.UpdateOne(shadeKind, pixelX, pixelY);
-        this.Complementary.UpdateOne(shadeKind, pixelX, pixelY);
-    }
+    #endregion Shade Updates 
 
     public static int ToAngle(double wheel) => (int)Math.Round(wheel * 10.0);
 
@@ -208,7 +153,7 @@ public sealed class Palette
 
         // Create a JSON from the palette, save on disk with time stamp
         var fm = Model.fileManager;
-        string name = "Palette_" + FileManagerModel.TimestampString(); 
+        string name = "Palette_" + FileManagerModel.TimestampString();
         fm.Save<Palette>(
             FileManagerModel.Area.User, FileManagerModel.Kind.Json, name, this);
     }

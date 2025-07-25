@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Design;
 
+using Lyt.Avalonia.PaletteDesigner.Model;
+
 public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSelectionToolbarView>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;

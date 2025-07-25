@@ -37,7 +37,7 @@ public sealed class Position
         double x = (this.X - half) / half;
         double y = (half - this.Y) / half;
         double radius = Math.Sqrt(x * x + y * y);
-        if (radius > 1.0)
+        if (radius >= 1.0)
         {
             // adjustment is needed
             double minRadius = Math.Min(1.0, radius);

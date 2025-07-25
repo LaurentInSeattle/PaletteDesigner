@@ -1,5 +1,7 @@
 namespace Lyt.Avalonia.PaletteDesigner.Controls;
 
+using Lyt.Avalonia.PaletteDesigner.Model;
+
 public partial class MarkerControl : UserControl
 {
     private Canvas? parentCanvas;

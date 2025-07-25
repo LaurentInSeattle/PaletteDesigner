@@ -1,5 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Shading;
 
+using Lyt.Avalonia.PaletteDesigner.Model;
 using static GeneralExtensions; 
 
 public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
