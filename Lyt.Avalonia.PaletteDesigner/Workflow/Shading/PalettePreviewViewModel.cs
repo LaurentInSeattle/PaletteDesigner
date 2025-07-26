@@ -12,15 +12,6 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 
     private readonly ShadesValuesViewModel ComplementaryShadesValues;
 
-    private readonly PaletteColorViewModel PrimaryShades;
-
-    private readonly PaletteColorViewModel ComplementaryShades;
-
-    private readonly PaletteColorViewModel Secondary1Shades;
-
-    private readonly PaletteColorViewModel Secondary2Shades;
-
-
     #region The 20 observable brush properties 
 
     [ObservableProperty]
@@ -86,18 +77,6 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     #endregion 20 observable brush properties 
 
     [ObservableProperty]
-    private PaletteColorViewModel leftShades;
-
-    [ObservableProperty]
-    private PaletteColorViewModel middleLeftShades;
-
-    [ObservableProperty]
-    private PaletteColorViewModel middleRightShades;
-
-    [ObservableProperty]
-    private PaletteColorViewModel rightShades;
-
-    [ObservableProperty]
     private ShadesValuesViewModel topLeftShadesValues;
 
     [ObservableProperty]
@@ -109,17 +88,8 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     [ObservableProperty]
     private ShadesValuesViewModel bottomRightShadesValues;
 
-    // Cannot be an observable property because DataContext is set programmatically 
-    private int PrimaryShadesColumnSpan
-    {
-        set
-        {
-            if (this.IsBound)
-            {
-                this.View.PrimaryShades.SetValue(Grid.ColumnSpanProperty, value);
-            } 
-        } 
-    }
+    [ObservableProperty]
+    private MiniPaletteViewModel miniPaletteViewModel;
 
     [ObservableProperty]
     private double wheelSliderValue;
@@ -136,6 +106,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     public PalettePreviewViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
+        this.MiniPaletteViewModel = new(); 
         this.PrimaryShadesValues = new ShadesValuesViewModel("Dominant");
         this.ComplementaryShadesValues = new ShadesValuesViewModel("Accent");
         this.Secondary1ShadesValues = new ShadesValuesViewModel("Discord #1");
@@ -144,16 +115,6 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         this.BottomLeftShadesValues  = this.PrimaryShadesValues;
         this.TopRightShadesValues    = this.PrimaryShadesValues;
         this.BottomRightShadesValues = this.PrimaryShadesValues;
-
-        this.PrimaryShadesColumnSpan = 4;
-        this.PrimaryShades = new ();
-        this.ComplementaryShades = new();
-        this.Secondary1Shades = new();
-        this.Secondary2Shades = new();
-        this.LeftShades = this.PrimaryShades;
-        this.MiddleLeftShades = this.PrimaryShades;
-        this.MiddleRightShades = this.PrimaryShades;
-        this.RightShades = this.PrimaryShades;
     }
 
     public override void OnViewLoaded()
@@ -198,6 +159,8 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             this.UpdateLabels();
         });
 
+        this.MiniPaletteViewModel.Update(palette);
+
         Shades shades = palette.Primary;
         this.PrimaryLighterBrush = shades.Lighter.ToBrush();
         this.PrimaryLightBrush = shades.Light.ToBrush();
@@ -206,7 +169,6 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         this.PrimaryDarkerBrush = shades.Darker.ToBrush();
 
         this.PrimaryShadesValues.Update(shades);
-        this.PrimaryShades.Update(shades);
 
         if ((colorCount == 1) || (colorCount == 2))
         {
@@ -226,24 +188,17 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             this.TopLeftShadesValues = this.PrimaryShadesValues;
             this.BottomLeftShadesValues = this.PrimaryShadesValues;
             this.TopRightShadesValues = this.PrimaryShadesValues;
-            this.LeftShades = this.PrimaryShades;
-            this.MiddleLeftShades = this.PrimaryShades;
-            this.MiddleRightShades = this.PrimaryShades;
             if (colorCount == 2)
             {
                 // colorCount == 1 => Complementary same as primary 
                 shades = palette.Complementary;
-                this.PrimaryShadesColumnSpan = 5;
                 this.BottomRightShadesValues = this.ComplementaryShadesValues;
-                this.RightShades = this.ComplementaryShades;
-                this.ComplementaryShades.Update(shades);
                 string name = "Accent"; 
                 this.ComplementaryShadesValues.Update(name);
                 this.ComplementaryShadesValues.Update(shades);
             }
             else
             {
-                this.PrimaryShadesColumnSpan = 7;
                 this.BottomRightShadesValues = this.PrimaryShadesValues;
             }
 
@@ -255,37 +210,26 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         }
         else // colorCount == 3 or 4 
         {
-            this.PrimaryShadesColumnSpan = 1;
-
             this.TopLeftShadesValues = this.PrimaryShadesValues;
-            this.LeftShades = this.PrimaryShades;
-
             shades = palette.Secondary1;
-            this.Secondary1Shades.Update(shades);
             this.Secondary1ShadesValues.Update(shades);
             this.TopRightShadesValues = this.Secondary1ShadesValues;
-            this.MiddleLeftShades = this.Secondary1Shades;
 
             shades = palette.Secondary2;
-            this.Secondary2Shades.Update(shades);
             this.Secondary2ShadesValues.Update(shades);
             this.BottomLeftShadesValues = this.Secondary2ShadesValues;
-            this.MiddleRightShades = this.Secondary2Shades;
 
             if (colorCount == 4)
             {
                 shades = palette.Complementary;
                 this.BottomRightShadesValues = this.ComplementaryShadesValues;
-                this.ComplementaryShades.Update(shades);
                 this.ComplementaryShadesValues.Update(shades);
-                this.RightShades = this.ComplementaryShades;
             }
             else
             {
                 // colorCount == 3 => Complementary same as primary 
                 shades = palette.Primary;
                 this.BottomRightShadesValues = this.PrimaryShadesValues;
-                this.RightShades = this.PrimaryShades; 
             }
 
             // Use brushes for all shades set when checking color count 

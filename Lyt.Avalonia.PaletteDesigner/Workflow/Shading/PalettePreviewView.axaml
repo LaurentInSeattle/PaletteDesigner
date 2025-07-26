@@ -39,6 +39,11 @@
 			<ColumnDefinition Width="120" />
 		</Grid.ColumnDefinitions>
 
+		<vm:MiniPaletteView
+			Grid.Column="1" Grid.Row="0"
+			DataContext="{Binding MiniPaletteViewModel}"
+			/>
+		<!-- 
 		<Grid
 			Grid.Column="1" Grid.Row="0"
 			>
@@ -66,7 +71,7 @@
 				DataContext="{Binding RightShades}"
 				HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
 				/>
-			<!-- Primary needs to be on top of all others-->
+			// Primary needs to be on top of all others
 			<vm:PaletteColorView
 				x:Name="PrimaryShades"
 				Grid.Column="0"
@@ -74,6 +79,7 @@
 				HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
 				/>
 		</Grid>
+		-->
 
 		<Grid
 			Width="600" Height="600"
