@@ -148,7 +148,7 @@ public partial class MarkerControl : UserControl
                 wheelKind = Enum.TryParse(tag, out WheelKind kind) ? kind : WheelKind.Unknown;
             }
 
-            colorWheelViewModel.OnAngleChanged(wheelKind, angleDegrees);
+            colorWheelViewModel.OnWheelAngleChanged(wheelKind, angleDegrees);
         }
         else
         {
@@ -180,7 +180,7 @@ public partial class MarkerControl : UserControl
                 shadeKind = Enum.TryParse(tag, out ShadeKind kind) ? kind : ShadeKind.None;                
             }
 
-            colorWheelViewModel.OnShadeChanged(shadeKind, pixelX, pixelY);
+            colorWheelViewModel.OnShadeMarkerPositionChanged(shadeKind, pixelX, pixelY);
         }
     }
 

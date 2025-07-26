@@ -77,8 +77,9 @@
 			Width="100" Height="60"
 			Margin="0"
 			ButtonBackground="BorderlessRectangle"
-			Text="Triad Compl."
+			Text="Triad Complem."
 			Group="{Binding ElementName=SelectionGroup}"
+			IsSelected="True"
 			Command="{Binding OnModelSelect}"
 			CommandParameter="TriadComplementary"
 			>
@@ -141,7 +142,6 @@
 			ButtonBackground="BorderlessRectangle"
 			Text="Monochromatic"
 			Group="{Binding ElementName=SelectionGroup}"
-			IsSelected="True"
 			Command="{Binding OnModelSelect}"
 			CommandParameter="Monochromatic"
 			>

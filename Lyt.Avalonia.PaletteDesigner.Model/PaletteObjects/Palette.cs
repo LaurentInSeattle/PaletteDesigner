@@ -2,22 +2,17 @@
 
 public sealed partial class Palette
 {
-    public Shades FromWheel(WheelKind wheelKind)
-        => wheelKind switch
-        {
-            WheelKind.Primary => this.Primary,
-            WheelKind.Complementary => this.Complementary,
-            WheelKind.Secondary1 => this.Secondary1,
-            WheelKind.Secondary2 => this.Secondary2,
-            _ => this.Primary,
-        };
-
     public void Reset()
     {
-        this.Kind = PaletteKind.Monochromatic;
+        this.Kind = PaletteKind.TriadComplementary;
         this.Primary.Wheel = 90.0;
-        this.ResetAllShades();
         this.Primary.UpdateFromWheel(this.Primary.Wheel);
+        this.ResetAllShades();
+
+        //this.Kind = PaletteKind.Monochromatic;
+        //this.Primary.Wheel = 90.0;
+        //this.ResetAllShades();
+        //this.Primary.UpdateFromWheel(this.Primary.Wheel);
     }
 
     #region Wheel Updates 
@@ -86,25 +81,6 @@ public sealed partial class Palette
 
     #endregion Wheel Updates 
 
-    #region Shade Updates 
-
-    public void UpdateAllPrimaryShadeMonochromatic(int pixelX, int pixelY) 
-        => this.Primary.UpdateAll(pixelX, pixelY);
-
-    public void UpdateAllPrimaryShadeMonochromaticComplementary(int pixelX, int pixelY)
-    {
-        this.Primary.UpdateAll(pixelX, pixelY);
-        this.Complementary.UpdateAll(pixelX, pixelY);
-    }
-
-    public void UpdateOnePrimaryShadeMonochromatic(ShadeKind shadeKind, int pixelX, int pixelY) 
-        => this.Primary.UpdateOne(shadeKind, pixelX, pixelY);
-
-    public void UpdateOnePrimaryShadeMonochromaticComplementary(ShadeKind shadeKind, int pixelX, int pixelY)
-    {
-        this.Primary.UpdateOne(shadeKind, pixelX, pixelY);
-        this.Complementary.UpdateOne(shadeKind, pixelX, pixelY);
-    }
 
     public void ResetAllShades()
     {
@@ -113,16 +89,6 @@ public sealed partial class Palette
         this.Secondary1.Reset();
         this.Secondary2.Reset();
     }
-
-    public void UpdateAllShades(int pixelX, int pixelY)
-    {
-        this.Primary.UpdateAll(pixelX, pixelY);
-        this.Complementary.UpdateAll(pixelX, pixelY);
-        this.Secondary1.UpdateAll(pixelX, pixelY);
-        this.Secondary2.UpdateAll(pixelX, pixelY);
-    }
-
-    #endregion Shade Updates 
 
     public static int ToAngle(double wheel) => (int)Math.Round(wheel * 10.0);
 

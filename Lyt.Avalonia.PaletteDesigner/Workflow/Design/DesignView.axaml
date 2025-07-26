@@ -37,7 +37,7 @@
 			/>
 		<shading:PalettePreviewView
 			Grid.Row="1" Grid.Column="1"
-			VerticalAlignment="Top"
+			VerticalAlignment="Top" HorizontalAlignment="Left"
 			DataContext="{Binding PalettePreviewViewModel}"
 			/>
 		<vm:ShadeSelectionToolbarView

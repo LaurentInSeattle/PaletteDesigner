@@ -286,7 +286,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             {
                 // colorCount == 1 => Complementary same as primary 
                 shades = palette.Complementary;
-                this.PrimaryShadesColumnSpan = 3;
+                this.PrimaryShadesColumnSpan = 5;
                 this.BottomRightShadesValues = this.ComplementaryShadesValues;
                 this.RightShades = this.ComplementaryShades;
                 this.ComplementaryShades.Update(shades);
@@ -297,7 +297,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             }
             else
             {
-                this.PrimaryShadesColumnSpan = 4;
+                this.PrimaryShadesColumnSpan = 7;
                 this.BottomRightShadesValues = this.PrimaryShadesValues;
             }
 

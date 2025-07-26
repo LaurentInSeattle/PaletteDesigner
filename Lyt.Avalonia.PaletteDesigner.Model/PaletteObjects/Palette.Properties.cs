@@ -4,8 +4,8 @@ public sealed partial class Palette
 {
 #pragma warning disable CS8618 
     // Non-nullable field must contain a non-null value when exiting constructor.
-#pragma warning disable CA2211 
-    // Non-constant fields should not be visible
+//#pragma warning disable CA2211 
+//    // Non-constant fields should not be visible
 
     public static PaletteDesignerModel Model;
 
@@ -40,7 +40,7 @@ public sealed partial class Palette
 
     // If shades are unlocked, the shades user wants to edit  
     [JsonRequired]
-    public WheelKind SelectedWheel { get; set; } = WheelKind.Unknown;
+    public WheelKind SelectedWheel { get; set; } = WheelKind.Primary;
 
     [JsonRequired]
     public Shades Primary { get; set; } = new();

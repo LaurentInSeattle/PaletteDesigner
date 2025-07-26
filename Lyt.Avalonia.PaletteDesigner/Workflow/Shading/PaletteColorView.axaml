@@ -1,51 +1,58 @@
 <UserControl 
-    x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Shading.PaletteColorView"
-    xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Shading"
-    x:DataType="vm:PaletteColorViewModel" 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Shading.PaletteColorView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Shading"
+	x:DataType="vm:PaletteColorViewModel" 
 
-    xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 
-    IsVisible="{Binding IsVisible}"
-    >
-    <Grid
-        >		
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Rectangle
-            Grid.RowSpan="2"
-            Fill="{Binding BaseBrush}"
-            />
-        <Grid
-            Grid.Row="1" Margin="4 8 4 4"
-            >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Rectangle
-                Grid.Column="0"
-                Fill="{Binding DarkerBrush}"
-                />
-            <Rectangle
-                Grid.Column="1"
-                Fill="{Binding DarkBrush}"
-                />
-            <Rectangle
-                Grid.Column="2"
-                Fill="{Binding LightBrush}"
-                />
-            <Rectangle
-                Grid.Column="3"
-                Fill="{Binding LighterBrush}"
-                />
-        </Grid>
-    </Grid>
+	IsVisible="{Binding IsVisible}"
+	>
+	<UserControl.Styles>
+		<Style Selector="Rectangle">
+			<Setter Property="RadiusX" Value="0"/>
+			<Setter Property="RadiusY" Value="0"/>
+		</Style>
+	</UserControl.Styles>
+	<Grid
+		>		
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Rectangle
+			RadiusX="6" RadiusY="6"
+			Grid.RowSpan="2"
+			Fill="{Binding BaseBrush}"
+			/>
+		<Grid
+			Grid.Row="1" Margin="4 4 4 8"
+			>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Rectangle
+				Grid.Column="0"
+				Fill="{Binding DarkerBrush}"
+				/>
+			<Rectangle
+				Grid.Column="1"
+				Fill="{Binding DarkBrush}"
+				/>
+			<Rectangle
+				Grid.Column="2"
+				Fill="{Binding LightBrush}"
+				/>
+			<Rectangle
+				Grid.Column="3"
+				Fill="{Binding LighterBrush}"
+				/>
+		</Grid>
+	</Grid>
 </UserControl>

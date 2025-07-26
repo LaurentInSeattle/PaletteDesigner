@@ -2,7 +2,7 @@
 
 public sealed partial class PaletteDesignerModel : ModelBase
 {
-    public void UpdatePaletteWheel(WheelKind wheelKind, double wheel)
+    public void OnWheelAngleChanged(WheelKind wheelKind, double wheel)
     {
         switch (wheelKind)
         {

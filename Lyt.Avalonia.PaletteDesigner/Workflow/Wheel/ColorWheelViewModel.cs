@@ -51,27 +51,14 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         this.CanMoveSecondary2 = false;
     }
 
-    public void OnResetShades()
-    {
-        this.paletteDesignerModel.ResetShades();
-    }
+    public void OnResetShades() 
+        => this.paletteDesignerModel.ResetShades();
 
-    public void OnAngleChanged(WheelKind wheelKind, double wheelAngle)
-    {
-        this.paletteDesignerModel.UpdatePaletteWheel(wheelKind, wheelAngle);
-    }
+    public void OnWheelAngleChanged(WheelKind wheelKind, double wheelAngle) 
+        => this.paletteDesignerModel.OnWheelAngleChanged(wheelKind, wheelAngle);
 
-    public void OnShadeChanged(ShadeKind shadeKind, int pixelX, int pixelY)
-    {
-        if (shadeKind == ShadeKind.None)
-        {
-            this.paletteDesignerModel.UpdateAllPalettePrimaryShade(pixelX, pixelY);
-        }
-        else
-        {
-            this.paletteDesignerModel.UpdateOnePalettePrimaryShade(shadeKind, pixelX, pixelY);
-        }
-    }
+    public void OnShadeMarkerPositionChanged(ShadeKind shadeKind, int pixelX, int pixelY)
+        => this.paletteDesignerModel.OnShadeMarkerPositionChanged(shadeKind, pixelX, pixelY);
 
     public void Update(Palette palette)
     {
@@ -86,18 +73,22 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         this.View.Secondary1Marker.MoveWheelMarker(palette.Secondary1.Wheel);
         this.View.Secondary2Marker.MoveWheelMarker(palette.Secondary2.Wheel);
 
-        var position = palette.Primary.Base.Position;
+        var shades =
+            palette.AreShadesLocked ?
+                palette.Primary :
+                palette.SelectedWheel.ToShadesFrom(palette);
+
+        var position = shades.Base.Position;
         this.View.BaseShadeMarker.MoveShadeMarker(position.X, position.Y);
-        position = palette.Primary.Lighter.Position;
+        position = shades.Lighter.Position;
         this.View.LighterShadeMarker.MoveShadeMarker(position.X, position.Y);
-        position = palette.Primary.Light.Position;
+        position = shades.Light.Position;
         this.View.LightShadeMarker.MoveShadeMarker(position.X, position.Y);
-        position = palette.Primary.Dark.Position;
+        position = shades.Dark.Position;
         this.View.DarkShadeMarker.MoveShadeMarker(position.X, position.Y);
-        position = palette.Primary.Darker.Position;
+        position = shades.Darker.Position;
         this.View.DarkerShadeMarker.MoveShadeMarker(position.X, position.Y);
 
-        Shades shades = palette.FromWheel(palette.SelectedWheel);
         HsvColor hsv = shades.Base.Color;
         this.UpdateShadesBitmap(hsv.H);
     }

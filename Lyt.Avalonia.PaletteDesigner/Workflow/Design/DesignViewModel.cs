@@ -33,7 +33,7 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
         base.OnViewLoaded();
 
         // Need to wait so that canvas is ready 
-        Schedule.OnUiThread(550, () =>
+        Schedule.OnUiThread(250, () =>
         {
             // For now 
             if (this.paletteDesignerModel.ActiveProject is null)
@@ -44,7 +44,7 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
 
             var palette = this.Palette;
             palette.Reset();
-            this.OnModelUpdated(null);
+            this.ColorWheelViewModel.OnWheelAngleChanged(WheelKind.Primary, palette.Primary.Wheel);
         }, DispatcherPriority.Background);
 
     }

@@ -113,9 +113,10 @@
 				StrokeBrush="DarkGreen"
 				Canvas.Top="300" Canvas.Left="300"
 				/>
-			<!-- This one on top so that it can be moved -->
+			<!-- This one on top so that it can always be moved -->
 			<controls:MarkerControl
 				x:Name="BaseShadeMarker"
+				Tag="Base"
 				IsVisible="True"
 				CanMove="True"
 				IsWheel="False"

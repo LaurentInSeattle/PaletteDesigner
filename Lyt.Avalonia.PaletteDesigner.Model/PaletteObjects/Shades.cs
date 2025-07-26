@@ -39,25 +39,6 @@ public sealed class Shades
 
     public Shades() { /* needed for serialization */ }
 
-/*
-Primary
-    Lighter
-        X: 65  Y: 71
-        Hue: 351.0  Sat: 0.3  Bri: 1.0
-    Light
-        X: 124  Y: 85
-        Hue: 351.0  Sat: 0.6  Bri: 1.0
-    Base
-        X: 167  Y: 124
-        Hue: 351.0  Sat: 0.8  Bri: 0.8
-    Dark
-        X: 194  Y: 169
-        Hue: 351.0  Sat: 0.9  Bri: 0.6
-    Darker
-        X: 203  Y: 225
-        Hue: 351.0  Sat: 1.0  Bri: 0.4
-*/
-
     public void Reset()
     {
         ShadeMap shadeMap = Palette.ShadeMap; 
@@ -97,16 +78,6 @@ Primary
         this.Darker.MoveTo(baseHue, shadeMap, darkerX, darkerY);
     }
 
-    public void CopyShadesFrom(Shades shades)
-    {
-        //foreach (var shade in
-        //    new[] { this.Lighter, this.Light, this.Base, this.Dark, this.Darker })
-        //{
-        //    var position = shade.Position; 
-        //    shade.MoveTo(shade.Color.H, shadeMap, position.X, position.Y);
-        //}
-    }
-
     public void UpdateFromWheel(double wheel)
     {
         this.Wheel = wheel;
@@ -126,9 +97,21 @@ Primary
         }
     }
 
+    public void UpdatePosition(ShadeKind shadeKind, int pixelX, int pixelY)
+    {
+        if (shadeKind == ShadeKind.Base)
+        {
+            this.UpdateAll(pixelX, pixelY);
+        }
+        else
+        {
+            this.UpdateOne(shadeKind, pixelX, pixelY);
+        }
+    }
+
     // Moving base marker to absolute position 
     // All four others follow by the same offset 
-    public void UpdateAll(int pixelX, int pixelY)
+    private void UpdateAll(int pixelX, int pixelY)
     {
         ShadeMap shadeMap = Palette.ShadeMap;
         var oldPosition = this.Base.Position; 
@@ -148,7 +131,7 @@ Primary
 
     // Moving ONE marker, but NOT the base, to an absolute position 
     // All other unchanged 
-    public void UpdateOne(ShadeKind shadeKind, int pixelX, int pixelY)
+    private void UpdateOne(ShadeKind shadeKind, int pixelX, int pixelY)
     {
         ShadeMap shadeMap = Palette.ShadeMap;
         var position = new Position(pixelX, pixelY);
