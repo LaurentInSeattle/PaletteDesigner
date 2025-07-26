@@ -25,18 +25,18 @@
 	</UserControl.Styles>
 	<Grid
 		Margin="4"
-		Width="860" Height="850"
+		Width="840" Height="720"
 		>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="60" />
 			<RowDefinition Height="20" />
 			<RowDefinition Height="600" />
-			<RowDefinition Height="120" />
+			<RowDefinition Height="40" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="130" />
+			<ColumnDefinition Width="120" />
 			<ColumnDefinition Width="600" />
-			<ColumnDefinition Width="130" />
+			<ColumnDefinition Width="120" />
 		</Grid.ColumnDefinitions>
 
 		<Grid
@@ -314,15 +314,10 @@
 		<Grid
 			Grid.Row="3" Grid.ColumnSpan="999"
 			>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="*" />
-				<RowDefinition Height="*" />
-				<RowDefinition Height="*" />
-			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="150" />
+				<ColumnDefinition Width="120" />
 				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="150" />
+				<ColumnDefinition Width="120" />
 			</Grid.ColumnDefinitions>
 			<TextBlock
 				Grid.Row="0"
@@ -343,46 +338,7 @@
 				Grid.Row="0" Grid.Column="2"
 				Text="{Binding WheelValue}"
 				Theme="{StaticResource Medium}"
-				/>
-			<TextBlock
-				Grid.Row="1"
-				Text="Saturation"
-				Theme="{StaticResource Medium}"
-				HorizontalAlignment="Right" 
-				/>
-			<Slider
-				Grid.Row="1" Grid.Column="1"
-				Margin="8 0 8 0"
-				Minimum="0.0" Maximum="1.0" 
-				SmallChange="0.01" LargeChange="0.05"
-				TickFrequency="0.1" TickPlacement="BottomRight"
-				Value="{Binding SaturationSliderValue}"
-				HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-				/>
-			<TextBlock
-				Grid.Row="1" Grid.Column="2"
-				Text="{Binding SaturationValue}"
-				Theme="{StaticResource Medium}"
-				/>
-			<TextBlock
-				Grid.Row="2"
-				Text="Brightness"
-				Theme="{StaticResource Medium}"
-				HorizontalAlignment="Right" 
-				/>
-			<Slider
-				Grid.Row="2" Grid.Column="1"
-				Margin="8 0 8 0"
-				Minimum="0.0" Maximum="1.0"
-				SmallChange="0.01" LargeChange="0.05"
-				TickFrequency="0.1" TickPlacement="BottomRight"
-				Value="{Binding BrightnessSliderValue}"
-				HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-				/>
-			<TextBlock
-				Grid.Row="2" Grid.Column="2"
-				Text="{Binding BrightnessValue}"
-				Theme="{StaticResource Medium}"
+				HorizontalAlignment="Left" 
 				/>
 		</Grid>
 	</Grid>

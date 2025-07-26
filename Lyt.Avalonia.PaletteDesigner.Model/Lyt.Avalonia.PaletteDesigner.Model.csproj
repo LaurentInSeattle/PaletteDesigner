@@ -12,6 +12,7 @@
     <None Remove="Resources\ShadesPresets\Deep.json" />
     <None Remove="Resources\ShadesPresets\LightPastels.json" />
     <None Remove="Resources\ShadesPresets\Medium.json" />
+    <None Remove="Resources\ShadesPresets\MutedPastels.json" />
     <None Remove="Resources\ShadesPresets\Shiny.json" />
   </ItemGroup>
 
@@ -21,6 +22,7 @@
     <EmbeddedResource Include="Resources\ShadesPresets\Deep.json" />
     <EmbeddedResource Include="Resources\ShadesPresets\LightPastels.json" />
     <EmbeddedResource Include="Resources\ShadesPresets\Medium.json" />
+    <EmbeddedResource Include="Resources\ShadesPresets\MutedPastels.json" />
     <EmbeddedResource Include="Resources\ShadesPresets\Shiny.json" />
   </ItemGroup>
 

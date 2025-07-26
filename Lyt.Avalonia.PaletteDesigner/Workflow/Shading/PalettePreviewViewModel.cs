@@ -1,6 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Shading;
 
-using Lyt.Avalonia.PaletteDesigner.Model;
 using static GeneralExtensions; 
 
 public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
@@ -126,19 +125,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     private double wheelSliderValue;
 
     [ObservableProperty]
-    private double saturationSliderValue;
-
-    [ObservableProperty]
-    private double brightnessSliderValue;
-
-    [ObservableProperty]
     private string wheelValue = string.Empty;
-
-    [ObservableProperty]
-    private string saturationValue = string.Empty;
-
-    [ObservableProperty]
-    private string brightnessValue = string.Empty;
 
     private readonly PaletteDesignerModel paletteDesignerModel;
 
@@ -146,16 +133,11 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 
     private double wheel;
 
-    private double saturation;
-
-    private double brightness;
-
-
     public PalettePreviewViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
         this.PrimaryShadesValues = new ShadesValuesViewModel("Dominant");
-        this.ComplementaryShadesValues = new ShadesValuesViewModel("Complement");
+        this.ComplementaryShadesValues = new ShadesValuesViewModel("Accent");
         this.Secondary1ShadesValues = new ShadesValuesViewModel("Discord #1");
         this.Secondary2ShadesValues = new ShadesValuesViewModel("Discord #2");
         this.TopLeftShadesValues     = this.PrimaryShadesValues;
@@ -178,11 +160,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     {
         base.OnViewLoaded();
         this.WheelSliderValue = 0.0;
-        this.SaturationSliderValue = 0.67;
-        this.BrightnessSliderValue = 0.67;
         this.WheelValue = string.Empty;
-        this.SaturationValue = string.Empty;
-        this.BrightnessValue = string.Empty;
         this.UpdateLabels();
     }
 
@@ -198,35 +176,9 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         this.paletteDesignerModel.UpdatePalettePrimaryWheel(value);
     }
 
-    partial void OnSaturationSliderValueChanged(double value)
-    {
-        if (this.isProgrammaticUpdate)
-        {
-            return;
-        }
-
-        this.saturation = value;
-        this.UpdateLabels();
-        //this.paletteDesignerModel.UpdatePalettePrimaryShade(this.saturation, this.brightness);
-    }
-
-    partial void OnBrightnessSliderValueChanged(double value)
-    {
-        if (this.isProgrammaticUpdate)
-        {
-            return;
-        }
-
-        this.brightness = value;
-        this.UpdateLabels();
-        //this.paletteDesignerModel.UpdatePalettePrimaryShade(this.saturation, this.brightness);
-    }
-
     public void UpdateLabels()
     {
         this.WheelValue = string.Format("{0:F1} \u00B0", this.wheel);
-        this.SaturationValue = string.Format("{0:F1} %", this.saturation * 100.0);
-        this.BrightnessValue = string.Format("{0:F1} %", this.brightness * 100.0);
     }
 
     public void Update(Palette palette)
@@ -243,11 +195,6 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             this.wheel = palette.Primary.Wheel; 
             this.WheelSliderValue = palette.Primary.Wheel;
             var primaryColor = palette.Primary.Base.Color;
-
-            this.saturation = primaryColor.S; 
-            this.SaturationSliderValue = primaryColor.S;
-            this.brightness = primaryColor.V;
-            this.BrightnessSliderValue = primaryColor.V;
             this.UpdateLabels();
         });
 
@@ -290,8 +237,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
                 this.BottomRightShadesValues = this.ComplementaryShadesValues;
                 this.RightShades = this.ComplementaryShades;
                 this.ComplementaryShades.Update(shades);
-                string name = 
-                    palette.Kind == PaletteKind.Duochromatic ? "Accent" : "Complementary"; 
+                string name = "Accent"; 
                 this.ComplementaryShadesValues.Update(name);
                 this.ComplementaryShadesValues.Update(shades);
             }
@@ -365,3 +311,118 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         }
     }
 }
+
+#region Saturation and Brightness sliders 
+/*
+ * 
+            <TextBlock
+                Grid.Row="1"
+                Text="Saturation"
+                Theme="{StaticResource Medium}"
+                HorizontalAlignment="Right" 
+                />
+            <Slider
+                Grid.Row="1" Grid.Column="1"
+                Margin="8 0 8 0"
+                Minimum="0.0" Maximum="1.0" 
+                SmallChange="0.01" LargeChange="0.05"
+                TickFrequency="0.1" TickPlacement="BottomRight"
+                Value="{Binding SaturationSliderValue}"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                />
+            <TextBlock
+                Grid.Row="1" Grid.Column="2"
+                Text="{Binding SaturationValue}"
+                Theme="{StaticResource Medium}"
+                />
+            <TextBlock
+                Grid.Row="2"
+                Text="Brightness"
+                Theme="{StaticResource Medium}"
+                HorizontalAlignment="Right" 
+                />
+            <Slider
+                Grid.Row="2" Grid.Column="1"
+                Margin="8 0 8 0"
+                Minimum="0.0" Maximum="1.0"
+                SmallChange="0.01" LargeChange="0.05"
+                TickFrequency="0.1" TickPlacement="BottomRight"
+                Value="{Binding BrightnessSliderValue}"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                />
+            <TextBlock
+                Grid.Row="2" Grid.Column="2"
+                Text="{Binding BrightnessValue}"
+                Theme="{StaticResource Medium}"
+                />
+ *
+    [ObservableProperty]
+    private double saturationSliderValue;
+
+    [ObservableProperty]
+    private double brightnessSliderValue;
+
+    [ObservableProperty]
+    private string saturationValue = string.Empty;
+
+    [ObservableProperty]
+    private string brightnessValue = string.Empty;
+
+    private double saturation;
+
+    private double brightness;
+
+CTOR:
+        this.SaturationSliderValue = 0.67;
+        this.BrightnessSliderValue = 0.67;
+        this.SaturationValue = string.Empty;
+        this.BrightnessValue = string.Empty;
+
+    partial void OnSaturationSliderValueChanged(double value)
+    {
+        if (this.isProgrammaticUpdate)
+        {
+            return;
+        }
+
+        this.saturation = value;
+        this.UpdateLabels();
+        //this.paletteDesignerModel.UpdatePalettePrimaryShade(this.saturation, this.brightness);
+    }
+
+    partial void OnBrightnessSliderValueChanged(double value)
+    {
+        if (this.isProgrammaticUpdate)
+        {
+            return;
+        }
+
+        this.brightness = value;
+        this.UpdateLabels();
+        //this.paletteDesignerModel.UpdatePalettePrimaryShade(this.saturation, this.brightness);
+    }
+
+    public void UpdateLabels()
+    {
+        this.WheelValue = string.Format("{0:F1} \u00B0", this.wheel);
+        this.SaturationValue = string.Format("{0:F1} %", this.saturation * 100.0);
+        this.BrightnessValue = string.Format("{0:F1} %", this.brightness * 100.0);
+    }
+
+Update: 
+
+        With(ref this.isProgrammaticUpdate, () =>
+        {
+            this.wheel = palette.Primary.Wheel; 
+            this.WheelSliderValue = palette.Primary.Wheel;
+            var primaryColor = palette.Primary.Base.Color;
+
+            this.saturation = primaryColor.S; 
+            this.SaturationSliderValue = primaryColor.S;
+            this.brightness = primaryColor.V;
+            this.BrightnessSliderValue = primaryColor.V;
+            this.UpdateLabels();
+        });
+
+*/
+#endregion Saturation and Brightness sliders 

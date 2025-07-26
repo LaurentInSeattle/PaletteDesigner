@@ -20,14 +20,16 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="92" />
 			<RowDefinition Height="*" />
+			<RowDefinition Height="92" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="700" />
+			<ColumnDefinition Width="140" />
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
 		<vm:ModelSelectionToolbarView
-			Grid.ColumnSpan="2"
-			Margin="40 0 0 0"
+			Grid.Row="0" Grid.ColumnSpan="3"
+			Margin="12 0 0 0"
 			DataContext="{Binding ModelSelectionToolbarViewModel}"
 			/>
 		<wheel:ColorWheelView
@@ -36,15 +38,19 @@
 			DataContext="{Binding ColorWheelViewModel}"
 			/>
 		<shading:PalettePreviewView
-			Grid.Row="1" Grid.Column="1"
+			Grid.Row="1" Grid.Column="2"
 			VerticalAlignment="Top" HorizontalAlignment="Left"
 			DataContext="{Binding PalettePreviewViewModel}"
 			/>
 		<vm:ShadeSelectionToolbarView
-			Grid.Row="1" Grid.ColumnSpan="2"
-			Margin="40 0 0 10"
+			Grid.Row="2" Grid.ColumnSpan="3"
+			Margin="12 0 0 0"
 			DataContext="{Binding ShadeSelectionToolbarViewModel}"
 			HorizontalAlignment="Left" VerticalAlignment="Bottom"
+			/>
+		<Rectangle
+			Grid.Row="1" Grid.Column="1"
+			Fill="#80000020"
 			/>
 	</Grid>
 </UserControl>
