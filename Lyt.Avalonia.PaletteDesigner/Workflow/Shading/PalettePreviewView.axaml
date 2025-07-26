@@ -43,44 +43,13 @@
 			Grid.Column="1" Grid.Row="0"
 			DataContext="{Binding MiniPaletteViewModel}"
 			/>
-		<!-- 
-		<Grid
-			Grid.Column="1" Grid.Row="0"
-			>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="6" />
-				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="6" />
-				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="6" />
-				<ColumnDefinition Width="*" />
-			</Grid.ColumnDefinitions>
-			<vm:PaletteColorView
-				Grid.Column="2"
-				DataContext="{Binding MiddleLeftShades}"
-				HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
-				/>
-			<vm:PaletteColorView
-				Grid.Column="4"
-				DataContext="{Binding MiddleRightShades}"
-				HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
-				/>
-			<vm:PaletteColorView
-				Grid.Column="6"
-				DataContext="{Binding RightShades}"
-				HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
-				/>
-			// Primary needs to be on top of all others
-			<vm:PaletteColorView
-				x:Name="PrimaryShades"
-				Grid.Column="0"
-				DataContext="{Binding LeftShades}"
-				HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"
-				/>
-		</Grid>
-		-->
 
+		<vm:MaxiPaletteView
+			Width="600" Height="600"
+			Grid.Column="1" Grid.Row="2"
+			DataContext="{Binding MaxiPaletteViewModel}"
+			/>
+		<!-- 
 		<Grid
 			Width="600" Height="600"
 			Grid.Column="1" Grid.Row="2"
@@ -278,7 +247,8 @@
 			</Grid>
 
 		</Grid>
-
+		-->
+		
 		<Grid
 			Grid.Column="0" Grid.Row="2" Grid.RowSpan="1"
 			>
