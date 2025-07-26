@@ -19,7 +19,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
         };
 
     internal readonly FileManagerModel fileManager;
-    private readonly ILocalizer localizer; 
+    private readonly ILocalizer localizer;
     private readonly Lock lockObject = new();
     private readonly FileId modelFileId;
 
@@ -38,7 +38,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
     public PaletteDesignerModel(
         FileManagerModel fileManager,
         ILocalizer localizer,
-        IMessenger messenger, 
+        IMessenger messenger,
         ILogger logger) : base(messenger, logger)
     {
         this.fileManager = fileManager;
@@ -49,7 +49,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
 
     public override async Task Initialize()
     {
-        this.IsInitializing = true; 
+        this.IsInitializing = true;
         await this.Load();
         this.IsInitializing = false;
         this.IsDirty = false;
@@ -87,7 +87,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 LastUpdated = DateTime.Now,
                 Palette = new()
                 {
-                    Name = "Default", 
+                    Name = "Default",
                     Kind = PaletteKind.Duochromatic,
                 },
             };
@@ -107,16 +107,14 @@ public sealed partial class PaletteDesignerModel : ModelBase
 
     private void LoadStaticColorData()
     {
-        ResourcesUtilities.SetResourcesPath("Lyt.Avalonia.PaletteDesigner.Model.Resources"); 
+        ResourcesUtilities.SetResourcesPath("Lyt.Avalonia.PaletteDesigner.Model.Resources");
         string serialized = ResourcesUtilities.LoadEmbeddedTextResource("ColorWheel.json", out string? _);
-        var colorWheel = ResourcesUtilities.Deserialize<Dictionary<int, RgbColor>>(serialized);
-        if (colorWheel is null) 
-        {
+        var colorWheel = 
+            ResourcesUtilities.Deserialize<Dictionary<int, RgbColor>>(serialized) ?? 
             throw new Exception("Failed to load color wheel");
-        }
-
+        var hueWheel = colorWheel.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToHsv().H);
         var shadeMap = new ShadeMap(PaletteDesignerModel.ShadesImageDimension);
-        Palette.Setup(this, colorWheel, shadeMap);
+        Palette.Setup(this, colorWheel, hueWheel, shadeMap);
     }
 
     public override Task Save()
@@ -140,15 +138,15 @@ public sealed partial class PaletteDesignerModel : ModelBase
             {
                 string path = this.fileManager.MakePath(this.modelFileId);
                 var fileInfo = new FileInfo(path);
-                if ( fileInfo.Length < 1024 )
+                if (fileInfo.Length < 1024)
                 {
                     if (Debugger.IsAttached) { Debugger.Break(); }
-                    this.Logger.Warning("Model file is too small!"); 
+                    this.Logger.Warning("Model file is too small!");
                 }
             }
             catch (Exception ex)
             {
-                if ( Debugger.IsAttached ) {  Debugger.Break(); }
+                if (Debugger.IsAttached) { Debugger.Break(); }
                 Debug.WriteLine(ex);
             }
 #endif // DEBUG 

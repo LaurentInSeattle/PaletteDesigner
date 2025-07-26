@@ -23,17 +23,10 @@ public sealed partial class Palette
     public void UpdateShadesWheel(Shades shades, double wheel)
     {
         shades.Wheel = wheel;
-        if (Palette.ColorWheel.TryGetValue(Palette.ToAngle(wheel), out RgbColor? rgbColor))
+        if (Palette.HueWheel.TryGetValue(Palette.ToAngle(wheel), out double hue))
         {
-            if (rgbColor is null)
-            {
-                throw new Exception("No such angle");
-            }
-
-            var hsvColor = rgbColor.ToHsv();
             var color = shades.Base.Color;
-            hsvColor.S = color.S;
-            hsvColor.V = color.V;
+            var hsvColor = new HsvColor(hue, color.S, color.V);
             shades.Base.Color = hsvColor;
             shades.UpdateAllShadeColors(Palette.ShadeMap);
         }
@@ -122,5 +115,10 @@ public sealed partial class Palette
         string name = "Palette_" + FileManagerModel.TimestampString();
         fm.Save<Palette>(
             FileManagerModel.Area.User, FileManagerModel.Kind.Json, name, this);
+
+        var preset = new ShadesPreset("Medium", this.Primary);
+        name = "Medium_" + FileManagerModel.TimestampString();
+        fm.Save<ShadesPreset>(
+            FileManagerModel.Area.User, FileManagerModel.Kind.Json, name, preset);
     }
 }

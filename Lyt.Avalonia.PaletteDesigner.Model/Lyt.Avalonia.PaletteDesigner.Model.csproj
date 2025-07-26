@@ -8,10 +8,20 @@
 
   <ItemGroup>
     <None Remove="Resources\ColorWheel.json" />
+    <None Remove="Resources\ShadesPresets\Dark.json" />
+    <None Remove="Resources\ShadesPresets\Deep.json" />
+    <None Remove="Resources\ShadesPresets\LightPastels.json" />
+    <None Remove="Resources\ShadesPresets\Medium.json" />
+    <None Remove="Resources\ShadesPresets\Shiny.json" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\ColorWheel.json" />
+    <EmbeddedResource Include="Resources\ShadesPresets\Dark.json" />
+    <EmbeddedResource Include="Resources\ShadesPresets\Deep.json" />
+    <EmbeddedResource Include="Resources\ShadesPresets\LightPastels.json" />
+    <EmbeddedResource Include="Resources\ShadesPresets\Medium.json" />
+    <EmbeddedResource Include="Resources\ShadesPresets\Shiny.json" />
   </ItemGroup>
 
     <ItemGroup>

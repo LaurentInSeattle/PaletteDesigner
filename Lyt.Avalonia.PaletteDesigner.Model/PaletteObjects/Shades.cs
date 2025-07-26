@@ -81,17 +81,10 @@ public sealed class Shades
     public void UpdateFromWheel(double wheel)
     {
         this.Wheel = wheel;
-        if (Palette.ColorWheel.TryGetValue(Palette.ToAngle(this.Wheel), out RgbColor? rgbColor))
+        if (Palette.HueWheel.TryGetValue(Palette.ToAngle(this.Wheel), out double hue))
         {
-            if (rgbColor is null)
-            {
-                throw new Exception("No such angle");
-            }
-
-            var hsvColor = rgbColor.ToHsv();
             var color = this.Base.Color;
-            hsvColor.S = color.S;
-            hsvColor.V = color.V;
+            var hsvColor = new HsvColor(hue, color.S, color.V);
             this.Base.Color = hsvColor;
             this.UpdateAllShadeColors(Palette.ShadeMap);
         }

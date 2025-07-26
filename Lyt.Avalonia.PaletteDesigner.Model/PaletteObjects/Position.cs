@@ -14,7 +14,7 @@ public sealed class Position
     public Position()
     {
         this.X = PaletteDesignerModel.ShadesImageDimension / 2;
-        this.Y = PaletteDesignerModel.ShadesImageDimension / 2; 
+        this.Y = PaletteDesignerModel.ShadesImageDimension / 2;
     }
 
     public Position(Position position)
@@ -27,6 +27,20 @@ public sealed class Position
     {
         this.X = x;
         this.Y = y;
+    }
+
+    public Position ToSizeIndependant()
+    {
+        double x = this.X * 1000.0 / (double)PaletteDesignerModel.ShadesImageDimension;
+        double y = this.Y * 1000.0 / (double)PaletteDesignerModel.ShadesImageDimension;
+        return new Position((int)(x + 0.5), (int)(y + 0.5));
+    }
+
+    public Position FromSizeIndependant()
+    {
+        double x = (double)this.X / 1000.0 * (double)PaletteDesignerModel.ShadesImageDimension;
+        double y = (double)this.Y / 1000.0 * (double)PaletteDesignerModel.ShadesImageDimension;
+        return new Position((int)(x + 0.5), (int)(y + 0.5));
     }
 
     // Constrain point to be located inside the Shades Image circle 
@@ -65,5 +79,5 @@ public sealed class Position
             (this.X - position.X) * (this.X - position.X) +
             (this.Y - position.Y) * (this.Y - position.Y));
 
-    public override string ToString() => string.Format("X: {0}  Y: {1}" , this.X, this.Y);
+    public override string ToString() => string.Format("X: {0}  Y: {1}", this.X, this.Y);
 }

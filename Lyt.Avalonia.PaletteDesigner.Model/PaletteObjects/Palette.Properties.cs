@@ -4,20 +4,26 @@ public sealed partial class Palette
 {
 #pragma warning disable CS8618 
     // Non-nullable field must contain a non-null value when exiting constructor.
-//#pragma warning disable CA2211 
+#pragma warning disable CA2211 
 //    // Non-constant fields should not be visible
 
     public static PaletteDesignerModel Model;
 
     public static Dictionary<int, RgbColor> ColorWheel;
 
+    public static Dictionary<int, double> HueWheel;
+
     public static ShadeMap ShadeMap;
 
     public static void Setup(
-        PaletteDesignerModel model, Dictionary<int, RgbColor> colorWheel, ShadeMap shadeMap)
+        PaletteDesignerModel model, 
+        Dictionary<int, RgbColor> colorWheel, 
+        Dictionary<int, double> hueWheel, 
+        ShadeMap shadeMap)
     {
         Palette.Model = model;
         Palette.ColorWheel = colorWheel;
+        Palette.HueWheel = hueWheel;
         Palette.ShadeMap = shadeMap;
     }
 
