@@ -25,13 +25,10 @@ public sealed partial class PaletteDesignerModel : ModelBase
     public bool ModelLoadedNotified { get; set; } = false;
 
     [JsonIgnore]
-    public Project? ActiveProject { get; set; } 
+    public Project? ActiveProject { get; set; }
 
-    //[JsonIgnore]
-    //public Dictionary<int, RgbColor> ColorLookupTable { get; set; } = [] ;
-
-    //[JsonIgnore]
-    //public ShadeMap ShadeColorMap { get; set; } = new(1);
+    [JsonIgnore]
+    Dictionary<string, ShadesPreset> ShadesPresets = new(16);
 
     #endregion Not serialized - No model changed event
 

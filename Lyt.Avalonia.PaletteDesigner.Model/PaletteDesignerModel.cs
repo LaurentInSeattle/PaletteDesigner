@@ -108,13 +108,25 @@ public sealed partial class PaletteDesignerModel : ModelBase
     private void LoadStaticColorData()
     {
         ResourcesUtilities.SetResourcesPath("Lyt.Avalonia.PaletteDesigner.Model.Resources");
-        string serialized = ResourcesUtilities.LoadEmbeddedTextResource("ColorWheel.json", out string? _);
+        string serializedColorWheel = ResourcesUtilities.LoadEmbeddedTextResource("ColorWheel.json", out string? _);
         var colorWheel = 
-            ResourcesUtilities.Deserialize<Dictionary<int, RgbColor>>(serialized) ?? 
+            ResourcesUtilities.Deserialize<Dictionary<int, RgbColor>>(serializedColorWheel) ?? 
             throw new Exception("Failed to load color wheel");
         var hueWheel = colorWheel.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToHsv().H);
         var shadeMap = new ShadeMap(PaletteDesignerModel.ShadesImageDimension);
         Palette.Setup(this, colorWheel, hueWheel, shadeMap);
+
+        Dictionary<string, ShadesPreset> shadesPresets = new(16);
+        ResourcesUtilities.SetResourcesPath("Lyt.Avalonia.PaletteDesigner.Model.Resources.ShadesPresets");
+        List<string> presetFiles = ResourcesUtilities.EnumerateEmbeddedResourceNames(".json");
+        foreach (string presetFile in presetFiles)
+        {
+            string serializedPreset = ResourcesUtilities.LoadEmbeddedTextResource(presetFile, out string? _);
+            var preset = ResourcesUtilities.Deserialize<ShadesPreset>(serializedPreset);
+            shadesPresets.Add(preset.Name, preset);
+        } 
+
+        this.ShadesPresets = shadesPresets;
     }
 
     public override Task Save()

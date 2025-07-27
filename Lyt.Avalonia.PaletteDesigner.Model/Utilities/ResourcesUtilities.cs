@@ -41,7 +41,32 @@ public static class ResourcesUtilities
     {
         ResourcesUtilities.ExecutingAssembly = executingAssembly;
         DumpEmbeddedResourceNames();
-    } 
+    }
+
+    public static List<string> EnumerateEmbeddedResourceNames(string filter)
+    {
+        List<string> resourceNames = [];
+        var list = ExecutingAssembly.GetManifestResourceNames().ToList();
+        foreach (string name in list)
+        {
+            // if (name.Contains(ResourcesPath) && name.EndsWith(ResourcesExtension))
+            if (name.Contains(ResourcesPath))
+            {
+                Debug.WriteLine(name);
+                if ( ! string.IsNullOrWhiteSpace(filter ))
+                {
+                    if ( ! name.Contains(filter))
+                    {
+                        continue;
+                    }
+                }
+
+                resourceNames.Add(name);
+            }
+        }
+
+        return resourceNames;
+    }
 
     public static string? GetFullResourceName(string name)
     {
