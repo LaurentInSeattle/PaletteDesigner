@@ -24,7 +24,7 @@
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="700" />
-			<ColumnDefinition Width="140" />
+			<ColumnDefinition Width="220" />
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
 		<vm:ModelSelectionToolbarView
@@ -51,6 +51,10 @@
 		<Rectangle
 			Grid.Row="1" Grid.Column="1"
 			Fill="#80000020"
+			/>
+		<vm:ShadesPresetsToolbarView
+			Grid.Row="1" Grid.Column="1"
+			DataContext="{Binding ShadesPresetsToolbarViewModel}"
 			/>
 	</Grid>
 </UserControl>

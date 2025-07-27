@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Design;
 
-using Lyt.Avalonia.PaletteDesigner.Model;
-
 public sealed partial class DesignViewModel : ViewModel<DesignView>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
@@ -18,6 +16,9 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
     [ObservableProperty]
     private ShadeSelectionToolbarViewModel shadeSelectionToolbarViewModel;
 
+    [ObservableProperty]
+    private ShadesPresetsToolbarViewModel shadesPresetsToolbarViewModel;
+
     public DesignViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
@@ -25,6 +26,8 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
         this.PalettePreviewViewModel = new(paletteDesignerModel);
         this.ModelSelectionToolbarViewModel = new();
         this.ShadeSelectionToolbarViewModel = new();
+        this.shadesPresetsToolbarViewModel = new();
+
         this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated);
     }
 
