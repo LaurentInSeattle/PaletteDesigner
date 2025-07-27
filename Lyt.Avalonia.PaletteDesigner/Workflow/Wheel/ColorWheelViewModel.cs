@@ -51,7 +51,7 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         this.CanMoveSecondary2 = false;
     }
 
-    public void OnResetShades() 
+    public void OnResetShadesClick() 
         => this.paletteDesignerModel.ResetShades();
 
     public void OnWheelAngleChanged(WheelKind wheelKind, double wheelAngle) 
@@ -144,6 +144,24 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
 
         this.View.Shades.InvalidateVisual();
     }
+
+    [RelayCommand]
+    public void OnRotateClockwise()
+    {
+    }
+
+    [RelayCommand]
+    public void OnRotateCounterClockwise()
+    {
+    }
+
+    [RelayCommand]
+    public void OnSwap()
+    {
+    }
+
+    [RelayCommand]
+    public void OnResetShades() => this.paletteDesignerModel.ResetShades();
 
     #region Color Wheel from resources
     /* 

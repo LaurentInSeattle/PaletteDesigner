@@ -126,5 +126,53 @@
 				Canvas.Top="300" Canvas.Left="300"
 				/>
 		</Canvas>
+
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			VerticalAlignment="Top" HorizontalAlignment="Right"
+			Width="100" Height="60"
+			Margin="4"
+			ButtonBackground="BorderlessRectangle"
+			Text="Rotate Together"
+			GlyphSource="arrow_rotate_clockwise"
+			GlyphAngle="0"
+			GlyphStrokeThickness="0.2"
+			Command="{Binding OnRotateClockwise}"
+			/>
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			VerticalAlignment="Top" HorizontalAlignment="Left"
+			Width="100" Height="60"
+			Margin="4"
+			ButtonBackground="BorderlessRectangle"
+			Text="Rotate Together"
+			GlyphSource="arrow_rotate_counterclockwise"
+			GlyphAngle="0"
+			GlyphStrokeThickness="0.2"
+			Command="{Binding OnRotateCounterClockwise}"
+			/>
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			VerticalAlignment="Bottom" HorizontalAlignment="Right"
+			Width="100" Height="60"
+			Margin="4"
+			ButtonBackground="BorderlessRectangle"
+			Text="Flip Opposites"
+			GlyphAngle="-20"
+			GlyphSource="arrow_swap"
+			GlyphStrokeThickness="0.2"
+			Command="{Binding OnSwap}"
+			/>
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			VerticalAlignment="Bottom" HorizontalAlignment="Left"
+			Width="100" Height="60"
+			Margin="4"
+			ButtonBackground="BorderlessRectangle"
+			Text="Reset Shades"
+			GlyphSource="data_line"
+			GlyphStrokeThickness="0.2"
+			Command="{Binding OnResetShades}"
+			/>
 	</Grid>
 </UserControl>

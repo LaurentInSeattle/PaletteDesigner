@@ -47,6 +47,7 @@
 
 	<ControlTheme x:Key="IconButton" TargetType="glyphs:GlyphButton">
 		<Setter Property="Layout" Value="IconOnly"/>
+		<Setter Property="Behaviour" Value="Tap"/>
 		<Setter Property="ButtonBackground" Value="BorderOnly"/>
 		<Setter Property="Typography" Value="{StaticResource GlyphButtonTypography}"/>
 		<Setter Property="BackgroundCornerRadius" Value="8" />
@@ -58,6 +59,7 @@
 
 	<ControlTheme x:Key="ToolbarIconButton" TargetType="glyphs:GlyphButton">
 		<Setter Property="Layout" Value="IconTextBelow"/>
+		<Setter Property="Behaviour" Value="Tap"/>
 		<Setter Property="ButtonBackground" Value="BorderOnly"/>
 		<Setter Property="Typography" Value="{StaticResource GlyphButtonTypography}"/>
 		<Setter Property="BackgroundCornerRadius" Value="8" />

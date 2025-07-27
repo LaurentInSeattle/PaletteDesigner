@@ -67,10 +67,12 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     {
         if (this.IsBound)
         {
-            var columns = this.View.MainGrid.ColumnDefinitions;
+            var grid = this.View.MainGrid;
+            var columns = grid.ColumnDefinitions;
             var newGridLength = new GridLength(show ? 120.0 : 0.0);
             columns[0].Width = newGridLength;
             columns[2].Width = newGridLength;
+            grid.Width = show ? 840.0 : 600.0; 
         }
     }
     public override void OnViewLoaded()

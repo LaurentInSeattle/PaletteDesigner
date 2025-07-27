@@ -33,7 +33,7 @@
 			Text="Shiny"
 			Behaviour="Tap"
 			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="320" Height="60"
+			Width="320" Height="52"
 			Margin="0"
 			ButtonBackground="BorderlessRectangle"
 			Command="{Binding OnShadeSelect}"

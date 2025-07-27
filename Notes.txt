@@ -1,3 +1,11 @@
+arrow_rotate_clockwise
+arrow_rotate_counterclockwise
+arrow_swap_regular
+
+arrow_rotate_left_regular
+arrow_rotate_right_regular
+
+
         // For pure red, shades in Paletton (hue==0)
         // FF AA AA
         // D4 6A 6A

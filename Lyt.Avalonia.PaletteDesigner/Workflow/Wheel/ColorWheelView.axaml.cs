@@ -11,7 +11,7 @@ public partial class ColorWheelView : View
     {
         if (this.DataContext is ColorWheelViewModel colorWheelViewModel)
         {
-            colorWheelViewModel.OnResetShades();
+            colorWheelViewModel.OnResetShadesClick();
         }
     }
 }
