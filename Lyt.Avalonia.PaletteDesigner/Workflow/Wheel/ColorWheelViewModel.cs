@@ -147,18 +147,15 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
 
     [RelayCommand]
     public void OnRotateClockwise()
-    {
-    }
+        => this.paletteDesignerModel.RotateAllWheels(clockwise: true);
 
     [RelayCommand]
     public void OnRotateCounterClockwise()
-    {
-    }
+        => this.paletteDesignerModel.RotateAllWheels(clockwise: false);
 
     [RelayCommand]
     public void OnSwap()
-    {
-    }
+        => this.paletteDesignerModel.FlipOppositeWheels();
 
     [RelayCommand]
     public void OnResetShades() => this.paletteDesignerModel.ResetShades();

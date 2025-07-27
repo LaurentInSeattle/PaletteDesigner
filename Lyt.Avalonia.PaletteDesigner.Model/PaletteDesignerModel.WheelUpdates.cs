@@ -158,4 +158,66 @@ public sealed partial class PaletteDesignerModel : ModelBase
             return true;
         });
 
+    public void RotateAllWheels(bool clockwise)
+        => this.UpdatePalette((palette) =>
+        {
+            // TODO : Need to switch by palette kind
+
+            const double baseAngle = +1.0;
+            double angle = clockwise ? -baseAngle : +baseAngle;
+            double wheel = (palette.Primary.Wheel + angle).NormalizeAngleDegrees();
+            this.UpdatePalettePrimaryWheel(wheel);
+            try
+            {
+                wheel = (palette.Complementary.Wheel + angle).NormalizeAngleDegrees();
+                this.UpdatePaletteComplementaryWheel(wheel);
+            }
+            catch { /* swallow as we may not be able to rotate */ }
+
+            try
+            {
+                wheel = (palette.Secondary1.Wheel + angle).NormalizeAngleDegrees();
+                this.UpdatePaletteSecondary1Wheel(wheel);
+            }
+            catch { /* swallow as we may not be able to rotate */ }
+
+            try
+            {
+                wheel = (palette.Secondary2.Wheel + angle).NormalizeAngleDegrees();
+                this.UpdatePaletteSecondary2Wheel(wheel);
+            }
+            catch { /* swallow as we may not be able to rotate */ }
+
+            return true;
+        });
+
+    public void FlipOppositeWheels()
+        => this.UpdatePalette((palette) =>
+        {
+            double angle = 180.0;
+            double wheel = (palette.Primary.Wheel + angle).NormalizeAngleDegrees();
+            this.UpdatePalettePrimaryWheel(wheel);
+            try
+            {
+                wheel = (palette.Complementary.Wheel + angle).NormalizeAngleDegrees();
+                this.UpdatePaletteComplementaryWheel(wheel);
+            }
+            catch { /* swallow as we may not be able to rotate */ }
+
+            try
+            {
+                wheel = (palette.Secondary1.Wheel + angle).NormalizeAngleDegrees();
+                this.UpdatePaletteSecondary1Wheel(wheel);
+            }
+            catch { /* swallow as we may not be able to rotate */ }
+
+            try
+            {
+                wheel = (palette.Secondary2.Wheel + angle).NormalizeAngleDegrees();
+                this.UpdatePaletteSecondary2Wheel(wheel);
+            }
+            catch { /* swallow as we may not be able to rotate */ }
+
+            return true;
+        });
 }

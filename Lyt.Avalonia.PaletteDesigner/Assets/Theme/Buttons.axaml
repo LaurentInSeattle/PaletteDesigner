@@ -1,17 +1,17 @@
 <ResourceDictionary 
 	xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:glyphs="clr-namespace:Lyt.Avalonia.Controls.Glyphs;assembly=Lyt.Avalonia.Controls"
 	>
-    <Design.PreviewWith>
-        <Border Padding="20" Background="Transparent">
+	<Design.PreviewWith>
+		<Border Padding="20" Background="Transparent">
 			<glyphs:GlyphButton 
 				Theme="{StaticResource ToolbarIconButton}"
-				GlyphSource="person"
+				GlyphSource="close"
 				Text="Login"
 				/>
-        </Border>
-    </Design.PreviewWith>
+		</Border>
+	</Design.PreviewWith>
 
 	<ControlTheme x:Key="GlyphButtonTypography" TargetType="TextBlock">
 		<Setter Property="Background" Value="Transparent"/>

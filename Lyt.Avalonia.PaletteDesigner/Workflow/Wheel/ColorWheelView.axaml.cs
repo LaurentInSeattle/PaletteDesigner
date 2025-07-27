@@ -9,6 +9,12 @@ public partial class ColorWheelView : View
 
     private void OnDoubleTapped(object? sender, TappedEventArgs e)
     {
+        if ( sender is not Image)
+        {
+            // Dont let buttons in the corners clear the shades
+            return; 
+        }
+
         if (this.DataContext is ColorWheelViewModel colorWheelViewModel)
         {
             colorWheelViewModel.OnResetShadesClick();

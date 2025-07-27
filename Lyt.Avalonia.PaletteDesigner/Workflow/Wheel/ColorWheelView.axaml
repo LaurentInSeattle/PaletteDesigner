@@ -130,6 +130,7 @@
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
 			VerticalAlignment="Top" HorizontalAlignment="Right"
+			Behaviour="Continuous"
 			Width="100" Height="60"
 			Margin="4"
 			ButtonBackground="BorderlessRectangle"
@@ -141,6 +142,7 @@
 			/>
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Continuous"
 			VerticalAlignment="Top" HorizontalAlignment="Left"
 			Width="100" Height="60"
 			Margin="4"
