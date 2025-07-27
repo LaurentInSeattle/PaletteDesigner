@@ -12,16 +12,19 @@
 	xmlns:glyphs="using:Lyt.Avalonia.Controls.Glyphs"	
 	xmlns:controls="clr-namespace:Lyt.Avalonia.PaletteDesigner.Controls"
 	xmlns:shading="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Shading"
+	
+	IsVisible="{Binding Show}"
 	>
 
 	<Grid
-		Width="220"
+		x:Name="MainGrid"
+		Width="320"
 		>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="18" />
-			<RowDefinition Height="100" />
-			<RowDefinition Height="100" />
-			<RowDefinition Height="100" />
+			<RowDefinition Height="4" />
+			<RowDefinition Height="80" />
+			<RowDefinition Height="80" />
+			<RowDefinition Height="80" />
 		</Grid.RowDefinitions>
 
 		<glyphs:GlyphButton
@@ -30,7 +33,7 @@
 			Text="Shiny"
 			Behaviour="Tap"
 			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="220" Height="90"
+			Width="320" Height="60"
 			Margin="0"
 			ButtonBackground="BorderlessRectangle"
 			Command="{Binding OnShadeSelect}"
@@ -38,72 +41,12 @@
 			>
 			<glyphs:GlyphButton.XamlContent>
 				<shading:MiniPaletteView
+					Width="840" Height="60"
 					DataContext="{Binding MiniPaletteViewModel}"
 					/>
 			</glyphs:GlyphButton.XamlContent>
 		</glyphs:GlyphButton>
 
-		<glyphs:GlyphButton
-			Grid.Row="2" Grid.Column="0"
-			Style="{StaticResource ToolbarIconButton}"
-			Text="Primary"
-			Behaviour="Tap"
-			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="220" Height="60"
-			Margin="0"
-			ButtonBackground="BorderlessRectangle"
-			Command="{Binding OnShadeSelect}"
-			CommandParameter="Primary"
-			>
-			<glyphs:GlyphButton.XamlContent>
-				<shading:MiniPaletteView
-					DataContext="{Binding MiniPaletteViewModel}"
-					/>
-			</glyphs:GlyphButton.XamlContent>
-		</glyphs:GlyphButton>
-
-		<glyphs:GlyphButton
-			Grid.Row="3" Grid.Column="0"
-			Style="{StaticResource ToolbarIconButton}"
-			Text="Primary"
-			Behaviour="Tap"
-			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="220" Height="60"
-			Margin="0"
-			ButtonBackground="BorderlessRectangle"
-			Command="{Binding OnShadeSelect}"
-			CommandParameter="Primary"
-			>
-			<glyphs:GlyphButton.XamlContent>
-				<shading:MiniPaletteView
-					DataContext="{Binding MiniPaletteViewModel}"
-					/>
-			</glyphs:GlyphButton.XamlContent>
-		</glyphs:GlyphButton>
-		<Rectangle
-			Grid.Column="0" Grid.Row="0"
-			Margin="8 0 8 0"
-			VerticalAlignment="Center" HorizontalAlignment="Left"
-			Height="1" Width="10"
-			Fill="{StaticResource PastelOrchid_0_080_Color}"
-			Opacity="0.3"
-			/>
-		<Rectangle
-			Grid.Column="0" Grid.Row="0"
-			Margin="8 0 8 0"
-			VerticalAlignment="Center" HorizontalAlignment="Right"
-			Height="1" Width="10"
-			Fill="{StaticResource PastelOrchid_0_080_Color}"
-			Opacity="0.3"
-			/>
-		<TextBlock
-			Grid.Row="0" Grid.Column="0" 
-			Text="Presets"
-			Margin="0 0 0 0"
-			Theme="{StaticResource Medium}"
-			TextAlignment="Center"
-			HorizontalAlignment="Center"
-			/>
 	</Grid>
 
 </UserControl>

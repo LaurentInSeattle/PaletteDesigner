@@ -1,5 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Shading;
 
+using System;
 using static GeneralExtensions; 
 
 public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
@@ -55,11 +56,27 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         this.BottomLeftShadesValues  = this.PrimaryShadesValues;
         this.TopRightShadesValues    = this.PrimaryShadesValues;
         this.BottomRightShadesValues = this.PrimaryShadesValues;
+
+        this.Messenger.Subscribe<ShadesValuesVisibilityMessage>(this.OnShadesValuesVisibility);
     }
 
+    private void OnShadesValuesVisibility(ShadesValuesVisibilityMessage message)
+        => this.Show(message.Show);
+
+    public void Show(bool show = true)
+    {
+        if (this.IsBound)
+        {
+            var columns = this.View.MainGrid.ColumnDefinitions;
+            var newGridLength = new GridLength(show ? 120.0 : 0.0);
+            columns[0].Width = newGridLength;
+            columns[2].Width = newGridLength;
+        }
+    }
     public override void OnViewLoaded()
     {
         base.OnViewLoaded();
+        this.Show(); 
         this.WheelSliderValue = 0.0;
         this.WheelValue = string.Empty;
         this.UpdateLabels();

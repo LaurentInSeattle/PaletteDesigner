@@ -24,7 +24,6 @@
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 		<Rectangle
-			RadiusX="6" RadiusY="6"
 			Grid.RowSpan="2"
 			Fill="{Binding BaseBrush}"
 			/>

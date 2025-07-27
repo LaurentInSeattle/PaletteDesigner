@@ -31,16 +31,31 @@ public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSele
     [ObservableProperty]
     private bool isShadingDisabled;
 
+    [ObservableProperty]
+    private bool showShadesPresets;
+
+    [ObservableProperty]
+    private bool showShadesValues;
+
     public ShadeSelectionToolbarViewModel()
     {
         this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();
         this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated);
+
+        this.ShowShadesPresets = false;
+        this.ShowShadesValues = true;
     }
 
     public Palette Palette =>
         this.paletteDesignerModel.ActiveProject == null ?
             throw new Exception("No active project") :
             this.paletteDesignerModel.ActiveProject.Palette;
+
+    partial void OnShowShadesPresetsChanged(bool value)
+        => this.Messenger.Publish(new PresetsVisibilityMessage(value));
+
+    partial void OnShowShadesValuesChanged(bool value)
+        => this.Messenger.Publish(new ShadesValuesVisibilityMessage(value));
 
     [RelayCommand]
     public void OnLockSelect(object? parameter)

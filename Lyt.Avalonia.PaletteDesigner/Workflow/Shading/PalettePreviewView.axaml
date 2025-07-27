@@ -17,21 +17,25 @@
 		<sys:Double x:Key="LargeWidth">88</sys:Double>
 	</UserControl.Resources>
 
+	<!-- 	
 	<UserControl.Styles>
 		<Style Selector="Rectangle">
 			<Setter Property="RadiusX" Value="6"/>
 			<Setter Property="RadiusY" Value="6"/>
 		</Style>
 	</UserControl.Styles>
+	-->
+	
 	<Grid
-		Margin="4"
+		x:Name="MainGrid"
+		Margin="4 22 4 4"
 		Width="840" Height="720"
 		>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="60" />
-			<RowDefinition Height="20" />
+			<RowDefinition Height="10" />
 			<RowDefinition Height="600" />
-			<RowDefinition Height="40" />
+			<RowDefinition Height="70" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="120" />
@@ -40,215 +44,14 @@
 		</Grid.ColumnDefinitions>
 
 		<vm:MiniPaletteView
-			Grid.Column="1" Grid.Row="0"
+			Grid.Column="1" Grid.Row="0" 
 			DataContext="{Binding MiniPaletteViewModel}"
 			/>
-
 		<vm:MaxiPaletteView
 			Width="600" Height="600"
-			Grid.Column="1" Grid.Row="2"
+			Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="999"
 			DataContext="{Binding MaxiPaletteViewModel}"
-			/>
-		<!-- 
-		<Grid
-			Width="600" Height="600"
-			Grid.Column="1" Grid.Row="2"
-			>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="1.6*" />
-				<RowDefinition Height="8" />
-				<RowDefinition Height="*" />
-			</Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="1.6*" />
-				<ColumnDefinition Width="8" />
-				<ColumnDefinition Width="*" />
-			</Grid.ColumnDefinitions>
-
-
-			<Grid
-				x:Name="Primary"
-				Grid.Row="0" Grid.Column="0"
-				>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="16" />
-					<ColumnDefinition Width="88" />
-					<ColumnDefinition Width="16" />
-					<ColumnDefinition Width="88" />
-					<ColumnDefinition Width="16" />
-					<ColumnDefinition Width="88" />
-					<ColumnDefinition Width="*" />
-				</Grid.ColumnDefinitions>
-				<Grid.RowDefinitions>
-					<RowDefinition Height="16" />
-					<RowDefinition Height="88" />
-					<RowDefinition Height="16" />
-					<RowDefinition Height="88" />
-					<RowDefinition Height="16" />
-					<RowDefinition Height="88" />
-					<RowDefinition Height="*" />
-				</Grid.RowDefinitions>
-				<Rectangle
-					Fill="{Binding PrimaryBaseBrush}"
-					Grid.ColumnSpan="999" Grid.RowSpan="999"
-				/>
-				<Rectangle
-					Grid.Column="3" Grid.Row="1"
-					Fill="{Binding PrimaryLightBrush}"
-				/>
-				<Rectangle
-					Grid.Column="5" Grid.Row="1"
-					Fill="{Binding PrimaryLighterBrush}"
-				/>
-				<Rectangle
-					Grid.Column="1" Grid.Row="3"
-					Fill="{Binding PrimaryDarkBrush}"
-				/>
-				<Rectangle
-					Grid.Column="1" Grid.Row="5"
-					Fill="{Binding PrimaryDarkerBrush}"
-				/>
-			</Grid>
-
-			<Grid
-				x:Name="Complementary"
-				Grid.Row="3" Grid.Column="3"
-				>
-				<Rectangle
-					Fill="{Binding ComplementaryBaseBrush}"
-					/>
-				<Grid
-					>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="16" />
-						<ColumnDefinition Width="56" />
-						<ColumnDefinition Width="16" />
-						<ColumnDefinition Width="56" />
-						<ColumnDefinition Width="16" />
-						<ColumnDefinition Width="56" />
-						<ColumnDefinition Width="16" />
-					</Grid.ColumnDefinitions>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="*" />
-						<RowDefinition Height="16" />
-						<RowDefinition Height="56" />
-						<RowDefinition Height="16" />
-						<RowDefinition Height="56" />
-						<RowDefinition Height="16" />
-						<RowDefinition Height="56" />
-						<RowDefinition Height="16" />
-					</Grid.RowDefinitions>
-					<Rectangle
-						Grid.Column="2" Grid.Row="6"
-						Fill="{Binding ComplementaryLighterBrush}"
-						/>
-					<Rectangle
-						Grid.Column="4" Grid.Row="6"
-						Fill="{Binding ComplementaryLightBrush}"
-						/>
-					<Rectangle
-						Grid.Column="6" Grid.Row="4"
-						Fill="{Binding ComplementaryDarkBrush}"
-						/>
-					<Rectangle
-						Grid.Column="6" Grid.Row="2"
-						Fill="{Binding ComplementaryDarkerBrush}"
-						/>
-				</Grid>
-			</Grid>
-
-			<Grid
-				x:Name="SecondaryTop"
-				Grid.Row="0" Grid.Column="3"
-				>
-				<Rectangle
-					Fill="{Binding SecondaryTopBaseBrush}"
-					/>
-				<Grid
-					>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="*" />
-						<ColumnDefinition Width="56" />
-						<ColumnDefinition Width="16" />
-					</Grid.ColumnDefinitions>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="16" />
-						<RowDefinition Height="56" />
-						<RowDefinition Height="16" />
-						<RowDefinition Height="56" />
-						<RowDefinition Height="16" />
-						<RowDefinition Height="56" />
-						<RowDefinition Height="16" />
-						<RowDefinition Height="56" />
-						<RowDefinition Height="*" />
-					</Grid.RowDefinitions>
-					<Rectangle
-						Grid.Column="1" Grid.Row="1"
-						Fill="{Binding SecondaryTopLighterBrush}"
-						/>
-					<Rectangle
-						Grid.Column="1" Grid.Row="3"
-						Fill="{Binding SecondaryTopLightBrush}"
-						/>
-					<Rectangle
-						Grid.Column="1" Grid.Row="5"
-						Fill="{Binding SecondaryTopDarkBrush}"
-						/>
-					<Rectangle
-						Grid.Column="1" Grid.Row="7"
-						Fill="{Binding SecondaryTopDarkerBrush}"
-						/>
-				</Grid>
-			</Grid>
-
-			<Grid
-				x:Name="SecondaryBot"
-				Grid.Row="3" Grid.Column="0"
-				>
-				<Rectangle
-					Fill="{Binding SecondaryBotBaseBrush}"
-					/>
-				<Grid
-					>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="16" />
-						<ColumnDefinition Width="56" />
-						<ColumnDefinition Width="16" />
-						<ColumnDefinition Width="56" />
-						<ColumnDefinition Width="16" />
-						<ColumnDefinition Width="56" />
-						<ColumnDefinition Width="16" />
-						<ColumnDefinition Width="56" />
-						<ColumnDefinition Width="*" />
-					</Grid.ColumnDefinitions>
-					<Grid.RowDefinitions>
-						<RowDefinition Height="*" />
-						<RowDefinition Height="56" />
-						<RowDefinition Height="16" />
-					</Grid.RowDefinitions>
-					<Rectangle
-						Grid.Column="1" Grid.Row="1"
-						Fill="{Binding SecondaryBotLighterBrush}"
-						/>
-					<Rectangle
-						Grid.Column="3" Grid.Row="1"
-						Fill="{Binding SecondaryBotLightBrush}"
-						/>
-					<Rectangle
-						Grid.Column="5" Grid.Row="1"
-						Fill="{Binding SecondaryBotDarkBrush}"
-						/>
-					<Rectangle
-						Grid.Column="7" Grid.Row="1"
-						Fill="{Binding SecondaryBotDarkerBrush}"
-						/>
-				</Grid>
-			</Grid>
-
-		</Grid>
-		-->
-		
+			/>		
 		<Grid
 			Grid.Column="0" Grid.Row="2" Grid.RowSpan="1"
 			>
@@ -291,9 +94,9 @@
 			Grid.Row="3" Grid.ColumnSpan="999"
 			>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="120" />
+				<ColumnDefinition Width="110" />
 				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="120" />
+				<ColumnDefinition Width="110" />
 			</Grid.ColumnDefinitions>
 			<TextBlock
 				Grid.Row="0"
