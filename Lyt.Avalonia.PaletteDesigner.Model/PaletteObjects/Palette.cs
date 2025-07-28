@@ -69,13 +69,20 @@ public sealed partial class Palette
 
     #endregion Wheel Updates 
 
-
     public void ResetAllShades()
     {
         this.Primary.Reset();
         this.Complementary.Reset();
         this.Secondary1.Reset();
         this.Secondary2.Reset();
+    }
+
+    public void ApplyShadesPreset(ShadesPreset shadesPreset)
+    {
+        this.Primary.ApplyShadesPreset(shadesPreset);
+        this.Complementary.ApplyShadesPreset(shadesPreset);
+        this.Secondary1.ApplyShadesPreset(shadesPreset);
+        this.Secondary2.ApplyShadesPreset(shadesPreset);
     }
 
     public static int ToAngle(double wheel) => (int)Math.Round(wheel * 10.0);

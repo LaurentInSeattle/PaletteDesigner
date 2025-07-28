@@ -180,6 +180,22 @@ public sealed class Shades
         this.Darker.UpdateColors(baseHue, shadeMap);
     }
 
+    public void ApplyShadesPreset(ShadesPreset shadesPreset)
+    {
+        double baseHue = this.Base.Color.H;
+        ShadeMap shadeMap = Palette.ShadeMap;
+        Position position = shadesPreset.Base;
+        this.Base.MoveTo(baseHue, shadeMap, position.X, position.Y);
+        position = shadesPreset.Light;
+        this.Light.MoveTo(baseHue, shadeMap, position.X, position.Y);
+        position = shadesPreset.Lighter;
+        this.Lighter.MoveTo(baseHue, shadeMap, position.X, position.Y);
+        position = shadesPreset.Dark;
+        this.Dark.MoveTo(baseHue, shadeMap, position.X, position.Y);
+        position = shadesPreset.Darker;
+        this.Darker.MoveTo(baseHue, shadeMap, position.X, position.Y);
+    }
+
     [Conditional("DEBUG")]
     public void Dump(string name)
     {
@@ -192,4 +208,5 @@ public sealed class Shades
         this.Darker.Dump("Darker");
         Debug.Unindent();
     }
+
 }

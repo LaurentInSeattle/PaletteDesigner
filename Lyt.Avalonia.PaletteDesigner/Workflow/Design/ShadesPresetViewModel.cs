@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Design;
 
+using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
+
 public sealed partial class ShadesPresetViewModel : ViewModel<ShadesPresetView>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
@@ -14,7 +16,7 @@ public sealed partial class ShadesPresetViewModel : ViewModel<ShadesPresetView>
     public ShadesPresetViewModel(ShadesPreset shadesPreset)
     {
         this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();
-        this.shadesPreset = shadesPreset;
+        this.shadesPreset = ShadesPreset.FromSizeIndependant(shadesPreset);
 
         this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated);
         this.MiniPaletteViewModel = new();
@@ -27,20 +29,13 @@ public sealed partial class ShadesPresetViewModel : ViewModel<ShadesPresetView>
             this.paletteDesignerModel.ActiveProject.Palette;
 
     [RelayCommand]
-    public void OnShadeSelect(object? parameter)
-    {
-        if (parameter is string tag)
-        {
-            // Update model 
-            //ShadeMode shadeMode = Enum.TryParse(tag, out ShadeMode kind) ? kind : ShadeMode.Locked;
-            //this.paletteDesignerModel.UpdatePaletteShadeMode(shadeMode);
-        }
-    }
+    public void OnShadeSelect()
+        => this.paletteDesignerModel.ApplyShadesPreset(this.shadesPreset);
 
     private void OnModelUpdated(ModelUpdatedMessage _)
     {
-        var palette = this.Palette;
+        var palette = this.Palette.DeepClone();
+        palette.ApplyShadesPreset(this.shadesPreset);
         this.MiniPaletteViewModel.Update(palette);
-        PaletteKind paletteKind = palette.Kind;
     }
 }

@@ -32,6 +32,17 @@ public sealed class ShadesPreset
         this.Darker = shades.Darker.Position.ToSizeIndependant();
     }
 
+    public static ShadesPreset FromSizeIndependant(ShadesPreset shadesPreset)
+        =>  new()
+            {
+                Name = shadesPreset.Name,
+                Lighter = shadesPreset.Lighter.FromSizeIndependant(),
+                Light = shadesPreset.Light.FromSizeIndependant(),
+                Base = shadesPreset.Base.FromSizeIndependant(),
+                Dark = shadesPreset.Dark.FromSizeIndependant(),
+                Darker = shadesPreset.Darker.FromSizeIndependant(),
+            };
+
     public void ApplyTo(Shades shades)
     {
         shades.Lighter.Position = this.Lighter.FromSizeIndependant();

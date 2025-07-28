@@ -9,6 +9,14 @@ public sealed partial class PaletteDesignerModel : ModelBase
             return true;
         });
 
+    public void ApplyShadesPreset(ShadesPreset shadesPreset)
+        => this.UpdatePalette((Palette palette) =>
+        {
+            palette.ApplyShadesPreset(shadesPreset);
+            return true;
+        });
+
+
     public void OnShadeMarkerPositionChanged(ShadeKind shadeKind, int pixelX, int pixelY)
         => this.UpdatePalette((Palette palette) =>
         {
