@@ -15,6 +15,13 @@ public sealed class Shade
         this.Position = new(PaletteDesignerModel.ShadesImageCenter, PaletteDesignerModel.ShadesImageCenter);
     }
 
+    public Shade DeepClone()
+        =>  new ()
+            {
+                Color = new HsvColor(this.Color),
+                Position = new Position(this.Position),
+            };
+
     public Shade(HsvColor color, Position position)
     {
         this.Color = color;

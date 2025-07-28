@@ -39,6 +39,17 @@ public sealed class Shades
 
     public Shades() { /* needed for serialization */ }
 
+    public Shades DeepClone ()
+        =>  new () 
+            {
+                Wheel = this.Wheel,
+                Lighter = this.Lighter.DeepClone(),
+                Light = this.Light.DeepClone(), 
+                Base = this.Base.DeepClone(),   
+                Dark = this.Dark.DeepClone(),   
+                Darker = this.Darker.DeepClone(),
+            };
+
     public void Reset()
     {
         ShadeMap shadeMap = Palette.ShadeMap; 

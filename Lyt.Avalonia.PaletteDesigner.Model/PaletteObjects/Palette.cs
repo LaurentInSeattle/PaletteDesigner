@@ -8,11 +8,6 @@ public sealed partial class Palette
         this.Primary.Wheel = 90.0;
         this.Primary.UpdateFromWheel(this.Primary.Wheel);
         this.ResetAllShades();
-
-        //this.Kind = PaletteKind.Monochromatic;
-        //this.Primary.Wheel = 90.0;
-        //this.ResetAllShades();
-        //this.Primary.UpdateFromWheel(this.Primary.Wheel);
     }
 
     #region Wheel Updates 

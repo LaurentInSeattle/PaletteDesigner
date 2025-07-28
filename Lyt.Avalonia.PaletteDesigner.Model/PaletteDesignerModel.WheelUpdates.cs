@@ -161,32 +161,14 @@ public sealed partial class PaletteDesignerModel : ModelBase
     public void RotateAllWheels(bool clockwise)
         => this.UpdatePalette((palette) =>
         {
-            // TODO : Need to switch by palette kind
-
             const double baseAngle = +1.0;
             double angle = clockwise ? -baseAngle : +baseAngle;
-            double wheel = (palette.Primary.Wheel + angle).NormalizeAngleDegrees();
-            this.UpdatePalettePrimaryWheel(wheel);
-            try
-            {
-                wheel = (palette.Complementary.Wheel + angle).NormalizeAngleDegrees();
-                this.UpdatePaletteComplementaryWheel(wheel);
-            }
-            catch { /* swallow as we may not be able to rotate */ }
+            double primaryWheel = (palette.Primary.Wheel + angle).NormalizeAngleDegrees();
+            double complementaryWheel = (palette.Complementary.Wheel + angle).NormalizeAngleDegrees();
+            double secondary1Wheel = (palette.Secondary1.Wheel + angle).NormalizeAngleDegrees();
+            double secondary2Wheel = (palette.Secondary2.Wheel + angle).NormalizeAngleDegrees();
 
-            try
-            {
-                wheel = (palette.Secondary1.Wheel + angle).NormalizeAngleDegrees();
-                this.UpdatePaletteSecondary1Wheel(wheel);
-            }
-            catch { /* swallow as we may not be able to rotate */ }
-
-            try
-            {
-                wheel = (palette.Secondary2.Wheel + angle).NormalizeAngleDegrees();
-                this.UpdatePaletteSecondary2Wheel(wheel);
-            }
-            catch { /* swallow as we may not be able to rotate */ }
+            this.AdjustAllWheels(palette, primaryWheel, complementaryWheel, secondary1Wheel, secondary2Wheel);
 
             return true;
         });
@@ -195,29 +177,64 @@ public sealed partial class PaletteDesignerModel : ModelBase
         => this.UpdatePalette((palette) =>
         {
             double angle = 180.0;
-            double wheel = (palette.Primary.Wheel + angle).NormalizeAngleDegrees();
-            this.UpdatePalettePrimaryWheel(wheel);
-            try
-            {
-                wheel = (palette.Complementary.Wheel + angle).NormalizeAngleDegrees();
-                this.UpdatePaletteComplementaryWheel(wheel);
-            }
-            catch { /* swallow as we may not be able to rotate */ }
+            double primaryWheel = (palette.Primary.Wheel + angle).NormalizeAngleDegrees();
+            double complementaryWheel = (palette.Complementary.Wheel + angle).NormalizeAngleDegrees();
+            double secondary1Wheel = (palette.Secondary1.Wheel + angle).NormalizeAngleDegrees();
+            double secondary2Wheel = (palette.Secondary2.Wheel + angle).NormalizeAngleDegrees();
 
-            try
-            {
-                wheel = (palette.Secondary1.Wheel + angle).NormalizeAngleDegrees();
-                this.UpdatePaletteSecondary1Wheel(wheel);
-            }
-            catch { /* swallow as we may not be able to rotate */ }
-
-            try
-            {
-                wheel = (palette.Secondary2.Wheel + angle).NormalizeAngleDegrees();
-                this.UpdatePaletteSecondary2Wheel(wheel);
-            }
-            catch { /* swallow as we may not be able to rotate */ }
+            this.AdjustAllWheels(palette, primaryWheel, complementaryWheel, secondary1Wheel, secondary2Wheel);
 
             return true;
         });
+
+    private void AdjustAllWheels(Palette palette, double primaryWheel, double complementaryWheel, double secondary1Wheel, double secondary2Wheel)
+    {
+        // Need to switch by palette kind to prevent exceptions being thrown
+        switch (palette.Kind)
+        {
+            default:
+            case PaletteKind.Unknown:
+                throw new Exception("Unknown kind");
+
+            case PaletteKind.MonochromaticComplementary:
+                this.UpdatePalettePrimaryWheel(primaryWheel);
+                break;
+
+            case PaletteKind.Triad:
+                this.UpdatePalettePrimaryWheel(primaryWheel);
+                break;
+
+            case PaletteKind.TriadComplementary:
+                this.UpdatePalettePrimaryWheel(primaryWheel);
+                break;
+
+            case PaletteKind.Square:
+                this.UpdatePalettePrimaryWheel(primaryWheel);
+                this.UpdatePaletteSecondary1Wheel(secondary1Wheel);
+                break;
+
+            // Changing freely all wheels 
+            case PaletteKind.Monochromatic:
+                this.UpdatePalettePrimaryWheel(primaryWheel);
+                break;
+
+            case PaletteKind.Duochromatic:
+                this.UpdatePalettePrimaryWheel(primaryWheel);
+                this.UpdatePaletteComplementaryWheel(complementaryWheel);
+                break;
+
+            case PaletteKind.Trichromatic:
+                this.UpdatePalettePrimaryWheel(primaryWheel);
+                this.UpdatePaletteSecondary1Wheel(secondary1Wheel);
+                this.UpdatePaletteSecondary2Wheel(secondary2Wheel);
+                break;
+
+            case PaletteKind.Quadrichromatic:
+                this.UpdatePalettePrimaryWheel(primaryWheel);
+                this.UpdatePaletteComplementaryWheel(complementaryWheel);
+                this.UpdatePaletteSecondary1Wheel(secondary1Wheel);
+                this.UpdatePaletteSecondary2Wheel(secondary2Wheel);
+                break;
+        }
+    }
 }

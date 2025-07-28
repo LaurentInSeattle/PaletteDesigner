@@ -62,4 +62,18 @@ public sealed partial class Palette
 
     // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     public Palette() { /* needed for serialization */ }
+
+    public Palette DeepClone()
+    =>  new()
+        {
+            Name = new string (this.Name),
+            Kind = this.Kind,
+            SecondaryWheelDistance = this.SecondaryWheelDistance,
+            AreShadesLocked = this.AreShadesLocked,
+            SelectedWheel = this.SelectedWheel,
+            Primary = this.Primary.DeepClone(),
+            Secondary1 = this.Secondary1.DeepClone(),
+            Secondary2 = this.Secondary2.DeepClone(),
+            Complementary = this.Complementary.DeepClone(),
+        };
 }
