@@ -1,8 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Shell;
 
-using static ViewActivationMessage;
 using static MessagingExtensions;
-using Lyt.Avalonia.PaletteDesigner.Model;
+using static ViewActivationMessage;
 
 public sealed partial class ShellViewModel : ViewModel<ShellView>
 {
@@ -130,9 +129,9 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
         SetupNoToolbar<DesignViewModel, DesignView>(
             ActivatedView.Design, view.DesignButton);
-        SetupNoToolbar<PalettePreviewViewModel, PalettePreviewView>(
+        SetupNoToolbar<SettingsViewModel, SettingsView>(
             ActivatedView.Settings, view.SettingsButton);
-        SetupNoToolbar<ColorWheelViewModel, ColorWheelView>(
+        SetupNoToolbar<LanguageViewModel, LanguageView>(
             ActivatedView.Language, view.FlagButton);
 
         //Setup<CollectionViewModel, CollectionView, CollectionToolbarViewModel, CollectionToolbarView>(

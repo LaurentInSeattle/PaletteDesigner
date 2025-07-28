@@ -24,6 +24,8 @@ public partial class App : ApplicationBase
         [
            // Singletons
            typeof(ShellViewModel),
+           typeof(LanguageViewModel),
+           typeof(SettingsViewModel),
            typeof(DesignViewModel),
            typeof(PaletteColorViewModel),
            typeof(PalettePreviewViewModel),
@@ -93,7 +95,7 @@ public partial class App : ApplicationBase
                 [
                     "en-US", "fr-FR" // need at least two
                     //"hu-HU",
-                    //"fr-FR", "it-IT", "es-ES", "de-DE",
+                    //"it-IT", "es-ES", "de-DE",
                     //"uk-UA", "bg-BG", "el-GR", "hy-AM",
                     //"jp-JP", "ko-KO", "zh-CN", "zh-TW",
                     //"hi-IN", "bn-BD"

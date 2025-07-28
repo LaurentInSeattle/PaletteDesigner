@@ -1,0 +1,60 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Controls.ContainerControl"
+	
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="8" />
+			<ColumnDefinition Width="Auto" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions >
+			<RowDefinition Height="50" />
+			<RowDefinition Height="60" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<ContentPresenter
+			x:Name="presenter"
+			Grid.Column="1" Grid.Row="2"
+			Margin="4"
+			/>
+		<Rectangle 
+			x:Name="rectangle"
+			Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+			Fill="{StaticResource FreshGreen_0_080}"
+			Width="4"
+			RadiusX="2" RadiusY="2"
+			VerticalAlignment="Stretch" HorizontalAlignment="Left"
+			/>
+		<Rectangle
+			Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" 
+			Margin="0 0 0 0"
+			Fill="{StaticResource DeepBlue_1_100}"
+			Opacity="0.6"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			RadiusX="4" RadiusY="4"
+			/>
+		<TextBlock
+			x:Name="titleTextBlock"
+			Grid.Row="0" Grid.Column="1" 
+			Text="Title"
+			HorizontalAlignment="Left" VerticalAlignment="Center"
+			Theme="{StaticResource Title}"
+			Margin="20 0 0 0"
+			/>
+		<TextBlock
+			x:Name="textTextBlock"
+			Grid.Row="1" Grid.Column="1"
+			MaxWidth="600"
+			Text="Text"
+			HorizontalAlignment="Left" VerticalAlignment="Center"
+			Margin="40 0 0 0"
+			Theme="{StaticResource H3}"
+			Foreground="{StaticResource Secondary.TextColor}"
+			/>
+	</Grid>
+</UserControl>

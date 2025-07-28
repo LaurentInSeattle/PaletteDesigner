@@ -1,0 +1,36 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Language.LanguageToolbarView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Language"
+	x:DataType="vm:LanguageToolbarViewModel" 
+
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="72"
+	xmlns:controls="clr-namespace:Lyt.Avalonia.AstroPic.Controls"
+	xmlns:glyphs="clr-namespace:Lyt.Avalonia.Controls.Glyphs;assembly=Lyt.Avalonia.Controls"
+	xmlns:interactions="using:Lyt.Avalonia.Mvvm.Behaviors"
+	>	
+	<!-- View Selector - Main toolbar - Aligned left -->
+	<StackPanel
+		Orientation="Horizontal"
+		Margin="0 0 0 0"
+		HorizontalAlignment="Left"
+		Height="72"
+		>
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			HorizontalAlignment="Center" VerticalAlignment="Center"
+			Width="220" Height="56"
+			Margin="0 4 0 4"
+			GlyphSource="next"
+			ButtonBackground="BorderlessRectangle"
+			GlyphStrokeThickness="0"
+			Text="{DynamicResource Language.Continue}"
+			Command="{Binding OnNext}"
+	    	/>
+	</StackPanel>
+
+</UserControl>

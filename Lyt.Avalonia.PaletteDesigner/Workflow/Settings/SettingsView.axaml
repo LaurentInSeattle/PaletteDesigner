@@ -1,0 +1,42 @@
+<UserControl
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Settings.SettingsView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Settings"
+	x:DataType="vm:SettingsViewModel"
+
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+
+	xmlns:controls="clr-namespace:Lyt.Avalonia.PaletteDesigner.Controls"
+	xmlns:panzoom="using:Lyt.Avalonia.Controls.PanZoom"
+	xmlns:interactions="using:Lyt.Avalonia.Mvvm.Behaviors"
+	xmlns:toggle="clr-namespace:Lyt.Avalonia.Controls.Toggle;assembly=Lyt.Avalonia.Controls"
+	>
+	<ScrollViewer
+		Margin="2"
+		Background="Transparent"
+		VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+		ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+		ScrollViewer.VerticalScrollBarVisibility="Auto"
+		>
+		<WrapPanel
+			Background="Transparent"
+			>
+			<controls:ContainerControl
+				Margin="32"
+				Title="TODO: DynamicResource Settings.Title}"
+				Text="TODO: DynamicResource Settings.Subtitle}"
+				>
+				<controls:ContainerControl.ContainerControlContent>
+					<Grid
+						Background="Transparent"
+						Width="520" Height="400"
+						>
+					</Grid>
+				</controls:ContainerControl.ContainerControlContent>
+			</controls:ContainerControl>
+		</WrapPanel>
+	</ScrollViewer>
+</UserControl>
