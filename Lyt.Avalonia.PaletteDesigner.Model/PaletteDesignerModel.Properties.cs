@@ -28,7 +28,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
     public Project? ActiveProject { get; set; }
 
     [JsonIgnore]
-    Dictionary<string, ShadesPreset> ShadesPresets = new(16);
+    public Dictionary<string, ShadesPreset> ShadesPresets = new(16);
 
     #endregion Not serialized - No model changed event
 

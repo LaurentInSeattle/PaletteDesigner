@@ -1,0 +1,38 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Design.ShadesPresetView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Design"
+	x:DataType="vm:ShadesPresetViewModel" 
+
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+
+	xmlns:glyphs="using:Lyt.Avalonia.Controls.Glyphs"	
+	xmlns:controls="clr-namespace:Lyt.Avalonia.PaletteDesigner.Controls"
+	xmlns:shading="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Shading"
+	>
+	<Grid
+		Width="320" Height="52"
+		>
+		<glyphs:GlyphButton
+			Grid.Row="1" Grid.Column="0"
+			Style="{StaticResource ToolbarIconButton}"
+			Text="{Binding PresetName}"
+			Behaviour="Tap"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="320" Height="52"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Command="{Binding OnShadeSelect}"
+			>
+			<glyphs:GlyphButton.XamlContent>
+				<shading:MiniPaletteView
+					Width="840" Height="60"
+					DataContext="{Binding MiniPaletteViewModel}"
+					/>
+			</glyphs:GlyphButton.XamlContent>
+		</glyphs:GlyphButton>
+	</Grid>
+</UserControl>

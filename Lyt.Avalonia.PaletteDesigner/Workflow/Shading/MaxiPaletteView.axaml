@@ -9,6 +9,12 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 	>
+	<UserControl.Styles>
+		<Style Selector="Rectangle">
+			<Setter Property="RadiusX" Value="4"/>
+			<Setter Property="RadiusY" Value="4"/>
+		</Style>
+	</UserControl.Styles>
 	<Grid
 		Width="600" Height="600"
 		>

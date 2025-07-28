@@ -26,6 +26,7 @@
 		<Rectangle
 			Grid.RowSpan="2"
 			Fill="{Binding BaseBrush}"
+			RadiusX="4" RadiusY="4"
 			/>
 		<Grid
 			Grid.Row="1" Margin="4 4 4 8"

@@ -22,31 +22,36 @@
 		>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="4" />
-			<RowDefinition Height="80" />
-			<RowDefinition Height="80" />
-			<RowDefinition Height="80" />
+			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 
-		<glyphs:GlyphButton
-			Grid.Row="1" Grid.Column="0"
-			Style="{StaticResource ToolbarIconButton}"
-			Text="Shiny"
-			Behaviour="Tap"
-			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="320" Height="52"
+		<ScrollViewer
+			Grid.Row="1"
 			Margin="0"
-			ButtonBackground="BorderlessRectangle"
-			Command="{Binding OnShadeSelect}"
-			CommandParameter="Primary"
+			Background="Transparent"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+			ScrollViewer.VerticalScrollBarVisibility="Auto"
 			>
-			<glyphs:GlyphButton.XamlContent>
-				<shading:MiniPaletteView
-					Width="840" Height="60"
-					DataContext="{Binding MiniPaletteViewModel}"
-					/>
-			</glyphs:GlyphButton.XamlContent>
-		</glyphs:GlyphButton>
-
+			<ItemsControl
+				x:Name="TemplatesItemControl"
+				ItemsSource="{Binding Presets}"
+				Margin="0"
+				>
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<StackPanel Orientation="Vertical"/>
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<vm:ShadesPresetView 
+							Margin="0 4 0 8"
+							/>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</ScrollViewer>
 	</Grid>
 
 </UserControl>

@@ -40,7 +40,8 @@
 				/>
 			<vm:ShadesPresetsToolbarView
 				Grid.Column="2"
-				VerticalAlignment="Center"
+				VerticalAlignment="Top" 
+				Margin="0 18 0 0"
 				DataContext="{Binding ShadesPresetsToolbarViewModel}"
 				/>
 			<shading:PalettePreviewView

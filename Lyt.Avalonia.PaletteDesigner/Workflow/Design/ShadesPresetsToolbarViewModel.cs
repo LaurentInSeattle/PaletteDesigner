@@ -5,17 +5,15 @@ public sealed partial class ShadesPresetsToolbarViewModel : ViewModel<ShadesPres
     private readonly PaletteDesignerModel paletteDesignerModel;
 
     [ObservableProperty]
-    private MiniPaletteViewModel miniPaletteViewModel;
+    private bool visible;
 
     [ObservableProperty]
-    private bool visible;
+    private ObservableCollection<ShadesPresetViewModel> presets;
 
     public ShadesPresetsToolbarViewModel()
     {
         this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();
-        this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated);
         this.Messenger.Subscribe<PresetsVisibilityMessage>(this.OnPresetsVisibility);
-        this.MiniPaletteViewModel = new ();
     }
 
     public Palette Palette =>
@@ -27,17 +25,15 @@ public sealed partial class ShadesPresetsToolbarViewModel : ViewModel<ShadesPres
     {
         base.OnViewLoaded();
         this.Show(show: false);
-    }
 
-    [RelayCommand]
-    public void OnShadeSelect(object? parameter)
-    {
-        if (parameter is string tag)
+        List<ShadesPresetViewModel> presets = new(16);
+        foreach (var shadesPreset in this.paletteDesignerModel.ShadesPresets.Values)
         {
-            // Update model 
-            //ShadeMode shadeMode = Enum.TryParse(tag, out ShadeMode kind) ? kind : ShadeMode.Locked;
-            //this.paletteDesignerModel.UpdatePaletteShadeMode(shadeMode);
+            ShadesPresetViewModel preset = new(shadesPreset);
+            presets.Add(preset);
         }
+
+        this.Presets = new(presets); 
     }
 
     private void OnPresetsVisibility(PresetsVisibilityMessage message)
@@ -50,12 +46,5 @@ public sealed partial class ShadesPresetsToolbarViewModel : ViewModel<ShadesPres
         {
             this.View.MainGrid.Width = show ? 320.0 : 0.0;
         }
-    }
-
-    private void OnModelUpdated(ModelUpdatedMessage _)
-    {
-        var palette = this.Palette;
-        this.MiniPaletteViewModel.Update(palette);
-        PaletteKind paletteKind = palette.Kind;
     }
 }
