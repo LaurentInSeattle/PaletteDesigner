@@ -14,6 +14,9 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
     private ModelSelectionToolbarViewModel modelSelectionToolbarViewModel;
 
     [ObservableProperty]
+    private ExportToolbarViewModel exportToolbarViewModel;
+
+    [ObservableProperty]
     private ShadeSelectionToolbarViewModel shadeSelectionToolbarViewModel;
 
     [ObservableProperty]
@@ -25,6 +28,7 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
         this.ColorWheelViewModel = new(paletteDesignerModel);
         this.PalettePreviewViewModel = new(paletteDesignerModel);
         this.ModelSelectionToolbarViewModel = new();
+        this.ExportToolbarViewModel = new();
         this.ShadeSelectionToolbarViewModel = new();
         this.shadesPresetsToolbarViewModel = new();
 

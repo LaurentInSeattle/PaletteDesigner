@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="Resources\ColorWheel.json" />
+    <None Remove="Resources\PaletteExportTemplates\AvaloniaPaletteTemplate.txt" />
     <None Remove="Resources\ShadesPresets\Dark.json" />
     <None Remove="Resources\ShadesPresets\Deep.json" />
     <None Remove="Resources\ShadesPresets\LightPastels.json" />
@@ -18,6 +19,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\ColorWheel.json" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\AvaloniaPaletteTemplate.txt" />
     <EmbeddedResource Include="Resources\ShadesPresets\Dark.json" />
     <EmbeddedResource Include="Resources\ShadesPresets\Deep.json" />
     <EmbeddedResource Include="Resources\ShadesPresets\LightPastels.json" />
@@ -29,6 +31,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\Lyt.Framework\Lyt.Model\Lyt.Model.csproj" />
         <ProjectReference Include="..\..\Lyt.Framework\Lyt.Persistence\Lyt.Persistence.csproj" />
+        <ProjectReference Include="..\..\Lyt.Framework\Lyt.Templator\Lyt.Templator.csproj" />
         <ProjectReference Include="..\..\Lyt.Framework\Lyt.Utilities\Lyt.Utilities.csproj" />
     </ItemGroup>
 

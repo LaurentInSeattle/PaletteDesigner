@@ -47,6 +47,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Screenshots", "Screenshots"
 		Screenshots\Screenshot 2025-07-24.png = Screenshots\Screenshot 2025-07-24.png
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Templator", "..\Lyt.Framework\Lyt.Templator\Lyt.Templator.csproj", "{4148631A-73ED-3769-E71C-5241ED41F517}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +111,10 @@ Global
 		{07346C87-33C1-4D88-A6EB-81665C61360D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07346C87-33C1-4D88-A6EB-81665C61360D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07346C87-33C1-4D88-A6EB-81665C61360D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4148631A-73ED-3769-E71C-5241ED41F517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4148631A-73ED-3769-E71C-5241ED41F517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4148631A-73ED-3769-E71C-5241ED41F517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4148631A-73ED-3769-E71C-5241ED41F517}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -125,6 +131,7 @@ Global
 		{66333785-F79B-0142-0808-D9E0F442C5F6} = {9A0CCAB9-4303-13B4-2371-F1B97FF5B728}
 		{40435D35-02F4-B617-93A1-0AD906FD6A75} = {9A0CCAB9-4303-13B4-2371-F1B97FF5B728}
 		{BC6D8381-2225-FC48-9C07-EE5C4FCADF7E} = {9A0CCAB9-4303-13B4-2371-F1B97FF5B728}
+		{4148631A-73ED-3769-E71C-5241ED41F517} = {9A0CCAB9-4303-13B4-2371-F1B97FF5B728}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4DB1BC77-96FF-4768-A535-2E6280C8DA11}

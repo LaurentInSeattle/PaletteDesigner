@@ -1,0 +1,67 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Design.ExportToolbarView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Design"
+	x:DataType="vm:ExportToolbarViewModel" 
+			 
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="1680" d:DesignHeight="90"
+	
+	xmlns:glyphs="using:Lyt.Avalonia.Controls.Glyphs"	
+	xmlns:controls="clr-namespace:Lyt.Avalonia.PaletteDesigner.Controls"
+	>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="72" />
+			<RowDefinition Height="18" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<!-- Button -->
+			<ColumnDefinition Width="112" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="22" />
+			<!-- Combo -->
+			<ColumnDefinition Width="112" />
+		</Grid.ColumnDefinitions>
+		
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Grid.Column="0"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			ButtonBackground="BorderlessRectangle"
+			GlyphSource="share"			
+			GlyphStrokeThickness="0.2"			
+			Text="Export"
+			Command="{Binding OnExport}"
+			/>
+
+		<Rectangle
+			Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
+			Margin="8 0 8 0"
+			VerticalAlignment="Center" HorizontalAlignment="Left"
+			Height="1" Width="160"
+			Fill="{StaticResource PastelOrchid_0_080_Color}"
+			Opacity="0.3"
+			/>
+		<Rectangle
+			Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1"
+			Margin="8 0 8 0"
+			VerticalAlignment="Center" HorizontalAlignment="Right"
+			Height="1" Width="160"
+			Fill="{StaticResource PastelOrchid_0_080_Color}"
+			Opacity="0.3"
+			/>
+		<TextBlock
+			Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
+			Text="Export Palette Only "
+			Margin="0 0 0 0"
+			Theme="{StaticResource Medium}"
+			TextAlignment="Center"
+			HorizontalAlignment="Center"
+			/>
+
+	</Grid>
+</UserControl>

@@ -17,6 +17,21 @@ public enum ShadeKind
     Darker,
 }
 
+public static class ShadeKindExtensions
+{
+    public static Shade ToShadeFrom(this ShadeKind shadeKind, Shades shades)
+        => shadeKind switch
+        {
+            ShadeKind.Lighter => shades.Lighter,
+            ShadeKind.Light => shades.Light,
+            ShadeKind.Base => shades.Base,
+            ShadeKind.Dark => shades.Dark,
+            ShadeKind.Darker => shades.Darker,
+
+            _ => throw new ArgumentException("Shade Kind is unkown"),
+        };
+}
+
 public sealed class Shades
 {
     [JsonRequired]

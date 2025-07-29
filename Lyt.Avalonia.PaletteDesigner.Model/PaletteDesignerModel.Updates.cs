@@ -3,7 +3,7 @@
 public sealed partial class PaletteDesignerModel : ModelBase
 {
     public bool UpdatePaletteKind(PaletteKind paletteKind)
-        => this.UpdatePalette((Palette palette) =>
+        => this.UpdatePalette(palette =>
         {
             palette.Kind = paletteKind;
             this.UpdatePalettePrimaryWheel(palette.Primary.Wheel);
@@ -12,7 +12,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
         });
 
     public void UpdatePaletteShadeMode(ShadeMode shadeMode)
-        => this.UpdatePalette((Palette palette) =>
+        => this.UpdatePalette(palette =>
         {
             palette.AreShadesLocked = shadeMode == ShadeMode.Locked;
             if (palette.AreShadesLocked)
@@ -25,7 +25,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
 
     // Select the set of shades the user wants to edit 
     public void UpdatePaletteWheelShadeMode(WheelKind wheel)
-        => this.UpdatePalette((Palette palette) =>
+        => this.UpdatePalette(palette =>
         {
             if (palette.AreShadesLocked)
             {
@@ -43,6 +43,17 @@ public sealed partial class PaletteDesignerModel : ModelBase
 
     private bool UpdatePalette(Func<Palette, bool> action)
     {
+        bool result = this.ActionPalette(action);
+        if (result)
+        {
+            this.Messenger.Publish(new ModelUpdatedMessage());
+        }
+
+        return result;
+    }
+
+    private bool ActionPalette(Func<Palette, bool> action)
+    {
         if (this.ActiveProject is null)
         {
             return false;
@@ -59,18 +70,12 @@ public sealed partial class PaletteDesignerModel : ModelBase
             throw new Exception("Palette class has not been setup");
         }
 
-        bool result = action(palette);
-        if (result)
-        {
-            this.Messenger.Publish(new ModelUpdatedMessage());
-        }
-
-        return result;
+        return action(palette);
     }
 
     [Conditional("DEBUG")]
     public void Dump()
-        => this.UpdatePalette((Palette palette) =>
+        => this.UpdatePalette(palette =>
         {
             palette.Dump();
             return true;

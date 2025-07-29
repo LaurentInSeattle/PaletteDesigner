@@ -51,12 +51,21 @@
 				/>
 		</Grid>
 
-		<!-- Top toolbar -->
-		<vm:ModelSelectionToolbarView
+		<!-- Top toolbars -->
+		<StackPanel
 			Grid.Row="0" Grid.ColumnSpan="5"
 			HorizontalAlignment="Center"
-			DataContext="{Binding ModelSelectionToolbarViewModel}"
-			/>
+			Orientation="Horizontal"
+			>
+			<vm:ModelSelectionToolbarView
+				Margin="0 "
+				DataContext="{Binding ModelSelectionToolbarViewModel}"
+				/>
+			<vm:ExportToolbarView
+				Margin="12 0 0 0"
+				DataContext="{Binding ExportToolbarViewModel}"
+				/>
+		</StackPanel>
 		<!-- Bottom toolbar -->
 		<vm:ShadeSelectionToolbarView
 			Grid.Row="2" Grid.ColumnSpan="5"

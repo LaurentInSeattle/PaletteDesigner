@@ -24,7 +24,9 @@ global using Lyt.Framework.Interfaces.Messaging;
 
 global using Lyt.Model;
 global using Lyt.Persistence;
+global using Lyt.Templator;
 global using Lyt.Utilities.DataStructures;
+global using Lyt.Utilities.Extensions;
 
 global using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.Messaging;

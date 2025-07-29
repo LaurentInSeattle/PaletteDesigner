@@ -1,0 +1,83 @@
+﻿<Styles 
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	>
+	<Design.PreviewWith>
+		<Border 
+			Padding="20"
+			>
+			<!-- Add Controls for Previewer Here -->
+		</Border>
+	</Design.PreviewWith>
+
+	<Style>
+		<Style.Resources>
+			<!-- <# PaletteKind #> -->
+
+			<!-- Primary -->
+			<Color x:Key="Primary_Lighter_Color"><# Primary_Lighter_ColorValue #></Color>
+			<SolidColorBrush x:Key="Primary_Lighter" Color ="{StaticResource Primary_Lighter_Color}" />
+
+			<Color x:Key="Primary_Light_Color"><# Primary_Light_ColorValue #></Color>
+			<SolidColorBrush x:Key="Primary_Light" Color ="{StaticResource Primary_Light_Color}" />
+
+			<Color x:Key="Primary_Base_Color"><# Primary_Base_ColorValue #></Color>
+			<SolidColorBrush x:Key="Primary_Base" Color ="{StaticResource Primary_Base_Color}" />
+
+			<Color x:Key="Primary_Dark_Color"><# Primary_Dark_ColorValue #></Color>
+			<SolidColorBrush x:Key="Primary_Dark" Color ="{StaticResource Primary_Dark_Color}" />
+
+			<Color x:Key="Primary_Darker_Color"><# Primary_Darker_ColorValue #></Color>
+			<SolidColorBrush x:Key="Primary_Darker" Color ="{StaticResource Primary_Darker_Color}" />
+			
+			<!-- Complementary -->
+			<Color x:Key="Complementary_Lighter_Color"><# Complementary_Lighter_ColorValue #></Color>
+			<SolidColorBrush x:Key="Complementary_Lighter" Color ="{StaticResource Complementary_Lighter_Color}" />
+
+			<Color x:Key="Complementary_Light_Color"><# Complementary_Light_ColorValue #></Color>
+			<SolidColorBrush x:Key="Complementary_Light" Color ="{StaticResource Complementary_Light_Color}" />
+
+			<Color x:Key="Complementary_Base_Color"><# Complementary_Base_ColorValue #></Color>
+			<SolidColorBrush x:Key="Complementary_Base" Color ="{StaticResource Complementary_Base_Color}" />
+
+			<Color x:Key="Complementary_Dark_Color"><# Complementary_Dark_ColorValue #></Color>
+			<SolidColorBrush x:Key="Complementary_Dark" Color ="{StaticResource Complementary_Dark_Color}" />
+
+			<Color x:Key="Complementary_Darker_Color"><# Complementary_Darker_ColorValue #></Color>
+			<SolidColorBrush x:Key="Complementary_Darker" Color ="{StaticResource Complementary_Darker_Color}" />
+
+			<!-- Secondary1 -->
+			<Color x:Key="Secondary1_Lighter_Color"><# Secondary1_Lighter_ColorValue #></Color>
+			<SolidColorBrush x:Key="Secondary1_Lighter" Color ="{StaticResource Secondary1_Lighter_Color}" />
+
+			<Color x:Key="Secondary1_Light_Color"><# Secondary1_Light_ColorValue #></Color>
+			<SolidColorBrush x:Key="Secondary1_Light" Color ="{StaticResource Secondary1_Light_Color}" />
+
+			<Color x:Key="Secondary1_Base_Color"><# Secondary1_Base_ColorValue #></Color>
+			<SolidColorBrush x:Key="Secondary1_Base" Color ="{StaticResource Secondary1_Base_Color}" />
+
+			<Color x:Key="Secondary1_Dark_Color"><# Secondary1_Dark_ColorValue #></Color>
+			<SolidColorBrush x:Key="Secondary1_Dark" Color ="{StaticResource Secondary1_Dark_Color}" />
+
+			<Color x:Key="Secondary1_Darker_Color"><# Secondary1_Darker_ColorValue #></Color>
+			<SolidColorBrush x:Key="Secondary1_Darker" Color ="{StaticResource Secondary1_Darker_Color}" />
+
+			<!-- Secondary2 -->
+			<Color x:Key="Secondary2_Lighter_Color"><# Secondary2_Lighter_ColorValue #></Color>
+			<SolidColorBrush x:Key="Secondary2_Lighter" Color ="{StaticResource Secondary2_Lighter_Color}" />
+
+			<Color x:Key="Secondary2_Light_Color"><# Secondary2_Light_ColorValue #></Color>
+			<SolidColorBrush x:Key="Secondary2_Light" Color ="{StaticResource Secondary2_Light_Color}" />
+
+			<Color x:Key="Secondary2_Base_Color"><# Secondary2_Base_ColorValue #></Color>
+			<SolidColorBrush x:Key="Secondary2_Base" Color ="{StaticResource Secondary2_Base_Color}" />
+
+			<Color x:Key="Secondary2_Dark_Color"><# Secondary2_Dark_ColorValue #></Color>
+			<SolidColorBrush x:Key="Secondary2_Dark" Color ="{StaticResource Secondary2_Dark_Color}" />
+
+			<Color x:Key="Secondary2_Darker_Color"><# Secondary2_Darker_ColorValue #></Color>
+			<SolidColorBrush x:Key="Secondary2_Darker" Color ="{StaticResource Secondary2_Darker_Color}" />
+
+		</Style.Resources>
+	</Style>
+</Styles>
