@@ -81,7 +81,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
             Project project = new()
             {
                 Name = "Empty",
-                Format = ResourceFormat.Unknown,
+                Format = PaletteExportFormat.AvaloniaAxaml,
                 FolderPath = string.Empty,
                 Created = DateTime.Now,
                 LastUpdated = DateTime.Now,

@@ -19,11 +19,11 @@
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<!-- Button -->
-			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="110" />
 			<!-- Spacer -->
-			<ColumnDefinition Width="22" />
+			<ColumnDefinition Width="0" />
 			<!-- Combo -->
-			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="200" />
 		</Grid.ColumnDefinitions>
 		
 		<glyphs:GlyphButton
@@ -38,11 +38,31 @@
 			Command="{Binding OnExport}"
 			/>
 
+		<ComboBox
+			x:Name="FormatComboBox"
+			Grid.Column="3" Grid.Row="0"
+			VerticalAlignment="Center" HorizontalAlignment="Right"
+			ItemsSource="{Binding FileFormats}"
+			SelectedIndex="{Binding SelectedFileFormatIndex}"
+			Width="200" Height="42" MaxDropDownHeight="450"
+			>
+			<ComboBox.ItemsPanel>
+				<ItemsPanelTemplate>
+					<StackPanel Orientation="Vertical"/>
+				</ItemsPanelTemplate>
+			</ComboBox.ItemsPanel>
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<vm:FileFormatView />
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+
 		<Rectangle
 			Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
 			Margin="8 0 8 0"
 			VerticalAlignment="Center" HorizontalAlignment="Left"
-			Height="1" Width="160"
+			Height="1" Width="70"
 			Fill="{StaticResource PastelOrchid_0_080_Color}"
 			Opacity="0.3"
 			/>
@@ -50,7 +70,7 @@
 			Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1"
 			Margin="8 0 8 0"
 			VerticalAlignment="Center" HorizontalAlignment="Right"
-			Height="1" Width="160"
+			Height="1" Width="70"
 			Fill="{StaticResource PastelOrchid_0_080_Color}"
 			Opacity="0.3"
 			/>

@@ -1,8 +1,7 @@
 # Work In Progress
 
 Now able to define all 'Classic' and 'Free Style' palettes.
-But still no way to export or save anything...
-
+Now able to export palettes in CSS, Avalonia aXaml and Microsoft Xaml.
 # Palette Designer
 
 (Will be) An Interactive tool to generate color palettes and themes, exporting design projects to 

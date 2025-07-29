@@ -14,6 +14,7 @@ public sealed partial class ShadesPresetsToolbarViewModel : ViewModel<ShadesPres
     {
         this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();
         this.Messenger.Subscribe<PresetsVisibilityMessage>(this.OnPresetsVisibility);
+        this.Presets = []; 
     }
 
     public Palette Palette =>

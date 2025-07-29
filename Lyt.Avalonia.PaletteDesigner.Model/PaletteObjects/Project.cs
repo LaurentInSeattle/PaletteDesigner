@@ -12,7 +12,7 @@ public sealed class Project
     public required DateTime LastUpdated { get; set; } = DateTime.Now;
 
     [JsonRequired]
-    public required ResourceFormat Format { get; set; } = ResourceFormat.Unknown;
+    public required PaletteExportFormat Format { get; set; } = PaletteExportFormat.AvaloniaAxaml;
 
     [JsonRequired]
     public required string FolderPath { get; set; } = string.Empty;
@@ -21,14 +21,14 @@ public sealed class Project
 
     public bool IsInvalid
         =>
-            this.Format == ResourceFormat.Unknown ||
+            this.Format == PaletteExportFormat.None ||
             string.IsNullOrWhiteSpace(this.Name) ||
             string.IsNullOrWhiteSpace(this.FolderPath);
     
     public bool Validate(out string errorMessageKey)
     {
         errorMessageKey = string.Empty;
-        if (this.Format == ResourceFormat.Unknown)
+        if (this.Format == PaletteExportFormat.None)
         {
             errorMessageKey = "Model.Project.Format";
             return false;

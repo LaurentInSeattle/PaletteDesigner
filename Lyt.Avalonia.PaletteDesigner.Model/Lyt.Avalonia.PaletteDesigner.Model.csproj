@@ -19,6 +19,8 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\ColorWheel.json" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\CssPaletteTemplate.txt" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\MsftXamlPaletteTemplate.txt" />
     <EmbeddedResource Include="Resources\PaletteExportTemplates\AvaloniaPaletteTemplate.txt" />
     <EmbeddedResource Include="Resources\ShadesPresets\Dark.json" />
     <EmbeddedResource Include="Resources\ShadesPresets\Deep.json" />
