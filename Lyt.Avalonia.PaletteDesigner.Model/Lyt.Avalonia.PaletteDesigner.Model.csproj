@@ -31,6 +31,7 @@
   </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\Lyt.Framework\Lyt.AdobeSwatchExchange\Lyt.AdobeSwatchExchange.csproj" />
         <ProjectReference Include="..\..\Lyt.Framework\Lyt.Model\Lyt.Model.csproj" />
         <ProjectReference Include="..\..\Lyt.Framework\Lyt.Persistence\Lyt.Persistence.csproj" />
         <ProjectReference Include="..\..\Lyt.Framework\Lyt.Templator\Lyt.Templator.csproj" />

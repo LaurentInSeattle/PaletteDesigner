@@ -7,6 +7,7 @@ public enum PaletteExportFormat
     AvaloniaAxaml,
     MicrosoftXaml,
     CssStyleSheet,
+    AdobeAse,
 }
 
 public static class PaletteExportFormatExtensions
@@ -14,6 +15,9 @@ public static class PaletteExportFormatExtensions
     public static string ResourcePath(this PaletteExportFormat paletteExportFormat)
         => paletteExportFormat switch
         {
+            // Binary, Not template based
+            PaletteExportFormat.AdobeAse => string.Empty,
+
             // No need to localize 
             PaletteExportFormat.AvaloniaAxaml or 
             PaletteExportFormat.MicrosoftXaml or
@@ -25,6 +29,9 @@ public static class PaletteExportFormatExtensions
     public static string ResourceFileName (this PaletteExportFormat paletteExportFormat)
         => paletteExportFormat switch
         {
+            // Binary, Not template based
+            PaletteExportFormat.AdobeAse => string.Empty,
+
             // No need to localize 
             PaletteExportFormat.AvaloniaAxaml => "AvaloniaPaletteTemplate.txt",
             PaletteExportFormat.MicrosoftXaml => "MsftXamlPaletteTemplate.txt",
@@ -36,6 +43,7 @@ public static class PaletteExportFormatExtensions
         => paletteExportFormat switch
         {
             // No need to localize 
+            PaletteExportFormat.AdobeAse => "AdobePalette",
             PaletteExportFormat.AvaloniaAxaml => "AvaloniaPalette",
             PaletteExportFormat.MicrosoftXaml => "MicrosoftPalette",
             PaletteExportFormat.CssStyleSheet => "CssPalette",
@@ -46,6 +54,7 @@ public static class PaletteExportFormatExtensions
         => paletteExportFormat switch
         {
             // No need to localize 
+            PaletteExportFormat.AdobeAse => ".ase",
             PaletteExportFormat.AvaloniaAxaml => ".axaml",
             PaletteExportFormat.MicrosoftXaml => ".xaml",
             PaletteExportFormat.CssStyleSheet=> ".css",
@@ -56,6 +65,7 @@ public static class PaletteExportFormatExtensions
         => paletteExportFormat switch
         {
             // No need to localize (for now) 
+            PaletteExportFormat.AdobeAse => "Adobe ASE",
             PaletteExportFormat.AvaloniaAxaml => "Avalonia aXaml",
             PaletteExportFormat.MicrosoftXaml => "Microdoft Xaml",
             PaletteExportFormat.CssStyleSheet => "CSS Style Sheet",
@@ -66,6 +76,7 @@ public static class PaletteExportFormatExtensions
         => [
                 PaletteExportFormat.AvaloniaAxaml, 
                 PaletteExportFormat.MicrosoftXaml, 
-                PaletteExportFormat.CssStyleSheet
+                PaletteExportFormat.CssStyleSheet,
+                PaletteExportFormat.AdobeAse,
            ];
 }
