@@ -30,6 +30,9 @@ public sealed partial class PaletteDesignerModel : ModelBase
     [JsonIgnore]
     public Dictionary<string, ShadesPreset> ShadesPresets = new(16);
 
+    [JsonIgnore]
+    public ShadesValuesDisplayMode ShadesValuesDisplayMode { get; set; } = ShadesValuesDisplayMode.Hex;
+
     #endregion Not serialized - No model changed event
 
 

@@ -79,6 +79,20 @@ public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSele
         }
     }
 
+    [RelayCommand]
+    public void OnDisplayMode(object? parameter)
+    {
+        if (parameter is string tag)
+        {
+            // Update model 
+            ShadesValuesDisplayMode mode = 
+                Enum.TryParse(tag, out ShadesValuesDisplayMode kind) ? kind : ShadesValuesDisplayMode.Hex;
+            this.paletteDesignerModel.ShadesValuesDisplayMode = mode;
+            this.Messenger.Publish(new ModelShadesDisplayModeUpdated());
+        }
+    }
+    
+
     private void OnModelUpdated(ModelUpdatedMessage _)
     {
         var palette = this.Palette;

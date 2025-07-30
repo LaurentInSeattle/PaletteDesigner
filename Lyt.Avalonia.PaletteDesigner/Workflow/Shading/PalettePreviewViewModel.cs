@@ -1,6 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Shading;
 
-using System;
 using static GeneralExtensions; 
 
 public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
@@ -58,10 +57,13 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         this.BottomRightShadesValues = this.PrimaryShadesValues;
 
         this.Messenger.Subscribe<ShadesValuesVisibilityMessage>(this.OnShadesValuesVisibility);
+        this.Messenger.Subscribe<ModelShadesDisplayModeUpdated>(this.OnShadesDisplayModeUpdated);
     }
 
-    private void OnShadesValuesVisibility(ShadesValuesVisibilityMessage message)
-        => this.Show(message.Show);
+    public Palette Palette =>
+        this.paletteDesignerModel.ActiveProject == null ?
+            throw new Exception("No active project") :
+            this.paletteDesignerModel.ActiveProject.Palette;
 
     public void Show(bool show = true)
     {
@@ -163,6 +165,23 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             }
         }
     }
+
+    private void OnShadesDisplayModeUpdated(ModelShadesDisplayModeUpdated updated)
+    {
+        var palette = this.Palette;
+        Shades shades = palette.Primary;
+        this.PrimaryShadesValues.Update(shades);
+        shades = palette.Complementary;
+        this.ComplementaryShadesValues.Update(shades);
+        shades = palette.Secondary1;
+        this.Secondary1ShadesValues.Update(shades);
+        shades = palette.Secondary2;
+        this.Secondary2ShadesValues.Update(shades);
+    }
+
+    private void OnShadesValuesVisibility(ShadesValuesVisibilityMessage message)
+        => this.Show(message.Show);
+
 }
 
 #region Saturation and Brightness sliders 

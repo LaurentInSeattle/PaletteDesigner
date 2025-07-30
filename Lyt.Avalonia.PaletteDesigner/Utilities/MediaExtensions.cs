@@ -1,5 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Utilities;
 
+using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 using HsvColor = Model.PaletteObjects.HsvColor;
 
 public static class MediaExtensions
@@ -31,7 +32,31 @@ public static class MediaExtensions
                 (int)Math.Round(rgb.B));
     }
 
+    public static string ToRgbPercentString(this HsvColor hsv)
+    {
+        var rgb = hsv.ToRgb();
+        return
+            string.Format(
+                "{0:D2} {1:D2} {2:D2}",
+                (int)Math.Round(100.0 * rgb.R / 255.0),
+                (int)Math.Round(100.0 * rgb.G / 255.0),
+                (int)Math.Round(100.0 * rgb.B / 255.0));
+    }
+
+    public static string ToRgbDecimalString(this HsvColor hsv)
+    {
+        var rgb = hsv.ToRgb();
+        return
+            string.Format(
+                "{0:D3} {1:D3} {2:D3}",
+                (int)Math.Round(rgb.R),
+                (int)Math.Round(rgb.G),
+                (int)Math.Round(rgb.B));
+    }
+
     public static SolidColorBrush ToBrush(this Shade shade) => shade.Color.ToBrush();
 
     public static string ToRgbHexString(this Shade shade) => shade.Color.ToRgbHexString();
+    public static string ToRgbPercentString(this Shade shade) => shade.Color.ToRgbPercentString();
+    public static string ToRgbDecimalString(this Shade shade) => shade.Color.ToRgbDecimalString();
 }

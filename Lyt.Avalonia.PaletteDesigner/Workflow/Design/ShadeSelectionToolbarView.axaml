@@ -37,6 +37,9 @@
 			<ColumnDefinition Width="4" />
 			<!-- Values-->
 			<ColumnDefinition Width="200" />
+			<ColumnDefinition Width="48" />
+			<ColumnDefinition Width="48" />
+			<ColumnDefinition Width="48" />
 		</Grid.ColumnDefinitions>
 		<glyphs:SelectionGroup x:Name="SelectionGroup" />
 		<!-- Shades / Tints -->
@@ -238,20 +241,70 @@
 			Grid.Column="10" Grid.Row="1"
 			Margin="8 0 8 0"
 			VerticalAlignment="Center" HorizontalAlignment="Left"
-			Height="1" Width="60"
+			Height="1" Width="120"
 			Fill="{StaticResource PastelOrchid_0_080_Color}"
 			Opacity="0.3"
 			/>
+		<!-- Display mode 
+			IsVisible="{Binding IsSecondary2Visible}"
+			IsDisabled="{Binding IsShadingDisabled}"		
+		-->
+		<glyphs:SelectionGroup x:Name="ShadesDisplaySelectionGroup" />
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Layout="TextOnly"
+			FontSize="18"
+			Text="#"
+			Behaviour="Tap"
+			Grid.Column="11"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="40" Height="32"
+			Margin="0 -8 0 0"
+			ButtonBackground="BorderlessRectangle"
+			Group="{Binding ElementName=ShadesDisplaySelectionGroup}"
+			Command="{Binding OnDisplayMode}"
+			CommandParameter="Hex"
+			/>
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Layout="TextOnly"
+			FontSize="18"
+			Text="%"
+			Behaviour="Tap"
+			Grid.Column="12"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="40" Height="32"
+			Margin="0 -8 0 0"
+			ButtonBackground="BorderlessRectangle"
+			Group="{Binding ElementName=ShadesDisplaySelectionGroup}"
+			Command="{Binding OnDisplayMode}"
+			CommandParameter="Percent"
+			/>
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Layout="TextOnly"
+			FontSize="18"
+			Text="123"
+			Behaviour="Tap"
+			Grid.Column="13"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="40" Height="32"
+			Margin="0 -8 0 0"
+			ButtonBackground="BorderlessRectangle"
+			Group="{Binding ElementName=ShadesDisplaySelectionGroup}"
+			Command="{Binding OnDisplayMode}"
+			CommandParameter="Decimal"
+			/>
 		<Rectangle
-			Grid.Column="10" Grid.Row="1"
+			Grid.Column="10" Grid.Row="1" Grid.ColumnSpan="4"
 			Margin="8 0 8 0"
 			VerticalAlignment="Center" HorizontalAlignment="Right"
-			Height="1" Width="60"
+			Height="1" Width="120"
 			Fill="{StaticResource PastelOrchid_0_080_Color}"
 			Opacity="0.3"
 			/>
 		<TextBlock
-			Grid.Row="1" Grid.Column="10"
+			Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="4"
 			Text="Values"
 			Margin="0 0 0 0"
 			Theme="{StaticResource Medium}"
