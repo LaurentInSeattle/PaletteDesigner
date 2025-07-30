@@ -20,7 +20,9 @@ arrow_rotate_right_regular
         // 11 66 11 
         // 00 44 00
 
-See: https://theme.xaml.live/
+See: 
+https://theme.xaml.live/
+https://github.com/microsoft/fluent-xaml-theme-editor
 
 <FluentTheme>
   <FluentTheme.Palettes>
