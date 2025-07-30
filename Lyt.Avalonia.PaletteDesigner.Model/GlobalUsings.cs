@@ -22,6 +22,8 @@ global using Lyt.Framework.Interfaces.Logging;
 global using Lyt.Framework.Interfaces.Modeling;
 global using Lyt.Framework.Interfaces.Messaging;
 
+global using Lyt.AdobeSwatchExchange;
+global using Lyt.AdobeSwatchExchange.Structures;
 global using Lyt.FileSystem;
 global using Lyt.Model;
 global using Lyt.Persistence;

@@ -77,6 +77,20 @@ public sealed partial class Palette
             Complementary = this.Complementary.DeepClone(),
         };
 
+    public void ForAllShades(Action<WheelKind, Shades> doThat)
+    {
+        foreach (WheelKind wheelKind in Enum.GetValues<WheelKind>())
+        {
+            if (wheelKind == WheelKind.Unknown)
+            {
+                continue;
+            }
+
+            Shades shades = wheelKind.ToShadesFrom(this);
+            doThat(wheelKind, shades);
+        }
+    }
+
     public Parameters ToTemplateParameters()
     {
         var parameters = new Parameters();
@@ -106,7 +120,7 @@ public sealed partial class Palette
                 string colorName = string.Concat(wheelName, "_", shadeName);
                 string colorNameValue = string.Concat(wheelName, "_", shadeName, "_ColorValue");
                 RgbColor rgbColor = shade.Color.ToRgb();
-                string colorValue = rgbColor.ToArgbHexString();
+                string colorValue = rgbColor.ToPoundArgbHexString();
                 var color = new Parameter(colorNameValue, colorValue);
                 parameters.Add(color);
 

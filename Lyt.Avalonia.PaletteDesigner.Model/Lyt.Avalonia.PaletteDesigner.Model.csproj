@@ -6,6 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702; IDE0079</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702; IDE0079</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Resources\ColorWheel.json" />
     <None Remove="Resources\PaletteExportTemplates\AvaloniaPaletteTemplate.txt" />

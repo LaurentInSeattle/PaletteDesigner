@@ -11,14 +11,22 @@ public sealed partial class PaletteDesignerModel : ModelBase
         message = string.Empty;
         bool result = this.ActionPalette((palette) =>
         {
-            if (exportFormat == PaletteExportFormat.AdobeAse)
+            try
             {
-                this.newPath = "Not Implemented Yet";
-                return false;
-            }
-            else
-            {
-                try
+                string targetName = exportFormat.TargetFileName();
+                string name = string.Concat(targetName, "_", TimestampString());
+
+                if (exportFormat == PaletteExportFormat.AdobeAse)
+                {
+                    var aseDocument = palette.ToAseDocument();
+                    string fullName = string.Concat(name, ".ase");
+                    string path = 
+                        this.fileManager.MakePath(Area.User, Kind.BinaryNoExtension, fullName);
+                    aseDocument.Save(path);
+                    this.newPath = path;
+                    return true;
+                }
+                else
                 {
                     ResourcesUtilities.SetResourcesPath(exportFormat.ResourcePath());
                     string template = ResourcesUtilities.LoadEmbeddedTextResource(exportFormat.ResourceFileName(), out string? _);
@@ -28,21 +36,20 @@ public sealed partial class PaletteDesignerModel : ModelBase
                     string result = templator.Generate(parameters);
 
                     // Create a text file from the palette, save on disk with time stamp
-                    string targetName = exportFormat.TargetFileName();
-                    string name = string.Concat(targetName, "_", TimestampString());
                     this.fileManager.Save(Area.User, Kind.Text, name, result);
 
                     // rename to .axaml or xaml or whatever
                     string extension = exportFormat.ExtensionFileName();
                     string path = this.fileManager.MakePath(Area.User, Kind.Text, name);
                     this.newPath = path.ChangeFileExtension(extension);
-                    return true;
                 }
-                catch (Exception ex)
-                {
-                    this.newPath = ex.Message;
-                    return false;
-                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                this.newPath = ex.Message;
+                return false;
             }
         });
 

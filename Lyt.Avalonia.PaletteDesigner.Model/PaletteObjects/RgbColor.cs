@@ -105,8 +105,14 @@ public sealed class RgbColor
         return new HsvColor(Math.Round(h), Math.Round(s), Math.Round(value));
     }
 
-    // #FF030014
+    // DOES NOT Include pound sign: FF030014
     public string ToArgbHexString()
+        => string.Format(
+            "FF{0:X2}{1:X2}{2:X2}",
+            (byte)Math.Round(this.R), (byte)Math.Round(this.G), (byte)Math.Round(this.B));
+
+    // Include pound sign: #FF030014
+    public string ToPoundArgbHexString()
         => string.Format(
             "#FF{0:X2}{1:X2}{2:X2}",
             (byte)Math.Round(this.R), (byte) Math.Round(this.G), (byte) Math.Round(this.B));

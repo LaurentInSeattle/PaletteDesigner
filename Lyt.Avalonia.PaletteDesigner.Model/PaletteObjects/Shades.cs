@@ -1,37 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 
-public enum ShadeMode
-{
-    Locked,
-    Unlocked,
-}
-
-public enum ShadeKind
-{
-    None,
-
-    Lighter,
-    Light,
-    Base,
-    Dark,
-    Darker,
-}
-
-public static class ShadeKindExtensions
-{
-    public static Shade ToShadeFrom(this ShadeKind shadeKind, Shades shades)
-        => shadeKind switch
-        {
-            ShadeKind.Lighter => shades.Lighter,
-            ShadeKind.Light => shades.Light,
-            ShadeKind.Base => shades.Base,
-            ShadeKind.Dark => shades.Dark,
-            ShadeKind.Darker => shades.Darker,
-
-            _ => throw new ArgumentException("Shade Kind is unkown"),
-        };
-}
-
 public sealed class Shades
 {
     [JsonRequired]
@@ -64,6 +32,20 @@ public sealed class Shades
                 Dark = this.Dark.DeepClone(),   
                 Darker = this.Darker.DeepClone(),
             };
+
+    public void ForAllShades(Action<ShadeKind, Shade> doThat)
+    {
+        foreach (ShadeKind shadeKind in Enum.GetValues<ShadeKind>())
+        {
+            if (shadeKind== ShadeKind.None)
+            {
+                continue;
+            }
+
+            Shade shade = shadeKind.ToShadeFrom(this);
+            doThat(shadeKind, shade);
+        }
+    }
 
     public void Reset()
     {
