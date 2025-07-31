@@ -25,7 +25,7 @@
 
     <system:String x:Key="Shell.Exit">Esentato</system:String>
 
-    <system:String x:Key="Shell.Close">Vicino</system:String>
+    <system:String x:Key="Shell.Close">Chiudi</system:String>
 
     <system:String x:Key="Shell.Ready">Pronto.</system:String>
 

@@ -19,7 +19,7 @@
 
     <system:String x:Key="Shared.FileErrorText">Impossible de sauvegarder le ficher de cette image.</system:String>
 
-    <system:String x:Key="Shell.AppName">Palette concepteur</system:String>
+    <system:String x:Key="Shell.AppName">Concepteur de Palette</system:String>
 
     <system:String x:Key="Shell.About">A propos...</system:String>
 
@@ -29,7 +29,7 @@
 
     <system:String x:Key="Shell.Ready">Prêt.</system:String>
 
-    <system:String x:Key="Shell.Greetings">Bienvenue à Palette Designer!</system:String>
+    <system:String x:Key="Shell.Greetings">Bienvenue à 'Concepteur de Palette'!</system:String>
 
     <system:String x:Key="Shell.Settings">Réglages</system:String>
 
@@ -63,31 +63,31 @@
 
     <system:String x:Key="Design.Toolbar.Models.Classic">Classique</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.ShadesTints">Nuances et teintes</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.ShadesTints">Nuances et Teintes</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.LockedTogether">Enfermé</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.LockedTogether">Attachée</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.NoConstraints">Aucune contrainte</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.NoConstraints">Sans Contrainte</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.Primary">Dominant</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.Primary">Dominante</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.Complementary">Accent</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.Secondary1">Discorde n° 1</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.Secondary1">Discorde n°1</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.Secondary2">Discorde n° 2</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.Secondary2">Discorde n°2</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">Préréglages</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.Values">Valeurs</system:String>
 
-    <system:String x:Key="Design.Palette.WheelHue">Teinte de roue</system:String>
+    <system:String x:Key="Design.Palette.WheelHue">Teinte de Roue</system:String>
 
-    <system:String x:Key="Design.ColorWheel.Rotate">Tourner ensemble</system:String>
+    <system:String x:Key="Design.ColorWheel.Rotate">Tourner Ensemble</system:String>
 
-    <system:String x:Key="Design.ColorWheel.Flip">Retourner les opposés</system:String>
+    <system:String x:Key="Design.ColorWheel.Flip">Symetrie</system:String>
 
-    <system:String x:Key="Design.ColorWheel.Reset">Réinitialiser les nuances</system:String>
+    <system:String x:Key="Design.ColorWheel.Reset">Réinit. les Nuances</system:String>
 
     <system:String x:Key="Intro.AgreeMIT">J'accepte les termes de la licence MIT, Continuer.</system:String>
 
