@@ -211,6 +211,7 @@
 					HorizontalAlignment="Right"
 					>
 					<glyphs:GlyphButton
+						IsVisible="{Binding DumpIsVisible}"
 						Style="{StaticResource ToolbarIconButton}"
 						Behaviour="Tap"
 						HorizontalAlignment="Left" VerticalAlignment="Center"

@@ -34,7 +34,7 @@
 			ButtonBackground="BorderlessRectangle"
 			GlyphSource="share"			
 			GlyphStrokeThickness="0.2"			
-			Text="Export"
+			Text="{DynamicResource Design.Toolbar.Export}"
 			Command="{Binding OnExport}"
 			/>
 
@@ -76,7 +76,7 @@
 			/>
 		<TextBlock
 			Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
-			Text="Export Palette"
+			Text="{DynamicResource Design.Toolbar.ExportPalette}"
 			Margin="0 0 0 0"
 			Theme="{StaticResource Medium}"
 			TextAlignment="Center"

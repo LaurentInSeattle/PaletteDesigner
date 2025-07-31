@@ -1,0 +1,112 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">关闭</system:String>
+
+    <system:String x:Key="Shared.Show">展示</system:String>
+
+    <system:String x:Key="Shared.Hide">隐藏</system:String>
+
+    <system:String x:Key="Shared.All">全部</system:String>
+
+    <system:String x:Key="Shared.Recent">最近的</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">文件系统错误。</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">无法将数据保存到磁盘。</system:String>
+
+    <system:String x:Key="Shell.AppName">调色板设计师</system:String>
+
+    <system:String x:Key="Shell.About">关于...</system:String>
+
+    <system:String x:Key="Shell.Exit">辞职</system:String>
+
+    <system:String x:Key="Shell.Close">关闭</system:String>
+
+    <system:String x:Key="Shell.Ready">准备好。</system:String>
+
+    <system:String x:Key="Shell.Greetings">欢迎来到调色板设计师！</system:String>
+
+    <system:String x:Key="Shell.Settings">设置</system:String>
+
+    <system:String x:Key="Shell.Language">语言</system:String>
+
+    <system:String x:Key="Shell.Design">设计师</system:String>
+
+    <system:String x:Key="Shell.Dump">倾倒</system:String>
+
+    <system:String x:Key="Design.Toolbar.Export">出口</system:String>
+
+    <system:String x:Key="Design.Toolbar.ExportPalette">导出</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Complementary">补充</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Triad">三合会</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.TriadComplementary">三合会的辩论。</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Square">正方形</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Monochromatic">单色</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Duochromatic">Duohonic</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Trichromatic">三色</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Quadrichromatic">四面体</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.FreeStyle">自由风格</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Classic">经典的</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.ShadesTints">阴影和色彩</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.LockedTogether">锁在一起</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.NoConstraints">没有约束</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Primary">主导的</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Complementary">口音</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary1">Discord＃1</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary2">DISCORD＃2</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Presets">预设</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Values">值</system:String>
+
+    <system:String x:Key="Design.Palette.WheelHue">车轮色调</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Rotate">一起旋转</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Flip">翻转对立</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Reset">重置阴影</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">我接受麻省理工学院许可证的条款，继续。</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">许可条款</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">根据MIT许可证的条款向您提供此申请。</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">根据MIT许可证的条款向您提供此申请，并与其他条款一起表示没有任何形式的保证。 通过使用此软件，您可以完全同意MIT许可证的条款和条件。</system:String>
+
+    <system:String x:Key="Language.Continue">继续</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">重要的提醒</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">关于下载图像的一些要点值得记住...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">建议您仅将下载的图像用作墙纸。 对于任何其他用途，商业或其他用途，请联系版权持有人。</system:String>
+
+    <system:String x:Key="Collection.DropZone">拖动区</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">将文件拖动到...</system:String>
+
+</ResourceDictionary>

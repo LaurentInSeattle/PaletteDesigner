@@ -1,0 +1,112 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">Cerca</system:String>
+
+    <system:String x:Key="Shared.Show">Espectáculo</system:String>
+
+    <system:String x:Key="Shared.Hide">Esconder</system:String>
+
+    <system:String x:Key="Shared.All">Todo</system:String>
+
+    <system:String x:Key="Shared.Recent">Reciente</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">Error del sistema de archivo.</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">No pudo guardar los datos en el disco.</system:String>
+
+    <system:String x:Key="Shell.AppName">Diseñador de paleta</system:String>
+
+    <system:String x:Key="Shell.About">Acerca de...</system:String>
+
+    <system:String x:Key="Shell.Exit">Abandonar</system:String>
+
+    <system:String x:Key="Shell.Close">Cerca</system:String>
+
+    <system:String x:Key="Shell.Ready">Listo.</system:String>
+
+    <system:String x:Key="Shell.Greetings">¡Bienvenido a Palette Designer!</system:String>
+
+    <system:String x:Key="Shell.Settings">Ajustes</system:String>
+
+    <system:String x:Key="Shell.Language">Idioma</system:String>
+
+    <system:String x:Key="Shell.Design">Diseñador</system:String>
+
+    <system:String x:Key="Shell.Dump">Vertedero</system:String>
+
+    <system:String x:Key="Design.Toolbar.Export">Exportar</system:String>
+
+    <system:String x:Key="Design.Toolbar.ExportPalette">Exportpalette</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Complementary">Complementario</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Triad">Tríada</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.TriadComplementary">Tríada compl.</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Square">Cuadrado</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Monochromatic">Monocromo</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Duochromatic">Ducromático</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Trichromatic">Tricromático</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Quadrichromatic">Cuadricromático</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.FreeStyle">Estilo gratis</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Classic">Clásico</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.ShadesTints">Tonos y tintes</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.LockedTogether">Encerrados</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.NoConstraints">Sin restricciones</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Primary">Dominante</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Complementary">Acento</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary1">Discord #1</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary2">Discord #2</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Presets">Preajustes</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Values">Valores</system:String>
+
+    <system:String x:Key="Design.Palette.WheelHue">Tono de rueda</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Rotate">Girar juntos</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Flip">Flip Opposites</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Reset">Restablecer tonos</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">Acepto los términos de la licencia del MIT, continúa.</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">Términos de licencia</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">Esta solicitud se le proporciona bajo los términos de la licencia MIT.</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">Esta solicitud se le proporciona bajo los términos de la licencia MIT y, junto con otros términos, no implica ninguna garantía de ningún tipo.  Al usar este software, acepta completamente los términos y condiciones de la licencia MIT.</system:String>
+
+    <system:String x:Key="Language.Continue">Continuar</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">Recordatorio importante</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">Algunos puntos importantes para recordar sobre las imágenes descargadas ...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">Se aconseja que use las imágenes descargadas solo como fondo de pantalla.  Para cualquier otro uso, comercial o de otra manera, comuníquese con el titular de los derechos de autor.</system:String>
+
+    <system:String x:Key="Collection.DropZone">Zona de arrastre y caída</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">Arrastre y suelte los archivos aquí a ...</system:String>
+
+</ResourceDictionary>

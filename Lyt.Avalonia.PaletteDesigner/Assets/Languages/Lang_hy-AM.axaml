@@ -1,0 +1,112 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">Սերտ</system:String>
+
+    <system:String x:Key="Shared.Show">Ցուցահանդես</system:String>
+
+    <system:String x:Key="Shared.Hide">Թաքցնել</system:String>
+
+    <system:String x:Key="Shared.All">Բոլորը</system:String>
+
+    <system:String x:Key="Shared.Recent">Վերջերս</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">Ֆայլերի համակարգի սխալ:</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">Չհաջողվեց պահպանել տվյալները սկավառակի վրա:</system:String>
+
+    <system:String x:Key="Shell.AppName">Պալիտրա դիզայներ</system:String>
+
+    <system:String x:Key="Shell.About">...</system:String>
+
+    <system:String x:Key="Shell.Exit">Թողնել</system:String>
+
+    <system:String x:Key="Shell.Close">Սերտ</system:String>
+
+    <system:String x:Key="Shell.Ready">Պատրաստ:</system:String>
+
+    <system:String x:Key="Shell.Greetings">Բարի գալուստ պալիտրա դիզայներ:</system:String>
+
+    <system:String x:Key="Shell.Settings">Կարգավորումներ</system:String>
+
+    <system:String x:Key="Shell.Language">Լեզու</system:String>
+
+    <system:String x:Key="Shell.Design">Դիզայներ</system:String>
+
+    <system:String x:Key="Shell.Dump">Շեփոր</system:String>
+
+    <system:String x:Key="Design.Toolbar.Export">Արտահանում</system:String>
+
+    <system:String x:Key="Design.Toolbar.ExportPalette">Արտահանում</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Complementary">Լրացուցիչ</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Triad">Տրիադ</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.TriadComplementary">Triad Comp.</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Square">Քառակուսի</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Monochromatic">Մոնոխրագույն</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Duochromatic">Դյութիչ</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Trichromatic">Եռալի</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Quadrichromatic">Քառյակի</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.FreeStyle">Ազատ ոճ</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Classic">Դասական</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.ShadesTints">Ստվերներ եւ երանգներ</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.LockedTogether">Կողպված միասին</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.NoConstraints">Ոչ մի սահմանափակում</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Primary">Գերիշխող</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Complementary">Շեշտ</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary1">DiscorD # 1</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary2">DiscorD # 2</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Presets">Նախադրյալներ</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Values">Արժեքներ</system:String>
+
+    <system:String x:Key="Design.Palette.WheelHue">Անիվի երանգ</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Rotate">Պտտվել միասին</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Flip">Անցնել հակադրությունները</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Reset">Վերականգնել երանգները</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">Ես ընդունում եմ MIT լիցենզիայի պայմանները, շարունակվում են:</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">Լիցենզիայի պայմանները</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">Այս ծրագիրը ձեզ տրամադրվում է MIT լիցենզիայի պայմաններով:</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">Այս ծրագիրը ձեզ տրամադրվում է MIT լիցենզիայի պայմաններով եւ, այլ պայմաններով, ենթադրում է որեւէ տեսակի երաշխիք:  Օգտագործելով այս ծրագիրը, դուք լիովին համաձայն եք MIT լիցենզիայի պայմաններին եւ պայմաններին:</system:String>
+
+    <system:String x:Key="Language.Continue">Շարունակել</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">Կարեւոր հիշեցում</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">Ներբեռնված պատկերների մասին հիշելու որոշ կարեւոր կետեր ...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">Ձեզ խորհուրդ է տրվում ներբեռնված պատկերները օգտագործել միայն որպես պաստառ:  Any անկացած այլ օգտագործման, առեւտրային կամ այլ կերպ դիմեք Հեղինակային իրավունքի սեփականատիրոջը:</system:String>
+
+    <system:String x:Key="Collection.DropZone">Քաշեք եւ կաթիլային գոտի</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">Քաշեք եւ թողեք ֆայլերը այստեղ ....</system:String>
+
+</ResourceDictionary>

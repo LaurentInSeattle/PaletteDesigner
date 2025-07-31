@@ -11,6 +11,9 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
     [ObservableProperty]
     public bool mainToolbarIsVisible;
 
+    [ObservableProperty]
+    public bool dumpIsVisible;
+    
     private ViewSelector<ActivatedView>? viewSelector;
     
     // private bool isFirstActivation;
@@ -60,6 +63,8 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         // Create all statics views and bind them 
         this.SetupWorkflow();
         this.Logger.Debug("OnViewLoaded SetupWorkflow complete");
+
+        this.DumpIsVisible = Debugger.IsAttached;
 
         // Ready 
         this.toaster.Host = this.View.ToasterHost;

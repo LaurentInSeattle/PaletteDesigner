@@ -1,0 +1,112 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">닫다</system:String>
+
+    <system:String x:Key="Shared.Show">보여주다</system:String>
+
+    <system:String x:Key="Shared.Hide">숨다</system:String>
+
+    <system:String x:Key="Shared.All">모두</system:String>
+
+    <system:String x:Key="Shared.Recent">최근의</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">파일 시스템 오류.</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">데이터를 디스크에 저장할 수 없습니다.</system:String>
+
+    <system:String x:Key="Shell.AppName">팔레트 디자이너</system:String>
+
+    <system:String x:Key="Shell.About">에 대한...</system:String>
+
+    <system:String x:Key="Shell.Exit">그만두다</system:String>
+
+    <system:String x:Key="Shell.Close">닫다</system:String>
+
+    <system:String x:Key="Shell.Ready">준비가 된.</system:String>
+
+    <system:String x:Key="Shell.Greetings">팔레트 디자이너에 오신 것을 환영합니다!</system:String>
+
+    <system:String x:Key="Shell.Settings">설정</system:String>
+
+    <system:String x:Key="Shell.Language">언어</system:String>
+
+    <system:String x:Key="Shell.Design">디자이너</system:String>
+
+    <system:String x:Key="Shell.Dump">덤프</system:String>
+
+    <system:String x:Key="Design.Toolbar.Export">내보내다</system:String>
+
+    <system:String x:Key="Design.Toolbar.ExportPalette">ExportPalette</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Complementary">보완 적</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Triad">삼인조</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.TriadComplementary">트라이어드 불만.</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Square">정사각형</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Monochromatic">단색</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Duochromatic">이중 크로마 틱</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Trichromatic">삼색 성</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Quadrichromatic">사기성</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.FreeStyle">무료 스타일</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Classic">권위 있는</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.ShadesTints">그늘과 색조</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.LockedTogether">함께 잠겨 있습니다</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.NoConstraints">제약 조건 없음</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Primary">우성</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Complementary">악센트</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary1">불화 #1</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary2">불화 #2</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Presets">사전 설정</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Values">값</system:String>
+
+    <system:String x:Key="Design.Palette.WheelHue">바퀴 색조</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Rotate">함께 회전하십시오</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Flip">반대를 뒤집습니다</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Reset">그늘을 재설정하십시오</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">MIT 라이센스의 조건을 수락합니다.</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">라이센스 조건</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">이 신청서는 MIT 라이센스의 조건에 따라 귀하에게 제공됩니다.</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">이 신청서는 MIT 라이센스의 조건에 따라 귀하에게 제공되며 다른 약관과 함께 어떠한 종류의 보증도 의미하지 않습니다.  이 소프트웨어를 사용하면 MIT 라이센스의 이용 약관에 전적으로 동의합니다.</system:String>
+
+    <system:String x:Key="Language.Continue">계속하다</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">중요한 알림</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">다운로드 된 이미지에 대해 기억해야 할 몇 가지 중요한 사항 ...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">다운로드 된 이미지를 벽지로만 사용하는 것이 좋습니다.  다른 용도로 상업적이든 다른 용도로 보려면 저작권 보유자에게 문의하십시오.</system:String>
+
+    <system:String x:Key="Collection.DropZone">드래그 앤 드롭 존</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">여기에서 파일을 끌어 삭제하고 ....</system:String>
+
+</ResourceDictionary>

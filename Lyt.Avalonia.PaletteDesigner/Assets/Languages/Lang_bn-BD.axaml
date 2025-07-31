@@ -1,0 +1,112 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">বন্ধ</system:String>
+
+    <system:String x:Key="Shared.Show">শো</system:String>
+
+    <system:String x:Key="Shared.Hide">লুকান</system:String>
+
+    <system:String x:Key="Shared.All">সব</system:String>
+
+    <system:String x:Key="Shared.Recent">সাম্প্রতিক</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">ফাইল সিস্টেম ত্রুটি।</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">ডিস্কে ডেটা সংরক্ষণ করতে পারেনি।</system:String>
+
+    <system:String x:Key="Shell.AppName">প্যালেট ডিজাইনার</system:String>
+
+    <system:String x:Key="Shell.About">সম্পর্কে ...</system:String>
+
+    <system:String x:Key="Shell.Exit">প্রস্থান</system:String>
+
+    <system:String x:Key="Shell.Close">বন্ধ</system:String>
+
+    <system:String x:Key="Shell.Ready">প্রস্তুত।</system:String>
+
+    <system:String x:Key="Shell.Greetings">প্যালেট ডিজাইনার স্বাগতম!</system:String>
+
+    <system:String x:Key="Shell.Settings">সেটিংস</system:String>
+
+    <system:String x:Key="Shell.Language">ভাষা</system:String>
+
+    <system:String x:Key="Shell.Design">ডিজাইনার</system:String>
+
+    <system:String x:Key="Shell.Dump">ডাম্প</system:String>
+
+    <system:String x:Key="Design.Toolbar.Export">রফতানি</system:String>
+
+    <system:String x:Key="Design.Toolbar.ExportPalette">এক্সপোর্টপ্যালেট</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Complementary">পরিপূরক</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Triad">ট্রায়াড</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.TriadComplementary">ট্রায়াড কমপ্লিট।</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Square">বর্গক্ষেত্র</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Monochromatic">একরঙা</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Duochromatic">দ্বৈত</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Trichromatic">ট্রাইক্রোমেটিক</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Quadrichromatic">চতুর্ভুজ</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.FreeStyle">বিনামূল্যে স্টাইল</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Classic">ক্লাসিক</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.ShadesTints">শেড এবং টিন্টস</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.LockedTogether">একসাথে লক</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.NoConstraints">কোন বাধা নেই</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Primary">প্রভাবশালী</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Complementary">অ্যাকসেন্ট</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary1">ডিসকর্ড #1</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary2">ডিসকর্ড #2</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Presets">প্রিসেটস</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Values">মান</system:String>
+
+    <system:String x:Key="Design.Palette.WheelHue">হুইল হিউ</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Rotate">একসাথে ঘোরান</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Flip">ফ্লিপ বিপরীত</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Reset">শেডগুলি পুনরায় সেট করুন</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">আমি এমআইটি লাইসেন্সের শর্তাদি গ্রহণ করি, চালিয়ে যান।</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">লাইসেন্স শর্তাদি</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">এই আবেদনটি আপনাকে এমআইটি লাইসেন্সের শর্তাবলীর অধীনে সরবরাহ করা হয়েছে।</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">এই অ্যাপ্লিকেশনটি আপনাকে এমআইটি লাইসেন্সের শর্তাবলীর অধীনে সরবরাহ করা হয়েছে এবং অন্যান্য শর্তাদি সহ কোনও ধরণের কোনও ওয়্যারেন্টি বোঝায় না।  এই সফ্টওয়্যারটি ব্যবহার করে, আপনি এমআইটি লাইসেন্সের শর্তাদি এবং শর্তাদি পুরোপুরি সম্মত হন।</system:String>
+
+    <system:String x:Key="Language.Continue">চালিয়ে যান</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">গুরুত্বপূর্ণ অনুস্মারক</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">ডাউনলোড করা চিত্রগুলি মনে রাখার জন্য কয়েকটি গুরুত্বপূর্ণ বিষয় ...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">আপনাকে ডাউনলোড করা চিত্রগুলি কেবল ওয়ালপেপার হিসাবে ব্যবহার করার পরামর্শ দেওয়া হচ্ছে।  বাণিজ্যিক বা অন্য কোনও ব্যবহারের জন্য দয়া করে কপিরাইট ধারকটির সাথে যোগাযোগ করুন।</system:String>
+
+    <system:String x:Key="Collection.DropZone">টানুন এবং ড্রপ জোন</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">ফাইলগুলি এখানে টেনে আনুন এবং ড্রপ করুন ....</system:String>
+
+</ResourceDictionary>

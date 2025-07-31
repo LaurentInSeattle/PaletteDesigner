@@ -20,6 +20,8 @@ public sealed partial class ShadesPresetViewModel : ViewModel<ShadesPresetView>
 
         this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated);
         this.MiniPaletteViewModel = new();
+
+        // TODO: Localize preset name 
         this.PresetName = shadesPreset.Name;
     }
 

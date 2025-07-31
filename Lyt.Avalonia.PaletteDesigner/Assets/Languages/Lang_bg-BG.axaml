@@ -1,0 +1,112 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">Затворете</system:String>
+
+    <system:String x:Key="Shared.Show">Показване</system:String>
+
+    <system:String x:Key="Shared.Hide">Скрий</system:String>
+
+    <system:String x:Key="Shared.All">Всички</system:String>
+
+    <system:String x:Key="Shared.Recent">Скоро</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">Грешка в файловата система.</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">Не можа да запази данните на диска.</system:String>
+
+    <system:String x:Key="Shell.AppName">Дизайнер на палитра</system:String>
+
+    <system:String x:Key="Shell.About">За ...</system:String>
+
+    <system:String x:Key="Shell.Exit">Напусна</system:String>
+
+    <system:String x:Key="Shell.Close">Затворете</system:String>
+
+    <system:String x:Key="Shell.Ready">Готов.</system:String>
+
+    <system:String x:Key="Shell.Greetings">Добре дошли в дизайнера на палитрата!</system:String>
+
+    <system:String x:Key="Shell.Settings">Настройки</system:String>
+
+    <system:String x:Key="Shell.Language">Език</system:String>
+
+    <system:String x:Key="Shell.Design">Дизайнер</system:String>
+
+    <system:String x:Key="Shell.Dump">Сметище</system:String>
+
+    <system:String x:Key="Design.Toolbar.Export">Експорт</system:String>
+
+    <system:String x:Key="Design.Toolbar.ExportPalette">ExportPalette</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Complementary">Допълващ</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Triad">Триада</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.TriadComplementary">Triad Compl.</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Square">Квадрат</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Monochromatic">Монохроматичен</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Duochromatic">Духроматичен</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Trichromatic">Трихроматичен</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Quadrichromatic">Квадрихроматичен</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.FreeStyle">Безплатен стил</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Classic">Класически</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.ShadesTints">Нюанси и нюанси</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.LockedTogether">Заключени заедно</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.NoConstraints">Без ограничения</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Primary">Доминиращ</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Complementary">Акцент</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary1">Раздор №1</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary2">Раздор №2</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Presets">Предварително зададени</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Values">Стойности</system:String>
+
+    <system:String x:Key="Design.Palette.WheelHue">Оттенък на колелото</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Rotate">Върнете заедно</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Flip">Обърнете противоположности</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Reset">Нулиране на нюанси</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">Приемам условията на лиценза MIT, продължете.</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">Лицензионни условия</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">Това заявление ви се предоставя при условията на лиценза MIT.</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">Това заявление ви се предоставя при условията на лиценза MIT и заедно с други условия не предполага никаква гаранция от какъвто и да е вид.  Използвайки този софтуер, вие напълно се съгласявате с условията на лиценза за MIT.</system:String>
+
+    <system:String x:Key="Language.Continue">Продължете</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">Важно напомняне</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">Някои важни точки, които трябва да запомните за изтеглените изображения ...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">Препоръчваме ви да използвате изтеглените изображения само като тапет.  За всяка друга употреба, търговска или по друг начин, моля, свържете се с притежателя на авторските права.</system:String>
+
+    <system:String x:Key="Collection.DropZone">Плъзнете и пуснете зона</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">Плъзнете и пуснете файлове тук, за да ....</system:String>
+
+</ResourceDictionary>

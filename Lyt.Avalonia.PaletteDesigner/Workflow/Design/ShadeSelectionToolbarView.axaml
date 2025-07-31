@@ -52,15 +52,14 @@
 			Width="100" Height="60"
 			Margin="0"
 			ButtonBackground="BorderlessRectangle"
-			Text="Locked Together"
+			Text="{DynamicResource Design.Toolbar.Shade.LockedTogether}"
 			GlyphSource="lock_closed"
 			GlyphStrokeThickness="0.2"
 			Group="{Binding ElementName=ShadesSelectionGroup}"
 			IsSelected="True"
 			Command="{Binding OnLockSelect}"
 			CommandParameter="Locked"
-			>
-		</glyphs:GlyphButton>
+			/>
 
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
@@ -72,18 +71,17 @@
 			ButtonBackground="BorderlessRectangle"
 			GlyphSource="lock_open"
 			GlyphStrokeThickness="0.2"
-			Text="No Constraints"
+			Text="{DynamicResource Design.Toolbar.Shade.NoConstraints}"
 			Group="{Binding ElementName=ShadesSelectionGroup}"
 			Command="{Binding OnLockSelect}"
 			CommandParameter="Unlocked"
-			>
-		</glyphs:GlyphButton>
+			/>
 
 		<!-- Colours -->
 		<glyphs:SelectionGroup x:Name="ColorsSelectionGroup" />
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
-			Text="Primary"
+			Text="{DynamicResource Design.Toolbar.Shade.Primary}"
 			IsVisible="{Binding IsPrimaryVisible}"
 			IsDisabled="{Binding IsShadingDisabled}"
 			IsSelected="True"
@@ -107,7 +105,7 @@
 			Style="{StaticResource ToolbarIconButton}"
 			IsVisible="{Binding IsComplementaryVisible}"
 			IsDisabled="{Binding IsShadingDisabled}"
-			Text="Complementary"
+			Text="{DynamicResource Design.Toolbar.Shade.Complementary}"
 			Behaviour="Tap"
 			Grid.Column="4"
 			VerticalAlignment="Center" HorizontalAlignment="Center"
@@ -127,7 +125,7 @@
 
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
-			Text="Secondary #1"
+			Text="{DynamicResource Design.Toolbar.Shade.Secondary1}"
 			IsVisible="{Binding IsSecondary1Visible}"
 			IsDisabled="{Binding IsShadingDisabled}"
 			Behaviour="Tap"
@@ -150,7 +148,7 @@
 			Style="{StaticResource ToolbarIconButton}"
 			IsVisible="{Binding IsSecondary2Visible}"
 			IsDisabled="{Binding IsShadingDisabled}"
-			Text="Secondary #2"
+			Text="{DynamicResource Design.Toolbar.Shade.Secondary2}"
 			Behaviour="Tap"
 			Grid.Column="6"
 			VerticalAlignment="Center" HorizontalAlignment="Center"
@@ -186,7 +184,7 @@
 			/>
 		<TextBlock
 			Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-			Text="Shades / Tints"
+			Text="{DynamicResource Design.Toolbar.Shade.ShadesTints}"
 			Margin="0 0 0 0"
 			Theme="{StaticResource Medium}"
 			TextAlignment="Center"
@@ -196,8 +194,8 @@
 			Grid.Row="0" Grid.Column="8" 
 			Margin="0 -10 0 0"
 			Style="{StaticResource StandardToggleSwitch}"
-			TrueText="Show"
-			FalseText="Hide"
+			TrueText="{DynamicResource Shared.Show}"
+			FalseText="{DynamicResource Shared.Hide}"
 			Height="30" Width="200"
 			HorizontalAlignment="Center" VerticalAlignment="Center"
 			Value="{Binding ShowShadesPresets}"
@@ -220,19 +218,18 @@
 			/>
 		<TextBlock
 			Grid.Row="1" Grid.Column="8" 
-			Text="Presets"
+			Text="{DynamicResource Design.Toolbar.Shade.Presets}"
 			Margin="0 0 0 0"
 			Theme="{StaticResource Medium}"
 			TextAlignment="Center"
 			HorizontalAlignment="Center"
 			/>
-
 		<toggle:ToggleSwitch
 			Grid.Row="0" Grid.Column="10"
 			Margin="0 -10 0 0"
 			Style="{StaticResource StandardToggleSwitch}"
-			TrueText="Show"
-			FalseText="Hide"
+			TrueText="{DynamicResource Shared.Show}"
+			FalseText="{DynamicResource Shared.Hide}"
 			Height="30" Width="200"
 			HorizontalAlignment="Center" VerticalAlignment="Center"
 			Value="{Binding ShowShadesValues}"
@@ -306,7 +303,7 @@
 			/>
 		<TextBlock
 			Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="4"
-			Text="Values"
+			Text="{DynamicResource Design.Toolbar.Shade.Values}"
 			Margin="0 0 0 0"
 			Theme="{StaticResource Medium}"
 			TextAlignment="Center"

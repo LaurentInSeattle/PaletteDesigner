@@ -16,16 +16,6 @@
 		<sys:Double x:Key="SmallWidth">56</sys:Double>
 		<sys:Double x:Key="LargeWidth">88</sys:Double>
 	</UserControl.Resources>
-
-	<!-- 	
-	<UserControl.Styles>
-		<Style Selector="Rectangle">
-			<Setter Property="RadiusX" Value="6"/>
-			<Setter Property="RadiusY" Value="6"/>
-		</Style>
-	</UserControl.Styles>
-	-->
-	
 	<Grid
 		x:Name="MainGrid"
 		Margin="4 22 4 4"
@@ -100,7 +90,7 @@
 			</Grid.ColumnDefinitions>
 			<TextBlock
 				Grid.Row="0"
-				Text="Wheel Hue"
+				Text="{DynamicResource Design.Palette.WheelHue}"
 				Theme="{StaticResource Medium}"
 				HorizontalAlignment="Right" 
 				/>

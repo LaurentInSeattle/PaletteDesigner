@@ -1,0 +1,112 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">Κοντά</system:String>
+
+    <system:String x:Key="Shared.Show">Επίδειξη</system:String>
+
+    <system:String x:Key="Shared.Hide">Κρύβω</system:String>
+
+    <system:String x:Key="Shared.All">Ολοι</system:String>
+
+    <system:String x:Key="Shared.Recent">Πρόσφατος</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">Σφάλμα συστήματος αρχείων.</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">Δεν ήταν δυνατή η αποθήκευση των δεδομένων στο δίσκο.</system:String>
+
+    <system:String x:Key="Shell.AppName">Παλέτα σχεδιαστή</system:String>
+
+    <system:String x:Key="Shell.About">Για...</system:String>
+
+    <system:String x:Key="Shell.Exit">Εγκαταλείπω</system:String>
+
+    <system:String x:Key="Shell.Close">Κοντά</system:String>
+
+    <system:String x:Key="Shell.Ready">Ετοιμος.</system:String>
+
+    <system:String x:Key="Shell.Greetings">Καλώς ήλθατε στο Palette Designer!</system:String>
+
+    <system:String x:Key="Shell.Settings">Ρυθμίσεις</system:String>
+
+    <system:String x:Key="Shell.Language">Γλώσσα</system:String>
+
+    <system:String x:Key="Shell.Design">Σχεδιαστής</system:String>
+
+    <system:String x:Key="Shell.Dump">Σκουπιδότοπος</system:String>
+
+    <system:String x:Key="Design.Toolbar.Export">Εξαγωγή</system:String>
+
+    <system:String x:Key="Design.Toolbar.ExportPalette">Εξαγωγή</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Complementary">Συμπληρωματικός</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Triad">Τριάδα</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.TriadComplementary">Triad Compl.</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Square">Πλατεία</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Monochromatic">Μονόχρωμος</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Duochromatic">Δούοχρωματος</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Trichromatic">Τριχρωματικός</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Quadrichromatic">Τειχρωματικός</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.FreeStyle">Δωρεάν στυλ</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Classic">Κλασσικός</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.ShadesTints">Αποχρώσεις και αποχρώσεις</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.LockedTogether">Κλειδωμένο μαζί</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.NoConstraints">Χωρίς περιορισμούς</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Primary">Κύριος</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Complementary">Προφορά</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary1">Διαφωνία #1</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary2">Διαφωνία #2</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Presets">Προετοιμασία</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Values">Τιμές</system:String>
+
+    <system:String x:Key="Design.Palette.WheelHue">Χορό</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Rotate">Περιστρέψτε μαζί</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Flip">Αντίθετα από τα αντίθετα</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Reset">Επαναφορά αποχρώσεων</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">Αποδέχομαι τους όρους της άδειας MIT, συνεχίζω.</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">Όροι άδειας</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">Αυτή η αίτηση παρέχεται σε εσάς υπό τους όρους της άδειας MIT.</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">Αυτή η αίτηση παρέχεται σε εσάς υπό τους όρους της άδειας MIT και, μαζί με άλλους όρους, δεν συνεπάγεται καμία εγγύηση οποιουδήποτε είδους.  Χρησιμοποιώντας αυτό το λογισμικό, συμφωνείτε πλήρως με τους όρους και τις προϋποθέσεις της άδειας MIT.</system:String>
+
+    <system:String x:Key="Language.Continue">Συνεχίζω</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">Σημαντική υπενθύμιση</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">Μερικά σημαντικά σημεία που πρέπει να θυμάστε για τις λήψεις εικόνων ...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">Σας συμβουλεύουμε να χρησιμοποιήσετε τις εικόνες που κατεβάσουν μόνο ως ταπετσαρία.  Για οποιαδήποτε άλλη χρήση, εμπορική ή άλλως, επικοινωνήστε με τον κάτοχο των πνευματικών δικαιωμάτων.</system:String>
+
+    <system:String x:Key="Collection.DropZone">Σύνθεση και πτώση ζώνης</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">Σύρετε και ρίξτε αρχεία εδώ σε ....</system:String>
+
+</ResourceDictionary>

@@ -1,0 +1,112 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">Közeli</system:String>
+
+    <system:String x:Key="Shared.Show">Megmutat</system:String>
+
+    <system:String x:Key="Shared.Hide">Elrejt</system:String>
+
+    <system:String x:Key="Shared.All">Minden</system:String>
+
+    <system:String x:Key="Shared.Recent">Legújabb</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">Fájlrendszer hiba.</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">Nem tudta elmenteni az adatokat a lemezre.</system:String>
+
+    <system:String x:Key="Shell.AppName">Paletta tervező</system:String>
+
+    <system:String x:Key="Shell.About">Körülbelül...</system:String>
+
+    <system:String x:Key="Shell.Exit">Kilépett</system:String>
+
+    <system:String x:Key="Shell.Close">Közeli</system:String>
+
+    <system:String x:Key="Shell.Ready">Kész.</system:String>
+
+    <system:String x:Key="Shell.Greetings">Üdvözöljük a Palette Designer -ben!</system:String>
+
+    <system:String x:Key="Shell.Settings">Beállítások</system:String>
+
+    <system:String x:Key="Shell.Language">Nyelv</system:String>
+
+    <system:String x:Key="Shell.Design">Tervező</system:String>
+
+    <system:String x:Key="Shell.Dump">Dump</system:String>
+
+    <system:String x:Key="Design.Toolbar.Export">Export</system:String>
+
+    <system:String x:Key="Design.Toolbar.ExportPalette">Exportpaletta</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Complementary">Kiegészítő</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Triad">Triász</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.TriadComplementary">Hármas komp.</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Square">Négyzet</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Monochromatic">Egyszínű</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Duochromatic">Duokromatikus</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Trichromatic">Háromszínű</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Quadrichromatic">Négykirromatikus</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.FreeStyle">Ingyenes stílus</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Classic">Klasszikus</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.ShadesTints">Árnyalatok és árnyalatok</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.LockedTogether">Zárva</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.NoConstraints">Nincs korlátozás</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Primary">Uralkodó</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Complementary">Hangsúly</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary1">1. diszkréció</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary2">2. diskord</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Presets">Előre beállított</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Values">Értékek</system:String>
+
+    <system:String x:Key="Design.Palette.WheelHue">Kerekes árnyalat</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Rotate">Együtt forog</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Flip">Flip ellentétek</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Reset">Visszaállítja az árnyalatokat</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">Elfogadom a MIT licenc feltételeit, folytatom.</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">Licenc feltételek</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">Ezt az alkalmazást a MIT licenc feltételei szerint nyújtják be.</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">Ezt az alkalmazást a MIT licenc feltételei szerint nyújtják be, és más feltételekkel együtt semmilyen garanciát nem jelent.  A szoftver használatával teljes mértékben elfogadja a MIT licenc feltételeit.</system:String>
+
+    <system:String x:Key="Language.Continue">Folytatódik</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">Fontos emlékeztető</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">Néhány fontos pont, amelyet emlékezni kell a letöltött képekről ...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">Javasoljuk, hogy a letöltött képeket csak háttérképként használja.  Bármely más felhasználáshoz, kereskedelmi vagy más módon, kérjük, vegye fel a kapcsolatot a szerzői jogtulajdonossal.</system:String>
+
+    <system:String x:Key="Collection.DropZone">Drag and Drop Zone</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">Húzza és dobja ide a fájlokat ide ....</system:String>
+
+</ResourceDictionary>

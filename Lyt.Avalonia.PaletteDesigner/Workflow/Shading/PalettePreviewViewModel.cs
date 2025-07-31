@@ -47,10 +47,16 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         this.paletteDesignerModel = paletteDesignerModel;
         this.MiniPaletteViewModel = new();
         this.MaxiPaletteViewModel = new();
-        this.PrimaryShadesValues = new ShadesValuesViewModel("Dominant");
-        this.ComplementaryShadesValues = new ShadesValuesViewModel("Accent");
-        this.Secondary1ShadesValues = new ShadesValuesViewModel("Discord #1");
-        this.Secondary2ShadesValues = new ShadesValuesViewModel("Discord #2");
+        
+        string dominant = this.Localize("Design.Toolbar.Shade.Primary");
+        this.PrimaryShadesValues = new ShadesValuesViewModel(dominant);
+        string accent = this.Localize("Design.Toolbar.Shade.Complementary");
+        this.ComplementaryShadesValues = new ShadesValuesViewModel(accent);
+        string discord1 = this.Localize("Design.Toolbar.Shade.Secondary1");
+        this.Secondary1ShadesValues = new ShadesValuesViewModel(discord1);
+        string discord2 = this.Localize("Design.Toolbar.Shade.Secondary2");
+        this.Secondary2ShadesValues = new ShadesValuesViewModel(discord2);
+
         this.TopLeftShadesValues     = this.PrimaryShadesValues;
         this.BottomLeftShadesValues  = this.PrimaryShadesValues;
         this.TopRightShadesValues    = this.PrimaryShadesValues;
@@ -58,6 +64,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
 
         this.Messenger.Subscribe<ShadesValuesVisibilityMessage>(this.OnShadesValuesVisibility);
         this.Messenger.Subscribe<ModelShadesDisplayModeUpdated>(this.OnShadesDisplayModeUpdated);
+        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
     }
 
     public Palette Palette =>
@@ -77,6 +84,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             grid.Width = show ? 840.0 : 600.0; 
         }
     }
+
     public override void OnViewLoaded()
     {
         base.OnViewLoaded();
@@ -182,119 +190,15 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     private void OnShadesValuesVisibility(ShadesValuesVisibilityMessage message)
         => this.Show(message.Show);
 
+    private void OnLanguageChanged(LanguageChangedMessage message)
+    {
+        string dominant = this.Localize("Design.Toolbar.Shade.Primary");
+        this.PrimaryShadesValues.Update(dominant);
+        string accent = this.Localize("Design.Toolbar.Shade.Complementary");
+        this.ComplementaryShadesValues.Update(accent);
+        string discord1 = this.Localize("Design.Toolbar.Shade.Secondary1");
+        this.Secondary1ShadesValues.Update(discord1);
+        string discord2 = this.Localize("Design.Toolbar.Shade.Secondary2");
+        this.Secondary2ShadesValues.Update(discord2);
+    }
 }
-
-#region Saturation and Brightness sliders 
-/*
- * 
-            <TextBlock
-                Grid.Row="1"
-                Text="Saturation"
-                Theme="{StaticResource Medium}"
-                HorizontalAlignment="Right" 
-                />
-            <Slider
-                Grid.Row="1" Grid.Column="1"
-                Margin="8 0 8 0"
-                Minimum="0.0" Maximum="1.0" 
-                SmallChange="0.01" LargeChange="0.05"
-                TickFrequency="0.1" TickPlacement="BottomRight"
-                Value="{Binding SaturationSliderValue}"
-                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                />
-            <TextBlock
-                Grid.Row="1" Grid.Column="2"
-                Text="{Binding SaturationValue}"
-                Theme="{StaticResource Medium}"
-                />
-            <TextBlock
-                Grid.Row="2"
-                Text="Brightness"
-                Theme="{StaticResource Medium}"
-                HorizontalAlignment="Right" 
-                />
-            <Slider
-                Grid.Row="2" Grid.Column="1"
-                Margin="8 0 8 0"
-                Minimum="0.0" Maximum="1.0"
-                SmallChange="0.01" LargeChange="0.05"
-                TickFrequency="0.1" TickPlacement="BottomRight"
-                Value="{Binding BrightnessSliderValue}"
-                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                />
-            <TextBlock
-                Grid.Row="2" Grid.Column="2"
-                Text="{Binding BrightnessValue}"
-                Theme="{StaticResource Medium}"
-                />
- *
-    [ObservableProperty]
-    private double saturationSliderValue;
-
-    [ObservableProperty]
-    private double brightnessSliderValue;
-
-    [ObservableProperty]
-    private string saturationValue = string.Empty;
-
-    [ObservableProperty]
-    private string brightnessValue = string.Empty;
-
-    private double saturation;
-
-    private double brightness;
-
-CTOR:
-        this.SaturationSliderValue = 0.67;
-        this.BrightnessSliderValue = 0.67;
-        this.SaturationValue = string.Empty;
-        this.BrightnessValue = string.Empty;
-
-    partial void OnSaturationSliderValueChanged(double value)
-    {
-        if (this.isProgrammaticUpdate)
-        {
-            return;
-        }
-
-        this.saturation = value;
-        this.UpdateLabels();
-        //this.paletteDesignerModel.UpdatePalettePrimaryShade(this.saturation, this.brightness);
-    }
-
-    partial void OnBrightnessSliderValueChanged(double value)
-    {
-        if (this.isProgrammaticUpdate)
-        {
-            return;
-        }
-
-        this.brightness = value;
-        this.UpdateLabels();
-        //this.paletteDesignerModel.UpdatePalettePrimaryShade(this.saturation, this.brightness);
-    }
-
-    public void UpdateLabels()
-    {
-        this.WheelValue = string.Format("{0:F1} \u00B0", this.wheel);
-        this.SaturationValue = string.Format("{0:F1} %", this.saturation * 100.0);
-        this.BrightnessValue = string.Format("{0:F1} %", this.brightness * 100.0);
-    }
-
-Update: 
-
-        With(ref this.isProgrammaticUpdate, () =>
-        {
-            this.wheel = palette.Primary.Wheel; 
-            this.WheelSliderValue = palette.Primary.Wheel;
-            var primaryColor = palette.Primary.Base.Color;
-
-            this.saturation = primaryColor.S; 
-            this.SaturationSliderValue = primaryColor.S;
-            this.brightness = primaryColor.V;
-            this.BrightnessSliderValue = primaryColor.V;
-            this.UpdateLabels();
-        });
-
-*/
-#endregion Saturation and Brightness sliders 

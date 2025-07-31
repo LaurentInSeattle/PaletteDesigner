@@ -15,4 +15,8 @@
     <ItemGroup>
     <ProjectReference Include="..\Lyt.Avalonia.PaletteDesigner\Lyt.Avalonia.PaletteDesigner.csproj" />
   </ItemGroup>
+
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+      <Exec Command="start /WAIT ..\Tools\prebuild.bat&#xD;&#xA;" />
+    </Target>
 </Project>

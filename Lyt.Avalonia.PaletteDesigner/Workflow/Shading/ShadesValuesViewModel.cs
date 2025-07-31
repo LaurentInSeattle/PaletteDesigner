@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Shading;
 
-using System;
-
 public sealed partial class ShadesValuesViewModel : ViewModel<ShadesValuesView>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;

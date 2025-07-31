@@ -1,0 +1,112 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">बंद करना</system:String>
+
+    <system:String x:Key="Shared.Show">दिखाओ</system:String>
+
+    <system:String x:Key="Shared.Hide">छिपाना</system:String>
+
+    <system:String x:Key="Shared.All">सभी</system:String>
+
+    <system:String x:Key="Shared.Recent">हाल ही का</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">फ़ाइल सिस्टम त्रुटि।</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">डेटा को डिस्क पर सहेज नहीं सका।</system:String>
+
+    <system:String x:Key="Shell.AppName">पैलेट डिजाइनर</system:String>
+
+    <system:String x:Key="Shell.About">के बारे में...</system:String>
+
+    <system:String x:Key="Shell.Exit">छोड़ना</system:String>
+
+    <system:String x:Key="Shell.Close">बंद करना</system:String>
+
+    <system:String x:Key="Shell.Ready">तैयार।</system:String>
+
+    <system:String x:Key="Shell.Greetings">पैलेट डिजाइनर में आपका स्वागत है!</system:String>
+
+    <system:String x:Key="Shell.Settings">सेटिंग</system:String>
+
+    <system:String x:Key="Shell.Language">भाषा</system:String>
+
+    <system:String x:Key="Shell.Design">डिजाइनर</system:String>
+
+    <system:String x:Key="Shell.Dump">गंदी जगह</system:String>
+
+    <system:String x:Key="Design.Toolbar.Export">निर्यात</system:String>
+
+    <system:String x:Key="Design.Toolbar.ExportPalette">एक्सपोर्टपलेट</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Complementary">पूरक</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Triad">तीनों</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.TriadComplementary">ट्रायड शिकायत।</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Square">वर्ग</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Monochromatic">एकरंगा</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Duochromatic">द्वंद्वात्मक</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Trichromatic">तीन रंगो</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Quadrichromatic">चतुष्कोण संबंधी</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.FreeStyle">मुक्त शैली</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Classic">क्लासिक</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.ShadesTints">शेड्स और टिंट्स</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.LockedTogether">एक साथ बंद</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.NoConstraints">कोई बाधा नहीं</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Primary">प्रमुख</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Complementary">लहज़ा</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary1">कलह #1</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary2">कलह #2</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Presets">प्रीसेट</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Values">मान</system:String>
+
+    <system:String x:Key="Design.Palette.WheelHue">पहिया ह्यू</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Rotate">एक साथ घुमाना</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Flip">विरोधाभास</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Reset">शेड्स रीसेट करें</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">मैं MIT लाइसेंस की शर्तों को स्वीकार करता हूं, जारी रखता हूं।</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">लाइसेंस शर्तों</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">यह एप्लिकेशन आपको MIT लाइसेंस की शर्तों के तहत प्रदान किया जाता है।</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">यह एप्लिकेशन आपको MIT लाइसेंस की शर्तों के तहत प्रदान किया जाता है और अन्य शर्तों के साथ, किसी भी तरह की कोई वारंटी नहीं है।  इस सॉफ़्टवेयर का उपयोग करके, आप MIT लाइसेंस के नियमों और शर्तों से पूरी तरह सहमत हैं।</system:String>
+
+    <system:String x:Key="Language.Continue">जारी रखना</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">महत्वपूर्ण अनुस्मारक</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">डाउनलोड की गई छवियों के बारे में याद करने के लिए कुछ महत्वपूर्ण बिंदु ...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">आपको केवल वॉलपेपर के रूप में डाउनलोड की गई छवियों का उपयोग करने की सलाह दी जाती है।  किसी अन्य उपयोग के लिए, वाणिज्यिक या अन्यथा, कृपया कॉपीराइट धारक से संपर्क करें।</system:String>
+
+    <system:String x:Key="Collection.DropZone">ड्रैग एंड ड्रॉप ज़ोन</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">यहां खींचें और फाइलें छोड़ें ...।</system:String>
+
+</ResourceDictionary>

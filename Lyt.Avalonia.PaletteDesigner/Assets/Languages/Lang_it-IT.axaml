@@ -1,0 +1,112 @@
+
+<ResourceDictionary 
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    >
+
+    <system:String x:Key="Toast.Dismiss">Vicino</system:String>
+
+    <system:String x:Key="Shared.Show">Spettacolo</system:String>
+
+    <system:String x:Key="Shared.Hide">Nascondere</system:String>
+
+    <system:String x:Key="Shared.All">Tutto</system:String>
+
+    <system:String x:Key="Shared.Recent">Recente</system:String>
+
+    <system:String x:Key="Shared.FileErrorTitle">Errore del file system.</system:String>
+
+    <system:String x:Key="Shared.FileErrorText">Impossibile salvare i dati sul disco.</system:String>
+
+    <system:String x:Key="Shell.AppName">Palette Designer</system:String>
+
+    <system:String x:Key="Shell.About">Di...</system:String>
+
+    <system:String x:Key="Shell.Exit">Esentato</system:String>
+
+    <system:String x:Key="Shell.Close">Vicino</system:String>
+
+    <system:String x:Key="Shell.Ready">Pronto.</system:String>
+
+    <system:String x:Key="Shell.Greetings">Benvenuti a Palette Designer!</system:String>
+
+    <system:String x:Key="Shell.Settings">Impostazioni</system:String>
+
+    <system:String x:Key="Shell.Language">Lingua</system:String>
+
+    <system:String x:Key="Shell.Design">Designer</system:String>
+
+    <system:String x:Key="Shell.Dump">Scarico</system:String>
+
+    <system:String x:Key="Design.Toolbar.Export">Esportare</system:String>
+
+    <system:String x:Key="Design.Toolbar.ExportPalette">ExportPalette</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Complementary">Complementare</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Triad">Triade</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.TriadComplementary">Triade comp.</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Square">Piazza</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Monochromatic">Monocromatico</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Duochromatic">Duocromatico</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Trichromatic">Tricromatico</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Quadrichromatic">Quadrichromatico</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.FreeStyle">Stile libero</system:String>
+
+    <system:String x:Key="Design.Toolbar.Models.Classic">Classico</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.ShadesTints">Sfumature e tinte</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.LockedTogether">Bloccato insieme</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.NoConstraints">Nessun vincolo</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Primary">Dominante</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Complementary">Accento</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary1">Discord #1</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Secondary2">Discord #2</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Presets">Preset</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Values">Valori</system:String>
+
+    <system:String x:Key="Design.Palette.WheelHue">Tonalità ruota</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Rotate">Ruotare insieme</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Flip">Capovolgi gli opposti</system:String>
+
+    <system:String x:Key="Design.ColorWheel.Reset">Ripristina le tonalità</system:String>
+
+    <system:String x:Key="Intro.AgreeMIT">Accetto i termini della licenza del MIT, continua.</system:String>
+
+    <system:String x:Key="Intro.LicenseTitle">Termini di licenza</system:String>
+
+    <system:String x:Key="Intro.LicenseSubtitle">Questa domanda è fornita ai termini della licenza MIT.</system:String>
+
+    <system:String x:Key="Intro.LicenseTerms">Questa domanda è fornita ai termini della licenza MIT e, insieme ad altri termini, non implica alcuna garanzia di alcun tipo.  Utilizzando questo software, si accetta pienamente i termini e le condizioni della licenza MIT.</system:String>
+
+    <system:String x:Key="Language.Continue">Continuare</system:String>
+
+    <system:String x:Key="Settings.ReminderTitle">Promemoria importante</system:String>
+
+    <system:String x:Key="Settings.ReminderSubtitle">Alcuni punti importanti da ricordare sulle immagini scaricate ...</system:String>
+
+    <system:String x:Key="Settings.ReminderText">Si consiglia di utilizzare le immagini scaricate solo come sfondo.  Per qualsiasi altro utilizzo, commerciale o in altro modo, si prega di contattare il titolare del copyright.</system:String>
+
+    <system:String x:Key="Collection.DropZone">Trascinare e rilasciare la zona</system:String>
+
+    <system:String x:Key="Collection.DropZoneHelp">Trascina e lascia cadere i file qui a ....</system:String>
+
+</ResourceDictionary>
