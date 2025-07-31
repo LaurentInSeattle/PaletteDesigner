@@ -41,7 +41,7 @@
 
     <system:String x:Key="Design.Toolbar.Export">出口</system:String>
 
-    <system:String x:Key="Design.Toolbar.ExportPalette">导出</system:String>
+    <system:String x:Key="Design.Toolbar.ExportPalette">导出调色板</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Complementary">补充</system:String>
 

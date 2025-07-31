@@ -31,22 +31,30 @@
     <ControlTheme x:Key="Title" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
         <Setter Property="FontSize" Value="{StaticResource Title.FontSize}" />
         <Setter Property="FontWeight" Value="DemiBold" />
-    </ControlTheme>
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Foreground" Value="{StaticResource Primary.TextColor}" />
+	</ControlTheme>
 
     <ControlTheme x:Key="H1" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
         <Setter Property="FontSize" Value="{StaticResource H1.FontSize}" />
         <Setter Property="FontWeight" Value="DemiBold" />
-    </ControlTheme>
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Foreground" Value="{StaticResource Primary.TextColor}" />
+	</ControlTheme>
 
     <ControlTheme x:Key="H2" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
         <Setter Property="FontSize" Value="{StaticResource H2.FontSize}" />
         <Setter Property="FontWeight" Value="DemiBold" />
-    </ControlTheme>
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Foreground" Value="{StaticResource Primary.TextColor}" />
+	</ControlTheme>
 
     <ControlTheme x:Key="H3" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
         <Setter Property="FontSize" Value="{StaticResource H3.FontSize}" />
         <Setter Property="FontWeight" Value="DemiBold" />
-    </ControlTheme>
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Foreground" Value="{StaticResource Primary.TextColor}" />
+	</ControlTheme>
 
     <ControlTheme x:Key="Data" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
         <Setter Property="FontSize" Value="{StaticResource H1.FontSize}" />
@@ -60,31 +68,41 @@
 		<Setter Property="FontSize" Value="{StaticResource ExtraLarge.FontSize}" />
 		<Setter Property="HorizontalAlignment" Value="Left" />
 		<Setter Property="TextAlignment" Value="Left" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Foreground" Value="{StaticResource Primary.TextColor}" />
 	</ControlTheme>
 
 	<ControlTheme x:Key="Large" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
         <Setter Property="FontSize" Value="{StaticResource Large.FontSize}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="TextAlignment" Value="Left" />
-    </ControlTheme>
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Foreground" Value="{StaticResource Primary.TextColor}" />
+	</ControlTheme>
 
     <ControlTheme x:Key="Medium" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
         <Setter Property="FontSize" Value="{StaticResource Medium.FontSize}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="TextAlignment" Value="Left" />
-    </ControlTheme>
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Foreground" Value="{StaticResource Primary.TextColor}" />
+	</ControlTheme>
 
     <ControlTheme x:Key="Small" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
         <Setter Property="FontSize" Value="{StaticResource Small.FontSize}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="TextAlignment" Value="Left" />
-    </ControlTheme>
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Foreground" Value="{StaticResource Primary.TextColor}" />
+	</ControlTheme>
 
 	<ControlTheme x:Key="LargeMono" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
 		<Setter Property="FontFamily" Value="{StaticResource Monospaced}" />
 		<Setter Property="FontSize" Value="{StaticResource Large.FontSize}" />
 		<Setter Property="HorizontalAlignment" Value="Left" />
 		<Setter Property="TextAlignment" Value="Left" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Foreground" Value="{StaticResource Primary.TextColor}" />
 	</ControlTheme>
 
 	<ControlTheme x:Key="MediumMono" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
@@ -92,6 +110,8 @@
 		<Setter Property="FontSize" Value="{StaticResource Medium.FontSize}" />
 		<Setter Property="HorizontalAlignment" Value="Left" />
 		<Setter Property="TextAlignment" Value="Left" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Foreground" Value="{StaticResource Primary.TextColor}" />
 	</ControlTheme>
 
 	<ControlTheme x:Key="SmallMono" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
@@ -99,6 +119,8 @@
 		<Setter Property="FontSize" Value="{StaticResource Small.FontSize}" />
 		<Setter Property="HorizontalAlignment" Value="Left" />
 		<Setter Property="TextAlignment" Value="Left" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Foreground" Value="{StaticResource Primary.TextColor}" />
 	</ControlTheme>
 	
 	<ControlTheme x:Key="Alert" TargetType="TextBlock" BasedOn="{StaticResource TextBlockBase}">
@@ -107,5 +129,7 @@
         <Setter Property="Foreground" Value="{StaticResource Alert.TextColor}" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="TextAlignment" Value="Left" />
-    </ControlTheme>
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Foreground" Value="{StaticResource Primary.TextColor}" />
+	</ControlTheme>
 </ResourceDictionary>

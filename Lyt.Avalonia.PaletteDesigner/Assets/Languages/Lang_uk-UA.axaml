@@ -41,7 +41,7 @@
 
     <system:String x:Key="Design.Toolbar.Export">Експорт</system:String>
 
-    <system:String x:Key="Design.Toolbar.ExportPalette">Експортпалета</system:String>
+    <system:String x:Key="Design.Toolbar.ExportPalette">Експортна палітра</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Complementary">Додатковий</system:String>
 

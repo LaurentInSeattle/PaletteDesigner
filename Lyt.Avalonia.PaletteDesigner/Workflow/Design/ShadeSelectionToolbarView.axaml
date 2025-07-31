@@ -30,13 +30,13 @@
 			<ColumnDefinition Width="112" />
 			<ColumnDefinition Width="112" />
 			<!-- Spacer -->
-			<ColumnDefinition Width="4" />
+			<ColumnDefinition Width="8" />
 			<!-- Presets-->
-			<ColumnDefinition Width="200" />
+			<ColumnDefinition Width="220" />
 			<!-- Spacer -->
-			<ColumnDefinition Width="4" />
+			<ColumnDefinition Width="16" />
 			<!-- Values-->
-			<ColumnDefinition Width="200" />
+			<ColumnDefinition Width="220" />
 			<ColumnDefinition Width="48" />
 			<ColumnDefinition Width="48" />
 			<ColumnDefinition Width="48" />
@@ -166,86 +166,47 @@
 			</glyphs:GlyphButton.XamlContent>
 		</glyphs:GlyphButton>
 
-		<Rectangle
-			Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
-			Margin="8 0 8 0"
-			VerticalAlignment="Center" HorizontalAlignment="Left"
-			Height="1" Width="40"
-			Fill="{StaticResource PastelOrchid_0_080_Color}"
-			Opacity="0.3"
-			/>
-		<Rectangle
+		<controls:ExtendedTextBlock
 			Grid.Column="0" Grid.ColumnSpan="7" Grid.Row="1"
-			Margin="8 0 8 0"
-			VerticalAlignment="Center" HorizontalAlignment="Right"
-			Height="1" Width="510"
-			Fill="{StaticResource PastelOrchid_0_080_Color}"
-			Opacity="0.3"
-			/>
-		<TextBlock
-			Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
 			Text="{DynamicResource Design.Toolbar.Shade.ShadesTints}"
-			Margin="0 0 0 0"
-			Theme="{StaticResource Medium}"
-			TextAlignment="Center"
-			HorizontalAlignment="Center"
+			Typography="{StaticResource Medium}"
 			/>
+
+		<controls:ExtendedTextBlock
+			Grid.Column="8" Grid.ColumnSpan="1" Grid.Row="1"
+			Text="{DynamicResource Design.Toolbar.Shade.Presets}"
+			Typography="{StaticResource Medium}"
+			/>
+
 		<toggle:ToggleSwitch
 			Grid.Row="0" Grid.Column="8" 
 			Margin="0 -10 0 0"
 			Style="{StaticResource StandardToggleSwitch}"
 			TrueText="{DynamicResource Shared.Show}"
 			FalseText="{DynamicResource Shared.Hide}"
-			Height="30" Width="200"
+			Height="30" Width="220"
 			HorizontalAlignment="Center" VerticalAlignment="Center"
 			Value="{Binding ShowShadesPresets}"
 			/>
-		<Rectangle
-			Grid.Column="8" Grid.Row="1"
-			Margin="8 0 8 0"
-			VerticalAlignment="Center" HorizontalAlignment="Left"
-			Height="1" Width="60"
-			Fill="{StaticResource PastelOrchid_0_080_Color}"
-			Opacity="0.3"
+
+
+		<controls:ExtendedTextBlock
+			Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="1"
+			Text="{DynamicResource Design.Toolbar.Shade.Values}"
+			Typography="{StaticResource Medium}"
 			/>
-		<Rectangle
-			Grid.Column="8" Grid.Row="1"
-			Margin="8 0 8 0"
-			VerticalAlignment="Center" HorizontalAlignment="Right"
-			Height="1" Width="60"
-			Fill="{StaticResource PastelOrchid_0_080_Color}"
-			Opacity="0.3"
-			/>
-		<TextBlock
-			Grid.Row="1" Grid.Column="8" 
-			Text="{DynamicResource Design.Toolbar.Shade.Presets}"
-			Margin="0 0 0 0"
-			Theme="{StaticResource Medium}"
-			TextAlignment="Center"
-			HorizontalAlignment="Center"
-			/>
+
 		<toggle:ToggleSwitch
 			Grid.Row="0" Grid.Column="10"
 			Margin="0 -10 0 0"
 			Style="{StaticResource StandardToggleSwitch}"
 			TrueText="{DynamicResource Shared.Show}"
 			FalseText="{DynamicResource Shared.Hide}"
-			Height="30" Width="200"
+			Height="30" Width="220"
 			HorizontalAlignment="Center" VerticalAlignment="Center"
 			Value="{Binding ShowShadesValues}"
 			/>
-		<Rectangle
-			Grid.Column="10" Grid.Row="1"
-			Margin="8 0 8 0"
-			VerticalAlignment="Center" HorizontalAlignment="Left"
-			Height="1" Width="120"
-			Fill="{StaticResource PastelOrchid_0_080_Color}"
-			Opacity="0.3"
-			/>
-		<!-- Display mode 
-			IsVisible="{Binding IsSecondary2Visible}"
-			IsDisabled="{Binding IsShadingDisabled}"		
-		-->
+
 		<glyphs:SelectionGroup x:Name="ShadesDisplaySelectionGroup" />
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
@@ -293,21 +254,6 @@
 			Command="{Binding OnDisplayMode}"
 			CommandParameter="Decimal"
 			/>
-		<Rectangle
-			Grid.Column="10" Grid.Row="1" Grid.ColumnSpan="4"
-			Margin="8 0 8 0"
-			VerticalAlignment="Center" HorizontalAlignment="Right"
-			Height="1" Width="120"
-			Fill="{StaticResource PastelOrchid_0_080_Color}"
-			Opacity="0.3"
-			/>
-		<TextBlock
-			Grid.Row="1" Grid.Column="10" Grid.ColumnSpan="4"
-			Text="{DynamicResource Design.Toolbar.Shade.Values}"
-			Margin="0 0 0 0"
-			Theme="{StaticResource Medium}"
-			TextAlignment="Center"
-			HorizontalAlignment="Center"
-			/>
+
 	</Grid>
 </UserControl>

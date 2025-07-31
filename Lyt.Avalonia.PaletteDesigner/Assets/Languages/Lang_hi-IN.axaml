@@ -41,7 +41,7 @@
 
     <system:String x:Key="Design.Toolbar.Export">निर्यात</system:String>
 
-    <system:String x:Key="Design.Toolbar.ExportPalette">एक्सपोर्टपलेट</system:String>
+    <system:String x:Key="Design.Toolbar.ExportPalette">निर्यात पैलेट</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Complementary">पूरक</system:String>
 

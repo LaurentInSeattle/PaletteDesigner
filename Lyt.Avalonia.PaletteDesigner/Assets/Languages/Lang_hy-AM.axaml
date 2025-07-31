@@ -41,7 +41,7 @@
 
     <system:String x:Key="Design.Toolbar.Export">Արտահանում</system:String>
 
-    <system:String x:Key="Design.Toolbar.ExportPalette">Արտահանում</system:String>
+    <system:String x:Key="Design.Toolbar.ExportPalette">Արտահանման պալիտրա</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Complementary">Լրացուցիչ</system:String>
 

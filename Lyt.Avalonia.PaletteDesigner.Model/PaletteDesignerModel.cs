@@ -173,5 +173,6 @@ public sealed partial class PaletteDesignerModel : ModelBase
     {
         this.Language = languageKey;
         this.localizer.SelectLanguage(languageKey);
+        this.Save();
     }
 }

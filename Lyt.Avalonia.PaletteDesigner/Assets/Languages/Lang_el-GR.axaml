@@ -41,7 +41,7 @@
 
     <system:String x:Key="Design.Toolbar.Export">Εξαγωγή</system:String>
 
-    <system:String x:Key="Design.Toolbar.ExportPalette">Εξαγωγή</system:String>
+    <system:String x:Key="Design.Toolbar.ExportPalette">Παλέτα εξαγωγής</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Complementary">Συμπληρωματικός</system:String>
 

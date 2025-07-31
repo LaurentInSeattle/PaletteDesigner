@@ -19,27 +19,25 @@
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<!-- Classic -->
-			<ColumnDefinition Width="112" />
-			<ColumnDefinition Width="112" />
-			<ColumnDefinition Width="112" />
-			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="120" />
+			<ColumnDefinition Width="120" />
+			<ColumnDefinition Width="120" />
+			<ColumnDefinition Width="120" />
 			<!-- Spacer -->
-			<ColumnDefinition Width="22" />
+			<ColumnDefinition Width="20" />
 			<!-- Free Style -->
-			<ColumnDefinition Width="112" />
-			<ColumnDefinition Width="112" />
-			<ColumnDefinition Width="112" />
-			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="120" />
+			<ColumnDefinition Width="120" />
+			<ColumnDefinition Width="120" />
+			<ColumnDefinition Width="120" />
 		</Grid.ColumnDefinitions>
 		<glyphs:SelectionGroup x:Name="SelectionGroup" />
 		<!-- Classic -->
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
-			Behaviour="Tap"
 			Grid.Column="0"
 			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="100" Height="60"
-			Margin="0"
+			Width="116" Height="60"
 			ButtonBackground="BorderlessRectangle"
 			Text="{DynamicResource Design.Toolbar.Models.Complementary}"
 			Group="{Binding ElementName=SelectionGroup}"
@@ -53,11 +51,9 @@
 
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
-			Behaviour="Tap"
 			Grid.Column="1"
 			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="100" Height="60"
-			Margin="0"
+			Width="116" Height="60"
 			ButtonBackground="BorderlessRectangle"
 			Text="{DynamicResource Design.Toolbar.Models.Triad}"
 			Group="{Binding ElementName=SelectionGroup}"
@@ -71,11 +67,9 @@
 
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
-			Behaviour="Tap"
 			Grid.Column="2"
 			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="100" Height="60"
-			Margin="0"
+			Width="116" Height="60"
 			ButtonBackground="BorderlessRectangle"
 			Text="{DynamicResource Design.Toolbar.Models.TriadComplementary}"
 			Group="{Binding ElementName=SelectionGroup}"
@@ -90,11 +84,9 @@
 
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
-			Behaviour="Tap"
 			Grid.Column="3"
 			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="100" Height="60"
-			Margin="0"
+			Width="116" Height="60"
 			ButtonBackground="BorderlessRectangle"
 			Text="{DynamicResource Design.Toolbar.Models.Square}"
 			Group="{Binding ElementName=SelectionGroup}"
@@ -106,39 +98,18 @@
 			</glyphs:GlyphButton.XamlContent>
 		</glyphs:GlyphButton>
 
-		<Rectangle
-			Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
-			Margin="8 0 8 0"
-			VerticalAlignment="Center" HorizontalAlignment="Left"
-			Height="1" Width="160"
-			Fill="{StaticResource PastelOrchid_0_080_Color}"
-			Opacity="0.3"
-			/>
-		<Rectangle
-			Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1"
-			Margin="8 0 8 0"
-			VerticalAlignment="Center" HorizontalAlignment="Right"
-			Height="1" Width="160"
-			Fill="{StaticResource PastelOrchid_0_080_Color}"
-			Opacity="0.3"
-			/>
-		<TextBlock
-			Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
+		<controls:ExtendedTextBlock
+			Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1"
 			Text="{DynamicResource Design.Toolbar.Models.Classic}"
-			Margin="0 0 0 0"
-			Theme="{StaticResource Medium}"
-			TextAlignment="Center"
-			HorizontalAlignment="Center"
+			Typography="{StaticResource Medium}"
 			/>
-
+		
 		<!-- Free Style -->
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
-			Behaviour="Tap"
 			Grid.Column="5"
 			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="100" Height="60"
-			Margin="0"
+			Width="116" Height="60"
 			ButtonBackground="BorderlessRectangle"
 			Text="{DynamicResource Design.Toolbar.Models.Monochromatic}"
 			Group="{Binding ElementName=SelectionGroup}"
@@ -155,8 +126,7 @@
 			Behaviour="Tap"
 			Grid.Column="6"
 			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="100" Height="60"
-			Margin="0"
+			Width="116" Height="60"
 			ButtonBackground="BorderlessRectangle"
 			Text="{DynamicResource Design.Toolbar.Models.Duochromatic}"
 			Group="{Binding ElementName=SelectionGroup}"
@@ -170,11 +140,9 @@
 
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
-			Behaviour="Tap"
 			Grid.Column="7"
 			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="100" Height="60"
-			Margin="0"
+			Width="116" Height="60"
 			ButtonBackground="BorderlessRectangle"
 			Text="{DynamicResource Design.Toolbar.Models.Trichromatic}"
 			Group="{Binding ElementName=SelectionGroup}"
@@ -188,11 +156,9 @@
 
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
-			Behaviour="Tap"
 			Grid.Column="8"
 			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="100" Height="60"
-			Margin="0"
+			Width="116" Height="60"
 			ButtonBackground="BorderlessRectangle"
 			Text="{DynamicResource Design.Toolbar.Models.Quadrichromatic}"
 			Group="{Binding ElementName=SelectionGroup}"
@@ -204,29 +170,10 @@
 			</glyphs:GlyphButton.XamlContent>
 		</glyphs:GlyphButton>
 
-		<Rectangle
-			Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="1"
-			Margin="8 0 8 0"
-			VerticalAlignment="Center" HorizontalAlignment="Left"
-			Height="1" Width="160"
-			Fill="{StaticResource PastelOrchid_0_080_Color}"
-			Opacity="0.3"
-			/>
-		<Rectangle
-			Grid.Column="7" Grid.ColumnSpan="2" Grid.Row="1"
-			Margin="8 0 8 0"
-			VerticalAlignment="Center" HorizontalAlignment="Right"
-			Height="1" Width="160"
-			Fill="{StaticResource PastelOrchid_0_080_Color}"
-			Opacity="0.3"
-			/>
-		<TextBlock
-			Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="4"
+		<controls:ExtendedTextBlock
+			Grid.Column="5" Grid.ColumnSpan="4" Grid.Row="1"
 			Text="{DynamicResource Design.Toolbar.Models.FreeStyle}"
-			Margin="0 0 0 0"
-			Theme="{StaticResource Medium}"
-			TextAlignment="Center"
-			HorizontalAlignment="Center"
+			Typography="{StaticResource Medium}"
 			/>
 	</Grid>
 </UserControl>

@@ -41,7 +41,7 @@
 
     <system:String x:Key="Design.Toolbar.Export">Esportare</system:String>
 
-    <system:String x:Key="Design.Toolbar.ExportPalette">ExportPalette</system:String>
+    <system:String x:Key="Design.Toolbar.ExportPalette">Tavolozza di esportazione</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Complementary">Complementare</system:String>
 

@@ -52,7 +52,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         }
 
         // Select default language 
-        string preferredLanguage = "en-US" ; // this.astroPicModel.Language;
+        string preferredLanguage = this.paletteDesignerModel.Language;
         this.Logger.Debug("Language: " + preferredLanguage);
         this.Localizer.SelectLanguage(preferredLanguage);
         Thread.CurrentThread.CurrentCulture = new CultureInfo(preferredLanguage);
@@ -169,7 +169,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
             throw new Exception("No view selector");
         }
 
-        var newViewModel = this.viewSelector.CurrentPrimaryViewModel;
+        // var newViewModel = this.viewSelector.CurrentPrimaryViewModel;
         //if (newViewModel is not null)
         //{
         //    bool mainToolbarIsHidden =

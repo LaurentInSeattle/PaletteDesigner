@@ -41,7 +41,7 @@
 
     <system:String x:Key="Design.Toolbar.Export">রফতানি</system:String>
 
-    <system:String x:Key="Design.Toolbar.ExportPalette">এক্সপোর্টপ্যালেট</system:String>
+    <system:String x:Key="Design.Toolbar.ExportPalette">রফতানি প্যালেট</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Complementary">পরিপূরক</system:String>
 
