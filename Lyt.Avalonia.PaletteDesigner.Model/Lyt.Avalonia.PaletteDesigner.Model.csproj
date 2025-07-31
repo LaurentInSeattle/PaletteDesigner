@@ -17,8 +17,12 @@
   <ItemGroup>
     <None Remove="Resources\ColorWheel.json" />
     <None Remove="Resources\PaletteExportTemplates\AvaloniaPaletteTemplate.txt" />
+    <None Remove="Resources\ShadesPresets\Contrasted.json" />
     <None Remove="Resources\ShadesPresets\Dark.json" />
+    <None Remove="Resources\ShadesPresets\DarkGray.json" />
     <None Remove="Resources\ShadesPresets\Deep.json" />
+    <None Remove="Resources\ShadesPresets\Intense.json" />
+    <None Remove="Resources\ShadesPresets\LightGray.json" />
     <None Remove="Resources\ShadesPresets\LightPastels.json" />
     <None Remove="Resources\ShadesPresets\Medium.json" />
     <None Remove="Resources\ShadesPresets\MutedPastels.json" />
@@ -30,8 +34,12 @@
     <EmbeddedResource Include="Resources\PaletteExportTemplates\CssPaletteTemplate.txt" />
     <EmbeddedResource Include="Resources\PaletteExportTemplates\MsftXamlPaletteTemplate.txt" />
     <EmbeddedResource Include="Resources\PaletteExportTemplates\AvaloniaPaletteTemplate.txt" />
+    <EmbeddedResource Include="Resources\ShadesPresets\Contrasted.json" />
     <EmbeddedResource Include="Resources\ShadesPresets\Dark.json" />
+    <EmbeddedResource Include="Resources\ShadesPresets\DarkGray.json" />
     <EmbeddedResource Include="Resources\ShadesPresets\Deep.json" />
+    <EmbeddedResource Include="Resources\ShadesPresets\Intense.json" />
+    <EmbeddedResource Include="Resources\ShadesPresets\LightGray.json" />
     <EmbeddedResource Include="Resources\ShadesPresets\LightPastels.json" />
     <EmbeddedResource Include="Resources\ShadesPresets\Medium.json" />
     <EmbeddedResource Include="Resources\ShadesPresets\MutedPastels.json" />

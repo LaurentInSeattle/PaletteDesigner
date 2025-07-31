@@ -261,6 +261,7 @@
 			Width="40" Height="32"
 			Margin="0 -8 0 0"
 			ButtonBackground="BorderlessRectangle"
+			IsSelected="True"
 			Group="{Binding ElementName=ShadesDisplaySelectionGroup}"
 			Command="{Binding OnDisplayMode}"
 			CommandParameter="Hex"
