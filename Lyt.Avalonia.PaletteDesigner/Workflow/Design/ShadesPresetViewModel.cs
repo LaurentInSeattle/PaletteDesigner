@@ -1,14 +1,12 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Design;
 
-using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
-
 public sealed partial class ShadesPresetViewModel : ViewModel<ShadesPresetView>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
     private readonly ShadesPreset shadesPreset;
 
     [ObservableProperty]
-    private string presetName;
+    private string presetName = string.Empty;
 
     [ObservableProperty]
     private MiniPaletteViewModel miniPaletteViewModel;
@@ -19,10 +17,11 @@ public sealed partial class ShadesPresetViewModel : ViewModel<ShadesPresetView>
         this.shadesPreset = ShadesPreset.FromSizeIndependant(shadesPreset);
 
         this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated);
+        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
         this.MiniPaletteViewModel = new();
 
-        // TODO: Localize preset name 
-        this.PresetName = shadesPreset.Name;
+        // Localize preset name 
+        this.OnLanguageChanged();
     }
 
     public Palette Palette =>
@@ -40,4 +39,9 @@ public sealed partial class ShadesPresetViewModel : ViewModel<ShadesPresetView>
         palette.ApplyShadesPreset(this.shadesPreset);
         this.MiniPaletteViewModel.Update(palette);
     }
+
+    private void OnLanguageChanged(LanguageChangedMessage? _ = null)
+        // Localize preset name 
+        => this.PresetName = this.Localize(
+            string.Concat("Design.Preset.", shadesPreset.Name));
 }

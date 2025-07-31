@@ -79,6 +79,26 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">Προετοιμασία</system:String>
 
+    <system:String x:Key="Design.Preset.Contrasted">Αντιπαραθέτης</system:String>
+
+    <system:String x:Key="Design.Preset.Dark">Σκοτάδι</system:String>
+
+    <system:String x:Key="Design.Preset.Dark Gray">Σκούρο γκρι</system:String>
+
+    <system:String x:Key="Design.Preset.Deep">Βαθύς</system:String>
+
+    <system:String x:Key="Design.Preset.Intense">Εντονος</system:String>
+
+    <system:String x:Key="Design.Preset.Light Gray">Ανοιχτό γκρι</system:String>
+
+    <system:String x:Key="Design.Preset.Light Pastels">Ελαφριά παστέλ</system:String>
+
+    <system:String x:Key="Design.Preset.Medium">Μέσον</system:String>
+
+    <system:String x:Key="Design.Preset.Muted Pastels">Σίγαση παστέλ</system:String>
+
+    <system:String x:Key="Design.Preset.Shiny">Λαμπερός</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Values">Τιμές</system:String>
 
     <system:String x:Key="Design.Palette.WheelHue">Χορό</system:String>

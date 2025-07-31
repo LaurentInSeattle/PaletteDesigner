@@ -79,6 +79,26 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">प्रीसेट</system:String>
 
+    <system:String x:Key="Design.Preset.Contrasted">विषम</system:String>
+
+    <system:String x:Key="Design.Preset.Dark">अँधेरा</system:String>
+
+    <system:String x:Key="Design.Preset.Dark Gray">अंधेरे भूरा</system:String>
+
+    <system:String x:Key="Design.Preset.Deep">गहरा</system:String>
+
+    <system:String x:Key="Design.Preset.Intense">गहन</system:String>
+
+    <system:String x:Key="Design.Preset.Light Gray">हल्का ग्रे</system:String>
+
+    <system:String x:Key="Design.Preset.Light Pastels">लाइट पेस्टल</system:String>
+
+    <system:String x:Key="Design.Preset.Medium">मध्यम</system:String>
+
+    <system:String x:Key="Design.Preset.Muted Pastels">म्यूट पेस्टल</system:String>
+
+    <system:String x:Key="Design.Preset.Shiny">चमकदार</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Values">मान</system:String>
 
     <system:String x:Key="Design.Palette.WheelHue">पहिया ह्यू</system:String>

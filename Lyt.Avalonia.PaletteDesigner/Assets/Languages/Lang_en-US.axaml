@@ -1,4 +1,4 @@
-<ResourceDictionary 
+<ResourceDictionary
 	xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:system="clr-namespace:System;assembly=System.Runtime"
@@ -34,7 +34,7 @@
 	<system:String x:Key="Design.Toolbar.Models.Complementary">Complementary</system:String>
 	<system:String x:Key="Design.Toolbar.Models.Triad">Triad</system:String>
 	<system:String x:Key="Design.Toolbar.Models.TriadComplementary">Triad Compl.</system:String>
-	<system:String x:Key="Design.Toolbar.Models.Square">Square</system:String>	
+	<system:String x:Key="Design.Toolbar.Models.Square">Square</system:String>
 	<system:String x:Key="Design.Toolbar.Models.Monochromatic">Monochromatic</system:String>
 	<system:String x:Key="Design.Toolbar.Models.Duochromatic">Duochromatic</system:String>
 	<system:String x:Key="Design.Toolbar.Models.Trichromatic">Trichromatic</system:String>
@@ -51,6 +51,17 @@
 	<system:String x:Key="Design.Toolbar.Shade.Secondary2">Discord #2</system:String>
 
 	<system:String x:Key="Design.Toolbar.Shade.Presets">Presets</system:String>
+	<system:String x:Key="Design.Preset.Contrasted">Contrasted</system:String>
+	<system:String x:Key="Design.Preset.Dark">Dark</system:String>
+	<system:String x:Key="Design.Preset.Dark Gray">Dark Gray</system:String>
+	<system:String x:Key="Design.Preset.Deep">Deep</system:String>
+	<system:String x:Key="Design.Preset.Intense">Intense</system:String>
+	<system:String x:Key="Design.Preset.Light Gray">Light Gray</system:String>
+	<system:String x:Key="Design.Preset.Light Pastels">Light Pastels</system:String>
+	<system:String x:Key="Design.Preset.Medium">Medium</system:String>
+	<system:String x:Key="Design.Preset.Muted Pastels">Muted Pastels</system:String>
+	<system:String x:Key="Design.Preset.Shiny">Shiny</system:String>
+
 	<system:String x:Key="Design.Toolbar.Shade.Values">Values</system:String>
 
 	<system:String x:Key="Design.Palette.WheelHue">Wheel Hue</system:String>

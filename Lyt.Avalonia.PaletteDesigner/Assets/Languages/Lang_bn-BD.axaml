@@ -79,6 +79,26 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">প্রিসেটস</system:String>
 
+    <system:String x:Key="Design.Preset.Contrasted">বিপরীতে</system:String>
+
+    <system:String x:Key="Design.Preset.Dark">অন্ধকার</system:String>
+
+    <system:String x:Key="Design.Preset.Dark Gray">গা dark ় ধূসর</system:String>
+
+    <system:String x:Key="Design.Preset.Deep">গভীর</system:String>
+
+    <system:String x:Key="Design.Preset.Intense">তীব্র</system:String>
+
+    <system:String x:Key="Design.Preset.Light Gray">হালকা ধূসর</system:String>
+
+    <system:String x:Key="Design.Preset.Light Pastels">হালকা প্যাস্টেল</system:String>
+
+    <system:String x:Key="Design.Preset.Medium">মাধ্যম</system:String>
+
+    <system:String x:Key="Design.Preset.Muted Pastels">নিঃশব্দ প্যাস্টেলস</system:String>
+
+    <system:String x:Key="Design.Preset.Shiny">চকচকে</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Values">মান</system:String>
 
     <system:String x:Key="Design.Palette.WheelHue">হুইল হিউ</system:String>

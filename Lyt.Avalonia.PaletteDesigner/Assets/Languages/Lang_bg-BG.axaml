@@ -79,6 +79,26 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">Предварително зададени</system:String>
 
+    <system:String x:Key="Design.Preset.Contrasted">Контрастиран</system:String>
+
+    <system:String x:Key="Design.Preset.Dark">Тъмно</system:String>
+
+    <system:String x:Key="Design.Preset.Dark Gray">Тъмно сиво</system:String>
+
+    <system:String x:Key="Design.Preset.Deep">Дълбоко</system:String>
+
+    <system:String x:Key="Design.Preset.Intense">Интензивен</system:String>
+
+    <system:String x:Key="Design.Preset.Light Gray">Светло сиво</system:String>
+
+    <system:String x:Key="Design.Preset.Light Pastels">Леки пастели</system:String>
+
+    <system:String x:Key="Design.Preset.Medium">Среден</system:String>
+
+    <system:String x:Key="Design.Preset.Muted Pastels">Приглушени пастели</system:String>
+
+    <system:String x:Key="Design.Preset.Shiny">Лъскав</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Values">Стойности</system:String>
 
     <system:String x:Key="Design.Palette.WheelHue">Оттенък на колелото</system:String>

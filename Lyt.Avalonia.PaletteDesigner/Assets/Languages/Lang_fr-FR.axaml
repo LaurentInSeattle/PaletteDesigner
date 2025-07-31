@@ -79,6 +79,26 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">Préréglages</system:String>
 
+    <system:String x:Key="Design.Preset.Contrasted">Contrasté</system:String>
+
+    <system:String x:Key="Design.Preset.Dark">Sombre</system:String>
+
+    <system:String x:Key="Design.Preset.Dark Gray">Gris foncé</system:String>
+
+    <system:String x:Key="Design.Preset.Deep">Profond</system:String>
+
+    <system:String x:Key="Design.Preset.Intense">Intense</system:String>
+
+    <system:String x:Key="Design.Preset.Light Gray">Gris clair</system:String>
+
+    <system:String x:Key="Design.Preset.Light Pastels">Pastels légers</system:String>
+
+    <system:String x:Key="Design.Preset.Medium">Moyen</system:String>
+
+    <system:String x:Key="Design.Preset.Muted Pastels">Pastels en sourdine</system:String>
+
+    <system:String x:Key="Design.Preset.Shiny">Brillant</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Values">Valeurs</system:String>
 
     <system:String x:Key="Design.Palette.WheelHue">Teinte de la Roue</system:String>

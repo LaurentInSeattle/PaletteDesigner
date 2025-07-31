@@ -79,6 +79,26 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">Előre beállított</system:String>
 
+    <system:String x:Key="Design.Preset.Contrasted">Ellentmondásos</system:String>
+
+    <system:String x:Key="Design.Preset.Dark">Sötét</system:String>
+
+    <system:String x:Key="Design.Preset.Dark Gray">Sötétszürke</system:String>
+
+    <system:String x:Key="Design.Preset.Deep">Mély</system:String>
+
+    <system:String x:Key="Design.Preset.Intense">Erős</system:String>
+
+    <system:String x:Key="Design.Preset.Light Gray">Világosszürke</system:String>
+
+    <system:String x:Key="Design.Preset.Light Pastels">Könnyű pasztell</system:String>
+
+    <system:String x:Key="Design.Preset.Medium">Közepes</system:String>
+
+    <system:String x:Key="Design.Preset.Muted Pastels">Néma pasztell</system:String>
+
+    <system:String x:Key="Design.Preset.Shiny">Fényes</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Values">Értékek</system:String>
 
     <system:String x:Key="Design.Palette.WheelHue">Kerekes árnyalat</system:String>

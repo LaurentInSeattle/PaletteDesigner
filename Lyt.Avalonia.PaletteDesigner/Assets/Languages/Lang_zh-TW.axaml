@@ -79,6 +79,26 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">預設</system:String>
 
+    <system:String x:Key="Design.Preset.Contrasted">對比</system:String>
+
+    <system:String x:Key="Design.Preset.Dark">黑暗的</system:String>
+
+    <system:String x:Key="Design.Preset.Dark Gray">深灰色</system:String>
+
+    <system:String x:Key="Design.Preset.Deep">深的</system:String>
+
+    <system:String x:Key="Design.Preset.Intense">激烈的</system:String>
+
+    <system:String x:Key="Design.Preset.Light Gray">淺灰色</system:String>
+
+    <system:String x:Key="Design.Preset.Light Pastels">輕型粉彩</system:String>
+
+    <system:String x:Key="Design.Preset.Medium">中等的</system:String>
+
+    <system:String x:Key="Design.Preset.Muted Pastels">柔和的粉彩</system:String>
+
+    <system:String x:Key="Design.Preset.Shiny">閃亮的</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Values">值</system:String>
 
     <system:String x:Key="Design.Palette.WheelHue">車輪色調</system:String>

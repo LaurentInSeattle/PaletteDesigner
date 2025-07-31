@@ -79,6 +79,26 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">Preimpostazioni</system:String>
 
+    <system:String x:Key="Design.Preset.Contrasted">Contrastato</system:String>
+
+    <system:String x:Key="Design.Preset.Dark">Buio</system:String>
+
+    <system:String x:Key="Design.Preset.Dark Gray">Grigio scuro</system:String>
+
+    <system:String x:Key="Design.Preset.Deep">Profondo</system:String>
+
+    <system:String x:Key="Design.Preset.Intense">Intenso</system:String>
+
+    <system:String x:Key="Design.Preset.Light Gray">Grigio chiaro</system:String>
+
+    <system:String x:Key="Design.Preset.Light Pastels">Pastoli leggeri</system:String>
+
+    <system:String x:Key="Design.Preset.Medium">Medio</system:String>
+
+    <system:String x:Key="Design.Preset.Muted Pastels">Pastoli silenziosi</system:String>
+
+    <system:String x:Key="Design.Preset.Shiny">Lucido</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Values">Valori</system:String>
 
     <system:String x:Key="Design.Palette.WheelHue">Tonalità Ruota</system:String>

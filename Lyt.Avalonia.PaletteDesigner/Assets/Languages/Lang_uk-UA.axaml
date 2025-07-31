@@ -79,6 +79,26 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">Пресети</system:String>
 
+    <system:String x:Key="Design.Preset.Contrasted">Протиставлений</system:String>
+
+    <system:String x:Key="Design.Preset.Dark">Темний</system:String>
+
+    <system:String x:Key="Design.Preset.Dark Gray">Темно -сірий</system:String>
+
+    <system:String x:Key="Design.Preset.Deep">Глибокий</system:String>
+
+    <system:String x:Key="Design.Preset.Intense">Інтенсивний</system:String>
+
+    <system:String x:Key="Design.Preset.Light Gray">Світло -сірий</system:String>
+
+    <system:String x:Key="Design.Preset.Light Pastels">Світлові пастелі</system:String>
+
+    <system:String x:Key="Design.Preset.Medium">Середній</system:String>
+
+    <system:String x:Key="Design.Preset.Muted Pastels">Приглушені пастелі</system:String>
+
+    <system:String x:Key="Design.Preset.Shiny">Блискучий</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Values">Значення</system:String>
 
     <system:String x:Key="Design.Palette.WheelHue">Колесо відтінок</system:String>

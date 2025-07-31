@@ -79,6 +79,26 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">Նախադրյալներ</system:String>
 
+    <system:String x:Key="Design.Preset.Contrasted">Հակադիր</system:String>
+
+    <system:String x:Key="Design.Preset.Dark">Մութ</system:String>
+
+    <system:String x:Key="Design.Preset.Dark Gray">Մուգ մոխրագույն</system:String>
+
+    <system:String x:Key="Design.Preset.Deep">Խոր</system:String>
+
+    <system:String x:Key="Design.Preset.Intense">Ինտենսիվ</system:String>
+
+    <system:String x:Key="Design.Preset.Light Gray">Բաց մոխրագույն</system:String>
+
+    <system:String x:Key="Design.Preset.Light Pastels">Թեթեւ պաստելներ</system:String>
+
+    <system:String x:Key="Design.Preset.Medium">Միջին</system:String>
+
+    <system:String x:Key="Design.Preset.Muted Pastels">Անթափանց պաստելներ</system:String>
+
+    <system:String x:Key="Design.Preset.Shiny">Փայլուն</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Values">Արժեքներ</system:String>
 
     <system:String x:Key="Design.Palette.WheelHue">Անիվի երանգ</system:String>

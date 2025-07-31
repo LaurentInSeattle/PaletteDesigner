@@ -79,6 +79,26 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">Voreinstellungen</system:String>
 
+    <system:String x:Key="Design.Preset.Contrasted">Kontrastiert</system:String>
+
+    <system:String x:Key="Design.Preset.Dark">Dunkel</system:String>
+
+    <system:String x:Key="Design.Preset.Dark Gray">Dunkelgrau</system:String>
+
+    <system:String x:Key="Design.Preset.Deep">Tief</system:String>
+
+    <system:String x:Key="Design.Preset.Intense">Intensiv</system:String>
+
+    <system:String x:Key="Design.Preset.Light Gray">Hellgrau</system:String>
+
+    <system:String x:Key="Design.Preset.Light Pastels">Leichte Pastellfarben</system:String>
+
+    <system:String x:Key="Design.Preset.Medium">Medium</system:String>
+
+    <system:String x:Key="Design.Preset.Muted Pastels">Gedämpfte Pastelle</system:String>
+
+    <system:String x:Key="Design.Preset.Shiny">Glänzend</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Values">Werte</system:String>
 
     <system:String x:Key="Design.Palette.WheelHue">Radfarbton</system:String>

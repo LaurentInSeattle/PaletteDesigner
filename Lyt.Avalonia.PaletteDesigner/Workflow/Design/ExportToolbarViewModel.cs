@@ -41,13 +41,13 @@ public sealed partial class ExportToolbarViewModel : ViewModel<ExportToolbarView
         {
             this.toaster.Show(
                 "Exported!", "Palette sucessfully exported to: " + message,
-                dismissDelay: 20, InformationLevel.Success); 
+                dismissDelay: 5_000, InformationLevel.Success); 
         }
         else
         {
             this.toaster.Show(
                 "Error", "Failed to export palette: " + message, 
-                dismissDelay:20, InformationLevel.Error);
+                dismissDelay:12_000, InformationLevel.Error);
         }
     }
 }

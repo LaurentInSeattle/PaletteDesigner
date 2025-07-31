@@ -53,7 +53,7 @@
 
     <system:String x:Key="Design.Toolbar.Models.Monochromatic">単色</system:String>
 
-    <system:String x:Key="Design.Toolbar.Models.Duochromatic">Duochromatic</system:String>
+    <system:String x:Key="Design.Toolbar.Models.Duochromatic">デュオクロマティック</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Trichromatic">三色</system:String>
 
@@ -78,6 +78,26 @@
     <system:String x:Key="Design.Toolbar.Shade.Secondary2">不一致＃2</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">プリセット</system:String>
+
+    <system:String x:Key="Design.Preset.Contrasted">対照的です</system:String>
+
+    <system:String x:Key="Design.Preset.Dark">暗い</system:String>
+
+    <system:String x:Key="Design.Preset.Dark Gray">濃い灰色</system:String>
+
+    <system:String x:Key="Design.Preset.Deep">深い</system:String>
+
+    <system:String x:Key="Design.Preset.Intense">激しい</system:String>
+
+    <system:String x:Key="Design.Preset.Light Gray">明るい灰色</system:String>
+
+    <system:String x:Key="Design.Preset.Light Pastels">軽いパステル</system:String>
+
+    <system:String x:Key="Design.Preset.Medium">中くらい</system:String>
+
+    <system:String x:Key="Design.Preset.Muted Pastels">ミュートされたパステル</system:String>
+
+    <system:String x:Key="Design.Preset.Shiny">光沢</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.Values">値</system:String>
 

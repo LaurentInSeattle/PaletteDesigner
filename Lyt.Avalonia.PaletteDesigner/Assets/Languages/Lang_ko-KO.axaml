@@ -79,6 +79,26 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">사전 설정</system:String>
 
+    <system:String x:Key="Design.Preset.Contrasted">대조</system:String>
+
+    <system:String x:Key="Design.Preset.Dark">어두운</system:String>
+
+    <system:String x:Key="Design.Preset.Dark Gray">어두운 회색</system:String>
+
+    <system:String x:Key="Design.Preset.Deep">깊은</system:String>
+
+    <system:String x:Key="Design.Preset.Intense">극심한</system:String>
+
+    <system:String x:Key="Design.Preset.Light Gray">밝은 회색</system:String>
+
+    <system:String x:Key="Design.Preset.Light Pastels">가벼운 파스텔</system:String>
+
+    <system:String x:Key="Design.Preset.Medium">중간</system:String>
+
+    <system:String x:Key="Design.Preset.Muted Pastels">음소거 파스텔</system:String>
+
+    <system:String x:Key="Design.Preset.Shiny">빛나는</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Values">값</system:String>
 
     <system:String x:Key="Design.Palette.WheelHue">바퀴 색조</system:String>
