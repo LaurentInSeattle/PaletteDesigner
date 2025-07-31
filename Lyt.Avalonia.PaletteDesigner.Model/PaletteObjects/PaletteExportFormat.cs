@@ -79,7 +79,7 @@ public static class PaletteExportFormatExtensions
             PaletteExportFormat.AvaloniaAxaml => "Avalonia aXaml",
             PaletteExportFormat.MicrosoftXaml => "Microsoft Xaml",
             PaletteExportFormat.CssStyleSheet => "CSS Style Sheet",
-            PaletteExportFormat.ApplicationJSon => "This App' JSon",
+            PaletteExportFormat.ApplicationJSon => "JSon",
             _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
         };
 

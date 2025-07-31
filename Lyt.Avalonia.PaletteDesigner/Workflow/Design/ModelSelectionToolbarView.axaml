@@ -19,17 +19,17 @@
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<!-- Classic -->
-			<ColumnDefinition Width="120" />
-			<ColumnDefinition Width="120" />
-			<ColumnDefinition Width="120" />
-			<ColumnDefinition Width="120" />
+			<ColumnDefinition Width="124" />
+			<ColumnDefinition Width="124" />
+			<ColumnDefinition Width="124" />
+			<ColumnDefinition Width="124" />
 			<!-- Spacer -->
 			<ColumnDefinition Width="20" />
 			<!-- Free Style -->
-			<ColumnDefinition Width="120" />
-			<ColumnDefinition Width="120" />
-			<ColumnDefinition Width="120" />
-			<ColumnDefinition Width="120" />
+			<ColumnDefinition Width="124" />
+			<ColumnDefinition Width="124" />
+			<ColumnDefinition Width="124" />
+			<ColumnDefinition Width="124" />
 		</Grid.ColumnDefinitions>
 		<glyphs:SelectionGroup x:Name="SelectionGroup" />
 		<!-- Classic -->

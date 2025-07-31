@@ -41,7 +41,7 @@
 
     <system:String x:Key="Design.Toolbar.Export">Exporter</system:String>
 
-    <system:String x:Key="Design.Toolbar.ExportPalette">Exporter la palette</system:String>
+    <system:String x:Key="Design.Toolbar.ExportPalette">Exporter la Palette</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Complementary">Complémentaire</system:String>
 
@@ -59,13 +59,13 @@
 
     <system:String x:Key="Design.Toolbar.Models.Quadrichromatic">Quadrichromatique</system:String>
 
-    <system:String x:Key="Design.Toolbar.Models.FreeStyle">Style libre</system:String>
+    <system:String x:Key="Design.Toolbar.Models.FreeStyle">Style Libre</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Classic">Classique</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.ShadesTints">Nuances et Teintes</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.LockedTogether">Attachée</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.LockedTogether">Attachées</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.NoConstraints">Sans Contrainte</system:String>
 
@@ -81,13 +81,13 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">Valeurs</system:String>
 
-    <system:String x:Key="Design.Palette.WheelHue">Teinte de Roue</system:String>
+    <system:String x:Key="Design.Palette.WheelHue">Teinte de la Roue</system:String>
 
     <system:String x:Key="Design.ColorWheel.Rotate">Tourner Ensemble</system:String>
 
     <system:String x:Key="Design.ColorWheel.Flip">Symetrie</system:String>
 
-    <system:String x:Key="Design.ColorWheel.Reset">Réinit. les Nuances</system:String>
+    <system:String x:Key="Design.ColorWheel.Reset">Réinitialiser</system:String>
 
     <system:String x:Key="Intro.AgreeMIT">J'accepte les termes de la licence MIT, Continuer.</system:String>
 
