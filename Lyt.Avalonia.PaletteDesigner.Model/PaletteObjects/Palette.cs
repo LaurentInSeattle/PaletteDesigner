@@ -15,20 +15,10 @@ public sealed partial class Palette
     public void UpdatePrimaryWheelMonochromatic(double primaryWheel) 
         => this.Primary.UpdateFromWheel(primaryWheel);
 
-    public void UpdateShadesWheel(Shades shades, double wheel)
+    public void UpdatePrimaryWheelTriad()
     {
-        shades.Wheel = wheel;
-        if (Palette.HueWheel.TryGetValue(Palette.ToAngle(wheel), out double hue))
-        {
-            var color = shades.Base.Color;
-            var hsvColor = new HsvColor(hue, color.S, color.V);
-            shades.Base.Color = hsvColor;
-            shades.UpdateAllShadeColors(Palette.ShadeMap);
-        }
-    }
-
-    public void UpdatePrimaryWheelTriad(double primaryWheel)
-    {
+        // Assumes that the primary wheel has already been updated and
+        // updates the secondaries and eventually the complement
         this.Secondary1.UpdateFromWheel(this.TriadWheel1());
         this.Secondary2.UpdateFromWheel(this.TriadWheel2());
         if (this.Kind.HasComplementary())
@@ -37,12 +27,14 @@ public sealed partial class Palette
         }
     }
 
-    public void UpdatePrimaryWheelComplementary(double primaryWheel) 
+    // Assumes that the primary wheel has already been updated and
+    // updates only the complement
+    public void UpdatePrimaryWheelComplementary() 
         => this.Complementary.UpdateFromWheel(this.ComplementaryWheel());
 
     public void UpdatePrimaryWheelSquare(double primaryWheel)
     {
-        this.UpdatePrimaryWheelComplementary(primaryWheel);
+        this.UpdatePrimaryWheelComplementary();
         double secondary1Wheel =
             (primaryWheel + this.SecondaryWheelDistance).NormalizeAngleDegrees();
         this.Secondary1.UpdateFromWheel(secondary1Wheel);
@@ -55,7 +47,7 @@ public sealed partial class Palette
     {
         double delta = this.Primary.Wheel - wheel;
         this.SecondaryWheelDistance = Math.Abs(delta);
-        this.UpdatePrimaryWheelTriad(this.Primary.Wheel);
+        this.UpdatePrimaryWheelTriad();
     }
 
     public void UpdateSecondaryWheelSquare(double wheel)
@@ -71,18 +63,18 @@ public sealed partial class Palette
 
     public void ResetAllShades()
     {
-        this.Primary.Reset();
-        this.Complementary.Reset();
-        this.Secondary1.Reset();
-        this.Secondary2.Reset();
+        this.ForAllShades((kind, shades) =>
+        {
+            shades.Reset();
+        });
     }
 
     public void ApplyShadesPreset(ShadesPreset shadesPreset)
     {
-        this.Primary.ApplyShadesPreset(shadesPreset);
-        this.Complementary.ApplyShadesPreset(shadesPreset);
-        this.Secondary1.ApplyShadesPreset(shadesPreset);
-        this.Secondary2.ApplyShadesPreset(shadesPreset);
+        this.ForAllShades((kind, shades) =>
+        {
+            shades.ApplyShadesPreset(shadesPreset);
+        });
     }
 
     public static int ToAngle(double wheel) => (int)Math.Round(wheel * 10.0);
@@ -107,19 +99,14 @@ public sealed partial class Palette
     [Conditional("DEBUG")]
     public void Dump()
     {
-        this.Primary.Dump("Primary");
-        this.Complementary.Dump("Complementary");
-        this.Secondary1.Dump("Secondary1");
-        this.Secondary2.Dump("Secondary2");
+        this.ForAllShades((kind,shades) =>
+        {
+            shades.Dump(kind.ToString());
+        });
 
-        // Create a JSON from the palette, save on disk with time stamp
         var fm = Model.fileManager;
-        string name = "Palette_" + FileManagerModel.TimestampString();
-        fm.Save<Palette>(
-            FileManagerModel.Area.User, FileManagerModel.Kind.Json, name, this);
-
         var preset = new ShadesPreset("Medium", this.Primary);
-        name = "Medium_" + FileManagerModel.TimestampString();
+        string name = "Medium_" + FileManagerModel.TimestampString();
         fm.Save<ShadesPreset>(
             FileManagerModel.Area.User, FileManagerModel.Kind.Json, name, preset);
     }

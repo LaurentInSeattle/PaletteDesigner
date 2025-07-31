@@ -8,6 +8,7 @@ public enum PaletteExportFormat
     MicrosoftXaml,
     CssStyleSheet,
     AdobeAse,
+    ApplicationJSon,
 }
 
 public static class PaletteExportFormatExtensions
@@ -17,6 +18,9 @@ public static class PaletteExportFormatExtensions
         {
             // Binary, Not template based
             PaletteExportFormat.AdobeAse => string.Empty,
+
+            // Not template based
+            PaletteExportFormat.ApplicationJSon => string.Empty,
 
             // No need to localize 
             PaletteExportFormat.AvaloniaAxaml or 
@@ -31,6 +35,9 @@ public static class PaletteExportFormatExtensions
         {
             // Binary, Not template based
             PaletteExportFormat.AdobeAse => string.Empty,
+
+            // Not template based
+            PaletteExportFormat.ApplicationJSon => string.Empty,
 
             // No need to localize 
             PaletteExportFormat.AvaloniaAxaml => "AvaloniaPaletteTemplate.txt",
@@ -47,6 +54,8 @@ public static class PaletteExportFormatExtensions
             PaletteExportFormat.AvaloniaAxaml => "AvaloniaPalette",
             PaletteExportFormat.MicrosoftXaml => "MicrosoftPalette",
             PaletteExportFormat.CssStyleSheet => "CssPalette",
+            PaletteExportFormat.ApplicationJSon => "DesignerPalette",
+
             _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
         };
 
@@ -58,6 +67,7 @@ public static class PaletteExportFormatExtensions
             PaletteExportFormat.AvaloniaAxaml => ".axaml",
             PaletteExportFormat.MicrosoftXaml => ".xaml",
             PaletteExportFormat.CssStyleSheet=> ".css",
+            PaletteExportFormat.ApplicationJSon => ".json",
             _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
         };
 
@@ -69,6 +79,7 @@ public static class PaletteExportFormatExtensions
             PaletteExportFormat.AvaloniaAxaml => "Avalonia aXaml",
             PaletteExportFormat.MicrosoftXaml => "Microsoft Xaml",
             PaletteExportFormat.CssStyleSheet => "CSS Style Sheet",
+            PaletteExportFormat.ApplicationJSon => "This App' JSon",
             _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
         };
 
@@ -78,5 +89,6 @@ public static class PaletteExportFormatExtensions
                 PaletteExportFormat.MicrosoftXaml, 
                 PaletteExportFormat.CssStyleSheet,
                 PaletteExportFormat.AdobeAse,
+                PaletteExportFormat.ApplicationJSon,
            ];
 }

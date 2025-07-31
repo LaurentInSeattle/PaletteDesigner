@@ -26,6 +26,13 @@ public sealed partial class PaletteDesignerModel : ModelBase
                     this.newPath = path;
                     return true;
                 }
+                else if (exportFormat == PaletteExportFormat.ApplicationJSon)
+                {
+                    // Create a JSON directly from the palette, save on disk with time stamp
+                    this.fileManager.Save(Area.User, Kind.Json, name, palette);
+                    this.newPath = this.fileManager.MakePath(Area.User, Kind.Json, name);
+                    return true;
+                }
                 else
                 {
                     ResourcesUtilities.SetResourcesPath(exportFormat.ResourcePath());
