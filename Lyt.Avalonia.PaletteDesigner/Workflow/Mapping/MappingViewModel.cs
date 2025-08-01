@@ -13,7 +13,7 @@ public sealed partial class MappingViewModel : ViewModel<MappingView>
     public MappingViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
-        this.colorsDragPanelViewModel = new ColorsDragPanelViewModel(paletteDesignerModel);
-        this.propertiesDropPanelViewModel = new PropertiesDropPanelViewModel(paletteDesignerModel);
+        this.ColorsDragPanelViewModel = new ColorsDragPanelViewModel(paletteDesignerModel);
+        this.PropertiesDropPanelViewModel = new PropertiesDropPanelViewModel(paletteDesignerModel);
     }
 }

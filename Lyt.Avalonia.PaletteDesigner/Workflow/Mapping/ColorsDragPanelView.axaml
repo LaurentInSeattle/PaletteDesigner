@@ -9,4 +9,38 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 	>
+	<Grid
+		ShowGridLines="False"
+		x:Name="MainGrid"
+		>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="36" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<TextBlock
+			Grid.Row="0"
+			Text="{Binding PaletteName}"
+			Theme="{StaticResource H2}"			
+			VerticalAlignment="Stretch" HorizontalAlignment="Center"
+			/>
+		<ItemsControl
+			x:Name="ColorsItemsControl"
+			ItemsSource="{Binding ColorDragViewModels}"
+			Grid.Row="1"
+			Margin="0 8 8 0" Padding="0"
+			HorizontalAlignment="Center"
+			>
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel Orientation="Horizontal" Margin="0" />
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<vm:ColorDragView Margin="12" />
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+	</Grid>
 </UserControl>
