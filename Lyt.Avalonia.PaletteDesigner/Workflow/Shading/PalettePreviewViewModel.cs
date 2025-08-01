@@ -45,7 +45,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     public PalettePreviewViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
-        this.MiniPaletteViewModel = new();
+        this.MiniPaletteViewModel = new(this.paletteDesignerModel);
         this.MaxiPaletteViewModel = new();
         
         string dominant = this.Localize("Design.Toolbar.Shade.Primary");

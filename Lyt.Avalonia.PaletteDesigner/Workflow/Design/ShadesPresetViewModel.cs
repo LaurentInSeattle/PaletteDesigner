@@ -18,7 +18,7 @@ public sealed partial class ShadesPresetViewModel : ViewModel<ShadesPresetView>
 
         this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated);
         this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
-        this.MiniPaletteViewModel = new();
+        this.MiniPaletteViewModel = new(this.paletteDesignerModel, isPreset:true);
 
         // Localize preset name 
         this.OnLanguageChanged();

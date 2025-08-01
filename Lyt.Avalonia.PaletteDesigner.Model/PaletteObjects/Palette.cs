@@ -71,10 +71,19 @@ public sealed partial class Palette
 
     public void ApplyShadesPreset(ShadesPreset shadesPreset)
     {
-        this.ForAllShades((kind, shades) =>
+        if (this.AreShadesLocked)
         {
+            this.ForAllShades((kind, shades) =>
+            {
+                shades.ApplyShadesPreset(shadesPreset);
+            });
+        }
+        else
+        {
+            var selectedWheel = this.SelectedWheel;
+            Shades shades = selectedWheel.ToShadesFrom(this);
             shades.ApplyShadesPreset(shadesPreset);
-        });
+        }
     }
 
     public static int ToAngle(double wheel) => (int)Math.Round(wheel * 10.0);
