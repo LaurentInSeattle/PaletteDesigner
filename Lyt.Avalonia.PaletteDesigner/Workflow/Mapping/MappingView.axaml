@@ -9,6 +9,26 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 	
-	Background="DarkBlue"
+	Background="Transparent"
 	>
+	<Grid
+		ShowGridLines="True"
+		>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="420" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="20" />
+			<ColumnDefinition Width="420" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>		
+		<vm:ColorsDragPanelView
+			Grid.Column="0"
+			DataContext="{Binding ColorsDragPanelViewModel}"
+			/>
+		<vm:PropertiesDropPanelView
+			Grid.Column="2"
+			DataContext="{Binding PropertiesDropPanelViewModel}"
+			/>
+	</Grid>	
 </UserControl>

@@ -2,4 +2,18 @@
 
 public sealed partial class MappingViewModel : ViewModel<MappingView>
 {
+    private readonly PaletteDesignerModel paletteDesignerModel;
+
+    [ObservableProperty]
+    private ColorsDragPanelViewModel colorsDragPanelViewModel;
+
+    [ObservableProperty]
+    private PropertiesDropPanelViewModel propertiesDropPanelViewModel;
+
+    public MappingViewModel(PaletteDesignerModel paletteDesignerModel)
+    {
+        this.paletteDesignerModel = paletteDesignerModel;
+        this.colorsDragPanelViewModel = new ColorsDragPanelViewModel(paletteDesignerModel);
+        this.propertiesDropPanelViewModel = new PropertiesDropPanelViewModel(paletteDesignerModel);
+    }
 }
