@@ -11,12 +11,6 @@
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 	Background="Transparent"
 	>
-	<Design.DataContext>
-		<!-- This only sets the DataContext for the previewer in an IDE,
-		 to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-		<vm:ShellViewModel />
-	</Design.DataContext>
-
 	<Border
 		BorderBrush="#80000020"
 		BorderThickness="1"
@@ -113,29 +107,39 @@
 					<glyphs:GlyphButton
 						x:Name="DesignButton"
 						Style="{StaticResource ToolbarIconButton}"
-						Behaviour="Tap"
 						HorizontalAlignment="Center"
 						Width="82" Height="56"
 						Margin="4 8 4 8"
 						GlyphSource="design_ideas"
-						ButtonBackground="BorderlessRectangle"
 						GlyphStrokeThickness="0"
-						GlyphAngle="0"
+						ButtonBackground="BorderlessRectangle"
 						Text="{DynamicResource Shell.Design}"
 						Command="{Binding OnDesign}"
 						Group="{Binding ElementName=SelectionGroup}"
 						/>
 					<glyphs:GlyphButton
+						x:Name="MappingButton"
+						Style="{StaticResource ToolbarIconButton}"
+						HorizontalAlignment="Center"
+						Width="82" Height="56"
+						Margin="4 8 4 8"
+						GlyphSource="map"
+						GlyphStrokeThickness="0"
+						ButtonBackground="BorderlessRectangle"
+						Text="{DynamicResource Shell.Mapping}"
+						Command="{Binding OnMapping}"
+						Group="{Binding ElementName=SelectionGroup}"
+						/>
+					<glyphs:GlyphButton
 						x:Name="SettingsButton"
 						Style="{StaticResource ToolbarIconButton}"
-						Behaviour="Tap"
 						HorizontalAlignment="Center"
 						Width="82" Height="56"
 						Margin="4 8 4 8"
 						GlyphSource="settings"
 						ButtonBackground="BorderlessRectangle"
-						GlyphStrokeThickness="0"
 						GlyphAngle="20"
+						GlyphStrokeThickness="0"
 						Text="{DynamicResource Shell.Settings}"
 						Command="{Binding OnSettings}"
 						Group="{Binding ElementName=SelectionGroup}"
@@ -143,65 +147,17 @@
 					<glyphs:GlyphButton
 						x:Name="FlagButton"
 						Style="{StaticResource ToolbarIconButton}"
-						Behaviour="Tap"
 						HorizontalAlignment="Center"
 						Width="82" Height="56"
 						Margin="4 8 4 8"
 						GlyphSource="flag"
-						ButtonBackground="BorderlessRectangle"
 						GlyphStrokeThickness="0"
+						ButtonBackground="BorderlessRectangle"
 						Text="{DynamicResource Shell.Language}"
 						Command="{Binding OnLanguage}"
 						Group="{Binding ElementName=SelectionGroup}"
 						/>
 
-					<!--
-					<glyphs:GlyphButton
-						x:Name="TodayButton"
-						Style="{StaticResource ToolbarIconButton}"
-						Behaviour="Tap"
-						HorizontalAlignment="Center" 
-						Width="82" Height="56"
-						Margin="4 8 4 8"
-						GlyphSource="calendar_today"
-						ButtonBackground="BorderlessRectangle"
-						GlyphStrokeThickness="0"
-						GlyphAngle="0"
-						Text="{DynamicResource Shell.Today}"
-						IsSelected="True"
-						Command="{Binding OnToday}"
-						Group="{Binding ElementName=SelectionGroup}"
-						/>
-					<glyphs:GlyphButton
-						x:Name="CollectionButton"
-						Style="{StaticResource ToolbarIconButton}"
-						Behaviour="Tap"
-						HorizontalAlignment="Center" 
-						Width="82" Height="56"
-						Margin="4 8 4 8"
-						GlyphSource="collections"
-						ButtonBackground="BorderlessRectangle"
-						GlyphStrokeThickness="0"
-						GlyphAngle="0"
-						Text="{DynamicResource Shell.Collection}"
-						Command="{Binding OnCollection}"
-						Group="{Binding ElementName=SelectionGroup}"
-						/>
-					<glyphs:GlyphButton
-						x:Name="IntroButton"
-						Style="{StaticResource ToolbarIconButton}"
-						Behaviour="Tap"
-						HorizontalAlignment="Center" 
-						Width="82" Height="56"
-						Margin="4 8 4 8"
-						GlyphSource="arrow_up"
-						ButtonBackground="BorderlessRectangle"
-						GlyphStrokeThickness="0"
-						Text="{DynamicResource Shell.About}"
-						Command="{Binding OnInfo}"
-						Group="{Binding ElementName=SelectionGroup}"
-						/>
-						-->
 					</StackPanel>
 				<!-- View Selector - Close tool bar - Aligned Right -->
 				<StackPanel

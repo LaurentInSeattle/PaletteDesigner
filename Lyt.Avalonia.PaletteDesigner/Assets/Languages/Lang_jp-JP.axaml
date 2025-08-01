@@ -37,6 +37,8 @@
 
     <system:String x:Key="Shell.Design">デザイナー</system:String>
 
+    <system:String x:Key="Shell.Mapping">マッピング</system:String>
+
     <system:String x:Key="Shell.Dump">ごみ</system:String>
 
     <system:String x:Key="Design.Toolbar.Export">輸出</system:String>

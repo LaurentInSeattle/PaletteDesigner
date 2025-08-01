@@ -91,20 +91,22 @@ global using Lyt.Utilities.Randomizing;
 #endregion Framework 
 
 global using Lyt.Avalonia.PaletteDesigner;
-global using Lyt.Avalonia.PaletteDesigner.Workflow.Design;
 global using Lyt.Avalonia.PaletteDesigner.Shell;
 global using Lyt.Avalonia.PaletteDesigner.Messaging;
 global using Lyt.Avalonia.PaletteDesigner.Utilities;
+
 global using Lyt.Avalonia.PaletteDesigner.Workflow;
+global using Lyt.Avalonia.PaletteDesigner.Workflow.Design;
 global using Lyt.Avalonia.PaletteDesigner.Workflow.Language;
+global using Lyt.Avalonia.PaletteDesigner.Workflow.Mapping;
 global using Lyt.Avalonia.PaletteDesigner.Workflow.Settings;
 global using Lyt.Avalonia.PaletteDesigner.Workflow.Shading;
 global using Lyt.Avalonia.PaletteDesigner.Workflow.Wheel;
-
 
 global using Lyt.Avalonia.PaletteDesigner.Model;
 global using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.Messaging;
 global using Lyt.Avalonia.PaletteDesigner.Model.Utilities;
 
+// Maybe later
 // global using Lyt.Translator.Service; 

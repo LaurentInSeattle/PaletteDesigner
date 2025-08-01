@@ -37,6 +37,8 @@
 
     <system:String x:Key="Shell.Design">Դիզայներ</system:String>
 
+    <system:String x:Key="Shell.Mapping">Լուրեր</system:String>
+
     <system:String x:Key="Shell.Dump">Շեփոր</system:String>
 
     <system:String x:Key="Design.Toolbar.Export">Արտահանում</system:String>

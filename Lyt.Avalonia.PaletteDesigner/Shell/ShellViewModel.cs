@@ -13,9 +13,9 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
     [ObservableProperty]
     public bool dumpIsVisible;
-    
+
     private ViewSelector<ActivatedView>? viewSelector;
-    
+
     // private bool isFirstActivation;
 
     #region To please the XAML viewer 
@@ -92,7 +92,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         }
 
         Select(ActivatedView.Design);
-        this.MainToolbarIsVisible = true; 
+        this.MainToolbarIsVisible = true;
         this.Logger.Debug("OnViewLoaded OnViewActivation complete");
     }
 
@@ -134,6 +134,8 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
         SetupNoToolbar<DesignViewModel, DesignView>(
             ActivatedView.Design, view.DesignButton);
+        SetupNoToolbar<MappingViewModel, MappingView>(
+            ActivatedView.Mapping, view.MappingButton);
         SetupNoToolbar<SettingsViewModel, SettingsView>(
             ActivatedView.Settings, view.SettingsButton);
         SetupNoToolbar<LanguageViewModel, LanguageView>(
@@ -188,6 +190,9 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
     [RelayCommand]
     public void OnDesign() => Select(ActivatedView.Design);
+
+    [RelayCommand]
+    public void OnMapping() => Select(ActivatedView.Mapping);
 
     [RelayCommand]
     public void OnSettings() => Select(ActivatedView.Settings);

@@ -37,6 +37,8 @@
 
     <system:String x:Key="Shell.Design">Дизайнер</system:String>
 
+    <system:String x:Key="Shell.Mapping">Відображення</system:String>
+
     <system:String x:Key="Shell.Dump">Смітник</system:String>
 
     <system:String x:Key="Design.Toolbar.Export">Експорт</system:String>

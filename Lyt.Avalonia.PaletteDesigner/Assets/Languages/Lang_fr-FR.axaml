@@ -37,6 +37,8 @@
 
     <system:String x:Key="Shell.Design">Designer</system:String>
 
+    <system:String x:Key="Shell.Mapping">Mappages</system:String>
+
     <system:String x:Key="Shell.Dump">Dump</system:String>
 
     <system:String x:Key="Design.Toolbar.Export">Exporter</system:String>

@@ -37,6 +37,8 @@
 
     <system:String x:Key="Shell.Design">디자이너</system:String>
 
+    <system:String x:Key="Shell.Mapping">매핑</system:String>
+
     <system:String x:Key="Shell.Dump">덤프</system:String>
 
     <system:String x:Key="Design.Toolbar.Export">내보내다</system:String>

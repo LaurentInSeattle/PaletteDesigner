@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner;
 
-using Lyt.Avalonia.PaletteDesigner.Model;
-
 public partial class App : ApplicationBase
 {
     public const string Organization = "Lyt";
@@ -24,14 +22,18 @@ public partial class App : ApplicationBase
         [
            // Singletons
            typeof(ShellViewModel),
+
            typeof(LanguageViewModel),
+           
            typeof(SettingsViewModel),
+
            typeof(DesignViewModel),
            typeof(PaletteColorViewModel),
            typeof(PalettePreviewViewModel),
            typeof(ColorWheelViewModel),
 
-           //typeof(SettingsViewModel),
+           typeof(MappingViewModel),
+
            //typeof(SettingsToolbarViewModel),
            //typeof(IntroViewModel),
            //typeof(IntroToolbarViewModel),

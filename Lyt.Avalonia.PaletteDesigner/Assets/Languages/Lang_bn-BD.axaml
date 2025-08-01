@@ -37,6 +37,8 @@
 
     <system:String x:Key="Shell.Design">ডিজাইনার</system:String>
 
+    <system:String x:Key="Shell.Mapping">ম্যাপিংস</system:String>
+
     <system:String x:Key="Shell.Dump">ডাম্প</system:String>
 
     <system:String x:Key="Design.Toolbar.Export">রফতানি</system:String>

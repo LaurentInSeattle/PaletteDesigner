@@ -3,6 +3,21 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	>
 
+	<!--  map  -->
+	<DrawingGroup x:Key = "mapDrawingGroup">
+		<DrawingGroup>
+			<DrawingGroup.ClipGeometry>
+				<RectangleGeometry Rect="0,0,24,24" />
+			</DrawingGroup.ClipGeometry>
+			<GeometryDrawing Brush="#FF212121" >
+				<GeometryDrawing.Geometry>
+					<PathGeometry FillRule="NonZero" Figures="M9.2034,3.9993L9.2504,3.9981 9.2962,3.9993C9.3186,4.0006,9.3411,4.0029,9.3636,4.0063L9.3796,4.0101C9.465,4.0238,9.5499,4.0543,9.6308,4.1022L9.6827,4.1358 14.753,7.7011 19.82,4.1391C20.2878,3.8103,20.9215,4.1059,20.9944,4.6482L21.0014,4.7527 21.0014,15.3852C21.0014,15.5945,20.914,15.7926,20.7632,15.9334L20.6827,15.9988 15.1827,19.8652C14.9158,20.0528,14.5948,20.0371,14.3549,19.8883L9.25,16.297 4.1804,19.8618C3.7126,20.1906,3.0789,19.8951,3.006,19.3527L2.999,19.2483 2.999,8.6157C2.999,8.4064,3.0864,8.2083,3.2371,8.0676L3.3177,8.0022 8.8177,4.1358C8.8817,4.0908,8.9488,4.0575,9.0172,4.0349L9.1396,4.0069 9.2034,3.9993z M19.5014,6.1967L15.5014,9.0086 15.5014,17.8076 19.5014,14.9957 19.5014,6.1967z M8.499,6.1934L4.499,9.0053 4.499,17.8042 8.499,14.9923 8.499,6.1934z M10.0014,6.1934L10.0014,14.9923 14.0014,17.8042 14.0014,9.0053 10.0014,6.1934z" />
+				</GeometryDrawing.Geometry>
+			</GeometryDrawing>
+		</DrawingGroup>
+	</DrawingGroup>
+	<DrawingImage x:Key="map" Drawing="{StaticResource mapDrawingGroup}" />
+
 	<!--  share  -->
 	<DrawingGroup x:Key = "shareDrawingGroup">
 		<DrawingGroup>
