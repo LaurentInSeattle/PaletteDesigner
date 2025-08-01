@@ -1,3 +1,9 @@
+BUG / TODO : 
+
+    Shade preset when unlocked applies to all 
+
+---
+
 arrow_rotate_clockwise
 arrow_rotate_counterclockwise
 arrow_swap_regular

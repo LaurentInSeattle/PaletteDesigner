@@ -57,18 +57,14 @@ public sealed class Shades
         const int brightnessStepPixel = (int)(brightnessStep * PaletteDesignerModel.ShadesImageDimension);
         const int saturationStepPixel = (int)(saturationStep * PaletteDesignerModel.ShadesImageDimension); ;
 
-        var position = new Position(pixelX, pixelY);
-        position.Adjust();
-        this.Base.Position = position;
-        pixelX = position.X;
-        pixelY = position.Y;
+        double baseHue = this.Base.Color.H;
+        this.Base.MoveTo(baseHue, shadeMap, pixelX, pixelY);
 
         int offsetToCenterX = Math.Abs((pixelX - PaletteDesignerModel.ShadesImageCenter) / 2);
         int offsetToCenterY = Math.Abs((pixelY - PaletteDesignerModel.ShadesImageCenter) / 2);
         int halfOffsetToCenterX = offsetToCenterX / 2;
         int halfOffsetToCenterY = offsetToCenterY / 2;
 
-        double baseHue = this.Base.Color.H;
         int lighterX = pixelX - 2 * saturationStepPixel - offsetToCenterY + offsetToCenterX;
         int lighterY = pixelY - 2 * brightnessStepPixel + offsetToCenterY - offsetToCenterX;
         this.Lighter.MoveTo(baseHue, shadeMap, lighterX, lighterY);
