@@ -125,21 +125,21 @@ public sealed partial class Palette
                 parameters.Add(color);
 
 #if DEBUG 
-                string colorStringFormat =
-                    "<Color x:Key=\"{0}_Color\"><# {0}_ColorValue #></Color>";
-                Debug.WriteLine(string.Format(colorStringFormat, colorName));
-                string brushStringFormat =
-                    "<SolidColorBrush x:Key=\"{0}\" Color =\"{{StaticResource {0}_Color}}\" />";
-                Debug.WriteLine(string.Format(brushStringFormat, colorName));
+                //string colorStringFormat =
+                //    "<Color x:Key=\"{0}_Color\"><# {0}_ColorValue #></Color>";
+                //Debug.WriteLine(string.Format(colorStringFormat, colorName));
+                //string brushStringFormat =
+                //    "<SolidColorBrush x:Key=\"{0}\" Color =\"{{StaticResource {0}_Color}}\" />";
+                //Debug.WriteLine(string.Format(brushStringFormat, colorName));
 #endif
             }
         }
 
 #if DEBUG 
-        foreach (Parameter parameter in parameters )
-        {
-            Debug.WriteLine(parameter.Tag + " :   " + parameter.Value); 
-        }
+        //foreach (Parameter parameter in parameters )
+        //{
+        //    Debug.WriteLine(parameter.Tag + " :   " + parameter.Value); 
+        //}
 #endif // DEBUG 
 
         return parameters;

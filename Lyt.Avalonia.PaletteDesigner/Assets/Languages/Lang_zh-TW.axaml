@@ -53,7 +53,7 @@
 
     <system:String x:Key="Design.Toolbar.Models.Monochromatic">單色</system:String>
 
-    <system:String x:Key="Design.Toolbar.Models.Duochromatic">Duohonic</system:String>
+    <system:String x:Key="Design.Toolbar.Models.Duochromatic">二分法</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Trichromatic">三色</system:String>
 
@@ -73,9 +73,9 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Complementary">口音</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.Secondary1">Discord＃1</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.Secondary1">不一致的 1</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.Secondary2">DISCORD＃2</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.Secondary2">不一致的 2</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">預設</system:String>
 
