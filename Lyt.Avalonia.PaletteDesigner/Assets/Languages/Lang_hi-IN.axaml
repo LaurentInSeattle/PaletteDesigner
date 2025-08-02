@@ -111,6 +111,8 @@
 
     <system:String x:Key="Design.ColorWheel.Reset">शेड्स रीसेट करें</system:String>
 
+    <system:String x:Key="Mapping.Drag.DragDropHelp">रंग स्वैच को खींचें और उन्हें एक रंग असाइन करने के लिए दाईं ओर गुणों पर छोड़ दें।</system:String>
+
     <system:String x:Key="Intro.AgreeMIT">मैं MIT लाइसेंस की शर्तों को स्वीकार करता हूं, जारी रखता हूं।</system:String>
 
     <system:String x:Key="Intro.LicenseTitle">लाइसेंस शर्तों</system:String>

@@ -24,7 +24,7 @@ public sealed partial class ColorsDragPanelViewModel : ViewModel<ColorsDragPanel
         List<ColorDragViewModel> list = [];
         this.Palette.ForAllShades((kind, shades) =>
         {
-            var colorDragViewModel = new ColorDragViewModel(this.Palette, kind, shades);
+            var colorDragViewModel = new ColorDragViewModel(this.paletteDesignerModel, this.Palette, kind, shades);
             list.Add(colorDragViewModel);
         });
 
@@ -36,5 +36,4 @@ public sealed partial class ColorsDragPanelViewModel : ViewModel<ColorsDragPanel
         this.paletteDesignerModel.ActiveProject == null ?
             throw new Exception("No active project") :
             this.paletteDesignerModel.ActiveProject.Palette;
-
 }

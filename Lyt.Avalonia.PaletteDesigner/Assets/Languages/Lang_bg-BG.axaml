@@ -111,6 +111,8 @@
 
     <system:String x:Key="Design.ColorWheel.Reset">Нулиране на нюанси</system:String>
 
+    <system:String x:Key="Mapping.Drag.DragDropHelp">Плъзнете цветните фишове и ги пуснете върху свойствата вдясно, за да присвоите цвят ..</system:String>
+
     <system:String x:Key="Intro.AgreeMIT">Приемам условията на лиценза MIT, продължете.</system:String>
 
     <system:String x:Key="Intro.LicenseTitle">Лицензионни условия</system:String>

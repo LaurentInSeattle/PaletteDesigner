@@ -111,6 +111,8 @@
 
     <system:String x:Key="Design.ColorWheel.Reset">重置陰影</system:String>
 
+    <system:String x:Key="Mapping.Drag.DragDropHelp">將顏色色板拖動並將其放在右側的屬性上，以分配顏色。</system:String>
+
     <system:String x:Key="Intro.AgreeMIT">我接受麻省理工學院許可證的條款，繼續。</system:String>
 
     <system:String x:Key="Intro.LicenseTitle">許可條款</system:String>

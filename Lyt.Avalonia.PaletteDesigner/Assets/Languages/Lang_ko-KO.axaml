@@ -111,6 +111,8 @@
 
     <system:String x:Key="Design.ColorWheel.Reset">그늘을 재설정하십시오</system:String>
 
+    <system:String x:Key="Mapping.Drag.DragDropHelp">색상 견본을 끌고 속성에 오른쪽으로 떨어 뜨려 색상을 할당합니다 ..</system:String>
+
     <system:String x:Key="Intro.AgreeMIT">MIT 라이센스의 조건을 수락합니다.</system:String>
 
     <system:String x:Key="Intro.LicenseTitle">라이센스 조건</system:String>

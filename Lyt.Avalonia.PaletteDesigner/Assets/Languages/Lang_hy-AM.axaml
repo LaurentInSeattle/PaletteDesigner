@@ -111,6 +111,8 @@
 
     <system:String x:Key="Design.ColorWheel.Reset">Վերականգնել երանգները</system:String>
 
+    <system:String x:Key="Mapping.Drag.DragDropHelp">Քաշեք գույնի փոխանակումները եւ գցեք դրանք գույքի վրա `գույնը նշանակելու իրավունք:</system:String>
+
     <system:String x:Key="Intro.AgreeMIT">Ես ընդունում եմ MIT լիցենզիայի պայմանները, շարունակվում են:</system:String>
 
     <system:String x:Key="Intro.LicenseTitle">Լիցենզիայի պայմանները</system:String>

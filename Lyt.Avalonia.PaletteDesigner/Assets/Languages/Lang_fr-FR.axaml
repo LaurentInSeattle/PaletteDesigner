@@ -111,6 +111,8 @@
 
     <system:String x:Key="Design.ColorWheel.Reset">Réinitialiser</system:String>
 
+    <system:String x:Key="Mapping.Drag.DragDropHelp">Faites glisser les échantillons de couleur et déposez-les sur les propriétés à droite pour attribuer une couleur.</system:String>
+
     <system:String x:Key="Intro.AgreeMIT">J'accepte les termes de la licence MIT, Continuer.</system:String>
 
     <system:String x:Key="Intro.LicenseTitle">Termes de la licence.</system:String>

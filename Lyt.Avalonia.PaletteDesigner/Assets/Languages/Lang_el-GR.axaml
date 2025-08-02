@@ -111,6 +111,8 @@
 
     <system:String x:Key="Design.ColorWheel.Reset">Επαναφορά αποχρώσεων</system:String>
 
+    <system:String x:Key="Mapping.Drag.DragDropHelp">Σύρετε τα χρώματα δείγματα και ρίξτε τα στις ιδιότητες στα δεξιά για να αντιστοιχίσετε ένα χρώμα ..</system:String>
+
     <system:String x:Key="Intro.AgreeMIT">Αποδέχομαι τους όρους της άδειας MIT, συνεχίζω.</system:String>
 
     <system:String x:Key="Intro.LicenseTitle">Όροι άδειας</system:String>

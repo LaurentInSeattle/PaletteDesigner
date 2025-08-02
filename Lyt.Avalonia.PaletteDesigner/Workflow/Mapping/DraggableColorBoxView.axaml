@@ -10,10 +10,21 @@
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 	>
 	<Grid
-		Width="120" Height="60"
+		Width="72" Height="104"
 		>
 		<Border
-			Background="{Binding ShadeBrush}"
-			/>
+			x:Name="border"
+			Background="Transparent"
+			BorderBrush="{Binding BorderBrush}"
+			Margin="4"
+			CornerRadius="4"
+			>
+			<Rectangle
+				x:Name="rectangle"
+				Fill="{Binding ShadeBrush}"
+				Margin="4"
+				RadiusX="4" RadiusY="4"
+				/>
+		</Border>
 	</Grid>
 </UserControl>

@@ -111,6 +111,8 @@
 
     <system:String x:Key="Design.ColorWheel.Reset">Schatten zurücksetzen</system:String>
 
+    <system:String x:Key="Mapping.Drag.DragDropHelp">Ziehen Sie die Farbmuster und lassen Sie sie auf die Eigenschaften nach rechts fallen, um eine Farbe zuzuweisen.</system:String>
+
     <system:String x:Key="Intro.AgreeMIT">Ich akzeptiere die Bedingungen der MIT -Lizenz, weiter.</system:String>
 
     <system:String x:Key="Intro.LicenseTitle">Lizenzbedingungen</system:String>

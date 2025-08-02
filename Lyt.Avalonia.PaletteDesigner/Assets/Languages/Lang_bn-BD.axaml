@@ -111,6 +111,8 @@
 
     <system:String x:Key="Design.ColorWheel.Reset">শেডগুলি পুনরায় সেট করুন</system:String>
 
+    <system:String x:Key="Mapping.Drag.DragDropHelp">রঙ স্য্যাচগুলি টেনে আনুন এবং তাদের রঙ নির্ধারণের জন্য ডানদিকে সম্পত্তিগুলিতে ফেলে দিন ..</system:String>
+
     <system:String x:Key="Intro.AgreeMIT">আমি এমআইটি লাইসেন্সের শর্তাদি গ্রহণ করি, চালিয়ে যান।</system:String>
 
     <system:String x:Key="Intro.LicenseTitle">লাইসেন্স শর্তাদি</system:String>

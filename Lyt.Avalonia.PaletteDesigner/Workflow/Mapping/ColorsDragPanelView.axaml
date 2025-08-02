@@ -14,22 +14,22 @@
 		x:Name="MainGrid"
 		>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="36" />
+			<RowDefinition Height="40" />
 			<RowDefinition Height="Auto" />
-			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
 		<TextBlock
 			Grid.Row="0"
 			Text="{Binding PaletteName}"
 			Theme="{StaticResource H2}"			
-			VerticalAlignment="Stretch" HorizontalAlignment="Center"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
 			/>
 		<ItemsControl
 			x:Name="ColorsItemsControl"
 			ItemsSource="{Binding ColorDragViewModels}"
 			Grid.Row="1"
 			Margin="8" Padding="0"
-			HorizontalAlignment="Center"
+			HorizontalAlignment="Left"
 			>
 			<ItemsControl.ItemsPanel>
 				<ItemsPanelTemplate>
@@ -38,9 +38,17 @@
 			</ItemsControl.ItemsPanel>
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
-					<vm:ColorDragView Margin="12" />
+					<vm:ColorDragView Margin="0 10 0 16" />
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>
 		</ItemsControl>
+		<TextBlock
+			Grid.Row="2"
+			Margin="4 12 4 4"
+			Text="{DynamicResource Mapping.Drag.DragDropHelp}"
+			Theme="{StaticResource Large}"
+			Foreground="{StaticResource Secondary.TextColor}"
+			VerticalAlignment="Top" HorizontalAlignment="Center"
+			/>
 	</Grid>
 </UserControl>

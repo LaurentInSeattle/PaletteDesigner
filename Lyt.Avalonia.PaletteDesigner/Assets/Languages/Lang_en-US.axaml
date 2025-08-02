@@ -71,6 +71,9 @@
 	<system:String x:Key="Design.ColorWheel.Flip">Flip Opposites</system:String>
 	<system:String x:Key="Design.ColorWheel.Reset">Reset Shades</system:String>
 
+	<!-- Mapping -->
+	<system:String x:Key="Mapping.Drag.DragDropHelp">Drag the color swatches and drop them on the properties to the right to assign a color.</system:String>
+	
 	<!-- Intro  -->
 	<system:String x:Key="Intro.AgreeMIT">I accept the terms of the MIT License, Continue.</system:String>
 	<system:String x:Key="Intro.LicenseTitle">License Terms</system:String>

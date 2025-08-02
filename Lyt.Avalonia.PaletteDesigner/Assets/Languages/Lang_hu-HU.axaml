@@ -75,9 +75,9 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Complementary">Hangsúly</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.Secondary1">1. diszkréció</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.Secondary1">1. Diskord</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.Secondary2">2. diskord</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.Secondary2">2. Diskord</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">Előre beállított</system:String>
 
@@ -110,6 +110,8 @@
     <system:String x:Key="Design.ColorWheel.Flip">Flip ellentétek</system:String>
 
     <system:String x:Key="Design.ColorWheel.Reset">Visszaállítja az árnyalatokat</system:String>
+
+    <system:String x:Key="Mapping.Drag.DragDropHelp">Húzza a színmintákat, és dobja el a tulajdonságokra jobbra, hogy hozzárendeljen egy színt ..</system:String>
 
     <system:String x:Key="Intro.AgreeMIT">Elfogadom a MIT licenc feltételeit, folytatom.</system:String>
 

@@ -29,12 +29,12 @@
 			x:Name="ShadesItemsControl"
 			ItemsSource="{Binding ShadeDragViewModels}"
 			Grid.Row="1"
-			Margin="0 8 8 0" Padding="0"
+			Margin="0" Padding="0"
 			HorizontalAlignment="Center"
 			>
 			<ItemsControl.ItemsPanel>
 				<ItemsPanelTemplate>
-					<WrapPanel Orientation="Vertical" Margin="0" />
+					<WrapPanel Orientation="Horizontal" Margin="0" />
 				</ItemsPanelTemplate>
 			</ItemsControl.ItemsPanel>
 			<ItemsControl.ItemTemplate>

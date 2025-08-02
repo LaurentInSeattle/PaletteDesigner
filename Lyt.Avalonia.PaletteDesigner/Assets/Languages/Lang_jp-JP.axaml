@@ -111,6 +111,8 @@
 
     <system:String x:Key="Design.ColorWheel.Reset">シェードをリセットします</system:String>
 
+    <system:String x:Key="Mapping.Drag.DragDropHelp">色の見本をドラッグし、右側にプロパティにドロップして、色を割り当てます。</system:String>
+
     <system:String x:Key="Intro.AgreeMIT">MITライセンスの条件を受け入れます。</system:String>
 
     <system:String x:Key="Intro.LicenseTitle">ライセンス条件</system:String>

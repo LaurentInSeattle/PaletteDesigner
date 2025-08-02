@@ -2,6 +2,7 @@
 
 public sealed partial class ColorDragViewModel : ViewModel<ColorDragView>
 {
+    private readonly PaletteDesignerModel paletteDesignerModel;
     private readonly Palette palette;
     private readonly WheelKind wheelKind;
     private readonly Shades shades;
@@ -12,13 +13,19 @@ public sealed partial class ColorDragViewModel : ViewModel<ColorDragView>
     [ObservableProperty]
     private ObservableCollection<ShadeDragViewModel> shadeDragViewModels; 
 
-    public ColorDragViewModel(Palette palette, WheelKind wheelKind, Shades shades)
+    public ColorDragViewModel(
+        PaletteDesignerModel paletteDesignerModel,
+        Palette palette, WheelKind wheelKind, Shades shades)
     {
+        this.paletteDesignerModel = paletteDesignerModel;
         this.palette = palette;
         this.wheelKind = wheelKind;
         this.shades = shades;
-        this.ColorName = wheelKind.ToString();
         this.ShadeDragViewModels = [];
+        this.ColorName = string.Empty;
+        this.Localize();
+
+        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
     }
 
     public override void OnViewLoaded()
@@ -34,5 +41,14 @@ public sealed partial class ColorDragViewModel : ViewModel<ColorDragView>
 
         this.ShadeDragViewModels = new(list);
         this.ColorName = this.wheelKind.ToString();
+    }
+
+    private void OnLanguageChanged(LanguageChangedMessage _) => this.Localize();
+
+    private void Localize()
+    { 
+        string wheelName = wheelKind.ToString();
+        string locString = string.Concat("Design.Toolbar.Shade.", wheelName);
+        this.ColorName = this.Localize(locString);
     }
 }

@@ -111,6 +111,8 @@
 
     <system:String x:Key="Design.ColorWheel.Reset">Скинути відтінки</system:String>
 
+    <system:String x:Key="Mapping.Drag.DragDropHelp">Перетягніть кольорові зразки і опустіть їх на властивості праворуч, щоб призначити колір ..</system:String>
+
     <system:String x:Key="Intro.AgreeMIT">Я приймаю умови ліцензії MIT, продовжуйте.</system:String>
 
     <system:String x:Key="Intro.LicenseTitle">Умови ліцензії</system:String>
