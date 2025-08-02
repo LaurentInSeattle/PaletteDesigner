@@ -2,16 +2,37 @@
 
 public sealed partial class ColorDragViewModel : ViewModel<ColorDragView>
 {
-    private readonly WheelKind kind;
+    private readonly Palette palette;
+    private readonly WheelKind wheelKind;
     private readonly Shades shades;
 
     [ObservableProperty]
     private string colorName;
 
-    public ColorDragViewModel(WheelKind kind, Shades shades)
+    [ObservableProperty]
+    private ObservableCollection<ShadeDragViewModel> shadeDragViewModels; 
+
+    public ColorDragViewModel(Palette palette, WheelKind wheelKind, Shades shades)
     {
-        this.kind = kind;
+        this.palette = palette;
+        this.wheelKind = wheelKind;
         this.shades = shades;
-        this.ColorName = kind.ToString();
+        this.ColorName = wheelKind.ToString();
+        this.ShadeDragViewModels = [];
+    }
+
+    public override void OnViewLoaded()
+    {
+        base.OnViewLoaded();
+
+        List<ShadeDragViewModel> list = [];
+        this.shades.ForAllShades((shadeKind, shade) =>
+        {
+            var shadeDragViewModel = new ShadeDragViewModel(this.palette, this.wheelKind, shadeKind, shade);
+            list.Add(shadeDragViewModel);
+        });
+
+        this.ShadeDragViewModels = new(list);
+        this.ColorName = this.wheelKind.ToString();
     }
 }

@@ -24,7 +24,7 @@ public sealed partial class ColorsDragPanelViewModel : ViewModel<ColorsDragPanel
         List<ColorDragViewModel> list = [];
         this.Palette.ForAllShades((kind, shades) =>
         {
-            var colorDragViewModel = new ColorDragViewModel(kind, shades);
+            var colorDragViewModel = new ColorDragViewModel(this.Palette, kind, shades);
             list.Add(colorDragViewModel);
         });
 

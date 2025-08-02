@@ -75,9 +75,9 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Complementary">Accento</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.Secondary1">Discordante #1</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.Secondary1">Discordante 1</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.Secondary2">Discordante #2</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.Secondary2">Discordante 2</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">Preimpostazioni</system:String>
 

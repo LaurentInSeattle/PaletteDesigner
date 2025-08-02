@@ -9,7 +9,7 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 
-	Background="Aquamarine"
+	Background="Transparent"
 	>
 	<Grid
 		>
@@ -18,11 +18,31 @@
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
+		
 		<TextBlock
 			Grid.Row="0"
 			Text="{Binding ColorName}"
 			Theme="{StaticResource H3}"
 			VerticalAlignment="Stretch" HorizontalAlignment="Left"
 			/>
+		<ItemsControl
+			x:Name="ShadesItemsControl"
+			ItemsSource="{Binding ShadeDragViewModels}"
+			Grid.Row="1"
+			Margin="0 8 8 0" Padding="0"
+			HorizontalAlignment="Center"
+			>
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel Orientation="Vertical" Margin="0" />
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<vm:ShadeDragView Margin="4" />
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+
 	</Grid>
 </UserControl>

@@ -77,7 +77,7 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Secondary1">Zwietracht #1</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.Secondary2">Zwietracht Nr. 2</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.Secondary2">Zwietracht #2</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">Voreinstellungen</system:String>
 

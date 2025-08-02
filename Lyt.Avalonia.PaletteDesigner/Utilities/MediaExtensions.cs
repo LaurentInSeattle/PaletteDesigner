@@ -37,7 +37,7 @@ public static class MediaExtensions
         var rgb = hsv.ToRgb();
         return
             string.Format(
-                "{0:D2} {1:D2} {2:D2}",
+                "{0:D3} {1:D3} {2:D3}",
                 (int)Math.Round(100.0 * rgb.R / 255.0),
                 (int)Math.Round(100.0 * rgb.G / 255.0),
                 (int)Math.Round(100.0 * rgb.B / 255.0));

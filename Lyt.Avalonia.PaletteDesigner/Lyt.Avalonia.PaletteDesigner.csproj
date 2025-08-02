@@ -92,6 +92,9 @@
 	  <Compile Update="Workflow\Mapping\ColorsDragPanelView.axaml.cs">
 	    <DependentUpon>ColorsDragPanelView.axaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Workflow\Mapping\ShadeDragView.axaml.cs">
+	    <DependentUpon>ShadeDragView.axaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Workflow\Shading\PalettePreviewView.axaml.cs">
 	    <DependentUpon>PalettePreviewView.axaml</DependentUpon>
 	  </Compile>

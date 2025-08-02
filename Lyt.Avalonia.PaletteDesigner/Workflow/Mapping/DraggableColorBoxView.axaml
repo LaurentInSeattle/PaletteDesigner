@@ -1,7 +1,7 @@
 <UserControl 
-	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Mapping.ShadesDragView"
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Mapping.DraggableColorBoxView"
 	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Mapping"
-	x:DataType="vm:ShadesDragViewModel" 
+	x:DataType="vm:DraggableColorBoxViewModel" 
 
 	xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -9,4 +9,11 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 	>
+	<Grid
+		Width="120" Height="60"
+		>
+		<Border
+			Background="{Binding ShadeBrush}"
+			/>
+	</Grid>
 </UserControl>
