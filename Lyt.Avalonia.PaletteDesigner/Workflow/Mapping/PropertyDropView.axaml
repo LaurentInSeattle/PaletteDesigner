@@ -9,5 +9,39 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 	>
+	<Grid
+		Height="68"
+		>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="200" />
+			<ColumnDefinition Width="120" />
+		</Grid.ColumnDefinitions>
+		<TextBlock
+			Grid.Column="0"
+			Text="{Binding PropertyName}"
+			Theme="{StaticResource H3}"
+			Margin="0 0 8 0"
+			VerticalAlignment="Center" HorizontalAlignment="Right"
+			/>
+		<Border
+			x:Name="border"			
+			Grid.Column="1"
+			Background="Transparent"
+			BorderBrush="{Binding BorderBrush}"
+			BorderThickness="2"
+			Margin="4"
+			CornerRadius="4"
+			>
+			<Rectangle
+				x:Name="rectangle"
+				Margin="4"
+				RadiusX="4" RadiusY="4"
+				Fill="{Binding ShadeBrush}"
+				/>
+		</Border>
 
+
+		<!--
+		-->
+	</Grid>
 </UserControl>

@@ -25,8 +25,5 @@ public sealed partial class DraggableColorBoxViewModel : ViewModel<DraggableColo
         this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated);
     }
 
-    private void OnModelUpdated(ModelUpdatedMessage? _)
-    {
-        this.ShadeBrush = shade.Color.ToBrush();
-    }
+    private void OnModelUpdated(ModelUpdatedMessage? _) => this.ShadeBrush = shade.Color.ToBrush();
 }

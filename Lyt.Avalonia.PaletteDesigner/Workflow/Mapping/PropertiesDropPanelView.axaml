@@ -9,4 +9,44 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 	>
+	<Grid
+		>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+		<TextBlock
+			Grid.Row="0"
+			Text="{Binding ThemeName}"
+			Theme="{StaticResource H2}"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			/>
+		<ItemsControl
+			x:Name="PropertiesItemsControl"
+			ItemsSource="{Binding PropertyDropViewModels}"
+			Grid.Row="1"
+			Margin="8" Padding="0"
+			HorizontalAlignment="Left"
+			>
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<WrapPanel Orientation="Vertical" Margin="0" />
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<vm:PropertyDropView Margin="0 8 0 0" />
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+		<TextBlock
+			Grid.Row="2"
+			Margin="4 12 4 4"
+			Text="{DynamicResource Mapping.Drag.DragDropHelp}"
+			Theme="{StaticResource Large}"
+			Foreground="{StaticResource Secondary.TextColor}"
+			VerticalAlignment="Top" HorizontalAlignment="Center"
+			/>
+	</Grid>
 </UserControl>
