@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Mapping;
 
-using Lyt.Quantics.Studio.Behaviors.DragDrop;
-
 public sealed partial class DraggableColorBoxViewModel : ViewModel<DraggableColorBoxView>, IDragAbleViewModel
 {
     public const string CustomDragAndDropFormat = "PaletteViewModel";

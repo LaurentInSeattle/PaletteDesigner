@@ -1,7 +1,5 @@
 namespace Lyt.Avalonia.PaletteDesigner.Workflow.Mapping;
 
-using Lyt.Quantics.Studio.Behaviors.DragDrop;
-
 public partial class PropertyDropView : View
 {
     private static PropertyDropView? lastShownDropTarget; 

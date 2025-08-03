@@ -71,7 +71,7 @@ global using Lyt.Avalonia.Controls.Images;
 
 global using Lyt.Avalonia.Mvvm;
 global using Lyt.Avalonia.Mvvm.Animations;
-global using Lyt.Avalonia.Mvvm.Behaviors;
+global using Lyt.Avalonia.Mvvm.Behaviors.DragDrop;
 global using Lyt.Avalonia.Mvvm.Dialogs;
 global using Lyt.Avalonia.Mvvm.Logging;
 global using Lyt.Avalonia.Mvvm.Selector;
