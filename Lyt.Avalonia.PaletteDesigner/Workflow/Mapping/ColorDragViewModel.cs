@@ -23,7 +23,6 @@ public sealed partial class ColorDragViewModel : ViewModel<ColorDragView>
         this.shades = shades;
         this.ShadeDragViewModels = [];
         this.ColorName = string.Empty;
-        this.Localize();
 
         this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
     }
@@ -40,7 +39,7 @@ public sealed partial class ColorDragViewModel : ViewModel<ColorDragView>
         });
 
         this.ShadeDragViewModels = new(list);
-        this.ColorName = this.wheelKind.ToString();
+        this.Localize();
     }
 
     private void OnLanguageChanged(LanguageChangedMessage _) => this.Localize();
