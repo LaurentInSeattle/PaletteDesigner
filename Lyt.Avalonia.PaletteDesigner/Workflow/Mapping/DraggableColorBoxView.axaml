@@ -16,6 +16,7 @@
 			x:Name="border"
 			Background="Transparent"
 			BorderBrush="{Binding BorderBrush}"
+			BorderThickness="1.0"
 			Margin="4"
 			CornerRadius="4"
 			>
