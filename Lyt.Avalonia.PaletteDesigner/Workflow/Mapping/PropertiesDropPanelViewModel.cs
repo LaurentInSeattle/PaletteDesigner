@@ -17,21 +17,26 @@ public sealed partial class PropertiesDropPanelViewModel : ViewModel<PropertiesD
         this.ThemeName = string.Empty;
     }
 
-
     public override void OnViewLoaded()
     {
         base.OnViewLoaded();
 
+        // TODO !!! 
         List<PropertyDropViewModel> list = [];
         for (int i = 0; i <12 ; i++) 
         {
-            string propertyName = string.Format("Fluent {0}" , (45 +i*i).ToString("X4"));
+            // TODO !!! 
+            string propertyName = 
+                string.Format("Fluent {0}" , (45 +i*i).ToString("X4"));
+
             var propertyDropViewModel = new PropertyDropViewModel(this.paletteDesignerModel, propertyName);
             list.Add(propertyDropViewModel);
         }
 
         this.PropertyDropViewModels = new(list);
-        this.ThemeName = "Fluent";
+
+        // TODO !!! 
+        this.ThemeName = "Avalonia/UWP Fluent Theme";
     }
 
     // MAy not need the palette 

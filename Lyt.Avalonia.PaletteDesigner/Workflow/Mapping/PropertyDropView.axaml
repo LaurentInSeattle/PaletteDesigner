@@ -8,27 +8,22 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	
+	DragDrop.AllowDrop ="True"
 	>
 	<Grid
 		Height="68"
 		>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="200" />
 			<ColumnDefinition Width="120" />
+			<ColumnDefinition Width="200" />
 		</Grid.ColumnDefinitions>
-		<TextBlock
-			Grid.Column="0"
-			Text="{Binding PropertyName}"
-			Theme="{StaticResource H3}"
-			Margin="0 0 8 0"
-			VerticalAlignment="Center" HorizontalAlignment="Right"
-			/>
 		<Border
 			x:Name="border"			
-			Grid.Column="1"
+			Grid.Column="0"
 			Background="Transparent"
-			BorderBrush="{Binding BorderBrush}"
-			BorderThickness="2"
+			BorderBrush="Transparent"
+			BorderThickness="2"			
 			Margin="4"
 			CornerRadius="4"
 			>
@@ -39,9 +34,12 @@
 				Fill="{Binding ShadeBrush}"
 				/>
 		</Border>
-
-
-		<!--
-		-->
+		<TextBlock
+			Grid.Column="1"
+			Text="{Binding PropertyName}"
+			Theme="{StaticResource H3}"
+			Margin="12 0 0 0"
+			VerticalAlignment="Center" HorizontalAlignment="Left"
+			/>
 	</Grid>
 </UserControl>

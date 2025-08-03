@@ -6,51 +6,59 @@ using global::Avalonia.Input;
 /// Behaviour for controls and views that should support visualising a potential drop location 
 /// and actual dropping of the 'DragAble' objects that are dragged around. 
 /// </summary>
-public class DropAble(Action hideDropTarget) : BehaviorBase<BehaviorEnabledUserControl>
+public class DropAble(Action<IDropTarget?> hideDropTarget) : BehaviorBase<View>
 {
-    private readonly Action hideDropTarget = hideDropTarget;
+    private readonly Action<IDropTarget?> hideDropTarget = hideDropTarget;
 
     protected override void OnAttached()
     {
-        BehaviorEnabledUserControl userControl = GuardAssociatedObject();
-        DragDrop.SetAllowDrop(userControl, true);
-        userControl.AddHandler(DragDrop.DropEvent, this.OnDrop);
+        View view = this.GuardAssociatedObject();
+        Debug.WriteLine("DropAble | Attached to: " + this.AssociatedObject!.GetType().Name);
+        DragDrop.SetAllowDrop(view, true);
+        view.AddHandler(DragDrop.DropEvent, this.OnDrop);
     }
 
     protected override void OnDetaching()
     {
-        if (this.AssociatedObject is UserControl userControl)
+        if (this.AssociatedObject is View view)
         {
-            DragDrop.SetAllowDrop(userControl, false);
-            userControl.RemoveHandler(DragDrop.DropEvent, this.OnDrop);
+            DragDrop.SetAllowDrop(view, false);
+            view.RemoveHandler(DragDrop.DropEvent, this.OnDrop);
         }
     }
 
     private void OnDrop(object? sender, DragEventArgs dragEventArgs)
     {
-        if (this.AssociatedObject is not UserControl userControl)
+        if (this.AssociatedObject is not View view)
         {
             return;
         }
 
+        IDropTarget? target = null; 
         var data = dragEventArgs.Data;
         var formats = data.GetDataFormats().ToList();
         if (formats is not null && formats.Count > 0)
         {
-            foreach (var format in formats)
+            foreach (string? format in formats)
             {
-                object? dragDropObject = data.Get(format);
-                if (dragDropObject is IDragAbleViewModel draggableBindable)
+                if (string.IsNullOrWhiteSpace(format))
                 {
-                    var draggable = draggableBindable.DragAble;
+                    continue;
+                } 
+
+                object? dragDropObject = data.Get(format);
+                if (dragDropObject is IDragAbleViewModel draggableViewModel)
+                {
+                    var draggable = draggableViewModel.DragAble;
                     if (draggable is null)
                     {
                         break;
                     }
 
-                    if (userControl.DataContext is IDropTarget dropTarget)
+                    if (view.DataContext is IDropTarget dropTarget)
                     {
-                        dropTarget.OnDrop(dragEventArgs.GetPosition(userControl), dragDropObject);
+                        target = dropTarget;
+                        dropTarget.OnDrop(dragEventArgs.GetPosition(view), dragDropObject);
                     }
 
                     break;
@@ -58,7 +66,7 @@ public class DropAble(Action hideDropTarget) : BehaviorBase<BehaviorEnabledUserC
             }
         }
 
-        this.hideDropTarget?.Invoke();
+        this.hideDropTarget?.Invoke(target);
         dragEventArgs.Handled = true;
     }
 }

@@ -6,10 +6,11 @@ public sealed partial class DraggableColorBoxViewModel : ViewModel<DraggableColo
 {
     public const string CustomDragAndDropFormat = "PaletteViewModel";
 
-    private readonly Palette palette;
-    private readonly WheelKind wheelKind;
-    private readonly ShadeKind shadeKind;
-    private readonly Shade shade;
+    // All four made public so that the drop target can use it 
+    public readonly Palette palette;
+    public readonly WheelKind wheelKind;
+    public readonly ShadeKind shadeKind;
+    public readonly Shade shade;
 
     [ObservableProperty]
     private SolidColorBrush shadeBrush;

@@ -16,8 +16,8 @@
 			x:Name="border"
 			Background="Transparent"
 			BorderBrush="{Binding BorderBrush}"
-			BorderThickness="1.0"
-			Margin="4"
+			BorderThickness="0"
+			Margin="2"
 			CornerRadius="4"
 			>
 			<Rectangle

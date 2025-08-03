@@ -7,16 +7,17 @@ using global::Avalonia.Input;
 /// 'DragAble' objects that are dragged around. 
 /// </summary>
 public class DragOverAble(
-    Action? hideDropTarget = null,
-    Func<IDropTarget, Point, bool>? showDropTarget = null)
+    Action<IDropTarget?>? hideDropTarget = null,
+    Func<IDropTarget?, Point, bool>? showDropTarget = null)
         : BehaviorBase<View>
 {
-    private readonly Action? hideDropTarget = hideDropTarget;
+    private readonly Action<IDropTarget?>? hideDropTarget = hideDropTarget;
     private readonly Func<IDropTarget, Point, bool>? showDropTarget = showDropTarget;
 
     protected override void OnAttached()
     {
         View view = base.GuardAssociatedObject();
+        Debug.WriteLine("DragOverAble | Attached to: " + this.AssociatedObject!.GetType().Name);
         DragDrop.SetAllowDrop(view, true);
         view.AddHandler(DragDrop.DragOverEvent, this.OnDragOver);
     }
@@ -32,12 +33,15 @@ public class DragOverAble(
 
     private void OnDragOver(object? sender, DragEventArgs dragEventArgs)
     {
+        // Debug.WriteLine("Dragging over: " + this.AssociatedObject!.GetType().Name);
+
         dragEventArgs.DragEffects = DragDropEffects.None;
         if (this.AssociatedObject is not View view)
         {
             return;
         }
 
+        IDropTarget? target = null;
         bool showedDropTarget = false;
         var data = dragEventArgs.Data;
         var formats = data.GetDataFormats().ToList();
@@ -68,6 +72,7 @@ public class DragOverAble(
                             dragEventArgs.DragEffects = DragDropEffects.Move;
                             if (this.showDropTarget is not null)
                             {
+                                target = dropTarget;
                                 showedDropTarget = this.showDropTarget.Invoke(dropTarget, position);
                             }
                         }
@@ -80,9 +85,10 @@ public class DragOverAble(
 
         if (!showedDropTarget)
         {
-            this.hideDropTarget?.Invoke();
+            this.hideDropTarget?.Invoke(target);
         }
 
+        // MUST be handled or else Drop events will not fire 
         dragEventArgs.Handled = true;
     }
 }
