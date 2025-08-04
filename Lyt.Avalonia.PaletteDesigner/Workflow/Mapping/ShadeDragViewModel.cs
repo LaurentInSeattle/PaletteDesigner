@@ -2,7 +2,6 @@
 
 public sealed partial class ShadeDragViewModel : ViewModel<ShadeDragView>
 {
-    // private readonly PaletteDesignerModel paletteDesignerModel;
     private readonly Palette palette;
     private readonly WheelKind wheelKind;
     private readonly ShadeKind shadeKind;
@@ -16,10 +15,8 @@ public sealed partial class ShadeDragViewModel : ViewModel<ShadeDragView>
 
 
     public ShadeDragViewModel(
-        // PaletteDesignerModel paletteDesignerModel, 
         Palette palette, WheelKind wheelKind, ShadeKind shadeKind, Shade shade)
     {
-        // this.paletteDesignerModel = paletteDesignerModel;
         this.palette = palette;
         this.wheelKind = wheelKind;
         this.shadeKind = shadeKind;

@@ -1,8 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Mapping;
 
-using Lyt.Avalonia.PaletteDesigner.Model.ThemeObjects;
-using System;
-
 public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>, IDropTarget
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
@@ -110,8 +107,14 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
 
     private void UpdateModel()
     {
+        if ( this.palette is null)
+        {
+            // Too early 
+            return; 
+        }
+
         this.ColorTheme.SetOpacity(this.ColorThemeVariant.Name, this.sourcePropertyName, this.ShadeOpacity);
-        var shades = this.wheelKind.ToShadesFrom(this.palette!);
+        var shades = this.wheelKind.ToShadesFrom(this.palette);
         var shade = this.shadeKind.ToShadeFrom(shades);
         this.ColorTheme.SetShade(this.ColorThemeVariant.Name, this.sourcePropertyName, shade);
     }

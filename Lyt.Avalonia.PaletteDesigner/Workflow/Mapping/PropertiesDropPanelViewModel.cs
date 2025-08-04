@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Mapping;
 
-using Lyt.Avalonia.PaletteDesigner.Model.ThemeObjects;
-
 public sealed partial class PropertiesDropPanelViewModel : ViewModel<PropertiesDropPanelView>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
@@ -23,6 +21,23 @@ public sealed partial class PropertiesDropPanelViewModel : ViewModel<PropertiesD
         this.ThemeVariantName = string.Empty;
     }
 
+    public ColorTheme ColorTheme =>
+        this.paletteDesignerModel.ActiveProject == null ?
+            throw new Exception("No active project") :
+            this.paletteDesignerModel.ActiveProject.ColorTheme;
+
+    public ColorThemeVariant ColorThemeVariant =>
+        this.paletteDesignerModel.ActiveProject == null ?
+            throw new Exception("No active project") :
+            this.ColorTheme.Variants.Values.First();
+
+    // MAy not need the palette 
+    //
+    //public Palette Palette =>
+    //    this.paletteDesignerModel.ActiveProject == null ?
+    //        throw new Exception("No active project") :
+    //        this.paletteDesignerModel.ActiveProject.Palette;
+
     public override void OnViewLoaded()
     {
         base.OnViewLoaded();
@@ -40,22 +55,5 @@ public sealed partial class PropertiesDropPanelViewModel : ViewModel<PropertiesD
 
         this.PropertyDropViewModels = new(list);
     }
-
-    public ColorTheme ColorTheme =>
-        this.paletteDesignerModel.ActiveProject == null ?
-            throw new Exception("No active project") :
-            this.paletteDesignerModel.ActiveProject.ColorTheme;
-
-    public ColorThemeVariant ColorThemeVariant =>
-        this.paletteDesignerModel.ActiveProject == null ?
-            throw new Exception("No active project") :
-            this.ColorTheme.Variants.Values.First();
-
-    // MAy not need the palette 
-    //
-    //public Palette Palette =>
-    //    this.paletteDesignerModel.ActiveProject == null ?
-    //        throw new Exception("No active project") :
-    //        this.paletteDesignerModel.ActiveProject.Palette;
 }
 

@@ -106,6 +106,7 @@ global using Lyt.Avalonia.PaletteDesigner.Workflow.Wheel;
 
 global using Lyt.Avalonia.PaletteDesigner.Model;
 global using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
+global using Lyt.Avalonia.PaletteDesigner.Model.ThemeObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.Messaging;
 global using Lyt.Avalonia.PaletteDesigner.Model.Utilities;
 
