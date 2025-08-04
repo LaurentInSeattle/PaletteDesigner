@@ -1,5 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
+using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 using static Lyt.Persistence.FileManagerModel;
 
 public sealed partial class PaletteDesignerModel : ModelBase
@@ -127,6 +128,8 @@ public sealed partial class PaletteDesignerModel : ModelBase
         } 
 
         this.ShadesPresets = shadesPresets;
+
+        this.TestTheme(); 
     }
 
     public override Task Save()
@@ -174,5 +177,20 @@ public sealed partial class PaletteDesignerModel : ModelBase
         this.Language = languageKey;
         this.localizer.SelectLanguage(languageKey);
         this.Save();
+    }
+
+    [Conditional("DEBUG")]
+    private void TestTheme ()
+    {
+        //string targetName = "TestTheme";
+        //string name = string.Concat(targetName, "_", TimestampString());
+        //var theme = ColorTheme.TestCreate(); 
+        //this.fileManager.Save(Area.User, Kind.Json, name, theme);
+
+        string targetName2 = "TestTheme2";
+        string name2 = string.Concat(targetName2, "_", TimestampString());
+        var theme2 = new ColorTheme(ColorThemeDefinition.CreateFluent());
+        this.fileManager.Save(Area.User, Kind.Json, name2, theme2);
+
     }
 }

@@ -43,49 +43,6 @@ public sealed class HsvColor
         this.V = v;
     }
 
-    public HsvColor WithH(double h) => new(h, this.S, this.V);
-
-    public HsvColor WithS(double s) => new(this.H, s, this.V);
-
-    public HsvColor WithV(double v) => new(this.H, this.S, v);
-
-    /// <summary> 
-    /// Returns a new color based of this color appying the provided brightness factor on the V component. 
-    /// </summary>
-    public HsvColor Intensify(double factor)
-    {
-        double value = this.V * factor;
-        return this.WithV(value.Clip());
-    }
-
-    /// <summary> 
-    /// Returns a new color based of this color appying the provided saturation factor on the S component. 
-    /// </summary>
-    public HsvColor Saturate(double factor)
-    {
-        double saturation = this.S * factor;
-        return this.WithS(saturation.Clip());
-    }
-
-    /// <summary> Returns the colors adjacent to this color at the provided angular distance </summary>
-    public Tuple<HsvColor, HsvColor> Triad(double angularDistance)
-    {
-        double secondaryHuePlus = (this.H + angularDistance) % 360.0;
-        double secondaryHueMinus = (this.H - angularDistance) % 360.0;
-        return new(this.WithH(secondaryHuePlus), this.WithH(secondaryHueMinus));
-    }
-
-    /// <summary> 
-    /// Returns the color adjacent to this color at the provided angular distance along 
-    /// with its complementary color.
-    /// </summary>
-    public Tuple<HsvColor, HsvColor> Squared(double angularDistance)
-    {
-        double secondaryHue = (this.H + angularDistance) % 360.0;
-        double secondaryHueComplementary = (this.H + angularDistance + 180.0) % 360.0;
-        return new(this.WithH(secondaryHue), this.WithH(secondaryHueComplementary));
-    }
-
     public RgbColor ToRgb() => HsvColor.ToRgb(this.H, this.S, this.V);
 
     public static RgbColor ToRgb(double hue, double saturation, double brightness)

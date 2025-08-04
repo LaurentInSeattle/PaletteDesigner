@@ -17,6 +17,13 @@ public sealed class RgbColor
         this.B = b;
     }
 
+    public RgbColor(uint rgb)
+    {
+        this.R = (rgb & 0xFF0000) >> 16;
+        this.G = (rgb & 0x00FF00) >> 8;
+        this.B = (rgb & 0x0000FF) ;
+    }
+
     public RgbColor(RgbColor rgb)
     {
         this.R = rgb.R;
@@ -31,12 +38,6 @@ public sealed class RgbColor
         this.G = rgb.G;
         this.B = rgb.B;
     }
-
-    public RgbColor WithR(double r) => new(r, this.G, this.B);
-
-    public RgbColor WithG(double g) => new(this.R, g, this.B);
-
-    public RgbColor WithB(double b) => new(this.R, this.G, b);
 
     public HsvColor ToHsv() => RgbColor.ToHsv(this.R, this.G, this.B);
 
@@ -104,6 +105,9 @@ public sealed class RgbColor
 
         return new HsvColor(Math.Round(h), Math.Round(s), Math.Round(value));
     }
+
+    public uint ToRgbUint()
+        => (uint)Math.Round(this.R) << 16 | (uint)Math.Round(this.G) << 8 | (uint)Math.Round(this.B);
 
     // DOES NOT Include pound sign: FF030014
     public string ToArgbHexString()
