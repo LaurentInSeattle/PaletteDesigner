@@ -37,7 +37,7 @@
 		</Border>
 		<TextBlock
 			Grid.Column="1"
-			Text="{Binding PropertyName}"
+			Text="{Binding UiPropertyName}"
 			Theme="{StaticResource Large}"
 			Margin="8 12 0 0"
 			VerticalAlignment="Top" HorizontalAlignment="Left"
