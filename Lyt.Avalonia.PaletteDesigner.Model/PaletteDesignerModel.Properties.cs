@@ -1,5 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
+using Lyt.Avalonia.PaletteDesigner.Model.ProjectObjects;
 using System;
 
 public sealed partial class PaletteDesignerModel : ModelBase

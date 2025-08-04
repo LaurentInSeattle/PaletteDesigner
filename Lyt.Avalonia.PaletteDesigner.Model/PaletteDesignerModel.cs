@@ -1,6 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
-using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 using static Lyt.Persistence.FileManagerModel;
 
 public sealed partial class PaletteDesignerModel : ModelBase
@@ -81,7 +80,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
             // Create a default project and make it active 
             Project project = new()
             {
-                Name = "Empty",
+                Name = "Default",
                 Format = PaletteExportFormat.AvaloniaAxaml,
                 FolderPath = string.Empty,
                 Created = DateTime.Now,
@@ -91,6 +90,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
                     Name = "Default",
                     Kind = PaletteKind.Duochromatic,
                 },
+                ColorTheme = new(ColorThemeDefinition.CreateFluent()),
             };
 
             this.LoadStaticColorData();
@@ -129,7 +129,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
 
         this.ShadesPresets = shadesPresets;
 
-        this.TestTheme(); 
+        // this.TestTheme(); 
     }
 
     public override Task Save()
@@ -180,17 +180,16 @@ public sealed partial class PaletteDesignerModel : ModelBase
     }
 
     [Conditional("DEBUG")]
-    private void TestTheme ()
+    private static void TestTheme ()
     {
         //string targetName = "TestTheme";
         //string name = string.Concat(targetName, "_", TimestampString());
         //var theme = ColorTheme.TestCreate(); 
         //this.fileManager.Save(Area.User, Kind.Json, name, theme);
 
-        string targetName2 = "TestTheme2";
-        string name2 = string.Concat(targetName2, "_", TimestampString());
-        var theme2 = new ColorTheme(ColorThemeDefinition.CreateFluent());
-        this.fileManager.Save(Area.User, Kind.Json, name2, theme2);
-
+        //string targetName2 = "TestTheme2";
+        //string name2 = string.Concat(targetName2, "_", TimestampString());
+        //var theme2 = new ColorTheme(ColorThemeDefinition.CreateFluent());
+        //this.fileManager.Save(Area.User, Kind.Json, name2, theme2);
     }
 }

@@ -13,7 +13,7 @@
 		>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="40" />
-			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
 			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
 		<TextBlock
@@ -22,24 +22,32 @@
 			Theme="{StaticResource H2}"
 			VerticalAlignment="Center" HorizontalAlignment="Center"
 			/>
-		<ItemsControl
-			x:Name="PropertiesItemsControl"
-			ItemsSource="{Binding PropertyDropViewModels}"
-			Grid.Row="1"
-			Margin="8" Padding="0"
-			HorizontalAlignment="Left"
+		<ScrollViewer
+			Grid.Row="1" Width="480"
+			Margin="0"
+			Background="Transparent"
+			VerticalAlignment="Stretch" HorizontalAlignment="Left"
+			ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+			ScrollViewer.VerticalScrollBarVisibility="Auto"
 			>
-			<ItemsControl.ItemsPanel>
-				<ItemsPanelTemplate>
-					<WrapPanel Orientation="Vertical" Margin="0" />
-				</ItemsPanelTemplate>
-			</ItemsControl.ItemsPanel>
-			<ItemsControl.ItemTemplate>
-				<DataTemplate>
-					<vm:PropertyDropView Margin="0 8 0 0" />
-				</DataTemplate>
-			</ItemsControl.ItemTemplate>
-		</ItemsControl>
+			<ItemsControl
+				x:Name="PropertiesItemsControl"
+				ItemsSource="{Binding PropertyDropViewModels}"
+				Padding="0" 
+				HorizontalAlignment="Stretch"
+				>
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<StackPanel Orientation="Vertical" Margin="0" />
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<vm:PropertyDropView Margin="0 12 0 0" Width="460"/>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</ScrollViewer>
 		<TextBlock
 			Grid.Row="2"
 			Margin="4 12 4 4"

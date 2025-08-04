@@ -5,6 +5,9 @@ public sealed class ColorThemeDefinition
     [JsonRequired]
     public string Name { get; set; } = string.Empty;
 
+    [JsonRequired]
+    public string FriendlyName { get; set; } = string.Empty;
+
     // First in list is the default 
     [JsonRequired]
     public List<string> Variants { get; set; } = [];
@@ -16,6 +19,7 @@ public sealed class ColorThemeDefinition
         => new ()
         {
             Name = "Fluent",
+            FriendlyName = "Avalonia Fluent Theme",
             Variants = [ "Default" , "Dark"],
             PropertyNames =
             [

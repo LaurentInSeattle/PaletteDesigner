@@ -8,6 +8,9 @@ public sealed class ColorTheme
     public string Name { get; set; } = string.Empty;
 
     [JsonRequired]
+    public string FriendlyName { get; set; } = string.Empty;
+
+    [JsonRequired]
     public Dictionary<string, ColorThemeVariant> Variants { get; set; } = [];
 
     [JsonRequired]
@@ -16,6 +19,7 @@ public sealed class ColorTheme
     public ColorTheme(ColorThemeDefinition colorThemeDefinition)
     {
         this.Name = colorThemeDefinition.Name;
+        this.FriendlyName = colorThemeDefinition.FriendlyName;
         bool isFirst = true;
         foreach (string variant in colorThemeDefinition.Variants)
         {

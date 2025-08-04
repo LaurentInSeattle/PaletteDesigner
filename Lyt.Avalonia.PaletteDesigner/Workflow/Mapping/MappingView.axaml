@@ -13,13 +13,13 @@
     DragDrop.AllowDrop = "True"
     >
     <Grid
-        ShowGridLines="False"
+        ShowGridLines="True"
         >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="420" />
             <!-- Spacer -->
             <ColumnDefinition Width="12" />
-            <ColumnDefinition Width="420" />
+            <ColumnDefinition Width="500" />
             <!-- Spacer -->
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>		

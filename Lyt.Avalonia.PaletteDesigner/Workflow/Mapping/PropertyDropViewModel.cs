@@ -17,12 +17,20 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
     [ObservableProperty]
     private string propertyName;
 
+    [ObservableProperty]
+    private double opacitySliderValue;
+
+    [ObservableProperty]
+    private double shadeOpacity;
+
     public PropertyDropViewModel(PaletteDesignerModel paletteDesignerModel, string propertyName)
     {
         this.paletteDesignerModel = paletteDesignerModel;
-        this.PropertyName = propertyName;
+        this.PropertyName = propertyName.ToFancyString();
         this.BorderBrush = new SolidColorBrush(Colors.Transparent);
         this.ShadeBrush = new SolidColorBrush(0x80808080);
+        this.ShadeOpacity = 1.0;
+        this.OpacitySliderValue = 1.0;
 
         this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated);
     }
@@ -76,5 +84,12 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
         var shades = this.wheelKind.ToShadesFrom(this.palette!);
         var shade = this.shadeKind.ToShadeFrom(shades);
         this.ShadeBrush = shade.Color.ToBrush();
+    }
+
+    partial void OnOpacitySliderValueChanged(double value)
+    {
+        this.ShadeOpacity = value;
+        // this.UpdateLabels();
+        // this.paletteDesignerModel.UpdatePalettePrimaryWheel(value);
     }
 }

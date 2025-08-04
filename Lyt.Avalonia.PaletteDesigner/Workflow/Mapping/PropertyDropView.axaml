@@ -12,11 +12,11 @@
 	DragDrop.AllowDrop ="True"
 	>
 	<Grid
-		Height="68"
+		Height="70"
 		>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="120" />
-			<ColumnDefinition Width="200" />
+			<ColumnDefinition Width="340" />
 		</Grid.ColumnDefinitions>
 		<Border
 			x:Name="border"			
@@ -32,14 +32,25 @@
 				Margin="4"
 				RadiusX="4" RadiusY="4"
 				Fill="{Binding ShadeBrush}"
+				Opacity="{Binding ShadeOpacity}"
 				/>
 		</Border>
 		<TextBlock
 			Grid.Column="1"
 			Text="{Binding PropertyName}"
-			Theme="{StaticResource H3}"
-			Margin="12 0 0 0"
-			VerticalAlignment="Center" HorizontalAlignment="Left"
+			Theme="{StaticResource Large}"
+			Margin="8 12 0 0"
+			VerticalAlignment="Top" HorizontalAlignment="Left"
+			/>
+		<Slider
+			x:Name="OpacitySlider"
+			Grid.Column="1"
+			Margin="8 0 16 4"
+			Minimum="0.1" Maximum="1.0"
+			SmallChange="0.1" LargeChange="0.2"
+			TickFrequency="0.1" TickPlacement="BottomRight"
+			Value="{Binding OpacitySliderValue}"
+			HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
 			/>
 	</Grid>
 </UserControl>

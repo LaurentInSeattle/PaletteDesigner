@@ -1,4 +1,4 @@
-﻿namespace Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
+﻿namespace Lyt.Avalonia.PaletteDesigner.Model.ProjectObjects;
 
 public sealed class Project
 {
@@ -17,7 +17,9 @@ public sealed class Project
     [JsonRequired]
     public required string FolderPath { get; set; } = string.Empty;
 
-    public Palette Palette { get; set; } = new(); 
+    public Palette Palette { get; set; } = new();
+
+    public ColorTheme ColorTheme { get; set; } = new();
 
     public bool IsInvalid
         =>
