@@ -1,8 +1,12 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Mapping;
 
+using Lyt.Avalonia.PaletteDesigner.Model.ThemeObjects;
+using System;
+
 public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>, IDropTarget
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
+    private readonly string sourcePropertyName;
 
     private Palette? palette;
     private WheelKind wheelKind;
@@ -15,7 +19,7 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
     private SolidColorBrush borderBrush;
 
     [ObservableProperty]
-    private string propertyName;
+    private string uiPropertyName;
 
     [ObservableProperty]
     private double opacitySliderValue;
@@ -26,7 +30,8 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
     public PropertyDropViewModel(PaletteDesignerModel paletteDesignerModel, string propertyName)
     {
         this.paletteDesignerModel = paletteDesignerModel;
-        this.PropertyName = propertyName.ToFancyString();
+        this.sourcePropertyName = propertyName;
+        this.UiPropertyName = propertyName.ToFancyString();
         this.BorderBrush = new SolidColorBrush(Colors.Transparent);
         this.ShadeBrush = new SolidColorBrush(0x80808080);
         this.ShadeOpacity = 1.0;
@@ -34,6 +39,16 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
 
         this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated);
     }
+
+    public ColorTheme ColorTheme =>
+        this.paletteDesignerModel.ActiveProject == null ?
+            throw new Exception("No active project") :
+            this.paletteDesignerModel.ActiveProject.ColorTheme;
+
+    public ColorThemeVariant ColorThemeVariant =>
+        this.paletteDesignerModel.ActiveProject == null ?
+            throw new Exception("No active project") :
+            this.ColorTheme.Variants.Values.First();
 
     public bool CanDrop(Point point, object droppedObject)
     {
@@ -51,7 +66,7 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
         if (droppedObject is not DraggableColorBoxViewModel draggableColorBoxViewModel)
         {
             Debug.WriteLine("Invalid drop object");
-            return ;
+            return;
         }
 
         if (!this.CanDrop(point, draggableColorBoxViewModel))
@@ -59,7 +74,7 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
             return;
         }
 
-        this.ProcessColorBox(draggableColorBoxViewModel); 
+        this.ProcessColorBox(draggableColorBoxViewModel);
     }
 
     private void OnModelUpdated(ModelUpdatedMessage? _) => this.Colorize();
@@ -78,18 +93,26 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
         if (this.palette is null)
         {
             // No data yet: just do nothing
-            return ;
+            return;
         }
 
         var shades = this.wheelKind.ToShadesFrom(this.palette!);
         var shade = this.shadeKind.ToShadeFrom(shades);
         this.ShadeBrush = shade.Color.ToBrush();
+        this.UpdateModel();
     }
 
     partial void OnOpacitySliderValueChanged(double value)
     {
         this.ShadeOpacity = value;
-        // this.UpdateLabels();
-        // this.paletteDesignerModel.UpdatePalettePrimaryWheel(value);
+        this.UpdateModel();
+    }
+
+    private void UpdateModel()
+    {
+        this.ColorTheme.SetOpacity(this.ColorThemeVariant.Name, this.sourcePropertyName, this.ShadeOpacity);
+        var shades = this.wheelKind.ToShadesFrom(this.palette!);
+        var shade = this.shadeKind.ToShadeFrom(shades);
+        this.ColorTheme.SetShade(this.ColorThemeVariant.Name, this.sourcePropertyName, shade);
     }
 }
