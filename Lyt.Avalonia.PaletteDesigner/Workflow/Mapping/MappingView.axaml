@@ -1,44 +1,50 @@
 <UserControl 
-    x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Mapping.MappingView"
-    xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Mapping"
-    x:DataType="vm:MappingViewModel" 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Mapping.MappingView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Mapping"
+	x:DataType="vm:MappingViewModel" 
 
-    xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-    
-    Background="Transparent"
-    DragDrop.AllowDrop = "True"
-    >
-    <Grid
-        ShowGridLines="True"
-        >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="420" />
-            <!-- Spacer -->
-            <ColumnDefinition Width="12" />
-            <ColumnDefinition Width="500" />
-            <!-- Spacer -->
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>		
-        <vm:ColorsDragPanelView
-            Grid.Column="0"
-            DataContext="{Binding ColorsDragPanelViewModel}"
-            />
-        <vm:PropertiesDropPanelView
-            Grid.Column="2"
-            DataContext="{Binding PropertiesDropPanelViewModel}"
-            />
-        <Canvas
-            x:Name="MainWindowCanvas"
-            Grid.Column="0" Grid.ColumnSpan="999" Grid.Row="0" Grid.RowSpan="999"
-            VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-            Background="Transparent"
-            IsHitTestVisible="false"
-            ZIndex="999"
-            DragDrop.AllowDrop="True"
-            />
-    </Grid>	
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	
+	Background="Transparent"
+	DragDrop.AllowDrop = "True"
+	>
+	<Grid
+		ShowGridLines="False"
+		>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="420" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="12" />
+			<ColumnDefinition Width="500" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="12" />
+			<ColumnDefinition Width="420" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>		
+		<vm:ColorsDragPanelView
+			Grid.Column="0"
+			DataContext="{Binding ColorsDragPanelViewModel}"
+			/>
+		<vm:PropertiesDropPanelView
+			Grid.Column="2"
+			DataContext="{Binding PropertiesDropPanelViewModel}"
+			/>
+		<vm:WidgetsPreviewView
+			Grid.Column="4"
+			DataContext="{Binding WidgetsPreviewViewModel}"
+			/>
+		<Canvas
+			x:Name="MainWindowCanvas"
+			Grid.Column="0" Grid.ColumnSpan="999" Grid.Row="0" Grid.RowSpan="999"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			Background="Transparent"
+			IsHitTestVisible="false"
+			ZIndex="999"
+			DragDrop.AllowDrop="True"
+			/>
+	</Grid>	
 </UserControl>

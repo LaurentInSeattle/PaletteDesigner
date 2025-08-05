@@ -10,10 +10,14 @@ public sealed partial class MappingViewModel : ViewModel<MappingView>
     [ObservableProperty]
     private PropertiesDropPanelViewModel propertiesDropPanelViewModel;
 
+    [ObservableProperty]
+    private WidgetsPreviewViewModel widgetsPreviewViewModel;
+
     public MappingViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
-        this.ColorsDragPanelViewModel = new ColorsDragPanelViewModel(paletteDesignerModel);
-        this.PropertiesDropPanelViewModel = new PropertiesDropPanelViewModel(paletteDesignerModel);
+        this.ColorsDragPanelViewModel = new (paletteDesignerModel);
+        this.PropertiesDropPanelViewModel = new (paletteDesignerModel);
+        this.WidgetsPreviewViewModel = new("Preview"); 
     }
 }

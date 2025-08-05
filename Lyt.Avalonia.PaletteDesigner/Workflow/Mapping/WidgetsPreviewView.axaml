@@ -1,0 +1,27 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Mapping.WidgetsPreviewView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Mapping"
+	x:DataType="vm:WidgetsPreviewViewModel" 
+
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"	
+	>
+	<Grid
+		Background="{StaticResource SystemRegionColor}"
+		>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+
+		<TextBlock
+			Grid.Row="0"
+			Text="{Binding Title}"
+			Theme="{StaticResource H2}"
+			VerticalAlignment="Center" HorizontalAlignment="Left"
+			/>
+	</Grid>
+</UserControl>
