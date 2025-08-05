@@ -14,6 +14,11 @@
 	<Style>
 		<Style.Resources>
 
+			<!-- Experimental -->
+			<Color x:Key="SystemErrorTextColor">#FF03FF14</Color>
+			<SolidColorBrush x:Key="SystemErrorTextBrush" Color="{StaticResource SystemErrorTextColor}" />
+			
+
 			<!-- DeepBlue -->
 			<Color x:Key="DeepBlue_0_100_Color">#FF030014</Color>
 			<SolidColorBrush x:Key="DeepBlue_0_100" Color="{StaticResource DeepBlue_0_100_Color}" />

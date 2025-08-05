@@ -1,5 +1,9 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Mapping;
 
+using global::Avalonia.Styling;
+using static Lyt.Avalonia.Controls.Utilities;
+using Ava = global::Avalonia.Media;
+
 public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>, IDropTarget
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
@@ -35,6 +39,8 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
         this.OpacitySliderValue = 1.0;
 
         this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated);
+
+        this.InitializeColorWithTheme();
     }
 
     public ColorTheme ColorTheme =>
@@ -107,15 +113,53 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
 
     private void UpdateModel()
     {
-        if ( this.palette is null)
+        if (this.palette is null)
         {
             // Too early 
-            return; 
+            return;
         }
 
         this.ColorTheme.SetOpacity(this.ColorThemeVariant.Name, this.sourcePropertyName, this.ShadeOpacity);
         var shades = this.wheelKind.ToShadesFrom(this.palette);
         var shade = this.shadeKind.ToShadeFrom(shades);
         this.ColorTheme.SetShade(this.ColorThemeVariant.Name, this.sourcePropertyName, shade);
+    }
+
+    private void InitializeColorWithTheme()
+    {
+        bool found = TryFindResource<Color>(this.sourcePropertyName, out Color color);
+        if (found)
+        {
+            double opacity = color.A / 255.0;
+            this.ShadeBrush = new SolidColorBrush(color, opacity);
+            this.OpacitySliderValue = opacity;
+        }
+
+        //ThemeVariant styles = Application.Current!.;
+        //foreach (var item in styles)
+        //{
+        //    Debug.WriteLine(item.ToString()); 
+        //}
+
+        //Debugger.Break();
+
+        //var style = styles[0];
+        //style.
+        //var children = style.Children; 
+        //var res = styles.Resources;
+        //// var res = App.MainWindow.Resources; 
+        //foreach (object? key in res)
+        //{
+        //    Debug.Write(key + "   ");
+        //    var value = res[key];
+        //    if (value != null)
+        //    {
+        //        Debug.WriteLine(value.GetType().ToString() + "  " + value.ToString());
+        //    }
+        //    else
+        //    {
+        //        Debug.WriteLine("No value");
+        //    }
+        //}
     }
 }
