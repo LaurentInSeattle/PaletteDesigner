@@ -22,7 +22,7 @@
 			<ColumnDefinition Width="500" />
 			<!-- Spacer -->
 			<ColumnDefinition Width="12" />
-			<ColumnDefinition Width="420" />
+			<ColumnDefinition Width="500" />
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>		
 		<vm:ColorsDragPanelView

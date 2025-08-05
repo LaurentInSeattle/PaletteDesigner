@@ -8,20 +8,174 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"	
+	xmlns:system="using:System"
 	>
+	<!-- 		Background="{StaticResource SystemRegionColor}"
+	-->
 	<Grid
-		Background="{StaticResource SystemRegionColor}"
 		>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="40" />
-			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 
 		<TextBlock
 			Grid.Row="0"
 			Text="{Binding Title}"
 			Theme="{StaticResource H2}"
-			VerticalAlignment="Center" HorizontalAlignment="Left"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
 			/>
+
+		<ScrollViewer
+			Grid.Row="1" Width="480"
+			Margin="8"
+			Background="Transparent"
+			VerticalAlignment="Stretch" HorizontalAlignment="Left"
+			ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+			ScrollViewer.VerticalScrollBarVisibility="Auto"
+			>
+			<StackPanel Margin="0 0 24 0" Orientation="Vertical">
+				<Border Height="40" Margin="0,0,0,20">
+					<TextBlock
+						VerticalAlignment="Center"
+						FontWeight="SemiBold"
+						LineHeight="20"
+						Text="Binding #ThisControl.Title, Mode=OneWay}" />
+				</Border>
+				<TextBlock
+					Text="shared:Loc TestContentButtonsBlock}"
+					Margin="0,0,0,16"
+				 />
+				<Button Content="shared:Loc TestContentEnabledButton}" 
+						Margin="0,0,0,12" 
+						CornerRadius="{DynamicResource ControlCornerRadius}"/>
+				<Button
+					Content="shared:Loc TestContentDisabledButton}"
+					Margin="0,0,0,12"
+					IsEnabled="False"
+					CornerRadius="{DynamicResource ControlCornerRadius}"/>
+				<ToggleButton Content="shared:Loc TestContentToggleButton}" Margin="0,0,0,12" />
+				<ToggleButton
+					Content="shared:Loc TestContentToggledButton}"
+					Margin="0,0,0,12"
+					IsChecked="True" />
+				<Button
+					Content="shared:Loc TestContentEnabledAccentButton}"
+					Margin="0,0,0,12"
+					Classes="accent" />
+				<Button
+					Content="shared:Loc TestContentDisabledAccentButton}"
+					Margin="0,0,0,28"
+					IsEnabled="False"
+					Classes="accent" />
+				<TextBlock
+					Text="shared:Loc TestContentCheckboxBlock}"
+					Margin="0,0,0,16"
+				 />
+				<CheckBox Content="shared:Loc TestContentUncheckedCheckbox}" Margin="0,0,0,12" />
+				<CheckBox
+					Content="shared:Loc TestContentCheckedCheckbox}"
+					Margin="0,0,0,12"
+					IsChecked="True" />
+				<CheckBox
+					Content="shared:Loc TestContentThirdStateCheckbox}"
+					Margin="0,0,0,12"
+					IsChecked="{x:Null}" />
+				<CheckBox
+					Content="shared:Loc TestContentDisabledCheckbox}"
+					Margin="0,0,0,28"
+					IsChecked="True"
+					IsEnabled="False" />
+				<TextBlock
+					Text="shared:Loc TestContentRadioBlock}"
+					Margin="0,0,0,16"
+				 />
+				<RadioButton
+					Content="shared:Loc TestContentUncheckedRadio}"
+					Margin="0,0,0,12"
+					GroupName="Test1" />
+				<RadioButton
+					Content="shared:Loc TestContentCheckedRadio}"
+					Margin="0,0,0,12"
+					GroupName="Test1"
+					IsChecked="True" />
+				<RadioButton
+					Content="shared:Loc TestContentDisabledRadio}"
+					Margin="0,0,0,28"
+					GroupName="Test2"
+					IsChecked="True"
+					IsEnabled="False" />
+				<TextBlock
+					Text="shared:Loc TestContentComboBlock}"
+					Margin="0,0,0,16"
+				 />
+				<ComboBox Width="200" Margin="0,0,0,12" SelectedIndex="0">
+					<ComboBox.Items>
+						<ComboBoxItem Content="shared:Loc TestContentComboItem1}" />
+						<ComboBoxItem Content="shared:Loc TestContentComboItem2}" />
+						<ComboBoxItem Content="shared:Loc TestContentComboItem3}" />
+					</ComboBox.Items>
+				</ComboBox>
+				<TextBlock
+					Text="shared:Loc TestContentTextboxBlock}"
+					Margin="0,0,0,16"
+				 />
+				<TextBox
+					Text="shared:Loc TestContentTextbox}"
+					Watermark="shared:Loc TestContentTextboxPlaceholderText}"
+					Width="200"
+					Margin="0,0,0,28"
+					HorizontalAlignment="Left" />
+				<TextBlock
+					Text="shared:Loc TestContentToggleBlock}"
+					Margin="0,0,0,16"
+				 />
+				<ToggleSwitch Margin="0,0,0,12" IsChecked="False" />
+				<ToggleSwitch Margin="0,0,0,28" IsChecked="True" />
+				<TextBlock Margin="0,0,0,16" Text="Slider" />
+				<Slider
+					Margin="0,0,0,28"
+					HorizontalAlignment="Stretch"
+					Maximum="100"
+					Minimum="0"
+					Value="50" />
+				<TextBlock
+					Text="shared:Loc TestContentListviewBlock}"
+					Margin="0,0,0,16"
+				 />
+				<ListBox Margin="0,0,0,28" HorizontalAlignment="Stretch">
+					<ListBox.ItemTemplate>
+						<DataTemplate x:DataType="system:Object">
+							<TextBlock Text="{Binding}" />
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+					<ListBox.Items>
+						<ListBoxItem Content="shared:Loc TestContentListviewItem1}" IsEnabled="False" />
+						<ListBoxItem Content="shared:Loc TestContentListviewItem2}" IsSelected="True" />
+						<ListBoxItem Content="shared:Loc TestContentListviewItem3}" />
+						<ListBoxItem Content="shared:Loc TestContentListviewItem4}" />
+					</ListBox.Items>
+				</ListBox>
+				<TextBlock
+					Text="shared:Loc TestContentCommandBarBlock}"
+					Margin="0,0,0,16"
+				 />
+				<TextBlock
+					Text="shared:Loc TestContentDatePickerBlock}"
+					Margin="0,0,0,16"
+				 />
+				<DatePicker Margin="0,0,0,28" HorizontalAlignment="Stretch" />
+				<TextBlock
+					Text="shared:Loc TestContentTimePickerBlock}"
+					Margin="0,0,0,16"
+				 />
+				<TimePicker Margin="0,0,0,0" HorizontalAlignment="Stretch" />
+				<TextBlock
+					Text="shared:Loc TestContentCalendarViewBlock}"
+					Margin="0,0,0,16"
+				 />
+				<Calendar/>
+			</StackPanel>
+		</ScrollViewer>
 	</Grid>
 </UserControl>
