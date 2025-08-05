@@ -61,7 +61,7 @@
 
     <system:String x:Key="Design.Toolbar.Models.Quadrichromatic">Cuadricromático</system:String>
 
-    <system:String x:Key="Design.Toolbar.Models.FreeStyle">Estilo gratis</system:String>
+    <system:String x:Key="Design.Toolbar.Models.FreeStyle">Estilo Libre</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Classic">Clásico</system:String>
 

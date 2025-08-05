@@ -40,7 +40,7 @@
 	<system:String x:Key="Design.Toolbar.Models.Duochromatic">Dichromatic</system:String>
 	<system:String x:Key="Design.Toolbar.Models.Trichromatic">Trichromatic</system:String>
 	<system:String x:Key="Design.Toolbar.Models.Quadrichromatic">Quadrichromatic</system:String>
-	<system:String x:Key="Design.Toolbar.Models.FreeStyle">Free Style</system:String>
+	<system:String x:Key="Design.Toolbar.Models.FreeStyle">Freestyle</system:String>
 	<system:String x:Key="Design.Toolbar.Models.Classic">Classic</system:String>
 
 	<system:String x:Key="Design.Toolbar.Shade.ShadesTints">Shades and Tints</system:String>
