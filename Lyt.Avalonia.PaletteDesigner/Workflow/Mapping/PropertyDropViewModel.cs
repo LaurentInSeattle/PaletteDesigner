@@ -32,7 +32,9 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
     {
         this.paletteDesignerModel = paletteDesignerModel;
         this.sourcePropertyName = propertyName;
-        this.UiPropertyName = propertyName.ToFancyString();
+        string uiString = propertyName.Replace("System", "");
+        uiString = uiString.Replace("Color", "");
+        this.UiPropertyName = uiString.ToFancyString();
         this.BorderBrush = new SolidColorBrush(Colors.Transparent);
         this.ShadeBrush = new SolidColorBrush(0x80808080);
         this.ShadeOpacity = 1.0;
@@ -119,10 +121,10 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
             return;
         }
 
-        this.ColorTheme.SetOpacity(this.ColorThemeVariant.Name, this.sourcePropertyName, this.ShadeOpacity);
         var shades = this.wheelKind.ToShadesFrom(this.palette);
         var shade = this.shadeKind.ToShadeFrom(shades);
-        this.ColorTheme.SetShade(this.ColorThemeVariant.Name, this.sourcePropertyName, shade);
+        this.paletteDesignerModel.UpdateThemeProperty(
+            this.ColorThemeVariant, this.sourcePropertyName, shade, this.ShadeOpacity);
     }
 
     private void InitializeColorWithTheme()
@@ -134,32 +136,5 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
             this.ShadeBrush = new SolidColorBrush(color, opacity);
             this.OpacitySliderValue = opacity;
         }
-
-        //ThemeVariant styles = Application.Current!.;
-        //foreach (var item in styles)
-        //{
-        //    Debug.WriteLine(item.ToString()); 
-        //}
-
-        //Debugger.Break();
-
-        //var style = styles[0];
-        //style.
-        //var children = style.Children; 
-        //var res = styles.Resources;
-        //// var res = App.MainWindow.Resources; 
-        //foreach (object? key in res)
-        //{
-        //    Debug.Write(key + "   ");
-        //    var value = res[key];
-        //    if (value != null)
-        //    {
-        //        Debug.WriteLine(value.GetType().ToString() + "  " + value.ToString());
-        //    }
-        //    else
-        //    {
-        //        Debug.WriteLine("No value");
-        //    }
-        //}
     }
 }

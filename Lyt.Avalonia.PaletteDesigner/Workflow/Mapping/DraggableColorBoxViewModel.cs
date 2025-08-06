@@ -74,5 +74,5 @@ public sealed partial class DraggableColorBoxViewModel : ViewModel<DraggableColo
 
     public void OnLongPress() { }
 
-    private void OnModelUpdated(ModelUpdatedMessage? _) => this.ShadeBrush = shade.Color.ToBrush();
+    private void OnModelUpdated(ModelUpdatedMessage? _) => this.ShadeBrush = this.shade.Color.ToBrush();
 }

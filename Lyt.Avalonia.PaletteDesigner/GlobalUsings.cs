@@ -48,6 +48,9 @@ global using Avalonia.Media.Imaging;
 global using Avalonia.Media.Immutable;
 global using Avalonia.Platform;
 global using Avalonia.Platform.Storage;
+global using Avalonia.Styling;
+global using Avalonia.Themes;
+global using Avalonia.Themes.Fluent;
 global using Avalonia.Threading;
 
 #endregion Avalonia 

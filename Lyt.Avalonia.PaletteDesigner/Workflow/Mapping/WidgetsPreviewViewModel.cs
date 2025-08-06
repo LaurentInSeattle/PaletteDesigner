@@ -9,4 +9,19 @@ public sealed partial class WidgetsPreviewViewModel : ViewModel<WidgetsPreviewVi
     {
         this.Title = title;
     }
+
+    public void UpdatePalettes(
+        ColorPaletteResources darkColorPaletteResources, ColorPaletteResources lightColorPaletteResources )
+    {
+        this.View.Styles.Clear();
+        this.View.Styles.Add(
+            new FluentTheme
+            {
+                Palettes =
+                {
+                    [ThemeVariant.Light] = lightColorPaletteResources,
+                    [ThemeVariant.Dark] = darkColorPaletteResources
+                }
+            } );
+    }
 }

@@ -20,9 +20,12 @@ public sealed class ColorThemeDefinition
         {
             Name = "Fluent",
             FriendlyName = "Avalonia Fluent Theme",
-            Variants = [ "Default" , "Dark"],
+            Variants = [ "Light" , "Dark"],
             PropertyNames =
             [
+                "SystemRegionColor",
+                "SystemAccentColor",
+
                 "SystemAltHighColor",
                 "SystemAltLowColor",
                 "SystemAltMediumColor",
@@ -53,8 +56,6 @@ public sealed class ColorThemeDefinition
                 "SystemListMediumColor",
                 
                 "SystemErrorTextColor",
-                
-                "SystemRegionColor",
                 
                 "SystemRevealListLowColor",
                 "SystemRevealListMediumColor",
