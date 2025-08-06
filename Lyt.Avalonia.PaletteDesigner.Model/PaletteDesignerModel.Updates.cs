@@ -46,7 +46,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
         bool result = this.ActionPalette(action);
         if (result)
         {
-            this.Messenger.Publish(new ModelUpdatedMessage());
+            this.Messenger.Publish(new ModelPaletteUpdatedMessage());
         }
 
         return result;

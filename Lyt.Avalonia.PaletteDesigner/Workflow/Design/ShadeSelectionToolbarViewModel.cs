@@ -40,7 +40,7 @@ public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSele
     public ShadeSelectionToolbarViewModel()
     {
         this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();
-        this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated);
+        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelUpdated);
 
         this.ShowShadesPresets = false;
         this.ShowShadesValues = true;
@@ -93,7 +93,7 @@ public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSele
     }
     
 
-    private void OnModelUpdated(ModelUpdatedMessage _)
+    private void OnModelUpdated(ModelPaletteUpdatedMessage _)
     {
         var palette = this.Palette;
         this.PrimaryBaseBrush = palette.Primary.Base.ToBrush();

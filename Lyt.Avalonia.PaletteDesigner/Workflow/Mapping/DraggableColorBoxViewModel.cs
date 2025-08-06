@@ -34,7 +34,7 @@ public sealed partial class DraggableColorBoxViewModel : ViewModel<DraggableColo
             this.DragAble = new DragAble(MappingView.DragCanvas);
         } 
 
-        this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated);
+        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelUpdated);
     }
 
     public override void OnViewLoaded()
@@ -74,5 +74,5 @@ public sealed partial class DraggableColorBoxViewModel : ViewModel<DraggableColo
 
     public void OnLongPress() { }
 
-    private void OnModelUpdated(ModelUpdatedMessage? _) => this.ShadeBrush = this.shade.Color.ToBrush();
+    private void OnModelUpdated(ModelPaletteUpdatedMessage? _) => this.ShadeBrush = this.shade.Color.ToBrush();
 }

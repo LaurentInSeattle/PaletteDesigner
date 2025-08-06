@@ -24,6 +24,13 @@
 			VerticalAlignment="Center" HorizontalAlignment="Center"
 			/>
 
+		<ThemeVariantScope
+			Grid.Row="1"
+			x:Name="DarkTestContentContainer"
+			HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+			RequestedThemeVariant="Light"
+			/>
+
 		<ScrollViewer
 			Grid.Row="1" Width="480"
 			Margin="8"
@@ -36,7 +43,7 @@
 				<TextBlock
 					Height="32"
 					Text="Error Text"
-					Foreground="{StaticResource SystemErrorTextColor}"
+					Foreground="{DynamicResource SystemErrorTextColor}"
 					/>
 				<Border Height="40" Margin="0,0,0,20">
 					<TextBlock

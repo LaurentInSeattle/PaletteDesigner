@@ -22,10 +22,15 @@ public sealed partial class MappingViewModel : ViewModel<MappingView>
         this.PropertiesDropPanelViewModel = new(paletteDesignerModel);
         this.WidgetsPreviewViewModel = new("Preview");
 
-        this.Messenger.Subscribe<ModelUpdatedMessage>(this.OnModelUpdated);
+        this.Messenger.Subscribe<ModelThemeUpdatedMessage>(this.OnModelThemeUpdated);
+        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
     }
 
-    private void OnModelUpdated(ModelUpdatedMessage? _)
+    private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage? _)
+    {
+    }
+
+    private void OnModelThemeUpdated(ModelThemeUpdatedMessage? _)
     {
         var lightColorPaletteResources = this.CreateColorPaletteResources(isDark: false);
         var darkColorPaletteResources = this.CreateColorPaletteResources(isDark: true);
@@ -37,7 +42,7 @@ public sealed partial class MappingViewModel : ViewModel<MappingView>
     {
         //Debugger.Break();
 
-        var colorTheme = this.paletteDesignerModel.ActiveProject.ColorTheme;
+        var colorTheme = this.paletteDesignerModel.ActiveProject!.ColorTheme;
         string variant = isDark ? "Dark" : "Light"; 
 
         Color ToColor(string name)
