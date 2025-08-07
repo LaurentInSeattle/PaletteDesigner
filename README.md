@@ -27,5 +27,5 @@ Now able to export palettes in CSS, Avalonia aXaml and Microsoft Xaml.
 - => Clone the "Lyt.Avalonia" repo' side by side
 - Open the solution in Visual Studio and build.
 
-Developed and tested with .Net 9, Visual Studio 2022 17.14 and Avalonia 11.3.1.
+Developed and tested with .Net 9, Visual Studio 2022 17.14 and Avalonia 11.3.3.
 Should most likely work with Jet Brains Rider, but not tested.
