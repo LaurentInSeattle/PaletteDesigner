@@ -32,6 +32,8 @@ public sealed partial class MappingViewModel : ViewModel<MappingView>
 
     private void OnModelThemeUpdated(ModelThemeUpdatedMessage? _)
     {
+        // Debugger.Break();
+
         var lightColorPaletteResources = this.CreateColorPaletteResources(isDark: false);
         var darkColorPaletteResources = this.CreateColorPaletteResources(isDark: true);
         this.WidgetsPreviewViewModel.UpdatePalettes(lightColorPaletteResources, darkColorPaletteResources);
@@ -40,8 +42,6 @@ public sealed partial class MappingViewModel : ViewModel<MappingView>
 
     public ColorPaletteResources CreateColorPaletteResources(bool isDark)
     {
-        //Debugger.Break();
-
         var colorTheme = this.paletteDesignerModel.ActiveProject!.ColorTheme;
         string variant = isDark ? "Dark" : "Light"; 
 
@@ -50,7 +50,8 @@ public sealed partial class MappingViewModel : ViewModel<MappingView>
 
         return new ColorPaletteResources
         {
-            RegionColor = isDark ? Colors.DarkSlateGray : Colors.AntiqueWhite,
+            RegionColor = isDark ? Colors.Blue: Colors.Red,
+
             Accent = ToColor("SystemAccentColor"),
 
             ErrorText = ToColor("SystemErrorTextColor"),
@@ -68,12 +69,15 @@ public sealed partial class MappingViewModel : ViewModel<MappingView>
             BaseMediumLow = ToColor("SystemBaseMediumLowColor"),
 
             ChromeAltLow = ToColor("SystemChromeAltLowColor"),
+
             ChromeBlackHigh = ToColor("SystemChromeBlackHighColor"),
             ChromeBlackLow = ToColor("SystemChromeBlackLowColor"),
             ChromeBlackMedium = ToColor("SystemChromeBlackMediumColor"),
             ChromeBlackMediumLow = ToColor("SystemChromeBlackLowColor"),
+            
             ChromeDisabledHigh = ToColor("SystemChromeDisabledHighColor"),
             ChromeDisabledLow = ToColor("SystemChromeDisabledLowColor"),
+
             ChromeGray = ToColor("SystemChromeGrayColor"),
             ChromeHigh = ToColor("SystemChromeHighColor"),
             ChromeLow = ToColor("SystemChromeLowColor"),
