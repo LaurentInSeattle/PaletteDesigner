@@ -32,7 +32,7 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
         this.ShadeSelectionToolbarViewModel = new();
         this.shadesPresetsToolbarViewModel = new();
 
-        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelUpdated);
+        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
     }
 
     public override void OnViewLoaded()
@@ -61,7 +61,7 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
             throw new Exception("No active project") :
             this.paletteDesignerModel.ActiveProject.Palette;
 
-    private void OnModelUpdated(ModelPaletteUpdatedMessage? _)
+    private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage? _)
     {
         var palette = this.Palette;
         this.ColorWheelViewModel.Update(palette);

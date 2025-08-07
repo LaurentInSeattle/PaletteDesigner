@@ -40,7 +40,7 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
         this.ShadeOpacity = 1.0;
         this.OpacitySliderValue = 1.0;
 
-        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelUpdated);
+        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
 
         this.InitializeColorWithTheme();
     }
@@ -82,7 +82,7 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
         this.ProcessColorBox(draggableColorBoxViewModel);
     }
 
-    private void OnModelUpdated(ModelPaletteUpdatedMessage? _) => this.Colorize();
+    private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage? _) => this.Colorize();
 
     private void ProcessColorBox(DraggableColorBoxViewModel draggableColorBoxViewModel)
     {

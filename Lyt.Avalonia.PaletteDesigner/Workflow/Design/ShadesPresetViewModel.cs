@@ -16,7 +16,7 @@ public sealed partial class ShadesPresetViewModel : ViewModel<ShadesPresetView>
         this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();
         this.shadesPreset = ShadesPreset.FromSizeIndependant(shadesPreset);
 
-        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelUpdated);
+        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
         this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
         this.MiniPaletteViewModel = new(this.paletteDesignerModel, isPreset:true);
 
@@ -33,7 +33,7 @@ public sealed partial class ShadesPresetViewModel : ViewModel<ShadesPresetView>
     public void OnShadeSelect()
         => this.paletteDesignerModel.ApplyShadesPreset(this.shadesPreset);
 
-    private void OnModelUpdated(ModelPaletteUpdatedMessage _)
+    private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage _)
     {
         var palette = this.Palette.DeepClone();
         palette.ApplyShadesPreset(this.shadesPreset);
