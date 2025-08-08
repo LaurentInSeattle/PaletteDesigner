@@ -121,10 +121,9 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
             return;
         }
 
-        var shades = this.wheelKind.ToShadesFrom(this.palette);
-        var shade = this.shadeKind.ToShadeFrom(shades);
         this.paletteDesignerModel.UpdateThemeProperty(
-            this.ColorThemeVariant, this.sourcePropertyName, shade, this.ShadeOpacity);
+            this.ColorThemeVariant, this.sourcePropertyName, 
+            this.wheelKind, this.shadeKind, this.ShadeOpacity);
     }
 
     private void InitializeColorWithTheme()

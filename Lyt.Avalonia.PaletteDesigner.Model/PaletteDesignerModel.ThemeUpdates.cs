@@ -3,10 +3,16 @@
 public sealed partial class PaletteDesignerModel : ModelBase
 {
     public void UpdateThemeProperty(
-        ColorThemeVariant themeVariant, string propertyName, Shade shade, double opacity)
-        => this.UpdateTheme((ColorTheme colorTheme) =>
+        ColorThemeVariant themeVariant, string propertyName, 
+        WheelKind wheelKind, ShadeKind shadeKind, double opacity)
+        => this.UpdateTheme(colorTheme =>
         {
-            colorTheme.SetShade(themeVariant.Name, propertyName, shade);
+            if ( this.ActiveProject is null)
+            {
+                return false;
+            }
+
+            colorTheme.SetShade(themeVariant.Name, propertyName, this.ActiveProject.Palette, wheelKind, shadeKind);
             colorTheme.SetOpacity(themeVariant.Name, propertyName, opacity);
             return true;
         });

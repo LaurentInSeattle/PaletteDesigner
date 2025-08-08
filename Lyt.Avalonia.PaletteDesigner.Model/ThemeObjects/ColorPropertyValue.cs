@@ -2,6 +2,10 @@
 
 public sealed class ColorPropertyValue
 {
+    public WheelKind WheelKind { get; set; } = WheelKind.Primary;
+
+    public ShadeKind ShadeKind { get; set; } = ShadeKind.Base;
+
     // defaults to dark gray 
     public uint Rgb { get; set; } = 0x00_40_40_40;
 

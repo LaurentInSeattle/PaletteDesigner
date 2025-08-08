@@ -119,6 +119,19 @@ public sealed class ColorTheme
         colorPropertyValue.Rgb = rgbColor.ToRgbUint();
     }
 
+    public void SetShade(
+        string variantName, string colorPropertyName,
+        Palette palette, WheelKind wheelKind, ShadeKind shadeKind)
+    {
+        var shades = wheelKind.ToShadesFrom(palette);
+        var shade = shadeKind.ToShadeFrom(shades);
+        var colorPropertyValue = this.GetColorPropertyValue(variantName, colorPropertyName);
+        colorPropertyValue.WheelKind= wheelKind;
+        colorPropertyValue.ShadeKind= shadeKind;
+        RgbColor rgbColor = shade.Color.ToRgb();
+        colorPropertyValue.Rgb = rgbColor.ToRgbUint();
+    }
+
     public void SetOpacity(string variantName, string colorPropertyName, double opacity)
     {
         var colorPropertyValue = this.GetColorPropertyValue(variantName, colorPropertyName);
