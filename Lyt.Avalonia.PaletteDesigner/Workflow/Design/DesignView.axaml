@@ -27,26 +27,26 @@
 			>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="700" />
-				<ColumnDefinition Width="12" />
 				<!-- Spacer -->
+				<ColumnDefinition Width="20" />
 				<ColumnDefinition Width="Auto" />
-				<ColumnDefinition Width="12" />
 				<!-- Spacer -->
+				<ColumnDefinition Width="12" />
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 			<wheel:ColorWheelView
 				DataContext="{Binding ColorWheelViewModel}"
-				VerticalAlignment="Center"
+				VerticalAlignment="Top"
 				/>
 			<vm:ShadesPresetsToolbarView
-				Grid.Column="2"
-				VerticalAlignment="Top" 
-				Margin="0 18 0 0"
+				Grid.Column="2" 
+				Margin="0 12 0 0"
+				VerticalAlignment="Top" HorizontalAlignment="Center"
 				DataContext="{Binding ShadesPresetsToolbarViewModel}"
 				/>
 			<shading:PalettePreviewView
 				Grid.Column="4"
-				VerticalAlignment="Center" HorizontalAlignment="Left"
+				VerticalAlignment="Top" HorizontalAlignment="Left"
 				DataContext="{Binding PalettePreviewViewModel}"
 				/>
 		</Grid>

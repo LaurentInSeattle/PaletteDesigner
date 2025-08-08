@@ -23,9 +23,9 @@
 		>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="60" />
-			<RowDefinition Height="10" />
+			<RowDefinition Height="4" />
 			<RowDefinition Height="600" />
-			<RowDefinition Height="70" />
+			<RowDefinition Height="76" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="120" />
@@ -92,7 +92,7 @@
 				Grid.Row="0"
 				Text="{DynamicResource Design.Palette.WheelHue}"
 				Theme="{StaticResource Medium}"
-				HorizontalAlignment="Right" 
+				HorizontalAlignment="Right" VerticalAlignment="Center"
 				/>
 			<Slider
 				Grid.Column="1"
@@ -107,7 +107,7 @@
 				Grid.Row="0" Grid.Column="2"
 				Text="{Binding WheelValue}"
 				Theme="{StaticResource Medium}"
-				HorizontalAlignment="Left" 
+				HorizontalAlignment="Left" VerticalAlignment="Center"
 				/>
 		</Grid>
 	</Grid>

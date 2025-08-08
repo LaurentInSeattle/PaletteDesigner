@@ -28,7 +28,7 @@
 			Grid.Row="1"
 			x:Name="DarkTestContentContainer"
 			HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-			RequestedThemeVariant="Light"
+			RequestedThemeVariant="Dark"
 			/>
 
 		<ScrollViewer
@@ -39,23 +39,27 @@
 			ScrollViewer.HorizontalScrollBarVisibility="Disabled"
 			ScrollViewer.VerticalScrollBarVisibility="Auto"
 			>
-			<StackPanel Margin="0 0 24 0" Orientation="Vertical">
+			<ScrollViewer.Styles>
+				<Style Selector="TextBlock">
+					<Setter Property="Foreground" Value="{DynamicResource SystemControlForegroundBaseHighBrush}"/>
+				</Style>
+			</ScrollViewer.Styles>
+			<StackPanel Margin="0 0 36 0" Orientation="Vertical">
+				<TextBlock
+					FontWeight="SemiBold"
+					HorizontalAlignment="Center"
+					Text="Binding #ThisControl.Title, Mode=OneWay}"
+					/>
 				<TextBlock
 					Height="32"
 					Text="Error Text"
 					Foreground="{DynamicResource SystemErrorTextColor}"
 					/>
-				<Border Height="40" Margin="0,0,0,20">
-					<TextBlock
-						VerticalAlignment="Center"
-						FontWeight="SemiBold"
-						LineHeight="20"
-						Text="Binding #ThisControl.Title, Mode=OneWay}" />
-				</Border>
 				<TextBlock
 					Text="shared:Loc TestContentButtonsBlock}"
 					Margin="0,0,0,16"
-				 />
+					Foreground="{StaticResource SystemControlForegroundBaseHighBrush}"
+					 />
 				<Button Content="shared:Loc TestContentEnabledButton}" 
 						Margin="0,0,0,12" 
 						CornerRadius="{DynamicResource ControlCornerRadius}"/>
