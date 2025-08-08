@@ -79,6 +79,16 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Secondary2">불화 #2</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.Lighter">거룻배</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Light">빛</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Base">베이스</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Dark">어두운</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Darker">더 어둡다</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Presets">사전 설정</system:String>
 
     <system:String x:Key="Design.Preset.Contrasted">대조</system:String>

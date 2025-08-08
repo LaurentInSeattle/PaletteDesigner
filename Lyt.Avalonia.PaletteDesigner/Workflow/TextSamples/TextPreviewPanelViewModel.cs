@@ -17,12 +17,12 @@ public sealed partial class TextPreviewPanelViewModel : ViewModel<TextPreviewPan
     public override void OnViewLoaded() 
     {
         base.OnViewLoaded();
-        this.TextPreviewViewModels.Add(new TextPreviewViewModel());
-        this.TextPreviewViewModels.Add(new TextPreviewViewModel());
-        this.TextPreviewViewModels.Add(new TextPreviewViewModel());
-        this.TextPreviewViewModels.Add(new TextPreviewViewModel());
-        this.TextPreviewViewModels.Add(new TextPreviewViewModel());
-        this.TextPreviewViewModels.Add(new TextPreviewViewModel());
+        this.TextPreviewViewModels.Add(new(this.paletteDesignerModel));
+        this.TextPreviewViewModels.Add(new(this.paletteDesignerModel));
+        this.TextPreviewViewModels.Add(new(this.paletteDesignerModel));
+        this.TextPreviewViewModels.Add(new(this.paletteDesignerModel));
+        this.TextPreviewViewModels.Add(new(this.paletteDesignerModel));
+        this.TextPreviewViewModels.Add(new(this.paletteDesignerModel));
     }
 
     private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage message)

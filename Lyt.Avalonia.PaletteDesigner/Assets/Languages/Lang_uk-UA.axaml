@@ -79,6 +79,16 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Secondary2">Розбрат №2</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.Lighter">Легший</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Light">Світлий</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Base">Базовий</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Dark">Темний</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Darker">Темніший</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Presets">Пресети</system:String>
 
     <system:String x:Key="Design.Preset.Contrasted">Протиставлений</system:String>

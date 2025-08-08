@@ -79,6 +79,16 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Secondary2">Zwietracht #2</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.Lighter">Leichter</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Light">Licht</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Base">Base</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Dark">Dunkel</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Darker">Dunkler</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Presets">Voreinstellungen</system:String>
 
     <system:String x:Key="Design.Preset.Contrasted">Kontrastiert</system:String>

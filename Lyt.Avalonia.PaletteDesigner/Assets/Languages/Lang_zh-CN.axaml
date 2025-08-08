@@ -79,6 +79,16 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Secondary2">不一致的 2</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.Lighter">打火机</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Light">光</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Base">根据</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Dark">黑暗的</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Darker">黑暗</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Presets">预设</system:String>
 
     <system:String x:Key="Design.Preset.Contrasted">对比</system:String>

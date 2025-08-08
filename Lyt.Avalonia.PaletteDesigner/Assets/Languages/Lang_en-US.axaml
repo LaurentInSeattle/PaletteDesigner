@@ -51,6 +51,12 @@
 	<system:String x:Key="Design.Toolbar.Shade.Secondary1">Discordant #1</system:String>
 	<system:String x:Key="Design.Toolbar.Shade.Secondary2">Discordant #2</system:String>
 
+	<system:String x:Key="Design.Toolbar.Shade.Lighter">Lighter</system:String>
+	<system:String x:Key="Design.Toolbar.Shade.Light">Light</system:String>
+	<system:String x:Key="Design.Toolbar.Shade.Base">Base</system:String>
+	<system:String x:Key="Design.Toolbar.Shade.Dark">Dark</system:String>
+	<system:String x:Key="Design.Toolbar.Shade.Darker">Darker</system:String>
+
 	<system:String x:Key="Design.Toolbar.Shade.Presets">Presets</system:String>
 	<system:String x:Key="Design.Preset.Contrasted">Contrasted</system:String>
 	<system:String x:Key="Design.Preset.Dark">Dark</system:String>

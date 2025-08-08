@@ -30,5 +30,17 @@ public static class ShadeKindExtensions
 
             _ => throw new ArgumentException("Shade Kind is unkown"),
         };
+
+    public static string ToLocalizationKey(this ShadeKind shadeKind)
+        => shadeKind switch
+        {
+            ShadeKind.Lighter => "Design.Toolbar.Shade.Lighter",
+            ShadeKind.Light => "Design.Toolbar.Shade.Light",
+            ShadeKind.Base => "Design.Toolbar.Shade.Base",
+            ShadeKind.Dark => "Design.Toolbar.Shade.Dark",
+            ShadeKind.Darker => "Design.Toolbar.Shade.Darker",
+
+            _ => throw new ArgumentException("Shade Kind is unkown"),
+        };
 }
 

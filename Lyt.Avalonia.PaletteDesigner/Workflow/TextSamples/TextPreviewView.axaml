@@ -18,12 +18,13 @@
 		<Grid
 			>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="40" />
-				<RowDefinition Height="60" />
+				<RowDefinition Height="28" />
+				<RowDefinition Height="52" />
+				<RowDefinition Height="16" />
 			</Grid.RowDefinitions>
 			<TextBlock
 				Grid.Row="0"
-				Margin="4"
+				Margin="6 2 2 2"
 				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 				TextAlignment="Left"
 				Foreground="{Binding ForegroundBrush}"
@@ -33,7 +34,7 @@
 				/>
 			<TextBlock
 				Grid.Row="1"
-				Margin="12 4 4 4"
+				Margin="16 2 2 2"
 				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 				TextAlignment="Left"
 				Foreground="{Binding ForegroundBrush}"
@@ -42,7 +43,18 @@
 				FontWeight="Normal"
 				TextWrapping="Wrap"
 				/>
-			</Grid>
+			<TextBlock
+				Grid.Row="2"
+				Margin="0"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				TextAlignment="Center"
+				Foreground="{Binding ForegroundBrush}"
+				Text="{Binding SetupText}"
+				FontSize="14"
+				FontWeight="Normal"
+				TextWrapping="Wrap"
+				/>
+		</Grid>
 		</Border>
 	</UserControl>
 

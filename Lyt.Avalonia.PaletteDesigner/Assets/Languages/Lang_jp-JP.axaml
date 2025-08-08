@@ -79,6 +79,16 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Secondary2">不一致＃2</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.Lighter">ライター</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Light">ライト</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Base">ベース</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Dark">暗い</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Darker">暗い</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Presets">プリセット</system:String>
 
     <system:String x:Key="Design.Preset.Contrasted">対照的です</system:String>

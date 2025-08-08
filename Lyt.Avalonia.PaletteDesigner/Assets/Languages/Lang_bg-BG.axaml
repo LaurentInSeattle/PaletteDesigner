@@ -79,6 +79,16 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Secondary2">Раздор №2</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.Lighter">По -лек</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Light">Светлина</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Base">База</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Dark">Тъмно</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Darker">По -тъмно</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Presets">Предварително зададени</system:String>
 
     <system:String x:Key="Design.Preset.Contrasted">Контрастиран</system:String>

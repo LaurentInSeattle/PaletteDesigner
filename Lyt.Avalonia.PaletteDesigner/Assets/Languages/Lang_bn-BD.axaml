@@ -79,6 +79,16 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Secondary2">ডিসকর্ড #2</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.Lighter">হালকা</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Light">হালকা</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Base">বেস</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Dark">অন্ধকার</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Darker">গা er ়</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Presets">প্রিসেটস</system:String>
 
     <system:String x:Key="Design.Preset.Contrasted">বিপরীতে</system:String>

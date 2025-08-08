@@ -79,6 +79,16 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Secondary2">DiscorD # 2</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.Lighter">Վառիչ</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Light">Լապտեր</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Base">Հիմք</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Dark">Մութ</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Darker">Մութ</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Presets">Նախադրյալներ</system:String>
 
     <system:String x:Key="Design.Preset.Contrasted">Հակադիր</system:String>

@@ -79,6 +79,16 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Secondary2">Διαφωνία #2</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.Lighter">Αναπτήρας</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Light">Φως</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Base">Βάση</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Dark">Σκοτάδι</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Darker">Πιο σκούρος</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Presets">Προετοιμασία</system:String>
 
     <system:String x:Key="Design.Preset.Contrasted">Αντιπαραθέτης</system:String>

@@ -79,6 +79,16 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Secondary2">Discorde n°2</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.Lighter">Plus léger</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Light">Lumière</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Base">Base</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Dark">Sombre</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Darker">Plus sombre</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Presets">Préréglages</system:String>
 
     <system:String x:Key="Design.Preset.Contrasted">Contrasté</system:String>

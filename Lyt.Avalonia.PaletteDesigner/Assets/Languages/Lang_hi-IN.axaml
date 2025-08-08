@@ -79,6 +79,16 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Secondary2">कलह #2</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.Lighter">हल्का</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Light">रोशनी</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Base">आधार</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Dark">अँधेरा</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Darker">गहरे</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Presets">प्रीसेट</system:String>
 
     <system:String x:Key="Design.Preset.Contrasted">विषम</system:String>

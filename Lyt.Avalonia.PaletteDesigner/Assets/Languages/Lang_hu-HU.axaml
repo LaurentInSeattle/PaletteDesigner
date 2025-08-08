@@ -79,6 +79,16 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Secondary2">2. Diskord</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.Lighter">Öngyújtó</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Light">Fény</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Base">Bázis</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Dark">Sötét</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Darker">Sötétebb</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Presets">Előre beállított</system:String>
 
     <system:String x:Key="Design.Preset.Contrasted">Ellentmondásos</system:String>

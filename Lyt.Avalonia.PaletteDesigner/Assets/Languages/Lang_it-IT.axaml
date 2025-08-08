@@ -79,6 +79,16 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Secondary2">Discordante 2</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.Lighter">Più leggero</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Light">Leggero</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Base">Base</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Dark">Buio</system:String>
+
+    <system:String x:Key="Design.Toolbar.Shade.Darker">Più scuro</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.Presets">Preimpostazioni</system:String>
 
     <system:String x:Key="Design.Preset.Contrasted">Contrastato</system:String>
