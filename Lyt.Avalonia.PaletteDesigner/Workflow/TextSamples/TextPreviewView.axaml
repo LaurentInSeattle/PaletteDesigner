@@ -1,0 +1,51 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.TextSamples.TextPreviewView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.TextSamples"
+	x:DataType="vm:TextPreviewViewModel" 
+	
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	>
+	<Border
+		Width="460"
+		Margin="0"
+		Background="{Binding BackgroundBrush}"
+		CornerRadius="4"
+		>
+		<Grid
+			>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="40" />
+				<RowDefinition Height="60" />
+			</Grid.RowDefinitions>
+			<TextBlock
+				Grid.Row="0"
+				Margin="4"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				TextAlignment="Left"
+				Foreground="{Binding ForegroundBrush}"
+				Text="Lorem ipsum dolor sit amet"
+				FontSize="24"
+				FontWeight="DemiBold"
+				/>
+			<TextBlock
+				Grid.Row="1"
+				Margin="12 4 4 4"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				TextAlignment="Left"
+				Foreground="{Binding ForegroundBrush}"
+				Text="Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+				FontSize="18"
+				FontWeight="Normal"
+				TextWrapping="Wrap"
+				/>
+			</Grid>
+		</Border>
+	</UserControl>
+
+<!-- 
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+-->

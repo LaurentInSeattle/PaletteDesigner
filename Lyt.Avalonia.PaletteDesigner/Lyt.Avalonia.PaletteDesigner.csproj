@@ -107,5 +107,8 @@
 	  <Compile Update="Workflow\Shading\ShadesValuesView.axaml.cs">
 	    <DependentUpon>ShadesValuesView.axaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Workflow\TextSamples\TextPreviewView.axaml.cs">
+	    <DependentUpon>TextPreviewView.axaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 </Project>

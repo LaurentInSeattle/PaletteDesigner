@@ -5,6 +5,7 @@
 
 	xmlns:shading="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Shading"
 	xmlns:wheel="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Wheel"
+	xmlns:text="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.TextSamples"
 
 	xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -32,6 +33,9 @@
 				<ColumnDefinition Width="Auto" />
 				<!-- Spacer -->
 				<ColumnDefinition Width="12" />
+				<ColumnDefinition Width="Auto" />
+				<!-- Spacer -->
+				<ColumnDefinition Width="8" />
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 			<wheel:ColorWheelView
@@ -48,6 +52,12 @@
 				Grid.Column="4"
 				VerticalAlignment="Top" HorizontalAlignment="Left"
 				DataContext="{Binding PalettePreviewViewModel}"
+				/>
+			<text:TextPreviewPanelView
+				Grid.Column="6"
+				Margin="0 12 0 0"
+				VerticalAlignment="Top" HorizontalAlignment="Left"
+				DataContext="{Binding TextPreviewPanelViewModel}"
 				/>
 		</Grid>
 
