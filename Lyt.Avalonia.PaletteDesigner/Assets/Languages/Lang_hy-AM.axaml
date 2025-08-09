@@ -113,6 +113,12 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">Արժեքներ</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.TextSamples">Տեքստի նմուշներ</system:String>
+
+    <system:String x:Key="Design.TextSamples.HeaderText">Նմուշի վերնագրի տեքստ</system:String>
+
+    <system:String x:Key="Design.TextSamples.RegularText">Ինչ է նմուշի տեքստը:  Նիշերի հաջորդականություն, առանց որեւէ ձեւաչափման:</system:String>
+
     <system:String x:Key="Design.Palette.WheelHue">Անիվի երանգ</system:String>
 
     <system:String x:Key="Design.ColorWheel.Rotate">Պտտվել միասին</system:String>

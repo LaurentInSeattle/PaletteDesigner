@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.TextSamples;
 
-using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
+using Lyt.Avalonia.PaletteDesigner.Model.ProjectObjects;
 
 public sealed partial class TextPreviewViewModel : ViewModel<TextPreviewView>
 {
@@ -32,9 +32,11 @@ public sealed partial class TextPreviewViewModel : ViewModel<TextPreviewView>
         this.shadeKindForeground = ShadeKind.Lighter;
         this.wheelKindBackground = WheelKind.Complementary;
         this.shadeKindBackground = ShadeKind.Darker;
-        this.Colorize(); 
+        this.Colorize();
+        this.Localize();
 
         this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
+        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
     }
 
     public void Update(
@@ -45,13 +47,41 @@ public sealed partial class TextPreviewViewModel : ViewModel<TextPreviewView>
         this.shadeKindForeground = shadeKindForeground;
         this.wheelKindBackground = wheelKindBackground;
         this.shadeKindBackground = shadeKindBackground;
+        this.Localize();
         this.Colorize();
     }
 
+    private void OnLanguageChanged(LanguageChangedMessage? _) => this.Localize(); 
+
     private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage _)
     {
-        this.palette = this.paletteDesignerModel.ActiveProject!.Palette;
-        this.Colorize(); 
+        if ((this.paletteDesignerModel.ActiveProject is not Project project) ||
+            (project.Palette is null))
+        {
+            // Should never happen, BYNK... 
+            return;
+        }
+
+        this.palette = project.Palette;
+        this.Localize();
+        this.Colorize();
+    }
+
+    private void Localize()
+    {
+        if (this.palette is null)
+        {
+            return;
+        }
+
+        this.SetupText =
+            string.Format(
+                "{0} {1}   ~   {2} {3}",
+                this.Localize(this.wheelKindForeground.ToLocalizationKey(this.palette)),
+                this.Localize(this.shadeKindForeground.ToLocalizationKey()),
+                this.Localize(this.wheelKindBackground.ToLocalizationKey(this.palette)),
+                this.Localize(this.shadeKindBackground.ToLocalizationKey())
+            );
     }
 
     private void Colorize()
@@ -61,14 +91,6 @@ public sealed partial class TextPreviewViewModel : ViewModel<TextPreviewView>
             return;
         }
 
-        this.SetupText =
-            string.Format(
-                "{0} {1}   ~   {2} {3} ",
-                this.Localize(this.wheelKindForeground.ToLocalizationKey(this.palette)), 
-                this.Localize(this.shadeKindForeground.ToLocalizationKey()), 
-                this.Localize(this.wheelKindBackground.ToLocalizationKey(this.palette)), 
-                this.Localize(this.shadeKindBackground.ToLocalizationKey()) 
-            );
         var shades = this.wheelKindForeground.ToShadesFrom(this.palette); 
         var shade = this.shadeKindForeground.ToShadeFrom(shades);
         this.ForegroundBrush = shade.ToBrush();

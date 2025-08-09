@@ -113,6 +113,12 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">값</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.TextSamples">텍스트 샘플</system:String>
+
+    <system:String x:Key="Design.TextSamples.HeaderText">샘플 헤더 텍스트</system:String>
+
+    <system:String x:Key="Design.TextSamples.RegularText">샘플 텍스트는 무엇입니까?  형식이없는 일련의 문자.</system:String>
+
     <system:String x:Key="Design.Palette.WheelHue">바퀴 색조</system:String>
 
     <system:String x:Key="Design.ColorWheel.Rotate">함께 회전하십시오</system:String>

@@ -113,6 +113,12 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">值</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.TextSamples">文本樣本</system:String>
+
+    <system:String x:Key="Design.TextSamples.HeaderText">樣本標題文字</system:String>
+
+    <system:String x:Key="Design.TextSamples.RegularText">什麼是示例文字？一系列字符，沒有任何格式。</system:String>
+
     <system:String x:Key="Design.Palette.WheelHue">車輪色調</system:String>
 
     <system:String x:Key="Design.ColorWheel.Rotate">一起旋轉</system:String>

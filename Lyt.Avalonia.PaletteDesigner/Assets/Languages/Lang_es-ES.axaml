@@ -113,6 +113,12 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">Valores</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.TextSamples">Muestras de texto</system:String>
+
+    <system:String x:Key="Design.TextSamples.HeaderText">Texto de encabezado de muestra</system:String>
+
+    <system:String x:Key="Design.TextSamples.RegularText">¿Qué es el texto de la muestra?  Una secuencia de caracteres sin ningún formato.</system:String>
+
     <system:String x:Key="Design.Palette.WheelHue">Tono de rueda</system:String>
 
     <system:String x:Key="Design.ColorWheel.Rotate">Girar juntos</system:String>

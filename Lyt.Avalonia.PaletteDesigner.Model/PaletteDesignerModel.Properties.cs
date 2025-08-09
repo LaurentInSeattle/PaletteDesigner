@@ -1,7 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
 using Lyt.Avalonia.PaletteDesigner.Model.ProjectObjects;
-using System;
 
 public sealed partial class PaletteDesignerModel : ModelBase
 {
@@ -34,8 +33,10 @@ public sealed partial class PaletteDesignerModel : ModelBase
     [JsonIgnore]
     public ShadesValuesDisplayMode ShadesValuesDisplayMode { get; set; } = ShadesValuesDisplayMode.Hex;
 
-    #endregion Not serialized - No model changed event
+    [JsonIgnore]
+    public TextSamplesDisplayMode TextSamplesDisplayMode { get; set; } = TextSamplesDisplayMode.Dark;
 
+    #endregion Not serialized - No model changed event
 
     #region NOT serialized - WITH model changed event
 

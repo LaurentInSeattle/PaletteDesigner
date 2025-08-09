@@ -113,6 +113,12 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">Значення</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.TextSamples">Текстові зразки</system:String>
+
+    <system:String x:Key="Design.TextSamples.HeaderText">Зразок тексту заголовка</system:String>
+
+    <system:String x:Key="Design.TextSamples.RegularText">Що таке зразок тексту?  Послідовність символів без будь -якого форматування.</system:String>
+
     <system:String x:Key="Design.Palette.WheelHue">Колесо відтінок</system:String>
 
     <system:String x:Key="Design.ColorWheel.Rotate">Обертатися разом</system:String>

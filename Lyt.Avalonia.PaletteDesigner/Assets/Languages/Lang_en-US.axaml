@@ -69,7 +69,11 @@
 	<system:String x:Key="Design.Preset.Muted Pastels">Muted Pastels</system:String>
 	<system:String x:Key="Design.Preset.Shiny">Shiny</system:String>
 
-	<system:String x:Key="Design.Toolbar.Shade.Values">Values</system:String>
+	<system:String x:Key="Design.Toolbar.Shade.Values">Shade Values</system:String>
+
+	<system:String x:Key="Design.Toolbar.Shade.TextSamples">Text Samples</system:String>
+	<system:String x:Key="Design.TextSamples.HeaderText">Sample Header Text</system:String>
+	<system:String x:Key="Design.TextSamples.RegularText">What is Sample text? A sequence of characters without any formatting.</system:String>
 
 	<system:String x:Key="Design.Palette.WheelHue">Wheel Hue</system:String>
 

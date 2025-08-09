@@ -113,6 +113,12 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">Τιμές</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.TextSamples">Δείγματα κειμένου</system:String>
+
+    <system:String x:Key="Design.TextSamples.HeaderText">Δείγμα κειμένου κεφαλίδας</system:String>
+
+    <system:String x:Key="Design.TextSamples.RegularText">Τι είναι το δείγμα κειμένου;  Μια ακολουθία χαρακτήρων χωρίς μορφοποίηση.</system:String>
+
     <system:String x:Key="Design.Palette.WheelHue">Χορό</system:String>
 
     <system:String x:Key="Design.ColorWheel.Rotate">Περιστρέψτε μαζί</system:String>

@@ -113,6 +113,12 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">Valeurs</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.TextSamples">Échantillons de texte</system:String>
+
+    <system:String x:Key="Design.TextSamples.HeaderText">Exemple de texte d'en-tête</system:String>
+
+    <system:String x:Key="Design.TextSamples.RegularText">Qu'est-ce que l'exemple de texte?  Une séquence de caractères sans aucune mise en forme.</system:String>
+
     <system:String x:Key="Design.Palette.WheelHue">Teinte de la Roue</system:String>
 
     <system:String x:Key="Design.ColorWheel.Rotate">Tourner Ensemble</system:String>

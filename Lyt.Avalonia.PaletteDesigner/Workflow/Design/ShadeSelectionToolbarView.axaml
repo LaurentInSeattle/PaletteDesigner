@@ -40,6 +40,12 @@
 			<ColumnDefinition Width="48" />
 			<ColumnDefinition Width="48" />
 			<ColumnDefinition Width="48" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="16" />
+			<!-- Text Samples-->
+			<ColumnDefinition Width="230" />
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
 		</Grid.ColumnDefinitions>
 		<glyphs:SelectionGroup x:Name="SelectionGroup" />
 		<!-- Shades / Tints -->
@@ -253,6 +259,59 @@
 			Group="{Binding ElementName=ShadesDisplaySelectionGroup}"
 			Command="{Binding OnDisplayMode}"
 			CommandParameter="Decimal"
+			/>
+
+		<controls:ExtendedTextBlock
+			Grid.Column="15" Grid.ColumnSpan="3" Grid.Row="1"
+			Text="{DynamicResource Design.Toolbar.Shade.TextSamples}"
+			Typography="{StaticResource Medium}"
+			/>
+
+		<toggle:ToggleSwitch
+			Grid.Row="0" Grid.Column="15"
+			Margin="0 -10 0 0"
+			Style="{StaticResource StandardToggleSwitch}"
+			TrueText="{DynamicResource Shared.Show}"
+			FalseText="{DynamicResource Shared.Hide}"
+			Height="30" Width="230"
+			HorizontalAlignment="Center" VerticalAlignment="Center"
+			Value="{Binding ShowTextSamples}"
+			/>
+
+		<glyphs:SelectionGroup x:Name="ThemeVariantSelectionGroup" />
+
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			Grid.Column="16"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Text="{DynamicResource Design.Toolbar.Shade.Light}"
+			GlyphSource="circle"
+			GlyphStrokeThickness="0.2"
+			Group="{Binding ElementName=ThemeVariantSelectionGroup}"
+			IsSelected="False"
+			Command="{Binding OnVariantSelect}"
+			CommandParameter="Light"
+			/>
+
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			Grid.Column="17"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="100" Height="60"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			GlyphSource="dark_theme"
+			GlyphStrokeThickness="0.2"
+			Text="{DynamicResource Design.Toolbar.Shade.Dark}"
+			Group="{Binding ElementName=ThemeVariantSelectionGroup}"
+			IsSelected="True"
+			Command="{Binding OnVariantSelect}"
+			CommandParameter="Dark"
 			/>
 
 	</Grid>

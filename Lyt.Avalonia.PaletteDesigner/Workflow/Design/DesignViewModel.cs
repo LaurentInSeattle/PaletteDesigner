@@ -35,7 +35,7 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
         this.ModelSelectionToolbarViewModel = new();
         this.ExportToolbarViewModel = new();
         this.ShadeSelectionToolbarViewModel = new();
-        this.shadesPresetsToolbarViewModel = new();
+        this.ShadesPresetsToolbarViewModel = new();
 
         this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
     }

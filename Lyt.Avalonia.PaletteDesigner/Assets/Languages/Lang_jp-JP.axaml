@@ -113,6 +113,12 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">値</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.TextSamples">テキストサンプル</system:String>
+
+    <system:String x:Key="Design.TextSamples.HeaderText">サンプルヘッダーテキスト</system:String>
+
+    <system:String x:Key="Design.TextSamples.RegularText">サンプルテキストとは何ですか？ フォーマットのない文字のシーケンス。</system:String>
+
     <system:String x:Key="Design.Palette.WheelHue">ホイール色</system:String>
 
     <system:String x:Key="Design.ColorWheel.Rotate">一緒に回転します</system:String>

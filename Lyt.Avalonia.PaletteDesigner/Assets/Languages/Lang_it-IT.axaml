@@ -113,6 +113,12 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">Valori</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.TextSamples">Campioni di testo</system:String>
+
+    <system:String x:Key="Design.TextSamples.HeaderText">Testo di intestazione di esempio</system:String>
+
+    <system:String x:Key="Design.TextSamples.RegularText">Cos'è il testo di esempio?  Una sequenza di caratteri senza alcuna formattazione.</system:String>
+
     <system:String x:Key="Design.Palette.WheelHue">Tonalità Ruota</system:String>
 
     <system:String x:Key="Design.ColorWheel.Rotate">Ruotare Insieme</system:String>

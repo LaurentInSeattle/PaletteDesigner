@@ -113,6 +113,12 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">মান</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.TextSamples">পাঠ্য নমুনা</system:String>
+
+    <system:String x:Key="Design.TextSamples.HeaderText">নমুনা শিরোনাম পাঠ্য</system:String>
+
+    <system:String x:Key="Design.TextSamples.RegularText">নমুনা পাঠ্য কী?  কোনও বিন্যাস ছাড়াই অক্ষরের ক্রম।</system:String>
+
     <system:String x:Key="Design.Palette.WheelHue">হুইল হিউ</system:String>
 
     <system:String x:Key="Design.ColorWheel.Rotate">একসাথে ঘোরান</system:String>

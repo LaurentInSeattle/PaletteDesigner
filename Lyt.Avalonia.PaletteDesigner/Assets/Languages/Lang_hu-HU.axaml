@@ -113,6 +113,12 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">Értékek</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.TextSamples">Szöveges minták</system:String>
+
+    <system:String x:Key="Design.TextSamples.HeaderText">Minta fejléc szövege</system:String>
+
+    <system:String x:Key="Design.TextSamples.RegularText">Mi a minta szövege?  Karaktersorozat, formázás nélkül.</system:String>
+
     <system:String x:Key="Design.Palette.WheelHue">Kerekes árnyalat</system:String>
 
     <system:String x:Key="Design.ColorWheel.Rotate">Együtt forog</system:String>

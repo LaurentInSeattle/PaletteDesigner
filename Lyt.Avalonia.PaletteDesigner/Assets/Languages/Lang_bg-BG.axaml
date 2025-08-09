@@ -113,6 +113,12 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">Стойности</system:String>
 
+    <system:String x:Key="Design.Toolbar.Shade.TextSamples">Текстови проби</system:String>
+
+    <system:String x:Key="Design.TextSamples.HeaderText">Текст на заглавката на пример</system:String>
+
+    <system:String x:Key="Design.TextSamples.RegularText">Какво е примерен текст?  Последователност от знаци без никакво форматиране.</system:String>
+
     <system:String x:Key="Design.Palette.WheelHue">Оттенък на колелото</system:String>
 
     <system:String x:Key="Design.ColorWheel.Rotate">Върнете заедно</system:String>

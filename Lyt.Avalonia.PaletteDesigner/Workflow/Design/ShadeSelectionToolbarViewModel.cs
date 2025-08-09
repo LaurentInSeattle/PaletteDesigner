@@ -37,6 +37,9 @@ public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSele
     [ObservableProperty]
     private bool showShadesValues;
 
+    [ObservableProperty]
+    private bool showTextSamples;
+      
     public ShadeSelectionToolbarViewModel()
     {
         this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();
@@ -44,6 +47,7 @@ public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSele
 
         this.ShowShadesPresets = false;
         this.ShowShadesValues = true;
+        this.ShowTextSamples = false;
     }
 
     public Palette Palette =>
@@ -56,6 +60,9 @@ public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSele
 
     partial void OnShowShadesValuesChanged(bool value)
         => this.Messenger.Publish(new ShadesValuesVisibilityMessage(value));
+
+    partial void OnShowTextSamplesChanged(bool value)
+        => this.Messenger.Publish(new TextSamplesVisibilityMessage(value));
 
     [RelayCommand]
     public void OnLockSelect(object? parameter)
@@ -92,6 +99,18 @@ public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSele
         }
     }
     
+    [RelayCommand]
+    public void OnVariantSelect(object? parameter)
+    {
+        if (parameter is string tag)
+        {
+            // Update model 
+            TextSamplesDisplayMode mode =
+                Enum.TryParse(tag, out TextSamplesDisplayMode kind) ? kind : TextSamplesDisplayMode.Dark;
+            this.paletteDesignerModel.TextSamplesDisplayMode = mode;
+            this.Messenger.Publish(new ModelTextSamplesDisplayModeUpdated());
+        }
+    }
 
     private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage _)
     {

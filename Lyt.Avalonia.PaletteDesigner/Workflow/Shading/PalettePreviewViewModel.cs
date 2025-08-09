@@ -72,7 +72,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
             throw new Exception("No active project") :
             this.paletteDesignerModel.ActiveProject.Palette;
 
-    public void Show(bool show = true)
+    public void ShowValues(bool show = true)
     {
         if (this.IsBound)
         {
@@ -88,7 +88,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     public override void OnViewLoaded()
     {
         base.OnViewLoaded();
-        this.Show(); 
+        this.ShowValues(); 
         this.WheelSliderValue = 0.0;
         this.WheelValue = string.Empty;
         this.UpdateLabels();
@@ -188,7 +188,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
     }
 
     private void OnShadesValuesVisibility(ShadesValuesVisibilityMessage message)
-        => this.Show(message.Show);
+        => this.ShowValues(message.Show);
 
     private void OnLanguageChanged(LanguageChangedMessage message)
     {

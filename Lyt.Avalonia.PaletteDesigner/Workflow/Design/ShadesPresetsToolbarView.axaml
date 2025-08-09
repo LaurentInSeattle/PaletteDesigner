@@ -13,7 +13,7 @@
 	xmlns:controls="clr-namespace:Lyt.Avalonia.PaletteDesigner.Controls"
 	xmlns:shading="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Shading"
 	
-	IsVisible="{Binding Show}"
+	IsVisible="{Binding Visible}"
 	>
 
 	<Grid

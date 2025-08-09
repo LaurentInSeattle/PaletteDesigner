@@ -19,8 +19,8 @@
 			>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="28" />
-				<RowDefinition Height="52" />
-				<RowDefinition Height="16" />
+				<RowDefinition Height="54" />
+				<RowDefinition Height="18" />
 			</Grid.RowDefinitions>
 			<TextBlock
 				Grid.Row="0"
@@ -28,7 +28,7 @@
 				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 				TextAlignment="Left"
 				Foreground="{Binding ForegroundBrush}"
-				Text="Lorem ipsum dolor sit amet"
+				Text="{DynamicResource Design.TextSamples.HeaderText}"
 				FontSize="24"
 				FontWeight="DemiBold"
 				/>
@@ -38,7 +38,7 @@
 				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 				TextAlignment="Left"
 				Foreground="{Binding ForegroundBrush}"
-				Text="Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+				Text="{DynamicResource Design.TextSamples.RegularText}"
 				FontSize="18"
 				FontWeight="Normal"
 				TextWrapping="Wrap"
@@ -57,7 +57,3 @@
 		</Grid>
 		</Border>
 	</UserControl>
-
-<!-- 
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
--->
