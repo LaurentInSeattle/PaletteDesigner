@@ -44,8 +44,6 @@
 			<ColumnDefinition Width="16" />
 			<!-- Text Samples-->
 			<ColumnDefinition Width="230" />
-			<ColumnDefinition Width="112" />
-			<ColumnDefinition Width="112" />
 		</Grid.ColumnDefinitions>
 		<glyphs:SelectionGroup x:Name="SelectionGroup" />
 		<!-- Shades / Tints -->
@@ -277,42 +275,5 @@
 			HorizontalAlignment="Center" VerticalAlignment="Center"
 			Value="{Binding ShowTextSamples}"
 			/>
-
-		<glyphs:SelectionGroup x:Name="ThemeVariantSelectionGroup" />
-
-		<glyphs:GlyphButton
-			Style="{StaticResource ToolbarIconButton}"
-			Behaviour="Tap"
-			Grid.Column="16"
-			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="100" Height="60"
-			Margin="0"
-			ButtonBackground="BorderlessRectangle"
-			Text="{DynamicResource Design.Toolbar.Variant.Light}"
-			GlyphSource="circle"
-			GlyphStrokeThickness="0.2"
-			Group="{Binding ElementName=ThemeVariantSelectionGroup}"
-			IsSelected="False"
-			Command="{Binding OnVariantSelect}"
-			CommandParameter="Light"
-			/>
-
-		<glyphs:GlyphButton
-			Style="{StaticResource ToolbarIconButton}"
-			Behaviour="Tap"
-			Grid.Column="17"
-			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="100" Height="60"
-			Margin="0"
-			ButtonBackground="BorderlessRectangle"
-			GlyphSource="dark_theme"
-			GlyphStrokeThickness="0.2"
-			Text="{DynamicResource Design.Toolbar.Variant.Dark}"
-			Group="{Binding ElementName=ThemeVariantSelectionGroup}"
-			IsSelected="True"
-			Command="{Binding OnVariantSelect}"
-			CommandParameter="Dark"
-			/>
-
 	</Grid>
 </UserControl>

@@ -1,0 +1,134 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.TextSamples.TextPreviewToolbarView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.TextSamples"
+	x:DataType="vm:TextPreviewToolbarViewModel" 
+			 
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="90"
+	
+	xmlns:glyphs="using:Lyt.Avalonia.Controls.Glyphs"	
+	xmlns:toggle="using:Lyt.Avalonia.Controls.Toggle"	
+	xmlns:controls="clr-namespace:Lyt.Avalonia.PaletteDesigner.Controls"
+	>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="80" />
+			<RowDefinition Height="0" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<!-- Spacer -->
+			<ColumnDefinition Width="0" />
+			<!-- Theme Variant -->
+			<ColumnDefinition Width="80" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="8" />
+			<ColumnDefinition Width="80" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="8" />
+			<!-- Wheels-->
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		
+		<glyphs:SelectionGroup x:Name="ThemeVariantSelectionGroup" />
+
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			Grid.Column="1"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="80" Height="80"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			Text="{DynamicResource Design.Toolbar.Variant.Light}"
+			GlyphSource="circle"
+			GlyphStrokeThickness="0.2"
+			Group="{Binding ElementName=ThemeVariantSelectionGroup}"
+			IsSelected="False"
+			Command="{Binding OnVariantSelect}"
+			CommandParameter="Light"
+			/>
+
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Behaviour="Tap"
+			Grid.Column="3"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="80" Height="80"
+			Margin="0"
+			ButtonBackground="BorderlessRectangle"
+			GlyphSource="dark_theme"
+			GlyphStrokeThickness="0.2"
+			Text="{DynamicResource Design.Toolbar.Variant.Dark}"
+			Group="{Binding ElementName=ThemeVariantSelectionGroup}"
+			IsSelected="True"
+			Command="{Binding OnVariantSelect}"
+			CommandParameter="Dark"
+			/>
+
+		<Grid
+			Grid.Column="5"
+			>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="8" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="8" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+
+			<glyphs:SelectionGroup x:Name="WheelSelectionGroup" />
+
+			<glyphs:GlyphButton
+				Style="{StaticResource ToolbarIconButton}"
+				Layout="TextOnly"
+				Grid.Column="0" Grid.Row="0"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				ButtonBackground="BorderlessRectangle"
+				Text="{DynamicResource Design.Toolbar.Shade.Primary}"
+				Group="{Binding ElementName=WheelSelectionGroup}"
+				IsSelected="True"
+				Command="{Binding OnWheelSelect}"
+				CommandParameter="Primary"
+				/>
+			<glyphs:GlyphButton
+				Style="{StaticResource ToolbarIconButton}"
+				Layout="TextOnly"
+				Grid.Column="2" Grid.Row="0"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				ButtonBackground="BorderlessRectangle"
+				Text="{DynamicResource Design.Toolbar.Shade.Complementary}"
+				Group="{Binding ElementName=WheelSelectionGroup}"
+				Command="{Binding OnWheelSelect}"
+				CommandParameter="Complementary"
+				/>
+			<glyphs:GlyphButton
+				Style="{StaticResource ToolbarIconButton}"
+				Layout="TextOnly"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				Grid.Column="0" Grid.Row="2"
+				ButtonBackground="BorderlessRectangle"
+				Text="{DynamicResource Design.Toolbar.Shade.Secondary1}"
+				Group="{Binding ElementName=WheelSelectionGroup}"
+				Command="{Binding OnWheelSelect}"
+				CommandParameter="Secondary1"
+				/>
+			<glyphs:GlyphButton
+				Style="{StaticResource ToolbarIconButton}"
+				Layout="TextOnly"
+				Grid.Column="2" Grid.Row="2"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				ButtonBackground="BorderlessRectangle"
+				Text="{DynamicResource Design.Toolbar.Shade.Secondary2}"
+				Group="{Binding ElementName=WheelSelectionGroup}"
+				Command="{Binding OnWheelSelect}"
+				CommandParameter="Secondary2"
+				/>
+		</Grid>
+	</Grid>
+</UserControl>

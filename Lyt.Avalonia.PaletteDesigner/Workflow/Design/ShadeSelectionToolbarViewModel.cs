@@ -99,19 +99,6 @@ public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSele
         }
     }
     
-    [RelayCommand]
-    public void OnVariantSelect(object? parameter)
-    {
-        if (parameter is string tag)
-        {
-            // Update model 
-            TextSamplesDisplayMode mode =
-                Enum.TryParse(tag, out TextSamplesDisplayMode kind) ? kind : TextSamplesDisplayMode.Dark;
-            this.paletteDesignerModel.TextSamplesDisplayMode = mode;
-            this.Messenger.Publish(new ModelTextSamplesDisplayModeUpdated());
-        }
-    }
-
     private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage _)
     {
         var palette = this.Palette;

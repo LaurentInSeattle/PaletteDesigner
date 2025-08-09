@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.TextSamples;
 
-using System;
-
 public sealed partial class TextPreviewPanelViewModel : ViewModel<TextPreviewPanelView>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
@@ -10,11 +8,15 @@ public sealed partial class TextPreviewPanelViewModel : ViewModel<TextPreviewPan
     private bool visible;
 
     [ObservableProperty]
-    ObservableCollection<TextPreviewViewModel> textPreviewViewModels;
+    private ObservableCollection<TextPreviewViewModel> textPreviewViewModels;
+
+    [ObservableProperty]
+    private TextPreviewToolbarViewModel textPreviewToolbarViewModel; 
 
     public TextPreviewPanelViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
+        this.TextPreviewToolbarViewModel = new();
         this.TextPreviewViewModels = [];
         this.Visible = false;
 
@@ -51,8 +53,8 @@ public sealed partial class TextPreviewPanelViewModel : ViewModel<TextPreviewPan
     private void UpdateAllSamples() 
     { 
         var palette = this.paletteDesignerModel.ActiveProject!.Palette;
-        TextSamplesDisplayMode displayMode = paletteDesignerModel.TextSamplesDisplayMode;
-        WheelKind wheelKindForeground = WheelKind.Primary;
+        TextSamplesDisplayMode displayMode = this.paletteDesignerModel.TextSamplesDisplayMode;
+        WheelKind wheelKindForeground = this.paletteDesignerModel.TextSamplesSelectedWheel;
         int index = 0;
         palette.ForAllShades((wheelKindBackground, shades) =>
         {

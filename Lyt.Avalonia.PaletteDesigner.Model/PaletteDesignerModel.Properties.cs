@@ -36,6 +36,9 @@ public sealed partial class PaletteDesignerModel : ModelBase
     [JsonIgnore]
     public TextSamplesDisplayMode TextSamplesDisplayMode { get; set; } = TextSamplesDisplayMode.Dark;
 
+    [JsonIgnore]
+    public WheelKind TextSamplesSelectedWheel { get; set; } = WheelKind.Primary;
+
     #endregion Not serialized - No model changed event
 
     #region NOT serialized - WITH model changed event

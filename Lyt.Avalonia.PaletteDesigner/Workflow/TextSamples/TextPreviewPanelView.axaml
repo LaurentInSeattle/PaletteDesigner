@@ -15,6 +15,11 @@
 		x:Name="MainGrid"
 		Width="460"
 		>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="12" />
+			<RowDefinition Height="90" />
+		</Grid.RowDefinitions>
 		<ItemsControl
 			x:Name="TextPreviewItemsControl"
 			ItemsSource="{Binding TextPreviewViewModels}"
@@ -31,5 +36,9 @@
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>
 		</ItemsControl>
+		<vm:TextPreviewToolbarView
+			Grid.Row="2"
+			DataContext="{Binding TextPreviewToolbarViewModel}"
+			/>
 	</Grid>
 </UserControl>
