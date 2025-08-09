@@ -113,9 +113,9 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">Valeurs</system:String>
 
-    <system:String x:Key="Design.Toolbar.Variant.Light">Lumière</system:String>
+    <system:String x:Key="Design.Toolbar.Variant.Light">Jour</system:String>
 
-    <system:String x:Key="Design.Toolbar.Variant.Dark">Sombre</system:String>
+    <system:String x:Key="Design.Toolbar.Variant.Dark">Nuit</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.TextSamples">Échantillons de texte</system:String>
 
