@@ -39,14 +39,12 @@ public sealed partial class TextPreviewViewModel : ViewModel<TextPreviewView>
         this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
     }
 
-    public void Update(
-        WheelKind wheelKindForeground, ShadeKind shadeKindForeground,
-        WheelKind wheelKindBackground, ShadeKind shadeKindBackground)
+    public void Update(TextSampleSetup textSampleSetup)
     {
-        this.wheelKindForeground = wheelKindForeground;
-        this.shadeKindForeground = shadeKindForeground;
-        this.wheelKindBackground = wheelKindBackground;
-        this.shadeKindBackground = shadeKindBackground;
+        this.wheelKindForeground = textSampleSetup.WheelKindForeground;
+        this.shadeKindForeground = textSampleSetup.ShadeKindForeground;
+        this.wheelKindBackground = textSampleSetup.WheelKindBackground;
+        this.shadeKindBackground = textSampleSetup.ShadeKindBackground;
         this.Localize();
         this.Colorize();
     }

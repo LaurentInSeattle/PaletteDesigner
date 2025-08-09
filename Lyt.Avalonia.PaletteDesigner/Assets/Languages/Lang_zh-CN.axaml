@@ -113,7 +113,13 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">值</system:String>
 
+    <system:String x:Key="Design.Toolbar.Variant.Light">光</system:String>
+
+    <system:String x:Key="Design.Toolbar.Variant.Dark">黑暗的</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.TextSamples">文本样本</system:String>
+
+    <system:String x:Key="Design.TextSamples.TitleText">标题</system:String>
 
     <system:String x:Key="Design.TextSamples.HeaderText">样本标题文字</system:String>
 

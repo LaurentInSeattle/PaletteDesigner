@@ -113,7 +113,13 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">Τιμές</system:String>
 
+    <system:String x:Key="Design.Toolbar.Variant.Light">Φως</system:String>
+
+    <system:String x:Key="Design.Toolbar.Variant.Dark">Σκοτάδι</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.TextSamples">Δείγματα κειμένου</system:String>
+
+    <system:String x:Key="Design.TextSamples.TitleText">Τίτλος</system:String>
 
     <system:String x:Key="Design.TextSamples.HeaderText">Δείγμα κειμένου κεφαλίδας</system:String>
 

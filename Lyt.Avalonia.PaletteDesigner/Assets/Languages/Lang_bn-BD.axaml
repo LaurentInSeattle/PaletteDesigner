@@ -113,7 +113,13 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">মান</system:String>
 
+    <system:String x:Key="Design.Toolbar.Variant.Light">হালকা</system:String>
+
+    <system:String x:Key="Design.Toolbar.Variant.Dark">অন্ধকার</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.TextSamples">পাঠ্য নমুনা</system:String>
+
+    <system:String x:Key="Design.TextSamples.TitleText">শিরোনাম</system:String>
 
     <system:String x:Key="Design.TextSamples.HeaderText">নমুনা শিরোনাম পাঠ্য</system:String>
 

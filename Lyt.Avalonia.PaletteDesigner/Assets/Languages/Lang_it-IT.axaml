@@ -113,7 +113,13 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">Valori</system:String>
 
+    <system:String x:Key="Design.Toolbar.Variant.Light">Leggero</system:String>
+
+    <system:String x:Key="Design.Toolbar.Variant.Dark">Buio</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.TextSamples">Campioni di testo</system:String>
+
+    <system:String x:Key="Design.TextSamples.TitleText">Titolo</system:String>
 
     <system:String x:Key="Design.TextSamples.HeaderText">Testo di intestazione di esempio</system:String>
 

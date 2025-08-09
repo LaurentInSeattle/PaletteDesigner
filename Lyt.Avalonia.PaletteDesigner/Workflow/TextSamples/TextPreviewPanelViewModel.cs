@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.TextSamples;
 
+using System;
+
 public sealed partial class TextPreviewPanelViewModel : ViewModel<TextPreviewPanelView>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
@@ -17,18 +19,16 @@ public sealed partial class TextPreviewPanelViewModel : ViewModel<TextPreviewPan
         this.Visible = false;
 
         this.Messenger.Subscribe<TextSamplesVisibilityMessage>(this.OnTextSamplesVisibility);
+        this.Messenger.Subscribe<ModelTextSamplesDisplayModeUpdated>(this.OnModelTextSamplesDisplayMode);
         this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
     }
-
-    private void OnTextSamplesVisibility(TextSamplesVisibilityMessage message)
-        => this.Show(message.Show);
 
     public void Show(bool show = true)
     {
         this.Visible = show;
         if (this.IsBound)
         {
-            this.View.MainGrid.Width = show ? 460.0 : 0.0;
+            this.View.MainGrid.Width = show ? 430.0 : 0.0;
         }
     }
 
@@ -39,12 +39,27 @@ public sealed partial class TextPreviewPanelViewModel : ViewModel<TextPreviewPan
         this.TextPreviewViewModels.Add(new(this.paletteDesignerModel));
         this.TextPreviewViewModels.Add(new(this.paletteDesignerModel));
         this.TextPreviewViewModels.Add(new(this.paletteDesignerModel));
-        this.TextPreviewViewModels.Add(new(this.paletteDesignerModel));
-        this.TextPreviewViewModels.Add(new(this.paletteDesignerModel));
+        this.UpdateAllSamples();
     }
 
-    private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage message)
-    {
+    private void OnModelTextSamplesDisplayMode(ModelTextSamplesDisplayModeUpdated _) => this.UpdateAllSamples();
 
+    private void OnTextSamplesVisibility(TextSamplesVisibilityMessage message) => this.Show(message.Show);
+
+    private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage _) => this.UpdateAllSamples(); 
+
+    private void UpdateAllSamples() 
+    { 
+        var palette = this.paletteDesignerModel.ActiveProject!.Palette;
+        TextSamplesDisplayMode displayMode = paletteDesignerModel.TextSamplesDisplayMode;
+        WheelKind wheelKindForeground = WheelKind.Primary;
+        int index = 0;
+        palette.ForAllShades((wheelKindBackground, shades) =>
+        {
+            TextSampleSetup textSampleSetup = new (displayMode, wheelKindForeground, wheelKindBackground);
+            var viewModel = this.TextPreviewViewModels[index];
+            viewModel.Update(textSampleSetup); 
+            index++;
+        }); 
     }
 }

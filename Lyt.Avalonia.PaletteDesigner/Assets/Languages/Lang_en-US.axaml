@@ -71,7 +71,11 @@
 
 	<system:String x:Key="Design.Toolbar.Shade.Values">Shade Values</system:String>
 
+	<system:String x:Key="Design.Toolbar.Variant.Light">Light</system:String>
+	<system:String x:Key="Design.Toolbar.Variant.Dark">Dark</system:String>
+
 	<system:String x:Key="Design.Toolbar.Shade.TextSamples">Text Samples</system:String>
+	<system:String x:Key="Design.TextSamples.TitleText">Title</system:String>
 	<system:String x:Key="Design.TextSamples.HeaderText">Sample Header Text</system:String>
 	<system:String x:Key="Design.TextSamples.RegularText">What is Sample text? A sequence of characters without any formatting.</system:String>
 

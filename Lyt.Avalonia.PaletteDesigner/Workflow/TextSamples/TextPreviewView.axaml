@@ -10,7 +10,7 @@
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 	>
 	<Border
-		Width="460"
+		Width="430"
 		Margin="0"
 		Background="{Binding BackgroundBrush}"
 		CornerRadius="4"
@@ -18,12 +18,23 @@
 		<Grid
 			>
 			<Grid.RowDefinitions>
+				<RowDefinition Height="32" />
 				<RowDefinition Height="28" />
-				<RowDefinition Height="54" />
-				<RowDefinition Height="18" />
+				<RowDefinition Height="52" />
+				<RowDefinition Height="22" />
 			</Grid.RowDefinitions>
 			<TextBlock
 				Grid.Row="0"
+				Margin="2"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				TextAlignment="Center"
+				Foreground="{Binding ForegroundBrush}"
+				Text="{DynamicResource Design.TextSamples.TitleText}"
+				FontSize="28"
+				FontWeight="Bold"
+				/>
+			<TextBlock
+				Grid.Row="1"
 				Margin="6 2 2 2"
 				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 				TextAlignment="Left"
@@ -33,7 +44,7 @@
 				FontWeight="DemiBold"
 				/>
 			<TextBlock
-				Grid.Row="1"
+				Grid.Row="2"
 				Margin="16 2 2 2"
 				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 				TextAlignment="Left"
@@ -44,13 +55,13 @@
 				TextWrapping="Wrap"
 				/>
 			<TextBlock
-				Grid.Row="2"
+				Grid.Row="3"
 				Margin="0"
 				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 				TextAlignment="Center"
 				Foreground="{Binding ForegroundBrush}"
 				Text="{Binding SetupText}"
-				FontSize="14"
+				FontSize="16"
 				FontWeight="Normal"
 				TextWrapping="Wrap"
 				/>

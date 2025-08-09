@@ -113,7 +113,13 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">Արժեքներ</system:String>
 
+    <system:String x:Key="Design.Toolbar.Variant.Light">Լապտեր</system:String>
+
+    <system:String x:Key="Design.Toolbar.Variant.Dark">Մութ</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.TextSamples">Տեքստի նմուշներ</system:String>
+
+    <system:String x:Key="Design.TextSamples.TitleText">Վերնագիր</system:String>
 
     <system:String x:Key="Design.TextSamples.HeaderText">Նմուշի վերնագրի տեքստ</system:String>
 

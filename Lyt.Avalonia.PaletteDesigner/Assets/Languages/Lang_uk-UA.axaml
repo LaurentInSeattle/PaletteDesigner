@@ -113,7 +113,13 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">Значення</system:String>
 
+    <system:String x:Key="Design.Toolbar.Variant.Light">Світлий</system:String>
+
+    <system:String x:Key="Design.Toolbar.Variant.Dark">Темний</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.TextSamples">Текстові зразки</system:String>
+
+    <system:String x:Key="Design.TextSamples.TitleText">Титул</system:String>
 
     <system:String x:Key="Design.TextSamples.HeaderText">Зразок тексту заголовка</system:String>
 

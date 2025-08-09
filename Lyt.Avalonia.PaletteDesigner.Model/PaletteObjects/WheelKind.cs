@@ -28,7 +28,7 @@ public static class WheelKindExtensions
         {
             WheelKind.Primary => "Design.Toolbar.Shade.Primary",
             WheelKind.Complementary => "Design.Toolbar.Shade.Complementary",
-            WheelKind.Secondary1 => "Design.Toolbar.Shadepalette.Secondary1",
+            WheelKind.Secondary1 => "Design.Toolbar.Shade.Secondary1",
             WheelKind.Secondary2 => "Design.Toolbar.Shade.Secondary2",
             _ => throw new ArgumentException("Wheel Kind is unkown"),
         };

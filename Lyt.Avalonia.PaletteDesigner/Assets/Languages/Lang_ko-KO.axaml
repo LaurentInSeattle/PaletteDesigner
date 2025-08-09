@@ -113,7 +113,13 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">값</system:String>
 
+    <system:String x:Key="Design.Toolbar.Variant.Light">빛</system:String>
+
+    <system:String x:Key="Design.Toolbar.Variant.Dark">어두운</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.TextSamples">텍스트 샘플</system:String>
+
+    <system:String x:Key="Design.TextSamples.TitleText">제목</system:String>
 
     <system:String x:Key="Design.TextSamples.HeaderText">샘플 헤더 텍스트</system:String>
 

@@ -113,7 +113,13 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Values">値</system:String>
 
+    <system:String x:Key="Design.Toolbar.Variant.Light">ライト</system:String>
+
+    <system:String x:Key="Design.Toolbar.Variant.Dark">暗い</system:String>
+
     <system:String x:Key="Design.Toolbar.Shade.TextSamples">テキストサンプル</system:String>
+
+    <system:String x:Key="Design.TextSamples.TitleText">タイトル</system:String>
 
     <system:String x:Key="Design.TextSamples.HeaderText">サンプルヘッダーテキスト</system:String>
 
