@@ -17,6 +17,13 @@ public sealed class RgbColor
         this.B = b;
     }
 
+    public RgbColor(byte r, byte g, byte b)
+    {
+        this.R = r;
+        this.G = g;
+        this.B = b;
+    }
+
     public RgbColor(uint rgb)
     {
         this.R = (rgb & 0xFF0000) >> 16;
@@ -103,7 +110,8 @@ public sealed class RgbColor
             }
         }
 
-        return new HsvColor(Math.Round(h), Math.Round(s), Math.Round(value));
+        return new HsvColor(h, s, value);
+        //return new HsvColor(Math.Round(h), Math.Round(s), Math.Round(value));
     }
 
     public uint ToRgbUint()

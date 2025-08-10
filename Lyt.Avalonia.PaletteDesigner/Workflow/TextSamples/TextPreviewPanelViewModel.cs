@@ -52,6 +52,11 @@ public sealed partial class TextPreviewPanelViewModel : ViewModel<TextPreviewPan
 
     private void UpdateAllSamples() 
     { 
+        if (this.TextPreviewViewModels.Count == 0)
+        {
+            // Not ready yet 
+        }
+
         var palette = this.paletteDesignerModel.ActiveProject!.Palette;
         TextSamplesDisplayMode displayMode = this.paletteDesignerModel.TextSamplesDisplayMode;
         WheelKind wheelKindForeground = this.paletteDesignerModel.TextSamplesSelectedWheel;
