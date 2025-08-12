@@ -29,4 +29,12 @@
 	--secondary2_base:  <# Secondary2_Base_ColorValue #> 
 	--secondary2_dark:  <# Secondary2_Dark_ColorValue #> 
 	--secondary2_darker:  <# Secondary2_Darker_ColorValue #> 
+
+	/* Five Shades of Gray, excluding Pure White and Pure Black */
+	--gray_lighter: #FFD5D5D5
+	--gray_light: #FFAAAAAA
+	--gray_base: #FF808080
+	--gray_dark: #FF555555
+	--gray_darker: #FF2A2A2A
+
 }
