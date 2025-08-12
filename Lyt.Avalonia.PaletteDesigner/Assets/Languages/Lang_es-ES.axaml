@@ -7,7 +7,7 @@
 
     <system:String x:Key="Toast.Dismiss">Cerca</system:String>
 
-    <system:String x:Key="Shared.Show">Espectáculo</system:String>
+    <system:String x:Key="Shared.Show">Mostrar</system:String>
 
     <system:String x:Key="Shared.Hide">Esconder</system:String>
 
@@ -19,7 +19,7 @@
 
     <system:String x:Key="Shared.FileErrorText">No pudo guardar los datos en el disco.</system:String>
 
-    <system:String x:Key="Shell.AppName">Diseñador de paleta</system:String>
+    <system:String x:Key="Shell.AppName">Diseñador de Paleta</system:String>
 
     <system:String x:Key="Shell.About">Acerca de...</system:String>
 
@@ -29,7 +29,7 @@
 
     <system:String x:Key="Shell.Ready">Listo.</system:String>
 
-    <system:String x:Key="Shell.Greetings">¡Bienvenido a Palette Designer!</system:String>
+    <system:String x:Key="Shell.Greetings">¡Bienvenido a Diseñador de Paleta!</system:String>
 
     <system:String x:Key="Shell.Settings">Ajustes</system:String>
 
@@ -65,7 +65,7 @@
 
     <system:String x:Key="Design.Toolbar.Models.Classic">Clásico</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.ShadesTints">Tonos y tintes</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.ShadesTints">Tonos y Tintes</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.LockedTogether">Encerrados</system:String>
 
@@ -79,15 +79,15 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Secondary2">Discord #2</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.Lighter">Encendedor</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.Lighter">Más Claro</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.Light">Luz</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.Light">Claro</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.Base">Base</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.Dark">Oscuro</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.Darker">Más oscuro</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.Darker">Más Oscuro</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">Preajustes</system:String>
 
@@ -95,29 +95,29 @@
 
     <system:String x:Key="Design.Preset.Dark">Oscuro</system:String>
 
-    <system:String x:Key="Design.Preset.Dark Gray">Gris oscuro</system:String>
+    <system:String x:Key="Design.Preset.Dark Gray">Gris Oscuro</system:String>
 
     <system:String x:Key="Design.Preset.Deep">Profundo</system:String>
 
     <system:String x:Key="Design.Preset.Intense">Intenso</system:String>
 
-    <system:String x:Key="Design.Preset.Light Gray">Gris claro</system:String>
+    <system:String x:Key="Design.Preset.Light Gray">Gris Claro</system:String>
 
-    <system:String x:Key="Design.Preset.Light Pastels">Pasteles ligeros</system:String>
+    <system:String x:Key="Design.Preset.Light Pastels">Pasteles Ligeros</system:String>
 
     <system:String x:Key="Design.Preset.Medium">Medio</system:String>
 
-    <system:String x:Key="Design.Preset.Muted Pastels">Pasteles apagados</system:String>
+    <system:String x:Key="Design.Preset.Muted Pastels">Pasteles Apagados</system:String>
 
     <system:String x:Key="Design.Preset.Shiny">Brillante</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.Values">Valores</system:String>
 
-    <system:String x:Key="Design.Toolbar.Variant.Light">Luz</system:String>
+    <system:String x:Key="Design.Toolbar.Variant.Light">Claro</system:String>
 
     <system:String x:Key="Design.Toolbar.Variant.Dark">Oscuro</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.TextSamples">Muestras de texto</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.TextSamples">Muestras de Texto</system:String>
 
     <system:String x:Key="Design.TextSamples.TitleText">Título</system:String>
 
@@ -125,13 +125,13 @@
 
     <system:String x:Key="Design.TextSamples.RegularText">¿Qué es el texto de la muestra?  Una secuencia de caracteres sin ningún formato.</system:String>
 
-    <system:String x:Key="Design.Palette.WheelHue">Tono de rueda</system:String>
+    <system:String x:Key="Design.Palette.WheelHue">Tono de Rueda</system:String>
 
-    <system:String x:Key="Design.ColorWheel.Rotate">Girar juntos</system:String>
+    <system:String x:Key="Design.ColorWheel.Rotate">Girar Juntos</system:String>
 
-    <system:String x:Key="Design.ColorWheel.Flip">Flip Opposites</system:String>
+    <system:String x:Key="Design.ColorWheel.Flip">Invertir Opuestos</system:String>
 
-    <system:String x:Key="Design.ColorWheel.Reset">Restablecer tonos</system:String>
+    <system:String x:Key="Design.ColorWheel.Reset">Restablecer Tonos</system:String>
 
     <system:String x:Key="Mapping.Drag.DragDropHelp">Arrastre las muestras de color y colóquelas en las propiedades a la derecha para asignar un color.</system:String>
 

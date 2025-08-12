@@ -79,15 +79,15 @@
 
     <system:String x:Key="Design.Toolbar.Shade.Secondary2">Discorde n°2</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.Lighter">Plus léger</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.Lighter">Plus Clair</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.Light">Léger</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.Light">Clair</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.Base">Base</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.Dark">Sombre</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.Darker">Plus sombre</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.Darker">Plus Sombre</system:String>
 
     <system:String x:Key="Design.Toolbar.Shade.Presets">Préréglages</system:String>
 
@@ -101,9 +101,9 @@
 
     <system:String x:Key="Design.Preset.Intense">Intense</system:String>
 
-    <system:String x:Key="Design.Preset.Light Gray">Gris clair</system:String>
+    <system:String x:Key="Design.Preset.Light Gray">Gris Clair</system:String>
 
-    <system:String x:Key="Design.Preset.Light Pastels">Pastels légers</system:String>
+    <system:String x:Key="Design.Preset.Light Pastels">Pastels Légers</system:String>
 
     <system:String x:Key="Design.Preset.Medium">Moyen</system:String>
 
@@ -117,7 +117,7 @@
 
     <system:String x:Key="Design.Toolbar.Variant.Dark">Nuit</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.TextSamples">Échantillons de texte</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.TextSamples">Échantillons de Texte</system:String>
 
     <system:String x:Key="Design.TextSamples.TitleText">Titre</system:String>
 
@@ -129,7 +129,7 @@
 
     <system:String x:Key="Design.ColorWheel.Rotate">Tourner Ensemble</system:String>
 
-    <system:String x:Key="Design.ColorWheel.Flip">Symetrie</system:String>
+    <system:String x:Key="Design.ColorWheel.Flip">Symétrie</system:String>
 
     <system:String x:Key="Design.ColorWheel.Reset">Réinitialiser</system:String>
 
