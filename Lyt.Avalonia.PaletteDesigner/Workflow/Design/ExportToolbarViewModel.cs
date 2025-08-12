@@ -34,11 +34,11 @@ public sealed partial class ExportToolbarViewModel : ViewModel<ExportToolbarView
     [RelayCommand]
     public void OnExport()
     {
-        if (Debugger.IsAttached)
-        {
-            this.OnTestPaletteFromImage();
-        }
-        else
+        //if (Debugger.IsAttached)
+        //{
+        //    this.OnTestPaletteFromImage();
+        //}
+        //else
         {
             var fileFormatViewModel = this.FileFormats[this.SelectedFileFormatIndex];
             PaletteExportFormat exportFormat = fileFormatViewModel.PaletteExportFormat;
@@ -58,16 +58,15 @@ public sealed partial class ExportToolbarViewModel : ViewModel<ExportToolbarView
         }
     }
 
-    [Conditional("Debug")]
+    [Conditional("DEBUG")]
     private void OnTestPaletteFromImage()
     {
-        // Debugger.Break();
-
+        // DANGER Zone ~ Does not work as expected 
         try
         {
-            // string path = @"C:\Users\Laurent\Desktop\Sample.jpg";
+            string path = @"C:\Users\Laurent\Desktop\Jolla.jpg";
             // string path = @"C:\Users\Laurent\Desktop\Kauai.jpg";
-            string path = @"C:\Users\Laurent\Desktop\Test.png";
+            // string path = @"C:\Users\Laurent\Desktop\Test.png";
 
             byte[] imageBytes = File.ReadAllBytes(path);
             if ((imageBytes is null) || (imageBytes.Length < 256))

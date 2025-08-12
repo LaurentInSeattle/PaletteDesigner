@@ -26,6 +26,7 @@ global using Lyt.AdobeSwatchExchange;
 global using Lyt.AdobeSwatchExchange.Structures;
 global using Lyt.FileSystem;
 global using Lyt.Model;
+global using Lyt.Peaks;
 global using Lyt.Persistence;
 global using Lyt.Templator;
 global using Lyt.Utilities.DataStructures;

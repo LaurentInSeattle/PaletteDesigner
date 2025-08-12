@@ -2,7 +2,7 @@
 
 public sealed partial class PaletteDesignerModel : ModelBase
 {
-    public Palette GenerateFromBgraImageBuffer(
+    public Palette? GenerateFromBgraImageBuffer(
         nint frameBufferAddress, int height, int width, int clusterCount = 16)
     {
         if (this.ActiveProject is null)
@@ -42,11 +42,45 @@ public sealed partial class PaletteDesignerModel : ModelBase
         //    KeyValuePair<int, int> kvp = sortedKvpHues[index];
         //    return kvp.Key / 10.0 ;
         //}
-        var peaks = this.FindPeaks(hues, 40);
+        // var peaks = this.FindPeaks(hues, 40);
+
+        List<PeakResult> peaks;
+        var conditions = new Conditions { Distance = 60 };
+        conditions.Prominence.Min = 300.0;
+        while (true)
+        {
+            bool status = PeakFinder.Analyse(hues, conditions, out peaks);
+            if (!status || peaks.Count < 4)
+            {
+                conditions.Distance -= 5;
+                if ( conditions.Distance <= 5 )
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                break; 
+            }
+        } 
+
+        int peakIndex = 0;
+        foreach (var peakResult in peaks)
+        {
+            Debug.WriteLine("Peak Index: " + peakIndex  + "  " + peakResult.Peak); 
+            peakIndex++;
+            Debug.Indent();
+            // Debug.WriteLine(peakResult.Pe.ToDebugString());
+            Debug.WriteLine(peakResult.Prominence.ToDebugString());
+            Debug.WriteLine(peakResult.Threshold.ToDebugString());
+            Debug.Unindent();
+        }
+
         double ToAngle(int index)
         {
-            int peak = peaks[index];
-            return peak - 360.0;
+            PeakResult peak = peaks[index];
+            int hueIndex = peak.Peak;
+            return hueIndex - 360.0; 
         }
 
         var currentPalette = this.ActiveProject!.Palette;
@@ -62,9 +96,9 @@ public sealed partial class PaletteDesignerModel : ModelBase
     }
 
     /// <summary> ExtractHuesFromBgraBuffer : frameBufferAddress is supposed to be locked </summary>
-    private unsafe Dictionary<int, int> ExtractHuesFromBgraBuffer (nint frameBufferAddress, int height, int width)
+    private unsafe double[] ExtractHuesFromBgraBuffer(nint frameBufferAddress, int height, int width)
     {
-        Dictionary<int, int> hues = [];
+        double[] hues = new double[740];
         byte* p = (byte*)frameBufferAddress;
         for (int row = 0; row < height; ++row)
         {
@@ -73,24 +107,47 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 byte blue = *p++;
                 byte green = *p++;
                 byte red = *p++;
-                p++; // alpha
+                p++; // alpha: skip
 
                 RgbColor rgbColor = new(red, blue, green);
                 HsvColor hsvColor = rgbColor.ToHsv();
                 int hue = 360 + (int)Math.Round(hsvColor.H / 1.0);
-                if (hues.TryGetValue(hue, out int value))
-                {
-                    hues[hue] = ++value;
-                }
-                else
-                {
-                    hues[hue] = 1;
-                }
+                ++hues[hue]; 
             }
         }
 
         return hues;
     }
+
+    //private unsafe Dictionary<int, int> ExtractHuesFromBgraBuffer (nint frameBufferAddress, int height, int width)
+    //{
+    //    Dictionary<int, int> hues = [];
+    //    byte* p = (byte*)frameBufferAddress;
+    //    for (int row = 0; row < height; ++row)
+    //    {
+    //        for (int col = 0; col < width; ++col)
+    //        {
+    //            byte blue = *p++;
+    //            byte green = *p++;
+    //            byte red = *p++;
+    //            p++; // alpha
+
+    //            RgbColor rgbColor = new(red, blue, green);
+    //            HsvColor hsvColor = rgbColor.ToHsv();
+    //            int hue = 360 + (int)Math.Round(hsvColor.H / 1.0);
+    //            if (hues.TryGetValue(hue, out int value))
+    //            {
+    //                hues[hue] = ++value;
+    //            }
+    //            else
+    //            {
+    //                hues[hue] = 1;
+    //            }
+    //        }
+    //    }
+
+    //    return hues;
+    //}
 
     private List<int> FindPeaks (Dictionary<int, int> hues, int width)
     {
@@ -118,6 +175,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
 
         return peaks;
     }
+
     /// <summary> One dimensional implementation of K-Means to find clusters. </summary>
     /// <param name="hues">Integer hues as tenths of degree on the 360 degrees color wheel.</param>
     /// <param name="clusterCount"></param>
