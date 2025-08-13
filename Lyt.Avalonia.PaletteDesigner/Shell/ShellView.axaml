@@ -107,9 +107,10 @@
 					<glyphs:GlyphButton
 						x:Name="DesignButton"
 						Style="{StaticResource ToolbarIconButton}"
+						Layout="IconTextBelowNoBackground"
 						HorizontalAlignment="Center"
-						Width="82" Height="56"
-						Margin="4 8 4 8"
+						Width="86" Height="72"
+						Margin="2 16 2 16"
 						GlyphSource="design_ideas"
 						GlyphStrokeThickness="0"
 						ButtonBackground="BorderlessRectangle"
@@ -120,9 +121,10 @@
 					<glyphs:GlyphButton
 						x:Name="MappingButton"
 						Style="{StaticResource ToolbarIconButton}"
+						Layout="IconTextBelowNoBackground"
 						HorizontalAlignment="Center"
-						Width="82" Height="56"
-						Margin="4 8 4 8"
+						Width="86" Height="72"
+						Margin="2 16 2 16"
 						GlyphSource="map"
 						GlyphStrokeThickness="0"
 						ButtonBackground="BorderlessRectangle"
@@ -133,9 +135,10 @@
 					<glyphs:GlyphButton
 						x:Name="SettingsButton"
 						Style="{StaticResource ToolbarIconButton}"
+						Layout="IconTextBelowNoBackground"
 						HorizontalAlignment="Center"
-						Width="82" Height="56"
-						Margin="4 8 4 8"
+						Width="86" Height="72"
+						Margin="2 16 2 16"
 						GlyphSource="settings"
 						ButtonBackground="BorderlessRectangle"
 						GlyphAngle="20"
@@ -147,9 +150,10 @@
 					<glyphs:GlyphButton
 						x:Name="FlagButton"
 						Style="{StaticResource ToolbarIconButton}"
+						Layout="IconTextBelowNoBackground"
 						HorizontalAlignment="Center"
-						Width="82" Height="56"
-						Margin="4 8 4 8"
+						Width="86" Height="72"
+						Margin="2 16 2 16"
 						GlyphSource="flag"
 						GlyphStrokeThickness="0"
 						ButtonBackground="BorderlessRectangle"
@@ -157,7 +161,6 @@
 						Command="{Binding OnLanguage}"
 						Group="{Binding ElementName=SelectionGroup}"
 						/>
-
 					</StackPanel>
 				<!-- View Selector - Close tool bar - Aligned Right -->
 				<StackPanel

@@ -24,7 +24,7 @@
 	<glyphs:VisualState x:Key="ToolbarIconGeneralVisualState" 
 		Normal="{StaticResource LightAqua_1_100}"
 		Disabled="{StaticResource LightAqua_2_040}"
-		Selected="{StaticResource FreshGreen_0_080}"
+		Selected="{StaticResource FreshGreen_2_100}"
 		Pressed="{StaticResource OrangePeel_1_100}"
 		Hot="{StaticResource OrangePeel_0_100}"
 		/>
@@ -103,4 +103,22 @@
 		<Setter Property="GlyphStrokeThickness" Value="0" />
 		<Setter Property="GlyphAngle" Value="0" />
 	</ControlTheme>
+
+	<ControlTheme x:Key="AppToolbarIconButton" TargetType="glyphs:GlyphButton">
+		<Setter Property="Layout" Value="IconTextBelowNoBackground"/>
+		<Setter Property="Behaviour" Value="Tap"/>
+		<Setter Property="ButtonBackground" Value="BorderlessRectangle"/>
+		<Setter Property="Typography" Value="{StaticResource GlyphButtonTypography}"/>
+		<Setter Property="BackgroundCornerRadius" Value="8" />
+		<Setter Property="GeneralVisualState" Value="{StaticResource ToolbarIconGeneralVisualState}"/>
+		<Setter Property="BackgroundVisualState" Value="{StaticResource ToolbarIconBackgroundVisualState}"/>
+		<Setter Property="BackgroundBorderVisualState" Value="{StaticResource ToolbarIconBackgroundBorderVisualState}"/>
+		<Setter Property="IsDisabled" Value="False" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="Width" Value="116" />
+		<Setter Property="Height" Value="68" />
+		<Setter Property="GlyphStrokeThickness" Value="0.05" />
+	</ControlTheme>
+
 </ResourceDictionary>

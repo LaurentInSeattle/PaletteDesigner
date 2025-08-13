@@ -16,7 +16,7 @@
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="72" />
-			<RowDefinition Height="18" />
+			<RowDefinition Height="16" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<!-- Shades  -->
@@ -49,32 +49,22 @@
 		<!-- Shades / Tints -->
 		<glyphs:SelectionGroup x:Name="ShadesSelectionGroup" />
 		<glyphs:GlyphButton
-			Style="{StaticResource ToolbarIconButton}"
-			Behaviour="Tap"
 			Grid.Column="0"
-			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="100" Height="60"
-			Margin="0"
-			ButtonBackground="BorderlessRectangle"
+			Style="{StaticResource AppToolbarIconButton}"
 			Text="{DynamicResource Design.Toolbar.Shade.LockedTogether}"
-			GlyphSource="lock_closed"
-			GlyphStrokeThickness="0.2"
-			Group="{Binding ElementName=ShadesSelectionGroup}"
 			IsSelected="True"
+			GlyphSource="lock_closed"
+			GlyphStrokeThickness="0.1"
+			Group="{Binding ElementName=ShadesSelectionGroup}"
 			Command="{Binding OnLockSelect}"
 			CommandParameter="Locked"
 			/>
 
 		<glyphs:GlyphButton
-			Style="{StaticResource ToolbarIconButton}"
-			Behaviour="Tap"
 			Grid.Column="1"
-			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="100" Height="60"
-			Margin="0"
-			ButtonBackground="BorderlessRectangle"
+			Style="{StaticResource AppToolbarIconButton}"
 			GlyphSource="lock_open"
-			GlyphStrokeThickness="0.2"
+			GlyphStrokeThickness="0.1"
 			Text="{DynamicResource Design.Toolbar.Shade.NoConstraints}"
 			Group="{Binding ElementName=ShadesSelectionGroup}"
 			Command="{Binding OnLockSelect}"
@@ -84,17 +74,12 @@
 		<!-- Colours -->
 		<glyphs:SelectionGroup x:Name="ColorsSelectionGroup" />
 		<glyphs:GlyphButton
-			Style="{StaticResource ToolbarIconButton}"
+			Style="{StaticResource AppToolbarIconButton}"
 			Text="{DynamicResource Design.Toolbar.Shade.Primary}"
 			IsVisible="{Binding IsPrimaryVisible}"
 			IsDisabled="{Binding IsShadingDisabled}"
 			IsSelected="True"
-			Behaviour="Tap"
 			Grid.Column="3"
-			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="100" Height="60"
-			Margin="0"
-			ButtonBackground="BorderlessRectangle"
 			Group="{Binding ElementName=ColorsSelectionGroup}"
 			Command="{Binding OnColorSelect}"
 			CommandParameter="Primary"
@@ -106,16 +91,11 @@
 			</glyphs:GlyphButton.XamlContent>
 		</glyphs:GlyphButton>
 		<glyphs:GlyphButton
-			Style="{StaticResource ToolbarIconButton}"
+			Style="{StaticResource AppToolbarIconButton}"
 			IsVisible="{Binding IsComplementaryVisible}"
 			IsDisabled="{Binding IsShadingDisabled}"
 			Text="{DynamicResource Design.Toolbar.Shade.Complementary}"
-			Behaviour="Tap"
 			Grid.Column="4"
-			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="100" Height="60"
-			Margin="0"
-			ButtonBackground="BorderlessRectangle"
 			Group="{Binding ElementName=ColorsSelectionGroup}"
 			Command="{Binding OnColorSelect}"
 			CommandParameter="Complementary"
@@ -128,16 +108,11 @@
 		</glyphs:GlyphButton>
 
 		<glyphs:GlyphButton
-			Style="{StaticResource ToolbarIconButton}"
+			Grid.Column="5"
+			Style="{StaticResource AppToolbarIconButton}"
 			Text="{DynamicResource Design.Toolbar.Shade.Secondary1}"
 			IsVisible="{Binding IsSecondary1Visible}"
 			IsDisabled="{Binding IsShadingDisabled}"
-			Behaviour="Tap"
-			Grid.Column="5"
-			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="100" Height="60"
-			Margin="0"
-			ButtonBackground="BorderlessRectangle"
 			Group="{Binding ElementName=ColorsSelectionGroup}"
 			Command="{Binding OnColorSelect}"
 			CommandParameter="Secondary1"
@@ -149,16 +124,11 @@
 			</glyphs:GlyphButton.XamlContent>
 		</glyphs:GlyphButton>
 		<glyphs:GlyphButton
-			Style="{StaticResource ToolbarIconButton}"
+			Grid.Column="6"
+			Style="{StaticResource AppToolbarIconButton}"
 			IsVisible="{Binding IsSecondary2Visible}"
 			IsDisabled="{Binding IsShadingDisabled}"
 			Text="{DynamicResource Design.Toolbar.Shade.Secondary2}"
-			Behaviour="Tap"
-			Grid.Column="6"
-			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="100" Height="60"
-			Margin="0"
-			ButtonBackground="BorderlessRectangle"
 			Group="{Binding ElementName=ColorsSelectionGroup}"
 			Command="{Binding OnColorSelect}"
 			CommandParameter="Secondary2"

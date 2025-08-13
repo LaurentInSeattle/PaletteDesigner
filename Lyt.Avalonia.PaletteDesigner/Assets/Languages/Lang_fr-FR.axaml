@@ -117,7 +117,7 @@
 
     <system:String x:Key="Design.Toolbar.Variant.Dark">Nuit</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.TextSamples">Échantillons de Texte</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.TextSamples">Examples de Texte</system:String>
 
     <system:String x:Key="Design.TextSamples.TitleText">Titre</system:String>
 

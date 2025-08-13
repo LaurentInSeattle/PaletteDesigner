@@ -27,17 +27,13 @@
 		</Grid.ColumnDefinitions>
 		
 		<glyphs:GlyphButton
-			Style="{StaticResource ToolbarIconButton}"
 			Grid.Column="0"
-			VerticalAlignment="Center" HorizontalAlignment="Center"
-			Width="100" Height="60"
-			ButtonBackground="BorderlessRectangle"
-			GlyphSource="share"			
-			GlyphStrokeThickness="0.2"			
+			Style="{StaticResource AppToolbarIconButton}"
+			GlyphSource="share"
+			GlyphStrokeThickness="0.1"
 			Text="{DynamicResource Design.Toolbar.Export}"
 			Command="{Binding OnExport}"
 			/>
-
 		<ComboBox
 			x:Name="FormatComboBox"
 			Grid.Column="3" Grid.Row="0"
