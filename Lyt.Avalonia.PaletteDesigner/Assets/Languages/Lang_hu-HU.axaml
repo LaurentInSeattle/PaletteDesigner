@@ -43,6 +43,8 @@
 
     <system:String x:Key="Design.Toolbar.Export">Export</system:String>
 
+    <system:String x:Key="Design.Toolbar.Randomize">Véletlenszerűsít</system:String>
+
     <system:String x:Key="Design.Toolbar.ExportPalette">Exportpaletta</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Complementary">Kiegészítő</system:String>

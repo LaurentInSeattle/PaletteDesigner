@@ -43,6 +43,8 @@
 
     <system:String x:Key="Design.Toolbar.Export">Esportare</system:String>
 
+    <system:String x:Key="Design.Toolbar.Randomize">Randomizzare</system:String>
+
     <system:String x:Key="Design.Toolbar.ExportPalette">Tavolozza di Esportazione</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Complementary">Complementare</system:String>

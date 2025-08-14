@@ -43,6 +43,8 @@
 
     <system:String x:Key="Design.Toolbar.Export">輸出</system:String>
 
+    <system:String x:Key="Design.Toolbar.Randomize">ランダム化</system:String>
+
     <system:String x:Key="Design.Toolbar.ExportPalette">エクスポートパレット</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Complementary">相補的</system:String>

@@ -30,6 +30,7 @@
 
 	<!-- Design  -->
 	<system:String x:Key="Design.Toolbar.Export">Export</system:String>
+	<system:String x:Key="Design.Toolbar.Randomize">Randomize</system:String>
 	<system:String x:Key="Design.Toolbar.ExportPalette">Export Palette</system:String>
 
 	<system:String x:Key="Design.Toolbar.Models.Complementary">Complementary</system:String>

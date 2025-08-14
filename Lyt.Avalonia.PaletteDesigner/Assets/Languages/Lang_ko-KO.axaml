@@ -43,6 +43,8 @@
 
     <system:String x:Key="Design.Toolbar.Export">내보내다</system:String>
 
+    <system:String x:Key="Design.Toolbar.Randomize">무작위 화</system:String>
+
     <system:String x:Key="Design.Toolbar.ExportPalette">수출 팔레트</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Complementary">보완 적</system:String>

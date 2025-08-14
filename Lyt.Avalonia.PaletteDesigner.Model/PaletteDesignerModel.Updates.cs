@@ -1,7 +1,18 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
+using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
+
 public sealed partial class PaletteDesignerModel : ModelBase
 {
+    public void RandomizePalette()
+        => this.UpdatePalette(palette =>
+        {
+            palette.Kind = PaletteKind.Quadrichromatic;
+
+            return true;
+        });
+
+
     public bool UpdatePaletteKind(PaletteKind paletteKind)
         => this.UpdatePalette(palette =>
         {

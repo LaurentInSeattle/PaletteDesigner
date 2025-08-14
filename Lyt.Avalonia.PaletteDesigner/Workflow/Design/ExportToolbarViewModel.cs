@@ -32,6 +32,9 @@ public sealed partial class ExportToolbarViewModel : ViewModel<ExportToolbarView
             this.paletteDesignerModel.ActiveProject.Palette;
 
     [RelayCommand]
+    public void OnRandomize() =>  this.paletteDesignerModel.RandomizePalette();
+
+    [RelayCommand]
     public void OnExport()
     {
         //if (Debugger.IsAttached)

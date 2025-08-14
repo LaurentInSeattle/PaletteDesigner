@@ -43,6 +43,8 @@
 
     <system:String x:Key="Design.Toolbar.Export">রফতানি</system:String>
 
+    <system:String x:Key="Design.Toolbar.Randomize">এলোমেলোভাবে</system:String>
+
     <system:String x:Key="Design.Toolbar.ExportPalette">রফতানি প্যালেট</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Complementary">পরিপূরক</system:String>

@@ -43,6 +43,8 @@
 
     <system:String x:Key="Design.Toolbar.Export">出口</system:String>
 
+    <system:String x:Key="Design.Toolbar.Randomize">隨機化</system:String>
+
     <system:String x:Key="Design.Toolbar.ExportPalette">導出調色板</system:String>
 
     <system:String x:Key="Design.Toolbar.Models.Complementary">補充</system:String>
