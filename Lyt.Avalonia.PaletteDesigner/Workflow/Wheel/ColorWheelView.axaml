@@ -7,7 +7,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
+	mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="700"
 	
 	xmlns:images="using:Lyt.Avalonia.Controls.Images"	
 	xmlns:glyphs="using:Lyt.Avalonia.Controls.Glyphs"	
@@ -128,53 +128,45 @@
 		</Canvas>
 
 		<glyphs:GlyphButton
-			Style="{StaticResource ToolbarIconButton}"
+			Style="{StaticResource AppToolbarIconButton}"
 			VerticalAlignment="Top" HorizontalAlignment="Right"
 			Behaviour="Continuous"
-			Width="100" Height="60"
-			Margin="4"
-			ButtonBackground="BorderlessRectangle"
 			Text="{DynamicResource Design.ColorWheel.Rotate}"
 			GlyphSource="arrow_rotate_clockwise"
-			GlyphAngle="0"
-			GlyphStrokeThickness="0.2"
 			Command="{Binding OnRotateClockwise}"
+			Margin="4"
+			GlyphStrokeThickness="0.05" 
 			/>
 		<glyphs:GlyphButton
-			Style="{StaticResource ToolbarIconButton}"
+			Style="{StaticResource AppToolbarIconButton}"
 			Behaviour="Continuous"
 			VerticalAlignment="Top" HorizontalAlignment="Left"
-			Width="100" Height="60"
 			Margin="4"
-			ButtonBackground="BorderlessRectangle"
 			Text="{DynamicResource Design.ColorWheel.Rotate}"
 			GlyphSource="arrow_rotate_counterclockwise"
-			GlyphAngle="0"
-			GlyphStrokeThickness="0.2"
 			Command="{Binding OnRotateCounterClockwise}"
+			GlyphStrokeThickness="0.05" 
 			/>
 		<glyphs:GlyphButton
-			Style="{StaticResource ToolbarIconButton}"
+			Style="{StaticResource AppToolbarIconButton}"
 			VerticalAlignment="Bottom" HorizontalAlignment="Right"
-			Width="100" Height="60"
 			Margin="4"
 			ButtonBackground="BorderlessRectangle"
 			Text="{DynamicResource Design.ColorWheel.Flip}"
 			GlyphAngle="-20"
 			GlyphSource="arrow_swap"
-			GlyphStrokeThickness="0.2"
 			Command="{Binding OnSwap}"
+			GlyphStrokeThickness="0.05" 
 			/>
 		<glyphs:GlyphButton
-			Style="{StaticResource ToolbarIconButton}"
+			Style="{StaticResource AppToolbarIconButton}"
 			VerticalAlignment="Bottom" HorizontalAlignment="Left"
-			Width="100" Height="60"
 			Margin="4"
 			ButtonBackground="BorderlessRectangle"
 			Text="{DynamicResource Design.ColorWheel.Reset}"
 			GlyphSource="data_line"
-			GlyphStrokeThickness="0.2"
 			Command="{Binding OnResetShades}"
+			GlyphStrokeThickness="0.05" 
 			/>
 	</Grid>
 </UserControl>

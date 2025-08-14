@@ -117,7 +117,7 @@
 
     <system:String x:Key="Design.Toolbar.Variant.Dark">Nuit</system:String>
 
-    <system:String x:Key="Design.Toolbar.Shade.TextSamples">Examples de Texte</system:String>
+    <system:String x:Key="Design.Toolbar.Shade.TextSamples">Exemples de Texte</system:String>
 
     <system:String x:Key="Design.TextSamples.TitleText">Titre</system:String>
 
@@ -125,7 +125,7 @@
 
     <system:String x:Key="Design.TextSamples.RegularText">Qu'est-ce que l'exemple de texte? Une séquence de caractères sans mise en forme.</system:String>
 
-    <system:String x:Key="Design.Palette.WheelHue">Teinte de la Roue</system:String>
+    <system:String x:Key="Design.Palette.WheelHue">Teinte</system:String>
 
     <system:String x:Key="Design.ColorWheel.Rotate">Tourner Ensemble</system:String>
 
