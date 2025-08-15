@@ -1,0 +1,67 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Imaging.ImagingView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Imaging"
+	x:DataType="vm:ImagingViewModel" 
+
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	
+	Background="Transparent"
+	>
+	<Grid
+		Margin="8"
+		>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="92" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="92" />
+		</Grid.RowDefinitions>
+		<Grid
+			Grid.Row="1"
+			>
+			<Grid.ColumnDefinitions>
+				<!-- Spacer -->
+				<ColumnDefinition Width="20" />
+				<ColumnDefinition Width="700" />
+				<!-- Spacer -->
+				<ColumnDefinition Width="20" />
+				<ColumnDefinition Width="Auto" />
+				<!-- Spacer -->
+				<ColumnDefinition Width="12" />
+				<ColumnDefinition Width="Auto" />
+				<!-- Spacer -->
+				<ColumnDefinition Width="8" />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+		</Grid>
+
+		<!-- Top toolbars -->
+		<!--
+		<StackPanel
+			Grid.Row="0" Grid.ColumnSpan="5"
+			HorizontalAlignment="Center"
+			Orientation="Horizontal"
+			>
+			<vm:ModelSelectionToolbarView
+				Margin="0 "
+				DataContext="{Binding ModelSelectionToolbarViewModel}"
+				/>
+			<vm:ExportToolbarView
+				Margin="12 0 0 0"
+				DataContext="{Binding ExportToolbarViewModel}"
+				/>
+		</StackPanel>
+		-->
+		<!-- Bottom toolbar -->
+		<!--
+		<vm:ShadeSelectionToolbarView
+			Grid.Row="2" Grid.ColumnSpan="5"
+			HorizontalAlignment="Center"
+			DataContext="{Binding ShadeSelectionToolbarViewModel}"
+			/>
+		-->
+	</Grid>
+</UserControl>

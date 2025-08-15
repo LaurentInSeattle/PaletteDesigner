@@ -25,6 +25,7 @@
 	<system:String x:Key="Shell.Settings">Settings</system:String>
 	<system:String x:Key="Shell.Language">Language</system:String>
 	<system:String x:Key="Shell.Design">Designer</system:String>
+	<system:String x:Key="Shell.Imaging">With Image</system:String>
 	<system:String x:Key="Shell.Mapping">Mappings</system:String>
 	<system:String x:Key="Shell.Dump">Dump</system:String>
 

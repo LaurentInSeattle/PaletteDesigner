@@ -110,7 +110,7 @@ public partial class MarkerControl : UserControl
             return;
         }
 
-        if (sender is not MarkerControl markerControl)
+        if (sender is not MarkerControl)
         {
             Debug.WriteLine("Not sent by a MarkerControl");
             return;
@@ -159,7 +159,7 @@ public partial class MarkerControl : UserControl
 
             // Debug.WriteLine(string.Format("Mouse - X: {0}  Y: {1}", pixelX, pixelY));
 
-            if (!map.TryGetValue(pixelY, pixelX, out Model.PaletteObjects.HsvColor? mapColor) ||
+            if (!map.TryGetValue(pixelY, pixelX, out Model.ColorObjects.HsvColor? mapColor) ||
                 (mapColor is null))
             {
                 return;

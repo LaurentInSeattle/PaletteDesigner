@@ -6,6 +6,8 @@ public sealed record class ViewActivationMessage(
     public enum ActivatedView
     {
         Design,
+        Imaging,
+        Mapping,
         Language,
         Settings, 
 
@@ -17,6 +19,5 @@ public sealed record class ViewActivationMessage(
 
         GoBack,
         Exit,
-        Mapping,
     }
 }

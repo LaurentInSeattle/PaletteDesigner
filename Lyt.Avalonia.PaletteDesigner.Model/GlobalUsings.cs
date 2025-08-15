@@ -33,6 +33,8 @@ global using Lyt.Utilities.DataStructures;
 global using Lyt.Utilities.Extensions;
 
 global using Lyt.Avalonia.PaletteDesigner.Model.Messaging;
+global using Lyt.Avalonia.PaletteDesigner.Model.ColorObjects;
+global using Lyt.Avalonia.PaletteDesigner.Model.KMeans;
 global using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.ProjectObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.ThemeObjects;

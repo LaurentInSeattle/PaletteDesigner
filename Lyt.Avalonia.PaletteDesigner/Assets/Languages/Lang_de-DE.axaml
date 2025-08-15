@@ -37,6 +37,8 @@
 
     <system:String x:Key="Shell.Design">Designer</system:String>
 
+    <system:String x:Key="Shell.Imaging">Vom Bild</system:String>
+
     <system:String x:Key="Shell.Mapping">Zuordnungen</system:String>
 
     <system:String x:Key="Shell.Dump">Entsorgen</system:String>

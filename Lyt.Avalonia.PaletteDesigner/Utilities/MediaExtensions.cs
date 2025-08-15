@@ -1,7 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Utilities;
 
-using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
-using HsvColor = Model.PaletteObjects.HsvColor;
+using Lyt.Avalonia.PaletteDesigner.Model.ColorObjects;
+using HsvColor = Model.ColorObjects.HsvColor;
 
 public static class MediaExtensions
 {

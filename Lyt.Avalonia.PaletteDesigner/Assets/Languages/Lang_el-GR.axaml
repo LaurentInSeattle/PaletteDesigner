@@ -37,6 +37,8 @@
 
     <system:String x:Key="Shell.Design">Σχεδιαστής</system:String>
 
+    <system:String x:Key="Shell.Imaging">Από εικόνα</system:String>
+
     <system:String x:Key="Shell.Mapping">Αντιστοιχία</system:String>
 
     <system:String x:Key="Shell.Dump">Σκουπιδότοπος</system:String>

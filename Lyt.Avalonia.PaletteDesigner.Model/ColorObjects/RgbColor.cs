@@ -1,4 +1,4 @@
-﻿namespace Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
+﻿namespace Lyt.Avalonia.PaletteDesigner.Model.ColorObjects;
 
 public sealed class RgbColor
 {
@@ -41,6 +41,14 @@ public sealed class RgbColor
     public RgbColor( HsvColor hsv )
     {
         RgbColor rgb = hsv.ToRgb();
+        this.R = rgb.R;
+        this.G = rgb.G;
+        this.B = rgb.B;
+    }
+
+    public RgbColor(LabColor lab)
+    {
+        RgbColor rgb = lab.ToRgb();
         this.R = rgb.R;
         this.G = rgb.G;
         this.B = rgb.B;

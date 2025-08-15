@@ -134,6 +134,8 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
         SetupNoToolbar<DesignViewModel, DesignView>(
             ActivatedView.Design, view.DesignButton);
+        SetupNoToolbar<ImagingViewModel, ImagingView>(
+            ActivatedView.Imaging, view.ImagingButton);
         SetupNoToolbar<MappingViewModel, MappingView>(
             ActivatedView.Mapping, view.MappingButton);
         SetupNoToolbar<SettingsViewModel, SettingsView>(
@@ -190,6 +192,9 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
 
     [RelayCommand]
     public void OnDesign() => Select(ActivatedView.Design);
+
+    [RelayCommand]
+    public void OnImaging() => Select(ActivatedView.Imaging);
 
     [RelayCommand]
     public void OnMapping() => Select(ActivatedView.Mapping);

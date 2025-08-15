@@ -37,6 +37,8 @@
 
     <system:String x:Key="Shell.Design">Diseñador</system:String>
 
+    <system:String x:Key="Shell.Imaging">Desde la imagen</system:String>
+
     <system:String x:Key="Shell.Mapping">Mapeos</system:String>
 
     <system:String x:Key="Shell.Dump">Vertedero</system:String>

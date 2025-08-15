@@ -10,7 +10,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
             return new(); 
         }
 
-        var hues = this.ExtractHuesFromBgraBuffer(frameBufferAddress, height, width);
+        double[] hues = this.ExtractHuesFromBgraBuffer(frameBufferAddress, height, width);
         //var sortedHues = 
         //    (from  hue in hues orderby hue.Value descending select hue ).ToList();
         //for ( int i = 0; i < Math.Min(50, sortedHues.Count); ++ i)
@@ -96,7 +96,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
     }
 
     /// <summary> ExtractHuesFromBgraBuffer : frameBufferAddress is supposed to be locked </summary>
-    private unsafe double[] ExtractHuesFromBgraBuffer(nint frameBufferAddress, int height, int width)
+    public unsafe double[] ExtractHuesFromBgraBuffer(nint frameBufferAddress, int height, int width)
     {
         double[] hues = new double[740];
         byte* p = (byte*)frameBufferAddress;
@@ -119,35 +119,34 @@ public sealed partial class PaletteDesignerModel : ModelBase
         return hues;
     }
 
-    //private unsafe Dictionary<int, int> ExtractHuesFromBgraBuffer (nint frameBufferAddress, int height, int width)
-    //{
-    //    Dictionary<int, int> hues = [];
-    //    byte* p = (byte*)frameBufferAddress;
-    //    for (int row = 0; row < height; ++row)
-    //    {
-    //        for (int col = 0; col < width; ++col)
-    //        {
-    //            byte blue = *p++;
-    //            byte green = *p++;
-    //            byte red = *p++;
-    //            p++; // alpha
+    public static unsafe RgbColor[] ExtractRgbFromBgraBuffer(nint frameBufferAddress, int height, int width)
+    {
+        var colors = new RgbColor[height * width];
+        int index = 0;
+        byte* p = (byte*)frameBufferAddress;
+        for (int row = 0; row < height; ++row)
+        {
+            for (int col = 0; col < width; ++col)
+            {
+                byte blue = *p++;
+                byte green = *p++;
+                byte red = *p++;
+                p++; // alpha
 
-    //            RgbColor rgbColor = new(red, blue, green);
-    //            HsvColor hsvColor = rgbColor.ToHsv();
-    //            int hue = 360 + (int)Math.Round(hsvColor.H / 1.0);
-    //            if (hues.TryGetValue(hue, out int value))
-    //            {
-    //                hues[hue] = ++value;
-    //            }
-    //            else
-    //            {
-    //                hues[hue] = 1;
-    //            }
-    //        }
-    //    }
+                RgbColor rgbColor = new(red, blue, green);
+                colors[index++ ] = rgbColor;
+            }
+        }
 
-    //    return hues;
-    //}
+        return colors;
+    }
+
+    public static List<RgbColor> ExtractPalette (RgbColor[] rgbPixels, int clusterCount, int depthAnalysis)
+    {
+        List<LabColor> labPixels = [.. rgbPixels.Select(rgb => new LabColor(rgb))];
+        var clusteredLab = new Clusterer(clusterCount, depthAnalysis).Fit(labPixels);
+        return [.. clusteredLab.Select(lab => lab.ToRgb())];
+    }
 
     private List<int> FindPeaks (Dictionary<int, int> hues, int width)
     {
@@ -208,7 +207,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
         }
 
         // Select the initial cluster centers randomly
-        int[] centers = hues.Keys.OrderBy(c => Guid.NewGuid()).Take(clusterCount).ToArray();
+        int[] centers = [.. hues.Keys.OrderBy(c => Guid.NewGuid()).Take(clusterCount)];
         // int[] centers = new int[clusterCount]; 
         //for (int i = 0; i < clusterCount; ++i)
         //{

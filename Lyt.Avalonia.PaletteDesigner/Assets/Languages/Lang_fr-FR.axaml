@@ -37,6 +37,8 @@
 
     <system:String x:Key="Shell.Design">Designer</system:String>
 
+    <system:String x:Key="Shell.Imaging">Avec Image</system:String>
+
     <system:String x:Key="Shell.Mapping">Mappages</system:String>
 
     <system:String x:Key="Shell.Dump">Dump</system:String>

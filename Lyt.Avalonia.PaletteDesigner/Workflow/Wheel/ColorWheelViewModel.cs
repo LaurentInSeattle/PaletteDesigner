@@ -1,7 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Wheel;
 
 using Lyt.Avalonia.PaletteDesigner.Model;
-using HsvColor = Model.PaletteObjects.HsvColor;
+using HsvColor = Model.ColorObjects.HsvColor;
 
 public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
 {

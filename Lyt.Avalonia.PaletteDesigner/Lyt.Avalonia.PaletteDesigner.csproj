@@ -86,6 +86,9 @@
 	  <Compile Update="Workflow\Design\ShadeSelectionToolbarView.axaml.cs">
 	    <DependentUpon>ShadeSelectionToolbarView.axaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Workflow\Imaging\ImagingView.axaml.cs">
+	    <DependentUpon>ImagingView.axaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Workflow\Mapping\ColorDragView.axaml.cs">
 	    <DependentUpon>ColorDragView.axaml</DependentUpon>
 	  </Compile>

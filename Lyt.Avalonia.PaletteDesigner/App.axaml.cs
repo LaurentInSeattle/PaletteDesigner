@@ -24,6 +24,7 @@ public partial class App : ApplicationBase
            typeof(ShellViewModel),
 
            typeof(LanguageViewModel),
+           //typeof(LanguageToolbarViewModel),
            
            typeof(SettingsViewModel),
 
@@ -34,11 +35,10 @@ public partial class App : ApplicationBase
 
            typeof(MappingViewModel),
 
-           //typeof(SettingsToolbarViewModel),
+           typeof(ImagingViewModel),
+
            //typeof(IntroViewModel),
            //typeof(IntroToolbarViewModel),
-           //typeof(LanguageViewModel),
-           //typeof(LanguageToolbarViewModel),
 
         ],
         [

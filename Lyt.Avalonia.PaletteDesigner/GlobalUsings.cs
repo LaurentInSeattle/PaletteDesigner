@@ -101,6 +101,7 @@ global using Lyt.Avalonia.PaletteDesigner.Utilities;
 
 global using Lyt.Avalonia.PaletteDesigner.Workflow;
 global using Lyt.Avalonia.PaletteDesigner.Workflow.Design;
+global using Lyt.Avalonia.PaletteDesigner.Workflow.Imaging;
 global using Lyt.Avalonia.PaletteDesigner.Workflow.Language;
 global using Lyt.Avalonia.PaletteDesigner.Workflow.Mapping;
 global using Lyt.Avalonia.PaletteDesigner.Workflow.Settings;
