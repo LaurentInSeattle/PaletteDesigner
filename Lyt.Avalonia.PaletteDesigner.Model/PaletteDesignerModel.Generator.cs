@@ -7,7 +7,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
     {
         if (this.ActiveProject is null)
         {
-            return new(); 
+            return new();
         }
 
         double[] hues = this.ExtractHuesFromBgraBuffer(frameBufferAddress, height, width);
@@ -53,21 +53,21 @@ public sealed partial class PaletteDesignerModel : ModelBase
             if (!status || peaks.Count < 4)
             {
                 conditions.Distance -= 5;
-                if ( conditions.Distance <= 5 )
+                if (conditions.Distance <= 5)
                 {
                     return null;
                 }
             }
             else
             {
-                break; 
+                break;
             }
-        } 
+        }
 
         int peakIndex = 0;
         foreach (var peakResult in peaks)
         {
-            Debug.WriteLine("Peak Index: " + peakIndex  + "  " + peakResult.Peak); 
+            Debug.WriteLine("Peak Index: " + peakIndex + "  " + peakResult.Peak);
             peakIndex++;
             Debug.Indent();
             // Debug.WriteLine(peakResult.Pe.ToDebugString());
@@ -80,7 +80,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
         {
             PeakResult peak = peaks[index];
             int hueIndex = peak.Peak;
-            return hueIndex - 360.0; 
+            return hueIndex - 360.0;
         }
 
         var currentPalette = this.ActiveProject!.Palette;
@@ -109,10 +109,10 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 byte red = *p++;
                 p++; // alpha: skip
 
-                RgbColor rgbColor = new(red, blue, green);
+                RgbColor rgbColor = new(red, green, blue);
                 HsvColor hsvColor = rgbColor.ToHsv();
                 int hue = 360 + (int)Math.Round(hsvColor.H / 1.0);
-                ++hues[hue]; 
+                ++hues[hue];
             }
         }
 
@@ -131,28 +131,28 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 byte blue = *p++;
                 byte green = *p++;
                 byte red = *p++;
-                p++; // alpha
+                p++; // alpha: skip
 
-                RgbColor rgbColor = new(red, blue, green);
-                colors[index++ ] = rgbColor;
+                RgbColor rgbColor = new(red, green, blue);
+                colors[index++] = rgbColor;
             }
         }
 
         return colors;
     }
 
-    public static List<RgbColor> ExtractPalette (RgbColor[] rgbPixels, int clusterCount, int depthAnalysis)
+    public static List<RgbColor> ExtractPalette(RgbColor[] rgbPixels, int clusterCount, int depthAnalysis)
     {
         List<LabColor> labPixels = [.. rgbPixels.Select(rgb => new LabColor(rgb))];
         var clusteredLab = new Clusterer(clusterCount, depthAnalysis).Fit(labPixels);
         return [.. clusteredLab.Select(lab => lab.ToRgb())];
     }
 
-    private List<int> FindPeaks (Dictionary<int, int> hues, int width)
+    private List<int> FindPeaks(Dictionary<int, int> hues, int width)
     {
         List<int> peaks = [];
 
-        for ( int pass =  0; pass < 4; ++pass)
+        for (int pass = 0; pass < 4; ++pass)
         {
             var sortedHues =
                 (from hue in hues orderby hue.Value descending select hue).ToList();
@@ -163,13 +163,13 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 Debug.WriteLine("Hue: {0}  - Count: {1}", kvp.Key, kvp.Value);
             }
 
-            int peak = sortedHues[0].Key; 
+            int peak = sortedHues[0].Key;
             peaks.Add(peak);
             Debug.WriteLine("Added: {0}", peak);
-            for (int key = peak - width; key <= peak + width; ++key )
+            for (int key = peak - width; key <= peak + width; ++key)
             {
                 hues.Remove(key);
-            }            
+            }
         }
 
         return peaks;
@@ -180,7 +180,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
     /// <param name="clusterCount"></param>
     /// <returns> the clusters </returns>
     private List<Dictionary<int, int>> GenerateClusters(
-        Dictionary<int, int> hues, int clusterCount=4)
+        Dictionary<int, int> hues, int clusterCount = 4)
     {
         static int FindNearestCenter(int color, int[] centers)
         {
@@ -235,8 +235,8 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 int sum = 0;
                 foreach (int color in clusters[i].Keys)
                 {
-                    sum += color; 
-                    ++ count;
+                    sum += color;
+                    ++count;
                 }
 
                 if (count > 0)
@@ -247,11 +247,11 @@ public sealed partial class PaletteDesignerModel : ModelBase
                         centers[i] = newCenter;
                         changed = true;
                     }
-                } 
+                }
             }
         }
 
         // Return the clusters
         return clusters;
     }
-} 
+}

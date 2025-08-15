@@ -1,7 +1,11 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Imaging;
 
+using HsvColor = Model.ColorObjects.HsvColor;
+
 public sealed partial class ImageSwatchViewModel : ViewModel <ImageSwatchView>
 {
+    public readonly HsvColor HsvColor; 
+
     [ObservableProperty]
     public SolidColorBrush colorBrush;
 
@@ -14,9 +18,9 @@ public sealed partial class ImageSwatchViewModel : ViewModel <ImageSwatchView>
     [ObservableProperty]
     private string hsv = string.Empty;
 
-
-    public ImageSwatchViewModel(RgbColor rgbColor, Model.ColorObjects.HsvColor hsvColor)
+    public ImageSwatchViewModel(RgbColor rgbColor, HsvColor hsvColor)
     {
+        this.HsvColor = hsvColor;
         this.ColorBrush = rgbColor.ToBrush();
         this.RgbHex = hsvColor.ToRgbHexString();
         this.RgbDec = hsvColor.ToRgbDecimalString();

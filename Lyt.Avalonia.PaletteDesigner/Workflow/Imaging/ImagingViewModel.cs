@@ -33,7 +33,6 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
     //[ObservableProperty]
     //private ShadesPresetsToolbarViewModel shadesPresetsToolbarViewModel;
 
-
     public ImagingViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
@@ -61,17 +60,16 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
     public override void Activate(object? activationParameters)
     {
         base.Activate(activationParameters);
-        this.OnTestPaletteFromImage();
+        this.OnPaletteFromImage();
     }
 
-    [Conditional("DEBUG")]
-    private void OnTestPaletteFromImage()
+    private void OnPaletteFromImage()
     {
-        // DANGER Zone ~ Does not work as expected 
         try
         {
             // string path = @"C:\Users\Laurent\Desktop\Jolla.jpg";
             string path = @"C:\Users\Laurent\Desktop\Kauai.jpg";
+            // string path = @"C:\Users\Laurent\Desktop\Florida.jpg";
             // string path = @"C:\Users\Laurent\Desktop\Designer.png";
 
             byte[] imageBytes = File.ReadAllBytes(path);
@@ -98,10 +96,11 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
                 var colors =
                     PaletteDesignerModel.ExtractRgbFromBgraBuffer(
                         frameBuffer.Address, frameBuffer.Size.Height, frameBuffer.Size.Width);
+                Debug.WriteLine("Colors: " + colors.Length);
                 int depthAnalysis =
                     Debugger.IsAttached ? ImagingViewModel.DepthAnalysis / 2 : ImagingViewModel.DepthAnalysis;
-                // var palette = PaletteDesignerModel.ExtractPalette(colors, 12, depthAnalysis);
-                var palette = PaletteDesignerModel.ExtractPalette(colors, 12, 100);
+                var palette = PaletteDesignerModel.ExtractPalette(colors, 21, depthAnalysis);
+                Debug.WriteLine("Palette: " + palette.Count);
 
                 List<ImageSwatchViewModel> list = new(palette.Count);
                 foreach (var rgbColor in palette)
@@ -116,7 +115,11 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
                     }
                 }
 
-                this.SwatchesViewModels = new(list);
+                var sortedList =
+                    (from vm in list 
+                     orderby vm.HsvColor.H ascending , vm.HsvColor.V descending 
+                     select vm).ToList();
+                this.SwatchesViewModels = new(sortedList);
             }
             else
             {
