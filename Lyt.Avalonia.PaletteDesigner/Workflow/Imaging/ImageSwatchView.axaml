@@ -1,0 +1,57 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Imaging.ImageSwatchView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Imaging"
+	x:DataType="vm:ImageSwatchViewModel" 
+
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	>
+	<Grid
+		Height="90"
+		>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="90"/>
+			<ColumnDefinition Width="190"/>
+		</Grid.ColumnDefinitions>
+		
+		<Rectangle 
+			Grid.Column="0" 
+			Margin="2"
+			RadiusX="4" RadiusY="4"
+			Fill="{Binding ColorBrush}"
+			/>
+		<Grid
+			Grid.Column="1"
+			>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<TextBlock
+				Grid.Row="0"
+				Text="{Binding RgbHex}"
+				Theme="{StaticResource MediumMono}"
+				TextAlignment="Left"
+				HorizontalAlignment="Left"
+		        />
+			<TextBlock
+				Grid.Row="1"
+				Text="{Binding RgbDec}"
+				Theme="{StaticResource MediumMono}"
+				TextAlignment="Left"
+				HorizontalAlignment="Left"
+		        />
+			<TextBlock
+				Grid.Row="2"
+				Text="{Binding Hsv}"
+				Theme="{StaticResource MediumMono}"
+				TextAlignment="Left"
+				HorizontalAlignment="Left"
+	            />
+		</Grid>
+	</Grid>
+</UserControl>

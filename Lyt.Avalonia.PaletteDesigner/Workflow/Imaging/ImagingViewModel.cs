@@ -3,13 +3,18 @@
 public sealed partial class ImagingViewModel : ViewModel<ImagingView>
 {
     private const int PixelCountMax = 1920 * 1080 / 4; // HD size divided by 4, about 1/2 Mega pixels 
-    private const int DepthAnalysis = 120; // HD size divided by 4, about 1/2 Mega pixels 
+    private const int DepthAnalysis = 120; // Iterations for KMeans 
+    private const double BrightnessMin = 0.05;
+    private const double BrightnessMax = 0.98;
 
     private readonly PaletteDesignerModel paletteDesignerModel;
 
     [ObservableProperty]
-    private ColorWheelViewModel colorWheelViewModel;
+    private ObservableCollection<ImageSwatchViewModel> swatchesViewModels;
 
+    //[ObservableProperty]
+    //private ColorWheelViewModel colorWheelViewModel;
+    
     //[ObservableProperty]
     //private PalettePreviewViewModel palettePreviewViewModel;
 
@@ -32,6 +37,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
     public ImagingViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
+        this.SwatchesViewModels = [];
         //this.ColorWheelViewModel = new(paletteDesignerModel);
         //this.PalettePreviewViewModel = new(paletteDesignerModel);
         //this.TextPreviewPanelViewModel = new(paletteDesignerModel);
@@ -64,9 +70,9 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         // DANGER Zone ~ Does not work as expected 
         try
         {
-            string path = @"C:\Users\Laurent\Desktop\Jolla.jpg";
-            // string path = @"C:\Users\Laurent\Desktop\Kauai.jpg";
-            // string path = @"C:\Users\Laurent\Desktop\Test.png";
+            // string path = @"C:\Users\Laurent\Desktop\Jolla.jpg";
+            string path = @"C:\Users\Laurent\Desktop\Kauai.jpg";
+            // string path = @"C:\Users\Laurent\Desktop\Designer.png";
 
             byte[] imageBytes = File.ReadAllBytes(path);
             if ((imageBytes is null) || (imageBytes.Length < 256))
@@ -94,7 +100,23 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
                         frameBuffer.Address, frameBuffer.Size.Height, frameBuffer.Size.Width);
                 int depthAnalysis =
                     Debugger.IsAttached ? ImagingViewModel.DepthAnalysis / 2 : ImagingViewModel.DepthAnalysis;
-                var palette = PaletteDesignerModel.ExtractPalette(colors, 12, depthAnalysis);
+                // var palette = PaletteDesignerModel.ExtractPalette(colors, 12, depthAnalysis);
+                var palette = PaletteDesignerModel.ExtractPalette(colors, 12, 100);
+
+                List<ImageSwatchViewModel> list = new(palette.Count);
+                foreach (var rgbColor in palette)
+                {
+                    // Eliminate colors too dark or too bright 
+                    Model.ColorObjects.HsvColor hsvColor = rgbColor.ToHsv();
+                    double brightness = hsvColor.V;
+                    if ((brightness > BrightnessMin) || (brightness < BrightnessMax))
+                    {
+                        var vm = new ImageSwatchViewModel(rgbColor, hsvColor);
+                        list.Add(vm);
+                    }
+                }
+
+                this.SwatchesViewModels = new(list);
             }
             else
             {
@@ -107,5 +129,4 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
             this.Logger.Warning(ex.ToString());
         }
     }
-
 }

@@ -28,7 +28,7 @@ public partial class MarkerControl : UserControl
         if (canvas is null)
         {
             Debugger.Break();
-            throw new ArgumentNullException("No canvas");
+            throw new Exception("No canvas");
         }
 
         this.parentCanvas = canvas;
@@ -37,14 +37,14 @@ public partial class MarkerControl : UserControl
         if (grid is null)
         {
             Debugger.Break();
-            throw new ArgumentNullException("No shades image");
+            throw new Exception("No shades image");
         }
 
         var image = MiscUtilities.FindChildControl<RoundedImage>(grid);
         if (image is null)
         {
             Debugger.Break();
-            throw new ArgumentNullException("No shades image");
+            throw new Exception("No shades image");
         }
 
         this.parentShades = image;

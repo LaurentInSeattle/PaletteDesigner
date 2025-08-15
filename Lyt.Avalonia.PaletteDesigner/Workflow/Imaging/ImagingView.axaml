@@ -38,6 +38,33 @@
 			</Grid.ColumnDefinitions>
 		</Grid>
 
+		<ScrollViewer
+			Grid.Row="1" Grid.Column="1" Width="700"
+			Margin="0"
+			Background="Transparent"
+			VerticalAlignment="Stretch" HorizontalAlignment="Left"
+			ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+			ScrollViewer.VerticalScrollBarVisibility="Auto"
+			>
+			<ItemsControl
+				x:Name="SwatchesItemsControl"
+				ItemsSource="{Binding SwatchesViewModels}"
+				Padding="0"
+				HorizontalAlignment="Stretch"
+				>
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<WrapPanel Orientation="Horizontal" Margin="0" />
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<vm:ImageSwatchView Margin="12 12 12 0" Width="280"/>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</ScrollViewer>
+
 		<!-- Top toolbars -->
 		<!--
 		<StackPanel
