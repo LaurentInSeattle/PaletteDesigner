@@ -29,14 +29,14 @@
 					Fill="#20808080"
 					/>
 				<TextBlock
-					Margin="0 10 0 0"
+					Margin="0 24 0 0"
 					Text="{DynamicResource Imaging.DropZone}"
-					Theme="{StaticResource H2}"
+					Theme="{StaticResource H1}"
 					TextAlignment="Center"
 					VerticalAlignment="Top"
 					/>
 				<TextBlock
-					Margin="8 0 8 16"
+					Margin="24"
 					Text="{DynamicResource Imaging.DropZoneHelp}"
 					Theme="{StaticResource Large}"
 					VerticalAlignment="Bottom" HorizontalAlignment="Center"

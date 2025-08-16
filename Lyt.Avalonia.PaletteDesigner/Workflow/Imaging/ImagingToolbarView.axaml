@@ -1,0 +1,105 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Imaging.ImagingToolbarView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Imaging"
+	x:DataType="vm:ImagingToolbarViewModel" 
+			 
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="1680" d:DesignHeight="90"
+	
+	xmlns:glyphs="using:Lyt.Avalonia.Controls.Glyphs"	
+	xmlns:toggle="using:Lyt.Avalonia.Controls.Toggle"	
+	xmlns:controls="clr-namespace:Lyt.Avalonia.PaletteDesigner.Controls"
+	>
+	
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="72" />
+			<RowDefinition Height="16" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<!-- Shades  -->
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="22" />
+			<!-- Colours  -->
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
+			<ColumnDefinition Width="112" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="8" />
+			<!-- Presets-->
+			<ColumnDefinition Width="170" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="16" />
+			<!-- Values-->
+			<ColumnDefinition Width="170" />
+			<ColumnDefinition Width="48" />
+			<ColumnDefinition Width="48" />
+			<ColumnDefinition Width="48" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="16" />
+			<!-- Text Samples-->
+			<ColumnDefinition Width="170" />
+		</Grid.ColumnDefinitions>
+		<glyphs:SelectionGroup x:Name="SelectionGroup" />
+		<!-- Shades / Tints -->
+		<glyphs:SelectionGroup x:Name="ShadesSelectionGroup" />
+		<glyphs:GlyphButton
+			Grid.Column="0"
+			Style="{StaticResource AppToolbarIconButton}"
+			Text="{DynamicResource Design.Toolbar.Shade.LockedTogether}"
+			IsSelected="True"
+			GlyphSource="lock_closed"
+			GlyphStrokeThickness="0.1"
+			Group="{Binding ElementName=ShadesSelectionGroup}"
+			Command="{Binding OnLockSelect}"
+			CommandParameter="Locked"
+			/>
+
+		<glyphs:GlyphButton
+			Grid.Column="1"
+			Style="{StaticResource AppToolbarIconButton}"
+			GlyphSource="lock_open"
+			GlyphStrokeThickness="0.1"
+			Text="{DynamicResource Design.Toolbar.Shade.NoConstraints}"
+			Group="{Binding ElementName=ShadesSelectionGroup}"
+			Command="{Binding OnLockSelect}"
+			CommandParameter="Unlocked"
+			/>
+
+		<controls:ExtendedTextBlock
+			Grid.Column="0" Grid.ColumnSpan="7" Grid.Row="1"
+			Text="{DynamicResource Design.Toolbar.Shade.ShadesTints}"
+			Typography="{StaticResource Medium}"
+			/>
+
+		<!--
+
+		<toggle:ToggleSwitch
+			Grid.Row="0" Grid.Column="8" 
+			Style="{StaticResource StandardToggleSwitch}"
+			TrueText="{DynamicResource Shared.Show}"
+			FalseText="{DynamicResource Shared.Hide}"
+			Margin="8 0 0 0"
+			Height="80" Width="160"
+			Orientation="Vertical"
+			HorizontalAlignment="Center" VerticalAlignment="Center"
+			Value="{Binding ShowShadesPresets}"
+			/>
+
+
+		<controls:ExtendedTextBlock
+			Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="1"
+			Text="{DynamicResource Design.Toolbar.Shade.Values}"
+			Typography="{StaticResource Medium}"
+			/>
+
+		-->
+		
+	</Grid>
+</UserControl>

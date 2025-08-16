@@ -80,6 +80,9 @@
 	  <Compile Update="Controls\MonoChromeComplementaryControl.axaml.cs">
 	    <DependentUpon>MonoChromeComplementaryControl.axaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Workflow\Imaging\ImagingToolbarView.axaml.cs">
+	    <DependentUpon>ImagingToolbarView.axaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Workflow\Shared\ExportToolbarView.axaml.cs">
 	    <DependentUpon>ExportToolbarView.axaml</DependentUpon>
 	  </Compile>
