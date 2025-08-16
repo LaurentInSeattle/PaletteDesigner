@@ -78,19 +78,23 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
                 thumbnailBitmap = WriteableBitmap.DecodeToWidth(new MemoryStream(imageBytes), newWidth);
             }
 
-            if (thumbnailBitmap is not null)
+            WriteableBitmap bitmapToProcess = thumbnailBitmap is not null ? thumbnailBitmap : sourceBitmap;
+            if (bitmapToProcess is not null)
             {
                 this.SourceImage = sourceBitmap;
 
-                using var frameBuffer = thumbnailBitmap.Lock();
+                using var frameBuffer = bitmapToProcess.Lock();
                 var colors =
                     PaletteDesignerModel.ExtractRgbFromBgraBuffer(
                         frameBuffer.Address, frameBuffer.Size.Height, frameBuffer.Size.Width);
                 Debug.WriteLine("Colors: " + colors.Length);
+
+                // TODO: Calculate that in a thread and let the UI spin until its done
                 int depthAnalysis =
                     Debugger.IsAttached ? ImagingViewModel.DepthAnalysis / 2 : ImagingViewModel.DepthAnalysis;
                 var swatches = PaletteDesignerModel.ExtractSwatches(colors, 21, depthAnalysis);
                 Debug.WriteLine("Palette: " + swatches.Count);
+
 
                 List<ImageSwatchViewModel> list = new(swatches.Count);
                 foreach (var swatch in swatches)
