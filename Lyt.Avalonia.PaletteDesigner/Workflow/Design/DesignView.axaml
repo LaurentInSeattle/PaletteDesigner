@@ -3,6 +3,7 @@
 	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Design"
 	x:DataType="vm:DesignViewModel" 
 
+	xmlns:shared="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Shared"
 	xmlns:shading="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Shading"
 	xmlns:wheel="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Wheel"
 	xmlns:text="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.TextSamples"
@@ -71,7 +72,7 @@
 				Margin="0 "
 				DataContext="{Binding ModelSelectionToolbarViewModel}"
 				/>
-			<vm:ExportToolbarView
+			<shared:ExportToolbarView
 				Margin="12 0 0 0"
 				DataContext="{Binding ExportToolbarViewModel}"
 				/>

@@ -1,4 +1,4 @@
-﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Design;
+﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Shared;
 
 public sealed partial class FileFormatViewModel : ViewModel<FileFormatView>
 {

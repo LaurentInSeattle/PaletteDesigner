@@ -1,6 +1,6 @@
 <UserControl 
-	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Design.FileFormatView"
-	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Design"
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Shared.FileFormatView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Shared"
 	x:DataType="vm:FileFormatViewModel" 
 
 	xmlns="https://github.com/avaloniaui"

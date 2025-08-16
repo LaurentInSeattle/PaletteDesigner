@@ -18,8 +18,8 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
     [ObservableProperty]
     private Bitmap? sourceImage ;
 
-    //[ObservableProperty]
-    //private ExportToolbarViewModel exportToolbarViewModel;
+    [ObservableProperty]
+    private ExportToolbarViewModel exportToolbarViewModel;
 
     //[ObservableProperty]
     //private ShadeSelectionToolbarViewModel shadeSelectionToolbarViewModel;
@@ -31,10 +31,12 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
     {
         this.paletteDesignerModel = paletteDesignerModel;
         this.DropViewModel = new DropViewModel();
+        this.ExportToolbarViewModel = new();
+
         this.SwatchesViewModels = [];
+
         //this.TextPreviewPanelViewModel = new(paletteDesignerModel);
         //this.ModelSelectionToolbarViewModel = new();
-        //this.ExportToolbarViewModel = new();
         //this.ShadeSelectionToolbarViewModel = new();
         //this.ShadesPresetsToolbarViewModel = new();
 
