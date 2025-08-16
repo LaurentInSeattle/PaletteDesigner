@@ -155,8 +155,8 @@
 
     <system:String x:Key="Settings.ReminderText">Javasoljuk, hogy a letöltött képeket csak háttérképként használja.  Bármely más felhasználáshoz, kereskedelmi vagy más módon, kérjük, vegye fel a kapcsolatot a szerzői jogtulajdonossal.</system:String>
 
-    <system:String x:Key="Collection.DropZone">Drag and Drop Zone</system:String>
+    <system:String x:Key="Imaging.DropZone">Drag and Drop Zone</system:String>
 
-    <system:String x:Key="Collection.DropZoneHelp">Húzza és dobja ide a fájlokat ide ....</system:String>
+    <system:String x:Key="Imaging.DropZoneHelp">Húzza és dobjon ide egy képfájlt, hogy hozzon létre egy megfelelő színpalettát.</system:String>
 
 </ResourceDictionary>

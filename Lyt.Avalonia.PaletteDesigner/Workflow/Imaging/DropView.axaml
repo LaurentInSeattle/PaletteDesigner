@@ -1,0 +1,47 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Imaging.DropView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Imaging"
+	x:DataType="vm:DropViewModel" 
+
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+	>
+	<Grid
+		Background="Transparent"
+		>
+		<Border
+			x:Name="DropBorder"
+			Background="#20808080"
+			BorderThickness="0"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			DragDrop.AllowDrop="True"
+			>
+			<Grid>
+				<Rectangle 				
+					x:Name="DropRectangle"
+					StrokeDashArray="5, 2" 
+					Stroke="{StaticResource LightAqua_1_100}" 
+					StrokeThickness="4" 
+					RadiusX="8" RadiusY="8"  
+					Fill="#20808080"
+					/>
+				<TextBlock
+					Margin="0 10 0 0"
+					Text="{DynamicResource Imaging.DropZone}"
+					Theme="{StaticResource H2}"
+					TextAlignment="Center"
+					VerticalAlignment="Top"
+					/>
+				<TextBlock
+					Margin="8 0 8 16"
+					Text="{DynamicResource Imaging.DropZoneHelp}"
+					Theme="{StaticResource Large}"
+					VerticalAlignment="Bottom" HorizontalAlignment="Center"
+					/>
+			</Grid>
+		</Border>
+	</Grid>
+</UserControl>

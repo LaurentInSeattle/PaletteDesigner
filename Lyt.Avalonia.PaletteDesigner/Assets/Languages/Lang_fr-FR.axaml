@@ -139,7 +139,11 @@
 
     <system:String x:Key="Mapping.Drag.DragDropHelp">Faites glisser les échantillons de couleur et déposez-les sur les propriétés à droite pour attribuer une couleur.</system:String>
 
-    <system:String x:Key="Intro.AgreeMIT">J'accepte les termes de la licence MIT, Continuer.</system:String>
+	<system:String x:Key="Imaging.DropZone">Zone de Glisser-déposer</system:String>
+
+	<system:String x:Key="Imaging.DropZoneHelp">Faites glisser et déposez un fichier image ici pour créer une palette de couleurs coordonnées.</system:String>
+
+	<system:String x:Key="Intro.AgreeMIT">J'accepte les termes de la licence MIT, Continuer.</system:String>
 
     <system:String x:Key="Intro.LicenseTitle">Termes de la licence.</system:String>
 
@@ -154,9 +158,5 @@
     <system:String x:Key="Settings.ReminderSubtitle">Quelques points importants à retenir concernant les images téléchargées...</system:String>
 
     <system:String x:Key="Settings.ReminderText">Il vous est recommandé d'utiliser les images téléchargées uniquement comme fond d'écran. Pour toute autre utilisation, commerciale ou non, veuillez contacter le détenteur des droits d'auteur.</system:String>
-
-    <system:String x:Key="Collection.DropZone">Zone de Glisser-déposer</system:String>
-
-    <system:String x:Key="Collection.DropZoneHelp">Faites glisser et déposez des fichiers ici pour les ajouter à votre collection.</system:String>
 
 </ResourceDictionary>

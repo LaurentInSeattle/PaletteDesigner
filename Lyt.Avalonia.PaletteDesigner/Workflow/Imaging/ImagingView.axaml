@@ -1,7 +1,7 @@
-<UserControl 
+<UserControl
 	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Imaging.ImagingView"
 	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Imaging"
-	x:DataType="vm:ImagingViewModel" 
+	x:DataType="vm:ImagingViewModel"
 
 	xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -13,6 +13,7 @@
 	>
 	<Grid
 		Margin="8"
+		ShowGridLines="False"
 		>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="92" />
@@ -21,11 +22,15 @@
 		</Grid.RowDefinitions>
 		<Grid
 			Grid.Row="1"
+			ShowGridLines="False"
 			>
 			<Grid.ColumnDefinitions>
 				<!-- Spacer -->
+				<ColumnDefinition Width="8" />
+				<ColumnDefinition Width="600" />
+				<!-- Spacer -->
 				<ColumnDefinition Width="20" />
-				<ColumnDefinition Width="960" />
+				<ColumnDefinition Width="900" />
 				<!-- Spacer -->
 				<ColumnDefinition Width="20" />
 				<ColumnDefinition Width="Auto" />
@@ -36,34 +41,55 @@
 				<ColumnDefinition Width="8" />
 				<ColumnDefinition Width="Auto" />
 			</Grid.ColumnDefinitions>
-		</Grid>
 
-		<ScrollViewer
-			Grid.Row="1" Grid.Column="1" Width="960"
-			Margin="0"
-			Background="Transparent"
-			VerticalAlignment="Stretch" HorizontalAlignment="Left"
-			ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-			ScrollViewer.VerticalScrollBarVisibility="Auto"
-			>
-			<ItemsControl
-				x:Name="SwatchesItemsControl"
-				ItemsSource="{Binding SwatchesViewModels}"
-				Padding="0"
-				HorizontalAlignment="Stretch"
+			<Grid
+				Grid.Column="1"
+				ShowGridLines="False"
 				>
-				<ItemsControl.ItemsPanel>
-					<ItemsPanelTemplate>
-						<WrapPanel Orientation="Horizontal" Margin="0" />
-					</ItemsPanelTemplate>
-				</ItemsControl.ItemsPanel>
-				<ItemsControl.ItemTemplate>
-					<DataTemplate>
-						<vm:ImageSwatchView Margin="12 20 12 0" Width="260"/>
-					</DataTemplate>
-				</ItemsControl.ItemTemplate>
-			</ItemsControl>
-		</ScrollViewer>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="400" />
+					<RowDefinition Height="600" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<vm:DropView
+					Grid.Row="0"
+					Margin="0 20 0 12"
+					DataContext="{Binding DropViewModel}"
+					/>
+				<Image
+					Grid.Row="1"
+					Source="{Binding SourceImage}"
+					IsHitTestVisible="False"
+					VerticalAlignment="Top"
+					/>
+			</Grid>
+			<ScrollViewer
+				Grid.Row="1" Grid.Column="3" Width="900"
+				Margin="0"
+				Background="Transparent"
+				VerticalAlignment="Stretch" HorizontalAlignment="Left"
+				ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+				ScrollViewer.VerticalScrollBarVisibility="Auto"
+				>
+				<ItemsControl
+					x:Name="SwatchesItemsControl"
+					ItemsSource="{Binding SwatchesViewModels}"
+					Padding="0"
+					HorizontalAlignment="Stretch"
+					>
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<WrapPanel Orientation="Horizontal" Margin="0" />
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<vm:ImageSwatchView Margin="12 20 12 0" Width="260"/>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</ScrollViewer>
+		</Grid>
 
 		<!-- Top toolbars -->
 		<!--

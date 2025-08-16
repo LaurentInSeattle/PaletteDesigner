@@ -155,8 +155,8 @@
 
     <system:String x:Key="Settings.ReminderText">Si consiglia di utilizzare le immagini scaricate solo come sfondo.  Per qualsiasi altro utilizzo, commerciale o in altro modo, si prega di contattare il titolare del copyright.</system:String>
 
-    <system:String x:Key="Collection.DropZone">Trascinare e rilasciare la zona</system:String>
+    <system:String x:Key="Imaging.DropZone">Zona di Trascinare e Rilasciare.</system:String>
 
-    <system:String x:Key="Collection.DropZoneHelp">Trascina e lascia cadere i file qui a ....</system:String>
+    <system:String x:Key="Imaging.DropZoneHelp">Trascina e lascia cadere i file qui.</system:String>
 
 </ResourceDictionary>

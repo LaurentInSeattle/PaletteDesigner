@@ -155,8 +155,8 @@
 
     <system:String x:Key="Settings.ReminderText">ダウンロードした画像を壁紙としてのみ使用することをお勧めします。 コマーシャルまたはその他のその他の使用については、著作権所有者にお問い合わせください。</system:String>
 
-    <system:String x:Key="Collection.DropZone">ドラッグアンドドロップゾーン</system:String>
+    <system:String x:Key="Imaging.DropZone">ドラッグアンドドロップゾーン</system:String>
 
-    <system:String x:Key="Collection.DropZoneHelp">ここでファイルをドラッグアンドドロップします。</system:String>
+    <system:String x:Key="Imaging.DropZoneHelp">ここに画像ファイルをドラッグアンドドロップして、マッチングカラーパレットを作成します。</system:String>
 
 </ResourceDictionary>

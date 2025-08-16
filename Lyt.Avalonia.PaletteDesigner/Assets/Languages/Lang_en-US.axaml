@@ -107,8 +107,8 @@
 	<!-- Model / Service -->
 
 	<!-- Will maybe use -->
-	<system:String x:Key="Collection.DropZone">Drag and Drop Zone</system:String>
-	<system:String x:Key="Collection.DropZoneHelp">Drag and drop files here to....</system:String>
+	<system:String x:Key="Imaging.DropZone">Drag and Drop Zone</system:String>
+	<system:String x:Key="Imaging.DropZoneHelp">Drag and drop an image file here to create a matching color palette.</system:String>
 
 
 </ResourceDictionary>

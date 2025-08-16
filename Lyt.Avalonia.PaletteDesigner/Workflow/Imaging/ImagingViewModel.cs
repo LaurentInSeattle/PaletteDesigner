@@ -12,17 +12,11 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
     [ObservableProperty]
     private ObservableCollection<ImageSwatchViewModel> swatchesViewModels;
 
-    //[ObservableProperty]
-    //private ColorWheelViewModel colorWheelViewModel;
-    
-    //[ObservableProperty]
-    //private PalettePreviewViewModel palettePreviewViewModel;
+    [ObservableProperty]
+    private DropViewModel dropViewModel;
 
-    //[ObservableProperty]
-    //private TextPreviewPanelViewModel textPreviewPanelViewModel;
-
-    //[ObservableProperty]
-    //private ModelSelectionToolbarViewModel modelSelectionToolbarViewModel;
+    [ObservableProperty]
+    private Bitmap? sourceImage ;
 
     //[ObservableProperty]
     //private ExportToolbarViewModel exportToolbarViewModel;
@@ -36,9 +30,8 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
     public ImagingViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
+        this.DropViewModel = new DropViewModel();
         this.SwatchesViewModels = [];
-        //this.ColorWheelViewModel = new(paletteDesignerModel);
-        //this.PalettePreviewViewModel = new(paletteDesignerModel);
         //this.TextPreviewPanelViewModel = new(paletteDesignerModel);
         //this.ModelSelectionToolbarViewModel = new();
         //this.ExportToolbarViewModel = new();
@@ -57,42 +50,37 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
     {
     }
 
-    public override void Activate(object? activationParameters)
-    {
-        base.Activate(activationParameters);
-        this.OnPaletteFromImage();
-    }
-
-    private void OnPaletteFromImage()
+    public bool Select(string path)
     {
         try
         {
-            // string path = @"C:\Users\Laurent\Desktop\Jolla.jpg";
-            string path = @"C:\Users\Laurent\Desktop\Kauai.jpg";
-            // string path = @"C:\Users\Laurent\Desktop\Florida.jpg";
-            // string path = @"C:\Users\Laurent\Desktop\Designer.png";
-
             byte[] imageBytes = File.ReadAllBytes(path);
             if ((imageBytes is null) || (imageBytes.Length < 256))
             {
                 throw new Exception("Failed to read image from disk: " + path);
             }
 
-            var bitmap = WriteableBitmap.Decode(new MemoryStream(imageBytes));
-            int pixelCount = bitmap.PixelSize.Width * bitmap.PixelSize.Height;
+            // Keep the original to display on the UI at best resolution 
+            var sourceBitmap = 
+                WriteableBitmap.Decode(new MemoryStream(imageBytes)) ?? 
+                throw new Exception("Failed to decode image: " + path);
+            int pixelCount = sourceBitmap.PixelSize.Width * sourceBitmap.PixelSize.Height;
             int pixelCountMax =
                 Debugger.IsAttached ? ImagingViewModel.PixelCountMax / 2 : ImagingViewModel.PixelCountMax;
+            WriteableBitmap? thumbnailBitmap = null;
             if (pixelCount > pixelCountMax)
             {
                 // Decode again the bitmap to reduce processing time 
                 double ratio = pixelCount / pixelCountMax;
-                int newWidth = (int)(bitmap.PixelSize.Width / ratio);
-                bitmap = WriteableBitmap.DecodeToWidth(new MemoryStream(imageBytes), newWidth);
+                int newWidth = (int)(sourceBitmap.PixelSize.Width / ratio);
+                thumbnailBitmap = WriteableBitmap.DecodeToWidth(new MemoryStream(imageBytes), newWidth);
             }
 
-            if (bitmap is not null)
+            if (thumbnailBitmap is not null)
             {
-                using var frameBuffer = bitmap.Lock();
+                this.SourceImage = sourceBitmap;
+
+                using var frameBuffer = thumbnailBitmap.Lock();
                 var colors =
                     PaletteDesignerModel.ExtractRgbFromBgraBuffer(
                         frameBuffer.Address, frameBuffer.Size.Height, frameBuffer.Size.Width);
@@ -120,6 +108,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
                      orderby vm.HsvColor.H ascending , vm.HsvColor.V descending 
                      select vm).ToList();
                 this.SwatchesViewModels = new(sortedList);
+                return true; 
             }
             else
             {
@@ -130,6 +119,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         {
             Debug.WriteLine(ex);
             this.Logger.Warning(ex.ToString());
+            return false;
         }
     }
 }

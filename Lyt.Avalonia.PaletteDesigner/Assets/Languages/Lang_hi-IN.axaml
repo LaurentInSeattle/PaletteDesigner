@@ -155,8 +155,8 @@
 
     <system:String x:Key="Settings.ReminderText">आपको केवल वॉलपेपर के रूप में डाउनलोड की गई छवियों का उपयोग करने की सलाह दी जाती है।  किसी अन्य उपयोग के लिए, वाणिज्यिक या अन्यथा, कृपया कॉपीराइट धारक से संपर्क करें।</system:String>
 
-    <system:String x:Key="Collection.DropZone">ड्रैग एंड ड्रॉप ज़ोन</system:String>
+    <system:String x:Key="Imaging.DropZone">ड्रैग एंड ड्रॉप ज़ोन</system:String>
 
-    <system:String x:Key="Collection.DropZoneHelp">यहां खींचें और फाइलें छोड़ें ...।</system:String>
+    <system:String x:Key="Imaging.DropZoneHelp">एक मिलान रंग पैलेट बनाने के लिए यहां एक छवि फ़ाइल को खींचें और ड्रॉप करें।</system:String>
 
 </ResourceDictionary>

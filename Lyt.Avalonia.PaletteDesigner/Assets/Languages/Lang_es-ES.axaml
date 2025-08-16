@@ -155,8 +155,8 @@
 
     <system:String x:Key="Settings.ReminderText">Se aconseja que use las imágenes descargadas solo como fondo de pantalla.  Para cualquier otro uso, comercial o de otra manera, comuníquese con el titular de los derechos de autor.</system:String>
 
-    <system:String x:Key="Collection.DropZone">Zona de arrastre y caída</system:String>
+    <system:String x:Key="Imaging.DropZone">Zona de arrastre y caída</system:String>
 
-    <system:String x:Key="Collection.DropZoneHelp">Arrastre y suelte los archivos aquí a ...</system:String>
+    <system:String x:Key="Imaging.DropZoneHelp">Arrastre y suelte los archivos aquí.</system:String>
 
 </ResourceDictionary>

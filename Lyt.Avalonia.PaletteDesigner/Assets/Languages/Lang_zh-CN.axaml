@@ -155,8 +155,8 @@
 
     <system:String x:Key="Settings.ReminderText">建议您仅将下载的图像用作墙纸。 对于任何其他用途，商业或其他用途，请联系版权持有人。</system:String>
 
-    <system:String x:Key="Collection.DropZone">拖动区</system:String>
+    <system:String x:Key="Imaging.DropZone">拖动区</system:String>
 
-    <system:String x:Key="Collection.DropZoneHelp">将文件拖动到...</system:String>
+    <system:String x:Key="Imaging.DropZoneHelp">在此处拖放图像文件以创建匹配的调色板。</system:String>
 
 </ResourceDictionary>

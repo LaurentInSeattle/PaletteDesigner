@@ -155,8 +155,8 @@
 
     <system:String x:Key="Settings.ReminderText">Вам рекомендується використовувати завантажені зображення лише як шпалери.  Для будь -якого іншого використання, комерційного чи іншим способом зверніться до власника авторських прав.</system:String>
 
-    <system:String x:Key="Collection.DropZone">Зона перетягування</system:String>
+    <system:String x:Key="Imaging.DropZone">Зона перетягування</system:String>
 
-    <system:String x:Key="Collection.DropZoneHelp">Перетягніть і киньте файли сюди до ....</system:String>
+    <system:String x:Key="Imaging.DropZoneHelp">Тут перетягніть файл зображення, щоб створити відповідну кольорову палітру.</system:String>
 
 </ResourceDictionary>
