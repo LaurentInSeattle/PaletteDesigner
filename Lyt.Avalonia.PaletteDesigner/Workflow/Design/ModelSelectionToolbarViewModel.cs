@@ -25,4 +25,7 @@ public sealed partial class ModelSelectionToolbarViewModel : ViewModel<ModelSele
             }
         }
     }
+
+    [RelayCommand]
+    public void OnRandomize() => this.paletteDesignerModel.RandomizePalette();
 }

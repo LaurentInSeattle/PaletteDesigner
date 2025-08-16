@@ -19,36 +19,17 @@
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<!-- Spacer -->
-			<ColumnDefinition Width="20" />
-			<!-- Button -->
-			<ColumnDefinition Width="110" />
-			<!-- Spacer -->
-			<ColumnDefinition Width="20" />
-			<!-- Button -->
-			<ColumnDefinition Width="110" />
-			<!-- Spacer -->
 			<ColumnDefinition Width="0" />
+			<!-- Button -->
+			<ColumnDefinition Width="110" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="8" />
 			<!-- Combo -->
 			<ColumnDefinition Width="200" />
 		</Grid.ColumnDefinitions>
 
 		<glyphs:GlyphButton
 			Grid.Column="1"
-			Style="{StaticResource AppToolbarIconButton}"
-			GlyphSource="lightbulb_filament"
-			GlyphStrokeThickness="0.1"
-			Text="{DynamicResource Design.Toolbar.Randomize}"
-			Command="{Binding OnRandomize}"
-			/>
-
-		<controls:ExtendedTextBlock
-			Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="1"
-			Text=" ¯\_(ツ)_/¯ "
-			Typography="{StaticResource Medium}"
-			/>
-
-		<glyphs:GlyphButton
-			Grid.Column="3"
 			Style="{StaticResource AppToolbarIconButton}"
 			GlyphSource="share"
 			GlyphStrokeThickness="0.1"
@@ -57,7 +38,7 @@
 			/>
 		<ComboBox
 			x:Name="FormatComboBox"
-			Grid.Column="6" Grid.Row="0"
+			Grid.Column="3" Grid.Row="0"
 			VerticalAlignment="Center" HorizontalAlignment="Right"
 			ItemsSource="{Binding FileFormats}"
 			SelectedIndex="{Binding SelectedFileFormatIndex}"
@@ -76,7 +57,7 @@
 		</ComboBox>
 
 		<controls:ExtendedTextBlock
-			Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="1"
+			Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1"
 			Text="{DynamicResource Design.Toolbar.ExportPalette}"
 			Typography="{StaticResource Medium}"
 			/>

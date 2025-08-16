@@ -6,7 +6,7 @@ public sealed class Clusterer(int k, int maxIterations = 100, int? seed = null)
     private readonly int maxIterations = maxIterations;
     private readonly Random random = seed.HasValue ? new Random(seed.Value) : new Random((int)DateTime.Now.Ticks);
 
-    public List<LabColor> Fit(List<LabColor> data)
+    public List<Cluster> Discover(List<LabColor> data)
     {
         if (data.Count < clusterCount)
         {
@@ -14,9 +14,14 @@ public sealed class Clusterer(int k, int maxIterations = 100, int? seed = null)
         }
 
         // Randomly initialize centroids
-        var centroids = data.OrderBy(_ => random.Next()).Take(clusterCount).ToList();
-        int[] assignments = new int[data.Count];
+        var initialColors = data.OrderBy(_ => random.Next()).Take(clusterCount).ToList();
+        var centroids = new List<Cluster>(initialColors.Count);
+        foreach (var color  in initialColors)
+        {
+            centroids.Add(new Cluster() { Count = 0 , LabColor = color });    
+        }
 
+        int[] assignments = new int[data.Count];
         for (int iteration = 0; iteration < maxIterations; iteration++)
         {
             bool changed = false;
@@ -28,7 +33,7 @@ public sealed class Clusterer(int k, int maxIterations = 100, int? seed = null)
                 double bestDistance = double.MaxValue;
                 for (int j = 0; j < clusterCount; j++)
                 {
-                    double distance = LabColor.Distance(data[i], centroids[j]);
+                    double distance = LabColor.Distance(data[i], centroids[j].LabColor);
                     if (distance < bestDistance)
                     {
                         bestDistance = distance;
@@ -50,15 +55,21 @@ public sealed class Clusterer(int k, int maxIterations = 100, int? seed = null)
             }
 
             // Recalculate centroids
-            var newCentroids = new (double L, double A, double B)[clusterCount];
-            int[] counts = new int[clusterCount];
+            var newClusters = new Cluster[clusterCount];
+            for (int k = 0; k < clusterCount; k++)
+            {
+                newClusters[k] = new Cluster();
+            }
 
+            int[] counts = new int[clusterCount];
             for (int i = 0; i < data.Count; i++)
             {
                 int cluster = assignments[i];
-                newCentroids[cluster].L += data[i].L;
-                newCentroids[cluster].A += data[i].A;
-                newCentroids[cluster].B += data[i].B;
+                var colorAtCluster = newClusters[cluster].LabColor;
+                var dataAtI = data[i];
+                colorAtCluster.L += dataAtI.L;
+                colorAtCluster.A += dataAtI.A;
+                colorAtCluster.B += dataAtI.B;
                 counts[cluster]++;
             }
 
@@ -69,11 +80,17 @@ public sealed class Clusterer(int k, int maxIterations = 100, int? seed = null)
                     continue; // Avoid divide-by-zero
                 }
 
-                centroids[j] = new LabColor(
-                    newCentroids[j].L / counts[j],
-                    newCentroids[j].A / counts[j],
-                    newCentroids[j].B / counts[j]);
+                var colorAtJ = newClusters[j].LabColor;
+                int countAtJ = counts[j];
+                centroids[j].LabColor = 
+                    new LabColor( colorAtJ.L / countAtJ, colorAtJ.A / countAtJ, colorAtJ.B / countAtJ);
+                centroids[j].Count = countAtJ;
             }
+        }
+
+        foreach (var centroid in centroids)
+        {
+            centroid.Total = data.Count;
         }
 
         return centroids;

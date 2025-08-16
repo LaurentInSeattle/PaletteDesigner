@@ -4,8 +4,10 @@ using HsvColor = Model.ColorObjects.HsvColor;
 
 public sealed partial class ImageSwatchViewModel : ViewModel <ImageSwatchView>
 {
-    public readonly HsvColor HsvColor; 
+    public readonly HsvColor HsvColor;
 
+    public readonly Cluster Cluster; 
+        
     [ObservableProperty]
     public SolidColorBrush colorBrush;
 
@@ -18,8 +20,11 @@ public sealed partial class ImageSwatchViewModel : ViewModel <ImageSwatchView>
     [ObservableProperty]
     private string hsv = string.Empty;
 
-    public ImageSwatchViewModel(RgbColor rgbColor, HsvColor hsvColor)
+    public ImageSwatchViewModel(Cluster cluster)
     {
+        this.Cluster = cluster;
+        RgbColor rgbColor = cluster.LabColor.ToRgb(); 
+        HsvColor hsvColor = rgbColor.ToHsv(); 
         this.HsvColor = hsvColor;
         this.ColorBrush = rgbColor.ToBrush();
         this.RgbHex = hsvColor.ToRgbHexString();

@@ -141,11 +141,10 @@ public sealed partial class PaletteDesignerModel : ModelBase
         return colors;
     }
 
-    public static List<RgbColor> ExtractPalette(RgbColor[] rgbPixels, int clusterCount, int depthAnalysis)
+    public static List<Cluster> ExtractSwatches(RgbColor[] rgbPixels, int clusterCount, int depthAnalysis)
     {
         List<LabColor> labPixels = [.. rgbPixels.Select(rgb => new LabColor(rgb))];
-        var clusteredLab = new Clusterer(clusterCount, depthAnalysis).Fit(labPixels);
-        return [.. clusteredLab.Select(lab => lab.ToRgb())];
+        return new Clusterer(clusterCount, depthAnalysis).Discover(labPixels);
     }
 
     private List<int> FindPeaks(Dictionary<int, int> hues, int width)

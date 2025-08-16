@@ -30,6 +30,10 @@
 			<ColumnDefinition Width="124" />
 			<ColumnDefinition Width="124" />
 			<ColumnDefinition Width="124" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="20" />
+			<!-- Randomize Button -->
+			<ColumnDefinition Width="124" />
 		</Grid.ColumnDefinitions>
 		<glyphs:SelectionGroup x:Name="SelectionGroup" />
 		<!-- Classic -->
@@ -148,6 +152,21 @@
 		<controls:ExtendedTextBlock
 			Grid.Column="5" Grid.ColumnSpan="4" Grid.Row="1"
 			Text="{DynamicResource Design.Toolbar.Models.FreeStyle}"
+			Typography="{StaticResource Medium}"
+			/>
+
+		<glyphs:GlyphButton
+			Grid.Column="10"
+			Style="{StaticResource AppToolbarIconButton}"
+			GlyphSource="lightbulb_filament"
+			GlyphStrokeThickness="0.1"
+			Text="{DynamicResource Design.Toolbar.Randomize}"
+			Command="{Binding OnRandomize}"
+			/>
+
+		<controls:ExtendedTextBlock
+			Grid.Column="10" Grid.ColumnSpan="1" Grid.Row="1"
+			Text=" ¯\_(ツ)_/¯ "
 			Typography="{StaticResource Medium}"
 			/>
 	</Grid>

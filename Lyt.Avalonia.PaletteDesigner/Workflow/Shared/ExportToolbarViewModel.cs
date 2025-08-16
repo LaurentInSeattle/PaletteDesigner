@@ -3,6 +3,7 @@
 public sealed partial class ExportToolbarViewModel : ViewModel<ExportToolbarView>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
+    private readonly PaletteFamily paletteFamily; 
     private readonly IToaster toaster;
 
     [ObservableProperty]
@@ -12,9 +13,10 @@ public sealed partial class ExportToolbarViewModel : ViewModel<ExportToolbarView
     private ObservableCollection<FileFormatViewModel> fileFormats;
 
 
-    public ExportToolbarViewModel()
+    public ExportToolbarViewModel(PaletteFamily paletteFamily)
     {
         this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();
+        this.paletteFamily = paletteFamily;
         this.toaster = App.GetRequiredService<IToaster>();
 
         this.FileFormats = [];
@@ -32,14 +34,11 @@ public sealed partial class ExportToolbarViewModel : ViewModel<ExportToolbarView
             this.paletteDesignerModel.ActiveProject.Palette;
 
     [RelayCommand]
-    public void OnRandomize() => this.paletteDesignerModel.RandomizePalette();
-
-    [RelayCommand]
     public void OnExport()
     {
         var fileFormatViewModel = this.FileFormats[this.SelectedFileFormatIndex];
         PaletteExportFormat exportFormat = fileFormatViewModel.PaletteExportFormat;
-        bool success = this.paletteDesignerModel.ExportPalette(exportFormat, out string message);
+        bool success = this.paletteDesignerModel.ExportPalette(this.paletteFamily, exportFormat, out string message);
         if (success)
         {
             this.toaster.Show(

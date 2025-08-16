@@ -31,7 +31,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
     {
         this.paletteDesignerModel = paletteDesignerModel;
         this.DropViewModel = new DropViewModel();
-        this.ExportToolbarViewModel = new();
+        this.ExportToolbarViewModel = new(PaletteFamily.Image);
 
         this.SwatchesViewModels = [];
 
@@ -89,18 +89,19 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
                 Debug.WriteLine("Colors: " + colors.Length);
                 int depthAnalysis =
                     Debugger.IsAttached ? ImagingViewModel.DepthAnalysis / 2 : ImagingViewModel.DepthAnalysis;
-                var palette = PaletteDesignerModel.ExtractPalette(colors, 21, depthAnalysis);
-                Debug.WriteLine("Palette: " + palette.Count);
+                var swatches = PaletteDesignerModel.ExtractSwatches(colors, 21, depthAnalysis);
+                Debug.WriteLine("Palette: " + swatches.Count);
 
-                List<ImageSwatchViewModel> list = new(palette.Count);
-                foreach (var rgbColor in palette)
+                List<ImageSwatchViewModel> list = new(swatches.Count);
+                foreach (var swatch in swatches)
                 {
                     // Eliminate colors too dark or too bright 
+                    var rgbColor = swatch.LabColor.ToRgb();
                     Model.ColorObjects.HsvColor hsvColor = rgbColor.ToHsv();
                     double brightness = hsvColor.V;
                     if ((brightness > BrightnessMin) || (brightness < BrightnessMax))
                     {
-                        var vm = new ImageSwatchViewModel(rgbColor, hsvColor);
+                        var vm = new ImageSwatchViewModel(swatch);
                         list.Add(vm);
                     }
                 }

@@ -33,7 +33,7 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
         this.PalettePreviewViewModel = new(paletteDesignerModel);
         this.TextPreviewPanelViewModel = new(paletteDesignerModel);
         this.ModelSelectionToolbarViewModel = new();
-        this.ExportToolbarViewModel = new();
+        this.ExportToolbarViewModel = new(PaletteFamily.Designed);
         this.ShadeSelectionToolbarViewModel = new();
         this.ShadesPresetsToolbarViewModel = new();
 
