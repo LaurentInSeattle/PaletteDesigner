@@ -139,11 +139,7 @@
 
     <system:String x:Key="Mapping.Drag.DragDropHelp">Faites glisser les échantillons de couleur et déposez-les sur les propriétés à droite pour attribuer une couleur.</system:String>
 
-	<system:String x:Key="Imaging.DropZone">Zone de Glisser-déposer</system:String>
-
-	<system:String x:Key="Imaging.DropZoneHelp">Faites glisser et déposez un fichier image ici pour créer une palette de couleurs coordonnées.</system:String>
-
-	<system:String x:Key="Intro.AgreeMIT">J'accepte les termes de la licence MIT, Continuer.</system:String>
+    <system:String x:Key="Intro.AgreeMIT">J'accepte les termes de la licence MIT, Continuer.</system:String>
 
     <system:String x:Key="Intro.LicenseTitle">Termes de la licence.</system:String>
 
@@ -158,5 +154,17 @@
     <system:String x:Key="Settings.ReminderSubtitle">Quelques points importants à retenir concernant les images téléchargées...</system:String>
 
     <system:String x:Key="Settings.ReminderText">Il vous est recommandé d'utiliser les images téléchargées uniquement comme fond d'écran. Pour toute autre utilisation, commerciale ou non, veuillez contacter le détenteur des droits d'auteur.</system:String>
+
+    <system:String x:Key="Imaging.DropZone">Zone de Glisser-déposer</system:String>
+
+    <system:String x:Key="Imaging.DropZoneHelp">Faites glisser et déposez un fichier image ici pour créer une palette de couleurs coordonnées.</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">Élevé (plus lent)</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">Bas (plus rapide)</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength">Force d'algorithme</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.PaletteEntries">Compte des entrées de palette</system:String>
 
 </ResourceDictionary>

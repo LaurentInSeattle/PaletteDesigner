@@ -20,35 +20,62 @@
 			<RowDefinition Height="16" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
-			<!-- Shades  -->
-			<ColumnDefinition Width="112" />
-			<ColumnDefinition Width="112" />
 			<!-- Spacer -->
-			<ColumnDefinition Width="22" />
-			<!-- Colours  -->
-			<ColumnDefinition Width="112" />
-			<ColumnDefinition Width="112" />
-			<ColumnDefinition Width="112" />
-			<ColumnDefinition Width="112" />
-			<!-- Spacer -->
-			<ColumnDefinition Width="8" />
+			<ColumnDefinition Width="0" />
 			<!-- Presets-->
-			<ColumnDefinition Width="170" />
+			<ColumnDefinition Width="200" />
 			<!-- Spacer -->
-			<ColumnDefinition Width="16" />
-			<!-- Values-->
-			<ColumnDefinition Width="170" />
-			<ColumnDefinition Width="48" />
-			<ColumnDefinition Width="48" />
-			<ColumnDefinition Width="48" />
-			<!-- Spacer -->
-			<ColumnDefinition Width="16" />
-			<!-- Text Samples-->
-			<ColumnDefinition Width="170" />
+			<ColumnDefinition Width="20" />
+			<!-- Colour slider + value -->
+			<ColumnDefinition Width="220" />
+			<ColumnDefinition Width="8" />
+			<ColumnDefinition Width="32" />
 		</Grid.ColumnDefinitions>
+
+		<toggle:ToggleSwitch
+			Grid.Row="0" Grid.Column="1"
+			Style="{StaticResource StandardToggleSwitch}"
+			TrueText="{DynamicResource Imaging.Toolbar.AlgorithmStrength.Deep}"
+			FalseText="{DynamicResource Imaging.Toolbar.AlgorithmStrength.Shallow}"
+			Margin="8 0 0 0"
+			Height="80" Width="160"
+			Orientation="Vertical"
+			HorizontalAlignment="Center" VerticalAlignment="Center"
+			Value="{Binding IsDeepAlgorithmStrength}"
+			/>
+
+		<controls:ExtendedTextBlock
+			Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="1"
+			Text="{DynamicResource Imaging.Toolbar.AlgorithmStrength}"
+			Typography="{StaticResource Medium}"
+			/>
+
+		<Slider
+			Grid.Column="3"
+			Margin="12 -4 0 0"
+			Minimum="5" Maximum="25"
+			SmallChange="1" LargeChange="5"
+			TickFrequency="1.0" 
+			IsSnapToTickEnabled="True"
+			TickPlacement="BottomRight"
+			Value="{Binding ClustersSliderValue}"
+			HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+			/>
+		<TextBlock
+			Grid.Row="0" Grid.Column="5" 
+			Margin="0 -12 0 0"
+			Text="{Binding ClustersValue}"
+			Theme="{StaticResource Medium}"
+			HorizontalAlignment="Left" VerticalAlignment="Center"
+			/>
+		<controls:ExtendedTextBlock
+			Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="1"
+			Text="{DynamicResource Imaging.Toolbar.PaletteEntries}"
+			Typography="{StaticResource Medium}"
+			/>
+
+		<!--
 		<glyphs:SelectionGroup x:Name="SelectionGroup" />
-		<!-- Shades / Tints -->
-		<glyphs:SelectionGroup x:Name="ShadesSelectionGroup" />
 		<glyphs:GlyphButton
 			Grid.Column="0"
 			Style="{StaticResource AppToolbarIconButton}"
@@ -77,29 +104,6 @@
 			Text="{DynamicResource Design.Toolbar.Shade.ShadesTints}"
 			Typography="{StaticResource Medium}"
 			/>
-
-		<!--
-
-		<toggle:ToggleSwitch
-			Grid.Row="0" Grid.Column="8" 
-			Style="{StaticResource StandardToggleSwitch}"
-			TrueText="{DynamicResource Shared.Show}"
-			FalseText="{DynamicResource Shared.Hide}"
-			Margin="8 0 0 0"
-			Height="80" Width="160"
-			Orientation="Vertical"
-			HorizontalAlignment="Center" VerticalAlignment="Center"
-			Value="{Binding ShowShadesPresets}"
-			/>
-
-
-		<controls:ExtendedTextBlock
-			Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="1"
-			Text="{DynamicResource Design.Toolbar.Shade.Values}"
-			Typography="{StaticResource Medium}"
-			/>
-
 		-->
-		
 	</Grid>
 </UserControl>

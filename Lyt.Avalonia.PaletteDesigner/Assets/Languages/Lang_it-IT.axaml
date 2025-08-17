@@ -159,4 +159,12 @@
 
     <system:String x:Key="Imaging.DropZoneHelp">Trascina e lascia cadere i file qui.</system:String>
 
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">Alto (più lento)</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">Basso (più veloce)</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength">Forza dell'algoritmo</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.PaletteEntries">Conteggio delle voci della tavolozza</system:String>
+
 </ResourceDictionary>

@@ -159,4 +159,12 @@
 
     <system:String x:Key="Imaging.DropZoneHelp">Тут перетягніть файл зображення, щоб створити відповідну кольорову палітру.</system:String>
 
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">Високий (повільніше)</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">Низький (швидше)</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength">Сила алгоритму</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.PaletteEntries">Кількість записів палітри</system:String>
+
 </ResourceDictionary>

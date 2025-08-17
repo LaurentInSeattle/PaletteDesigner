@@ -159,4 +159,12 @@
 
     <system:String x:Key="Imaging.DropZoneHelp">Плъзнете и пуснете файл с изображения тук, за да създадете съвпадаща цветова палитра.</system:String>
 
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">Високо (по -бавно)</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">Ниско (по -бързо)</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength">Силата на алгоритъма</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.PaletteEntries">Брой на записите в палитра</system:String>
+
 </ResourceDictionary>

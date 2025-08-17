@@ -39,6 +39,12 @@ public sealed partial class PaletteDesignerModel : ModelBase
     [JsonIgnore]
     public WheelKind TextSamplesSelectedWheel { get; set; } = WheelKind.Primary;
 
+    [JsonIgnore]
+    public bool IsDeepImagingAlgorithmStrength { get; set; }
+
+    [JsonIgnore]
+    public int ImagingAlgorithmClusters { get; set; } = 10;
+
     #endregion Not serialized - No model changed event
 
     #region NOT serialized - WITH model changed event

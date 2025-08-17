@@ -19,26 +19,19 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
     private Bitmap? sourceImage ;
 
     [ObservableProperty]
+    private ImagingToolbarViewModel imagingToolbarViewModel;
+
+    [ObservableProperty]
     private ExportToolbarViewModel exportToolbarViewModel;
-
-    //[ObservableProperty]
-    //private ShadeSelectionToolbarViewModel shadeSelectionToolbarViewModel;
-
-    //[ObservableProperty]
-    //private ShadesPresetsToolbarViewModel shadesPresetsToolbarViewModel;
 
     public ImagingViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
         this.DropViewModel = new DropViewModel();
+        this.ImagingToolbarViewModel = new();
         this.ExportToolbarViewModel = new(PaletteFamily.Image);
 
         this.SwatchesViewModels = [];
-
-        //this.TextPreviewPanelViewModel = new(paletteDesignerModel);
-        //this.ModelSelectionToolbarViewModel = new();
-        //this.ShadeSelectionToolbarViewModel = new();
-        //this.ShadesPresetsToolbarViewModel = new();
 
         this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
     }
@@ -89,10 +82,19 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
                         frameBuffer.Address, frameBuffer.Size.Height, frameBuffer.Size.Width);
                 Debug.WriteLine("Colors: " + colors.Length);
 
-                // TODO: Calculate that in a thread and let the UI spin until its done
                 int depthAnalysis =
-                    Debugger.IsAttached ? ImagingViewModel.DepthAnalysis / 2 : ImagingViewModel.DepthAnalysis;
-                var swatches = PaletteDesignerModel.ExtractSwatches(colors, 21, depthAnalysis);
+                    this.paletteDesignerModel.IsDeepImagingAlgorithmStrength ?  
+                        ImagingViewModel.DepthAnalysis: 
+                        ImagingViewModel.DepthAnalysis / 2;
+
+                // Divide even further in DEBUG mode 
+                depthAnalysis = Debugger.IsAttached ? depthAnalysis / 2 : depthAnalysis;
+
+                Debug.WriteLine("Iterations: " + depthAnalysis);
+
+                // TODO: Calculate that in a thread and let the UI spin until its done
+                int clusters = this.paletteDesignerModel.ImagingAlgorithmClusters;
+                var swatches = PaletteDesignerModel.ExtractSwatches(colors, clusters, depthAnalysis);
                 Debug.WriteLine("Palette: " + swatches.Count);
 
 

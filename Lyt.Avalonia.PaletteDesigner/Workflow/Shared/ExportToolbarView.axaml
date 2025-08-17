@@ -21,7 +21,7 @@
 			<!-- Spacer -->
 			<ColumnDefinition Width="0" />
 			<!-- Button -->
-			<ColumnDefinition Width="110" />
+			<ColumnDefinition Width="116" />
 			<!-- Spacer -->
 			<ColumnDefinition Width="8" />
 			<!-- Combo -->

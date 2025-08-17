@@ -159,4 +159,12 @@
 
     <system:String x:Key="Imaging.DropZoneHelp">Arrastre y suelte los archivos aquí.</system:String>
 
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">Alto (más lento)</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">Bajo (más rápido)</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength">Fuerza del algoritmo</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.PaletteEntries">Conteo de entradas de paleta</system:String>
+
 </ResourceDictionary>

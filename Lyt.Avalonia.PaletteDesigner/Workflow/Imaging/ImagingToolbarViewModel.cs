@@ -7,10 +7,21 @@ public sealed partial class ImagingToolbarViewModel : ViewModel<ImagingToolbarVi
     //[ObservableProperty]
     //private SolidColorBrush primaryBaseBrush = new();
 
-      
+    [ObservableProperty]
+    private bool isDeepAlgorithmStrength;
+
+    [ObservableProperty]
+    private double clustersSliderValue;
+
+    [ObservableProperty]
+    private string clustersValue = string.Empty;
+
     public ImagingToolbarViewModel()
     {
         this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();
+        this.IsDeepAlgorithmStrength = false;
+        this.ClustersSliderValue = 10.0;
+        this.UpdateSliderLabel();
     }
 
     public Palette Palette =>
@@ -18,9 +29,17 @@ public sealed partial class ImagingToolbarViewModel : ViewModel<ImagingToolbarVi
             throw new Exception("No active project") :
             this.paletteDesignerModel.ActiveProject.Palette;
 
-    //partial void OnShowShadesPresetsChanged(bool value)
-    //    => this.Messenger.Publish(new PresetsVisibilityMessage(value));
+    partial void OnIsDeepAlgorithmStrengthChanged(bool value)
+        => this.paletteDesignerModel.IsDeepImagingAlgorithmStrength = value;
 
+    public void UpdateSliderLabel()
+        => this.ClustersValue = string.Format("{0:D}", (int)this.ClustersSliderValue);
+
+    partial void OnClustersSliderValueChanged(double value)
+    {
+        this.UpdateSliderLabel();
+        this.paletteDesignerModel.ImagingAlgorithmClusters = (int)value;
+    }
     //partial void OnShowShadesValuesChanged(bool value)
     //    => this.Messenger.Publish(new ShadesValuesVisibilityMessage(value));
 
@@ -37,5 +56,4 @@ public sealed partial class ImagingToolbarViewModel : ViewModel<ImagingToolbarVi
             this.paletteDesignerModel.UpdatePaletteShadeMode(shadeMode);
         }
     }
-
 }

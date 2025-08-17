@@ -159,4 +159,12 @@
 
     <system:String x:Key="Imaging.DropZoneHelp">Σύρετε και ρίξτε ένα αρχείο εικόνας εδώ για να δημιουργήσετε μια παλέτα χρωμάτων που ταιριάζει.</system:String>
 
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">Υψηλή (πιο αργή)</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">Χαμηλή (ταχύτερη)</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength">Αλγόριθμος δύναμη</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.PaletteEntries">Αριθμός καταχωρήσεων παλέτας</system:String>
+
 </ResourceDictionary>

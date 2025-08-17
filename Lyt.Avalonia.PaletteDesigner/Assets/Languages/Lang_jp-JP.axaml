@@ -159,4 +159,12 @@
 
     <system:String x:Key="Imaging.DropZoneHelp">ここに画像ファイルをドラッグアンドドロップして、マッチングカラーパレットを作成します。</system:String>
 
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">高（遅い）</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">低い（より速い）</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength">アルゴリズム強度</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.PaletteEntries">パレットエントリのカウント</system:String>
+
 </ResourceDictionary>
