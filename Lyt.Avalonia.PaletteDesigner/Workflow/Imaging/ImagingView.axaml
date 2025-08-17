@@ -30,19 +30,12 @@
 			<Grid.ColumnDefinitions>
 				<!-- Spacer -->
 				<ColumnDefinition Width="8" />
-				<ColumnDefinition Width="600" />
+				<ColumnDefinition Width="*" MaxWidth="640"/>
 				<!-- Spacer -->
 				<ColumnDefinition Width="20" />
-				<ColumnDefinition Width="900" />
-				<!-- Spacer -->
-				<ColumnDefinition Width="20" />
-				<ColumnDefinition Width="Auto" />
-				<!-- Spacer -->
-				<ColumnDefinition Width="12" />
-				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="1.6*" />
 				<!-- Spacer -->
 				<ColumnDefinition Width="8" />
-				<ColumnDefinition Width="Auto" />
 			</Grid.ColumnDefinitions>
 
 			<Grid
@@ -73,10 +66,10 @@
 					/>
 			</Grid>
 			<ScrollViewer
-				Grid.Row="1" Grid.Column="3" Width="900"
+				Grid.Row="1" Grid.Column="3" 
 				Opacity="{Binding SwatchesOpacity}"				
 				Background="Transparent"
-				VerticalAlignment="Stretch" HorizontalAlignment="Left"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 				ScrollViewer.HorizontalScrollBarVisibility="Disabled"
 				ScrollViewer.VerticalScrollBarVisibility="Auto"
 				>
