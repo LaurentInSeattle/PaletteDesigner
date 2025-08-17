@@ -5,7 +5,11 @@
     <Nullable>enable</Nullable>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Designer.ico</ApplicationIcon>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Designer.ico" />
+  </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.3.3" />
