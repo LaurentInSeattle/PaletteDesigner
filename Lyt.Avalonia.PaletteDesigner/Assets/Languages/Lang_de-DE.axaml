@@ -159,6 +159,10 @@
 
     <system:String x:Key="Imaging.DropZoneHelp">Ziehen Sie hier eine Bilddatei, um eine passende Farbpalette zu erstellen.</system:String>
 
+    <system:String x:Key="Imaging.InProgress">Berechnungen in Arbeit</system:String>
+
+    <system:String x:Key="Imaging.InProgressHelp">Bitte warten...</system:String>
+
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">Hoch (langsamer)</system:String>
 
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">Niedrig (schneller)</system:String>
@@ -166,5 +170,9 @@
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength">Algorithmusstärke</system:String>
 
     <system:String x:Key="Imaging.Toolbar.PaletteEntries">Zählung von Paletteneinträgen</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.Recalculate">Neu berechnen</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.UpdateRecalculate">Aktualisieren</system:String>
 
 </ResourceDictionary>

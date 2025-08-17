@@ -1,7 +1,7 @@
 <UserControl 
-	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Imaging.DropView"
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Imaging.SpinView"
 	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Imaging"
-	x:DataType="vm:DropViewModel" 
+	x:DataType="vm:SpinViewModel" 
 
 	xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -9,37 +9,35 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 	
+	xmlns:progress="clr-namespace:Lyt.Avalonia.Controls.Progress;assembly=Lyt.Avalonia.Controls"
+
 	IsVisible="{Binding IsVisible}"
 	>
 	<Grid
 		Background="Transparent"
 		>
 		<Border
-			x:Name="DropBorder"
-			Background="#20808080"
+			Background="#20404080"
 			BorderThickness="0"
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			DragDrop.AllowDrop="True"
 			>
 			<Grid>
-				<Rectangle 				
-					x:Name="DropRectangle"
-					StrokeDashArray="5, 2" 
-					Stroke="{StaticResource LightAqua_1_100}" 
-					StrokeThickness="4" 
-					RadiusX="8" RadiusY="8"  
-					Fill="#20808080"
-					/>
 				<TextBlock
 					Margin="0 24 0 0"
-					Text="{DynamicResource Imaging.DropZone}"
+					Text="{DynamicResource Imaging.InProgress}"
 					Theme="{StaticResource H1}"
 					TextAlignment="Center"
 					VerticalAlignment="Top"
 					/>
+				<progress:ProgressRing
+					Width="80" Height="80"
+					VerticalAlignment="Center" HorizontalAlignment="Center"
+					IsActive="{Binding IsActive}"
+					Foreground="{StaticResource OrangePeel_1_100}"
+					/>
 				<TextBlock
-					Margin="24"
-					Text="{DynamicResource Imaging.DropZoneHelp}"
+					Margin="0 0 0 24"
+					Text="{DynamicResource Imaging.InProgressHelp}"
 					Theme="{StaticResource Large}"
 					VerticalAlignment="Bottom" HorizontalAlignment="Center"
 					/>

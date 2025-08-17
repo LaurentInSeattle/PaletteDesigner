@@ -159,6 +159,10 @@
 
     <system:String x:Key="Imaging.DropZoneHelp">Húzza és dobjon ide egy képfájlt, hogy hozzon létre egy megfelelő színpalettát.</system:String>
 
+    <system:String x:Key="Imaging.InProgress">A folyamatban lévő számítások</system:String>
+
+    <system:String x:Key="Imaging.InProgressHelp">Kérjük, várjon ...</system:String>
+
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">Magas (lassabb)</system:String>
 
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">Alacsony (gyorsabb)</system:String>
@@ -166,5 +170,9 @@
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength">Algoritmus szilárdsága</system:String>
 
     <system:String x:Key="Imaging.Toolbar.PaletteEntries">A paletta bejegyzések száma</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.Recalculate">Kiszámít</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.UpdateRecalculate">Frissít</system:String>
 
 </ResourceDictionary>

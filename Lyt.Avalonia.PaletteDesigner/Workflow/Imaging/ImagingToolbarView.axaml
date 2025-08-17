@@ -30,6 +30,10 @@
 			<ColumnDefinition Width="220" />
 			<ColumnDefinition Width="8" />
 			<ColumnDefinition Width="32" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="20" />
+			<!-- Recalc Button -->
+			<ColumnDefinition Width="140" />
 		</Grid.ColumnDefinitions>
 
 		<toggle:ToggleSwitch
@@ -74,36 +78,18 @@
 			Typography="{StaticResource Medium}"
 			/>
 
-		<!--
-		<glyphs:SelectionGroup x:Name="SelectionGroup" />
 		<glyphs:GlyphButton
-			Grid.Column="0"
+			Grid.Column="7"
 			Style="{StaticResource AppToolbarIconButton}"
-			Text="{DynamicResource Design.Toolbar.Shade.LockedTogether}"
-			IsSelected="True"
-			GlyphSource="lock_closed"
+			GlyphSource="color"
 			GlyphStrokeThickness="0.1"
-			Group="{Binding ElementName=ShadesSelectionGroup}"
-			Command="{Binding OnLockSelect}"
-			CommandParameter="Locked"
+			Text="{DynamicResource Imaging.Toolbar.Recalculate}"
+			Command="{Binding OnRecalculate}"
 			/>
-
-		<glyphs:GlyphButton
-			Grid.Column="1"
-			Style="{StaticResource AppToolbarIconButton}"
-			GlyphSource="lock_open"
-			GlyphStrokeThickness="0.1"
-			Text="{DynamicResource Design.Toolbar.Shade.NoConstraints}"
-			Group="{Binding ElementName=ShadesSelectionGroup}"
-			Command="{Binding OnLockSelect}"
-			CommandParameter="Unlocked"
-			/>
-
 		<controls:ExtendedTextBlock
-			Grid.Column="0" Grid.ColumnSpan="7" Grid.Row="1"
-			Text="{DynamicResource Design.Toolbar.Shade.ShadesTints}"
+			Grid.Column="7" Grid.ColumnSpan="1" Grid.Row="1"
+			Text="{DynamicResource Imaging.Toolbar.UpdateRecalculate}"
 			Typography="{StaticResource Medium}"
 			/>
-		-->
 	</Grid>
 </UserControl>

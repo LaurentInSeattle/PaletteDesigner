@@ -159,6 +159,10 @@
 
     <system:String x:Key="Imaging.DropZoneHelp">在此處拖放圖像文件以創建匹配的調色板。</system:String>
 
+    <system:String x:Key="Imaging.InProgress">正在進行的計算</system:String>
+
+    <system:String x:Key="Imaging.InProgressHelp">請稍等...</system:String>
+
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">高（較慢）</system:String>
 
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">低（更快）</system:String>
@@ -166,5 +170,9 @@
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength">算法強度</system:String>
 
     <system:String x:Key="Imaging.Toolbar.PaletteEntries">調色板的計數</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.Recalculate">重新計算</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.UpdateRecalculate">更新</system:String>
 
 </ResourceDictionary>

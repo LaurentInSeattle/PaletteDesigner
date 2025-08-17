@@ -159,6 +159,10 @@
 
     <system:String x:Key="Imaging.DropZoneHelp">एक मिलान रंग पैलेट बनाने के लिए यहां एक छवि फ़ाइल को खींचें और ड्रॉप करें।</system:String>
 
+    <system:String x:Key="Imaging.InProgress">प्रगति में गणना</system:String>
+
+    <system:String x:Key="Imaging.InProgressHelp">कृपया प्रतीक्षा करें...</system:String>
+
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">उच्च (धीमा)</system:String>
 
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">कम (तेज)</system:String>
@@ -166,5 +170,9 @@
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength">एल्गोरिथम शक्ति</system:String>
 
     <system:String x:Key="Imaging.Toolbar.PaletteEntries">पैलेट प्रविष्टियों की गिनती</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.Recalculate">पुनर्गणना</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.UpdateRecalculate">अद्यतन</system:String>
 
 </ResourceDictionary>

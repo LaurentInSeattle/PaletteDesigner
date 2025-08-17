@@ -159,6 +159,10 @@
 
     <system:String x:Key="Imaging.DropZoneHelp">একটি ম্যাচিং রঙ প্যালেট তৈরি করতে এখানে একটি চিত্র ফাইল টেনে আনুন এবং ড্রপ করুন।</system:String>
 
+    <system:String x:Key="Imaging.InProgress">প্রগতিতে গণনা</system:String>
+
+    <system:String x:Key="Imaging.InProgressHelp">দয়া করে অপেক্ষা করুন ...</system:String>
+
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">উচ্চ (ধীর)</system:String>
 
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">নিম্ন (দ্রুত)</system:String>
@@ -166,5 +170,9 @@
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength">অ্যালগরিদম শক্তি</system:String>
 
     <system:String x:Key="Imaging.Toolbar.PaletteEntries">প্যালেট এন্ট্রি গণনা</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.Recalculate">পুনরায় গণনা</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.UpdateRecalculate">আপডেট</system:String>
 
 </ResourceDictionary>

@@ -159,6 +159,10 @@
 
     <system:String x:Key="Imaging.DropZoneHelp">일치하는 색상 팔레트를 만듭니다.</system:String>
 
+    <system:String x:Key="Imaging.InProgress">진행중인 계산</system:String>
+
+    <system:String x:Key="Imaging.InProgressHelp">기다리세요...</system:String>
+
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">높음 (느린)</system:String>
 
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">낮음 (더 빠른)</system:String>
@@ -166,5 +170,9 @@
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength">알고리즘 강도</system:String>
 
     <system:String x:Key="Imaging.Toolbar.PaletteEntries">팔레트 항목 카운트</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.Recalculate">다시 계산하십시오</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.UpdateRecalculate">업데이트</system:String>
 
 </ResourceDictionary>

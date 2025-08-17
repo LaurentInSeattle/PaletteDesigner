@@ -159,6 +159,10 @@
 
     <system:String x:Key="Imaging.DropZoneHelp">Faites glisser et déposez un fichier image ici pour créer une palette de couleurs coordonnées.</system:String>
 
+    <system:String x:Key="Imaging.InProgress">Calculs en cours</system:String>
+
+    <system:String x:Key="Imaging.InProgressHelp">S'il vous plaît, attendez...</system:String>
+
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">Élevé (plus lent)</system:String>
 
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">Bas (plus rapide)</system:String>
@@ -166,5 +170,9 @@
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength">Force d'algorithme</system:String>
 
     <system:String x:Key="Imaging.Toolbar.PaletteEntries">Compte des entrées de palette</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.Recalculate">Recalculer</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.UpdateRecalculate">Mise à jour</system:String>
 
 </ResourceDictionary>

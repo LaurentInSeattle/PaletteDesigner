@@ -9,6 +9,10 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
 
     private readonly PaletteDesignerModel paletteDesignerModel;
 
+    private WriteableBitmap? bitmapToProcess;
+
+    private bool calculationInProgress;
+
     [ObservableProperty]
     private ObservableCollection<ImageSwatchViewModel> swatchesViewModels;
 
@@ -16,7 +20,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
     private DropViewModel dropViewModel;
 
     [ObservableProperty]
-    private Bitmap? sourceImage ;
+    private SpinViewModel spinViewModel;
 
     [ObservableProperty]
     private ImagingToolbarViewModel imagingToolbarViewModel;
@@ -24,12 +28,27 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
     [ObservableProperty]
     private ExportToolbarViewModel exportToolbarViewModel;
 
+    [ObservableProperty]
+    private Bitmap? sourceImage;
+
+    [ObservableProperty]
+    private double swatchesOpacity;
+
     public ImagingViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
-        this.DropViewModel = new DropViewModel();
+        this.SpinViewModel = new SpinViewModel()
+        {
+            IsVisible = false,
+            IsActive = false,
+        };
+        this.DropViewModel = new DropViewModel
+        {
+            IsVisible = true
+        };
         this.ImagingToolbarViewModel = new();
         this.ExportToolbarViewModel = new(PaletteFamily.Image);
+        this.SwatchesOpacity = 0.0;
 
         this.SwatchesViewModels = [];
 
@@ -56,8 +75,8 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
             }
 
             // Keep the original to display on the UI at best resolution 
-            var sourceBitmap = 
-                WriteableBitmap.Decode(new MemoryStream(imageBytes)) ?? 
+            var sourceBitmap =
+                WriteableBitmap.Decode(new MemoryStream(imageBytes)) ??
                 throw new Exception("Failed to decode image: " + path);
             int pixelCount = sourceBitmap.PixelSize.Width * sourceBitmap.PixelSize.Height;
             int pixelCountMax =
@@ -71,53 +90,11 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
                 thumbnailBitmap = WriteableBitmap.DecodeToWidth(new MemoryStream(imageBytes), newWidth);
             }
 
-            WriteableBitmap bitmapToProcess = thumbnailBitmap is not null ? thumbnailBitmap : sourceBitmap;
-            if (bitmapToProcess is not null)
+            this.bitmapToProcess = thumbnailBitmap is not null ? thumbnailBitmap : sourceBitmap;
+            if (this.bitmapToProcess is not null)
             {
                 this.SourceImage = sourceBitmap;
-
-                using var frameBuffer = bitmapToProcess.Lock();
-                var colors =
-                    PaletteDesignerModel.ExtractRgbFromBgraBuffer(
-                        frameBuffer.Address, frameBuffer.Size.Height, frameBuffer.Size.Width);
-                Debug.WriteLine("Colors: " + colors.Length);
-
-                int depthAnalysis =
-                    this.paletteDesignerModel.IsDeepImagingAlgorithmStrength ?  
-                        ImagingViewModel.DepthAnalysis: 
-                        ImagingViewModel.DepthAnalysis / 2;
-
-                // Divide even further in DEBUG mode 
-                depthAnalysis = Debugger.IsAttached ? depthAnalysis / 2 : depthAnalysis;
-
-                Debug.WriteLine("Iterations: " + depthAnalysis);
-
-                // TODO: Calculate that in a thread and let the UI spin until its done
-                int clusters = this.paletteDesignerModel.ImagingAlgorithmClusters;
-                var swatches = PaletteDesignerModel.ExtractSwatches(colors, clusters, depthAnalysis);
-                Debug.WriteLine("Palette: " + swatches.Count);
-
-
-                List<ImageSwatchViewModel> list = new(swatches.Count);
-                foreach (var swatch in swatches)
-                {
-                    // Eliminate colors too dark or too bright 
-                    var rgbColor = swatch.LabColor.ToRgb();
-                    Model.ColorObjects.HsvColor hsvColor = rgbColor.ToHsv();
-                    double brightness = hsvColor.V;
-                    if ((brightness > BrightnessMin) || (brightness < BrightnessMax))
-                    {
-                        var vm = new ImageSwatchViewModel(swatch);
-                        list.Add(vm);
-                    }
-                }
-
-                var sortedList =
-                    (from vm in list 
-                     orderby vm.HsvColor.H ascending , vm.HsvColor.V descending 
-                     select vm).ToList();
-                this.SwatchesViewModels = new(sortedList);
-                return true; 
+                return this.ReProcessBitmap();
             }
             else
             {
@@ -130,5 +107,112 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
             this.Logger.Warning(ex.ToString());
             return false;
         }
+    }
+
+    public bool ReProcessBitmap()
+    {
+        if ( this.calculationInProgress)
+        {
+            return false; 
+        }
+
+        if (this.bitmapToProcess is not null)
+        {
+            this.calculationInProgress = true; 
+            this.SpinViewModel.IsVisible = true;
+            this.SpinViewModel.IsActive = true;
+            this.DropViewModel.IsVisible = false;
+            this.SwatchesOpacity = 0.25;
+            return this.ProcessBitmap();
+        }
+        else
+        {
+            throw new Exception("No bitmap image");
+        }
+    }
+
+    private bool ProcessBitmap()
+    {
+        try
+        {
+            if (this.bitmapToProcess is not null)
+            {
+                using var frameBuffer = bitmapToProcess.Lock();
+                var colors =
+                    PaletteDesignerModel.ExtractRgbFromBgraBuffer(
+                        frameBuffer.Address, frameBuffer.Size.Height, frameBuffer.Size.Width) ??
+                    throw new Exception("Failed to extract colours from bitmap image");
+                Debug.WriteLine("Colors: " + colors.Length);
+
+                int depthAnalysis =
+                    this.paletteDesignerModel.IsDeepImagingAlgorithmStrength ?
+                        ImagingViewModel.DepthAnalysis :
+                        ImagingViewModel.DepthAnalysis / 2;
+
+                // Divide even further in DEBUG mode 
+                depthAnalysis = Debugger.IsAttached ? depthAnalysis / 2 : depthAnalysis;
+                int clusters = this.paletteDesignerModel.ImagingAlgorithmClusters;
+                Debug.WriteLine("Iterations: " + depthAnalysis + " - Clusters: " + clusters);
+
+                // Calculate that in a thread and let the UI spin until its done
+                Task.Run(() =>
+                {
+                    this.ExtractSwatches(colors, clusters, depthAnalysis);
+                });
+
+                return true;
+            }
+            else
+            {
+                throw new Exception("No bitmap image");
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex);
+            this.Logger.Warning(ex.ToString());
+            return false;
+        }
+    }
+
+    private void ExtractSwatches(RgbColor[] colors, int clusters, int depthAnalysis)
+    {
+        var swatches = PaletteDesignerModel.ExtractSwatches(colors, clusters, depthAnalysis);
+        Debug.WriteLine("Palette: " + swatches.Count);
+        if (swatches.Count > 0)
+        {
+            Dispatch.OnUiThread(() => this.ProcessSwatches(swatches));
+        }
+    }
+
+    private bool ProcessSwatches(List<Cluster> swatches)
+    {
+        this.SpinViewModel.IsActive = false;
+        this.SpinViewModel.IsVisible = false;
+        this.DropViewModel.IsVisible = true;
+
+        List<ImageSwatchViewModel> list = new(swatches.Count);
+        foreach (var swatch in swatches)
+        {
+            // Eliminate colors too dark or too bright 
+            var rgbColor = swatch.LabColor.ToRgb();
+            Model.ColorObjects.HsvColor hsvColor = rgbColor.ToHsv();
+            double brightness = hsvColor.V;
+            if ((brightness > BrightnessMin) || (brightness < BrightnessMax))
+            {
+                var vm = new ImageSwatchViewModel(swatch);
+                list.Add(vm);
+            }
+        }
+
+        var sortedList =
+            (from vm in list
+             orderby vm.HsvColor.H ascending, vm.HsvColor.V descending
+             select vm).ToList();
+        this.SwatchesViewModels = new(sortedList);
+        this.SwatchesOpacity = 1.0;
+
+        this.calculationInProgress = false;
+        return true;
     }
 }

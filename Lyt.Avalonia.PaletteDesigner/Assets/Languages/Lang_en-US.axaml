@@ -109,11 +109,14 @@
 	<!-- Imaging  -->
 	<system:String x:Key="Imaging.DropZone">Drag and Drop Zone</system:String>
 	<system:String x:Key="Imaging.DropZoneHelp">Drag and drop an image file here to create a matching color palette.</system:String>
+	<system:String x:Key="Imaging.InProgress">Calculations in progress</system:String>
+	<system:String x:Key="Imaging.InProgressHelp">Please wait...</system:String>
 
 	<system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">High (Slower)</system:String>
 	<system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">Low  (Faster)</system:String>
 	<system:String x:Key="Imaging.Toolbar.AlgorithmStrength">Algorithm Strength</system:String>
 	<system:String x:Key="Imaging.Toolbar.PaletteEntries">Count of Palette Entries</system:String>
-	
+	<system:String x:Key="Imaging.Toolbar.Recalculate">Recalculate</system:String>
+	<system:String x:Key="Imaging.Toolbar.UpdateRecalculate">Update</system:String>
 
 </ResourceDictionary>

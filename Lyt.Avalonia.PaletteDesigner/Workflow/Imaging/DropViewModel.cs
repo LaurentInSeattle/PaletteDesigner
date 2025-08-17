@@ -2,6 +2,9 @@
 
 public sealed partial class DropViewModel : ViewModel<DropView>
 {
+    [ObservableProperty]
+    private bool isVisible; 
+
     /// <summary> Returns true if the path is a valid image file. </summary>
     internal bool OnDrop(string path)
     {

@@ -4,9 +4,6 @@ public sealed partial class ImagingToolbarViewModel : ViewModel<ImagingToolbarVi
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
 
-    //[ObservableProperty]
-    //private SolidColorBrush primaryBaseBrush = new();
-
     [ObservableProperty]
     private bool isDeepAlgorithmStrength;
 
@@ -24,11 +21,6 @@ public sealed partial class ImagingToolbarViewModel : ViewModel<ImagingToolbarVi
         this.UpdateSliderLabel();
     }
 
-    public Palette Palette =>
-        this.paletteDesignerModel.ActiveProject == null ?
-            throw new Exception("No active project") :
-            this.paletteDesignerModel.ActiveProject.Palette;
-
     partial void OnIsDeepAlgorithmStrengthChanged(bool value)
         => this.paletteDesignerModel.IsDeepImagingAlgorithmStrength = value;
 
@@ -40,20 +32,11 @@ public sealed partial class ImagingToolbarViewModel : ViewModel<ImagingToolbarVi
         this.UpdateSliderLabel();
         this.paletteDesignerModel.ImagingAlgorithmClusters = (int)value;
     }
-    //partial void OnShowShadesValuesChanged(bool value)
-    //    => this.Messenger.Publish(new ShadesValuesVisibilityMessage(value));
-
-    //partial void OnShowTextSamplesChanged(bool value)
-    //    => this.Messenger.Publish(new TextSamplesVisibilityMessage(value));
 
     [RelayCommand]
-    public void OnLockSelect(object? parameter)
+    public void OnRecalculate()
     {
-        if (parameter is string tag)
-        {
-            // Update model 
-            ShadeMode shadeMode = Enum.TryParse(tag, out ShadeMode kind) ? kind : ShadeMode.Locked;
-            this.paletteDesignerModel.UpdatePaletteShadeMode(shadeMode);
-        }
+        var viewModel = App.GetRequiredService<ImagingViewModel>();
+        viewModel.ReProcessBitmap();
     }
 }

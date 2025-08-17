@@ -159,6 +159,10 @@
 
     <system:String x:Key="Imaging.DropZoneHelp">Քաշեք եւ թողեք պատկերի ֆայլը այստեղ `համապատասխանող գույնի պալիտրա ստեղծելու համար:</system:String>
 
+    <system:String x:Key="Imaging.InProgress">Հաշվարկներ ընթացքի մեջ</system:String>
+
+    <system:String x:Key="Imaging.InProgressHelp">Խնդրում ենք սպասել ...</system:String>
+
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">Բարձր (դանդաղ)</system:String>
 
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">Ցածր (ավելի արագ)</system:String>
@@ -166,5 +170,9 @@
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength">Ալգորիթմի ուժ</system:String>
 
     <system:String x:Key="Imaging.Toolbar.PaletteEntries">Գունավոր գրառումների հաշվարկ</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.Recalculate">Վերահաշվարկել</system:String>
+
+    <system:String x:Key="Imaging.Toolbar.UpdateRecalculate">Թարմացնել</system:String>
 
 </ResourceDictionary>

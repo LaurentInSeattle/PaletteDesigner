@@ -4,6 +4,7 @@
 	x:DataType="vm:ImagingViewModel"
 
 	xmlns:shared="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Shared"
+	xmlns:images="clr-namespace:Lyt.Avalonia.Controls.Images;assembly=Lyt.Avalonia.Controls"
 
 	xmlns="https://github.com/avaloniaui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -57,16 +58,22 @@
 					Margin="0 20 0 12"
 					DataContext="{Binding DropViewModel}"
 					/>
-				<Image
+				<vm:SpinView
+					Grid.Row="0"
+					Margin="0 20 0 12"
+					DataContext="{Binding SpinViewModel}"
+					/>
+				<images:RoundedImage
 					Grid.Row="1"
 					Source="{Binding SourceImage}"
 					IsHitTestVisible="False"
 					VerticalAlignment="Top"
+					CornerRadius="8"
 					/>
 			</Grid>
 			<ScrollViewer
 				Grid.Row="1" Grid.Column="3" Width="900"
-				Margin="0"
+				Opacity="{Binding SwatchesOpacity}"				
 				Background="Transparent"
 				VerticalAlignment="Stretch" HorizontalAlignment="Left"
 				ScrollViewer.HorizontalScrollBarVisibility="Disabled"
