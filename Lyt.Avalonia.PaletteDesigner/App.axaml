@@ -10,6 +10,7 @@
 		<FluentTheme />
 		<StyleInclude Source="/Assets/Icons/Icons.axaml" />
 		<StyleInclude Source="/Assets/Palette/DeepBluePalette.axaml" />
+		<StyleInclude Source="avares://Lyt.Avalonia.Controls/Progress/ProgressRing.axaml"/>
 		<!--
 		<StyleInclude Source="/Assets/Theme/TextBoxStyles.axaml" />
 		<StyleInclude Source="/Assets/Theme/AutoCompleteBoxStyles.axaml" />

@@ -161,7 +161,7 @@
 
     <system:String x:Key="Imaging.InProgress">Calculs en cours</system:String>
 
-    <system:String x:Key="Imaging.InProgressHelp">S'il vous plaît, attendez...</system:String>
+    <system:String x:Key="Imaging.InProgressHelp">Patientez, s'il vous plaît...</system:String>
 
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">Élevé (plus lent)</system:String>
 

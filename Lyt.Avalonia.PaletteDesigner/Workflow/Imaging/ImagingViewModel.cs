@@ -11,8 +11,6 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
 
     private WriteableBitmap? bitmapToProcess;
 
-    private bool calculationInProgress;
-
     [ObservableProperty]
     private ObservableCollection<ImageSwatchViewModel> swatchesViewModels;
 
@@ -34,6 +32,9 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
     [ObservableProperty]
     private double swatchesOpacity;
 
+    [ObservableProperty]
+    private bool calculationInProgress;
+
     public ImagingViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
@@ -52,6 +53,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
 
         this.SwatchesViewModels = [];
 
+        this.CalculationInProgress = false;
         this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
     }
 
@@ -111,14 +113,14 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
 
     public bool ReProcessBitmap()
     {
-        if ( this.calculationInProgress)
+        if ( this.CalculationInProgress)
         {
             return false; 
         }
 
         if (this.bitmapToProcess is not null)
         {
-            this.calculationInProgress = true; 
+            this.CalculationInProgress = true; 
             this.SpinViewModel.IsVisible = true;
             this.SpinViewModel.IsActive = true;
             this.DropViewModel.IsVisible = false;
@@ -211,8 +213,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
              select vm).ToList();
         this.SwatchesViewModels = new(sortedList);
         this.SwatchesOpacity = 1.0;
-
-        this.calculationInProgress = false;
+        this.CalculationInProgress = false;
         return true;
     }
 }
