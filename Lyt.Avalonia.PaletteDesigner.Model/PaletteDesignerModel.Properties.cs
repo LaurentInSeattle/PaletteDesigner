@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
-using Lyt.Avalonia.PaletteDesigner.Model.ProjectObjects;
-
 public sealed partial class PaletteDesignerModel : ModelBase
 {
     #region Serialized -  No model changed event

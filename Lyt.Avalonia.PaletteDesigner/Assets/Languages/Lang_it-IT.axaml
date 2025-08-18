@@ -163,9 +163,9 @@
 
     <system:String x:Key="Imaging.InProgressHelp">Attendere prego...</system:String>
 
-    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">Alto (più lento)</system:String>
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Deep">Alta (più lento)</system:String>
 
-    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">Basso (più veloce)</system:String>
+    <system:String x:Key="Imaging.Toolbar.AlgorithmStrength.Shallow">Bassa (più veloce)</system:String>
 
     <system:String x:Key="Imaging.Toolbar.AlgorithmStrength">Forza dell'algoritmo</system:String>
 

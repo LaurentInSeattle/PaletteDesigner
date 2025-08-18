@@ -11,6 +11,8 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
 
     private WriteableBitmap? bitmapToProcess;
 
+    private string imageFilename;
+
     [ObservableProperty]
     private ObservableCollection<ImageSwatchViewModel> swatchesViewModels;
 
@@ -50,20 +52,10 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         this.ImagingToolbarViewModel = new();
         this.ExportToolbarViewModel = new(PaletteFamily.Image);
         this.SwatchesOpacity = 0.0;
-
+        this.imageFilename = string.Empty;
         this.SwatchesViewModels = [];
 
         this.CalculationInProgress = false;
-        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
-    }
-
-    public Palette Palette =>
-        this.paletteDesignerModel.ActiveProject == null ?
-            throw new Exception("No active project") :
-            this.paletteDesignerModel.ActiveProject.Palette;
-
-    private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage? _)
-    {
     }
 
     public bool Select(string path)
@@ -75,6 +67,13 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
             {
                 throw new Exception("Failed to read image from disk: " + path);
             }
+
+            FileInfo fileInfo = new(path);
+            this.imageFilename = fileInfo.Name;
+            if (string.IsNullOrWhiteSpace(this.imageFilename))
+            {
+                this.imageFilename = "Default"; 
+            } 
 
             // Keep the original to display on the UI at best resolution 
             var sourceBitmap =
@@ -207,13 +206,30 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
             }
         }
 
+        // Color Sort
+        //var sortedList =
+        //    (from vm in list
+        //     orderby 
+        //         vm.HsvColor.H ascending,
+        //         vm.HsvColor.S descending,
+        //         vm.HsvColor.V descending
+        //     select vm).ToList();
+
+        // Frequency Sort
         var sortedList =
             (from vm in list
-             orderby vm.HsvColor.H ascending, vm.HsvColor.V descending
+             orderby vm.Cluster.Count descending
              select vm).ToList();
         this.SwatchesViewModels = new(sortedList);
         this.SwatchesOpacity = 1.0;
         this.CalculationInProgress = false;
-        return true;
+
+        // Save swatches
+        if (this.paletteDesignerModel.ActiveProject is not null)
+        {
+            return this.paletteDesignerModel.SaveSwatches (this.imageFilename, swatches);
+        }
+
+        return false;
     }
 }

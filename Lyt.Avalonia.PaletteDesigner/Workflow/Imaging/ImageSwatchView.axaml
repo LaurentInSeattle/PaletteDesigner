@@ -10,12 +10,12 @@
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 	>
 	<Grid
-		Height="100"
+		Height="80"
 		>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="100"/>
+			<ColumnDefinition Width="120"/>
 			<ColumnDefinition Width="10"/>
-			<ColumnDefinition Width="150"/>
+			<ColumnDefinition Width="130"/>
 		</Grid.ColumnDefinitions>
 		
 		<Rectangle 

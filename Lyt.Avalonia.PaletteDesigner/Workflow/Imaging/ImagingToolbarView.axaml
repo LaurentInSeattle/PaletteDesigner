@@ -22,12 +22,12 @@
 		<Grid.ColumnDefinitions>
 			<!-- Spacer -->
 			<ColumnDefinition Width="0" />
-			<!-- Presets-->
-			<ColumnDefinition Width="200" />
+			<!-- Toggle-->
+			<ColumnDefinition Width="220" />
 			<!-- Spacer -->
 			<ColumnDefinition Width="20" />
 			<!-- Colour slider + value -->
-			<ColumnDefinition Width="240" />
+			<ColumnDefinition Width="300" />
 			<ColumnDefinition Width="8" />
 			<ColumnDefinition Width="32" />
 			<!-- Spacer -->
@@ -41,8 +41,7 @@
 			Style="{StaticResource StandardToggleSwitch}"
 			TrueText="{DynamicResource Imaging.Toolbar.AlgorithmStrength.Deep}"
 			FalseText="{DynamicResource Imaging.Toolbar.AlgorithmStrength.Shallow}"
-			Margin="8 0 0 0"
-			Height="80" Width="160"
+			Height="80" Width="190"
 			Orientation="Vertical"
 			HorizontalAlignment="Center" VerticalAlignment="Center"
 			Value="{Binding IsDeepAlgorithmStrength}"
@@ -56,8 +55,8 @@
 
 		<Slider
 			Grid.Column="3"
-			Margin="12 -4 0 0"
-			Minimum="5" Maximum="30"
+			Margin="12 4 0 0"
+			Minimum="5" Maximum="42"
 			SmallChange="1" LargeChange="5"
 			TickFrequency="1.0" 
 			IsSnapToTickEnabled="True"

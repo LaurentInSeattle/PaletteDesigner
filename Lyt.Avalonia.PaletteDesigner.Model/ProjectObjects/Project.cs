@@ -19,6 +19,8 @@ public sealed class Project
 
     public Palette Palette { get; set; } = new();
 
+    public ColorSwatches Swatches { get; set; } = new();
+
     public ColorTheme ColorTheme { get; set; } = new();
 
     public bool IsInvalid
