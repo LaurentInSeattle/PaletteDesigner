@@ -18,6 +18,7 @@
   <ItemGroup>
     <None Remove="Resources\ColorWheel.json" />
     <None Remove="Resources\PaletteExportTemplates\AvaloniaPaletteTemplate.txt" />
+    <None Remove="Resources\PaletteExportTemplates\ExperimentalTemplate.csx" />
     <None Remove="Resources\ShadesPresets\Contrasted.json" />
     <None Remove="Resources\ShadesPresets\Dark.json" />
     <None Remove="Resources\ShadesPresets\DarkGray.json" />
@@ -33,6 +34,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\ColorWheel.json" />
     <EmbeddedResource Include="Resources\PaletteExportTemplates\CssPaletteTemplate.txt" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\ExperimentalTemplate.csx" />
     <EmbeddedResource Include="Resources\PaletteExportTemplates\MsftXamlPaletteTemplate.txt" />
     <EmbeddedResource Include="Resources\PaletteExportTemplates\AvaloniaPaletteTemplate.txt" />
     <EmbeddedResource Include="Resources\ShadesPresets\Contrasted.json" />
