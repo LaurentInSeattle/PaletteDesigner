@@ -2,45 +2,71 @@
 
 public sealed partial class PaletteDesignerModel : ModelBase
 {
-    public bool SaveSwatches(string name, List<Cluster> clusters)
+    private bool suspendSwatchesUpdates;
+
+    private bool UpdateSwatches(Func<ColorSwatches, bool> action)
     {
-        if (this.ActiveProject is null)
+        bool result = this.ActionSwatches(action);
+        if (result && !this.suspendSwatchesUpdates)
         {
-            // throw new Exception("No project");
-            return false;
-        } 
+            this.Messenger.Publish(new ModelSwatchesUpdatedMessage());
+        }
 
-        List<Swatch> swatches = new (clusters.Count);
-        foreach (Cluster cluster in clusters)
-        {
-            swatches.Add(new Swatch(cluster)); 
-        } 
-
-        ColorSwatches colorSwatches = new()
-        {
-            Name = name,
-            Swatches = swatches, 
-        };
-
-        this.ActiveProject.Swatches = colorSwatches;
-        return true;
+        return result;
     }
 
-    public bool SaveSwatches(string name, List<Swatch> swatches)
+    private bool ActionSwatches(Func<ColorSwatches, bool> action)
     {
         if (this.ActiveProject is null)
         {
-            // throw new Exception("No project");
             return false;
         }
 
-        ColorSwatches colorSwatches = new()
+        var swatches = this.ActiveProject.Swatches;
+        if (swatches is null)
         {
-            Name = name,
-            Swatches = swatches,
-        };
+            return false;
+        }
 
-        this.ActiveProject.Swatches = colorSwatches;
-        return true;
+        // Nothing like that for swatches, at least for now.
+        // 
+        //if ((Palette.ColorWheel is null) || (Palette.ShadeMap is null))
+        //{
+        //    throw new Exception("Palette class has not been setup");
+        //}
+
+        return action(swatches);
     }
+
+    public bool SaveSwatches(string name, List<Cluster> clusters)
+        => this.ActionSwatches((swatches) =>
+        {
+            List<Swatch> swatchList = new(clusters.Count);
+            foreach (Cluster cluster in clusters)
+            {
+                swatchList.Add(new Swatch(cluster));
+            }
+
+            ColorSwatches colorSwatches = new()
+            {
+                Name = name,
+                Swatches = swatchList,
+            };
+
+            this.ActiveProject!.Swatches = colorSwatches;
+            return true;
+        });
+
+    public bool SaveSwatches(string name, List<Swatch> swatchList)
+        => this.ActionSwatches((swatches) =>
+        {
+            ColorSwatches colorSwatches = new()
+            {
+                Name = name,
+                Swatches = swatchList,
+            };
+
+            this.ActiveProject!.Swatches = colorSwatches;
+            return true;
+        });
 }

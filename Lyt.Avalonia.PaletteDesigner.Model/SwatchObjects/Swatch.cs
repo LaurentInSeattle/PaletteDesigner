@@ -6,8 +6,12 @@ public sealed class Swatch
 
     public Swatch(Cluster cluster)
     {
-        this.HsvColor = cluster.LabColor.ToRgb().ToHsv();
+        var rgbColor = cluster.LabColor.ToRgb();
+        this.HsvColor = rgbColor.ToHsv();
         this.Usage = cluster.Count / (double)cluster.Total;
+
+        // Debug.WriteLine("Cluster Lab Color to Swatch RGB: " + rgbColor.ToRgbDecString());
+        // Debug.WriteLine("Cluster Lab to RGB to HSV: " + this.HsvColor.ToString());
     }
 
     public double Usage { get; set; } 

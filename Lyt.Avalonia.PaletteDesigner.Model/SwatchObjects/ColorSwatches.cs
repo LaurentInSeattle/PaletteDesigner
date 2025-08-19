@@ -22,4 +22,28 @@ public sealed class ColorSwatches
 
         return colorSwatches;
     }
+
+    public AseDocument ToAseDocument()
+    {
+        AseDocument document = new();
+        ColorGroup colorGroup = new(this.Name.ToString());
+        int index = 0;
+        var sortedSwatched = 
+            from swatch in this.Swatches orderby swatch.Usage descending select swatch; 
+        foreach (var swatch in sortedSwatched)
+        {
+            var rgb = swatch.HsvColor.ToRgb();
+            byte r = (byte)Math.Round(rgb.R);
+            byte g = (byte)Math.Round(rgb.G);
+            byte b = (byte)Math.Round(rgb.B);
+            // Debug.WriteLine (index.ToString("D3") + " " + rgb.ToRgbDecString() );
+            ColorEntry colorEntry = new(index.ToString("D3"), r, g, b);
+            colorGroup.Colors.Add(colorEntry);
+
+            ++ index;
+        }
+
+        document.Groups.Add(colorGroup);
+        return document;
+    }
 }

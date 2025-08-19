@@ -1,15 +1,14 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Imaging;
 
-using HsvColor = Model.ColorObjects.HsvColor;
-
 public sealed partial class ImageSwatchViewModel : ViewModel <ImageSwatchView>
 {
-    public readonly HsvColor HsvColor;
-
     public readonly Cluster Cluster; 
         
     [ObservableProperty]
     public SolidColorBrush colorBrush;
+
+    [ObservableProperty]
+    private string frequency = string.Empty;
 
     [ObservableProperty]
     private string rgbHex = string.Empty;
@@ -23,11 +22,11 @@ public sealed partial class ImageSwatchViewModel : ViewModel <ImageSwatchView>
     public ImageSwatchViewModel(Cluster cluster)
     {
         this.Cluster = cluster;
-        RgbColor rgbColor = cluster.LabColor.ToRgb(); 
-        HsvColor hsvColor = rgbColor.ToHsv(); 
-        this.HsvColor = hsvColor;
+        RgbColor rgbColor = cluster.LabColor.ToRgb();
         this.ColorBrush = rgbColor.ToBrush();
-        this.RgbHex = hsvColor.ToRgbHexString();
-        this.RgbDec = hsvColor.ToRgbDecimalString();
+        this.RgbHex = string.Format("#  {0}", rgbColor.ToRgbHexString());
+        this.RgbDec = string.Format("\u2022  {0}", rgbColor.ToRgbDecString());
+        double frequencyPercentage = 100.0 * cluster.Count / (double)cluster.Total;
+        this.Frequency = string.Format("\u03BD  {0:F1} %", frequencyPercentage);
     }
 }

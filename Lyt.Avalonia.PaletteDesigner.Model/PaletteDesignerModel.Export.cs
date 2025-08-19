@@ -79,7 +79,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
     private bool ExportImagePalette(PaletteExportFormat exportFormat, out string message)
     {
         message = string.Empty;
-        bool result = this.ActionPalette((palette) =>
+        bool result = this.ActionSwatches((swatches) =>
         {
             try
             {
@@ -88,7 +88,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
 
                 if (exportFormat == PaletteExportFormat.AdobeAse)
                 {
-                    var aseDocument = palette.ToAseDocument();
+                    var aseDocument = swatches.ToAseDocument();
                     string fullName = string.Concat(name, ".ase");
                     string path =
                         this.fileManager.MakePath(Area.User, Kind.BinaryNoExtension, fullName);
@@ -99,26 +99,26 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 else if (exportFormat == PaletteExportFormat.ApplicationJSon)
                 {
                     // Create a JSON directly from the palette, save on disk with time stamp
-                    this.fileManager.Save(Area.User, Kind.Json, name, palette);
+                    this.fileManager.Save(Area.User, Kind.Json, name, swatches);
                     this.newPath = this.fileManager.MakePath(Area.User, Kind.Json, name);
                     return true;
                 }
                 else
                 {
-                    ResourcesUtilities.SetResourcesPath(exportFormat.ResourcePath());
-                    string template = ResourcesUtilities.LoadEmbeddedTextResource(exportFormat.ResourceFileName(), out string? _);
+                    //ResourcesUtilities.SetResourcesPath(exportFormat.ResourcePath());
+                    //string template = ResourcesUtilities.LoadEmbeddedTextResource(exportFormat.ResourceFileName(), out string? _);
 
-                    Parameters parameters = palette.ToTemplateParameters();
-                    var templator = new TextGenerator(template);
-                    string result = templator.Generate(parameters);
+                    //Parameters parameters = swatches.ToTemplateParameters();
+                    //var templator = new TextGenerator(template);
+                    //string result = templator.Generate(parameters);
 
-                    // Create a text file from the palette, save on disk with time stamp
-                    this.fileManager.Save(Area.User, Kind.Text, name, result);
+                    //// Create a text file from the palette, save on disk with time stamp
+                    //this.fileManager.Save(Area.User, Kind.Text, name, result);
 
-                    // rename to .axaml or xaml or whatever
-                    string extension = exportFormat.ExtensionFileName();
-                    string path = this.fileManager.MakePath(Area.User, Kind.Text, name);
-                    this.newPath = path.ChangeFileExtension(extension);
+                    //// rename to .axaml or xaml or whatever
+                    //string extension = exportFormat.ExtensionFileName();
+                    //string path = this.fileManager.MakePath(Area.User, Kind.Text, name);
+                    //this.newPath = path.ChangeFileExtension(extension);
                 }
 
                 return true;

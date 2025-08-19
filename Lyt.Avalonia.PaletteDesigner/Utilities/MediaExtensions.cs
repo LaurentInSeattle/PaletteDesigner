@@ -26,9 +26,7 @@ public static class MediaExtensions
         return
             string.Format(
                 "{0:X2} {1:X2} {2:X2}",
-                (int)Math.Round(rgb.R),
-                (int)Math.Round(rgb.G),
-                (int)Math.Round(rgb.B));
+                (int)Math.Round(rgb.R), (int)Math.Round(rgb.G), (int)Math.Round(rgb.B));
     }
 
     public static string ToRgbPercentString(this HsvColor hsv)
@@ -48,14 +46,14 @@ public static class MediaExtensions
         return
             string.Format(
                 "{0,3:D} {1,3:D} {2,3:D}",
-                (int)Math.Round(rgb.R),
-                (int)Math.Round(rgb.G),
-                (int)Math.Round(rgb.B));
+                (int)Math.Round(rgb.R), (int)Math.Round(rgb.G), (int)Math.Round(rgb.B));
     }
 
     public static SolidColorBrush ToBrush(this Shade shade) => shade.Color.ToBrush();
 
     public static string ToRgbHexString(this Shade shade) => shade.Color.ToRgbHexString();
+
     public static string ToRgbPercentString(this Shade shade) => shade.Color.ToRgbPercentString();
+    
     public static string ToRgbDecimalString(this Shade shade) => shade.Color.ToRgbDecimalString();
 }

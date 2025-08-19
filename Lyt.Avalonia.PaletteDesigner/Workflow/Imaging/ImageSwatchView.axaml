@@ -13,9 +13,9 @@
 		Height="80"
 		>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="120"/>
-			<ColumnDefinition Width="10"/>
-			<ColumnDefinition Width="130"/>
+			<ColumnDefinition Width="126"/>
+			<ColumnDefinition Width="8"/>
+			<ColumnDefinition Width="146"/>
 		</Grid.ColumnDefinitions>
 		
 		<Rectangle 
@@ -48,7 +48,7 @@
 		        />
 			<TextBlock
 				Grid.Row="2"
-				Text="{Binding Hsv}"
+				Text="{Binding Frequency}"
 				Theme="{StaticResource LargeMono}"
 				TextAlignment="Left"
 				HorizontalAlignment="Left"
