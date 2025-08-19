@@ -1,7 +1,10 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.Utilities;
 
+using System;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
+
+// TODO: Relocate to Lyt.Templator 
 
 public static class CsxTemplator
 {
@@ -24,7 +27,12 @@ public static class CsxTemplator
                 }
             }
 
-            return string.Empty;
+            throw new Exception("Template generation failed with no exception thrown");
+        }
+        catch (CompilationErrorException e)
+        {
+            Debug.WriteLine(e);
+            return string.Join(Environment.NewLine, e.Diagnostics.Select(d => $"// {d}"));
         }
         catch  (Exception ex) 
         { 
