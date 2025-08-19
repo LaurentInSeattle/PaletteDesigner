@@ -47,6 +47,10 @@
     <EmbeddedResource Include="Resources\ShadesPresets\Shiny.json" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.14.0" />
+  </ItemGroup>
+
     <ItemGroup>
         <ProjectReference Include="..\..\Lyt.Framework\Lyt.AdobeSwatchExchange\Lyt.AdobeSwatchExchange.csproj" />
         <ProjectReference Include="..\..\Lyt.Framework\Lyt.Model\Lyt.Model.csproj" />
