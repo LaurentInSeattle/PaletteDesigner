@@ -104,8 +104,8 @@ public sealed partial class Palette
             }
 
             string wheelName = wheelKindEnum.ToString();
-            var wheelKind = new Parameter("WheelKind", wheelName);
-            parameters.Add(wheelKind);
+            //var wheelKind = new Parameter("WheelKind", wheelName);
+            //parameters.Add(wheelKind);
 
             Shades shades = wheelKindEnum.ToShadesFrom(this);
             foreach (ShadeKind shadeKindEnum in Enum.GetValues<ShadeKind>())

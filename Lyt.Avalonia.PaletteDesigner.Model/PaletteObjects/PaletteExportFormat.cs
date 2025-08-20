@@ -42,7 +42,7 @@ public static class PaletteExportFormatExtensions
             // No need to localize 
             PaletteExportFormat.AvaloniaAxaml => "AvaloniaPaletteTemplate.txt",
             PaletteExportFormat.MicrosoftXaml => "MsftXamlPaletteTemplate.txt",
-            PaletteExportFormat.CssStyleSheet => "CssPaletteTemplate.txt",
+            PaletteExportFormat.CssStyleSheet => "CssPaletteTemplate.csx",
             _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
         };
 

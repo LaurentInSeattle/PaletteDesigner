@@ -1,6 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
-using System.Threading.Tasks;
 using static Lyt.Persistence.FileManagerModel;
 
 public sealed partial class PaletteDesignerModel : ModelBase
@@ -106,8 +105,6 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 }
                 else
                 {
-                    string result = Task.Run(() => this.GenerateAsync()).Result;
-
                     //ResourcesUtilities.SetResourcesPath(exportFormat.ResourcePath());
                     //string template = ResourcesUtilities.LoadEmbeddedTextResource(exportFormat.ResourceFileName(), out string? _);
 
@@ -137,11 +134,11 @@ public sealed partial class PaletteDesignerModel : ModelBase
         return result;
     }
 
-    private async Task<string> GenerateAsync()
-    {
-        string template = ResourcesUtilities.LoadEmbeddedTextResource("ExperimentalTemplate.csx", out string? _);
-        string output = await CsxTemplator.Generate(template, "yolo_yolo");
-        return output;
-    }
+    //private async Task<string> GenerateAsync()
+    //{
+    //    string template = ResourcesUtilities.LoadEmbeddedTextResource("ExperimentalTemplate.csx", out string? _);
+    //    string output = await CsxTemplator.Generate(template, "yolo_yolo");
+    //    return output;
+    //}
 
 }
