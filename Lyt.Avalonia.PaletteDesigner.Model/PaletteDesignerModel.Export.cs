@@ -105,20 +105,22 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 }
                 else
                 {
-                    //ResourcesUtilities.SetResourcesPath(exportFormat.ResourcePath());
-                    //string template = ResourcesUtilities.LoadEmbeddedTextResource(exportFormat.ResourceFileName(), out string? _);
+                    ResourcesUtilities.SetResourcesPath(exportFormat.ResourcePath());
+                    string template = 
+                        ResourcesUtilities.LoadEmbeddedTextResource(
+                            exportFormat.ResourceFileName(PaletteFamily.Image), out string? _);
 
-                    //Parameters parameters = swatches.ToTemplateParameters();
-                    //var templator = new TextGenerator(template);
-                    //string result = templator.Generate(parameters);
+                    Parameters parameters = swatches.ToTemplateParameters();
+                    var templator = new TextGenerator(template);
+                    string result = templator.Generate(parameters);
 
-                    //// Create a text file from the palette, save on disk with time stamp
-                    //this.fileManager.Save(Area.User, Kind.Text, name, result);
+                    // Create a text file from the palette, save on disk with time stamp
+                    this.fileManager.Save(Area.User, Kind.Text, name, result);
 
-                    //// rename to .axaml or xaml or whatever
-                    //string extension = exportFormat.ExtensionFileName();
-                    //string path = this.fileManager.MakePath(Area.User, Kind.Text, name);
-                    //this.newPath = path.ChangeFileExtension(extension);
+                    // rename to .axaml or xaml or whatever
+                    string extension = exportFormat.ExtensionFileName();
+                    string path = this.fileManager.MakePath(Area.User, Kind.Text, name);
+                    this.newPath = path.ChangeFileExtension(extension);
                 }
 
                 return true;

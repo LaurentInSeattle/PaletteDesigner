@@ -30,7 +30,8 @@ public static class PaletteExportFormatExtensions
             _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
         };
 
-    public static string ResourceFileName (this PaletteExportFormat paletteExportFormat)
+    public static string ResourceFileName (
+        this PaletteExportFormat paletteExportFormat, PaletteFamily paletteFamily = PaletteFamily.Designed)
         => paletteExportFormat switch
         {
             // Binary, Not template based
@@ -42,7 +43,10 @@ public static class PaletteExportFormatExtensions
             // No need to localize 
             PaletteExportFormat.AvaloniaAxaml => "AvaloniaPaletteTemplate.txt",
             PaletteExportFormat.MicrosoftXaml => "MsftXamlPaletteTemplate.txt",
-            PaletteExportFormat.CssStyleSheet => "CssPaletteTemplate.csx",
+            PaletteExportFormat.CssStyleSheet => 
+                paletteFamily == PaletteFamily.Designed ? 
+                    "CssPaletteTemplate.csx" :
+                    "CssImagePaletteTemplate.csx" ,
             _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
         };
 

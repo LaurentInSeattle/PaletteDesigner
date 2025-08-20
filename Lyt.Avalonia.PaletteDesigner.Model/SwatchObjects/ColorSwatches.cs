@@ -28,9 +28,9 @@ public sealed class ColorSwatches
         AseDocument document = new();
         ColorGroup colorGroup = new(this.Name.ToString());
         int index = 0;
-        var sortedSwatched = 
+        var sortedSwatches = 
             from swatch in this.Swatches orderby swatch.Usage descending select swatch; 
-        foreach (var swatch in sortedSwatched)
+        foreach (var swatch in sortedSwatches)
         {
             var rgb = swatch.HsvColor.ToRgb();
             byte r = (byte)Math.Round(rgb.R);
@@ -45,5 +45,23 @@ public sealed class ColorSwatches
 
         document.Groups.Add(colorGroup);
         return document;
+    }
+
+    public Parameters ToTemplateParameters()
+    {
+        List<string> colors = new (this.Swatches.Count);
+        var sortedSwatches =
+            from swatch in this.Swatches orderby swatch.Usage descending select swatch;
+        foreach (var swatch in sortedSwatches)
+        {
+            var rgb = swatch.HsvColor.ToRgb();
+            colors.Add(rgb.ToPoundArgbHexString());
+        }
+
+        return
+        [
+            new Parameter("ImagePaletteSource", this.Name),
+            new Parameter("Colors", colors, ParameterKind.Collection) 
+        ];
     }
 }
