@@ -8,7 +8,8 @@ public sealed class Clusterer(int k, int maxIterations = 100, int? seed = null)
 
     public List<Cluster> Discover(List<LabColor> data)
     {
-        if (data.Count < clusterCount)
+        int dataCount = data.Count; 
+        if (dataCount < clusterCount)
         {
             throw new ArgumentException("Not enough data points for the number of clusters.");
         }
@@ -21,32 +22,40 @@ public sealed class Clusterer(int k, int maxIterations = 100, int? seed = null)
             centroids.Add(new Cluster() { Count = 0 , LabColor = color });    
         }
 
-        int[] assignments = new int[data.Count];
+        int[] assignments = new int[dataCount];
         for (int iteration = 0; iteration < maxIterations; iteration++)
         {
             bool changed = false;
 
-            // Assign points to closest centroid
-            for (int i = 0; i < data.Count; i++)
+            // Run multi-threaded 
+            // Speed up the processing of assigning points to closest centroid 
+            void AssignPointToClosestCentroid(int from, int to)
             {
-                int bestIndex = -1;
-                double bestDistance = double.MaxValue;
-                for (int j = 0; j < clusterCount; j++)
+                for (int i = from; i < to; ++i)
                 {
-                    double distance = LabColor.Distance(data[i], centroids[j].LabColor);
-                    if (distance < bestDistance)
+                    // Find smallest distance
+                    int bestIndex = -1;
+                    double bestDistance = double.MaxValue;
+                    for (int j = 0; j < clusterCount; j++)
                     {
-                        bestDistance = distance;
-                        bestIndex = j;
+                        double distance = LabColor.Distance(data[i], centroids[j].LabColor);
+                        if (distance < bestDistance)
+                        {
+                            bestDistance = distance;
+                            bestIndex = j;
+                        }
+                    }
+
+                    if (assignments[i] != bestIndex)
+                    {
+                        // Assign point to closest centroid
+                        assignments[i] = bestIndex;
+                        changed = true;
                     }
                 }
-
-                if (assignments[i] != bestIndex)
-                {
-                    assignments[i] = bestIndex;
-                    changed = true;
-                }
             }
+
+            Parallelizer.ParallelizeActionOnIndices(dataCount, AssignPointToClosestCentroid); 
 
             // Exit early if no changes
             if (!changed)
@@ -62,18 +71,24 @@ public sealed class Clusterer(int k, int maxIterations = 100, int? seed = null)
             }
 
             int[] counts = new int[clusterCount];
-            for (int i = 0; i < data.Count; i++)
+
+            void RecalculateCentroids(int from, int to)
             {
-                int cluster = assignments[i];
-                var colorAtCluster = newClusters[cluster].LabColor;
-                var dataAtI = data[i];
-                colorAtCluster.L += dataAtI.L;
-                colorAtCluster.A += dataAtI.A;
-                colorAtCluster.B += dataAtI.B;
-                counts[cluster]++;
+                for (int i = from; i < to; ++i)
+                {
+                    int cluster = assignments[i];
+                    var colorAtCluster = newClusters[cluster].LabColor;
+                    var dataAtI = data[i];
+                    colorAtCluster.L += dataAtI.L;
+                    colorAtCluster.A += dataAtI.A;
+                    colorAtCluster.B += dataAtI.B;
+                    counts[cluster]++;
+                }
             }
 
-            for (int j = 0; j < clusterCount; j++)
+            Parallelizer.ParallelizeActionOnIndices(dataCount, RecalculateCentroids);
+
+            for (int j = 0; j < clusterCount; ++j)
             {
                 if (counts[j] == 0)
                 {
@@ -90,7 +105,7 @@ public sealed class Clusterer(int k, int maxIterations = 100, int? seed = null)
 
         foreach (var centroid in centroids)
         {
-            centroid.Total = data.Count;
+            centroid.Total = dataCount;
         }
 
         return centroids;

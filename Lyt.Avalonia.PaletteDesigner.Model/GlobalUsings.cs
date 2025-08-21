@@ -31,6 +31,7 @@ global using Lyt.Persistence;
 global using Lyt.Templator;
 global using Lyt.Utilities.DataStructures;
 global using Lyt.Utilities.Extensions;
+global using Lyt.Utilities.Parallel;
 
 global using Lyt.Avalonia.PaletteDesigner.Model.Messaging;
 global using Lyt.Avalonia.PaletteDesigner.Model.ColorObjects;

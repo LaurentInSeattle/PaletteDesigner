@@ -19,7 +19,6 @@ $@"
 		(
 			Environment.NewLine,
 			Colors.Select(entry => string.Format("--color_{0:D3}: {1}", Colors.IndexOf(entry) , entry)) 
-			// $@"{i} => {Math.Pow(2, i)};")
 		)
 	}
 

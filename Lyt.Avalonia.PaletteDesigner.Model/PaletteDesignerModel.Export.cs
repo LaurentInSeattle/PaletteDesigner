@@ -10,9 +10,9 @@ public sealed partial class PaletteDesignerModel : ModelBase
     {
         if (paletteFamily == PaletteFamily.Designed)
         {
-            return this.ExportDesignedPalette(exportFormat, out message); 
+            return this.ExportDesignedPalette(exportFormat, out message);
         }
-        else 
+        else
         {
             return this.ExportImagePalette(exportFormat, out message);
         }
@@ -47,20 +47,28 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 }
                 else
                 {
-                    ResourcesUtilities.SetResourcesPath(exportFormat.ResourcePath());
-                    string template = ResourcesUtilities.LoadEmbeddedTextResource(exportFormat.ResourceFileName(), out string? _);
-
                     Parameters parameters = palette.ToTemplateParameters();
+
+                    ResourcesUtilities.SetResourcesPath(exportFormat.ResourcePath());
+                    string template = 
+                        ResourcesUtilities.LoadEmbeddedTextResource(exportFormat.ResourceFileName(), out string? _);
                     var templator = new TextGenerator(template);
-                    string result = templator.Generate(parameters);
+                    var result = templator.Generate(parameters);
+                    if (result.Item1)
+                    {
+                        // Create a text file from the palette, save on disk with time stamp
+                        this.fileManager.Save(Area.User, Kind.Text, name, result);
 
-                    // Create a text file from the palette, save on disk with time stamp
-                    this.fileManager.Save(Area.User, Kind.Text, name, result);
-
-                    // rename to .axaml or xaml or whatever
-                    string extension = exportFormat.ExtensionFileName();
-                    string path = this.fileManager.MakePath(Area.User, Kind.Text, name);
-                    this.newPath = path.ChangeFileExtension(extension);
+                        // rename to .axaml or xaml or whatever
+                        string extension = exportFormat.ExtensionFileName();
+                        string path = this.fileManager.MakePath(Area.User, Kind.Text, name);
+                        this.newPath = path.ChangeFileExtension(extension);
+                    }
+                    else
+                    {
+                        this.newPath = "Failed to generate output file: " + result.Item2;
+                        return false;
+                    }
                 }
 
                 return true;
@@ -105,22 +113,28 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 }
                 else
                 {
+                    Parameters parameters = swatches.ToTemplateParameters();
                     ResourcesUtilities.SetResourcesPath(exportFormat.ResourcePath());
-                    string template = 
+                    string template =
                         ResourcesUtilities.LoadEmbeddedTextResource(
                             exportFormat.ResourceFileName(PaletteFamily.Image), out string? _);
-
-                    Parameters parameters = swatches.ToTemplateParameters();
                     var templator = new TextGenerator(template);
-                    string result = templator.Generate(parameters);
+                    var result = templator.Generate(parameters);
+                    if (result.Item1)
+                    {
+                        // Create a text file from the palette, save on disk with time stamp
+                        this.fileManager.Save(Area.User, Kind.Text, name, result);
 
-                    // Create a text file from the palette, save on disk with time stamp
-                    this.fileManager.Save(Area.User, Kind.Text, name, result);
-
-                    // rename to .axaml or xaml or whatever
-                    string extension = exportFormat.ExtensionFileName();
-                    string path = this.fileManager.MakePath(Area.User, Kind.Text, name);
-                    this.newPath = path.ChangeFileExtension(extension);
+                        // rename to .axaml or xaml or whatever
+                        string extension = exportFormat.ExtensionFileName();
+                        string path = this.fileManager.MakePath(Area.User, Kind.Text, name);
+                        this.newPath = path.ChangeFileExtension(extension);
+                    }
+                    else
+                    {
+                        this.newPath = "Failed to generate output file: " + result.Item2;
+                        return false;
+                    }
                 }
 
                 return true;
@@ -135,12 +149,4 @@ public sealed partial class PaletteDesignerModel : ModelBase
         message = this.newPath is null ? string.Empty : this.newPath;
         return result;
     }
-
-    //private async Task<string> GenerateAsync()
-    //{
-    //    string template = ResourcesUtilities.LoadEmbeddedTextResource("ExperimentalTemplate.csx", out string? _);
-    //    string output = await CsxTemplator.Generate(template, "yolo_yolo");
-    //    return output;
-    //}
-
 }

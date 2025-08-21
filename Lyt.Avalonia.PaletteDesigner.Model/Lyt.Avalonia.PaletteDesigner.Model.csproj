@@ -31,6 +31,8 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\ColorWheel.json" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\AvaloniaImagePaletteTemplate.csx" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\MsftXamlImagePaletteTemplate.csx" />
     <EmbeddedResource Include="Resources\PaletteExportTemplates\MsftXamlPaletteTemplate.csx" />
     <EmbeddedResource Include="Resources\PaletteExportTemplates\AvaloniaPaletteTemplate.csx" />
     <EmbeddedResource Include="Resources\PaletteExportTemplates\CssImagePaletteTemplate.csx" />
