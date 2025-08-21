@@ -121,8 +121,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
 
     public static unsafe RgbColor[] ExtractRgbFromBgraBuffer(nint frameBufferAddress, int height, int width)
     {
-        var colors = new RgbColor[height * width];
-        int index = 0;
+        var hashset = new HashSet<uint> (height * width);
         byte* p = (byte*)frameBufferAddress;
         for (int row = 0; row < height; ++row)
         {
@@ -133,9 +132,20 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 byte red = *p++;
                 p++; // alpha: skip
 
-                RgbColor rgbColor = new(red, green, blue);
-                colors[index++] = rgbColor;
+                uint color = (uint) (red << 16) | (uint)(green << 8 ) | (uint)blue; 
+                hashset.Add (color);
             }
+        }
+
+        Debug.WriteLine("Pixels: " + (height * width).ToString());
+        Debug.WriteLine("Unique Colors: " + hashset.Count.ToString());
+
+        var colors = new RgbColor[hashset.Count];
+        int index = 0;
+        foreach ( uint color in hashset)
+        {
+            RgbColor rgbColor = new(color);
+            colors[index++] = rgbColor;
         }
 
         return colors;
