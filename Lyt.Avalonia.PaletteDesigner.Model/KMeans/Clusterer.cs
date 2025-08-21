@@ -55,7 +55,7 @@ public sealed class Clusterer(int k, int maxIterations = 100, int? seed = null)
                 }
             }
 
-            Parallelizer.ParallelizeActionOnIndices(dataCount, AssignPointToClosestCentroid); 
+            Parallelize.ActionOnIndices(dataCount, AssignPointToClosestCentroid); 
 
             // Exit early if no changes
             if (!changed)
@@ -86,7 +86,7 @@ public sealed class Clusterer(int k, int maxIterations = 100, int? seed = null)
                 }
             }
 
-            Parallelizer.ParallelizeActionOnIndices(dataCount, RecalculateCentroids);
+            Parallelize.ActionOnIndices(dataCount, RecalculateCentroids);
 
             for (int j = 0; j < clusterCount; ++j)
             {
