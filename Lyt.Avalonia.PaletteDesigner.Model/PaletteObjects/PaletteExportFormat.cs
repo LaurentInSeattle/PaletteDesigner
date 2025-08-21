@@ -41,8 +41,8 @@ public static class PaletteExportFormatExtensions
             PaletteExportFormat.ApplicationJSon => string.Empty,
 
             // No need to localize 
-            PaletteExportFormat.AvaloniaAxaml => "AvaloniaPaletteTemplate.txt",
-            PaletteExportFormat.MicrosoftXaml => "MsftXamlPaletteTemplate.txt",
+            PaletteExportFormat.AvaloniaAxaml => "AvaloniaPaletteTemplate.csx",
+            PaletteExportFormat.MicrosoftXaml => "MsftXamlPaletteTemplate.csx",
             PaletteExportFormat.CssStyleSheet => 
                 paletteFamily == PaletteFamily.Designed ? 
                     "CssPaletteTemplate.csx" :
