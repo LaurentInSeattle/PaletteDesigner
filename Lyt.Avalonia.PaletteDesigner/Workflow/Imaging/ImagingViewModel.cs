@@ -11,7 +11,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
 
     private WriteableBitmap? bitmapToProcess;
 
-    private string imageFilename;
+    private string swatchesName;
 
     [ObservableProperty]
     private ObservableCollection<ImageSwatchViewModel> swatchesViewModels;
@@ -37,6 +37,12 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
     [ObservableProperty]
     private bool calculationInProgress;
 
+    [ObservableProperty]
+    private string imageTitle = string.Empty;
+
+    [ObservableProperty]
+    private string imagePath = string.Empty;
+
     public ImagingViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
@@ -52,7 +58,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         this.ImagingToolbarViewModel = new();
         this.ExportToolbarViewModel = new(PaletteFamily.Image);
         this.SwatchesOpacity = 0.0;
-        this.imageFilename = string.Empty;
+        this.swatchesName = string.Empty;
         this.SwatchesViewModels = [];
 
         this.CalculationInProgress = false;
@@ -68,11 +74,21 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
                 throw new Exception("Failed to read image from disk: " + path);
             }
 
+            this.ImagePath = path;
             FileInfo fileInfo = new(path);
-            this.imageFilename = fileInfo.Name;
-            if (string.IsNullOrWhiteSpace(this.imageFilename))
+            this.swatchesName = fileInfo.Name;
+            if (string.IsNullOrWhiteSpace(this.swatchesName))
             {
-                this.imageFilename = "Default";
+                this.swatchesName = "Default";
+            }
+            else
+            {
+                string extension = fileInfo.Extension;
+                this.swatchesName = this.swatchesName.Replace(extension, string.Empty);
+                this.swatchesName = this.swatchesName.Replace("_", " ");
+                this.swatchesName = this.swatchesName.Replace("-", " ");
+                this.swatchesName = this.swatchesName.BeautifyEnumString();
+                this.ImageTitle = this.swatchesName;
             }
 
             // Keep the original to display on the UI at best resolution 
@@ -227,7 +243,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         // Save swatches
         if (this.paletteDesignerModel.ActiveProject is not null)
         {
-            return this.paletteDesignerModel.SaveSwatches(this.imageFilename, swatches);
+            return this.paletteDesignerModel.SaveSwatches(this.swatchesName, swatches);
         }
 
         return false;

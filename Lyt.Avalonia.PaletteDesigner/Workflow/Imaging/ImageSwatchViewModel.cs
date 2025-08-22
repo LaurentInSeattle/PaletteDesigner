@@ -24,9 +24,9 @@ public sealed partial class ImageSwatchViewModel : ViewModel <ImageSwatchView>
         this.Cluster = cluster;
         RgbColor rgbColor = cluster.LabColor.ToRgb();
         this.ColorBrush = rgbColor.ToBrush();
-        this.RgbHex = string.Format("#  {0}", rgbColor.ToRgbHexString());
-        this.RgbDec = string.Format("\u2022  {0}", rgbColor.ToRgbDecString());
+        this.RgbHex = string.Format("# {0}", rgbColor.ToRgbHexString());
+        this.RgbDec = string.Format("\u2022 {0}", rgbColor.ToRgbDecString());
         double frequencyPercentage = 100.0 * cluster.Count / (double)cluster.Total;
-        this.Frequency = string.Format("\u03BD  {0:F1} %", frequencyPercentage);
+        this.Frequency = string.Format("\u03BD {0:F1} %", frequencyPercentage);
     }
 }
