@@ -1,10 +1,40 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.KMeans;
 
-public sealed class Clusterer(int k, int maxIterations = 100, int? seed = null)
+/* 
+ * 
+    The K-means algorithm is NOT deterministic. 
+
+    Random Initialization: 
+        K-means often starts by randomly selecting initial cluster centroids. 
+        This randomness means that running the algorithm multiple times on the exact same dataset 
+        can lead to different starting points and subsequently, different final cluster assignments 
+        and configurations.
+
+    Local Optima: 
+        Since K-means is an iterative algorithm that aims to minimize the within-cluster sum of squares (WCSS), 
+        it can converge to a local optimum rather than the global optimum. The initial random placement of centroids 
+        can influence which local optimum is reached.
+    
+    Different Cluster Configurations: 
+        Due to the random initialization and the possibility of converging to different local optima, running 
+        K-means multiple times can lead to variations in how data points are grouped into clusters, and even 
+        the assignment of cluster labels. 
+
+    Convergence: 
+        the K-means algorithm is guaranteed to converge. This convergence is due to the fact that each iteration of 
+        the algorithm either decreases the within-cluster sum of squares (WCSS) or leaves it unchanged. Since the WCSS 
+        is a non-negative value and is monotonically decreasing, it must eventually reach a stable state where no further 
+        improvements can be made. This stable state signifies convergence.
+
+*
+*/
+
+/// <summary> Implementation for CIE LAB Colors of the KMeans Algorithm </summary>
+/// <remarks> TODO: Make it generic </remarks>
+public sealed class Clusterer(int clusterCount, int maxIterations = 200)
 {
-    private readonly int clusterCount = k;
+    private readonly int clusterCount = clusterCount;
     private readonly int maxIterations = maxIterations;
-    private readonly Random random = seed.HasValue ? new Random(seed.Value) : new Random((int)DateTime.Now.Ticks);
 
     public List<Cluster> Discover(List<LabColor> data)
     {
@@ -14,15 +44,28 @@ public sealed class Clusterer(int k, int maxIterations = 100, int? seed = null)
             throw new ArgumentException("Not enough data points for the number of clusters.");
         }
 
-        // Randomly initialize centroids
-        var initialColors = data.OrderBy(_ => random.Next()).Take(clusterCount).ToList();
+        // Do not randomly initialize centroids to mitigate the lack of determinism.
+        // Instead: pick colors in the source list equally spaced. 
+        List<LabColor> initialColors = new(clusterCount);
+        int step = dataCount / clusterCount;
+        int dataIndex = 0;
+        for (int init = 0; init < clusterCount; ++ init )
+        {
+            initialColors.Add(data[dataIndex]);
+            dataIndex += step; 
+        }
+
         var centroids = new List<Cluster>(initialColors.Count);
         foreach (var color  in initialColors)
         {
             centroids.Add(new Cluster() { Count = 0 , LabColor = color });    
         }
 
+        // Early declarations to prevent creating and releasing these arrays on each iteration
         int[] assignments = new int[dataCount];
+        int[] counts = new int[clusterCount];
+
+        int lastIteration = 0;
         for (int iteration = 0; iteration < maxIterations; iteration++)
         {
             bool changed = false;
@@ -60,6 +103,7 @@ public sealed class Clusterer(int k, int maxIterations = 100, int? seed = null)
             // Exit early if no changes
             if (!changed)
             {
+                Debug.WriteLine("Clusters: Early break at iteration: " + iteration); 
                 break;
             }
 
@@ -70,28 +114,24 @@ public sealed class Clusterer(int k, int maxIterations = 100, int? seed = null)
                 newClusters[k] = new Cluster();
             }
 
-            int[] counts = new int[clusterCount];
-
-            void RecalculateCentroids(int from, int to)
+            // This loop cannot be parallelized easily 
+            Array.Clear(counts, 0, counts.Length);
+            for (int i = 0; i < dataCount; ++i)
             {
-                for (int i = from; i < to; ++i)
-                {
-                    int cluster = assignments[i];
-                    var colorAtCluster = newClusters[cluster].LabColor;
-                    var dataAtI = data[i];
-                    colorAtCluster.L += dataAtI.L;
-                    colorAtCluster.A += dataAtI.A;
-                    colorAtCluster.B += dataAtI.B;
-                    counts[cluster]++;
-                }
+                int cluster = assignments[i];
+                var colorAtCluster = newClusters[cluster].LabColor;
+                var dataAtI = data[i];
+                colorAtCluster.L += dataAtI.L;
+                colorAtCluster.A += dataAtI.A;
+                colorAtCluster.B += dataAtI.B;
+                counts[cluster]++;
             }
-
-            Parallelize.ActionOnIndices(dataCount, RecalculateCentroids);
 
             for (int j = 0; j < clusterCount; ++j)
             {
                 if (counts[j] == 0)
                 {
+                    Debug.WriteLine("Clusters: Cluster count is zero: " + iteration);
                     continue; // Avoid divide-by-zero
                 }
 
@@ -101,7 +141,11 @@ public sealed class Clusterer(int k, int maxIterations = 100, int? seed = null)
                     new LabColor( colorAtJ.L / countAtJ, colorAtJ.A / countAtJ, colorAtJ.B / countAtJ);
                 centroids[j].Count = countAtJ;
             }
+
+            lastIteration = iteration;
         }
+
+        Debug.WriteLine("Clusters: Completed iterations: " + ( 1 + lastIteration).ToString() );
 
         foreach (var centroid in centroids)
         {

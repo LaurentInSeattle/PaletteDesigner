@@ -3,7 +3,7 @@
 public sealed partial class ImagingViewModel : ViewModel<ImagingView>
 {
     private const int PixelCountMax = 1920 * 1080 / 4; // HD size divided by 4, about 1/2 Mega pixels 
-    private const int DepthAnalysis = 120; // Iterations for KMeans 
+    private const int DepthAnalysis = 250; // Iterations for KMeans 
     private const double BrightnessMin = 0.05;
     private const double BrightnessMax = 0.98;
 
@@ -72,8 +72,8 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
             this.imageFilename = fileInfo.Name;
             if (string.IsNullOrWhiteSpace(this.imageFilename))
             {
-                this.imageFilename = "Default"; 
-            } 
+                this.imageFilename = "Default";
+            }
 
             // Keep the original to display on the UI at best resolution 
             var sourceBitmap =
@@ -112,14 +112,14 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
 
     public bool ReProcessBitmap()
     {
-        if ( this.CalculationInProgress)
+        if (this.CalculationInProgress)
         {
-            return false; 
+            return false;
         }
 
         if (this.bitmapToProcess is not null)
         {
-            this.CalculationInProgress = true; 
+            this.CalculationInProgress = true;
             this.SpinViewModel.IsVisible = true;
             this.SpinViewModel.IsActive = true;
             this.DropViewModel.IsVisible = false;
@@ -151,7 +151,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
                         ImagingViewModel.DepthAnalysis / 2;
 
                 // Divide even further in DEBUG mode 
-                depthAnalysis = Debugger.IsAttached ? depthAnalysis / 2 : depthAnalysis;
+                depthAnalysis = Debugger.IsAttached ? (int)(0.75 * depthAnalysis) : depthAnalysis;
                 int clusters = this.paletteDesignerModel.ImagingAlgorithmClusters;
                 Debug.WriteLine("Iterations: " + depthAnalysis + " - Clusters: " + clusters);
 
@@ -227,7 +227,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         // Save swatches
         if (this.paletteDesignerModel.ActiveProject is not null)
         {
-            return this.paletteDesignerModel.SaveSwatches (this.imageFilename, swatches);
+            return this.paletteDesignerModel.SaveSwatches(this.imageFilename, swatches);
         }
 
         return false;
