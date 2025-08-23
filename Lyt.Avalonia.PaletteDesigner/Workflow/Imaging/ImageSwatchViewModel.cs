@@ -26,7 +26,17 @@ public sealed partial class ImageSwatchViewModel : ViewModel <ImageSwatchView>
         this.ColorBrush = rgbColor.ToBrush();
         this.RgbHex = string.Format("# {0}", rgbColor.ToRgbHexString());
         this.RgbDec = string.Format("\u2022 {0}", rgbColor.ToRgbDecString());
-        double frequencyPercentage = 100.0 * cluster.Count / (double)cluster.Total;
-        this.Frequency = string.Format("\u03BD {0:F1} %", frequencyPercentage);
+        this.Localize(); 
+
+        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
+    }
+
+    private void OnLanguageChanged(LanguageChangedMessage message) => this.Localize(); 
+
+    private void Localize() 
+    {
+        double frequencyPercentage = 100.0 * this.Cluster.Count / (double)this.Cluster.Total;
+        string occurences = this.Localize("Imaging.Occurences");
+        this.Frequency = string.Format("{0}: {1:F1} %", occurences, frequencyPercentage);
     }
 }

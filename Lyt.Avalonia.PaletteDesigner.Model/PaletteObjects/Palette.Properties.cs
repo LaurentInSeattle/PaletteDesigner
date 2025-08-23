@@ -39,7 +39,7 @@ public sealed partial class Palette
     // for both Triad and Square, otherwise ignored 
     // Degrees on the wheel 
     [JsonRequired]
-    public double SecondaryWheelDistance { get; set; } = 27.0;
+    public double SecondaryWheelDistance { get; set; } = 127.0;
 
     [JsonRequired]
     public bool AreShadesLocked { get; set; } = true;

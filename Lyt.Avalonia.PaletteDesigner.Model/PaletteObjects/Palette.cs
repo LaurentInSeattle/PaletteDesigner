@@ -4,9 +4,9 @@ public sealed partial class Palette
 {
     public void Reset()
     {
-        this.Kind = PaletteKind.TriadComplementary;
-        this.Primary.Wheel = 90.0;
-        this.Primary.UpdateFromWheel(this.Primary.Wheel);
+        this.Kind = PaletteKind.Triad;
+        this.Primary.Wheel = 105.0;
+        this.UpdatePrimaryWheelTriad();
         this.ResetAllShades();
     }
 

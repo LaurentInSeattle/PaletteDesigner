@@ -57,6 +57,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
             {
                 ImagePath = path,
                 Name = name,
+                IsDeepAlgorithmStrength = this.IsDeepImagingAlgorithmStrength,
                 Swatches = swatchList,
             };
 

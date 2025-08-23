@@ -155,6 +155,8 @@
 
     <system:String x:Key="Settings.ReminderText">Il vous est recommandé d'utiliser les images téléchargées uniquement comme fond d'écran. Pour toute autre utilisation, commerciale ou non, veuillez contacter le détenteur des droits d'auteur.</system:String>
 
+    <system:String x:Key="Imaging.Occurences">Occurences</system:String>
+
     <system:String x:Key="Imaging.DropZone">Zone de Glisser-déposer</system:String>
 
     <system:String x:Key="Imaging.DropZoneHelp">Faites glisser et déposez un fichier image ici pour créer une palette de couleurs coordonnées.</system:String>

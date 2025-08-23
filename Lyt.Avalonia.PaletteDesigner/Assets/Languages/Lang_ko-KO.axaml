@@ -155,6 +155,8 @@
 
     <system:String x:Key="Settings.ReminderText">다운로드 된 이미지를 벽지로만 사용하는 것이 좋습니다.  다른 용도로 상업적이든 다른 용도로 보려면 저작권 보유자에게 문의하십시오.</system:String>
 
+    <system:String x:Key="Imaging.Occurences">발생</system:String>
+
     <system:String x:Key="Imaging.DropZone">드래그 앤 드롭 존</system:String>
 
     <system:String x:Key="Imaging.DropZoneHelp">일치하는 색상 팔레트를 만듭니다.</system:String>

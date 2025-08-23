@@ -155,6 +155,8 @@
 
     <system:String x:Key="Settings.ReminderText">Препоръчваме ви да използвате изтеглените изображения само като тапет.  За всяка друга употреба, търговска или по друг начин, моля, свържете се с притежателя на авторските права.</system:String>
 
+    <system:String x:Key="Imaging.Occurences">Събития</system:String>
+
     <system:String x:Key="Imaging.DropZone">Плъзнете и пуснете зона</system:String>
 
     <system:String x:Key="Imaging.DropZoneHelp">Плъзнете и пуснете файл с изображения тук, за да създадете съвпадаща цветова палитра.</system:String>

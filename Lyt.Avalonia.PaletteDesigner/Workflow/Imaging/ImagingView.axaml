@@ -100,7 +100,7 @@
 					</ItemsControl.ItemsPanel>
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
-							<vm:ImageSwatchView Margin="10 24 10 0" Width="270"/>
+							<vm:ImageSwatchView Margin="8 24 8 0" Width="280"/>
 						</DataTemplate>
 					</ItemsControl.ItemTemplate>
 				</ItemsControl>

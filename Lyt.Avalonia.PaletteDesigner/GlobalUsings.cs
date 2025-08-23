@@ -117,6 +117,7 @@ global using Lyt.Avalonia.PaletteDesigner.Model.Utilities;
 global using Lyt.Avalonia.PaletteDesigner.Model.KMeans;
 global using Lyt.Avalonia.PaletteDesigner.Model.ColorObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
+global using Lyt.Avalonia.PaletteDesigner.Model.ProjectObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.ThemeObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.SwatchObjects;
 

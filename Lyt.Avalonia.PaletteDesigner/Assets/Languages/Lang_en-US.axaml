@@ -107,6 +107,7 @@
 	<!-- Model / Service -->
 
 	<!-- Imaging  -->
+	<system:String x:Key="Imaging.Occurences">Occurences</system:String>
 	<system:String x:Key="Imaging.DropZone">Drag and Drop Zone</system:String>
 	<system:String x:Key="Imaging.DropZoneHelp">Drag and drop an image file here to create a matching color palette.</system:String>
 	<system:String x:Key="Imaging.InProgress">Calculations in progress</system:String>

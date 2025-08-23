@@ -155,6 +155,8 @@
 
     <system:String x:Key="Settings.ReminderText">Ձեզ խորհուրդ է տրվում ներբեռնված պատկերները օգտագործել միայն որպես պաստառ:  Any անկացած այլ օգտագործման, առեւտրային կամ այլ կերպ դիմեք Հեղինակային իրավունքի սեփականատիրոջը:</system:String>
 
+    <system:String x:Key="Imaging.Occurences">Տեղի են ունենում</system:String>
+
     <system:String x:Key="Imaging.DropZone">Քաշեք եւ կաթիլային գոտի</system:String>
 
     <system:String x:Key="Imaging.DropZoneHelp">Քաշեք եւ թողեք պատկերի ֆայլը այստեղ `համապատասխանող գույնի պալիտրա ստեղծելու համար:</system:String>

@@ -39,4 +39,10 @@ public sealed partial class ImagingToolbarViewModel : ViewModel<ImagingToolbarVi
         var viewModel = App.GetRequiredService<ImagingViewModel>();
         viewModel.ReProcessBitmap();
     }
+
+    public void ProgrammaticUpdate(ColorSwatches swatches)
+    {
+        this.IsDeepAlgorithmStrength = swatches.IsDeepAlgorithmStrength;
+        this.ClustersSliderValue = swatches.Swatches.Count;
+    }
 }

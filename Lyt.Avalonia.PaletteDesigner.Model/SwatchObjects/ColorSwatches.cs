@@ -6,6 +6,8 @@ public sealed class ColorSwatches
 
     public string Name { get; set; } = string.Empty;
 
+    public bool IsDeepAlgorithmStrength { get; set; }
+
     public List<Swatch> Swatches { get; set; } = [];
 
     public ColorSwatches DeepClone()

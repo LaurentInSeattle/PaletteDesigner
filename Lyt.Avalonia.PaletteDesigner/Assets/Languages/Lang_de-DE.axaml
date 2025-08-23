@@ -155,6 +155,8 @@
 
     <system:String x:Key="Settings.ReminderText">Sie werden empfohlen, die heruntergeladenen Bilder nur als Hintergrundbild zu verwenden.  Für eine andere Verwendung, kommerziell oder auf andere Weise wenden Sie sich bitte an den Inhaber des Urheberrechts.</system:String>
 
+    <system:String x:Key="Imaging.Occurences">Vorkommen</system:String>
+
     <system:String x:Key="Imaging.DropZone">Drag -and -Drop -Zone</system:String>
 
     <system:String x:Key="Imaging.DropZoneHelp">Ziehen Sie hier eine Bilddatei, um eine passende Farbpalette zu erstellen.</system:String>

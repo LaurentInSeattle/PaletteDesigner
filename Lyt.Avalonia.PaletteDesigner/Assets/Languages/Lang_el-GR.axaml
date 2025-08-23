@@ -155,6 +155,8 @@
 
     <system:String x:Key="Settings.ReminderText">Σας συμβουλεύουμε να χρησιμοποιήσετε τις εικόνες που κατεβάσουν μόνο ως ταπετσαρία.  Για οποιαδήποτε άλλη χρήση, εμπορική ή άλλως, επικοινωνήστε με τον κάτοχο των πνευματικών δικαιωμάτων.</system:String>
 
+    <system:String x:Key="Imaging.Occurences">Εμφανίσεις</system:String>
+
     <system:String x:Key="Imaging.DropZone">Σύνθεση και πτώση ζώνης</system:String>
 
     <system:String x:Key="Imaging.DropZoneHelp">Σύρετε και ρίξτε ένα αρχείο εικόνας εδώ για να δημιουργήσετε μια παλέτα χρωμάτων που ταιριάζει.</system:String>

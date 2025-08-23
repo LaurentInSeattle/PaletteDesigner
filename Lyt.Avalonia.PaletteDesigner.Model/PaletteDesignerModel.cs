@@ -78,6 +78,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
             // Copy all properties with attribute [JsonRequired]
             base.CopyJSonRequiredProperties<PaletteDesignerModel>(model);
 
+            bool mustResetPalette = false;
             if (this.Projects.Count == 0)
             {
                 // Create a default project and make it active 
@@ -91,10 +92,12 @@ public sealed partial class PaletteDesignerModel : ModelBase
                     Palette = new()
                     {
                         Name = "Default",
-                        Kind = PaletteKind.Duochromatic,
+                        Kind = PaletteKind.Triad,
                     },
                     ColorTheme = new(ColorThemeDefinition.CreateFluent()),
                 };
+
+                mustResetPalette = true;
                 this.Projects.Add(project);
                 this.ActiveProject = project;
             }
@@ -105,6 +108,13 @@ public sealed partial class PaletteDesignerModel : ModelBase
             }
 
             this.LoadStaticColorData();
+
+            if (mustResetPalette)
+            {
+                // Need to do that AFTER loading the hue tables 
+                this.ActiveProject.Palette.Reset();
+            }
+
             return Task.CompletedTask;
         }
         catch (Exception ex)
