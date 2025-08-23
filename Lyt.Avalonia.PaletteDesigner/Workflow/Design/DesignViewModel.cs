@@ -54,11 +54,20 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
                 return;
             }
 
-            var palette = this.Palette;
-            palette.Reset();
-            this.ColorWheelViewModel.OnWheelAngleChanged(WheelKind.Primary, palette.Primary.Wheel);
-        }, DispatcherPriority.Background);
+            this.OnModelPaletteUpdated(null);
+            Schedule.OnUiThread(100, () =>
+            {
+                // Need to delay again or else controls will not be ready 
+                this.UpdateToolbars(); 
+            }, DispatcherPriority.Background);
 
+        }, DispatcherPriority.Background);
+    }
+
+    private void UpdateToolbars ()
+    {
+        this.ModelSelectionToolbarViewModel.ProgrammaticSelect(this.Palette);
+        this.ShadeSelectionToolbarViewModel.ProgrammaticSelect(this.Palette);
     }
 
     public Palette Palette =>

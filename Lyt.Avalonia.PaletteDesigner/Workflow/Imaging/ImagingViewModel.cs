@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Imaging;
 
+using Lyt.Avalonia.PaletteDesigner.Model.ProjectObjects;
+
 public sealed partial class ImagingViewModel : ViewModel<ImagingView>
 {
     private const int PixelCountMax = 1920 * 1080 / 4; // HD size divided by 4, about 1/2 Mega pixels 
@@ -51,10 +53,12 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
             IsVisible = false,
             IsActive = false,
         };
+
         this.DropViewModel = new DropViewModel
         {
             IsVisible = true
         };
+
         this.ImagingToolbarViewModel = new();
         this.ExportToolbarViewModel = new(PaletteFamily.Image);
         this.SwatchesOpacity = 0.0;
@@ -62,6 +66,28 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         this.SwatchesViewModels = [];
 
         this.CalculationInProgress = false;
+    }
+
+    public override void OnViewLoaded()
+    {
+        base.OnViewLoaded();
+
+        if (this.paletteDesignerModel.ActiveProject is not Project project)
+        {
+            return;
+        }
+
+        if (project.Swatches is not ColorSwatches swatches)
+        {
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(swatches.ImagePath))
+        {
+            return;
+        }
+
+        this.Select(swatches.ImagePath);
     }
 
     public bool Select(string path)
@@ -243,7 +269,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         // Save swatches
         if (this.paletteDesignerModel.ActiveProject is not null)
         {
-            return this.paletteDesignerModel.SaveSwatches(this.swatchesName, swatches);
+            return this.paletteDesignerModel.SaveSwatches(this.ImagePath, this.swatchesName, swatches);
         }
 
         return false;

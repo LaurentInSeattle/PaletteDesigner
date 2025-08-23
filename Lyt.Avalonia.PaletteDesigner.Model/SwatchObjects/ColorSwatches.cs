@@ -2,6 +2,8 @@
 
 public sealed class ColorSwatches
 {
+    public string ImagePath { get; set; } = string.Empty;
+
     public string Name { get; set; } = string.Empty;
 
     public List<Swatch> Swatches { get; set; } = [];
@@ -14,13 +16,12 @@ public sealed class ColorSwatches
             list.Add(swatch.DeepClone());
         }
 
-        ColorSwatches colorSwatches = new()
+        return new()
         {
+            ImagePath = new string(this.ImagePath),
             Name = new string(this.Name),
             Swatches = list, 
         };
-
-        return colorSwatches;
     }
 
     public AseDocument ToAseDocument()

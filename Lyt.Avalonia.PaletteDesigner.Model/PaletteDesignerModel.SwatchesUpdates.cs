@@ -38,7 +38,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
         return action(swatches);
     }
 
-    public bool SaveSwatches(string name, List<Cluster> clusters)
+    public bool SaveSwatches(string path, string name, List<Cluster> clusters)
         => this.ActionSwatches((swatches) =>
         {
             List<Swatch> swatchList = new(clusters.Count);
@@ -47,21 +47,15 @@ public sealed partial class PaletteDesignerModel : ModelBase
                 swatchList.Add(new Swatch(cluster));
             }
 
-            ColorSwatches colorSwatches = new()
-            {
-                Name = name,
-                Swatches = swatchList,
-            };
-
-            this.ActiveProject!.Swatches = colorSwatches;
-            return true;
+            return this.SaveSwatches(path, name, swatchList); 
         });
 
-    public bool SaveSwatches(string name, List<Swatch> swatchList)
+    public bool SaveSwatches(string path, string name, List<Swatch> swatchList)
         => this.ActionSwatches((swatches) =>
         {
             ColorSwatches colorSwatches = new()
             {
+                ImagePath = path,
                 Name = name,
                 Swatches = swatchList,
             };

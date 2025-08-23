@@ -1,5 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
+using Lyt.Avalonia.PaletteDesigner.Model.ProjectObjects;
 using static Lyt.Persistence.FileManagerModel;
 
 public sealed partial class PaletteDesignerModel : ModelBase
@@ -77,25 +78,33 @@ public sealed partial class PaletteDesignerModel : ModelBase
             // Copy all properties with attribute [JsonRequired]
             base.CopyJSonRequiredProperties<PaletteDesignerModel>(model);
 
-            // Create a default project and make it active 
-            Project project = new()
+            if (this.Projects.Count == 0)
             {
-                Name = "Default",
-                Format = PaletteExportFormat.AvaloniaAxaml,
-                FolderPath = string.Empty,
-                Created = DateTime.Now,
-                LastUpdated = DateTime.Now,
-                Palette = new()
+                // Create a default project and make it active 
+                Project project = new()
                 {
                     Name = "Default",
-                    Kind = PaletteKind.Duochromatic,
-                },
-                ColorTheme = new(ColorThemeDefinition.CreateFluent()),
-            };
+                    Format = PaletteExportFormat.AvaloniaAxaml,
+                    FolderPath = string.Empty,
+                    Created = DateTime.Now,
+                    LastUpdated = DateTime.Now,
+                    Palette = new()
+                    {
+                        Name = "Default",
+                        Kind = PaletteKind.Duochromatic,
+                    },
+                    ColorTheme = new(ColorThemeDefinition.CreateFluent()),
+                };
+                this.Projects.Add(project);
+                this.ActiveProject = project;
+            }
+            else
+            {
+                Project project = this.Projects[0];
+                this.ActiveProject = project;
+            }
 
             this.LoadStaticColorData();
-            this.ActiveProject = project;
-
             return Task.CompletedTask;
         }
         catch (Exception ex)

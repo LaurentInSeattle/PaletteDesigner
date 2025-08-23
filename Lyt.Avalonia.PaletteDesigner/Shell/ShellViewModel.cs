@@ -1,5 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Shell;
 
+using System.Threading.Tasks;
 using static MessagingExtensions;
 using static ViewActivationMessage;
 
@@ -209,16 +210,38 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
     public void OnClose() => OnExit();
 
     [RelayCommand]
-    public void OnDebug()
-    {
-        this.paletteDesignerModel.Dump();
-    }
+    public void OnDebug() => this.paletteDesignerModel.Dump();
 
     private static async void OnExit()
     {
         var application = App.GetRequiredService<IApplicationBase>();
         await application.Shutdown();
     }
+
+    /// <summary> Invoked when closing from the application Close X button </summary>
+    /// <returns> True to close immediately </returns>
+    public async Task<bool> CanCloseAsync()
+    {
+        // Not Needed for now 
+        //
+        //var keyboard = App.GetRequiredService<Keyboard>();
+        //if (keyboard.Modifiers.HasFlag(KeyModifiers.Shift))
+        //{
+        //    // Do not check for dirtiness when "shifting" 
+        //    return true;
+        //}
+
+        // Not Needed for now 
+        //
+        //if (this.dialogService.IsModal)
+        //{
+        //    this.dialogService.Dismiss();
+        //}
+
+        await this.paletteDesignerModel.Save();
+        return true;
+    }
+
 
 #pragma warning restore CA1822
 }

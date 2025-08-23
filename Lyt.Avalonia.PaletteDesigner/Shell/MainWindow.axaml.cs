@@ -10,7 +10,7 @@ public partial class MainWindow : Window
     {
         this.InitializeComponent();
 
-        this.Closing += this.OnMainWindowClosing;
+        this.Closing += this.OnMainWindowClosingAsync;
         this.Loaded += (s, e) => { Dispatch.OnUiThread(this.OnLoadedOnUi); };
         this.Activated += (s, e) => this.Focus(); 
     }
@@ -22,7 +22,7 @@ public partial class MainWindow : Window
         this.Content = vm.View;
     }
     
-    private void OnMainWindowClosing(object? sender, CancelEventArgs e)
+    private async void OnMainWindowClosingAsync(object? sender, CancelEventArgs e)
     {
         if (!this.isShutdownComplete)
         {
@@ -31,8 +31,12 @@ public partial class MainWindow : Window
 
         if (!this.isShutdownRequested)
         {
-            this.isShutdownRequested = true;
-            Schedule.OnUiThread(50,
+            var vm = App.GetRequiredService<ShellViewModel>();
+            bool canClose = await vm.CanCloseAsync();
+            if (canClose)
+            {
+                this.isShutdownRequested = true;
+                Schedule.OnUiThread(50,
                 async () =>
                 {
                     var application = App.GetRequiredService<IApplicationBase>();
@@ -40,6 +44,7 @@ public partial class MainWindow : Window
                     this.isShutdownComplete = true;
                     this.Close();
                 }, DispatcherPriority.Normal);
+            }
         }
     }
 }

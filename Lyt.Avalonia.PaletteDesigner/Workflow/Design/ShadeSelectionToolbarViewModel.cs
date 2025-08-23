@@ -1,8 +1,14 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Design;
 
+using Lyt.Avalonia.Controls.Glyphs;
+using Lyt.Avalonia.Mvvm.Utilities;
+using static GeneralExtensions;
+
 public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSelectionToolbarView>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
+
+    private bool isProgrammaticUpdate;
 
     [ObservableProperty]
     private SolidColorBrush primaryBaseBrush = new();
@@ -67,6 +73,11 @@ public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSele
     [RelayCommand]
     public void OnLockSelect(object? parameter)
     {
+        if (this.isProgrammaticUpdate)
+        {
+            return;
+        }
+
         if (parameter is string tag)
         {
             // Update model 
@@ -78,6 +89,11 @@ public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSele
     [RelayCommand]
     public void OnColorSelect(object? parameter)
     {
+        if (this.isProgrammaticUpdate)
+        {
+            return;
+        }
+
         if (parameter is string tag)
         {
             // Update model 
@@ -114,5 +130,39 @@ public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSele
         this.IsComplementaryVisible = paletteKind.HasComplementaryMarker();
         this.IsSecondary1Visible = paletteKind.HasSecondary1Marker();
         this.IsSecondary2Visible = paletteKind.HasSecondary2Marker();
+    }
+
+    public void ProgrammaticSelect(Palette palette)
+    {
+        GlyphButton? glyphButtonLocked = this.View.FindChildControlParametrized<GlyphButton>(ShadeMode.Locked.ToString());
+        GlyphButton? glyphButtonUnlocked = this.View.FindChildControlParametrized<GlyphButton>(ShadeMode.Unlocked.ToString());
+        if ((glyphButtonLocked is not null)&& (glyphButtonUnlocked is not null))
+        {
+            With(ref this.isProgrammaticUpdate, () =>
+            {
+                glyphButtonLocked.IsSelected = palette.AreShadesLocked;
+                glyphButtonUnlocked.IsSelected = !palette.AreShadesLocked;
+            });
+        }
+
+        if (!palette.AreShadesLocked)
+        {
+            string parameterWheel = palette.SelectedWheel.ToString();
+            GlyphButton? glyphButtonWheel = this.View.FindChildControlParametrized<GlyphButton>(parameterWheel);
+            if (glyphButtonWheel is not null)
+            {
+                With(ref this.isProgrammaticUpdate, () =>
+                {
+                    if (glyphButtonWheel.Group is SelectionGroup group)
+                    {
+                        group.Select(glyphButtonWheel);
+                    }
+                    else
+                    {
+                        glyphButtonWheel.IsSelected = true;
+                    }
+                });
+            }
+        }
     }
 }
