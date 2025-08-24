@@ -39,7 +39,7 @@
 				CanMove="{Binding CanMoveSecondary1}"				
 				Tag="Secondary1"
 				FillBrush="#A0A0A0"
-				StrokeBrush="Aquamarine"
+				StrokeBrush="DarkOrange"
 				Canvas.Top="0" Canvas.Left="0"
 				/>
 			<controls:MarkerControl
@@ -56,8 +56,8 @@
 				IsVisible="{Binding HasComplementaryMarker}"
 				CanMove="{Binding CanMoveComplementary}"
 				Tag="Complementary"
-				FillBrush="#A0A0A0"
-				StrokeBrush="Aquamarine"
+				FillBrush="#F0F0F0"
+				StrokeBrush="DarkBlue"
 				Canvas.Top="0" Canvas.Left="0"
 				/>
 			<controls:MarkerControl

@@ -6,6 +6,8 @@ and also XAML, AXAML and JSON for use in various desktop or mobile applications,
 
 <p align="left"><img src="Screenshots/Screenshot 2025-08-07.png" height="600"/>
 
+<p align="left"><img src="Screenshots/Screenshot 2025-08-24.png" height="600"/>
+
 # Localization
 - Human translated: Italian, French and English
 - Machine translated: Spanish, Ukrainian, Bulgarian, Armenian, Greek, German, Japanese, Chinese, Korean, Magyar, Hindi and Bengali. 
@@ -13,12 +15,6 @@ and also XAML, AXAML and JSON for use in various desktop or mobile applications,
 # Coming Soon 
 
 - Ability to create custom color themes, first for the Avalonia "Fluent Theme". 
-
-# Still a Work In Progress
-
-Now able to define all 'Classic' and 'Free Style' palettes, define shades and tints.
-
-Now able to export palettes in CSS, Avalonia aXaml and Microsoft Xaml.
 
 # Build it...
 
