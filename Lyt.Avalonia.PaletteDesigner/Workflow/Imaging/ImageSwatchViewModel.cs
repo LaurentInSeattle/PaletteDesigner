@@ -1,8 +1,10 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Imaging;
 
+using Lyt.Avalonia.PaletteDesigner.Model.KMeans.Generic;
+
 public sealed partial class ImageSwatchViewModel : ViewModel <ImageSwatchView>
 {
-    public readonly Cluster Cluster; 
+    public readonly Cluster<LabColor> Cluster; 
         
     [ObservableProperty]
     public SolidColorBrush colorBrush;
@@ -19,10 +21,10 @@ public sealed partial class ImageSwatchViewModel : ViewModel <ImageSwatchView>
     [ObservableProperty]
     private string hsv = string.Empty;
 
-    public ImageSwatchViewModel(Cluster cluster)
+    public ImageSwatchViewModel(Cluster<LabColor> cluster)
     {
         this.Cluster = cluster;
-        RgbColor rgbColor = cluster.LabColor.ToRgb();
+        RgbColor rgbColor = cluster.Payload.ToRgb();
         this.ColorBrush = rgbColor.ToBrush();
         this.RgbHex = string.Format("# {0}", rgbColor.ToRgbHexString());
         this.RgbDec = string.Format("\u2022 {0}", rgbColor.ToRgbDecString());

@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
+using Lyt.Avalonia.PaletteDesigner.Model.KMeans.Generic;
+
 public sealed partial class PaletteDesignerModel : ModelBase
 {
     public Palette? GenerateFromBgraImageBuffer(
@@ -151,10 +153,16 @@ public sealed partial class PaletteDesignerModel : ModelBase
         return colors;
     }
 
-    public static List<Cluster> ExtractSwatches(RgbColor[] rgbPixels, int clusterCount, int depthAnalysis)
+    //public static List<Cluster> ExtractSwatches(RgbColor[] rgbPixels, int clusterCount, int depthAnalysis)
+    //{
+    //    List<LabColor> labPixels = [.. rgbPixels.Select(rgb => new LabColor(rgb))];
+    //    return new Clusterer(clusterCount, depthAnalysis).Discover(labPixels);
+    //}
+
+    public static List<Cluster<LabColor>> ExtractSwatches(RgbColor[] rgbPixels, int clusterCount, int depthAnalysis)
     {
         List<LabColor> labPixels = [.. rgbPixels.Select(rgb => new LabColor(rgb))];
-        return new Clusterer(clusterCount, depthAnalysis).Discover(labPixels);
+        return new Clusterer<LabColor>(clusterCount, depthAnalysis).Discover(labPixels);
     }
 
     private List<int> FindPeaks(Dictionary<int, int> hues, int width)

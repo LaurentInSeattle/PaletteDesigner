@@ -1,12 +1,14 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.SwatchObjects;
 
+using Lyt.Avalonia.PaletteDesigner.Model.KMeans.Generic;
+
 public sealed class Swatch
 {
     public Swatch() { }
 
-    public Swatch(Cluster cluster)
+    public Swatch(Cluster<LabColor> cluster)
     {
-        var rgbColor = cluster.LabColor.ToRgb();
+        var rgbColor = cluster.Payload.ToRgb();
         this.HsvColor = rgbColor.ToHsv();
         this.Usage = cluster.Count / (double)cluster.Total;
 

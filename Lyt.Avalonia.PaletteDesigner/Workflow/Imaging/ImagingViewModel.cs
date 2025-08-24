@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Imaging;
 
+using Lyt.Avalonia.PaletteDesigner.Model.KMeans.Generic;
+
 public sealed partial class ImagingViewModel : ViewModel<ImagingView>
 {
     private const int PixelCountMax = 1920 * 1080 / 4; // HD size divided by 4, about 1/2 Mega pixels 
@@ -227,7 +229,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         }
     }
 
-    private bool ProcessSwatches(List<Cluster> swatches)
+    private bool ProcessSwatches(List<Cluster<LabColor>> swatches)
     {
         this.SpinViewModel.IsActive = false;
         this.SpinViewModel.IsVisible = false;
@@ -237,7 +239,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         foreach (var swatch in swatches)
         {
             // Eliminate colors too dark or too bright 
-            var rgbColor = swatch.LabColor.ToRgb();
+            var rgbColor = swatch.Payload.ToRgb();
             Model.ColorObjects.HsvColor hsvColor = rgbColor.ToHsv();
             double brightness = hsvColor.V;
             if ((brightness > BrightnessMin) || (brightness < BrightnessMax))

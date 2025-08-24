@@ -63,7 +63,11 @@ public sealed class Clusterer<T>(int clusterCount, int maxIterations = 200)
 
         // Early declarations to prevent creating and releasing these arrays on each iteration
         int[] assignments = new int[dataCount];
-        int[] counts = new int[clusterCount];
+        var values = new List<T>[clusterCount];
+        for (int k = 0; k < clusterCount; ++k)
+        {
+            values[k] = [];
+        }
 
         int lastIteration = 0;
         for (int iteration = 0; iteration < maxIterations; iteration++)
@@ -108,39 +112,48 @@ public sealed class Clusterer<T>(int clusterCount, int maxIterations = 200)
             }
 
             // Recalculate centroids
-            var newClusters = new Cluster<T>[clusterCount];
-            for (int k = 0; k < clusterCount; k++)
+            for (int k = 0; k < clusterCount; ++k)
             {
-                newClusters[k] = new Cluster<T>();
+                values[k].Clear();
             }
 
-            // This loop cannot be parallelized easily 
-            Array.Clear(counts, 0, counts.Length);
-            //for (int i = 0; i < dataCount; ++i)
-            //{
-            //    int cluster = assignments[i];
-            //    var colorAtCluster = newClusters[cluster].LabColor;
-            //    var dataAtI = data[i];
-            //    colorAtCluster.L += dataAtI.L;
-            //    colorAtCluster.A += dataAtI.A;
-            //    colorAtCluster.B += dataAtI.B;
-            //    counts[cluster]++;
-            //}
+            void AggregateAssignments(int from, int to)
+            {
+                for (int iData = from; iData < to; ++iData)
+                {
+                    int clusterIndex = assignments[iData];
+                    // Too slow: 
+                    //lock (values[clusterIndex])
+                    //{
+                        values[clusterIndex].Add(data[iData]);
+                    // }
+                }
+            }
 
-            //for (int j = 0; j < clusterCount; ++j)
-            //{
-            //    if (counts[j] == 0)
-            //    {
-            //        Debug.WriteLine("Clusters: Cluster count is zero: " + iteration);
-            //        continue; // Avoid divide-by-zero
-            //    }
+            AggregateAssignments(0, dataCount);
 
-            //    var colorAtJ = newClusters[j].LabColor;
-            //    int countAtJ = counts[j];
-            //    centroids[j].LabColor = 
-            //        new LabColor( colorAtJ.L / countAtJ, colorAtJ.A / countAtJ, colorAtJ.B / countAtJ);
-            //    centroids[j].Count = countAtJ;
-            //}
+            // This below fails (values need a lock - and that's slow)
+            // Adding the lock and using multiple threads is slower that the single threaded version. 
+            // So, NOPE, no gain: Parallelize.ActionOnIndices(dataCount, AggregateAssignments);
+
+            void CalculateCentroids(int from, int to)
+            {
+                for (int centroidIndex = from; centroidIndex < to; ++centroidIndex)
+                {
+                    List<T> list = values[centroidIndex];
+                    int clusterCountAtIndex = list.Count;
+                    if (clusterCountAtIndex == 0)
+                    {
+                        Debug.WriteLine("Clusters: Cluster count is zero: " + iteration);
+                        continue; // Avoid divide-by-zero
+                    }
+
+                    T average = T.Average(list);
+                    centroids[centroidIndex] = new Cluster<T>() { Count = clusterCountAtIndex, Payload = average };
+                }
+            }
+
+            Parallelize.ActionOnIndices(clusterCount, CalculateCentroids);
 
             lastIteration = iteration;
         }

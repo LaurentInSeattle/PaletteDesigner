@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
+using Lyt.Avalonia.PaletteDesigner.Model.KMeans.Generic;
+
 public sealed partial class PaletteDesignerModel : ModelBase
 {
     private bool suspendSwatchesUpdates;
@@ -38,11 +40,11 @@ public sealed partial class PaletteDesignerModel : ModelBase
         return action(swatches);
     }
 
-    public bool SaveSwatches(string path, string name, List<Cluster> clusters)
+    public bool SaveSwatches(string path, string name, List<Cluster<LabColor>> clusters)
         => this.ActionSwatches((swatches) =>
         {
             List<Swatch> swatchList = new(clusters.Count);
-            foreach (Cluster cluster in clusters)
+            foreach (Cluster<LabColor> cluster in clusters)
             {
                 swatchList.Add(new Swatch(cluster));
             }
