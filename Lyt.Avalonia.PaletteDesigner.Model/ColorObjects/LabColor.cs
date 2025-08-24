@@ -1,6 +1,8 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.ColorObjects;
 
-public sealed class LabColor
+using Lyt.Avalonia.PaletteDesigner.Model.KMeans.Generic;
+
+public sealed class LabColor : IClusterable<LabColor>
 {
     public double L { get; set; }
 
@@ -63,10 +65,42 @@ public sealed class LabColor
 
     public static double Distance(LabColor lab1, LabColor lab2)
     {
+        if (lab1 is null || lab2 is null)
+        {
+            throw new ArgumentNullException(nameof(lab1));
+        }
+
+        if (lab1 == lab2)
+        {
+            return 0.0;
+        }
+
         double deltaL = lab1.L - lab2.L;
         double deltaA = lab1.A - lab2.A;
         double deltaB = lab1.B - lab2.B;
         return Math.Sqrt(deltaL * deltaL + deltaA * deltaA + deltaB * deltaB);
+    }
+
+    public static LabColor Average(IEnumerable<LabColor> labs)
+    {
+        if (!labs.Any())
+        {
+            throw new ArgumentException("Empty sequence");
+        }
+
+        double sumL = 0.0;
+        double sumA = 0.0;
+        double sumB = 0.0;
+        int count = 0;
+        foreach (LabColor lab in labs)
+        {
+            sumL += lab.L;
+            sumA += lab.A;
+            sumB += lab.B;
+            ++count;
+        }
+
+        return new LabColor(sumL / count, sumA / count, sumB / count);
     }
 
     public RgbColor ToRgb()
