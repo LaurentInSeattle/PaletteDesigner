@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Imaging;
 
-using Lyt.Avalonia.PaletteDesigner.Model.KMeans.Generic;
-
 public sealed partial class ImageSwatchViewModel : ViewModel <ImageSwatchView>
 {
     public readonly Cluster<LabColor> Cluster; 

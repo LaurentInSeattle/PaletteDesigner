@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Imaging;
 
-using Lyt.Avalonia.PaletteDesigner.Model.KMeans.Generic;
-
 public sealed partial class ImagingViewModel : ViewModel<ImagingView>
 {
     private const int PixelCountMax = 1920 * 1080 / 4; // HD size divided by 4, about 1/2 Mega pixels 

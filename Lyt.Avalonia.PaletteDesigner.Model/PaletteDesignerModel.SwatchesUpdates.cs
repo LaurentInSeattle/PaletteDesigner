@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
-using Lyt.Avalonia.PaletteDesigner.Model.KMeans.Generic;
-
 public sealed partial class PaletteDesignerModel : ModelBase
 {
     private bool suspendSwatchesUpdates;

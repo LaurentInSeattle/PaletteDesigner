@@ -36,6 +36,7 @@ global using Lyt.Utilities.Parallel;
 global using Lyt.Avalonia.PaletteDesigner.Model.Messaging;
 global using Lyt.Avalonia.PaletteDesigner.Model.ColorObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.KMeans;
+global using Lyt.Avalonia.PaletteDesigner.Model.KMeans.Generic;
 global using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.ProjectObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.ThemeObjects;

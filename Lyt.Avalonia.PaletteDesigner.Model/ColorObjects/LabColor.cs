@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.ColorObjects;
 
-using Lyt.Avalonia.PaletteDesigner.Model.KMeans.Generic;
-
 public sealed class LabColor : IClusterable<LabColor>
 {
     public double L { get; set; }
