@@ -1,6 +1,10 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.TextSamples;
 
-public sealed partial class TextPreviewPanelViewModel : ViewModel<TextPreviewPanelView>
+public sealed partial class TextPreviewPanelViewModel : 
+    ViewModel<TextPreviewPanelView>,
+    IRecipient<TextSamplesVisibilityMessage>,
+    IRecipient<ModelTextSamplesDisplayModeUpdated>,
+    IRecipient<ModelPaletteUpdatedMessage>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
 
@@ -20,9 +24,9 @@ public sealed partial class TextPreviewPanelViewModel : ViewModel<TextPreviewPan
         this.TextPreviewViewModels = [];
         this.Visible = false;
 
-        this.Messenger.Subscribe<TextSamplesVisibilityMessage>(this.OnTextSamplesVisibility);
-        this.Messenger.Subscribe<ModelTextSamplesDisplayModeUpdated>(this.OnModelTextSamplesDisplayMode);
-        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
+        this.Subscribe<TextSamplesVisibilityMessage>();
+        this.Subscribe<ModelTextSamplesDisplayModeUpdated>();
+        this.Subscribe<ModelPaletteUpdatedMessage>();
     }
 
     public void Show(bool show = true)
@@ -44,11 +48,11 @@ public sealed partial class TextPreviewPanelViewModel : ViewModel<TextPreviewPan
         this.UpdateAllSamples();
     }
 
-    private void OnModelTextSamplesDisplayMode(ModelTextSamplesDisplayModeUpdated _) => this.UpdateAllSamples();
+    public void Receive(ModelTextSamplesDisplayModeUpdated _) => this.UpdateAllSamples();
 
-    private void OnTextSamplesVisibility(TextSamplesVisibilityMessage message) => this.Show(message.Show);
+    public void Receive(TextSamplesVisibilityMessage message)  => this.Show(message.Show);
 
-    private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage _) => this.UpdateAllSamples(); 
+    public void Receive(ModelPaletteUpdatedMessage _)  => this.UpdateAllSamples(); 
 
     private void UpdateAllSamples() 
     { 

@@ -2,7 +2,10 @@
 
 using Lyt.Avalonia.PaletteDesigner.Model.ProjectObjects;
 
-public sealed partial class TextPreviewViewModel : ViewModel<TextPreviewView>
+public sealed partial class TextPreviewViewModel : 
+    ViewModel<TextPreviewView>,
+    IRecipient<ModelPaletteUpdatedMessage>,
+    IRecipient<LanguageChangedMessage>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
 
@@ -35,8 +38,8 @@ public sealed partial class TextPreviewViewModel : ViewModel<TextPreviewView>
         this.Colorize();
         this.Localize();
 
-        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
-        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
+        this.Subscribe<ModelPaletteUpdatedMessage>();
+        this.Subscribe<LanguageChangedMessage>();
     }
 
     public void Update(TextSampleSetup textSampleSetup)
@@ -49,9 +52,10 @@ public sealed partial class TextPreviewViewModel : ViewModel<TextPreviewView>
         this.Colorize();
     }
 
-    private void OnLanguageChanged(LanguageChangedMessage? _) => this.Localize(); 
 
-    private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage _)
+    public void Receive(LanguageChangedMessage _) => this.Localize();
+
+    public void Receive(ModelPaletteUpdatedMessage _) 
     {
         if ((this.paletteDesignerModel.ActiveProject is not Project project) ||
             (project.Palette is null))

@@ -2,7 +2,11 @@
 
 using static GeneralExtensions; 
 
-public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
+public partial class PalettePreviewViewModel : 
+    ViewModel<PalettePreviewView>, 
+    IRecipient<ShadesValuesVisibilityMessage>,
+    IRecipient<ModelShadesDisplayModeUpdated>,
+    IRecipient<LanguageChangedMessage>
 {
     private readonly ShadesValuesViewModel PrimaryShadesValues;
 
@@ -62,9 +66,9 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         this.TopRightShadesValues    = this.PrimaryShadesValues;
         this.BottomRightShadesValues = this.PrimaryShadesValues;
 
-        this.Messenger.Subscribe<ShadesValuesVisibilityMessage>(this.OnShadesValuesVisibility);
-        this.Messenger.Subscribe<ModelShadesDisplayModeUpdated>(this.OnShadesDisplayModeUpdated);
-        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
+        this.Subscribe<ShadesValuesVisibilityMessage>();
+        this.Subscribe<ModelShadesDisplayModeUpdated>();
+        this.Subscribe<LanguageChangedMessage>();
     }
 
     public Palette Palette =>
@@ -174,7 +178,7 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         }
     }
 
-    private void OnShadesDisplayModeUpdated(ModelShadesDisplayModeUpdated updated)
+    public void Receive(ModelShadesDisplayModeUpdated _)        
     {
         var palette = this.Palette;
         Shades shades = palette.Primary;
@@ -187,10 +191,10 @@ public partial class PalettePreviewViewModel : ViewModel<PalettePreviewView>
         this.Secondary2ShadesValues.Update(shades);
     }
 
-    private void OnShadesValuesVisibility(ShadesValuesVisibilityMessage message)
+    public void Receive(ShadesValuesVisibilityMessage message)
         => this.ShowValues(message.Show);
 
-    private void OnLanguageChanged(LanguageChangedMessage message)
+    public void Receive(LanguageChangedMessage _)
     {
         string dominant = this.Localize("Design.Toolbar.Shade.Primary");
         this.PrimaryShadesValues.Update(dominant);

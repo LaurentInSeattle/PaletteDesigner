@@ -25,6 +25,7 @@ global using Microsoft.Extensions.Hosting;
 
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;
+global using CommunityToolkit.Mvvm.Messaging;
 
 #endregion System 
 
@@ -85,7 +86,6 @@ global using Lyt.Avalonia.Localizer;
 
 global using Lyt.Model;
 global using Lyt.Persistence;
-global using Lyt.Messaging;
 global using Lyt.Mvvm;
 global using Lyt.Utilities.DataStructures;
 global using Lyt.Utilities.Extensions;

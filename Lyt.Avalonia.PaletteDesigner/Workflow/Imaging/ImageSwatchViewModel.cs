@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Imaging;
 
-public sealed partial class ImageSwatchViewModel : ViewModel <ImageSwatchView>
+public sealed partial class ImageSwatchViewModel : ViewModel <ImageSwatchView>, IRecipient<LanguageChangedMessage>
 {
     public readonly Cluster<LabColor> Cluster; 
         
@@ -28,10 +28,10 @@ public sealed partial class ImageSwatchViewModel : ViewModel <ImageSwatchView>
         this.RgbDec = string.Format("\u2022 {0}", rgbColor.ToRgbDecString());
         this.Localize(); 
 
-        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
+        this.Subscribe<LanguageChangedMessage>();
     }
 
-    private void OnLanguageChanged(LanguageChangedMessage message) => this.Localize(); 
+    public void Receive(LanguageChangedMessage message) => this.Localize(); 
 
     private void Localize() 
     {

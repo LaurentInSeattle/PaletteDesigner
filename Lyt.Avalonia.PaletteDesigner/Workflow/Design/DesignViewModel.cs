@@ -1,6 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Design;
 
-public sealed partial class DesignViewModel : ViewModel<DesignView>
+public sealed partial class DesignViewModel : ViewModel<DesignView> , IRecipient<ModelPaletteUpdatedMessage>
+
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
 
@@ -37,7 +38,7 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
         this.ShadeSelectionToolbarViewModel = new();
         this.ShadesPresetsToolbarViewModel = new();
 
-        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
+        this.Subscribe<ModelPaletteUpdatedMessage>();
     }
 
     public override void OnViewLoaded()
@@ -54,7 +55,7 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
                 return;
             }
 
-            this.OnModelPaletteUpdated(null);
+            this.Receive(null);
             Schedule.OnUiThread(100, () =>
             {
                 // Need to delay again or else controls will not be ready 
@@ -75,10 +76,11 @@ public sealed partial class DesignViewModel : ViewModel<DesignView>
             throw new Exception("No active project") :
             this.paletteDesignerModel.ActiveProject.Palette;
 
-    private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage? _)
+    public void Receive(ModelPaletteUpdatedMessage? _)
     {
         var palette = this.Palette;
         this.ColorWheelViewModel.Update(palette);
         this.PalettePreviewViewModel.Update(palette);
     }
+
 }

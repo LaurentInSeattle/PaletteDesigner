@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Mapping;
 
-public sealed partial class ColorDragViewModel : ViewModel<ColorDragView>
+public sealed partial class ColorDragViewModel : ViewModel<ColorDragView> , IRecipient<LanguageChangedMessage>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
     private readonly Palette palette;
@@ -24,7 +24,7 @@ public sealed partial class ColorDragViewModel : ViewModel<ColorDragView>
         this.ShadeDragViewModels = [];
         this.ColorName = string.Empty;
 
-        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
+        this.Subscribe<LanguageChangedMessage>();
     }
 
     public override void OnViewLoaded()
@@ -42,7 +42,7 @@ public sealed partial class ColorDragViewModel : ViewModel<ColorDragView>
         this.Localize();
     }
 
-    private void OnLanguageChanged(LanguageChangedMessage _) => this.Localize();
+    public void Receive(LanguageChangedMessage _) => this.Localize();
 
     private void Localize()
     { 

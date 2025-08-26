@@ -2,7 +2,10 @@
 
 using global::Avalonia.Themes.Fluent;
 
-public sealed partial class MappingViewModel : ViewModel<MappingView>
+public sealed partial class MappingViewModel : 
+    ViewModel<MappingView>,
+    IRecipient<ModelPaletteUpdatedMessage>,
+    IRecipient<ModelThemeUpdatedMessage>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
 
@@ -22,18 +25,16 @@ public sealed partial class MappingViewModel : ViewModel<MappingView>
         this.PropertiesDropPanelViewModel = new(paletteDesignerModel);
         this.WidgetsPreviewViewModel = new("Preview");
 
-        this.Messenger.Subscribe<ModelThemeUpdatedMessage>(this.OnModelThemeUpdated);
-        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
+        this.Subscribe<ModelThemeUpdatedMessage>();
+        this.Subscribe<ModelPaletteUpdatedMessage>();
     }
 
-    private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage? _)
+    public void Receive(ModelPaletteUpdatedMessage _)
     {
     }
 
-    private void OnModelThemeUpdated(ModelThemeUpdatedMessage? _)
+    public void Receive(ModelThemeUpdatedMessage? _)
     {
-        // Debugger.Break();
-
         var lightColorPaletteResources = this.CreateColorPaletteResources(isDark: false);
         var darkColorPaletteResources = this.CreateColorPaletteResources(isDark: true);
         this.WidgetsPreviewViewModel.UpdatePalettes(lightColorPaletteResources, darkColorPaletteResources);
@@ -89,6 +90,7 @@ public sealed partial class MappingViewModel : ViewModel<MappingView>
             ListMedium = ToColor("SystemListMediumColor")
         };
     }
+
 
     /*
      */

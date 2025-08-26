@@ -1,10 +1,9 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Shell;
 
-using System.Threading.Tasks;
-using static MessagingExtensions;
+using static ApplicationMessagingExtensions;
 using static ViewActivationMessage;
 
-public sealed partial class ShellViewModel : ViewModel<ShellView>
+public sealed partial class ShellViewModel : ViewModel<ShellView>, IRecipient<LanguageChangedMessage>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
     private readonly IToaster toaster;
@@ -35,10 +34,10 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         this.paletteDesignerModel = paletteDesignerModel;
         this.toaster = toaster;
 
-        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
+        this.Subscribe<LanguageChangedMessage>();
     }
 
-    private void OnLanguageChanged(LanguageChangedMessage message)
+    public void Receive(LanguageChangedMessage message)
     {
     }
 
@@ -159,7 +158,6 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         // Needs to be kept alive as a class member, or else callbacks will die (and wont work) 
         this.viewSelector =
             new ViewSelector<ActivatedView>(
-                this.Messenger,
                 this.View.ShellViewContent,
                 this.View.ShellViewToolbar,
                 this.View.SelectionGroup,
@@ -241,7 +239,6 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>
         await this.paletteDesignerModel.Save();
         return true;
     }
-
 
 #pragma warning restore CA1822
 }

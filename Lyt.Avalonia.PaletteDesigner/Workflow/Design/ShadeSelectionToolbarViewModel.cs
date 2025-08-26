@@ -4,7 +4,8 @@ using Lyt.Avalonia.Controls.Glyphs;
 using Lyt.Avalonia.Mvvm.Utilities;
 using static GeneralExtensions;
 
-public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSelectionToolbarView>
+public sealed partial class ShadeSelectionToolbarViewModel : 
+    ViewModel<ShadeSelectionToolbarView>, IRecipient<ModelPaletteUpdatedMessage>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
 
@@ -49,7 +50,7 @@ public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSele
     public ShadeSelectionToolbarViewModel()
     {
         this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();
-        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
+        this.Subscribe<ModelPaletteUpdatedMessage>();
 
         this.ShowShadesPresets = false;
         this.ShowShadesValues = true;
@@ -62,13 +63,13 @@ public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSele
             this.paletteDesignerModel.ActiveProject.Palette;
 
     partial void OnShowShadesPresetsChanged(bool value)
-        => this.Messenger.Publish(new PresetsVisibilityMessage(value));
+        => new PresetsVisibilityMessage(value).Publish();
 
     partial void OnShowShadesValuesChanged(bool value)
-        => this.Messenger.Publish(new ShadesValuesVisibilityMessage(value));
+        => new ShadesValuesVisibilityMessage(value).Publish();
 
     partial void OnShowTextSamplesChanged(bool value)
-        => this.Messenger.Publish(new TextSamplesVisibilityMessage(value));
+        => new TextSamplesVisibilityMessage(value).Publish();
 
     [RelayCommand]
     public void OnLockSelect(object? parameter)
@@ -111,11 +112,12 @@ public sealed partial class ShadeSelectionToolbarViewModel : ViewModel<ShadeSele
             ShadesValuesDisplayMode mode = 
                 Enum.TryParse(tag, out ShadesValuesDisplayMode kind) ? kind : ShadesValuesDisplayMode.Hex;
             this.paletteDesignerModel.ShadesValuesDisplayMode = mode;
-            this.Messenger.Publish(new ModelShadesDisplayModeUpdated());
+            new ModelShadesDisplayModeUpdated().Publish();
         }
     }
-    
-    private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage _)
+
+
+    public void Receive(ModelPaletteUpdatedMessage _)
     {
         var palette = this.Palette;
         this.PrimaryBaseBrush = palette.Primary.Base.ToBrush();

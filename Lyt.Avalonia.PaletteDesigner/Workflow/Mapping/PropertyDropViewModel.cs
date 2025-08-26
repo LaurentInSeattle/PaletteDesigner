@@ -4,7 +4,9 @@ using global::Avalonia.Styling;
 using static Lyt.Avalonia.Controls.Utilities;
 using Ava = global::Avalonia.Media;
 
-public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>, IDropTarget
+public sealed partial class PropertyDropViewModel : 
+    ViewModel<PropertyDropView>, IDropTarget, 
+    IRecipient<ModelPaletteUpdatedMessage>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
     private readonly string sourcePropertyName;
@@ -40,7 +42,7 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
         this.ShadeOpacity = 1.0;
         this.OpacitySliderValue = 1.0;
 
-        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
+        this.Subscribe<ModelPaletteUpdatedMessage>();
 
         this.InitializeColorWithTheme();
     }
@@ -82,7 +84,8 @@ public sealed partial class PropertyDropViewModel : ViewModel<PropertyDropView>,
         this.ProcessColorBox(draggableColorBoxViewModel);
     }
 
-    private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage? _) => this.Colorize();
+
+    public void Receive(ModelPaletteUpdatedMessage _) => this.Colorize();
 
     private void ProcessColorBox(DraggableColorBoxViewModel draggableColorBoxViewModel)
     {

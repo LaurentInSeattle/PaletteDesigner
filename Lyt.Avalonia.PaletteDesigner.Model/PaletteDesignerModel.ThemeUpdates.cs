@@ -22,7 +22,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
         bool result = this.ActionTheme(action);
         if (result)
         {
-            this.Messenger.Publish(new ModelThemeUpdatedMessage());
+            new ModelThemeUpdatedMessage().Publish();
         }
 
         return result;

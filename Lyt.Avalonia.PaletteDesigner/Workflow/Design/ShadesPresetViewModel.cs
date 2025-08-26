@@ -1,6 +1,9 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Design;
 
-public sealed partial class ShadesPresetViewModel : ViewModel<ShadesPresetView>
+public sealed partial class ShadesPresetViewModel : 
+    ViewModel<ShadesPresetView>,
+    IRecipient<LanguageChangedMessage>,
+    IRecipient<ModelPaletteUpdatedMessage>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
     private readonly ShadesPreset shadesPreset;
@@ -16,12 +19,12 @@ public sealed partial class ShadesPresetViewModel : ViewModel<ShadesPresetView>
         this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();
         this.shadesPreset = ShadesPreset.FromSizeIndependant(shadesPreset);
 
-        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
-        this.Messenger.Subscribe<LanguageChangedMessage>(this.OnLanguageChanged);
+        this.Subscribe<LanguageChangedMessage>();
+        this.Subscribe<ModelPaletteUpdatedMessage>();
         this.MiniPaletteViewModel = new(this.paletteDesignerModel, isPreset:true);
 
         // Localize preset name 
-        this.OnLanguageChanged();
+        this.Localize();
     }
 
     public Palette Palette =>
@@ -33,15 +36,16 @@ public sealed partial class ShadesPresetViewModel : ViewModel<ShadesPresetView>
     public void OnShadeSelect()
         => this.paletteDesignerModel.ApplyShadesPreset(this.shadesPreset);
 
-    private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage _)
+    public void Receive(ModelPaletteUpdatedMessage _)
     {
         var palette = this.Palette.DeepClone();
         palette.ApplyShadesPreset(this.shadesPreset);
         this.MiniPaletteViewModel.Update(palette);
     }
 
-    private void OnLanguageChanged(LanguageChangedMessage? _ = null)
+    public void Receive(LanguageChangedMessage? _) => this.Localize(); 
+
+    private void Localize() 
         // Localize preset name 
-        => this.PresetName = this.Localize(
-            string.Concat("Design.Preset.", shadesPreset.Name));
+        => this.PresetName = this.Localize(string.Concat("Design.Preset.", shadesPreset.Name));
 }

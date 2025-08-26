@@ -44,7 +44,6 @@
 		<ProjectReference Include="..\..\Lyt.Avalonia\Lyt.Avalonia.Localizer\Lyt.Avalonia.Localizer.csproj" />
 		<ProjectReference Include="..\..\Lyt.Avalonia\Lyt.Avalonia.Mvvm\Lyt.Avalonia.Mvvm.csproj" />
 		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Framework.Interfaces\Lyt.Framework.Interfaces.csproj" />
-		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Messenger\Lyt.Messenger.csproj" />
 		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Model\Lyt.Model.csproj" />
 		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Mvvm\Lyt.Mvvm.csproj" />
 		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Persistence\Lyt.Persistence.csproj" />

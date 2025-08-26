@@ -2,14 +2,17 @@
 
 public sealed partial class PaletteDesignerModel : ModelBase
 {
+#pragma warning disable CS0649
+    // Possibly needed later, if not => TODO: remove 
     private bool suspendSwatchesUpdates;
+#pragma warning restore CS0649
 
     private bool UpdateSwatches(Func<ColorSwatches, bool> action)
     {
         bool result = this.ActionSwatches(action);
         if (result && !this.suspendSwatchesUpdates)
         {
-            this.Messenger.Publish(new ModelSwatchesUpdatedMessage());
+            new ModelSwatchesUpdatedMessage().Publish();
         }
 
         return result;

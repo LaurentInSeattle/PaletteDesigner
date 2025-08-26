@@ -1,6 +1,8 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Design;
 
-public sealed partial class ShadesPresetsToolbarViewModel : ViewModel<ShadesPresetsToolbarView>
+public sealed partial class ShadesPresetsToolbarViewModel : 
+    ViewModel<ShadesPresetsToolbarView>, 
+    IRecipient<PresetsVisibilityMessage>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
 
@@ -13,7 +15,7 @@ public sealed partial class ShadesPresetsToolbarViewModel : ViewModel<ShadesPres
     public ShadesPresetsToolbarViewModel()
     {
         this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();
-        this.Messenger.Subscribe<PresetsVisibilityMessage>(this.OnPresetsVisibility);
+        this.Subscribe<PresetsVisibilityMessage>();
         this.Presets = []; 
     }
 
@@ -37,8 +39,7 @@ public sealed partial class ShadesPresetsToolbarViewModel : ViewModel<ShadesPres
         this.Presets = new(presets); 
     }
 
-    private void OnPresetsVisibility(PresetsVisibilityMessage message)
-        => this.Show(message.Show);
+    public void Receive(PresetsVisibilityMessage message) => this.Show(message.Show);
 
     public void Show(bool show = true)
     {

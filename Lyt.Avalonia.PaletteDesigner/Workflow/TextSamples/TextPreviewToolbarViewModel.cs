@@ -3,11 +3,9 @@
 public sealed partial class TextPreviewToolbarViewModel : ViewModel<TextPreviewToolbarView>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
-      
-    public TextPreviewToolbarViewModel()
-    {
-        this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();
-    }
+
+    public TextPreviewToolbarViewModel() 
+        => this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();
 
     public Palette Palette =>
         this.paletteDesignerModel.ActiveProject == null ?
@@ -23,7 +21,7 @@ public sealed partial class TextPreviewToolbarViewModel : ViewModel<TextPreviewT
             TextSamplesDisplayMode mode =
                 Enum.TryParse(tag, out TextSamplesDisplayMode kind) ? kind : TextSamplesDisplayMode.Dark;
             this.paletteDesignerModel.TextSamplesDisplayMode = mode;
-            this.Messenger.Publish(new ModelTextSamplesDisplayModeUpdated());
+            new ModelTextSamplesDisplayModeUpdated().Publish();
         }
     }
 
@@ -37,8 +35,7 @@ public sealed partial class TextPreviewToolbarViewModel : ViewModel<TextPreviewT
             WheelKind wheel = Enum.TryParse(tag, out WheelKind kind) ? kind : WheelKind.Unknown;
             this.paletteDesignerModel.TextSamplesSelectedWheel = wheel;
             this.paletteDesignerModel.UpdatePaletteWheelShadeMode(wheel);
-
-            this.Messenger.Publish(new ModelTextSamplesDisplayModeUpdated());
+            new ModelTextSamplesDisplayModeUpdated().Publish();
         }
     }
 }

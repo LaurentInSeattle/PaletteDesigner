@@ -1,6 +1,9 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Mapping;
 
-public sealed partial class DraggableColorBoxViewModel : ViewModel<DraggableColorBoxView>, IDragAbleViewModel
+public sealed partial class DraggableColorBoxViewModel : 
+    ViewModel<DraggableColorBoxView>, 
+    IDragAbleViewModel, 
+    IRecipient<ModelPaletteUpdatedMessage>
 {
     public const string CustomDragAndDropFormat = "PaletteViewModel";
 
@@ -34,7 +37,7 @@ public sealed partial class DraggableColorBoxViewModel : ViewModel<DraggableColo
             this.DragAble = new DragAble(MappingView.DragCanvas);
         } 
 
-        this.Messenger.Subscribe<ModelPaletteUpdatedMessage>(this.OnModelPaletteUpdated);
+        this.Subscribe<ModelPaletteUpdatedMessage>();
     }
 
     public override void OnViewLoaded()
@@ -51,6 +54,8 @@ public sealed partial class DraggableColorBoxViewModel : ViewModel<DraggableColo
     public string DragDropFormat => DraggableColorBoxViewModel.CustomDragAndDropFormat;
 
     public DragAble? DragAble { get; private set; }
+
+    public void Receive(ModelPaletteUpdatedMessage _) => this.ShadeBrush = this.shade.Color.ToBrush();
 
     public View CreateGhostView()
     {
@@ -74,5 +79,4 @@ public sealed partial class DraggableColorBoxViewModel : ViewModel<DraggableColo
 
     public void OnLongPress() { }
 
-    private void OnModelPaletteUpdated(ModelPaletteUpdatedMessage? _) => this.ShadeBrush = this.shade.Color.ToBrush();
 }

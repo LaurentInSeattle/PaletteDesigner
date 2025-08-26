@@ -137,7 +137,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
         bool result = this.ActionPalette(action);
         if (result && !this.suspendPaletteUpdates)
         {
-            this.Messenger.Publish(new ModelPaletteUpdatedMessage());
+            new ModelPaletteUpdatedMessage().Publish();
         }
 
         return result;
