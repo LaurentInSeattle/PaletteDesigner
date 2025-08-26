@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner;
 
-using CommunityToolkit.Mvvm.Messaging;
-
 public partial class App : ApplicationBase
 {
     public const string Organization = "Lyt";
@@ -22,8 +20,6 @@ public partial class App : ApplicationBase
             typeof(PaletteDesignerModel),
         ],
         [
-            typeof(WeakReferenceMessenger),
-
            // Singletons
            typeof(ShellViewModel),
 
@@ -40,10 +36,6 @@ public partial class App : ApplicationBase
            typeof(MappingViewModel),
 
            typeof(ImagingViewModel),
-
-           //typeof(IntroViewModel),
-           //typeof(IntroToolbarViewModel),
-
         ],
         [
             // Services 
