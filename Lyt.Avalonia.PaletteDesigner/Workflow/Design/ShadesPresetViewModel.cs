@@ -23,7 +23,7 @@ public sealed partial class ShadesPresetViewModel :
         this.Subscribe<ModelPaletteUpdatedMessage>();
         this.MiniPaletteViewModel = new(this.paletteDesignerModel, isPreset:true);
 
-        // Localize preset name 
+        this.UpdateMiniPalette();
         this.Localize();
     }
 
@@ -36,14 +36,16 @@ public sealed partial class ShadesPresetViewModel :
     public void OnShadeSelect()
         => this.paletteDesignerModel.ApplyShadesPreset(this.shadesPreset);
 
-    public void Receive(ModelPaletteUpdatedMessage _)
+    public void Receive(LanguageChangedMessage? _) => this.Localize();
+
+    public void Receive(ModelPaletteUpdatedMessage _) => this.UpdateMiniPalette();
+
+    private void UpdateMiniPalette()
     {
         var palette = this.Palette.DeepClone();
         palette.ApplyShadesPreset(this.shadesPreset);
         this.MiniPaletteViewModel.Update(palette);
     }
-
-    public void Receive(LanguageChangedMessage? _) => this.Localize(); 
 
     private void Localize() 
         // Localize preset name 

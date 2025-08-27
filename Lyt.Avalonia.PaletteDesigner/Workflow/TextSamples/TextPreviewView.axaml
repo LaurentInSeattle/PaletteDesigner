@@ -62,7 +62,8 @@
 				Foreground="{Binding ForegroundBrush}"
 				Text="{Binding SetupText}"
 				FontSize="16"
-				FontWeight="Normal"
+				FontWeight="DemiBold"
+				FontStyle="Italic"
 				TextWrapping="Wrap"
 				/>
 		</Grid>
