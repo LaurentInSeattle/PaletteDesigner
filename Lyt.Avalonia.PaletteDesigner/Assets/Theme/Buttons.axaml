@@ -122,4 +122,22 @@
 		<Setter Property="GlyphStrokeThickness" Value="0.05" />
 	</ControlTheme>
 
+	<ControlTheme x:Key="NavigationIconButton" TargetType="glyphs:GlyphButton">
+		<Setter Property="Layout" Value="IconTextBelowNoBackground"/>
+		<Setter Property="Behaviour" Value="Tap"/>
+		<Setter Property="ButtonBackground" Value="BorderlessRectangle"/>
+		<Setter Property="Typography" Value="{StaticResource GlyphButtonTypography}"/>
+		<Setter Property="BackgroundCornerRadius" Value="8" />
+		<Setter Property="GeneralVisualState" Value="{StaticResource ToolbarIconGeneralVisualState}"/>
+		<Setter Property="BackgroundVisualState" Value="{StaticResource ToolbarIconBackgroundVisualState}"/>
+		<Setter Property="BackgroundBorderVisualState" Value="{StaticResource ToolbarIconBackgroundBorderVisualState}"/>
+		<Setter Property="IsDisabled" Value="False" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="Width" Value="86" />
+		<Setter Property="Height" Value="72" />
+		<Setter Property="Margin" Value="2 16 2 16" />
+		<Setter Property="BackgroundMargin" Value="8" />
+	</ControlTheme>
+
 </ResourceDictionary>

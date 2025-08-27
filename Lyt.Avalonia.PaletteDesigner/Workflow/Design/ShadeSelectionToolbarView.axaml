@@ -178,6 +178,7 @@
 			Style="{StaticResource StandardToggleSwitch}"
 			TrueText="{DynamicResource Shared.Show}"
 			FalseText="{DynamicResource Shared.Hide}"
+			Orientation="Vertical"
 			HorizontalAlignment="Center" VerticalAlignment="Center"
 			Value="{Binding ShowShadesValues}"
 			/>
@@ -239,6 +240,7 @@
 		<toggle:ToggleSwitch
 			Grid.Row="0" Grid.Column="15"
 			Style="{StaticResource StandardToggleSwitch}"
+			Orientation="Vertical"
 			TrueText="{DynamicResource Shared.Show}"
 			FalseText="{DynamicResource Shared.Hide}"
 			Margin="8 0 0 0"

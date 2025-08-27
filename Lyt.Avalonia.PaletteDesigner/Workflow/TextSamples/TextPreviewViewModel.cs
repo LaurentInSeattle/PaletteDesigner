@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.TextSamples;
 
-using Lyt.Avalonia.PaletteDesigner.Model.ProjectObjects;
-
 public sealed partial class TextPreviewViewModel : 
     ViewModel<TextPreviewView>,
     IRecipient<ModelPaletteUpdatedMessage>,
@@ -35,8 +33,7 @@ public sealed partial class TextPreviewViewModel :
         this.shadeKindForeground = ShadeKind.Lighter;
         this.wheelKindBackground = WheelKind.Complementary;
         this.shadeKindBackground = ShadeKind.Darker;
-        this.Colorize();
-        this.Localize();
+        this.GetPaletteLocalizeAndColorize();
 
         this.Subscribe<ModelPaletteUpdatedMessage>();
         this.Subscribe<LanguageChangedMessage>();
@@ -48,23 +45,27 @@ public sealed partial class TextPreviewViewModel :
         this.shadeKindForeground = textSampleSetup.ShadeKindForeground;
         this.wheelKindBackground = textSampleSetup.WheelKindBackground;
         this.shadeKindBackground = textSampleSetup.ShadeKindBackground;
-        this.Localize();
-        this.Colorize();
+        this.GetPaletteLocalizeAndColorize();
     }
-
 
     public void Receive(LanguageChangedMessage _) => this.Localize();
 
-    public void Receive(ModelPaletteUpdatedMessage _) 
-    {
-        if ((this.paletteDesignerModel.ActiveProject is not Project project) ||
-            (project.Palette is null))
+    public void Receive(ModelPaletteUpdatedMessage _) => this.GetPaletteLocalizeAndColorize();
+
+    private void GetPaletteLocalizeAndColorize()
+    { 
+        if (this.palette is null)
         {
-            // Should never happen, BYNK... 
-            return;
+            if ((this.paletteDesignerModel.ActiveProject is not Project project) ||
+                (project.Palette is null))
+            {
+                // Should never happen, BYNK... 
+                return;
+            }
+
+            this.palette = project.Palette;
         }
 
-        this.palette = project.Palette;
         this.Localize();
         this.Colorize();
     }

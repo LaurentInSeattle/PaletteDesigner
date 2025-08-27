@@ -21,7 +21,13 @@ public sealed partial class TextPreviewPanelViewModel :
     {
         this.paletteDesignerModel = paletteDesignerModel;
         this.TextPreviewToolbarViewModel = new();
-        this.TextPreviewViewModels = [];
+        this.TextPreviewViewModels = 
+        [
+            new(this.paletteDesignerModel),
+            new(this.paletteDesignerModel),
+            new(this.paletteDesignerModel),
+            new(this.paletteDesignerModel),
+        ];
         this.Visible = false;
 
         this.Subscribe<TextSamplesVisibilityMessage>();
@@ -41,26 +47,17 @@ public sealed partial class TextPreviewPanelViewModel :
     public override void OnViewLoaded() 
     {
         base.OnViewLoaded();
-        this.TextPreviewViewModels.Add(new(this.paletteDesignerModel));
-        this.TextPreviewViewModels.Add(new(this.paletteDesignerModel));
-        this.TextPreviewViewModels.Add(new(this.paletteDesignerModel));
-        this.TextPreviewViewModels.Add(new(this.paletteDesignerModel));
         this.UpdateAllSamples();
     }
 
     public void Receive(ModelTextSamplesDisplayModeUpdated _) => this.UpdateAllSamples();
 
-    public void Receive(TextSamplesVisibilityMessage message)  => this.Show(message.Show);
+    public void Receive(TextSamplesVisibilityMessage message) => this.Show(message.Show);
 
     public void Receive(ModelPaletteUpdatedMessage _)  => this.UpdateAllSamples(); 
 
     private void UpdateAllSamples() 
     { 
-        if (this.TextPreviewViewModels.Count == 0)
-        {
-            // Not ready yet 
-        }
-
         var palette = this.paletteDesignerModel.ActiveProject!.Palette;
         TextSamplesDisplayMode displayMode = this.paletteDesignerModel.TextSamplesDisplayMode;
         WheelKind wheelKindForeground = this.paletteDesignerModel.TextSamplesSelectedWheel;
