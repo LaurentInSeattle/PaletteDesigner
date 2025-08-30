@@ -109,7 +109,7 @@
 		<Setter Property="Behaviour" Value="Tap"/>
 		<Setter Property="ButtonBackground" Value="BorderlessRectangle"/>
 		<Setter Property="Typography" Value="{StaticResource GlyphButtonTypography}"/>
-		<Setter Property="BackgroundCornerRadius" Value="8" />
+		<Setter Property="BackgroundCornerRadius" Value="4" />
 		<Setter Property="GeneralVisualState" Value="{StaticResource ToolbarIconGeneralVisualState}"/>
 		<Setter Property="BackgroundVisualState" Value="{StaticResource ToolbarIconBackgroundVisualState}"/>
 		<Setter Property="BackgroundBorderVisualState" Value="{StaticResource ToolbarIconBackgroundBorderVisualState}"/>
@@ -127,7 +127,7 @@
 		<Setter Property="Behaviour" Value="Tap"/>
 		<Setter Property="ButtonBackground" Value="BorderlessRectangle"/>
 		<Setter Property="Typography" Value="{StaticResource GlyphButtonTypography}"/>
-		<Setter Property="BackgroundCornerRadius" Value="8" />
+		<Setter Property="BackgroundCornerRadius" Value="4" />
 		<Setter Property="GeneralVisualState" Value="{StaticResource ToolbarIconGeneralVisualState}"/>
 		<Setter Property="BackgroundVisualState" Value="{StaticResource ToolbarIconBackgroundVisualState}"/>
 		<Setter Property="BackgroundBorderVisualState" Value="{StaticResource ToolbarIconBackgroundBorderVisualState}"/>
