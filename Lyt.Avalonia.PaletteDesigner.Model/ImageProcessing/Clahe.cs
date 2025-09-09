@@ -1,5 +1,36 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.ImageProcessing;
 
+/*
+CLAHE, which stands for Contrast Limited Adaptive Histogram Equalization, is an image processing technique that 
+enhances image contrast by dividing an image into smaller regions, calculating a histogram for each region, 
+and then applying a clipped and redistributed histogram equalization to each region. 
+Unlike traditional histogram equalization, CLAHE limits the amount of contrast amplification 
+to avoid noise amplification in homogeneous areas. It is widely used in applications like enhancing foggy images, 
+improving medical images for diagnosis, and strengthening details in low-light conditions.  
+
+How CLAHE Works
+
+1. Tile Generation:
+The input image is divided into a grid of smaller rectangular regions called tiles. 
+
+2. Histogram Equalization per Tile:
+A histogram is computed for each individual tile. 
+
+3. Contrast Limiting:
+A clip limit is applied to the histogram to prevent extreme contrast amplification. 
+Any excess values in the histogram are redistributed to other bins. 
+
+4. Interpolation:
+The contrast-enhanced tiles are then combined to form the final output image, often using bilinear 
+interpolation to ensure a smooth transition between the processed regions. 
+
+See also: 
+    https://en.wikipedia.org/wiki/Adaptive_histogram_equalization 
+    https://en.wikipedia.org/wiki/Histogram_equalization
+    https://en.wikipedia.org/wiki/Shadow_and_highlight_enhancement
+
+ */
+
 public sealed unsafe class Clahe
 {
     private const int grayLevels = 256;
@@ -8,12 +39,11 @@ public sealed unsafe class Clahe
     private readonly float clipLimit; // contrast limiting parameter
     private readonly int numberBinX;
     private readonly int numberBinY;
-    private readonly int[,][] iHists;
+    private readonly int[,][] histograms;
     private readonly int[,][] LUTs;
 
-    // THese two should be integers !!!
-    private float binXsize;
-    private float binYsize;
+    private int binXsize;
+    private int binYsize;
 
     private byte* sourceImageBytes;
     private byte* resultImageBytes;
@@ -26,8 +56,8 @@ public sealed unsafe class Clahe
         this.numberBinX = nrBinX;
         this.numberBinY = nrBinY;
         this.clipLimit = cLimit;
-        this.iHists = new int[numberBinX, numberBinY][];
-        this.LUTs = new int[numberBinX, numberBinY][];
+        this.histograms = new int[this.numberBinX, this.numberBinY][];
+        this.LUTs = new int[this.numberBinX, this.numberBinY][];
     }
 
     // Assumes: ( DANGER ! ) 
@@ -40,9 +70,19 @@ public sealed unsafe class Clahe
         this.imageHeight = height;
         this.imageWidth = width;
 
-        // TODO: make sure that the X and Y size of the image are multiples of the numbers of bins
-        this.binXsize = width / numberBinX;
-        this.binYsize = height / numberBinY;
+        // Make sure that the X and Y size of the image are multiples of the numbers of bins
+        if (0 != width % this.numberBinX)
+        {
+            throw new ArgumentException("Width");
+        }
+
+        if (0 != height % this.numberBinY)
+        {
+            throw new ArgumentException("Height");
+        }
+
+        this.binXsize = width / this.numberBinX;
+        this.binYsize = height / this.numberBinY;
 
         byte* p = (byte*)frameBufferAddress;
         this.sourceImageBytes = p;
@@ -72,13 +112,13 @@ public sealed unsafe class Clahe
 
     private void ComputeHistograms()
     {
-        int[] ComputeHistogram(int i, int j)
+        void ComputeHistogram(int i, int j)
         {
             // directly histogram in INT array of 256 values 
-            int x0 = (int)Math.Round(i * binXsize);
-            int y0 = (int)Math.Round(j * binYsize);
-            int x1 = (int)Math.Round((i + 1) * binXsize);
-            int y1 = (int)Math.Round((j + 1) * binYsize);
+            int x0 = i * this.binXsize;
+            int y0 = j * this.binYsize;
+            int x1 = (i + 1) * this.binXsize;
+            int y1 = (j + 1) * this.binYsize;
 
             int[] histogram = new int[256];
             for (int x = x0; x < x1; x++)
@@ -93,28 +133,28 @@ public sealed unsafe class Clahe
                 }
             }
 
-            return histogram;
+            this.histograms[i, j] = histogram;
         }
 
         // TODO: Parallelize
-        for (int i = 0; i < numberBinX; i++)
+        for (int i = 0; i < this.numberBinX; i++)
         {
-            for (int j = 0; j < numberBinY; j++)
+            for (int j = 0; j < this.numberBinY; j++)
             {
-                iHists[i, j] = ComputeHistogram(i, j);
+                ComputeHistogram(i, j);
             }
         }
     }
 
     private void ComputeCumulativeHistogram()
     {
-        for (int x = 0; x < numberBinX; x++)
+        for (int x = 0; x < this.numberBinX; x++)
         {
-            for (int y = 0; y < numberBinY; y++)
+            for (int y = 0; y < this.numberBinY; y++)
             {
                 for (int i = 1; i < 256; i++)
                 {
-                    iHists[x, y][i] += iHists[x, y][i - 1];
+                    this.histograms[x, y][i] += this.histograms[x, y][i - 1];
                 }
             }
         }
@@ -122,25 +162,25 @@ public sealed unsafe class Clahe
 
     private void ComputeEqualizationLUT()
     {
-        void ComputeEqualizationLUT(int i , int j)
+        void ComputeEqualizationLUT(int i, int j)
         {
-            int[] hist = iHists[i, j];
+            int[] hist = this.histograms[i, j];
             int[] equalHist = new int[256];
-            int count = (int)Math.Round(this.binXsize * binYsize) - 1;
+            int count = this.binXsize * this.binYsize - 1;
             for (int k = 0; k < 256; k++)
             {
                 equalHist[k] = (int)Math.Round((double)(hist[k] - hist[0]) / count * (grayLevels - 1));
             }
 
-            LUTs[i, j] = equalHist;
+            this.LUTs[i, j] = equalHist;
         }
 
         // for each bin, compute histogram equalization and return a LUT
-        for (int i = 0; i < numberBinX; i++)
+        for (int i = 0; i < this.numberBinX; i++)
         {
-            for (int j = 0; j < numberBinY; j++)
+            for (int j = 0; j < this.numberBinY; j++)
             {
-                ComputeEqualizationLUT(i,j);
+                ComputeEqualizationLUT(i, j);
             }
         }
     }
@@ -155,14 +195,15 @@ public sealed unsafe class Clahe
             this.resultImageBytes = arrayPtr;
 
             // for each bin, apply LUT
-            for (int i = 0; i < numberBinX; i++)
+            for (int i = 0; i < this.numberBinX; i++)
             {
-                for (int j = 0; j < numberBinY; j++)
+                for (int j = 0; j < this.numberBinY; j++)
                 {
-                    int x0 = (int)Math.Round(i * binXsize);
-                    int y0 = (int)Math.Round(j * binYsize);
-                    int x1 = (int)Math.Round((i + 1) * binXsize);
-                    int y1 = (int)Math.Round((j + 1) * binYsize);
+                    int x0 = i * this.binXsize;
+                    int y0 = j * this.binYsize;
+                    int x1 = (i + 1) * this.binXsize;
+                    int y1 = (j + 1) * this.binYsize;
+
                     for (int x = x0; x < x1; x++)
                     {
                         for (int y = y0; y < y1; y++)
@@ -190,22 +231,22 @@ public sealed unsafe class Clahe
 
     private void ClipContrast()
     {
-        int[] ClipContrast(int[] histo)
+        void ClipContrast(int[] histogram)
         {
             // in this function, we clip the histogram to a ceiling value
-            int middle, top, bottom;
-            bottom = 0;
-            top = (int)Math.Round(clipLimit * 256);
+            int bottom = 0;
+            int top = (int)Math.Round(this.clipLimit * 256);
             int diff;
+            int middle;
             do
             {
                 diff = 0;
-                middle = (int)Math.Round((top + bottom) / 2F);
+                middle = (int)Math.Round((top + bottom) / 2.0f);
                 for (int i = 0; i < 256; i++)
                 {
-                    if (histo[i] > middle)
+                    if (histogram[i] > middle)
                     {
-                        diff += histo[i] - middle;
+                        diff += histogram[i] - middle;
                     }
                 }
                 if (diff + middle == top)
@@ -222,15 +263,14 @@ public sealed unsafe class Clahe
                 }
             } while (top - bottom > clipTolerance);
 
-            // now, the clip value = middle
-            // compute diff
+            // now, the clip value = middle, compute diff
             diff = 0;
             for (int i = 0; i < 256; i++)
             {
-                if (histo[i] > middle)
+                if (histogram[i] > middle)
                 {
-                    diff += histo[i] - middle;
-                    histo[i] = middle; // actually clip it here
+                    diff += histogram[i] - middle;
+                    histogram[i] = middle; // actually clip it here
                 }
             }
 
@@ -238,17 +278,15 @@ public sealed unsafe class Clahe
             diff = (int)Math.Round(diff / 256.0f); // value to be redistributed to each bin
             for (int i = 0; i < 256; i++)
             {
-                histo[i] += diff;
+                histogram[i] += diff;
             }
-
-            return histo;
         }
 
-        for (int i = 0; i < numberBinX; i++)
+        for (int i = 0; i < this.numberBinX; i++)
         {
-            for (int j = 0; j < numberBinY; j++)
+            for (int j = 0; j < this.numberBinY; j++)
             {
-                iHists[i, j] = ClipContrast(iHists[i, j]);
+                ClipContrast(this.histograms[i, j]);
             }
         }
     }
@@ -256,47 +294,51 @@ public sealed unsafe class Clahe
     private int TransformPixelIntensity(int x, int y, int binX, int binY, byte pixVal)
     {
         // TODO: 
-        // Crash IOOR with: 
+        // When using Kauai.jpg: Crash IOOR with: 
         // x = 121 , y = 1012
         // binX = 0 , binY = 7 
         // pixVal = 92 
 
-
         float val = 0.0f;
 
         // compute position of the corner points ... TODO : should be done only once
-        float x0 = binXsize / 2;
+
+        // TODO: There should be no floats here
+        float x0 = this.binXsize / 2;
         float x1 = this.imageWidth - x0;
-        float y0 = binYsize / 2;
+        float y0 = this.binYsize / 2;
         float y1 = this.imageHeight - y0;
-        float xi = (int)((binX + 0.5) * binXsize);
-        float yi = (int)((binY + 0.5) * binYsize);
+
+        // TODO: There should be no floats here
+        float xi = (int)((binX + 0.5) * this.binXsize);
+        float yi = (int)((binY + 0.5) * this.binYsize);
+
+        int Lookup(int bdx = 0, int bdy = 0) => this.LUTs[binX + bdx, binY + bdy][pixVal];
+
         if ((x <= x0 && (y <= y0 || y >= y1)) ||
             (x >= x1 && (y <= y0 || y >= y1)))
         {
-            // first, corners
-            // go look in LUT, no interpolation
-            val = LUTs[binX, binY][pixVal];
+            // first, corners => go look in LUT, no interpolation
+            val = Lookup();
         }
         else if (x <= x0 || x >= x1)
         {
-            // then, bands
-            // linear interpolation
+            // then, bands => linear interpolation
             if (y < yi)
             {
-                val = (yi - y) * LUTs[binX, binY - 1][pixVal];
-                val += (binYsize - yi + y) * LUTs[binX, binY][pixVal];
-                val /= binYsize;
+                val = (yi - y) * this.LUTs[binX, binY - 1][pixVal];
+                val += (this.binYsize - yi + y) * this.LUTs[binX, binY][pixVal];
+                val /= this.binYsize;
             }
             else if (y == yi)
             {
-                val = LUTs[binX, binY][pixVal];
+                val = this.LUTs[binX, binY][pixVal];
             }
             else // y > yi
             {
-                val = (y - yi) * LUTs[binX, binY + 1][pixVal];
-                val += (binYsize - y + yi) * LUTs[binX, binY][pixVal];
-                val /= binYsize;
+                val = (y - yi) * this.LUTs[binX, binY + 1][pixVal];
+                val += (this.binYsize - y + yi) * this.LUTs[binX, binY][pixVal];
+                val /= this.binYsize;
             }
         }
         else if (y <= y0 || y >= y1)
@@ -304,19 +346,19 @@ public sealed unsafe class Clahe
             // linear interpolation
             if (x < xi)
             {
-                val = (xi - x) * LUTs[binX - 1, binY][pixVal];
-                val += (binXsize - xi + x) * LUTs[binX, binY][pixVal];
-                val /= binXsize;
+                val = (xi - x) * this.LUTs[binX - 1, binY][pixVal];
+                val += (this.binXsize - xi + x) * this.LUTs[binX, binY][pixVal];
+                val /= this.binXsize;
             }
             else if (x == xi)
             {
-                val = LUTs[binX, binY][pixVal];
+                val = this.LUTs[binX, binY][pixVal];
             }
             else // x > xi
             {
-                val = (x - xi) * LUTs[binX + 1, binY][pixVal];
-                val += (binXsize - x + xi) * LUTs[binX, binY][pixVal];
-                val /= binXsize;
+                val = (x - xi) * this.LUTs[binX + 1, binY][pixVal];
+                val += (this.binXsize - x + xi) * this.LUTs[binX, binY][pixVal];
+                val /= this.binXsize;
             }
         }
         else
@@ -328,26 +370,34 @@ public sealed unsafe class Clahe
             {
                 if (y >= yi)
                 {
-                    val = BilinearIinterpolation(dx, dy, (int)binXsize, (int)binYsize,
-                            LUTs[binX, binY][pixVal], LUTs[binX + 1, binY][pixVal], LUTs[binX, binY + 1][pixVal], LUTs[binX + 1, binY + 1][pixVal]);
+                    val = BilinearIinterpolation(
+                        dx, dy, this.binXsize, this.binYsize,
+                            this.LUTs[binX, binY][pixVal], this.LUTs[binX + 1, binY][pixVal],
+                            this.LUTs[binX, binY + 1][pixVal], this.LUTs[binX + 1, binY + 1][pixVal]);
                 }
                 else
                 {
-                    val = BilinearIinterpolation(dx, (int)binYsize + dy, (int)binXsize, (int)binYsize,
-                            LUTs[binX, binY - 1][pixVal], LUTs[binX + 1, binY - 1][pixVal], LUTs[binX, binY][pixVal], LUTs[binX + 1, binY][pixVal]);
+                    val = BilinearIinterpolation(
+                        dx, this.binYsize + dy, this.binXsize, this.binYsize,
+                            this.LUTs[binX, binY - 1][pixVal], this.LUTs[binX + 1, binY - 1][pixVal],
+                            this.LUTs[binX, binY][pixVal], this.LUTs[binX + 1, binY][pixVal]);
                 }
             }
             else
             {
                 if (y >= yi)
                 {
-                    val = BilinearIinterpolation((int)binXsize + dx, dy, (int)binXsize, (int)binYsize,
-                        LUTs[binX - 1, binY][pixVal], LUTs[binX, binY][pixVal], LUTs[binX - 1, binY + 1][pixVal], LUTs[binX, binY + 1][pixVal]);
+                    val = BilinearIinterpolation(
+                        this.binXsize + dx, dy, this.binXsize, this.binYsize,
+                        this.LUTs[binX - 1, binY][pixVal], this.LUTs[binX, binY][pixVal],
+                        this.LUTs[binX - 1, binY + 1][pixVal], this.LUTs[binX, binY + 1][pixVal]);
                 }
                 else
                 {
-                    val = BilinearIinterpolation((int)binXsize + dx, (int)binYsize + dy, (int)binXsize, (int)binYsize,
-                        LUTs[binX - 1, binY - 1][pixVal], LUTs[binX, binY - 1][pixVal], LUTs[binX - 1, binY][pixVal], LUTs[binX, binY][pixVal]);
+                    val = BilinearIinterpolation(
+                        this.binXsize + dx, this.binYsize + dy, this.binXsize, this.binYsize,
+                        this.LUTs[binX - 1, binY - 1][pixVal], this.LUTs[binX, binY - 1][pixVal],
+                        this.LUTs[binX - 1, binY][pixVal], this.LUTs[binX, binY][pixVal]);
                 }
             }
         }
