@@ -24,12 +24,12 @@ global using Lyt.Framework.Interfaces.Messaging;
 
 global using Lyt.AdobeSwatchExchange;
 global using Lyt.AdobeSwatchExchange.Structures;
+global using Lyt.Collections;
 global using Lyt.FileSystem;
 global using Lyt.Model;
 global using Lyt.Peaks;
 global using Lyt.Persistence;
 global using Lyt.Templator;
-global using Lyt.Utilities.DataStructures;
 global using Lyt.Utilities.Extensions;
 global using Lyt.Utilities.Parallel;
 

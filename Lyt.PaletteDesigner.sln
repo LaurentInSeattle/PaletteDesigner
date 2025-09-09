@@ -58,6 +58,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{07C2787E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Peaks", "..\Lyt.Framework\Lyt.Peaks\Lyt.Peaks.csproj", "{1CEAD2A0-E1D0-1E66-B7BF-9A29B06E8C11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Collections", "..\Lyt.Framework\Lyt.Collections\Lyt.Collections.csproj", "{AF3C38E8-78FA-9191-A5B5-99B6F017E293}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -128,6 +130,10 @@ Global
 		{1CEAD2A0-E1D0-1E66-B7BF-9A29B06E8C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CEAD2A0-E1D0-1E66-B7BF-9A29B06E8C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CEAD2A0-E1D0-1E66-B7BF-9A29B06E8C11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF3C38E8-78FA-9191-A5B5-99B6F017E293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF3C38E8-78FA-9191-A5B5-99B6F017E293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF3C38E8-78FA-9191-A5B5-99B6F017E293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF3C38E8-78FA-9191-A5B5-99B6F017E293}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -146,6 +152,7 @@ Global
 		{4148631A-73ED-3769-E71C-5241ED41F517} = {9A0CCAB9-4303-13B4-2371-F1B97FF5B728}
 		{240639C2-0CF3-CCB5-F4EF-098F96EB9829} = {9A0CCAB9-4303-13B4-2371-F1B97FF5B728}
 		{1CEAD2A0-E1D0-1E66-B7BF-9A29B06E8C11} = {9A0CCAB9-4303-13B4-2371-F1B97FF5B728}
+		{AF3C38E8-78FA-9191-A5B5-99B6F017E293} = {9A0CCAB9-4303-13B4-2371-F1B97FF5B728}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4DB1BC77-96FF-4768-A535-2E6280C8DA11}
