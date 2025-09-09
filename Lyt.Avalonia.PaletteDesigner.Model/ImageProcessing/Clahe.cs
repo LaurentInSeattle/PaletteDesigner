@@ -11,6 +11,7 @@ public sealed unsafe class Clahe
     private readonly int[,][] iHists;
     private readonly int[,][] LUTs;
 
+    // THese two should be integers !!!
     private float binXsize;
     private float binYsize;
 
@@ -61,9 +62,9 @@ public sealed unsafe class Clahe
         // 4. apply transformation based on LUTs
         this.EqualizeHistogram();
 
-        if ( this.resultImage is null)
+        if (this.resultImage is null)
         {
-            throw new Exception("CLAHE failed ;("); 
+            throw new Exception("CLAHE failed ;(");
         }
 
         return this.resultImage;
@@ -71,25 +72,28 @@ public sealed unsafe class Clahe
 
     private void ComputeHistograms()
     {
-        int[] ComputeHistogram(int x0, int x1, int y0, int y1)
+        int[] ComputeHistogram(int i, int j)
         {
             // directly histogram in INT array of 256 values 
-            int[] iHisto = new int[256];
-            // standard histogram
+            int x0 = (int)Math.Round(i * binXsize);
+            int y0 = (int)Math.Round(j * binYsize);
+            int x1 = (int)Math.Round((i + 1) * binXsize);
+            int y1 = (int)Math.Round((j + 1) * binYsize);
+
+            int[] histogram = new int[256];
             for (int x = x0; x < x1; x++)
             {
                 for (int y = y0; y < y1; y++)
                 {
                     // Get pixel color 
                     uint pixel = this.GetPixel(x, y);
-                    // convert pixel to grayscale
-                    byte gScale = ToGrayScale(pixel);
-                    // put value in iHisto
-                    iHisto[gScale] += 1;
+
+                    // convert pixel to grayscale and increment corresponding slot in histogram
+                    histogram[ToGrayScale(pixel)] += 1;
                 }
             }
 
-            return iHisto;
+            return histogram;
         }
 
         // TODO: Parallelize
@@ -97,11 +101,7 @@ public sealed unsafe class Clahe
         {
             for (int j = 0; j < numberBinY; j++)
             {
-                int x0 = (int)Math.Round(i * binXsize);
-                int y0 = (int)Math.Round(j * binYsize);
-                int x1 = (int)Math.Round((i + 1) * binXsize);
-                int y1 = (int)Math.Round((j + 1) * binYsize);
-                iHists[i, j] = ComputeHistogram(x0, x1, y0, y1);
+                iHists[i, j] = ComputeHistogram(i, j);
             }
         }
     }
@@ -122,12 +122,25 @@ public sealed unsafe class Clahe
 
     private void ComputeEqualizationLUT()
     {
+        void ComputeEqualizationLUT(int i , int j)
+        {
+            int[] hist = iHists[i, j];
+            int[] equalHist = new int[256];
+            int count = (int)Math.Round(this.binXsize * binYsize) - 1;
+            for (int k = 0; k < 256; k++)
+            {
+                equalHist[k] = (int)Math.Round((double)(hist[k] - hist[0]) / count * (grayLevels - 1));
+            }
+
+            LUTs[i, j] = equalHist;
+        }
+
         // for each bin, compute histogram equalization and return a LUT
         for (int i = 0; i < numberBinX; i++)
         {
             for (int j = 0; j < numberBinY; j++)
             {
-                LUTs[i, j] = this.ComputeEqualizationLUT(iHists[i, j]);
+                ComputeEqualizationLUT(i,j);
             }
         }
     }
@@ -167,7 +180,7 @@ public sealed unsafe class Clahe
                                 (uint)(gScale << 16) |
                                 (uint)(gScale << 8) |
                                 gScale;
-                            SetPixel(x, y, color);
+                            this.SetPixel(x, y, color);
                         }
                     }
                 }
@@ -242,6 +255,13 @@ public sealed unsafe class Clahe
 
     private int TransformPixelIntensity(int x, int y, int binX, int binY, byte pixVal)
     {
+        // TODO: 
+        // Crash IOOR with: 
+        // x = 121 , y = 1012
+        // binX = 0 , binY = 7 
+        // pixVal = 92 
+
+
         float val = 0.0f;
 
         // compute position of the corner points ... TODO : should be done only once
@@ -340,18 +360,6 @@ public sealed unsafe class Clahe
 #endif
 
         return (int)Math.Round(val);
-    }
-
-    private int[] ComputeEqualizationLUT(int[] hist)
-    {
-        int[] equalHist = new int[256];
-        int count = (int)Math.Round(binXsize * binYsize) - 1;
-        for (int i = 0; i < 256; i++)
-        {
-            equalHist[i] = (int)Math.Round((double)(hist[i] - hist[0]) / count * (grayLevels - 1));
-        }
-
-        return equalHist;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

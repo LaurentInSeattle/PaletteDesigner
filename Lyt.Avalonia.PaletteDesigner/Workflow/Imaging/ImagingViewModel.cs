@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Imaging;
 
+using Lyt.Avalonia.PaletteDesigner.Model.ImageProcessing;
+
 public sealed partial class ImagingViewModel : ViewModel<ImagingView>
 {
     private const int PixelCountMax = 1920 * 1080 / 4; // HD size divided by 4, about 1/2 Mega pixels 
@@ -173,7 +175,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         }
     }
 
-    private bool ProcessBitmap()
+    private unsafe bool ProcessBitmap()
     {
         try
         {
@@ -217,13 +219,49 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         }
     }
 
+    private unsafe void TestClahe()
+    {
+        var sourceBitmap = (WriteableBitmap)this.SourceImage;
+        using ILockedFramebuffer sourceFrameBuffer = sourceBitmap.Lock();
+
+        var clahe = new Clahe();
+        byte[] bytes = clahe.Process(sourceFrameBuffer.Address, sourceFrameBuffer.Size.Height, sourceFrameBuffer.Size.Width);
+        fixed (byte* arrayPtr = bytes)
+        {
+            // The 'dataArray' is pinned here, and 'arrayPtr' points to its first element.
+            IntPtr data = (IntPtr)arrayPtr;
+
+            // public unsafe WriteableBitmap(
+            // PixelFormat format,
+            // AlphaFormat alphaFormat,
+            // IntPtr data,
+            // PixelSize size,
+            // Vector dpi,
+            // int stride)
+            var newBitmap = new WriteableBitmap(
+                (PixelFormat)sourceBitmap.Format!,
+                (AlphaFormat)sourceBitmap.AlphaFormat!,
+                data,
+                sourceBitmap.PixelSize,
+                sourceBitmap.Dpi,
+                sourceFrameBuffer.RowBytes);
+
+            this.SourceImage = newBitmap;
+        }
+    }
+
     private void ExtractSwatches(RgbColor[] colors, int clusters, int depthAnalysis)
     {
         var swatches = PaletteDesignerModel.ExtractSwatches(colors, clusters, depthAnalysis);
         Debug.WriteLine("Palette: " + swatches.Count);
         if (swatches.Count > 0)
         {
-            Dispatch.OnUiThread(() => this.ProcessSwatches(swatches));
+            Dispatch.OnUiThread(() =>
+            {
+                this.ProcessSwatches(swatches);
+
+                this.TestClahe();
+            } );            
         }
     }
 
