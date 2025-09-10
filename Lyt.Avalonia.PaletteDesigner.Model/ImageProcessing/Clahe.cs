@@ -54,7 +54,10 @@ public sealed unsafe class Clahe
     private int imageHeight;
     private int imageWidth;
 
-    public Clahe(int nrBinX = 8, int nrBinY = 8, float cLimit = 5.0f)
+    // 1080 = 8 * 9 * 3 * 5           Tile 45, count: 24
+    // 1920 = 8 * 5 * 4 * 4 * 3     Tile 60, count 32
+
+    public Clahe(int nrBinX = 16, int nrBinY = 12, float cLimit = 1.0f)
     {
         this.numberBinX = nrBinX;
         this.numberBinY = nrBinY;
@@ -421,13 +424,30 @@ public sealed unsafe class Clahe
         }
 
 #if DEBUG
-        if (val < 0 || val > 255) // debug - this should never happen
+        if (val < 0 || val > 256) // debug - this should never happen
         {
-            if (Debugger.IsAttached) { Debugger.Break(); }
+            // if (Debugger.IsAttached) { Debugger.Break(); }
         }
 #endif
 
+        val = Clip(val);
         return (int)Math.Round(val);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private static float Clip ( float x )
+    {
+        if (x< 0.0f ) 
+        {
+            return 0.0f;
+        }
+
+        if (x > 255.0f)
+        {
+            return 255.0f;
+        }
+
+        return x; 
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -446,14 +466,14 @@ public sealed unsafe class Clahe
         float res = (val2 * y + ((float)height - y) * val1) / (float)height;
 
 #if DEBUG
-        if (res > 255)
+        if (res > 256)
         {
             // debug, this should never happen
-            if (Debugger.IsAttached) { Debugger.Break(); }
+            // if (Debugger.IsAttached) { Debugger.Break(); }
         }
 #endif
 
-        return res;
+        return Clip(res);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

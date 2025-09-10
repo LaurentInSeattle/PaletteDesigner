@@ -224,10 +224,20 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         var sourceBitmap = (WriteableBitmap)this.SourceImage;
         using ILockedFramebuffer sourceFrameBuffer = sourceBitmap.Lock();
 
-        var profiler = (Profiler) App.GetRequiredService<IProfiler>();
-        profiler.StartTiming(); 
-        var clahe = new Clahe();
-        byte[] bytes = clahe.Process(sourceFrameBuffer.Address, sourceFrameBuffer.Size.Height, sourceFrameBuffer.Size.Width);
+        byte[] bytes; 
+        var profiler = (Profiler)App.GetRequiredService<IProfiler>();
+        try
+        {
+            profiler.StartTiming();
+            var clahe = new Clahe();
+            bytes = clahe.Process(sourceFrameBuffer.Address, sourceFrameBuffer.Size.Height, sourceFrameBuffer.Size.Width);
+        }
+        catch
+        {
+            profiler.EndTiming("Clahe.Process: ");
+            return;
+        }
+
         profiler.EndTiming("Clahe.Process: ");
 
         fixed (byte* arrayPtr = bytes)
