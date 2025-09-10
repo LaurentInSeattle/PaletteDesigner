@@ -36,6 +36,18 @@ public sealed class HsvColor
         this.V = hsv.V;
     }
 
+    public HsvColor(uint bgra)
+    {
+        byte b = (byte)((bgra & 0xFF000000) >> 24);
+        byte g = (byte)((bgra & 0x00FF0000) >> 16);
+        byte r = (byte) ((bgra & 0x0000FF00) >> 8);
+        var rgb = new RgbColor(r, g, b);
+        HsvColor hsv = rgb.ToHsv();
+        this.H = hsv.H;
+        this.S = hsv.S;
+        this.V = hsv.V;
+    }
+
     public void Set (double h, double s, double v)
     {
         this.H = h;

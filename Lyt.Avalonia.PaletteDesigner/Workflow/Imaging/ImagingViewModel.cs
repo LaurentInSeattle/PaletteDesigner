@@ -224,8 +224,12 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         var sourceBitmap = (WriteableBitmap)this.SourceImage;
         using ILockedFramebuffer sourceFrameBuffer = sourceBitmap.Lock();
 
+        var profiler = (Profiler) App.GetRequiredService<IProfiler>();
+        profiler.StartTiming(); 
         var clahe = new Clahe();
         byte[] bytes = clahe.Process(sourceFrameBuffer.Address, sourceFrameBuffer.Size.Height, sourceFrameBuffer.Size.Width);
+        profiler.EndTiming("Clahe.Process: ");
+
         fixed (byte* arrayPtr = bytes)
         {
             // The 'dataArray' is pinned here, and 'arrayPtr' points to its first element.

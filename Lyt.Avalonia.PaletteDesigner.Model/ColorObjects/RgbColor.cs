@@ -121,6 +121,18 @@ public sealed class RgbColor
         return new HsvColor(h, s / 100.0, value / 100.0);
     }
 
+    public uint ToBgraUint()
+        =>  0x00_00_00_FF |
+            (uint)Math.Round(this.B) << 24 |
+            (uint)Math.Round(this.G) << 16 |
+            (uint)Math.Round(this.R) << 8 ;
+
+    public uint ToArgbUint()
+        =>  0xFF_00_00_00 | 
+            (uint)Math.Round(this.R) << 16 | 
+            (uint)Math.Round(this.G) << 8 | 
+            (uint)Math.Round(this.B);
+
     public uint ToRgbUint()
         => (uint)Math.Round(this.R) << 16 | (uint)Math.Round(this.G) << 8 | (uint)Math.Round(this.B);
 

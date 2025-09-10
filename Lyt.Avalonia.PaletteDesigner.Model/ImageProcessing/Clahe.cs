@@ -1,7 +1,10 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.ImageProcessing;
 
+using Lyt.Utilities.Profiling;
+using System.IO.Pipelines;
+
 /*
-CLAHE, which stands for Contrast Limited Adaptive Histogram Equalization, is an image processing technique that 
+CLAHE, standing for Contrast Limited Adaptive Histogram Equalization, is an image processing technique that 
 enhances image contrast by dividing an image into smaller regions, calculating a histogram for each region, 
 and then applying a clipped and redistributed histogram equalization to each region. 
 Unlike traditional histogram equalization, CLAHE limits the amount of contrast amplification 
@@ -11,7 +14,7 @@ improving medical images for diagnosis, and strengthening details in low-light c
 How CLAHE Works
 
 1. Tile Generation:
-The input image is divided into a grid of smaller rectangular regions called tiles. 
+The input image is divided into a grid of smaller rectangular regions called tiles or bins. 
 
 2. Histogram Equalization per Tile:
 A histogram is computed for each individual tile. 
@@ -51,7 +54,7 @@ public sealed unsafe class Clahe
     private int imageHeight;
     private int imageWidth;
 
-    public Clahe(int nrBinX = 8, int nrBinY = 8, float cLimit = 0.5f)
+    public Clahe(int nrBinX = 8, int nrBinY = 8, float cLimit = 5.0f)
     {
         this.numberBinX = nrBinX;
         this.numberBinY = nrBinY;
@@ -208,20 +211,36 @@ public sealed unsafe class Clahe
                     {
                         for (int y = y0; y < y1; y++)
                         {
-                            // Get pixel color 
-                            uint pixel = this.GetPixel(x, y);
+                            // Get pixel color, convert pixel to HSV, ignore transparency 
+                            uint* intPointer = (uint*)this.sourceImageBytes;
+                            int offset = y * this.imageWidth + x;
+                            intPointer += offset; 
+                            byte * bytePointer = (byte*)intPointer ;
+                            byte b = *bytePointer++;
+                            byte g = *bytePointer++;
+                            byte r = *bytePointer++;
+                            HsvColor hsvColor = new( new RgbColor(r, g, b ));
 
-                            // convert pixel to grayscale and transform intensity 
-                            byte gScale = ToGrayScale(pixel);
-                            gScale = (byte)this.TransformPixelIntensity(x, y, i, j, gScale);
+                            // use lightness as grayscale and transform intensity 
+                            byte grayScale = (byte)(Math.Round(hsvColor.V * 255.0));
+                            grayScale = (byte)this.TransformPixelIntensity(x, y, i, j, grayScale);
 
-                            // TODO: Use true colors
-                            uint color =
-                                (uint)0x0FF_00_00_00 |
-                                (uint)(gScale << 16) |
-                                (uint)(gScale << 8) |
-                                gScale;
-                            this.SetPixel(x, y, color);
+                            // Adjust lightness in HSV space 
+                            double lightness = grayScale / 255.0;
+                            hsvColor.V = lightness;
+
+                            // Back to RGB into the result image matrix
+                            var rgb = hsvColor.ToRgb();
+                            r = (byte)Math.Round(rgb.R);
+                            g = (byte)Math.Round(rgb.G);
+                            b = (byte)Math.Round(rgb.B);
+                            intPointer = (uint*)this.resultImageBytes;
+                            intPointer += offset;
+                            bytePointer = (byte*)intPointer;
+                            *bytePointer++ = b;
+                            *bytePointer++ = g;
+                            *bytePointer++ = r;
+                            *bytePointer = 0xFF;
                         }
                     }
                 }
@@ -294,32 +313,31 @@ public sealed unsafe class Clahe
     private int TransformPixelIntensity(int x, int y, int binX, int binY, byte pixVal)
     {
         // TODO: 
-        // When using Kauai.jpg: Crash IOOR with: 
+        // When using all HD images (1920 x 1080) : Crash IOOR with: 
         // x = 121 , y = 1012
         // binX = 0 , binY = 7 
-        // pixVal = 92 
 
         float val = 0.0f;
 
-        // compute position of the corner points ... TODO : should be done only once
-
-        // TODO: There should be no floats here
-        float x0 = this.binXsize / 2;
+        // compute position of the corner points
+        float x0 = this.binXsize / 2.0f;
         float x1 = this.imageWidth - x0;
-        float y0 = this.binYsize / 2;
+        float y0 = this.binYsize / 2.0f;
         float y1 = this.imageHeight - y0;
 
-        // TODO: There should be no floats here
         float xi = (int)((binX + 0.5) * this.binXsize);
         float yi = (int)((binY + 0.5) * this.binYsize);
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         int Lookup(int bdx = 0, int bdy = 0) => this.LUTs[binX + bdx, binY + bdy][pixVal];
+
+        int val00 = Lookup();
 
         if ((x <= x0 && (y <= y0 || y >= y1)) ||
             (x >= x1 && (y <= y0 || y >= y1)))
         {
             // first, corners => go look in LUT, no interpolation
-            val = Lookup();
+            val = val00;
         }
         else if (x <= x0 || x >= x1)
         {
@@ -327,17 +345,17 @@ public sealed unsafe class Clahe
             if (y < yi)
             {
                 val = (yi - y) * this.LUTs[binX, binY - 1][pixVal];
-                val += (this.binYsize - yi + y) * this.LUTs[binX, binY][pixVal];
+                val += (this.binYsize - yi + y) * val00;
                 val /= this.binYsize;
             }
             else if (y == yi)
             {
-                val = this.LUTs[binX, binY][pixVal];
+                val = val00;
             }
             else // y > yi
             {
                 val = (y - yi) * this.LUTs[binX, binY + 1][pixVal];
-                val += (this.binYsize - y + yi) * this.LUTs[binX, binY][pixVal];
+                val += (this.binYsize - y + yi) * val00;
                 val /= this.binYsize;
             }
         }
@@ -347,17 +365,17 @@ public sealed unsafe class Clahe
             if (x < xi)
             {
                 val = (xi - x) * this.LUTs[binX - 1, binY][pixVal];
-                val += (this.binXsize - xi + x) * this.LUTs[binX, binY][pixVal];
+                val += (this.binXsize - xi + x) * val00;
                 val /= this.binXsize;
             }
             else if (x == xi)
             {
-                val = this.LUTs[binX, binY][pixVal];
+                val = val00;
             }
             else // x > xi
             {
                 val = (x - xi) * this.LUTs[binX + 1, binY][pixVal];
-                val += (this.binXsize - x + xi) * this.LUTs[binX, binY][pixVal];
+                val += (this.binXsize - x + xi) * val00;
                 val /= this.binXsize;
             }
         }
@@ -372,15 +390,15 @@ public sealed unsafe class Clahe
                 {
                     val = BilinearIinterpolation(
                         dx, dy, this.binXsize, this.binYsize,
-                            this.LUTs[binX, binY][pixVal], this.LUTs[binX + 1, binY][pixVal],
-                            this.LUTs[binX, binY + 1][pixVal], this.LUTs[binX + 1, binY + 1][pixVal]);
+                        this.LUTs[binX, binY][pixVal], this.LUTs[binX + 1, binY][pixVal],
+                        this.LUTs[binX, binY + 1][pixVal], this.LUTs[binX + 1, binY + 1][pixVal]);
                 }
                 else
                 {
                     val = BilinearIinterpolation(
                         dx, this.binYsize + dy, this.binXsize, this.binYsize,
-                            this.LUTs[binX, binY - 1][pixVal], this.LUTs[binX + 1, binY - 1][pixVal],
-                            this.LUTs[binX, binY][pixVal], this.LUTs[binX + 1, binY][pixVal]);
+                        this.LUTs[binX, binY - 1][pixVal], this.LUTs[binX + 1, binY - 1][pixVal],
+                        this.LUTs[binX, binY][pixVal], this.LUTs[binX + 1, binY][pixVal]);
                 }
             }
             else
@@ -444,6 +462,31 @@ public sealed unsafe class Clahe
         uint* intPointer = (uint*)this.sourceImageBytes;
         int offset = row * this.imageWidth + col;
         return intPointer[offset];
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private byte GetPixelLuminance(int col, int row) // or x, y 
+    {
+        uint* intPointer = (uint*)this.sourceImageBytes;
+        int offset = row * this.imageWidth + col;
+        uint bgra = intPointer[offset];
+        HsvColor hsvColor = new (bgra);
+        return (byte)(Math.Round(hsvColor.V * 255.0)); 
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private void SetPixelLuminance(int col, int row, byte grayScale) // or x, y 
+    {
+        uint* intPointer = (uint*)this.sourceImageBytes;
+        int offset = row * this.imageWidth + col;
+        uint rgba = intPointer[offset];
+        var rgbColor = new RgbColor(rgba);
+        HsvColor hsvColor = rgbColor.ToHsv();
+        double lightness = grayScale / 255.0;
+        hsvColor.V = lightness;
+        var rgb = hsvColor.ToRgb();
+        uint argb = rgb.ToArgbUint();
+        intPointer[offset] = argb;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
