@@ -1,7 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.ImageProcessing;
 
-using Lyt.Utilities.Profiling;
-using System.IO.Pipelines;
+using Lyt.Utilities.Randomizing;
 
 /*
 CLAHE, standing for Contrast Limited Adaptive Histogram Equalization, is an image processing technique that 
@@ -57,7 +56,7 @@ public sealed unsafe class Clahe
     // 1080 = 8 * 9 * 3 * 5           Tile 45, count: 24
     // 1920 = 8 * 5 * 4 * 4 * 3     Tile 60, count 32
 
-    public Clahe(int nrBinX = 16, int nrBinY = 12, float cLimit = 1.0f)
+    public Clahe(int nrBinX = 8, int nrBinY = 8, float cLimit = 2.5f)
     {
         this.numberBinX = nrBinX;
         this.numberBinY = nrBinY;
@@ -71,24 +70,41 @@ public sealed unsafe class Clahe
     // - frameBufferAddress is LOCKED 
     // - Stride == width 
     // - Width and Height are multiple of the counts of bins 
+    // - Width and Height of bins are even 
     public unsafe byte[] Process(nint frameBufferAddress, int height, int width)
     {
+        //var hPrimes = height.PrimeFactors();
+        //var wPrimes = width.PrimeFactors();
+
         this.imageHeight = height;
         this.imageWidth = width;
 
         // Make sure that the X and Y size of the image are multiples of the numbers of bins
         if (0 != width % this.numberBinX)
         {
+            Debug.WriteLine("Width of the image is NOT a multiple of the count of bins");
             throw new ArgumentException("Width");
         }
 
         if (0 != height % this.numberBinY)
         {
+            Debug.WriteLine("Height of the image is NOT a multiple of the count of bins");
             throw new ArgumentException("Height");
         }
 
         this.binXsize = width / this.numberBinX;
+        if ( 0 != this.binXsize % 2 )
+        {
+            Debug.WriteLine("Width of bins is not even.");
+            throw new ArgumentException("Bin Width");
+        }
+
         this.binYsize = height / this.numberBinY;
+        if (0 != this.binXsize % 2)
+        {
+            Debug.WriteLine("Height of bins is not even.");
+            throw new ArgumentException("Bin Height");
+        }
 
         byte* p = (byte*)frameBufferAddress;
         this.sourceImageBytes = p;
@@ -102,10 +118,10 @@ public sealed unsafe class Clahe
         // 3. compute cumulative histograms
         this.ComputeCumulativeHistogram();
 
-        // 3. for each histogram, compute the equalization LUT
+        // 4. for each histogram, compute the equalization LUT
         this.ComputeEqualizationLUT();
 
-        // 4. apply transformation based on LUTs
+        // 5. apply transformation based on LUTs
         this.EqualizeHistogram();
 
         if (this.resultImage is null)
@@ -319,6 +335,13 @@ public sealed unsafe class Clahe
         // When using all HD images (1920 x 1080) : Crash IOOR with: 
         // x = 121 , y = 1012
         // binX = 0 , binY = 7 
+        //if ( binX == 0 && binY == 7 && x ==121 && y == 1012 )
+        //{
+        //    if ( Debugger.IsAttached)
+        //    {
+        //        Debugger.Break();
+        //    }
+        //}
 
         float val = 0.0f;
 
