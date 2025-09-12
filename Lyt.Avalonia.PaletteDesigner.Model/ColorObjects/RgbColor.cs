@@ -121,21 +121,52 @@ public sealed class RgbColor
         return new HsvColor(h, s / 100.0, value / 100.0);
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static byte ToHsvV(byte r, byte g, byte b)
+    {
+        byte v = r;
+        if (g > v)
+        {
+            v = g;
+        }
+
+        if (b > v)
+        {
+            v = b;
+        }
+
+        return v ;        
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private static byte ToGrayScale(uint argb)
+    {
+        byte blue = (byte)(argb & 0x0FF);
+        byte green = (byte)((argb & 0x0FF00) >> 8);
+        byte red = (byte)((argb & 0x0FF0000) >> 16);
+        float grayscale = (0.299f * red) + (0.587f * green) + (0.114f * blue);
+        return (byte)grayscale;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public uint ToBgraUint()
         =>  0x00_00_00_FF |
             (uint)Math.Round(this.B) << 24 |
             (uint)Math.Round(this.G) << 16 |
             (uint)Math.Round(this.R) << 8 ;
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public uint ToArgbUint()
         =>  0xFF_00_00_00 | 
             (uint)Math.Round(this.R) << 16 | 
             (uint)Math.Round(this.G) << 8 | 
             (uint)Math.Round(this.B);
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public uint ToRgbUint()
         => (uint)Math.Round(this.R) << 16 | (uint)Math.Round(this.G) << 8 | (uint)Math.Round(this.B);
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public string ToRgbPercentString()
         => string.Format(
             "{0,3:D} {1,3:D} {2,3:D}",
@@ -143,23 +174,27 @@ public sealed class RgbColor
             (int)Math.Round(100.0 * this.G / 255.0),
             (int)Math.Round(100.0 * this.B / 255.0));
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public string ToRgbDecString()
         => string.Format(
             "{0,3:D} {1,3:D} {2,3:D}",
             (byte)Math.Round(this.R), (byte)Math.Round(this.G), (byte)Math.Round(this.B));
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public string ToRgbHexString()
         => string.Format(
             "{0:X2} {1:X2} {2:X2}",
             (int)Math.Round(this.R), (int)Math.Round(this.G), (int)Math.Round(this.B));
 
     // DOES NOT Include pound sign: FF030014
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public string ToArgbHexString()
         => string.Format(
             "FF{0:X2}{1:X2}{2:X2}",
             (byte)Math.Round(this.R), (byte)Math.Round(this.G), (byte)Math.Round(this.B));
 
     // Include pound sign: #FF030014
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public string ToPoundArgbHexString()
         => string.Format(
             "#FF{0:X2}{1:X2}{2:X2}",

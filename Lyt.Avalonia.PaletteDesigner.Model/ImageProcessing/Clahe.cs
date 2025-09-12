@@ -162,10 +162,13 @@ public sealed unsafe class Clahe
                     byte b = this.sourceImage[offset++];
                     byte g = this.sourceImage[offset++];
                     byte r = this.sourceImage[offset];
-                    HsvColor hsvColor = new(new RgbColor(r, g, b));
+                    //HsvColor hsvColor = new(new RgbColor(r, g, b));
 
-                    // use lightness as grayscale 
-                    byte grayScale = (byte)(Math.Round(hsvColor.V * 255.0));
+                    //// use lightness as grayscale 
+                    //byte grayScale = (byte)(Math.Round(hsvColor.V * 255.0));
+
+                    // use brighness (HSV value) as grayscale 
+                    byte grayScale = RgbColor.ToHsvV(r, g, b);
 
                     // increment corresponding slot in histogram
                     histogram[grayScale] += 1;
@@ -178,8 +181,72 @@ public sealed unsafe class Clahe
         Parallelize.NestedLoops(this.numberBinX, this.numberBinY, ComputeHistogram);
     }
 
+    private void ClipContrast()
+    {
+        void ClipContrast(int[] histogram)
+        {
+            // in this function, we clip the histogram to a ceiling value
+            int bottom = 0;
+            int top = (int)Math.Round(this.clipLimit * 256);
+            int diff;
+            int middle;
+            do
+            {
+                diff = 0;
+                middle = (int)Math.Round((top + bottom) / 2.0f);
+                for (int i = 0; i < 256; i++)
+                {
+                    if (histogram[i] > middle)
+                    {
+                        diff += histogram[i] - middle;
+                    }
+                }
+                if (diff + middle == top)
+                {
+                    break;
+                }
+                else if (diff + middle > top)
+                {
+                    top = middle;
+                }
+                else
+                {
+                    bottom = middle;
+                }
+            } while (top - bottom > clipTolerance);
+
+            // now, the clip value = middle, compute diff
+            diff = 0;
+            for (int i = 0; i < 256; i++)
+            {
+                if (histogram[i] > middle)
+                {
+                    diff += histogram[i] - middle;
+                    histogram[i] = middle; // actually clip it here
+                }
+            }
+
+            // redistribute excess
+            diff = (int)Math.Round(diff / 256.0f); // value to be redistributed to each bin
+            for (int i = 0; i < 256; i++)
+            {
+                histogram[i] += diff;
+            }
+        }
+
+        // This is fast enough, threading will make it slower
+        for (int i = 0; i < this.numberBinX; i++)
+        {
+            for (int j = 0; j < this.numberBinY; j++)
+            {
+                ClipContrast(this.histograms[i, j]);
+            }
+        }
+    }
+
     private void ComputeCumulativeHistogram()
     {
+        // This is fast enough, threading will make it slower
         for (int x = 0; x < this.numberBinX; x++)
         {
             for (int y = 0; y < this.numberBinY; y++)
@@ -208,6 +275,7 @@ public sealed unsafe class Clahe
         }
 
         // for each bin, compute histogram equalization and return a LUT
+        // This is fast enough, threading will make it slower
         for (int i = 0; i < this.numberBinX; i++)
         {
             for (int j = 0; j < this.numberBinY; j++)
@@ -278,68 +346,6 @@ public sealed unsafe class Clahe
 
                 // for each bin, apply LUT
                 Parallelize.NestedLoops(this.numberBinX, this.numberBinY, EqualizeBin);
-            }
-        }
-    }
-
-    private void ClipContrast()
-    {
-        void ClipContrast(int[] histogram)
-        {
-            // in this function, we clip the histogram to a ceiling value
-            int bottom = 0;
-            int top = (int)Math.Round(this.clipLimit * 256);
-            int diff;
-            int middle;
-            do
-            {
-                diff = 0;
-                middle = (int)Math.Round((top + bottom) / 2.0f);
-                for (int i = 0; i < 256; i++)
-                {
-                    if (histogram[i] > middle)
-                    {
-                        diff += histogram[i] - middle;
-                    }
-                }
-                if (diff + middle == top)
-                {
-                    break;
-                }
-                else if (diff + middle > top)
-                {
-                    top = middle;
-                }
-                else
-                {
-                    bottom = middle;
-                }
-            } while (top - bottom > clipTolerance);
-
-            // now, the clip value = middle, compute diff
-            diff = 0;
-            for (int i = 0; i < 256; i++)
-            {
-                if (histogram[i] > middle)
-                {
-                    diff += histogram[i] - middle;
-                    histogram[i] = middle; // actually clip it here
-                }
-            }
-
-            // redistribute excess
-            diff = (int)Math.Round(diff / 256.0f); // value to be redistributed to each bin
-            for (int i = 0; i < 256; i++)
-            {
-                histogram[i] += diff;
-            }
-        }
-
-        for (int i = 0; i < this.numberBinX; i++)
-        {
-            for (int j = 0; j < this.numberBinY; j++)
-            {
-                ClipContrast(this.histograms[i, j]);
             }
         }
     }
@@ -533,15 +539,5 @@ public sealed unsafe class Clahe
 #endif
 
         return Clip(res);
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private static byte ToGrayScale(uint argb)
-    {
-        byte blue = (byte)(argb & 0x0FF);
-        byte green = (byte)((argb & 0x0FF00) >> 8);
-        byte red = (byte)((argb & 0x0FF0000) >> 16);
-        float grayscale = (0.299f * red) + (0.587f * green) + (0.114f * blue);
-        return (byte)grayscale;
     }
 }
