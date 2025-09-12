@@ -1,5 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.ImageProcessing;
 
+using Lyt.Framework.Interfaces.Profiling;
 using Lyt.Utilities.Randomizing;
 
 /*
@@ -47,16 +48,12 @@ public sealed unsafe class Clahe
     private int binXsize;
     private int binYsize;
 
-    private byte* sourceImageBytes;
-    private byte* resultImageBytes;
+    private byte[]? sourceImage;
     private byte[]? resultImage;
     private int imageHeight;
     private int imageWidth;
 
-    // 1080 = 8 * 9 * 3 * 5           Tile 45, count: 24
-    // 1920 = 8 * 5 * 4 * 4 * 3     Tile 60, count 32
-
-    public Clahe(int nrBinX = 8, int nrBinY = 8, float cLimit = 2.5f)
+    public Clahe(int nrBinX = 8, int nrBinY = 8, float cLimit = 3.5f)
     {
         this.numberBinX = nrBinX;
         this.numberBinY = nrBinY;
@@ -71,11 +68,12 @@ public sealed unsafe class Clahe
     // - Stride == width 
     // - Width and Height are multiple of the counts of bins 
     // - Width and Height of bins are even 
-    public unsafe byte[] Process(nint frameBufferAddress, int height, int width)
+    public unsafe byte[] Process(byte[] sourceImage, int height, int width, IProfiler? profiler = null)
     {
         //var hPrimes = height.PrimeFactors();
         //var wPrimes = width.PrimeFactors();
 
+        this.sourceImage = sourceImage;
         this.imageHeight = height;
         this.imageWidth = width;
 
@@ -93,7 +91,7 @@ public sealed unsafe class Clahe
         }
 
         this.binXsize = width / this.numberBinX;
-        if ( 0 != this.binXsize % 2 )
+        if (0 != this.binXsize % 2)
         {
             Debug.WriteLine("Width of bins is not even.");
             throw new ArgumentException("Bin Width");
@@ -106,23 +104,30 @@ public sealed unsafe class Clahe
             throw new ArgumentException("Bin Height");
         }
 
-        byte* p = (byte*)frameBufferAddress;
-        this.sourceImageBytes = p;
-
         // 1. compute histograms
+        profiler?.StartTiming();
         this.ComputeHistograms();
+        profiler?.EndTiming("Compute histograms");
 
         // 2. clip contrast
+        profiler?.StartTiming();
         this.ClipContrast();
+        profiler?.EndTiming("Clip Contrast");
 
         // 3. compute cumulative histograms
+        profiler?.StartTiming();
         this.ComputeCumulativeHistogram();
+        profiler?.EndTiming("Compute Cumulative Histogram");
 
         // 4. for each histogram, compute the equalization LUT
+        profiler?.StartTiming();
         this.ComputeEqualizationLUT();
+        profiler?.EndTiming("Compute Equalization LUT");
 
         // 5. apply transformation based on LUTs
+        profiler?.StartTiming();
         this.EqualizeHistogram();
+        profiler?.EndTiming("Equalize Histogram");
 
         if (this.resultImage is null)
         {
@@ -134,6 +139,11 @@ public sealed unsafe class Clahe
 
     private void ComputeHistograms()
     {
+        if (this.sourceImage is null)
+        {
+            throw new Exception("No Image bytes"); 
+        } 
+
         void ComputeHistogram(int i, int j)
         {
             // directly histogram in INT array of 256 values 
@@ -147,25 +157,25 @@ public sealed unsafe class Clahe
             {
                 for (int y = y0; y < y1; y++)
                 {
-                    // Get pixel color 
-                    uint pixel = this.GetPixel(x, y);
+                    // Get pixel, color convert to HSV  
+                    int offset = 4 * (y * this.imageWidth + x) ;
+                    byte b = this.sourceImage[offset++];
+                    byte g = this.sourceImage[offset++];
+                    byte r = this.sourceImage[offset];
+                    HsvColor hsvColor = new(new RgbColor(r, g, b));
 
-                    // convert pixel to grayscale and increment corresponding slot in histogram
-                    histogram[ToGrayScale(pixel)] += 1;
+                    // use lightness as grayscale 
+                    byte grayScale = (byte)(Math.Round(hsvColor.V * 255.0));
+
+                    // increment corresponding slot in histogram
+                    histogram[grayScale] += 1;
                 }
             }
 
             this.histograms[i, j] = histogram;
         }
 
-        // TODO: Parallelize
-        for (int i = 0; i < this.numberBinX; i++)
-        {
-            for (int j = 0; j < this.numberBinY; j++)
-            {
-                ComputeHistogram(i, j);
-            }
-        }
+        Parallelize.NestedLoops(this.numberBinX, this.numberBinY, ComputeHistogram);
     }
 
     private void ComputeCumulativeHistogram()
@@ -211,15 +221,17 @@ public sealed unsafe class Clahe
     {
         // Create result buffer, pin it 
         this.resultImage = new byte[this.imageWidth * this.imageHeight * 4];
-        fixed (byte* arrayPtr = this.resultImage)
+        fixed (byte* arrayPtrResult = this.resultImage)
         {
             // The 'dataArray' is pinned here, and 'arrayPtr' points to its first element.
-            this.resultImageBytes = arrayPtr;
+            byte* resultImageBytes = arrayPtrResult;
 
-            // for each bin, apply LUT
-            for (int i = 0; i < this.numberBinX; i++)
+            fixed (byte* arrayPtrSource = this.sourceImage)
             {
-                for (int j = 0; j < this.numberBinY; j++)
+                // The 'dataArray' is pinned here, and 'arrayPtr' points to its first element.
+                byte* sourceImageBytes = arrayPtrSource;
+
+                void EqualizeBin(int i, int j)
                 {
                     int x0 = i * this.binXsize;
                     int y0 = j * this.binYsize;
@@ -231,14 +243,14 @@ public sealed unsafe class Clahe
                         for (int y = y0; y < y1; y++)
                         {
                             // Get pixel color, convert pixel to HSV, ignore transparency 
-                            uint* intPointer = (uint*)this.sourceImageBytes;
+                            uint* intPointer = (uint*)sourceImageBytes;
                             int offset = y * this.imageWidth + x;
-                            intPointer += offset; 
-                            byte * bytePointer = (byte*)intPointer ;
+                            intPointer += offset;
+                            byte* bytePointer = (byte*)intPointer;
                             byte b = *bytePointer++;
                             byte g = *bytePointer++;
                             byte r = *bytePointer++;
-                            HsvColor hsvColor = new( new RgbColor(r, g, b ));
+                            HsvColor hsvColor = new(new RgbColor(r, g, b));
 
                             // use lightness as grayscale and transform intensity 
                             byte grayScale = (byte)(Math.Round(hsvColor.V * 255.0));
@@ -253,7 +265,7 @@ public sealed unsafe class Clahe
                             r = (byte)Math.Round(rgb.R);
                             g = (byte)Math.Round(rgb.G);
                             b = (byte)Math.Round(rgb.B);
-                            intPointer = (uint*)this.resultImageBytes;
+                            intPointer = (uint*)resultImageBytes;
                             intPointer += offset;
                             bytePointer = (byte*)intPointer;
                             *bytePointer++ = b;
@@ -263,6 +275,9 @@ public sealed unsafe class Clahe
                         }
                     }
                 }
+
+                // for each bin, apply LUT
+                Parallelize.NestedLoops(this.numberBinX, this.numberBinY, EqualizeBin);
             }
         }
     }
@@ -331,18 +346,6 @@ public sealed unsafe class Clahe
 
     private int TransformPixelIntensity(int x, int y, int binX, int binY, byte pixVal)
     {
-        // TODO: 
-        // When using all HD images (1920 x 1080) : Crash IOOR with: 
-        // x = 121 , y = 1012
-        // binX = 0 , binY = 7 
-        //if ( binX == 0 && binY == 7 && x ==121 && y == 1012 )
-        //{
-        //    if ( Debugger.IsAttached)
-        //    {
-        //        Debugger.Break();
-        //    }
-        //}
-
         float val = 0.0f;
 
         // compute position of the corner points
@@ -355,7 +358,32 @@ public sealed unsafe class Clahe
         float yi = (int)((binY + 0.5) * this.binYsize);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        int Lookup(int bdx = 0, int bdy = 0) => this.LUTs[binX + bdx, binY + bdy][pixVal];
+        int Lookup(int bdx = 0, int bdy = 0)
+        {
+            int bx = binX + bdx;
+            if (bx < 0)
+            {
+                bx = 0;
+            }
+
+            if (bx >= this.numberBinX)
+            {
+                bx = this.numberBinX - 1;
+            }
+
+            int by = binY + bdy;
+            if (by < 0)
+            {
+                by = 0;
+            }
+
+            if (by >= this.numberBinY)
+            {
+                by = this.numberBinY - 1;
+            }
+
+            return this.LUTs[bx, by][pixVal];
+        }
 
         int val00 = Lookup();
 
@@ -370,7 +398,7 @@ public sealed unsafe class Clahe
             // then, bands => linear interpolation
             if (y < yi)
             {
-                val = (yi - y) * this.LUTs[binX, binY - 1][pixVal];
+                val = (yi - y) * Lookup(0, -1); //  this.LUTs[binX, binY - 1][pixVal];
                 val += (this.binYsize - yi + y) * val00;
                 val /= this.binYsize;
             }
@@ -380,7 +408,7 @@ public sealed unsafe class Clahe
             }
             else // y > yi
             {
-                val = (y - yi) * this.LUTs[binX, binY + 1][pixVal];
+                val = (y - yi) * Lookup(0, 1); //  this.LUTs[binX, binY + 1][pixVal];
                 val += (this.binYsize - y + yi) * val00;
                 val /= this.binYsize;
             }
@@ -390,7 +418,7 @@ public sealed unsafe class Clahe
             // linear interpolation
             if (x < xi)
             {
-                val = (xi - x) * this.LUTs[binX - 1, binY][pixVal];
+                val = (xi - x) * Lookup(-1, 0); //  this.LUTs[binX - 1, binY][pixVal];
                 val += (this.binXsize - xi + x) * val00;
                 val /= this.binXsize;
             }
@@ -400,7 +428,7 @@ public sealed unsafe class Clahe
             }
             else // x > xi
             {
-                val = (x - xi) * this.LUTs[binX + 1, binY][pixVal];
+                val = (x - xi) * Lookup(1, 0); //  this.LUTs[binX + 1, binY][pixVal];
                 val += (this.binXsize - x + xi) * val00;
                 val /= this.binXsize;
             }
@@ -416,15 +444,19 @@ public sealed unsafe class Clahe
                 {
                     val = BilinearIinterpolation(
                         dx, dy, this.binXsize, this.binYsize,
-                        this.LUTs[binX, binY][pixVal], this.LUTs[binX + 1, binY][pixVal],
-                        this.LUTs[binX, binY + 1][pixVal], this.LUTs[binX + 1, binY + 1][pixVal]);
+                        Lookup(0, 0),  // this.LUTs[binX, binY][pixVal], 
+                        Lookup(1, 0),  // this.LUTs[binX + 1, binY][pixVal],
+                        Lookup(0, 1),  // this.LUTs[binX, binY + 1][pixVal], 
+                        Lookup(1, 1)); // this.LUTs[binX + 1, binY + 1][pixVal]);
                 }
                 else
                 {
                     val = BilinearIinterpolation(
                         dx, this.binYsize + dy, this.binXsize, this.binYsize,
-                        this.LUTs[binX, binY - 1][pixVal], this.LUTs[binX + 1, binY - 1][pixVal],
-                        this.LUTs[binX, binY][pixVal], this.LUTs[binX + 1, binY][pixVal]);
+                        Lookup(0, -1),  // this.LUTs[binX, binY - 1][pixVal], 
+                        Lookup(1, -1),  // this.LUTs[binX + 1, binY - 1][pixVal],
+                        Lookup(0, 0),  // this.LUTs[binX, binY][pixVal], 
+                        Lookup(1, 0));  // this.LUTs[binX + 1, binY][pixVal]);
                 }
             }
             else
@@ -433,15 +465,19 @@ public sealed unsafe class Clahe
                 {
                     val = BilinearIinterpolation(
                         this.binXsize + dx, dy, this.binXsize, this.binYsize,
-                        this.LUTs[binX - 1, binY][pixVal], this.LUTs[binX, binY][pixVal],
-                        this.LUTs[binX - 1, binY + 1][pixVal], this.LUTs[binX, binY + 1][pixVal]);
+                        Lookup(-1, 0),  // this.LUTs[binX - 1, binY][pixVal], 
+                        Lookup(0, 0),  // this.LUTs[binX, binY][pixVal],
+                        Lookup(-1, +1),  // this.LUTs[binX - 1, binY + 1][pixVal], 
+                        Lookup(0, +1)); // this.LUTs[binX, binY + 1][pixVal]);
                 }
                 else
                 {
                     val = BilinearIinterpolation(
                         this.binXsize + dx, this.binYsize + dy, this.binXsize, this.binYsize,
-                        this.LUTs[binX - 1, binY - 1][pixVal], this.LUTs[binX, binY - 1][pixVal],
-                        this.LUTs[binX - 1, binY][pixVal], this.LUTs[binX, binY][pixVal]);
+                        Lookup(-1, -1),  // this.LUTs[binX - 1, binY - 1][pixVal], 
+                        Lookup(0, -1),  // this.LUTs[binX, binY - 1][pixVal],
+                        Lookup(-1, 0),  // this.LUTs[binX - 1, binY][pixVal], 
+                        Lookup(0, 0));  // this.LUTs[binX, binY][pixVal]);
                 }
             }
         }
@@ -458,9 +494,9 @@ public sealed unsafe class Clahe
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private static float Clip ( float x )
+    private static float Clip(float x)
     {
-        if (x< 0.0f ) 
+        if (x < 0.0f)
         {
             return 0.0f;
         }
@@ -470,7 +506,7 @@ public sealed unsafe class Clahe
             return 255.0f;
         }
 
-        return x; 
+        return x;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -497,47 +533,6 @@ public sealed unsafe class Clahe
 #endif
 
         return Clip(res);
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private uint GetPixel(int col, int row) // or x, y 
-    {
-        uint* intPointer = (uint*)this.sourceImageBytes;
-        int offset = row * this.imageWidth + col;
-        return intPointer[offset];
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private byte GetPixelLuminance(int col, int row) // or x, y 
-    {
-        uint* intPointer = (uint*)this.sourceImageBytes;
-        int offset = row * this.imageWidth + col;
-        uint bgra = intPointer[offset];
-        HsvColor hsvColor = new (bgra);
-        return (byte)(Math.Round(hsvColor.V * 255.0)); 
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private void SetPixelLuminance(int col, int row, byte grayScale) // or x, y 
-    {
-        uint* intPointer = (uint*)this.sourceImageBytes;
-        int offset = row * this.imageWidth + col;
-        uint rgba = intPointer[offset];
-        var rgbColor = new RgbColor(rgba);
-        HsvColor hsvColor = rgbColor.ToHsv();
-        double lightness = grayScale / 255.0;
-        hsvColor.V = lightness;
-        var rgb = hsvColor.ToRgb();
-        uint argb = rgb.ToArgbUint();
-        intPointer[offset] = argb;
-    }
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    private void SetPixel(int col, int row, uint pixel) // or x, y 
-    {
-        uint* intPointer = (uint*)this.resultImageBytes;
-        int offset = row * this.imageWidth + col;
-        intPointer[offset] = pixel;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

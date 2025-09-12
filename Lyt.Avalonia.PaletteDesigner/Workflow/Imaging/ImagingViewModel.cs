@@ -1,5 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Imaging;
 
+using global::Avalonia.Media.Imaging;
 using Lyt.Avalonia.PaletteDesigner.Model.ImageProcessing;
 
 public sealed partial class ImagingViewModel : ViewModel<ImagingView>
@@ -181,7 +182,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         {
             if (this.bitmapToProcess is not null)
             {
-                using var frameBuffer = bitmapToProcess.Lock();
+                using var frameBuffer = this.bitmapToProcess.Lock();
                 var colors =
                     PaletteDesignerModel.ExtractRgbFromBgraBuffer(
                         frameBuffer.Address, frameBuffer.Size.Height, frameBuffer.Size.Width) ??
@@ -221,37 +222,42 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
 
     private unsafe void TestClahe()
     {
+        if ( this.SourceImage is null )
+        {
+            return; 
+        }
+
         var sourceBitmap = (WriteableBitmap)this.SourceImage;
         using ILockedFramebuffer sourceFrameBuffer = sourceBitmap.Lock();
+
+        // Define the source rectangle (e.g., the entire bitmap)
+        int height = sourceFrameBuffer.Size.Height;
+        int width = sourceFrameBuffer.Size.Width;
+        PixelRect sourceRect = new(0, 0, width, height);
+        byte[] imageBuffer = new byte[height * width * 4];
+        fixed (byte* arrayPtr = imageBuffer)
+        {
+            // The 'dataArray' is pinned here, and 'arrayPtr' points to its first element.
+            nint buffer = (nint) arrayPtr;
+            sourceBitmap.CopyPixels(sourceRect, buffer, imageBuffer.Length, sourceFrameBuffer.RowBytes);
+        } 
 
         byte[] bytes; 
         var profiler = (Profiler)App.GetRequiredService<IProfiler>();
         try
         {
-            profiler.StartTiming();
             var clahe = new Clahe();
-            bytes = clahe.Process(sourceFrameBuffer.Address, sourceFrameBuffer.Size.Height, sourceFrameBuffer.Size.Width);
+            bytes = clahe.Process(imageBuffer, height, width, profiler);
         }
         catch
         {
-            profiler.EndTiming("Clahe.Process: ");
             return;
         }
-
-        profiler.EndTiming("Clahe.Process: ");
 
         fixed (byte* arrayPtr = bytes)
         {
             // The 'dataArray' is pinned here, and 'arrayPtr' points to its first element.
             IntPtr data = (IntPtr)arrayPtr;
-
-            // public unsafe WriteableBitmap(
-            // PixelFormat format,
-            // AlphaFormat alphaFormat,
-            // IntPtr data,
-            // PixelSize size,
-            // Vector dpi,
-            // int stride)
             var newBitmap = new WriteableBitmap(
                 (PixelFormat)sourceBitmap.Format!,
                 (AlphaFormat)sourceBitmap.AlphaFormat!,
