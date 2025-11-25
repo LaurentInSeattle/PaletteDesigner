@@ -91,6 +91,10 @@ global using Lyt.Utilities.Extensions;
 global using Lyt.Utilities.Profiling;
 global using Lyt.Utilities.Randomizing;
 
+global using Lyt.ImageProcessing.Algorithms.ContrastEqualization;
+global using Lyt.ImageProcessing.Algorithms.KMeans.Generic;
+global using Lyt.ImageProcessing.ColorObjects;
+
 #endregion Framework 
 
 global using Lyt.Avalonia.PaletteDesigner;
@@ -113,7 +117,6 @@ global using Lyt.Avalonia.PaletteDesigner.Model;
 global using Lyt.Avalonia.PaletteDesigner.Model.Messaging;
 global using Lyt.Avalonia.PaletteDesigner.Model.Utilities;
 
-global using Lyt.Avalonia.PaletteDesigner.Model.KMeans.Generic;
 global using Lyt.Avalonia.PaletteDesigner.Model.ColorObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.ProjectObjects;

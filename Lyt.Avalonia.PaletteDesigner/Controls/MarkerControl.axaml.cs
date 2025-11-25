@@ -2,6 +2,8 @@ namespace Lyt.Avalonia.PaletteDesigner.Controls;
 
 using Lyt.Avalonia.PaletteDesigner.Model;
 
+using HsvColor = ImageProcessing.ColorObjects.HsvColor;
+
 public partial class MarkerControl : UserControl
 {
     private Canvas? parentCanvas;
@@ -159,7 +161,7 @@ public partial class MarkerControl : UserControl
 
             // Debug.WriteLine(string.Format("Mouse - X: {0}  Y: {1}", pixelX, pixelY));
 
-            if (!map.TryGetValue(pixelY, pixelX, out Model.ColorObjects.HsvColor? mapColor) ||
+            if (!map.TryGetValue(pixelY, pixelX, out HsvColor? mapColor) ||
                 (mapColor is null))
             {
                 return;

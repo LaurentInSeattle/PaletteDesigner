@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.SwatchObjects;
 
-using Lyt.Avalonia.PaletteDesigner.Model.KMeans.Generic;
-
 public sealed class Swatch
 {
     public Swatch() { }

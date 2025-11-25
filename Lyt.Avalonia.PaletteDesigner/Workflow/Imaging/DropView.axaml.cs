@@ -66,8 +66,8 @@ public partial class DropView : View
             this.DropRectangle.Stroke = normalBrush;
         }
 
-        IDataObject data = dragEventArgs.Data;
-        var files = data.GetFiles();
+        IDataTransfer dataTransfer = dragEventArgs.DataTransfer;
+        var files = dataTransfer.TryGetFiles(); 
         if (files is not null)
         {
             foreach (IStorageItem file in files)

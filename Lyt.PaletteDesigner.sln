@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36301.6
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11222.15 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Avalonia.PaletteDesigner.Desktop", "Lyt.Avalonia.PaletteDesigner.Desktop\Lyt.Avalonia.PaletteDesigner.Desktop.csproj", "{AE29A677-D0BE-49CE-8AA9-B344C468815B}"
 EndProject
@@ -60,6 +60,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Peaks", "..\Lyt.Framework\Lyt.Peaks\Lyt.Peaks.csproj", "{1CEAD2A0-E1D0-1E66-B7BF-9A29B06E8C11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.Collections", "..\Lyt.Framework\Lyt.Collections\Lyt.Collections.csproj", "{AF3C38E8-78FA-9191-A5B5-99B6F017E293}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyt.ImageProcessing", "..\Lyt.Framework\Lyt.ImageProcessing\Lyt.ImageProcessing.csproj", "{01403CF8-FC71-FE9D-73D1-6FF122FA52CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +137,10 @@ Global
 		{AF3C38E8-78FA-9191-A5B5-99B6F017E293}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF3C38E8-78FA-9191-A5B5-99B6F017E293}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF3C38E8-78FA-9191-A5B5-99B6F017E293}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01403CF8-FC71-FE9D-73D1-6FF122FA52CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01403CF8-FC71-FE9D-73D1-6FF122FA52CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01403CF8-FC71-FE9D-73D1-6FF122FA52CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01403CF8-FC71-FE9D-73D1-6FF122FA52CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -154,6 +160,7 @@ Global
 		{240639C2-0CF3-CCB5-F4EF-098F96EB9829} = {9A0CCAB9-4303-13B4-2371-F1B97FF5B728}
 		{1CEAD2A0-E1D0-1E66-B7BF-9A29B06E8C11} = {9A0CCAB9-4303-13B4-2371-F1B97FF5B728}
 		{AF3C38E8-78FA-9191-A5B5-99B6F017E293} = {9A0CCAB9-4303-13B4-2371-F1B97FF5B728}
+		{01403CF8-FC71-FE9D-73D1-6FF122FA52CF} = {9A0CCAB9-4303-13B4-2371-F1B97FF5B728}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4DB1BC77-96FF-4768-A535-2E6280C8DA11}

@@ -1,7 +1,8 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Imaging;
 
 using global::Avalonia.Media.Imaging;
-using Lyt.Avalonia.PaletteDesigner.Model.ImageProcessing;
+
+using HsvColor = Lyt.ImageProcessing.ColorObjects.HsvColor;
 
 public sealed partial class ImagingViewModel : ViewModel<ImagingView>
 {
@@ -296,7 +297,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         {
             // Eliminate colors too dark or too bright 
             var rgbColor = swatch.Payload.ToRgb();
-            Model.ColorObjects.HsvColor hsvColor = rgbColor.ToHsv();
+            HsvColor hsvColor = rgbColor.ToHsv();
             double brightness = hsvColor.V;
             if ((brightness > BrightnessMin) || (brightness < BrightnessMax))
             {
