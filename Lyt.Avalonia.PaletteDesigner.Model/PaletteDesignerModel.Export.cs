@@ -57,7 +57,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
                     if (result.Item1)
                     {
                         // Create a text file from the palette, save on disk with time stamp
-                        this.fileManager.Save(Area.User, Kind.Text, name, result);
+                        this.fileManager.Save(Area.User, Kind.Text, name, result.Item2);
 
                         // rename to .axaml or xaml or whatever
                         string extension = exportFormat.ExtensionFileName();

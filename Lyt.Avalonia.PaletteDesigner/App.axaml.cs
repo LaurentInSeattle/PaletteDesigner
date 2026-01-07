@@ -24,18 +24,18 @@ public partial class App : ApplicationBase
            typeof(ShellViewModel),
 
            typeof(LanguageViewModel),
-           //typeof(LanguageToolbarViewModel),
            
-           typeof(SettingsViewModel),
-
            typeof(DesignViewModel),
            typeof(PaletteColorViewModel),
            typeof(PalettePreviewViewModel),
            typeof(ColorWheelViewModel),
 
-           typeof(MappingViewModel),
 
            typeof(ImagingViewModel),
+
+           // Disabled for now
+           // typeof(SettingsViewModel),
+           // typeof(MappingViewModel),
         ],
         [
             // Services 

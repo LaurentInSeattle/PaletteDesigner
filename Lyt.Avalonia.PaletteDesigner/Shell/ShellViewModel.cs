@@ -132,28 +132,13 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>, IRecipient<La
                 new SelectableView<ActivatedView>(activatedView, vm, control));
         }
 
-        SetupNoToolbar<DesignViewModel, DesignView>(
-            ActivatedView.Design, view.DesignButton);
-        SetupNoToolbar<ImagingViewModel, ImagingView>(
-            ActivatedView.Imaging, view.ImagingButton);
-        SetupNoToolbar<MappingViewModel, MappingView>(
-            ActivatedView.Mapping, view.MappingButton);
-        SetupNoToolbar<SettingsViewModel, SettingsView>(
-            ActivatedView.Settings, view.SettingsButton);
-        SetupNoToolbar<LanguageViewModel, LanguageView>(
-            ActivatedView.Language, view.FlagButton);
+        SetupNoToolbar<DesignViewModel, DesignView>(ActivatedView.Design, view.DesignButton);
+        SetupNoToolbar<ImagingViewModel, ImagingView>(ActivatedView.Imaging, view.ImagingButton);
+        SetupNoToolbar<LanguageViewModel, LanguageView>(ActivatedView.Language, view.FlagButton);
 
-        //Setup<CollectionViewModel, CollectionView, CollectionToolbarViewModel, CollectionToolbarView>(
-        //    ActivatedView.Collection, view.CollectionButton);
-
-        //Setup<IntroViewModel, IntroView, IntroToolbarViewModel, IntroToolbarView>(
-        //    ActivatedView.Intro, view.IntroButton);
-
-        //Setup<LanguageViewModel, LanguageView, LanguageToolbarViewModel, LanguageToolbarView>(
-        //    ActivatedView.Language, view.FlagButton);
-
-        //Setup<SettingsViewModel, SettingsView, SettingsToolbarViewModel, SettingsToolbarView>(
-        //    ActivatedView.Settings, view.SettingsButton);
+        // Color mappings and Settings disabled for now
+        // SetupNoToolbar<MappingViewModel, MappingView>(ActivatedView.Mapping, view.MappingButton);
+        // SetupNoToolbar<SettingsViewModel, SettingsView>(ActivatedView.Settings, view.SettingsButton);
 
         // Needs to be kept alive as a class member, or else callbacks will die (and wont work) 
         this.viewSelector =
@@ -196,19 +181,20 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>, IRecipient<La
     public void OnImaging() => Select(ActivatedView.Imaging);
 
     [RelayCommand]
-    public void OnMapping() => Select(ActivatedView.Mapping);
-
-    [RelayCommand]
-    public void OnSettings() => Select(ActivatedView.Settings);
-
-    [RelayCommand]
     public void OnLanguage() => Select(ActivatedView.Language);
+
+    [RelayCommand]
+    public void OnDebug() => this.paletteDesignerModel.Dump();
 
     [RelayCommand]
     public void OnClose() => OnExit();
 
-    [RelayCommand]
-    public void OnDebug() => this.paletteDesignerModel.Dump();
+    // Color mappings and Settings disabled for now
+    //[RelayCommand]
+    //public void OnMapping() => Select(ActivatedView.Mapping);
+
+    //[RelayCommand]
+    //public void OnSettings() => Select(ActivatedView.Settings);
 
     private static async void OnExit()
     {

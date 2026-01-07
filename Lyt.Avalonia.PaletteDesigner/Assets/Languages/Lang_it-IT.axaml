@@ -5,7 +5,7 @@
     xmlns:system="clr-namespace:System;assembly=System.Runtime"
     >
 
-    <system:String x:Key="Toast.Dismiss">Vicino</system:String>
+    <system:String x:Key="Toast.Dismiss">Chiudi</system:String>
 
     <system:String x:Key="Shared.Show">Mostra</system:String>
 

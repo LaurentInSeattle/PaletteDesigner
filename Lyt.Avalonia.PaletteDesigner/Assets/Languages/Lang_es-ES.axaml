@@ -27,7 +27,7 @@
 
     <system:String x:Key="Shell.Close">Cerca</system:String>
 
-    <system:String x:Key="Shell.Ready">Listo.</system:String>
+    <system:String x:Key="Shell.Ready">Listo</system:String>
 
     <system:String x:Key="Shell.Greetings">¡Bienvenido a Diseñador de Paleta!</system:String>
 

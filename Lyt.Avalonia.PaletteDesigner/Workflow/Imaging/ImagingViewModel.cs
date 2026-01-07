@@ -203,7 +203,12 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
                 // Calculate that in a thread and let the UI spin until its done
                 Task.Run(() =>
                 {
-                    this.ExtractSwatches(colors, clusters, depthAnalysis);
+                    var swatches = PaletteDesignerModel.ExtractSwatches(colors, clusters, depthAnalysis);
+                    Debug.WriteLine("Palette: " + swatches.Count);
+                    if (swatches.Count > 0)
+                    {
+                        Dispatch.OnUiThread(() => { this.ProcessSwatches(swatches); });
+                    }
                 });
 
                 return true;
@@ -218,71 +223,6 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
             Debug.WriteLine(ex);
             this.Logger.Warning(ex.ToString());
             return false;
-        }
-    }
-
-    private unsafe void TestClahe()
-    {
-        if ( this.SourceImage is null )
-        {
-            return; 
-        }
-
-        var sourceBitmap = (WriteableBitmap)this.SourceImage;
-        using ILockedFramebuffer sourceFrameBuffer = sourceBitmap.Lock();
-
-        // Define the source rectangle (e.g., the entire bitmap)
-        int height = sourceFrameBuffer.Size.Height;
-        int width = sourceFrameBuffer.Size.Width;
-        PixelRect sourceRect = new(0, 0, width, height);
-        byte[] imageBuffer = new byte[height * width * 4];
-        fixed (byte* arrayPtr = imageBuffer)
-        {
-            // The 'dataArray' is pinned here, and 'arrayPtr' points to its first element.
-            nint buffer = (nint) arrayPtr;
-            sourceBitmap.CopyPixels(sourceRect, buffer, imageBuffer.Length, sourceFrameBuffer.RowBytes);
-        } 
-
-        byte[] bytes; 
-        var profiler = (Profiler)App.GetRequiredService<IProfiler>();
-        try
-        {
-            var clahe = new Clahe();
-            bytes = clahe.Process(imageBuffer, height, width, profiler);
-        }
-        catch
-        {
-            return;
-        }
-
-        fixed (byte* arrayPtr = bytes)
-        {
-            // The 'dataArray' is pinned here, and 'arrayPtr' points to its first element.
-            IntPtr data = (IntPtr)arrayPtr;
-            var newBitmap = new WriteableBitmap(
-                (PixelFormat)sourceBitmap.Format!,
-                (AlphaFormat)sourceBitmap.AlphaFormat!,
-                data,
-                sourceBitmap.PixelSize,
-                sourceBitmap.Dpi,
-                sourceFrameBuffer.RowBytes);
-
-            this.SourceImage = newBitmap;
-        }
-    }
-
-    private void ExtractSwatches(RgbColor[] colors, int clusters, int depthAnalysis)
-    {
-        var swatches = PaletteDesignerModel.ExtractSwatches(colors, clusters, depthAnalysis);
-        Debug.WriteLine("Palette: " + swatches.Count);
-        if (swatches.Count > 0)
-        {
-            Dispatch.OnUiThread(() =>
-            {
-                this.ProcessSwatches(swatches);
-
-                this.TestClahe();
-            } );            
         }
     }
 
@@ -332,4 +272,58 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
 
         return false;
     }
+
+    #region CLAHE - Disabled for now
+
+    //private unsafe void TestClahe()
+    //{
+    //    if (this.SourceImage is null)
+    //    {
+    //        return;
+    //    }
+
+    //    var sourceBitmap = (WriteableBitmap)this.SourceImage;
+    //    using ILockedFramebuffer sourceFrameBuffer = sourceBitmap.Lock();
+
+    //    // Define the source rectangle (e.g., the entire bitmap)
+    //    int height = sourceFrameBuffer.Size.Height;
+    //    int width = sourceFrameBuffer.Size.Width;
+    //    PixelRect sourceRect = new(0, 0, width, height);
+    //    byte[] imageBuffer = new byte[height * width * 4];
+    //    fixed (byte* arrayPtr = imageBuffer)
+    //    {
+    //        // The 'dataArray' is pinned here, and 'arrayPtr' points to its first element.
+    //        nint buffer = (nint)arrayPtr;
+    //        sourceBitmap.CopyPixels(sourceRect, buffer, imageBuffer.Length, sourceFrameBuffer.RowBytes);
+    //    }
+
+    //    byte[] bytes;
+    //    var profiler = (Profiler)App.GetRequiredService<IProfiler>();
+    //    try
+    //    {
+    //        var clahe = new Clahe();
+    //        bytes = clahe.Process(imageBuffer, height, width, profiler);
+    //    }
+    //    catch
+    //    {
+    //        return;
+    //    }
+
+    //    fixed (byte* arrayPtr = bytes)
+    //    {
+    //        // The 'dataArray' is pinned here, and 'arrayPtr' points to its first element.
+    //        IntPtr data = (IntPtr)arrayPtr;
+    //        var newBitmap = new WriteableBitmap(
+    //            (PixelFormat)sourceBitmap.Format!,
+    //            (AlphaFormat)sourceBitmap.AlphaFormat!,
+    //            data,
+    //            sourceBitmap.PixelSize,
+    //            sourceBitmap.Dpi,
+    //            sourceFrameBuffer.RowBytes);
+
+    //        this.SourceImage = newBitmap;
+    //    }
+    //}
+
+    #endregion CLAHE - Disabled for now
 }
