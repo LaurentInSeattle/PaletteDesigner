@@ -58,7 +58,6 @@
         <ProjectReference Include="..\..\Lyt.Framework\Lyt.Collections\Lyt.Collections.csproj" />
         <ProjectReference Include="..\..\Lyt.Framework\Lyt.ImageProcessing\Lyt.ImageProcessing.csproj" />
         <ProjectReference Include="..\..\Lyt.Framework\Lyt.Model\Lyt.Model.csproj" />
-        <ProjectReference Include="..\..\Lyt.Framework\Lyt.Peaks\Lyt.Peaks.csproj" />
         <ProjectReference Include="..\..\Lyt.Framework\Lyt.Persistence\Lyt.Persistence.csproj" />
         <ProjectReference Include="..\..\Lyt.Framework\Lyt.Templator\Lyt.Templator.csproj" />
         <ProjectReference Include="..\..\Lyt.Framework\Lyt.Utilities\Lyt.Utilities.csproj" />
