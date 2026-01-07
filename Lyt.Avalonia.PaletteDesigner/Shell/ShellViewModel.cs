@@ -82,6 +82,10 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>, IRecipient<La
         if (this.paletteDesignerModel.IsFirstRun)
         {
             Select(ActivatedView.Language);
+
+            // Save that we have run once as "fire and forget"
+            this.paletteDesignerModel.IsFirstRun = false;
+            _ = this.paletteDesignerModel.Save(); 
         }
         else
         {
