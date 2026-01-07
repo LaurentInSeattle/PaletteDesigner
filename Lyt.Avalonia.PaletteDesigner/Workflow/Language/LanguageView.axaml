@@ -9,170 +9,177 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 
-	xmlns:controls="clr-namespace:Lyt.Avalonia.AstroPic.Controls"
-	xmlns:panzoom="using:Lyt.Avalonia.Controls.PanZoom"
-	xmlns:interactions="using:Lyt.Avalonia.Mvvm.Behaviors"
-	xmlns:shared="clr-namespace:Lyt.Avalonia.AstroPic.Workflow.Shared"
-
 	Background="Transparent"
 	>
-	<Grid
-		Margin="10 0 0 0"
-		VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-		ShowGridLines="False"
-		>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="640" />
-			<ColumnDefinition Width="*" />
-		</Grid.ColumnDefinitions>
+	<Grid> 
 		<Grid.RowDefinitions>
-			<RowDefinition Height="120" />
-			<RowDefinition Height="54" />
-			<RowDefinition Height="54" />
-			<RowDefinition Height="54" />
-			<RowDefinition Height="54" />
-			<RowDefinition Height="54" />
-			<RowDefinition Height="54" />
-			<RowDefinition Height="54" />
-			<RowDefinition Height="54" />
-			<RowDefinition Height="54" />
-			<RowDefinition Height="54" />
-			<RowDefinition Height="54" />
+			<RowDefinition Height="60" />
+			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
-		<TextBlock
-			Grid.Column="0" Grid.Row="1" 
-			Margin="20 0 0 0"
-			Text="Scegli la lingua dell'interfaccia utente."
-			Theme="{StaticResource H2}"
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<Grid
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			/>
-		<TextBlock
-			Grid.Column="0" Grid.Row="2" 
-			Margin="20 0 0 0"
-			Text="Choisissez le langage de l'interface utilisateur."
-			Theme="{StaticResource H2}"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			/>
-		<TextBlock
-			Grid.Column="0" Grid.Row="3" 
-			Margin="20 0 0 0"
-			Text="Choose the user interface language."
-			Theme="{StaticResource H2}"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			/>
-		<TextBlock
-			Grid.Column="0" Grid.Row="4" 
-			Margin="20 0 0 0"
-			Text="Elija el idioma de la interfaz de usuario."
-			Theme="{StaticResource H2}"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			/>
-		<TextBlock
-			Grid.Column="0" Grid.Row="5"
-			Margin="20 0 0 0"
-			Text="Виберіть мову інтерфейсу користувача."
-			Theme="{StaticResource H2}"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			/>
-		<TextBlock
-			Grid.Column="0" Grid.Row="6"
-			Margin="20 0 0 0"
-			Text="Изберете езика на потребителския интерфейс."
-			Theme="{StaticResource H2}"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			/>
-		<TextBlock
-			Grid.Column="0" Grid.Row="7"
-			Margin="20 0 0 0"
-			Text="ユーザーインターフェイス言語を選択します。"
-			Theme="{StaticResource H2}"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			/>
-		<TextBlock
-			Grid.Column="0" Grid.Row="8"
-			Margin="20 0 0 0"
-			Text="Επιλέξτε τη γλώσσα διεπαφής χρήστη."
-			Theme="{StaticResource H2}"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			/>
-		<TextBlock
-			Grid.Column="0" Grid.Row="9"
-			Margin="20 0 0 0"
-			Text="Wählen Sie die Sprache der Benutzeroberfläche."
-			Theme="{StaticResource H2}"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			/>
-		<TextBlock
-			Grid.Column="1" Grid.Row="3"
-			Margin="20 0 0 0"
-			Text="Ընտրեք օգտվողի միջերեսի լեզուն:"
-			Theme="{StaticResource H2}"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			/>
-		<TextBlock
-			Grid.Column="1" Grid.Row="4"
-			Margin="20 0 0 0"
-			Text="사용자 인터페이스 언어를 선택하십시오."
-			Theme="{StaticResource H2}"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			/>
-		<TextBlock
-			Grid.Column="1" Grid.Row="5"
-			Margin="20 0 0 0"
-			Text="选择用户界面语言。"
-			Theme="{StaticResource H2}"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			/>
-		<TextBlock
-			Grid.Column="1" Grid.Row="6"
-			Margin="20 0 0 0"
-			Text="選擇用戶界面語言。"
-			Theme="{StaticResource H2}"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			/>
-		<!-- hi   -->
-		<TextBlock
-			Grid.Column="1" Grid.Row="7"
-			Margin="20 0 0 0"
-			Text="उपयोगकर्ता इंटरफ़ेस भाषा चुनें।"
-			Theme="{StaticResource H2}"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			/>
-		<!-- bn   -->
-		<TextBlock
-			Grid.Column="1" Grid.Row="8"
-			Margin="20 0 0 0"
-			Text="ব্যবহারকারী ইন্টারফেস ভাষা চয়ন করুন।"
-			Theme="{StaticResource H2}"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			/>
-		<!-- Hu   -->
-		<TextBlock
-			Grid.Column="1" Grid.Row="9"
-			Margin="20 0 0 0"
-			Text="Válassza ki a felhasználói felület nyelvét."
-			Theme="{StaticResource H2}"
-			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-			/>
-		<ComboBox
-			Grid.Column="1" Grid.Row="1" 
-			VerticalAlignment="Center" HorizontalAlignment="Left"
-			x:Name="LanguageComboBox"
-			ItemsSource="{Binding Languages}"
-			SelectedIndex="{Binding SelectedLanguageIndex}"
-			Width="480" Height="80" MaxDropDownHeight="480"
+			ShowGridLines="False"
+			Grid.Row="1" Grid.Column="1"
 			>
-			<ComboBox.ItemsPanel>
-				<ItemsPanelTemplate>
-					<StackPanel Orientation="Vertical"/>
-				</ItemsPanelTemplate>
-			</ComboBox.ItemsPanel>
-			<ComboBox.ItemTemplate>
-				<DataTemplate>
-					<vm:LanguageInfoView />
-				</DataTemplate>
-			</ComboBox.ItemTemplate>
-		</ComboBox>		
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="640" />
+				<ColumnDefinition Width="640" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="120" />
+				<RowDefinition Height="54" />
+				<RowDefinition Height="54" />
+				<RowDefinition Height="54" />
+				<RowDefinition Height="54" />
+				<RowDefinition Height="54" />
+				<RowDefinition Height="54" />
+				<RowDefinition Height="54" />
+				<RowDefinition Height="54" />
+				<RowDefinition Height="54" />
+				<RowDefinition Height="54" />
+				<RowDefinition Height="54" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<TextBlock
+				Grid.Column="0" Grid.Row="1" 
+				Margin="20 0 0 0"
+				Text="Scegli la lingua dell'interfaccia utente."
+				Theme="{StaticResource H2}"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				/>
+			<TextBlock
+				Grid.Column="0" Grid.Row="2" 
+				Margin="20 0 0 0"
+				Text="Choisissez le langage de l'interface utilisateur."
+				Theme="{StaticResource H2}"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				/>
+			<TextBlock
+				Grid.Column="0" Grid.Row="3" 
+				Margin="20 0 0 0"
+				Text="Choose the user interface language."
+				Theme="{StaticResource H2}"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				/>
+			<TextBlock
+				Grid.Column="0" Grid.Row="4" 
+				Margin="20 0 0 0"
+				Text="Elija el idioma de la interfaz de usuario."
+				Theme="{StaticResource H2}"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				/>
+			<TextBlock
+				Grid.Column="0" Grid.Row="5"
+				Margin="20 0 0 0"
+				Text="Виберіть мову інтерфейсу користувача."
+				Theme="{StaticResource H2}"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				/>
+			<TextBlock
+				Grid.Column="0" Grid.Row="6"
+				Margin="20 0 0 0"
+				Text="Изберете езика на потребителския интерфейс."
+				Theme="{StaticResource H2}"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				/>
+			<TextBlock
+				Grid.Column="0" Grid.Row="7"
+				Margin="20 0 0 0"
+				Text="ユーザーインターフェイス言語を選択します。"
+				Theme="{StaticResource H2}"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				/>
+			<TextBlock
+				Grid.Column="0" Grid.Row="8"
+				Margin="20 0 0 0"
+				Text="Επιλέξτε τη γλώσσα διεπαφής χρήστη."
+				Theme="{StaticResource H2}"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				/>
+			<TextBlock
+				Grid.Column="0" Grid.Row="9"
+				Margin="20 0 0 0"
+				Text="Wählen Sie die Sprache der Benutzeroberfläche."
+				Theme="{StaticResource H2}"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				/>
+			<TextBlock
+				Grid.Column="1" Grid.Row="3"
+				Margin="20 0 0 0"
+				Text="Ընտրեք օգտվողի միջերեսի լեզուն:"
+				Theme="{StaticResource H2}"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				/>
+			<TextBlock
+				Grid.Column="1" Grid.Row="4"
+				Margin="20 0 0 0"
+				Text="사용자 인터페이스 언어를 선택하십시오."
+				Theme="{StaticResource H2}"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				/>
+			<TextBlock
+				Grid.Column="1" Grid.Row="5"
+				Margin="20 0 0 0"
+				Text="选择用户界面语言。"
+				Theme="{StaticResource H2}"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				/>
+			<TextBlock
+				Grid.Column="1" Grid.Row="6"
+				Margin="20 0 0 0"
+				Text="選擇用戶界面語言。"
+				Theme="{StaticResource H2}"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				/>
+			<!-- hi   -->
+			<TextBlock
+				Grid.Column="1" Grid.Row="7"
+				Margin="20 0 0 0"
+				Text="उपयोगकर्ता इंटरफ़ेस भाषा चुनें।"
+				Theme="{StaticResource H2}"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				/>
+			<!-- bn   -->
+			<TextBlock
+				Grid.Column="1" Grid.Row="8"
+				Margin="20 0 0 0"
+				Text="ব্যবহারকারী ইন্টারফেস ভাষা চয়ন করুন।"
+				Theme="{StaticResource H2}"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				/>
+			<!-- Hu   -->
+			<TextBlock
+				Grid.Column="1" Grid.Row="9"
+				Margin="20 0 0 0"
+				Text="Válassza ki a felhasználói felület nyelvét."
+				Theme="{StaticResource H2}"
+				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+				/>
+			<ComboBox
+				Grid.Column="1" Grid.Row="1" 
+				VerticalAlignment="Center" HorizontalAlignment="Left"
+				x:Name="LanguageComboBox"
+				ItemsSource="{Binding Languages}"
+				SelectedIndex="{Binding SelectedLanguageIndex}"
+				Width="480" Height="80" MaxDropDownHeight="480"
+				>
+				<ComboBox.ItemsPanel>
+					<ItemsPanelTemplate>
+						<StackPanel Orientation="Vertical"/>
+					</ItemsPanelTemplate>
+				</ComboBox.ItemsPanel>
+				<ComboBox.ItemTemplate>
+					<DataTemplate>
+						<vm:LanguageInfoView />
+					</DataTemplate>
+				</ComboBox.ItemTemplate>
+			</ComboBox>		
+		</Grid>
 	</Grid>
 </UserControl>

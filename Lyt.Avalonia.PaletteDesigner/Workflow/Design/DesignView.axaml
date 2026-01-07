@@ -26,40 +26,49 @@
 		</Grid.RowDefinitions>
 		<Grid
 			Grid.Row="1"
-			>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="700" />
-				<!-- Spacer -->
-				<ColumnDefinition Width="20" />
-				<ColumnDefinition Width="Auto" />
-				<!-- Spacer -->
-				<ColumnDefinition Width="12" />
-				<ColumnDefinition Width="Auto" />
-				<!-- Spacer -->
-				<ColumnDefinition Width="8" />
-				<ColumnDefinition Width="Auto" />
-			</Grid.ColumnDefinitions>
-			<wheel:ColorWheelView
-				DataContext="{Binding ColorWheelViewModel}"
-				VerticalAlignment="Top"
-				/>
-			<vm:ShadesPresetsToolbarView
-				Grid.Column="2" 
-				Margin="0 12 0 0"
-				VerticalAlignment="Top" HorizontalAlignment="Center"
-				DataContext="{Binding ShadesPresetsToolbarViewModel}"
-				/>
-			<shading:PalettePreviewView
-				Grid.Column="4"
-				VerticalAlignment="Top" HorizontalAlignment="Left"
-				DataContext="{Binding PalettePreviewViewModel}"
-				/>
-			<text:TextPreviewPanelView
-				Grid.Column="6"
-				Margin="0 18 0 0"
-				VerticalAlignment="Top" HorizontalAlignment="Left"
-				DataContext="{Binding TextPreviewPanelViewModel}"
-				/>
+			> 
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<Grid
+				Grid.Row="1"
+				>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="700" />
+					<!-- Spacer -->
+					<ColumnDefinition Width="20" />
+					<ColumnDefinition Width="Auto" />
+					<!-- Spacer -->
+					<ColumnDefinition Width="12" />
+					<ColumnDefinition Width="Auto" />
+					<!-- Spacer -->
+					<ColumnDefinition Width="8" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				<wheel:ColorWheelView
+					DataContext="{Binding ColorWheelViewModel}"
+					VerticalAlignment="Top"
+					/>
+				<vm:ShadesPresetsToolbarView
+					Grid.Column="2" 
+					Margin="0 12 0 0"
+					VerticalAlignment="Top" HorizontalAlignment="Center"
+					DataContext="{Binding ShadesPresetsToolbarViewModel}"
+					/>
+				<shading:PalettePreviewView
+					Grid.Column="4"
+					VerticalAlignment="Top" HorizontalAlignment="Left"
+					DataContext="{Binding PalettePreviewViewModel}"
+					/>
+				<text:TextPreviewPanelView
+					Grid.Column="6"
+					Margin="0 18 0 0"
+					VerticalAlignment="Top" HorizontalAlignment="Left"
+					DataContext="{Binding TextPreviewPanelViewModel}"
+					/>
+			</Grid>
 		</Grid>
 
 		<!-- Top toolbars -->

@@ -79,7 +79,7 @@
 	<system:String x:Key="Design.Toolbar.Shade.TextSamples">Text Samples</system:String>
 	<system:String x:Key="Design.TextSamples.TitleText">Title</system:String>
 	<system:String x:Key="Design.TextSamples.HeaderText">Sample Header Text</system:String>
-	<system:String x:Key="Design.TextSamples.RegularText">What is Sample text? A sequence of characters without any formatting.</system:String>
+	<system:String x:Key="Design.TextSamples.RegularText">This is just some sample text: A sequence of characters without any formatting.</system:String>
 
 	<system:String x:Key="Design.Palette.WheelHue">Wheel Hue</system:String>
 

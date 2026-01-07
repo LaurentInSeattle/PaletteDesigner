@@ -16,11 +16,10 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>, IRecipient<La
 
     private ViewSelector<ActivatedView>? viewSelector;
 
-    // private bool isFirstActivation;
-
     #region To please the XAML viewer 
 
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+#pragma warning disable CS8618 
+    // Non-nullable field must contain a non-null value when exiting constructor.
     // Should never be executed 
     public ShellViewModel()
     {
@@ -33,13 +32,11 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>, IRecipient<La
     {
         this.paletteDesignerModel = paletteDesignerModel;
         this.toaster = toaster;
-
         this.Subscribe<LanguageChangedMessage>();
     }
 
-    public void Receive(LanguageChangedMessage message)
-    {
-    }
+    // Language agnostic (for now) 
+    public void Receive(LanguageChangedMessage message) {}
 
     public override void OnViewLoaded()
     {
@@ -60,7 +57,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>, IRecipient<La
 
         this.Logger.Debug("OnViewLoaded language loaded");
 
-        // Create all statics views and bind them 
+        // Create all persistent views and bind them 
         this.SetupWorkflow();
         this.Logger.Debug("OnViewLoaded SetupWorkflow complete");
 
@@ -75,8 +72,6 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>, IRecipient<La
                 1_600, InformationLevel.Info);
         }
 
-        // Delay a bit the launch of the gallery so that there is time to ping 
-        // this.Logger.Debug("OnViewLoaded: Internet connected: " + this.astroPicModel.IsInternetConnected);
         Schedule.OnUiThread(100, this.ActivateInitialView, DispatcherPriority.Background);
 
         this.Logger.Debug("OnViewLoaded complete");
@@ -84,14 +79,15 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>, IRecipient<La
 
     private void ActivateInitialView()
     {
-        // this.isFirstActivation = true;
-
         if (this.paletteDesignerModel.IsFirstRun)
         {
-            // Select(ActivatedView.Language);
+            Select(ActivatedView.Language);
+        }
+        else
+        {
+            Select(ActivatedView.Design);
         }
 
-        Select(ActivatedView.Design);
         this.MainToolbarIsVisible = true;
         this.Logger.Debug("OnViewLoaded OnViewActivation complete");
     }
@@ -105,7 +101,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>, IRecipient<La
 
         var selectableViews = new List<SelectableView<ActivatedView>>();
 
-        // SOON 
+        // Maybe... in future we want toolbars for some views 
         //void Setup<TViewModel, TControl, TToolbarViewModel, TToolbarControl>(
         //        ActivatedView activatedView, Control control)
         //    where TViewModel : ViewModel<TControl>
@@ -152,27 +148,17 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>, IRecipient<La
 
     private void OnViewSelected(ActivatedView activatedView)
     {
+        // Nothing for now 
+
         if (this.viewSelector is null)
         {
             throw new Exception("No view selector");
         }
-
-        // var newViewModel = this.viewSelector.CurrentPrimaryViewModel;
-        //if (newViewModel is not null)
-        //{
-        //    bool mainToolbarIsHidden =
-        //        this.astroPicModel.IsFirstRun || newViewModel is IntroViewModel;
-        //    this.MainToolbarIsVisible = !mainToolbarIsHidden;
-        //    if (this.isFirstActivation)
-        //    {
-        //        this.Profiler.MemorySnapshot(newViewModel.ViewBase!.GetType().Name + ":  Activated");
-        //    }
-        //}
-
-        // this.isFirstActivation = false;
     }
 
-#pragma warning disable CA1822 // Mark members as static
+#pragma warning disable CA1822 
+    // Mark members as static
+    // Cannot be static because of [RelayCommand]
 
     [RelayCommand]
     public void OnDesign() => Select(ActivatedView.Design);
@@ -215,7 +201,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>, IRecipient<La
         //    return true;
         //}
 
-        // Not Needed for now 
+        // Not Needed for now as we have no modal dialogs
         //
         //if (this.dialogService.IsModal)
         //{
