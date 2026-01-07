@@ -9,13 +9,9 @@ and also XAML, AXAML and JSON for use in various desktop or mobile applications,
 <p align="left"><img src="Screenshots/Screenshot 2025-08-24.png" height="600"/>
 
 # Localization
-- Human translated: Italian, French and English
+- Human translated: Italian, French and English.
 - Machine translated: Spanish, Ukrainian, Bulgarian, Armenian, Greek, German, Japanese, Chinese, Korean, Magyar, Hindi and Bengali. 
  
-# Coming Soon 
-
-- Ability to create custom color themes, first for the Avalonia "Fluent Theme". 
-
 # Build it...
 
 - Clone this repo'
