@@ -18,6 +18,7 @@ Uses KMeans algorithm to extract the most dominant colors from any image.
 Images are converted to the CIELAB color space for better and more accurate results.
 
 # Localization
+
 - Human translated: Italian, French and English.
 - Machine translated: Spanish, Ukrainian, Bulgarian, Armenian, Greek, German, Japanese, Chinese, Korean, Magyar, Hindi and Bengali. 
  
@@ -25,7 +26,11 @@ Images are converted to the CIELAB color space for better and more accurate resu
 
 # Download
 
-# Build it...
+https://github.com/LaurentInSeattle/PaletteDesigner/blob/main/Download/PaletteDesigner.zip 
+
+You can also download the latest release from the Releases section.
+
+# Or... Build it...
 
 - Clone this repo'
 - => Clone the "Lyt.Framework" repo' side by side
