@@ -23,11 +23,49 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AvaloniaXaml Remove="Assets\Languages\Lang_fr-FR.axaml" />
+	  <AvaloniaResource Remove="Assets\Fonts\Nunito-Regular.ttf" />
+	  <AvaloniaResource Remove="Assets\Icons\Unused_FluentSvgResourceDictionaryCopy.axaml" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Resources\Images\wheel.png" />
+	  <AvaloniaXaml Remove="Assets\Icons\Unused_FluentSvgResourceDictionaryCopy.axaml" />
+	  <AvaloniaXaml Remove="Assets\Languages\Lang_fr-FR.axaml" />
+	  <AvaloniaXaml Remove="Workflow\Mapping\ColorDragView.axaml" />
+	  <AvaloniaXaml Remove="Workflow\Mapping\ColorsDragPanelView.axaml" />
+	  <AvaloniaXaml Remove="Workflow\Mapping\DraggableColorBoxView.axaml" />
+	  <AvaloniaXaml Remove="Workflow\Mapping\MappingView.axaml" />
+	  <AvaloniaXaml Remove="Workflow\Mapping\PropertiesDropPanelView.axaml" />
+	  <AvaloniaXaml Remove="Workflow\Mapping\PropertyDropView.axaml" />
+	  <AvaloniaXaml Remove="Workflow\Mapping\ShadeDragView.axaml" />
+	  <AvaloniaXaml Remove="Workflow\Mapping\WidgetsPreviewView.axaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Workflow\Mapping\ColorDragView.axaml.cs" />
+	  <Compile Remove="Workflow\Mapping\ColorDragViewModel.cs" />
+	  <Compile Remove="Workflow\Mapping\ColorsDragPanelView.axaml.cs" />
+	  <Compile Remove="Workflow\Mapping\ColorsDragPanelViewModel.cs" />
+	  <Compile Remove="Workflow\Mapping\DraggableColorBoxView.axaml.cs" />
+	  <Compile Remove="Workflow\Mapping\DraggableColorBoxViewModel.cs" />
+	  <Compile Remove="Workflow\Mapping\MappingView.axaml.cs" />
+	  <Compile Remove="Workflow\Mapping\MappingViewModel.cs" />
+	  <Compile Remove="Workflow\Mapping\PropertiesDropPanelView.axaml.cs" />
+	  <Compile Remove="Workflow\Mapping\PropertiesDropPanelViewModel.cs" />
+	  <Compile Remove="Workflow\Mapping\PropertyDropView.axaml.cs" />
+	  <Compile Remove="Workflow\Mapping\PropertyDropViewModel.cs" />
+	  <Compile Remove="Workflow\Mapping\ShadeDragView.axaml.cs" />
+	  <Compile Remove="Workflow\Mapping\ShadeDragViewModel.cs" />
+	  <Compile Remove="Workflow\Mapping\WidgetsPreviewView.axaml.cs" />
+	  <Compile Remove="Workflow\Mapping\WidgetsPreviewViewModel.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Assets\Fonts\Nunito-Regular.ttf" />
+	  <None Remove="Resources\Images\wheel.png" />
+	  <None Remove="Samples\BaseColorsPalette.xaml" />
+	  <None Remove="Samples\BaseResources.xaml" />
+	  <None Remove="Samples\FluentControlResources.xaml" />
+	  <None Remove="Samples\InvariantResources.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -89,18 +127,6 @@
 	  <Compile Update="Workflow\Imaging\ImagingView.axaml.cs">
 	    <DependentUpon>ImagingView.axaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Workflow\Mapping\ColorDragView.axaml.cs">
-	    <DependentUpon>ColorDragView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Mapping\ColorsDragPanelView.axaml.cs">
-	    <DependentUpon>ColorsDragPanelView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Mapping\ShadeDragView.axaml.cs">
-	    <DependentUpon>ShadeDragView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Mapping\WidgetsPreviewView.axaml.cs">
-	    <DependentUpon>WidgetsPreviewView.axaml</DependentUpon>
-	  </Compile>
 	  <Compile Update="Workflow\Shading\PalettePreviewView.axaml.cs">
 	    <DependentUpon>PalettePreviewView.axaml</DependentUpon>
 	  </Compile>
@@ -116,5 +142,11 @@
 	  <Compile Update="Workflow\TextSamples\TextPreviewView.axaml.cs">
 	    <DependentUpon>TextPreviewView.axaml</DependentUpon>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Resources\Images\" />
+	  <Folder Include="Samples\" />
+	  <Folder Include="Workflow\Mapping\" />
 	</ItemGroup>
 </Project>
