@@ -33,9 +33,9 @@ You can also download the latest release from the Releases section.
 # Or... Build it...
 
 - Clone this repo'
-- => Clone the "Lyt.Framework" repo' side by side
-- => Clone the "Lyt.Avalonia" repo' side by side
-- Open the solution in Visual Studio and build.
+- => Clone the "Lyt.Framework" repo' side by side. (https://github.com/LaurentInSeattle/Lyt.Framework)
+- => Clone the "Lyt.Avalonia" repo' side by side. (https://github.com/LaurentInSeattle/Lyt.Avalonia)
+- Open the solution in Visual Studio, restore nugets, then clean and build.
 
 Developed and tested with .Net 10, Visual Studio 2026 18.1 and Avalonia 11.3.10.
-Should most likely work with Jet Brains Rider, but not tested.
+Should most likely work with Jet Brains Rider, but not tested yet.
