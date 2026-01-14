@@ -60,7 +60,8 @@ public sealed partial class Palette
     [JsonRequired]
     public Shades Complementary { get; set; } = new();
 
-    // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+    // Non-nullable field must contain a non-null value when exiting constructor.
+    // Consider adding the 'required' modifier or declaring as nullable.
     public Palette() { /* needed for serialization */ }
 
     public Palette DeepClone()
