@@ -90,10 +90,10 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         }
 
         this.ImagingToolbarViewModel.ProgrammaticUpdate(swatches);
-        this.Select(swatches.ImagePath);
+        this.OnDropOrReload(swatches.ImagePath);
     }
 
-    public bool Select(string path)
+    public bool OnDropOrReload(string path)
     {
         try
         {

@@ -17,7 +17,7 @@ public sealed partial class DropViewModel : ViewModel<DropView>
             }
 
             var viewModel = App.GetRequiredService<ImagingViewModel>(); 
-            return viewModel.Select(path);
+            return viewModel.OnDropOrReload(path);
 
             throw new Exception("Failed to load image: " + path); 
         }

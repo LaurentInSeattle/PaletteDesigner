@@ -33,16 +33,19 @@ public sealed partial class ImagingToolbarViewModel : ViewModel<ImagingToolbarVi
         this.paletteDesignerModel.ImagingAlgorithmClusters = (int)value;
     }
 
-    [RelayCommand]
-    public void OnRecalculate()
-    {
-        var viewModel = App.GetRequiredService<ImagingViewModel>();
-        viewModel.ReProcessBitmap();
-    }
-
     public void ProgrammaticUpdate(ColorSwatches swatches)
     {
         this.IsDeepAlgorithmStrength = swatches.IsDeepAlgorithmStrength;
         this.ClustersSliderValue = swatches.Swatches.Count;
     }
+
+    [RelayCommand]
+#pragma warning disable CA1822  // Mark members as static
+    // Relay commands cannot be static
+    public void OnRecalculate()
+    {
+        var viewModel = App.GetRequiredService<ImagingViewModel>();
+        viewModel.ReProcessBitmap();
+    }
+#pragma warning restore CA1822 // Mark members as static
 }

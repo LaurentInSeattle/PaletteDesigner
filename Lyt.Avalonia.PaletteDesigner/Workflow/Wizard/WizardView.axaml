@@ -1,0 +1,73 @@
+<UserControl
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Wizard.WizardView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Wizard"
+	x:DataType="vm:WizardViewModel"
+
+	xmlns:shared="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Shared"
+	xmlns:images="clr-namespace:Lyt.Avalonia.Controls.Images;assembly=Lyt.Avalonia.Controls"
+	xmlns:progress="clr-namespace:Lyt.Avalonia.Controls.Progress;assembly=Lyt.Avalonia.Controls"
+
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="850"
+	
+	Background="Transparent"
+	>
+	<Grid
+		Margin="8"
+		ShowGridLines="False"
+		>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="92" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Grid
+			Grid.Row="1"
+			ShowGridLines="False"
+			>
+			<Grid.ColumnDefinitions>
+				<!-- Spacer -->
+				<ColumnDefinition Width="8" />
+				<ColumnDefinition Width="*" MaxWidth="600"/>
+				<!-- Spacer -->
+				<ColumnDefinition Width="20" />
+				<ColumnDefinition Width="1.6*" />
+				<!-- Spacer -->
+				<ColumnDefinition Width="8" />
+			</Grid.ColumnDefinitions>
+
+			<Grid
+				Grid.Column="1"
+				ShowGridLines="False"
+				>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="300" />
+					<RowDefinition Height="50" />
+					<RowDefinition Height="40" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+			</Grid>
+		</Grid>
+
+		<!-- Top toolbars -->
+		<!-- Top toolbars 
+		<StackPanel
+			Grid.Row="0" Grid.ColumnSpan="5"
+			HorizontalAlignment="Center"
+			Orientation="Horizontal"
+			>
+			<vm:WizardToolbarView
+				Margin="0 "
+				DataContext="{Binding WizardToolbarViewModel}"
+				/>
+			<shared:ExportToolbarView
+				Margin="12 0 0 0"
+				DataContext="{Binding ExportToolbarViewModel}"
+				/>
+		</StackPanel>
+		-->
+
+	</Grid>
+</UserControl>
