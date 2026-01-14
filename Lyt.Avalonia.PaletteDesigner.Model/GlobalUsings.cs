@@ -42,4 +42,5 @@ global using Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.ProjectObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.ThemeObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.SwatchObjects;
+global using Lyt.Avalonia.PaletteDesigner.Model.WizardObjects;
 global using Lyt.Avalonia.PaletteDesigner.Model.Utilities;

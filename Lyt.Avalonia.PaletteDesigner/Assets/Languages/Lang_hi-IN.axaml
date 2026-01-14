@@ -39,6 +39,8 @@
 
     <system:String x:Key="Shell.Imaging">छवि से</system:String>
 
+    <system:String x:Key="Shell.Wizard">जादूगर</system:String>
+
     <system:String x:Key="Shell.Mapping">मैपिंग</system:String>
 
     <system:String x:Key="Shell.Dump">गंदी जगह</system:String>

@@ -39,6 +39,8 @@
 
     <system:String x:Key="Shell.Imaging">Dall'immagine</system:String>
 
+    <system:String x:Key="Shell.Wizard">Procedura guidata</system:String>
+
     <system:String x:Key="Shell.Mapping">Mappature</system:String>
 
     <system:String x:Key="Shell.Dump">Scarico</system:String>

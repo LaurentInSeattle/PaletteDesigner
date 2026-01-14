@@ -39,6 +39,8 @@
 
     <system:String x:Key="Shell.Imaging">Képből</system:String>
 
+    <system:String x:Key="Shell.Wizard">Varázsló</system:String>
+
     <system:String x:Key="Shell.Mapping">Leképezés</system:String>
 
     <system:String x:Key="Shell.Dump">Dump</system:String>

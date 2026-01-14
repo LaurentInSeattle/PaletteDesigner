@@ -122,6 +122,15 @@
 						Command="{Binding OnImaging}"
 						Group="{Binding ElementName=SelectionGroup}"
 						/>
+					<glyphs:GlyphButton
+						x:Name="WizardButton"
+						Style="{StaticResource NavigationIconButton}"
+						GlyphSource="wand"
+						GlyphStrokeThickness="0"
+						Text="{DynamicResource Shell.Wizard}"
+						Command="{Binding OnWizard}"
+						Group="{Binding ElementName=SelectionGroup}"
+						/>
 					<!-- Color mappings and Settings disabled for now
 					<glyphs:GlyphButton
 						x:Name="MappingButton"

@@ -39,6 +39,8 @@
 
     <system:String x:Key="Shell.Imaging">从图像</system:String>
 
+    <system:String x:Key="Shell.Wizard">向导</system:String>
+
     <system:String x:Key="Shell.Mapping">映射</system:String>
 
     <system:String x:Key="Shell.Dump">倾倒</system:String>

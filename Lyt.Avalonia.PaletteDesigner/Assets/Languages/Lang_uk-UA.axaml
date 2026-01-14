@@ -39,6 +39,8 @@
 
     <system:String x:Key="Shell.Imaging">З зображення</system:String>
 
+    <system:String x:Key="Shell.Wizard">майстер</system:String>
+
     <system:String x:Key="Shell.Mapping">Відображення</system:String>
 
     <system:String x:Key="Shell.Dump">Смітник</system:String>

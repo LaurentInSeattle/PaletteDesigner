@@ -39,6 +39,8 @@
 
     <system:String x:Key="Shell.Imaging">画像から</system:String>
 
+    <system:String x:Key="Shell.Wizard">ウィザード</system:String>
+
     <system:String x:Key="Shell.Mapping">マッピング</system:String>
 
     <system:String x:Key="Shell.Dump">ごみ</system:String>

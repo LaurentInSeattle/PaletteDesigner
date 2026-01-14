@@ -39,6 +39,8 @@
 
     <system:String x:Key="Shell.Imaging">Պատկերից</system:String>
 
+    <system:String x:Key="Shell.Wizard">Վիզարդ</system:String>
+
     <system:String x:Key="Shell.Mapping">Լուրեր</system:String>
 
     <system:String x:Key="Shell.Dump">Շեփոր</system:String>

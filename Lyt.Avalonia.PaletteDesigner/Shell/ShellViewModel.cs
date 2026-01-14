@@ -134,6 +134,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>, IRecipient<La
 
         SetupNoToolbar<DesignViewModel, DesignView>(ActivatedView.Design, view.DesignButton);
         SetupNoToolbar<ImagingViewModel, ImagingView>(ActivatedView.Imaging, view.ImagingButton);
+        SetupNoToolbar<WizardViewModel, WizardView>(ActivatedView.Wizard, view.WizardButton);
         SetupNoToolbar<LanguageViewModel, LanguageView>(ActivatedView.Language, view.FlagButton);
 
         // Color mappings and Settings disabled for now
@@ -169,6 +170,9 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>, IRecipient<La
 
     [RelayCommand]
     public void OnImaging() => Select(ActivatedView.Imaging);
+
+    [RelayCommand]
+    public void OnWizard() => Select(ActivatedView.Wizard);
 
     [RelayCommand]
     public void OnLanguage() => Select(ActivatedView.Language);

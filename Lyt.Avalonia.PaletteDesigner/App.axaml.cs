@@ -32,6 +32,7 @@ public partial class App : ApplicationBase
 
 
            typeof(ImagingViewModel),
+           typeof(WizardViewModel),
 
            // Disabled for now
            // typeof(SettingsViewModel),

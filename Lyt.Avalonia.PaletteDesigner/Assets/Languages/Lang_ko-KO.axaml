@@ -39,6 +39,8 @@
 
     <system:String x:Key="Shell.Imaging">이미지에서</system:String>
 
+    <system:String x:Key="Shell.Wizard">마법사</system:String>
+
     <system:String x:Key="Shell.Mapping">매핑</system:String>
 
     <system:String x:Key="Shell.Dump">덤프</system:String>

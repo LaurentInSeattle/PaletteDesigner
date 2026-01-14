@@ -39,6 +39,8 @@
 
     <system:String x:Key="Shell.Imaging">От изображение</system:String>
 
+    <system:String x:Key="Shell.Wizard">Магьосник</system:String>
+
     <system:String x:Key="Shell.Mapping">Карти</system:String>
 
     <system:String x:Key="Shell.Dump">Сметище</system:String>

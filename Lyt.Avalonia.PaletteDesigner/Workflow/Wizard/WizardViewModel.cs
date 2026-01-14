@@ -12,11 +12,11 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
     //private ObservableCollection<WizardSwatchViewModel> swatchesViewModels;
 
 
-    [ObservableProperty]
-    private ImagingToolbarViewModel imagingToolbarViewModel;
+    //[ObservableProperty]
+    //private ImagingToolbarViewModel imagingToolbarViewModel;
 
-    [ObservableProperty]
-    private ExportToolbarViewModel exportToolbarViewModel;
+    //[ObservableProperty]
+    //private ExportToolbarViewModel exportToolbarViewModel;
 
     public WizardViewModel(PaletteDesignerModel paletteDesignerModel)
     {

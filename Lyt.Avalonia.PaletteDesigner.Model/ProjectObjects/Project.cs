@@ -23,6 +23,8 @@ public sealed class Project
 
     public ColorTheme ColorTheme { get; set; } = new();
 
+    public WizardPalette WizardPalette { get; set; } = new();
+
     public bool IsInvalid
         =>
             this.Format == PaletteExportFormat.None ||
