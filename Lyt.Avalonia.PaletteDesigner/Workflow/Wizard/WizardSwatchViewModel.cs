@@ -1,7 +1,15 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Wizard;
 
-public sealed partial class WizardSwatchViewModel : ViewModel <WizardSwatchView>, IRecipient<LanguageChangedMessage>
-{        
+using HsvColor = Lyt.ImageProcessing.ColorObjects.HsvColor;
+
+public sealed partial class WizardSwatchViewModel : 
+    ViewModel <WizardSwatchView>, 
+    IRecipient<LanguageChangedMessage>,
+    IRecipient<ModelWizardUpdatedMessage>
+{
+
+    private readonly PaletteDesignerModel paletteDesignerModel;
+
     [ObservableProperty]
     public SolidColorBrush colorBrush;
 
@@ -14,14 +22,28 @@ public sealed partial class WizardSwatchViewModel : ViewModel <WizardSwatchView>
     [ObservableProperty]
     private string hsv = string.Empty;
 
-    public WizardSwatchViewModel()
+    public WizardSwatchViewModel(PaletteDesignerModel paletteDesignerModel, SwatchKind swatchKind , int index)
     {
+        this.paletteDesignerModel = paletteDesignerModel;
+        this.Kind = swatchKind;
+        this.Index = index;
         this.ColorBrush = new SolidColorBrush(Colors.Transparent); 
-        this.Localize(); 
+        this.Localize();
         this.Subscribe<LanguageChangedMessage>();
+        this.Subscribe<ModelWizardUpdatedMessage>();
     }
 
-    public void Receive(LanguageChangedMessage message) => this.Localize(); 
+    public SwatchKind Kind { get; private set; }
+
+    public int Index { get; private set; }
+
+    public void Receive(LanguageChangedMessage message) => this.Localize();
+
+    public void Receive(ModelWizardUpdatedMessage message)
+    {
+        HsvColor hsvColor = this.paletteDesignerModel.ActiveProject!.WizardPalette.GetColor(this.Kind, this.Index); 
+        this.ColorBrush = hsvColor.ToBrush();
+    }
 
     private void Localize() 
     {

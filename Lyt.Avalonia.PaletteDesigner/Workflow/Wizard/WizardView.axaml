@@ -17,37 +17,59 @@
 	>
 	<Grid
 		Margin="8"
-		ShowGridLines="False"
+		ShowGridLines="True"
 		>
 		<Grid.RowDefinitions>
+			<!-- Toolbar -->
 			<RowDefinition Height="92" />
+			<!-- Content -->
 			<RowDefinition Height="*" />
+			<!-- Toolbar -->
+			<RowDefinition Height="92" />
 		</Grid.RowDefinitions>
 		<Grid
 			Grid.Row="1"
-			ShowGridLines="False"
+			ShowGridLines="True"
 			>
 			<Grid.ColumnDefinitions>
 				<!-- Spacer -->
 				<ColumnDefinition Width="8" />
-				<ColumnDefinition Width="*" MaxWidth="600"/>
+				<!-- Swatches -->
+				<ColumnDefinition Width="2*" />
 				<!-- Spacer -->
 				<ColumnDefinition Width="20" />
-				<ColumnDefinition Width="1.6*" />
+				<!-- Controls -->
+				<ColumnDefinition Width="400" />
 				<!-- Spacer -->
-				<ColumnDefinition Width="8" />
+				<ColumnDefinition Width="20" />
+				<!-- Results -->
+				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 
+			<!-- Swatches: Three rows for light, base, dark, nine columns for hues -->
+			<!-- Populated in view and view model code  -->
 			<Grid
+				x:Name="SwatchGrid"
 				Grid.Column="1"
-				ShowGridLines="False"
 				>
 				<Grid.RowDefinitions>
-					<RowDefinition Height="300" />
-					<RowDefinition Height="50" />
-					<RowDefinition Height="40" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="*" />
 					<RowDefinition Height="*" />
 				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+
+					<ColumnDefinition Width="*" />
+
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
 			</Grid>
 		</Grid>
 
