@@ -16,6 +16,12 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
     //[ObservableProperty]
     //private ExportToolbarViewModel exportToolbarViewModel;
 
+    [ObservableProperty]
+    private WizardThemeViewModel lightThemeViewModel;
+
+    [ObservableProperty]
+    private WizardThemeViewModel darkThemeViewModel;
+
     private bool isProgrammaticUpdate;
 
     [ObservableProperty]
@@ -70,6 +76,8 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
     public WizardViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
+        this.LightThemeViewModel = new WizardThemeViewModel(this.paletteDesignerModel, "Light");
+        this.DarkThemeViewModel = new WizardThemeViewModel(this.paletteDesignerModel, "Dark");
 
         //this.ImagingToolbarViewModel = new();
         //this.ExportToolbarViewModel = new(PaletteFamily.Image);
@@ -123,7 +131,7 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
 
         for (int row = 0; row < 3; row++)
         {
-            SwatchKind swatchKind = (SwatchKind)row;
+            var swatchKind = (SwatchKind)row;
             for (int index = 0; index < WizardPalette.PaletteWidth; index++)
             {
                 var swatchViewModel = new WizardSwatchViewModel(this.paletteDesignerModel, swatchKind, index);

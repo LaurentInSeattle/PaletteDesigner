@@ -1,0 +1,66 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Wizard.WizardThemeView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Wizard"
+	x:DataType="vm:WizardThemeViewModel" 
+
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
+	>
+	<Grid
+		Width="400" Height="400"
+		>
+		<Rectangle 
+			Fill="{Binding BackgroundBrush}"
+			/>
+		<TextBlock
+			Text="{Binding Name}"
+			Theme="{StaticResource Large}"
+			Foreground="{Binding ForegroundBrush}"
+			Margin="0,16,0,0"
+			HorizontalAlignment="Center" VerticalAlignment="Top"
+			/>
+		<Grid
+			Width="240" Height="240"
+			>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<Rectangle 
+				Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"
+				Fill="{Binding ForegroundBrush}"
+				/>
+			<Rectangle 
+				Grid.Row="0" Grid.RowSpan="1" Grid.Column="1"
+				Fill="{Binding AccentBrush}"
+				/>
+			<Rectangle 
+				Grid.Row="1" Grid.RowSpan="1" Grid.Column="1"
+				Fill="{Binding DiscordantBrush}"
+				/>
+			<!--
+			<TextBlock
+				Grid.Row="0"
+				Text="{Binding RgbHex}"
+				Theme="{StaticResource LargeMono}"
+				TextAlignment="Left"
+				HorizontalAlignment="Left"
+		        />
+			<TextBlock
+				Grid.Row="1"
+				Text="{Binding RgbDec}"
+				Theme="{StaticResource LargeMono}"
+				TextAlignment="Left"
+				HorizontalAlignment="Left"
+		        />
+			-->
+		</Grid>
+	</Grid>
+</UserControl>

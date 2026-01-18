@@ -17,7 +17,6 @@
 	>
 	<Grid
 		Margin="8"
-		ShowGridLines="True"
 		>
 		<Grid.RowDefinitions>
 			<!-- Toolbar -->
@@ -29,7 +28,6 @@
 		</Grid.RowDefinitions>
 		<Grid
 			Grid.Row="1"
-			ShowGridLines="True"
 			>
 			<Grid.ColumnDefinitions>
 				<!-- Spacer -->
@@ -37,13 +35,13 @@
 				<!-- Swatches -->
 				<ColumnDefinition Width="2*" />
 				<!-- Spacer -->
-				<ColumnDefinition Width="20" />
+				<ColumnDefinition Width="12" />
 				<!-- Controls -->
 				<ColumnDefinition Width="450" />
 				<!-- Spacer -->
-				<ColumnDefinition Width="20" />
+				<ColumnDefinition Width="12" />
 				<!-- Results -->
-				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="400" />
 			</Grid.ColumnDefinitions>
 
 			<!-- Swatches: Three rows for light, base, dark, nine columns for hues -->
@@ -71,6 +69,7 @@
 					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 			</Grid>
+		    <!-- Sliders Grid -->
 			<Grid
 				Grid.Column="3"
 				>
@@ -81,7 +80,6 @@
 					<RowDefinition Height="60" /> 
 					<RowDefinition Height="60" /> 
 					<RowDefinition Height="60" /> 
-					<RowDefinition Height="*" /> 
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="120" />
@@ -220,6 +218,32 @@
 					Text="{Binding ShadowsValue}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Left" VerticalAlignment="Center"
+					/>
+			</Grid>
+
+		    <!-- Themes Grid -->
+			<Grid
+				x:Name="ThemesGrid"
+				Grid.Column="5"
+				>
+				<Grid.RowDefinitions>
+					<!-- Spacer -->
+					<RowDefinition Height="8" />
+				    <!-- Light Theme -->
+					<RowDefinition Height="400" />
+					<!-- Spacer -->
+					<RowDefinition Height="24" />
+				    <!-- Dark  Theme -->
+					<RowDefinition Height="400" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<vm:WizardThemeView
+					Grid.Row="1"
+					DataContext="{Binding LightThemeViewModel}"
+					/>
+				<vm:WizardThemeView
+					Grid.Row="3"
+					DataContext="{Binding DarkThemeViewModel}"
 					/>
 			</Grid>
 		</Grid>
