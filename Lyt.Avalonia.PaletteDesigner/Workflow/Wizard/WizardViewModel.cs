@@ -168,7 +168,7 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
 
         this.curveAngleStep = (int) value;
         this.UpdateLabels();
-        this.paletteDesignerModel.ActiveProject!.WizardPalette.SetCurvePower(this.curveAngleStep);
+        this.paletteDesignerModel.ActiveProject!.WizardPalette.SetCurveAngleStep(this.curveAngleStep);
     }
 
     partial void OnWheelAngleStepSliderValueChanged(double value)
@@ -214,6 +214,6 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
         this.CurveAngleStepValue = string.Format("{0:D}", this.curveAngleStep);
         this.WheelAngleStepValue = string.Format("{0:F1} \u00B0", this.wheelAngleStep);
         this.HighlightsValue = string.Format("{0:F1} %", this.highlights);
-        this.ShadowsValue = string.Format("{0:F1} %", this.highlights);
+        this.ShadowsValue = string.Format("{0:F1} %", this.shadows);
     }
 }

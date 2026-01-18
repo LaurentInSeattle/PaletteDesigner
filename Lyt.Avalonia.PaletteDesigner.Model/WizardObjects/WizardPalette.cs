@@ -73,7 +73,7 @@ public sealed class WizardPalette
         // DEBUG ! 
         this.BaseWheel = 150.0;
         this.CurvePower = 6.3;
-        this.CurveAngleStep = 11;
+        this.CurveAngleStep = 5;
         this.WheelAngleStep = 25.0;
         this.Highlights = 1.8;
         this.Shadows = 1.7;

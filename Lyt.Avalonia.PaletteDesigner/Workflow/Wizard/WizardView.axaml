@@ -39,7 +39,7 @@
 				<!-- Spacer -->
 				<ColumnDefinition Width="20" />
 				<!-- Controls -->
-				<ColumnDefinition Width="500" />
+				<ColumnDefinition Width="450" />
 				<!-- Spacer -->
 				<ColumnDefinition Width="20" />
 				<!-- Results -->
@@ -84,9 +84,9 @@
 					<RowDefinition Height="*" /> 
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="130" />
+					<ColumnDefinition Width="120" />
 					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="70" />
+					<ColumnDefinition Width="60" />
 				</Grid.ColumnDefinitions>
 				<!-- Base Wheel Color -->
 				<TextBlock
@@ -165,7 +165,7 @@
 				<Slider
 					Grid.Row="3" Grid.Column="1"
 					Margin="8 0 8 0"
-					Minimum="1" Maximum="30"
+					Minimum="1" Maximum="35"
 					SmallChange="1" LargeChange="2"
 					TickFrequency="5" TickPlacement="BottomRight"
 					Value="{Binding WheelAngleStepSliderValue}"
@@ -187,7 +187,7 @@
 				<Slider
 					Grid.Row="4" Grid.Column="1"
 					Margin="8 0 8 0"
-					Minimum="1.0" Maximum="2.5"
+					Minimum="1.0" Maximum="3.5"
 					SmallChange="0.1" LargeChange="0.5"
 					TickFrequency="0.5" TickPlacement="BottomRight"
 					Value="{Binding HighlightsSliderValue}"
@@ -209,7 +209,7 @@
 				<Slider
 					Grid.Row="5" Grid.Column="1"
 					Margin="8 0 8 0"
-					Minimum="1.0" Maximum="2.5"
+					Minimum="1.0" Maximum="3.5"
 					SmallChange="0.1" LargeChange="0.5"
 					TickFrequency="0.5" TickPlacement="BottomRight"
 					Value="{Binding ShadowsSliderValue}"
