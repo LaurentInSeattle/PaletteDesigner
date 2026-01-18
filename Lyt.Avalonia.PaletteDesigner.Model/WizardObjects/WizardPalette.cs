@@ -72,76 +72,72 @@ public sealed class WizardPalette
 
         // DEBUG ! 
         this.BaseWheel = 150.0;
-        this.CurvePower = 3.5;
+        this.CurvePower = 6.3;
         this.CurveAngleStep = 11;
         this.WheelAngleStep = 25.0;
         this.Highlights = 1.8;
         this.Shadows = 1.7;
 
+        this.WheelAngleStep = 0.0;
+        this.Highlights = 1.0;
+        this.Shadows = 1.0;
+
         this.BuildCurveLookup();
-        this.SetHues();
+        this.Update();
 
         new ModelWizardUpdatedMessage().Publish();
     }
 
-    public void SetBaseWheel(double baseWheel)
+    public void SetWheel(double baseWheel)
     {
         this.BaseWheel = baseWheel;
-        if (Palette.HueWheel.TryGetValue(Palette.ToAngle(this.BaseWheel), out double hue))
-        {
-            var baseColor = new HsvColor(hue, DefaultSaturation, DefaultValue);
-            for (int i = 0; i < PaletteWidth; i++)
-            {
-                this.LightColors[i] = baseColor;
-                this.BaseColors[i] = baseColor;
-                this.DarkColors[i] = baseColor;
-            }
-
-            this.IsReset = false;
-        }
-        else
-        {
-            throw new InvalidOperationException($"HueWheel does not contain angle {Palette.ToAngle(this.BaseWheel)}");
-        }
+        this.Update();
     }
 
-    public void SetWheels()
+    public void SetCurvePower(double value)
     {
-        int[] angles = this.CalculateAngles();
-        if (Palette.HueWheel.TryGetValue(Palette.ToAngle(this.BaseWheel), out double hue))
-        {
-            for (int i = 0; i < PaletteWidth; i++)
-            {
-                int angle = angles[i];
-                Vector3 vector = this.CurveLookup[angle];
-                double saturation = vector.Y;
-                double value = vector.X;
-                var color = new HsvColor(hue, saturation, value);
-                this.LightColors[i] = color;
-                this.BaseColors[i] = color;
-                this.DarkColors[i] = color;
-            }
-
-            this.IsReset = false;
-        }
-        else
-        {
-            throw new InvalidOperationException($"HueWheel does not contain angle {Palette.ToAngle(this.BaseWheel)}");
-        }
+        this.CurvePower = value;
+        this.BuildCurveLookup(); 
+        this.Update();
     }
 
-    public void SetHues()
+    public void SetCurveAngleStep(int value)
+    {
+        this.CurveAngleStep = value;
+        this.BuildCurveLookup();
+        this.Update();
+    }
+
+    public void SetWheelAngleStep(double value)
+    {
+        this.WheelAngleStep = value;
+        this.Update();
+    }
+
+    public void SetHighlights(double value)
+    {
+        this.Highlights = value;
+        this.Update();
+    }
+
+    public void SetShadows(double value)
+    {
+        this.Shadows = value;
+        this.Update();
+    }
+
+    private void Update()
     {
         int[] angles = this.CalculateAngles();
-        double[] hues = this.CalculateHues();
+        int[] wheels = this.CalculateWheels();
         for (int i = 0; i < PaletteWidth; i++)
         {
             int angle = angles[i];
             Vector3 vector = this.CurveLookup[angle];
             double saturation = vector.Y;
             double value = vector.X;
-            double wheel = hues[i];
-            if (Palette.HueWheel.TryGetValue(Palette.ToAngle(wheel), out double hue))
+            int wheelAngle = wheels[i];
+            if (Palette.HueWheel.TryGetValue(wheelAngle, out double hue))
             {
                 var baseColor = new HsvColor(hue, saturation, value);
                 this.BaseColors[i] = baseColor;
@@ -160,15 +156,16 @@ public sealed class WizardPalette
             }
             else
             {
-                throw new InvalidOperationException($"HueWheel does not contain angle {Palette.ToAngle(this.BaseWheel)}");
+                throw new InvalidOperationException($"HueWheel does not contain angle {wheelAngle}");
             }
 
         }
 
         this.IsReset = false;
+        new ModelWizardUpdatedMessage().Publish();
     }
 
-    private double[] CalculateHues ()
+    private int[] CalculateWheels ()
     {
         double[] hues = new double[PaletteWidth];
         hues[PaletteCenter] = this.BaseWheel;
@@ -198,7 +195,19 @@ public sealed class WizardPalette
             }
         }
 
-        return hues;
+        int[] wheels = new int[9];
+        for (int i = 0; i < PaletteWidth; ++i)
+        {
+            int wheelAngle = Palette.ToAngle(hues[i]);
+            if (wheelAngle <0 || wheelAngle >= 3600)
+            {
+                wheelAngle = 0;
+            }
+
+            wheels[i] = wheelAngle; 
+        }
+
+        return wheels;
     }
 
     private int[] CalculateAngles ()

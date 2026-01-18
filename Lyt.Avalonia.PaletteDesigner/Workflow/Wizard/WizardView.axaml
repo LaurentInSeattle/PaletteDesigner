@@ -39,7 +39,7 @@
 				<!-- Spacer -->
 				<ColumnDefinition Width="20" />
 				<!-- Controls -->
-				<ColumnDefinition Width="400" />
+				<ColumnDefinition Width="500" />
 				<!-- Spacer -->
 				<ColumnDefinition Width="20" />
 				<!-- Results -->
@@ -71,7 +71,159 @@
 					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 			</Grid>
+			<Grid
+				Grid.Column="3"
+				>
+				<Grid.RowDefinitions> 
+					<RowDefinition Height="60" /> 
+					<RowDefinition Height="60" /> 
+					<RowDefinition Height="60" /> 
+					<RowDefinition Height="60" /> 
+					<RowDefinition Height="60" /> 
+					<RowDefinition Height="60" /> 
+					<RowDefinition Height="*" /> 
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="130" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="70" />
+				</Grid.ColumnDefinitions>
+				<!-- Base Wheel Color -->
+				<TextBlock
+					Grid.Row="0"
+					Text="{DynamicResource Design.Palette.WheelHue}"
+					Theme="{StaticResource Medium}"
+					HorizontalAlignment="Right" VerticalAlignment="Center"
+					/>
+				<Slider
+					Grid.Row="0" Grid.Column="1"
+					Margin="8 0 8 0"
+					Minimum="0.0" Maximum="359.99"
+					SmallChange="0.5" LargeChange="10.0"
+					TickFrequency="30.0" TickPlacement="BottomRight"
+					Value="{Binding WheelSliderValue}"
+					HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+					/>
+				<TextBlock
+					Grid.Row="0" Grid.Column="2"
+					Text="{Binding WheelValue}"
+					Theme="{StaticResource Medium}"
+					HorizontalAlignment="Left" VerticalAlignment="Center"
+					/>
+				<!-- Curve Power Text="{DynamicResource Design.Palette.CurvePower}" -->
+				<TextBlock
+					Grid.Row="1"					
+					Text="Saturation"
+					Theme="{StaticResource Medium}"
+					HorizontalAlignment="Right" VerticalAlignment="Center"
+					/>
+				<Slider
+					Grid.Row="1" Grid.Column="1"
+					Margin="8 0 8 0"
+					Minimum="0.1" Maximum="4"
+					SmallChange="0.1" LargeChange="0.5"
+					TickFrequency="0.5" TickPlacement="BottomRight"
+					Value="{Binding CurvePowerSliderValue}"
+					HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+					/>
+				<TextBlock
+					Grid.Row="1" Grid.Column="2"
+					Text="{Binding CurvePowerValue}"
+					Theme="{StaticResource Medium}"
+					HorizontalAlignment="Left" VerticalAlignment="Center"
+					/>
+				<!-- Curve Angle Step Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
+				<TextBlock
+					Grid.Row="2"					
+					Text="Saturation Step"
+					Theme="{StaticResource Medium}"
+					HorizontalAlignment="Right" VerticalAlignment="Center"
+					/>
+				<Slider
+					Grid.Row="2" Grid.Column="1"
+					Margin="8 0 8 0"
+					Minimum="1" Maximum="11"
+					SmallChange="1" LargeChange="2"
+					TickFrequency="0.5" TickPlacement="BottomRight"
+					IsSnapToTickEnabled="True"
+					Value="{Binding CurveAngleStepSliderValue}"
+					HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+					/>
+				<TextBlock
+					Grid.Row="2" Grid.Column="2"
+					Text="{Binding CurveAngleStepValue}"
+					Theme="{StaticResource Medium}"
+					HorizontalAlignment="Left" VerticalAlignment="Center"
+					/>
+				<!-- Wheel Angle Step Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
+				<TextBlock
+					Grid.Row="3"					
+					Text="Color Distance"
+					Theme="{StaticResource Medium}"
+					HorizontalAlignment="Right" VerticalAlignment="Center"
+					/>
+				<Slider
+					Grid.Row="3" Grid.Column="1"
+					Margin="8 0 8 0"
+					Minimum="1" Maximum="30"
+					SmallChange="1" LargeChange="2"
+					TickFrequency="5" TickPlacement="BottomRight"
+					Value="{Binding WheelAngleStepSliderValue}"
+					HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+					/>
+				<TextBlock
+					Grid.Row="3" Grid.Column="2"
+					Text="{Binding WheelAngleStepValue}"
+					Theme="{StaticResource Medium}"
+					HorizontalAlignment="Left" VerticalAlignment="Center"
+					/>
+				<!-- Highlights  Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
+				<TextBlock
+					Grid.Row="4"					
+					Text="Highlights"
+					Theme="{StaticResource Medium}"
+					HorizontalAlignment="Right" VerticalAlignment="Center"
+					/>
+				<Slider
+					Grid.Row="4" Grid.Column="1"
+					Margin="8 0 8 0"
+					Minimum="1.0" Maximum="2.5"
+					SmallChange="0.1" LargeChange="0.5"
+					TickFrequency="0.5" TickPlacement="BottomRight"
+					Value="{Binding HighlightsSliderValue}"
+					HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+					/>
+				<TextBlock
+					Grid.Row="4" Grid.Column="2"
+					Text="{Binding HighlightsValue}"
+					Theme="{StaticResource Medium}"
+					HorizontalAlignment="Left" VerticalAlignment="Center"
+					/>
+				<!-- Shadows  Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
+				<TextBlock
+					Grid.Row="5"					
+					Text="Shadows"
+					Theme="{StaticResource Medium}"
+					HorizontalAlignment="Right" VerticalAlignment="Center"
+					/>
+				<Slider
+					Grid.Row="5" Grid.Column="1"
+					Margin="8 0 8 0"
+					Minimum="1.0" Maximum="2.5"
+					SmallChange="0.1" LargeChange="0.5"
+					TickFrequency="0.5" TickPlacement="BottomRight"
+					Value="{Binding ShadowsSliderValue}"
+					HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+					/>
+				<TextBlock
+					Grid.Row="5" Grid.Column="2"
+					Text="{Binding ShadowsValue}"
+					Theme="{StaticResource Medium}"
+					HorizontalAlignment="Left" VerticalAlignment="Center"
+					/>
+			</Grid>
 		</Grid>
+
 
 		<!-- Top toolbars -->
 		<!-- Top toolbars 
