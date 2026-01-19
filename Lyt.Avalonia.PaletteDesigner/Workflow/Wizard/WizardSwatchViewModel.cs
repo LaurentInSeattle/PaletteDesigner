@@ -25,15 +25,14 @@ public sealed partial class WizardSwatchViewModel :
     public WizardSwatchViewModel(PaletteDesignerModel paletteDesignerModel, SwatchKind swatchKind , int index)
     {
         this.paletteDesignerModel = paletteDesignerModel;
-        this.Kind = swatchKind;
-        this.Index = index;
+        this.SwatchIndex = new (swatchKind, index);
         this.ColorBrush = new SolidColorBrush(Colors.Transparent); 
         this.Localize();
         this.Subscribe<LanguageChangedMessage>();
         this.Subscribe<ModelWizardUpdatedMessage>();
     }
 
-    public SwatchKind Kind { get; private set; }
+    public SwatchIndex SwatchIndex { get; private set; }
 
     public int Index { get; private set; }
 
@@ -41,7 +40,7 @@ public sealed partial class WizardSwatchViewModel :
 
     public void Receive(ModelWizardUpdatedMessage message)
     {
-        HsvColor hsvColor = this.paletteDesignerModel.ActiveProject!.WizardPalette.GetColor(this.Kind, this.Index); 
+        HsvColor hsvColor = this.paletteDesignerModel.ActiveProject!.WizardPalette.GetColor(this.SwatchIndex); 
         this.ColorBrush = hsvColor.ToBrush();
     }
 

@@ -86,12 +86,13 @@
 					<ColumnDefinition Width="*" />
 					<ColumnDefinition Width="60" />
 				</Grid.ColumnDefinitions>
-				<!-- Base Wheel Color -->
+				<!-- Base Wheel Color Text="{DynamicResource Design.Palette.WheelHue}" -->
 				<TextBlock
 					Grid.Row="0"
-					Text="{DynamicResource Design.Palette.WheelHue}"
+					Text="Tone"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
+					FontWeight="SemiBold"
 					/>
 				<Slider
 					Grid.Row="0" Grid.Column="1"
@@ -107,13 +108,15 @@
 					Text="{Binding WheelValue}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Left" VerticalAlignment="Center"
+					FontWeight="SemiBold"
 					/>
 				<!-- Curve Power Text="{DynamicResource Design.Palette.CurvePower}" -->
 				<TextBlock
 					Grid.Row="1"					
-					Text="Saturation"
+					Text="Intensity"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
+					FontWeight="SemiBold"
 					/>
 				<Slider
 					Grid.Row="1" Grid.Column="1"
@@ -129,13 +132,15 @@
 					Text="{Binding CurvePowerValue}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Left" VerticalAlignment="Center"
+					FontWeight="SemiBold"
 					/>
 				<!-- Curve Angle Step Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
 				<TextBlock
 					Grid.Row="2"					
-					Text="Saturation Step"
+					Text="Intensity Steps"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
+					FontWeight="SemiBold"
 					/>
 				<Slider
 					Grid.Row="2" Grid.Column="1"
@@ -152,13 +157,15 @@
 					Text="{Binding CurveAngleStepValue}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Left" VerticalAlignment="Center"
+					FontWeight="SemiBold"
 					/>
 				<!-- Wheel Angle Step Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
 				<TextBlock
 					Grid.Row="3"					
-					Text="Color Distance"
+					Text="Color Analogy"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
+					FontWeight="SemiBold"
 					/>
 				<Slider
 					Grid.Row="3" Grid.Column="1"
@@ -174,6 +181,7 @@
 					Text="{Binding WheelAngleStepValue}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Left" VerticalAlignment="Center"
+					FontWeight="SemiBold"
 					/>
 				<!-- Highlights  Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
 				<TextBlock
@@ -181,6 +189,7 @@
 					Text="Highlights"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
+					FontWeight="SemiBold"
 					/>
 				<Slider
 					Grid.Row="4" Grid.Column="1"
@@ -196,6 +205,7 @@
 					Text="{Binding HighlightsValue}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Left" VerticalAlignment="Center"
+					FontWeight="SemiBold"
 					/>
 				<!-- Shadows  Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
 				<TextBlock
@@ -203,6 +213,7 @@
 					Text="Shadows"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
+					FontWeight="SemiBold"
 					/>
 				<Slider
 					Grid.Row="5" Grid.Column="1"
@@ -218,6 +229,7 @@
 					Text="{Binding ShadowsValue}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Left" VerticalAlignment="Center"
+					FontWeight="SemiBold"
 					/>
 			</Grid>
 

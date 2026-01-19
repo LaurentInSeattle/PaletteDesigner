@@ -9,6 +9,8 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
     private readonly PaletteDesignerModel paletteDesignerModel;
 
     private bool isLoaded;
+    private bool isProgrammaticUpdate;
+
 
     //[ObservableProperty]
     //private ImagingToolbarViewModel imagingToolbarViewModel;
@@ -16,13 +18,13 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
     //[ObservableProperty]
     //private ExportToolbarViewModel exportToolbarViewModel;
 
+    #region Observable Properties 
+
     [ObservableProperty]
     private WizardThemeViewModel lightThemeViewModel;
 
     [ObservableProperty]
     private WizardThemeViewModel darkThemeViewModel;
-
-    private bool isProgrammaticUpdate;
 
     [ObservableProperty]
     private double wheelSliderValue;
@@ -72,12 +74,14 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
 
     private double shadows;
 
+    #endregion Observable Properties 
+
 
     public WizardViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
-        this.LightThemeViewModel = new WizardThemeViewModel(this.paletteDesignerModel, "Light");
-        this.DarkThemeViewModel = new WizardThemeViewModel(this.paletteDesignerModel, "Dark");
+        this.LightThemeViewModel = new WizardThemeViewModel(this.paletteDesignerModel, PaletteThemeVariant.Light);
+        this.DarkThemeViewModel = new WizardThemeViewModel(this.paletteDesignerModel, PaletteThemeVariant.Dark);
 
         //this.ImagingToolbarViewModel = new();
         //this.ExportToolbarViewModel = new(PaletteFamily.Image);
@@ -174,7 +178,7 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
             return;
         }
 
-        this.curveAngleStep = (int) value;
+        this.curveAngleStep = (int)value;
         this.UpdateLabels();
         this.paletteDesignerModel.ActiveProject!.WizardPalette.SetCurveAngleStep(this.curveAngleStep);
     }
@@ -221,7 +225,7 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
         this.CurvePowerValue = string.Format("{0:F1}", this.curvePower);
         this.CurveAngleStepValue = string.Format("{0:D}", this.curveAngleStep);
         this.WheelAngleStepValue = string.Format("{0:F1} \u00B0", this.wheelAngleStep);
-        this.HighlightsValue = string.Format("{0:F1} %", this.highlights);
-        this.ShadowsValue = string.Format("{0:F1} %", this.shadows);
+        this.HighlightsValue = string.Format("{0:D} %", (int)(100.0 * this.highlights));
+        this.ShadowsValue = string.Format("{0:D} %", (int)(100.0 * this.shadows));
     }
 }

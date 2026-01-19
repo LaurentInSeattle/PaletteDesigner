@@ -28,6 +28,14 @@ public sealed class WizardPalette
     [JsonRequired]
     public double Shadows { get; set; }
 
+    [JsonRequired]
+    public ThemeVariantColors LightVariant { get; set; } 
+        = new ThemeVariantColors() { ThemeVariant = PaletteThemeVariant.Light };
+
+    [JsonRequired]
+    public ThemeVariantColors DarkVariant { get; set; } 
+        = new ThemeVariantColors() { ThemeVariant = PaletteThemeVariant.Dark };
+
     [JsonIgnore]
     public bool IsReset { get; private set; }
 
@@ -49,8 +57,10 @@ public sealed class WizardPalette
         this.WheelAngleStep = 5.0;
     }
 
-    public HsvColor GetColor(SwatchKind swatchKind, int index)
+    public HsvColor GetColor(SwatchIndex swatchIndex)
     {
+        SwatchKind swatchKind = swatchIndex.Kind;
+        int index = swatchIndex.Index;
         return swatchKind switch
         {
             SwatchKind.Light => this.LightColors[index],
@@ -97,7 +107,7 @@ public sealed class WizardPalette
     public void SetCurvePower(double value)
     {
         this.CurvePower = value;
-        this.BuildCurveLookup(); 
+        this.BuildCurveLookup();
         this.Update();
     }
 
@@ -165,7 +175,7 @@ public sealed class WizardPalette
         new ModelWizardUpdatedMessage().Publish();
     }
 
-    private int[] CalculateWheels ()
+    private int[] CalculateWheels()
     {
         double[] hues = new double[PaletteWidth];
         hues[PaletteCenter] = this.BaseWheel;
@@ -199,18 +209,18 @@ public sealed class WizardPalette
         for (int i = 0; i < PaletteWidth; ++i)
         {
             int wheelAngle = Palette.ToAngle(hues[i]);
-            if (wheelAngle <0 || wheelAngle >= 3600)
+            if (wheelAngle < 0 || wheelAngle >= 3600)
             {
                 wheelAngle = 0;
             }
 
-            wheels[i] = wheelAngle; 
+            wheels[i] = wheelAngle;
         }
 
         return wheels;
     }
 
-    private int[] CalculateAngles ()
+    private int[] CalculateAngles()
     {
         int[] angles = new int[PaletteWidth];
         angles[PaletteCenter] = 45;

@@ -8,6 +8,7 @@ public sealed partial class WizardThemeViewModel :
     IRecipient<ModelWizardUpdatedMessage>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
+    private readonly PaletteThemeVariant themeVariant;
 
     [ObservableProperty]
     private string name = string.Empty;
@@ -27,10 +28,13 @@ public sealed partial class WizardThemeViewModel :
     [ObservableProperty]
     private string hsv = string.Empty;
 
-    public WizardThemeViewModel(PaletteDesignerModel paletteDesignerModel, string name)
+    public WizardThemeViewModel(
+        PaletteDesignerModel paletteDesignerModel,
+        PaletteThemeVariant themeVariant)
     {
         this.paletteDesignerModel = paletteDesignerModel;
-        this.Name = name;
+        this.themeVariant = themeVariant;
+        this.Name = this.themeVariant == PaletteThemeVariant.Light ? "Light" : "Dark";
         this.BackgroundBrush = new SolidColorBrush(Colors.Gray);
         this.ForegroundBrush = new SolidColorBrush(Colors.LightPink);
         this.AccentBrush = new SolidColorBrush(Colors.Firebrick);
