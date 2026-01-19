@@ -48,8 +48,11 @@ public sealed partial class WizardThemeViewModel :
 
     public void Receive(ModelWizardUpdatedMessage message)
     {
-        // HsvColor hsvColor = this.paletteDesignerModel.ActiveProject!.WizardPalette.GetColor(this.Kind, this.Index); 
-        // this.ColorBrush = hsvColor.ToBrush();
+        HsvColor[] hsvColors = this.paletteDesignerModel.ActiveProject!.WizardPalette.GetThemeColors(this.themeVariant);
+        this.BackgroundBrush = hsvColors[0].ToBrush();
+        this.ForegroundBrush = hsvColors[1].ToBrush();
+        this.AccentBrush = hsvColors[2].ToBrush();
+        this.DiscordantBrush = hsvColors[3].ToBrush();
     }
 
     private void Localize() 

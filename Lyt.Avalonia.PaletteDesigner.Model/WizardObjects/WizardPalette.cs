@@ -6,10 +6,6 @@ public sealed class WizardPalette
 
     public const int PaletteCenter = 4;
 
-    public const double DefaultSaturation = 0.75;
-
-    public const double DefaultValue = 0.75;
-
     [JsonRequired]
     public double BaseWheel { get; set; }
 
@@ -70,30 +66,33 @@ public sealed class WizardPalette
         };
     }
 
+    public HsvColor[] GetThemeColors(PaletteThemeVariant themeVariant)
+    {
+        var hsvColors = new HsvColor[4];
+        ThemeVariantColors variant = 
+            themeVariant == PaletteThemeVariant.Light ? this.LightVariant : this.DarkVariant;
+        hsvColors[0] = this.GetColor(variant.Background);
+        hsvColors[1] = this.GetColor(variant.Foreground);
+        hsvColors[2] = this.GetColor(variant.Accent);
+        hsvColors[3] = this.GetColor(variant.Discordant);
+        return hsvColors;
+    }
+
     public void Reset()
     {
         this.IsReset = true;
 
+        this.BaseWheel = 150.0;
         this.CurvePower = 2.0;
         this.CurveAngleStep = 0;
         this.WheelAngleStep = 0.0;
         this.Highlights = 1.0;
         this.Shadows = 1.0;
 
-        // DEBUG ! 
-        this.BaseWheel = 150.0;
-        this.CurvePower = 6.3;
-        this.CurveAngleStep = 5;
-        this.WheelAngleStep = 25.0;
-        this.Highlights = 1.8;
-        this.Shadows = 1.7;
-
-        this.WheelAngleStep = 0.0;
-        this.Highlights = 1.0;
-        this.Shadows = 1.0;
-
         this.BuildCurveLookup();
         this.Update();
+        this.LightVariant = ThemeVariantColorsPresets.AltStandardLightTheme;
+        this.DarkVariant = ThemeVariantColorsPresets.AltStandardDarkTheme;
 
         new ModelWizardUpdatedMessage().Publish();
     }

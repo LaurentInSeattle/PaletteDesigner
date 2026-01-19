@@ -17,7 +17,7 @@
 			/>
 		<TextBlock
 			Text="{Binding Name}"
-			Theme="{StaticResource Large}"
+			Theme="{StaticResource H1}"
 			Foreground="{Binding ForegroundBrush}"
 			Margin="0,16,0,0"
 			HorizontalAlignment="Center" VerticalAlignment="Top"
