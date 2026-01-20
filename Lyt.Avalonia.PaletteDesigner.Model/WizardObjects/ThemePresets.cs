@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.WizardObjects;
 
-internal static class ThemeVariantColorsPresets
+internal static class ThemePresets
 {
     internal static ThemeVariantColors StandardLightTheme =
         new()
@@ -41,4 +41,26 @@ internal static class ThemeVariantColorsPresets
             Accent = new SwatchIndex(SwatchKind.Base, 6),
             Discordant = new SwatchIndex(SwatchKind.Base, 2),
         };
+
+    internal static ThemeVariantPair Standard =
+        new()
+        {
+            Name = "Standard",
+            Light = StandardLightTheme,
+            Dark = StandardDarkTheme,
+        };
+
+    internal static ThemeVariantPair AltStandard =
+        new()
+        {
+            Name = "AltStandard",
+            Light = AltStandardLightTheme,
+            Dark = AltStandardDarkTheme,
+        };
+
+    internal static List<ThemeVariantPair> All =
+    [
+        Standard,
+        AltStandard,
+    ];
 }

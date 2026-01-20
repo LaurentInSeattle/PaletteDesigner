@@ -25,6 +25,9 @@ public sealed class WizardPalette
     public double Shadows { get; set; }
 
     [JsonRequired]
+    public int ThemeVariantStyleIndex { get; set; }
+
+    [JsonRequired]
     public ThemeVariantColors LightVariant { get; set; } 
         = new ThemeVariantColors() { ThemeVariant = PaletteThemeVariant.Light };
 
@@ -88,13 +91,17 @@ public sealed class WizardPalette
         this.WheelAngleStep = 0.0;
         this.Highlights = 1.0;
         this.Shadows = 1.0;
-
+        this.ThemeVariantStyleIndex = 0;
+        this.UpdateThemeVariants(); 
         this.BuildCurveLookup();
         this.Update();
-        this.LightVariant = ThemeVariantColorsPresets.AltStandardLightTheme;
-        this.DarkVariant = ThemeVariantColorsPresets.AltStandardDarkTheme;
+    }
 
-        new ModelWizardUpdatedMessage().Publish();
+    private void UpdateThemeVariants()
+    {
+        var preset = ThemePresets.All[this.ThemeVariantStyleIndex]; 
+        this.LightVariant = preset.Light;
+        this.DarkVariant = preset.Dark;
     }
 
     public void SetWheel(double baseWheel)
@@ -133,6 +140,13 @@ public sealed class WizardPalette
     {
         this.Shadows = value;
         this.Update();
+    }
+
+    public void SetStyle(int value)
+    {
+        this.ThemeVariantStyleIndex = value;
+        this.UpdateThemeVariants();
+        new ModelWizardUpdatedMessage().Publish();
     }
 
     private void Update()

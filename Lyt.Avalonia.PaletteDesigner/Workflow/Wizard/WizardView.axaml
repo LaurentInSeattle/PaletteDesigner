@@ -80,6 +80,7 @@
 					<RowDefinition Height="60" /> 
 					<RowDefinition Height="60" /> 
 					<RowDefinition Height="60" /> 
+					<RowDefinition Height="60" /> 
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="120" />
@@ -147,7 +148,7 @@
 					Margin="8 0 8 0"
 					Minimum="1" Maximum="11"
 					SmallChange="1" LargeChange="2"
-					TickFrequency="0.5" TickPlacement="BottomRight"
+					TickFrequency="1.0" TickPlacement="BottomRight"
 					IsSnapToTickEnabled="True"
 					Value="{Binding CurveAngleStepSliderValue}"
 					HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
@@ -227,6 +228,32 @@
 				<TextBlock
 					Grid.Row="5" Grid.Column="2"
 					Text="{Binding ShadowsValue}"
+					Theme="{StaticResource Medium}"
+					HorizontalAlignment="Left" VerticalAlignment="Center"
+					FontWeight="SemiBold"
+					/>
+				<!-- Style  Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
+				<TextBlock
+					Grid.Row="6"					
+					Text="Style"
+					Theme="{StaticResource Medium}"
+					HorizontalAlignment="Right" VerticalAlignment="Center"
+					FontWeight="SemiBold"
+					/>
+				<Slider
+					Grid.Row="6" Grid.Column="1"
+					Margin="8 0 8 0"
+					Minimum="0.0" Maximum="1.0"
+					SmallChange="1" LargeChange="1.0"
+					TickFrequency="1" TickPlacement="BottomRight"
+					IsSnapToTickEnabled="True"
+					Value="{Binding StyleSliderValue}"
+					HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+					/>
+				<TextBlock
+					IsVisible="False"
+					Grid.Row="6" Grid.Column="2"
+					Text="{Binding StyleValue}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Left" VerticalAlignment="Center"
 					FontWeight="SemiBold"

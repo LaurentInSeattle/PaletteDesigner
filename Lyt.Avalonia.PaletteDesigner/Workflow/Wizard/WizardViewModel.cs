@@ -74,8 +74,15 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
 
     private double shadows;
 
-    #endregion Observable Properties 
+    [ObservableProperty]
+    private double styleSliderValue;
 
+    [ObservableProperty]
+    private string styleValue = string.Empty;
+
+    private int style;
+
+    #endregion Observable Properties 
 
     public WizardViewModel(PaletteDesignerModel paletteDesignerModel)
     {
@@ -219,13 +226,28 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
         this.paletteDesignerModel.ActiveProject!.WizardPalette.SetShadows(value);
     }
 
+    partial void OnStyleSliderValueChanged(double value)
+    {
+        if (this.isProgrammaticUpdate)
+        {
+            return;
+        }
+
+        this.style = (int)value;
+        this.UpdateLabels();
+        this.paletteDesignerModel.ActiveProject!.WizardPalette.SetStyle(this.style);
+    }
+
     public void UpdateLabels()
     {
-        this.WheelValue = string.Format("{0:F1} \u00B0", this.wheel);
+        this.WheelValue = string.Format("{0:D} \u00B0", (int)(0.5 + this.wheel));
         this.CurvePowerValue = string.Format("{0:F1}", this.curvePower);
         this.CurveAngleStepValue = string.Format("{0:D}", this.curveAngleStep);
         this.WheelAngleStepValue = string.Format("{0:F1} \u00B0", this.wheelAngleStep);
         this.HighlightsValue = string.Format("{0:D} %", (int)(100.0 * this.highlights));
         this.ShadowsValue = string.Format("{0:D} %", (int)(100.0 * this.shadows));
+
+        // TODO
+        // this.StyleValue = ...
     }
 }

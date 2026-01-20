@@ -12,18 +12,41 @@
 	<Grid
 		Width="400" Height="400"
 		>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
 		<Rectangle 
 			Fill="{Binding BackgroundBrush}"
+			Grid.ColumnSpan="2"
 			/>
 		<TextBlock
+			Grid.ColumnSpan="2"
 			Text="{Binding Name}"
 			Theme="{StaticResource H1}"
 			Foreground="{Binding ForegroundBrush}"
 			Margin="0,16,0,0"
 			HorizontalAlignment="Center" VerticalAlignment="Top"
 			/>
+		<TextBlock
+			Grid.Column="0"
+			Text="Accent"
+			Theme="{StaticResource H2}"
+			Foreground="{Binding AccentBrush}"
+			Margin="0 0 0 16"
+			HorizontalAlignment="Center" VerticalAlignment="Bottom"
+			/>
+		<TextBlock
+			Grid.Column="1"
+			Text="Discordant"
+			Theme="{StaticResource H2}"
+			Foreground="{Binding DiscordantBrush}"
+			Margin="0 0 0 16"
+			HorizontalAlignment="Center" VerticalAlignment="Bottom"
+			/>
 		<Grid
 			Width="240" Height="240"
+			Grid.ColumnSpan="2"
 			>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
