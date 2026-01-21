@@ -122,7 +122,7 @@
 				<Slider
 					Grid.Row="1" Grid.Column="1"
 					Margin="8 0 8 0"
-					Minimum="0.1" Maximum="4"
+					Minimum="0.1" Maximum="5"
 					SmallChange="0.1" LargeChange="0.5"
 					TickFrequency="0.5" TickPlacement="BottomRight"
 					Value="{Binding CurvePowerSliderValue}"
@@ -146,7 +146,7 @@
 				<Slider
 					Grid.Row="2" Grid.Column="1"
 					Margin="8 0 8 0"
-					Minimum="1" Maximum="11"
+					Minimum="1" Maximum="12"
 					SmallChange="1" LargeChange="2"
 					TickFrequency="1.0" TickPlacement="BottomRight"
 					IsSnapToTickEnabled="True"
@@ -171,7 +171,7 @@
 				<Slider
 					Grid.Row="3" Grid.Column="1"
 					Margin="8 0 8 0"
-					Minimum="1" Maximum="35"
+					Minimum="1" Maximum="40"
 					SmallChange="1" LargeChange="2"
 					TickFrequency="5" TickPlacement="BottomRight"
 					Value="{Binding WheelAngleStepSliderValue}"
@@ -195,7 +195,7 @@
 				<Slider
 					Grid.Row="4" Grid.Column="1"
 					Margin="8 0 8 0"
-					Minimum="1.0" Maximum="3.5"
+					Minimum="1.0" Maximum="4.0"
 					SmallChange="0.1" LargeChange="0.5"
 					TickFrequency="0.5" TickPlacement="BottomRight"
 					Value="{Binding HighlightsSliderValue}"
@@ -219,7 +219,7 @@
 				<Slider
 					Grid.Row="5" Grid.Column="1"
 					Margin="8 0 8 0"
-					Minimum="1.0" Maximum="3.5"
+					Minimum="1.0" Maximum="4.0"
 					SmallChange="0.1" LargeChange="0.5"
 					TickFrequency="0.5" TickPlacement="BottomRight"
 					Value="{Binding ShadowsSliderValue}"
@@ -235,7 +235,7 @@
 				<!-- Style  Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
 				<TextBlock
 					Grid.Row="6"					
-					Text="Style"
+					Text="Variations"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
 					FontWeight="SemiBold"
@@ -243,7 +243,7 @@
 				<Slider
 					Grid.Row="6" Grid.Column="1"
 					Margin="8 0 8 0"
-					Minimum="0.0" Maximum="1.0"
+					Minimum="0.0" Maximum="3.0"
 					SmallChange="1" LargeChange="1.0"
 					TickFrequency="1" TickPlacement="BottomRight"
 					IsSnapToTickEnabled="True"

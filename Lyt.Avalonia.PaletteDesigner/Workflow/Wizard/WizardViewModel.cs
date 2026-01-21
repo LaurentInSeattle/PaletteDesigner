@@ -10,6 +10,7 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
 
     private bool isLoaded;
     private bool isProgrammaticUpdate;
+    private bool isFirstActivate;
 
 
     //[ObservableProperty]
@@ -90,6 +91,8 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
         this.LightThemeViewModel = new WizardThemeViewModel(this.paletteDesignerModel, PaletteThemeVariant.Light);
         this.DarkThemeViewModel = new WizardThemeViewModel(this.paletteDesignerModel, PaletteThemeVariant.Dark);
 
+        this.isFirstActivate = true;
+
         //this.ImagingToolbarViewModel = new();
         //this.ExportToolbarViewModel = new(PaletteFamily.Image);
     }
@@ -115,10 +118,6 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
         //}
 
         //this.ImagingToolbarViewModel.ProgrammaticUpdate(swatches);
-
-        this.WheelSliderValue = 0.0;
-        this.WheelValue = string.Empty;
-        this.UpdateLabels();
     }
 
     public override void Activate(object? activationParameters)
@@ -126,11 +125,16 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
         base.Activate(activationParameters);
 
         // DEBUG !
-        Schedule.OnUiThread(1_000,
-            () =>
-            {
-                this.paletteDesignerModel.ActiveProject!.WizardPalette.Reset();
-            }, DispatcherPriority.Background);
+        if ( this.isFirstActivate)
+        {
+            this.isFirstActivate = false;
+            Schedule.OnUiThread(300,
+                () =>
+                {
+                    this.paletteDesignerModel.ActiveProject!.WizardPalette.Reset();
+                }, DispatcherPriority.Background);
+            return;
+        }
     }
 
     private void CreateSwatches()
