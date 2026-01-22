@@ -81,6 +81,20 @@ public sealed class WizardPalette
         return hsvColors;
     }
 
+    public HsvColor GetThemeComponentColor(PaletteThemeVariant themeVariant, ThemeComponent themeComponent)
+    {
+        ThemeVariantColors variant =
+            themeVariant == PaletteThemeVariant.Light ? this.LightVariant : this.DarkVariant;
+        return themeComponent switch
+        {
+            ThemeComponent.Background => this.GetColor(variant.Background),
+            ThemeComponent.Foreground => this.GetColor(variant.Foreground),
+            ThemeComponent.Accent => this.GetColor(variant.Accent),
+            ThemeComponent.Discordant => this.GetColor(variant.Discordant),
+            _ => throw new InvalidOperationException($"Invalid ThemeComponent {themeComponent}"),
+        };
+    }
+
     public void Reset()
     {
         this.IsReset = true;
@@ -318,4 +332,6 @@ public sealed class WizardPalette
             return 1.0 - Math.Pow(t, this.CurvePower);
         }
     }
+
+    public void SetThemeComponentColor(PaletteThemeVariant themeVariant, ThemeComponent themeComponent, SwatchIndex swatchIndex, int index) => throw new NotImplementedException();
 }

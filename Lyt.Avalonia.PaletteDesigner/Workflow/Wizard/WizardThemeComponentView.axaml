@@ -1,0 +1,52 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Wizard.WizardThemeComponentView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Wizard"
+	x:DataType="vm:WizardThemeComponentViewModel" 
+
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
+	>
+	<Grid
+		>
+		<Rectangle 
+			Fill="{Binding ColorBrush}"
+			Grid.ColumnSpan="2"
+			/>
+		<Border
+			x:Name="DropBorder"
+			Background="Transparent"
+			BorderThickness="0"
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			DragDrop.AllowDrop="True"
+			>
+			<Rectangle 				
+				x:Name="DropRectangle"
+				StrokeDashArray="5, 2" 
+				Stroke="{StaticResource LightAqua_1_100}" 
+				StrokeThickness="4" 
+				RadiusX="2" RadiusY="2"  
+				Fill="Transparent"
+				/>
+		</Border>
+
+			<!-- Maybe add this later
+			<TextBlock
+				Grid.Row="0"
+				Text="{Binding RgbHex}"
+				Theme="{StaticResource LargeMono}"
+				TextAlignment="Left"
+				HorizontalAlignment="Left"
+		        />
+			<TextBlock
+				Grid.Row="1"
+				Text="{Binding RgbDec}"
+				Theme="{StaticResource LargeMono}"
+				TextAlignment="Left"
+				HorizontalAlignment="Left"
+		        />
+			-->
+	</Grid>
+</UserControl>

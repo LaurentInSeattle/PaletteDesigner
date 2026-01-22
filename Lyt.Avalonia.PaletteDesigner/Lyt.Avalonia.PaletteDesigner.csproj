@@ -145,6 +145,9 @@
 	  <Compile Update="Workflow\Wizard\WizardSwatchView.axaml.cs">
 	    <DependentUpon>WizardSwatchView.axaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Workflow\Wizard\WizardThemeComponentView.axaml.cs">
+	    <DependentUpon>WizardThemeComponentView.axaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Workflow\Wizard\WizardView.axaml.cs">
 	    <DependentUpon>WizardView.axaml</DependentUpon>
 	  </Compile>

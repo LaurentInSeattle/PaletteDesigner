@@ -3,10 +3,12 @@
 using HsvColor = Lyt.ImageProcessing.ColorObjects.HsvColor;
 
 public sealed partial class WizardSwatchViewModel : 
-    ViewModel <WizardSwatchView>, 
+    ViewModel <WizardSwatchView>,
+    IDragAbleViewModel,
     IRecipient<LanguageChangedMessage>,
     IRecipient<ModelWizardUpdatedMessage>
 {
+    public const string CustomDragAndDropFormat = "WizardSwatchViewModel";
 
     private readonly PaletteDesignerModel paletteDesignerModel;
 
@@ -32,6 +34,22 @@ public sealed partial class WizardSwatchViewModel :
         this.Subscribe<ModelWizardUpdatedMessage>();
     }
 
+    public override void OnViewLoaded()
+    {
+        base.OnViewLoaded();
+
+        if (!this.IsGhost)
+        {
+            //this.DragAble = new DragAble(((MainWindow)App.MainWindow).MainWindowCanvas);
+            //this.DragAble.Attach(this.View);
+            //this.View.Content = this.contentGrid;
+            //this.View.InvalidateVisual();
+        }
+    }
+
+    /// <summary> True when this is a ghost view model. </summary>
+    public bool IsGhost { get; private set; }
+
     public SwatchIndex SwatchIndex { get; private set; }
 
     public int Index { get; private set; }
@@ -42,17 +60,42 @@ public sealed partial class WizardSwatchViewModel :
     {
         HsvColor hsvColor = this.paletteDesignerModel.ActiveProject!.WizardPalette.GetColor(this.SwatchIndex); 
         this.ColorBrush = hsvColor.ToBrush();
+        //this.RgbHex = string.Format("# {0}", rgbColor.ToRgbHexString());
+        //this.RgbDec = string.Format("\u2022 {0}", rgbColor.ToRgbDecString());
     }
 
     private void Localize() 
     {
     }
 
-    private void Update()
+    #region IDraggableBindable Implementation 
+
+    public DragAble? DragAble { get; protected set; }
+
+    public string DragDropFormat => WizardSwatchViewModel.CustomDragAndDropFormat;
+
+    public void OnEntered() { }
+
+    public void OnExited() { }
+
+    public void OnLongPress() { }
+
+    public void OnClicked(bool isRightClick) { } 
+
+    public bool OnBeginDrag() => true;
+
+    public View CreateGhostView()
     {
-        //RgbColor rgbColor = cluster.Payload.ToRgb();
-        //this.ColorBrush = rgbColor.ToBrush();
-        //this.RgbHex = string.Format("# {0}", rgbColor.ToRgbHexString());
-        //this.RgbDec = string.Format("\u2022 {0}", rgbColor.ToRgbDecString());
+        var ghostView = new WizardSwatchView();
+        var ghostViewModel = new WizardSwatchViewModel(this.paletteDesignerModel, this.SwatchIndex.Kind, this.SwatchIndex.Index)
+        {
+            ColorBrush = this.ColorBrush,
+        };
+
+        ghostView.DataContext = ghostViewModel;
+        return ghostView;
     }
+
+    #endregion IDraggableBindable Implementation 
+
 }
