@@ -149,7 +149,13 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
             var swatchKind = (SwatchKind)row;
             for (int index = 0; index < WizardPalette.PaletteWidth; index++)
             {
-                var swatchViewModel = new WizardSwatchViewModel(this.paletteDesignerModel, swatchKind, index);
+                var swatchViewModel = 
+                    new WizardSwatchViewModel(
+                        this.paletteDesignerModel,
+                        isGhost: false,
+                        this.View.DragCanvas,
+                        swatchKind, 
+                        index);
                 var swatchView = swatchViewModel.CreateViewAndBind();
                 this.View.AddSwatchView(swatchView, swatchKind, index);
             }

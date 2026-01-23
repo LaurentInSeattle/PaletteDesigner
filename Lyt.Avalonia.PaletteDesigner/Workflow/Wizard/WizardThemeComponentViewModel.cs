@@ -1,11 +1,10 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Wizard;
 
-using System;
-
 using HsvColor = Lyt.ImageProcessing.ColorObjects.HsvColor;
 
-public sealed partial class WizardThemeComponentViewModel : 
-    ViewModel <WizardThemeView>, 
+public sealed partial class WizardThemeComponentViewModel :
+    ViewModel<WizardThemeView>,
+    IDropTarget,
     IRecipient<ModelWizardUpdatedMessage>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
@@ -15,12 +14,9 @@ public sealed partial class WizardThemeComponentViewModel :
     [ObservableProperty]
     private SolidColorBrush colorBrush;
 
-    //[ObservableProperty]
-    //private string hsv = string.Empty;
-
     public WizardThemeComponentViewModel(
         PaletteDesignerModel paletteDesignerModel,
-        PaletteThemeVariant themeVariant, 
+        PaletteThemeVariant themeVariant,
         ThemeComponent themeComponent)
     {
         this.paletteDesignerModel = paletteDesignerModel;
@@ -30,17 +26,22 @@ public sealed partial class WizardThemeComponentViewModel :
         this.Subscribe<ModelWizardUpdatedMessage>();
     }
 
-    public void Receive(ModelWizardUpdatedMessage message)
+    public bool CanDrop(Point point, object droppedObject) => droppedObject is WizardSwatchViewModel ;
+
+    public void OnDrop(Point point, object droppedObject)
     {
-        HsvColor hsvColor = this.paletteDesignerModel.ActiveProject!.WizardPalette.GetThemeComponentColor(this.themeVariant, this.themeComponent);
-        this.ColorBrush = hsvColor.ToBrush();
+        if (droppedObject is WizardSwatchViewModel wizardSwatchViewModel)
+        {
+            this.paletteDesignerModel.ActiveProject!.WizardPalette.SetThemeComponentColor(
+                this.themeVariant, this.themeComponent,wizardSwatchViewModel.SwatchIndex);
+        }
     }
 
-    internal bool OnDrop(WizardSwatchViewModel wizardSwatchViewModel)
+    public void Receive(ModelWizardUpdatedMessage message)
     {
-        this.paletteDesignerModel.ActiveProject!.WizardPalette.SetThemeComponentColor(
-            this.themeVariant, this.themeComponent,
-            wizardSwatchViewModel.SwatchIndex, wizardSwatchViewModel.Index);
-        return true; 
+        HsvColor hsvColor = 
+            this.paletteDesignerModel.ActiveProject!.WizardPalette.GetThemeComponentColor(
+                this.themeVariant, this.themeComponent);
+        this.ColorBrush = hsvColor.ToBrush();
     }
 }

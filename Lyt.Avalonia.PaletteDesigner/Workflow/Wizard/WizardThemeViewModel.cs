@@ -23,7 +23,19 @@ public sealed partial class WizardThemeViewModel :
     private SolidColorBrush accentBrush;
 
     [ObservableProperty]
-    private SolidColorBrush discordantBrush; 
+    private SolidColorBrush discordantBrush;
+
+    [ObservableProperty]
+    private WizardThemeComponentViewModel backgroundComponent;
+    
+    [ObservableProperty]    
+    private WizardThemeComponentViewModel foregroundComponent;
+
+    [ObservableProperty]
+    private WizardThemeComponentViewModel accentComponent;
+
+    [ObservableProperty]
+    private WizardThemeComponentViewModel discordantComponent; 
 
     [ObservableProperty]
     private string hsv = string.Empty;
@@ -39,6 +51,15 @@ public sealed partial class WizardThemeViewModel :
         this.ForegroundBrush = new SolidColorBrush(Colors.LightPink);
         this.AccentBrush = new SolidColorBrush(Colors.Firebrick);
         this.DiscordantBrush = new SolidColorBrush(Colors.DodgerBlue);
+        this.BackgroundComponent = 
+            new WizardThemeComponentViewModel(this.paletteDesignerModel, this.themeVariant, ThemeComponent.Background);
+        this.ForegroundComponent = 
+            new WizardThemeComponentViewModel(this.paletteDesignerModel, this.themeVariant, ThemeComponent.Foreground);
+        this.AccentComponent = 
+            new WizardThemeComponentViewModel(this.paletteDesignerModel, this.themeVariant, ThemeComponent.Accent);
+        this.DiscordantComponent = 
+            new WizardThemeComponentViewModel(this.paletteDesignerModel, this.themeVariant, ThemeComponent.Discordant);
+
         this.Localize();
         this.Subscribe<LanguageChangedMessage>();
         this.Subscribe<ModelWizardUpdatedMessage>();

@@ -287,7 +287,11 @@
 			</Grid>
 		</Grid>
 
-
+		<Canvas
+			x:Name="DragCanvas"
+			Grid.Row="1" 
+			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+			/>
 		<!-- Top toolbars -->
 		<!-- Top toolbars 
 		<StackPanel

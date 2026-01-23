@@ -24,11 +24,22 @@ public sealed partial class WizardSwatchViewModel :
     [ObservableProperty]
     private string hsv = string.Empty;
 
-    public WizardSwatchViewModel(PaletteDesignerModel paletteDesignerModel, SwatchKind swatchKind , int index)
+    public WizardSwatchViewModel(
+        PaletteDesignerModel paletteDesignerModel, 
+        bool isGhost, 
+        Canvas dragCanvas,
+        SwatchKind swatchKind , int index)
     {
         this.paletteDesignerModel = paletteDesignerModel;
+        this.IsGhost = isGhost;
         this.SwatchIndex = new (swatchKind, index);
-        this.ColorBrush = new SolidColorBrush(Colors.Transparent); 
+        this.ColorBrush = new SolidColorBrush(Colors.Transparent);
+
+        if (!this.IsGhost)
+        {
+            this.DragAble = new DragAble(dragCanvas);
+        }
+
         this.Localize();
         this.Subscribe<LanguageChangedMessage>();
         this.Subscribe<ModelWizardUpdatedMessage>();
@@ -38,12 +49,9 @@ public sealed partial class WizardSwatchViewModel :
     {
         base.OnViewLoaded();
 
-        if (!this.IsGhost)
+        if (!this.IsGhost && this.DragAble is not null && !this.DragAble.IsAttached)
         {
-            //this.DragAble = new DragAble(((MainWindow)App.MainWindow).MainWindowCanvas);
-            //this.DragAble.Attach(this.View);
-            //this.View.Content = this.contentGrid;
-            //this.View.InvalidateVisual();
+            this.DragAble.Attach(this.View);
         }
     }
 
@@ -70,7 +78,7 @@ public sealed partial class WizardSwatchViewModel :
 
     #region IDraggableBindable Implementation 
 
-    public DragAble? DragAble { get; protected set; }
+    public DragAble? DragAble { get; private set; }
 
     public string DragDropFormat => WizardSwatchViewModel.CustomDragAndDropFormat;
 
@@ -86,8 +94,21 @@ public sealed partial class WizardSwatchViewModel :
 
     public View CreateGhostView()
     {
-        var ghostView = new WizardSwatchView();
-        var ghostViewModel = new WizardSwatchViewModel(this.paletteDesignerModel, this.SwatchIndex.Kind, this.SwatchIndex.Index)
+        if ( this.DragAble is null )
+        {
+            throw new InvalidOperationException("DragAble is null.");
+        }
+
+        var ghostView = new WizardSwatchView()
+        {
+            Width = 100.0,
+            Height = 100.0,
+        };
+        var ghostViewModel = new WizardSwatchViewModel(
+            this.paletteDesignerModel,
+            isGhost: true,
+            this.DragAble.DragCanvas,
+            this.SwatchIndex.Kind, this.SwatchIndex.Index)
         {
             ColorBrush = this.ColorBrush,
         };

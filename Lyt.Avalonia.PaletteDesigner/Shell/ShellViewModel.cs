@@ -61,7 +61,9 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>, IRecipient<La
         this.SetupWorkflow();
         this.Logger.Debug("OnViewLoaded SetupWorkflow complete");
 
-        this.DumpIsVisible = Debugger.IsAttached;
+        // Debug: dump button visibility
+        this.DumpIsVisible = false;
+        // this.DumpIsVisible = Debugger.IsAttached;
 
         // Ready 
         this.toaster.Host = this.View.ToasterHost;
@@ -196,29 +198,13 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>, IRecipient<La
         await application.Shutdown();
     }
 
+#pragma warning restore CA1822
+
     /// <summary> Invoked when closing from the application Close X button </summary>
     /// <returns> True to close immediately </returns>
     public async Task<bool> CanCloseAsync()
     {
-        // Not Needed for now 
-        //
-        //var keyboard = App.GetRequiredService<Keyboard>();
-        //if (keyboard.Modifiers.HasFlag(KeyModifiers.Shift))
-        //{
-        //    // Do not check for dirtiness when "shifting" 
-        //    return true;
-        //}
-
-        // Not Needed for now as we have no modal dialogs
-        //
-        //if (this.dialogService.IsModal)
-        //{
-        //    this.dialogService.Dismiss();
-        //}
-
         await this.paletteDesignerModel.Save();
         return true;
     }
-
-#pragma warning restore CA1822
 }

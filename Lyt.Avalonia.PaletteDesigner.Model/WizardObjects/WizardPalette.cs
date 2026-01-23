@@ -95,6 +95,32 @@ public sealed class WizardPalette
         };
     }
 
+    public void SetThemeComponentColor(
+        PaletteThemeVariant themeVariant, ThemeComponent themeComponent, SwatchIndex swatchIndex)
+    {
+        ThemeVariantColors variant =
+            themeVariant == PaletteThemeVariant.Light ? this.LightVariant : this.DarkVariant;
+        switch (themeComponent)
+        {
+            case ThemeComponent.Background:
+                variant.Background = swatchIndex;
+                break;
+            case ThemeComponent.Foreground:
+                variant.Foreground = swatchIndex;
+                break;
+            case ThemeComponent.Accent:
+                variant.Accent = swatchIndex;
+                break;
+            case ThemeComponent.Discordant:
+                variant.Discordant = swatchIndex;
+                break;
+            default:
+                throw new InvalidOperationException($"Invalid ThemeComponent {themeComponent}");
+        }
+
+        new ModelWizardUpdatedMessage().Publish();
+    }
+
     public void Reset()
     {
         this.IsReset = true;
@@ -332,6 +358,4 @@ public sealed class WizardPalette
             return 1.0 - Math.Pow(t, this.CurvePower);
         }
     }
-
-    public void SetThemeComponentColor(PaletteThemeVariant themeVariant, ThemeComponent themeComponent, SwatchIndex swatchIndex, int index) => throw new NotImplementedException();
 }

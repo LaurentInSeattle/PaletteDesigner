@@ -16,9 +16,9 @@
 			<ColumnDefinition Width="*" />
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
-		<Rectangle 
-			Fill="{Binding BackgroundBrush}"
+		<vm:WizardThemeComponentView
 			Grid.ColumnSpan="2"
+			DataContext="{Binding BackgroundComponent}"
 			/>
 		<TextBlock
 			Grid.ColumnSpan="2"
@@ -56,17 +56,17 @@
 				<RowDefinition Height="*" />
 				<RowDefinition Height="*" />
 			</Grid.RowDefinitions>
-			<Rectangle 
+			<vm:WizardThemeComponentView
 				Grid.Row="0" Grid.RowSpan="2" Grid.Column="0"
-				Fill="{Binding ForegroundBrush}"
+				DataContext="{Binding ForegroundComponent}"
 				/>
-			<Rectangle 
+			<vm:WizardThemeComponentView
 				Grid.Row="0" Grid.RowSpan="1" Grid.Column="1"
-				Fill="{Binding AccentBrush}"
+				DataContext="{Binding AccentComponent}"
 				/>
-			<Rectangle 
+			<vm:WizardThemeComponentView
 				Grid.Row="1" Grid.RowSpan="1" Grid.Column="1"
-				Fill="{Binding DiscordantBrush}"
+				DataContext="{Binding DiscordantComponent}"
 				/>
 			<!--
 			<TextBlock
