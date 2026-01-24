@@ -25,12 +25,15 @@ global using Lyt.Framework.Interfaces.Messaging;
 
 global using Lyt.AdobeSwatchExchange;
 global using Lyt.AdobeSwatchExchange.Structures;
+
 global using Lyt.Collections;
 global using Lyt.FileSystem;
+
 global using Lyt.ImageProcessing.ColorObjects;
 global using Lyt.ImageProcessing.Algorithms.ContrastEqualization;
 global using Lyt.ImageProcessing.Algorithms.KMeans;
 global using Lyt.ImageProcessing.Algorithms.KMeans.Generic;
+
 global using Lyt.Model;
 global using Lyt.Persistence;
 global using Lyt.Templator;

@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 
-public sealed partial class Palette
+public sealed partial class Palette : IExportAble
 {
     public void Reset()
     {

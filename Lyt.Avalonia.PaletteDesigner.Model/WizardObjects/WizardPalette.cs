@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.WizardObjects;
 
-public sealed class WizardPalette
+public sealed partial class WizardPalette : IExportAble
 {
     public const int PaletteWidth = 9;
 
@@ -116,7 +116,7 @@ public sealed class WizardPalette
         new ModelWizardUpdatedMessage().Publish();
     }
 
-    public void Reset()
+    internal void Reset()
     {
         this.IsReset = true;
 
@@ -139,92 +139,49 @@ public sealed class WizardPalette
         this.DarkVariant = preset.Dark;
     }
 
-    public void SetWheel(double baseWheel)
+    internal void SetWheel(double baseWheel)
     {
         this.BaseWheel = baseWheel;
         this.Update();
     }
 
-    public void SetCurvePower(double value)
+    internal void SetCurvePower(double value)
     {
         this.CurvePower = value;
         this.BuildCurveLookup();
         this.Update();
     }
 
-    public void SetCurveAngleStep(int value)
+    internal void SetCurveAngleStep(int value)
     {
         this.CurveAngleStep = value;
         this.BuildCurveLookup();
         this.Update();
     }
 
-    public void SetWheelAngleStep(double value)
+    internal void SetWheelAngleStep(double value)
     {
         this.WheelAngleStep = value;
         this.Update();
     }
 
-    public void SetHighlights(double value)
+    internal void SetHighlights(double value)
     {
         this.Highlights = value;
         this.Update();
     }
 
-    public void SetShadows(double value)
+    internal void SetShadows(double value)
     {
         this.Shadows = value;
         this.Update();
     }
 
-    public void SetStyle(int value)
+    internal void SetStyle(int value)
     {
         this.ThemeVariantStyleIndex = value;
         this.UpdateThemeVariants();
         new ModelWizardUpdatedMessage().Publish();
-    }
-
-    // TODO: Implement AseDocument conversion
-    public AseDocument ToAseDocument()
-    {
-        AseDocument document = new();
-        //this.ForAllShades((wheelKind, shades) =>
-        //{
-        //    ColorGroup colorGroup = new(wheelKind.ToString());
-        //    shades.ForAllShades((shadeKind, shade) =>
-        //    {
-        //        var rgb = shade.Color.ToRgb();
-        //        byte r = (byte)Math.Round(rgb.R);
-        //        byte g = (byte)Math.Round(rgb.G);
-        //        byte b = (byte)Math.Round(rgb.B);
-        //        ColorEntry colorEntry = new(shadeKind.ToString(), r, g, b);
-        //        colorGroup.Colors.Add(colorEntry);
-        //    });
-        //    document.Groups.Add(colorGroup);
-        //});
-
-        return document;
-    }
-
-    // TODO: Implement CSX Parameters generation
-    public Parameters ToTemplateParameters()
-    {
-        //List<string> colors = new(this.Swatches.Count);
-        //var sortedSwatches =
-        //    from swatch in this.Swatches orderby swatch.Usage descending select swatch;
-        //foreach (var swatch in sortedSwatches)
-        //{
-        //    var rgb = swatch.HsvColor.ToRgb();
-        //    colors.Add(rgb.ToPoundArgbHexString());
-        //}
-
-        //return
-        //[
-        //    new Parameter("ImagePaletteSource", this.Name),
-        //    new Parameter("Colors", colors, ParameterKind.Collection)
-        //];
-
-        return new Parameters();
     }
 
     private void Update()

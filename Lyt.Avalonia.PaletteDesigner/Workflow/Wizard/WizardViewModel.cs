@@ -128,11 +128,8 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
         if ( this.isFirstActivate)
         {
             this.isFirstActivate = false;
-            Schedule.OnUiThread(300,
-                () =>
-                {
-                    this.paletteDesignerModel.ActiveProject!.WizardPalette.Reset();
-                }, DispatcherPriority.Background);
+            Schedule.OnUiThread(
+                120, this.paletteDesignerModel.WizardPaletteReset, DispatcherPriority.Background);
             return;
         }
     }
@@ -173,7 +170,7 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
 
         this.wheel = value;
         this.UpdateLabels();
-        this.paletteDesignerModel.ActiveProject!.WizardPalette.SetWheel(value);
+        this.paletteDesignerModel.WizardPaletteSetWheel(value);
     }
 
     partial void OnCurvePowerSliderValueChanged(double value)
@@ -185,7 +182,7 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
 
         this.curvePower = value;
         this.UpdateLabels();
-        this.paletteDesignerModel.ActiveProject!.WizardPalette.SetCurvePower(value);
+        this.paletteDesignerModel.WizardPaletteSetCurvePower(value);
     }
 
     partial void OnCurveAngleStepSliderValueChanged(double value)
@@ -197,7 +194,7 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
 
         this.curveAngleStep = (int)value;
         this.UpdateLabels();
-        this.paletteDesignerModel.ActiveProject!.WizardPalette.SetCurveAngleStep(this.curveAngleStep);
+        this.paletteDesignerModel.WizardPaletteSetCurveAngleStep(this.curveAngleStep);
     }
 
     partial void OnWheelAngleStepSliderValueChanged(double value)
@@ -209,7 +206,7 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
 
         this.wheelAngleStep = value;
         this.UpdateLabels();
-        this.paletteDesignerModel.ActiveProject!.WizardPalette.SetWheelAngleStep(value);
+        this.paletteDesignerModel.WizardPaletteSetWheelAngleStep(value);
     }
 
     partial void OnHighlightsSliderValueChanged(double value)
@@ -221,7 +218,7 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
 
         this.highlights = value;
         this.UpdateLabels();
-        this.paletteDesignerModel.ActiveProject!.WizardPalette.SetHighlights(value);
+        this.paletteDesignerModel.WizardPaletteSetHighlights(value);
     }
 
     partial void OnShadowsSliderValueChanged(double value)
@@ -233,7 +230,7 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
 
         this.shadows = value;
         this.UpdateLabels();
-        this.paletteDesignerModel.ActiveProject!.WizardPalette.SetShadows(value);
+        this.paletteDesignerModel.WizardPaletteSetShadows(value);
     }
 
     partial void OnStyleSliderValueChanged(double value)
@@ -245,7 +242,7 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
 
         this.style = (int)value;
         this.UpdateLabels();
-        this.paletteDesignerModel.ActiveProject!.WizardPalette.SetStyle(this.style);
+        this.paletteDesignerModel.WizardPaletteSetStyle(this.style);
     }
 
     public void UpdateLabels()
@@ -257,7 +254,7 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
         this.HighlightsValue = string.Format("{0:D} %", (int)(100.0 * this.highlights));
         this.ShadowsValue = string.Format("{0:D} %", (int)(100.0 * this.shadows));
 
-        // TODO
+        // TODO ~ Needed ? 
         // this.StyleValue = ...
     }
 }
