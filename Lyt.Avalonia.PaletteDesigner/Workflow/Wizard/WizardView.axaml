@@ -90,7 +90,7 @@
 				<!-- Base Wheel Color Text="{DynamicResource Design.Palette.WheelHue}" -->
 				<TextBlock
 					Grid.Row="0"
-					Text="Tone"
+					Text="Center Hue"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
 					FontWeight="SemiBold"
@@ -171,7 +171,7 @@
 				<Slider
 					Grid.Row="3" Grid.Column="1"
 					Margin="8 0 8 0"
-					Minimum="1" Maximum="40"
+					Minimum="1" Maximum="60"
 					SmallChange="1" LargeChange="2"
 					TickFrequency="5" TickPlacement="BottomRight"
 					Value="{Binding WheelAngleStepSliderValue}"

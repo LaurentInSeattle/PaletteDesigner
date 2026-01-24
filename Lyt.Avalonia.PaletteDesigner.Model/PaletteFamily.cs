@@ -4,4 +4,5 @@ public enum PaletteFamily
 {
     Image, 
     Designed,
+    Wizard,
 }

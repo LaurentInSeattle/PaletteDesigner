@@ -44,15 +44,18 @@ public static class PaletteExportFormatExtensions
             PaletteExportFormat.AvaloniaAxaml =>
                 paletteFamily == PaletteFamily.Designed ?
                     "AvaloniaPaletteTemplate.csx" :
-                    "AvaloniaImagePaletteTemplate.csx" ,
+                    paletteFamily == PaletteFamily.Image ? 
+                        "AvaloniaImagePaletteTemplate.csx" : "AvaloniaWizardPaletteTemplate.csx",
             PaletteExportFormat.MicrosoftXaml =>
                 paletteFamily == PaletteFamily.Designed ?
                     "MsftXamlPaletteTemplate.csx":
-                    "MsftXamlImagePaletteTemplate.csx",
+                    paletteFamily == PaletteFamily.Image ? 
+                        "MsftXamlImagePaletteTemplate.csx" : "MsftXamlWizardPaletteTemplate.csx",
             PaletteExportFormat.CssStyleSheet => 
                 paletteFamily == PaletteFamily.Designed ? 
                     "CssPaletteTemplate.csx" :
-                    "CssImagePaletteTemplate.csx" ,
+                    paletteFamily == PaletteFamily.Image ? 
+                        "CssImagePaletteTemplate.csx" : "CssWizardPaletteTemplate.csx",
             _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
         };
 

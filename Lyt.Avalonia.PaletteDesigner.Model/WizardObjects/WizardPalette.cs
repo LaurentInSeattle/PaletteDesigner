@@ -28,11 +28,11 @@ public sealed class WizardPalette
     public int ThemeVariantStyleIndex { get; set; }
 
     [JsonRequired]
-    public ThemeVariantColors LightVariant { get; set; } 
+    public ThemeVariantColors LightVariant { get; set; }
         = new ThemeVariantColors() { ThemeVariant = PaletteThemeVariant.Light };
 
     [JsonRequired]
-    public ThemeVariantColors DarkVariant { get; set; } 
+    public ThemeVariantColors DarkVariant { get; set; }
         = new ThemeVariantColors() { ThemeVariant = PaletteThemeVariant.Dark };
 
     [JsonIgnore]
@@ -49,12 +49,7 @@ public sealed class WizardPalette
     [JsonIgnore]
     public HsvColor[] DarkColors { get; set; } = new HsvColor[PaletteWidth];
 
-    public WizardPalette()
-    {
-        this.CurvePower = 2.0;
-        this.CurveAngleStep = 8;
-        this.WheelAngleStep = 5.0;
-    }
+    public WizardPalette() { }
 
     public HsvColor GetColor(SwatchIndex swatchIndex)
     {
@@ -72,7 +67,7 @@ public sealed class WizardPalette
     public HsvColor[] GetThemeColors(PaletteThemeVariant themeVariant)
     {
         var hsvColors = new HsvColor[4];
-        ThemeVariantColors variant = 
+        ThemeVariantColors variant =
             themeVariant == PaletteThemeVariant.Light ? this.LightVariant : this.DarkVariant;
         hsvColors[0] = this.GetColor(variant.Background);
         hsvColors[1] = this.GetColor(variant.Foreground);
@@ -126,20 +121,20 @@ public sealed class WizardPalette
         this.IsReset = true;
 
         this.BaseWheel = 150.0;
-        this.CurvePower = 2.0;
-        this.CurveAngleStep = 0;
-        this.WheelAngleStep = 0.0;
-        this.Highlights = 1.0;
-        this.Shadows = 1.0;
-        this.ThemeVariantStyleIndex = 0;
-        this.UpdateThemeVariants(); 
+        this.CurvePower = 3.0;
+        this.CurveAngleStep = 6;
+        this.WheelAngleStep = 12.0;
+        this.Highlights = 2.15;
+        this.Shadows = 1.4;
+        this.ThemeVariantStyleIndex = 2;
+        this.UpdateThemeVariants();
         this.BuildCurveLookup();
         this.Update();
     }
 
     private void UpdateThemeVariants()
     {
-        var preset = ThemePresets.All[this.ThemeVariantStyleIndex]; 
+        var preset = ThemePresets.All[this.ThemeVariantStyleIndex];
         this.LightVariant = preset.Light;
         this.DarkVariant = preset.Dark;
     }
@@ -187,6 +182,49 @@ public sealed class WizardPalette
         this.ThemeVariantStyleIndex = value;
         this.UpdateThemeVariants();
         new ModelWizardUpdatedMessage().Publish();
+    }
+
+    // TODO: Implement AseDocument conversion
+    public AseDocument ToAseDocument()
+    {
+        AseDocument document = new();
+        //this.ForAllShades((wheelKind, shades) =>
+        //{
+        //    ColorGroup colorGroup = new(wheelKind.ToString());
+        //    shades.ForAllShades((shadeKind, shade) =>
+        //    {
+        //        var rgb = shade.Color.ToRgb();
+        //        byte r = (byte)Math.Round(rgb.R);
+        //        byte g = (byte)Math.Round(rgb.G);
+        //        byte b = (byte)Math.Round(rgb.B);
+        //        ColorEntry colorEntry = new(shadeKind.ToString(), r, g, b);
+        //        colorGroup.Colors.Add(colorEntry);
+        //    });
+        //    document.Groups.Add(colorGroup);
+        //});
+
+        return document;
+    }
+
+    // TODO: Implement CSX Parameters generation
+    public Parameters ToTemplateParameters()
+    {
+        //List<string> colors = new(this.Swatches.Count);
+        //var sortedSwatches =
+        //    from swatch in this.Swatches orderby swatch.Usage descending select swatch;
+        //foreach (var swatch in sortedSwatches)
+        //{
+        //    var rgb = swatch.HsvColor.ToRgb();
+        //    colors.Add(rgb.ToPoundArgbHexString());
+        //}
+
+        //return
+        //[
+        //    new Parameter("ImagePaletteSource", this.Name),
+        //    new Parameter("Colors", colors, ParameterKind.Collection)
+        //];
+
+        return new Parameters();
     }
 
     private void Update()
