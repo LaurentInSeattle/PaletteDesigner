@@ -37,6 +37,13 @@ public sealed partial class PaletteDesignerModel : ModelBase
             return true;
         });
 
+    public void WizardPaletteSetLightness(double value)
+        => this.ActionWizard(palette =>
+        {
+            palette.SetLightness(value);
+            return true;
+        });
+
     public void WizardPaletteSetHighlights(double value)
         => this.ActionWizard(palette =>
         {

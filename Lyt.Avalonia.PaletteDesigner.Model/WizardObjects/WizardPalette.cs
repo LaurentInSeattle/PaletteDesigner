@@ -22,6 +22,9 @@ public sealed partial class WizardPalette : IExportAble
     public double Highlights { get; set; }
 
     [JsonRequired]
+    public double Lightness { get; set; }
+
+    [JsonRequired]
     public double Shadows { get; set; }
 
     [JsonRequired]
@@ -132,6 +135,7 @@ public sealed partial class WizardPalette : IExportAble
         this.CurvePower = 3.0;
         this.CurveAngleStep = 6;
         this.WheelAngleStep = 12.0;
+        this.Lightness = 1.0;
         this.Highlights = 2.15;
         this.Shadows = 1.4;
         this.ThemeVariantStyleIndex = 2;
@@ -170,6 +174,12 @@ public sealed partial class WizardPalette : IExportAble
     internal void SetWheelAngleStep(double value)
     {
         this.WheelAngleStep = value;
+        this.Update();
+    }
+
+    internal void SetLightness(double value)
+    {
+        this.Lightness = value;
         this.Update();
     }
 
@@ -223,22 +233,21 @@ public sealed partial class WizardPalette : IExportAble
                 }
 
                 // Bright and less saturated 
-                this.LightColors[i] = Enlighten (this.Highlights * 0.80) ;
+                this.LightColors[i] = Enlighten (this.Highlights) ;
 
                 // Brighter and even less saturated 
-                this.LighterColors[i] = Enlighten(this.Highlights * 1.20);
+                this.LighterColors[i] = Enlighten(this.Highlights * 1.35);
 
                 // Dark and more saturated 
-                this.DarkColors[i] = Darken(this.Shadows * 0.80);
+                this.DarkColors[i] = Darken(this.Shadows);
 
                 // Darker and even more saturated 
-                this.DarkerColors[i] = Darken(this.Shadows * 1.20);
+                this.DarkerColors[i] = Darken(this.Shadows * 1.25);
             }
             else
             {
                 throw new InvalidOperationException($"HueWheel does not contain angle {wheelAngle}");
             }
-
         }
 
         this.IsReset = false;

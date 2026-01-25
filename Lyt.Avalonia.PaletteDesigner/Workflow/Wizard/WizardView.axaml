@@ -23,8 +23,6 @@
 			<RowDefinition Height="92" />
 			<!-- Content -->
 			<RowDefinition Height="*" />
-			<!-- Toolbar -->
-			<RowDefinition Height="92" />
 		</Grid.RowDefinitions>
 		<Grid
 			Grid.Row="1"
@@ -80,8 +78,12 @@
 					<RowDefinition Height="60" /> 
 					<RowDefinition Height="60" /> 
 					<RowDefinition Height="60" /> 
+				    <!-- Was Lighness Slider -->
+					<RowDefinition Height="40" /> 
 					<RowDefinition Height="60" /> 
 					<RowDefinition Height="60" /> 
+				    <!-- Second spacer -->
+					<RowDefinition Height="40" /> 
 					<RowDefinition Height="60" /> 
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
@@ -187,9 +189,10 @@
 					FontWeight="SemiBold"
 					/>
 				<!-- Highlights  Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
+				<!--
 				<TextBlock
 					Grid.Row="4"					
-					Text="Highlights"
+					Text="Lightness"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
 					FontWeight="SemiBold"
@@ -197,23 +200,24 @@
 				<Slider
 					Grid.Row="4" Grid.Column="1"
 					Margin="8 0 8 0"
-					Minimum="1.0" Maximum="4.0"
-					SmallChange="0.1" LargeChange="0.5"
-					TickFrequency="0.5" TickPlacement="BottomRight"
-					Value="{Binding HighlightsSliderValue}"
+					Minimum="1.0" Maximum="1.5"
+					SmallChange="0.05" LargeChange="0.1"
+					TickFrequency="0.05" TickPlacement="BottomRight"
+					Value="{Binding LightnessSliderValue}"
 					HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
 					/>
 				<TextBlock
 					Grid.Row="4" Grid.Column="2"
-					Text="{Binding HighlightsValue}"
+					Text="{Binding LightnessValue}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Left" VerticalAlignment="Center"
 					FontWeight="SemiBold"
 					/>
-				<!-- Shadows  Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
+				-->
+				<!-- Highlights  Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
 				<TextBlock
 					Grid.Row="5"					
-					Text="Shadows"
+					Text="Highlights"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
 					FontWeight="SemiBold"
@@ -224,11 +228,35 @@
 					Minimum="1.0" Maximum="4.0"
 					SmallChange="0.1" LargeChange="0.5"
 					TickFrequency="0.5" TickPlacement="BottomRight"
-					Value="{Binding ShadowsSliderValue}"
+					Value="{Binding HighlightsSliderValue}"
 					HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
 					/>
 				<TextBlock
 					Grid.Row="5" Grid.Column="2"
+					Text="{Binding HighlightsValue}"
+					Theme="{StaticResource Medium}"
+					HorizontalAlignment="Left" VerticalAlignment="Center"
+					FontWeight="SemiBold"
+					/>
+				<!-- Shadows  Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
+				<TextBlock
+					Grid.Row="6"					
+					Text="Shadows"
+					Theme="{StaticResource Medium}"
+					HorizontalAlignment="Right" VerticalAlignment="Center"
+					FontWeight="SemiBold"
+					/>
+				<Slider
+					Grid.Row="6" Grid.Column="1"
+					Margin="8 0 8 0"
+					Minimum="1.0" Maximum="4.0"
+					SmallChange="0.1" LargeChange="0.5"
+					TickFrequency="0.5" TickPlacement="BottomRight"
+					Value="{Binding ShadowsSliderValue}"
+					HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+					/>
+				<TextBlock
+					Grid.Row="6" Grid.Column="2"
 					Text="{Binding ShadowsValue}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Left" VerticalAlignment="Center"
@@ -236,14 +264,14 @@
 					/>
 				<!-- Style  Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
 				<TextBlock
-					Grid.Row="6"					
+					Grid.Row="8"					
 					Text="Variations"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
 					FontWeight="SemiBold"
 					/>
 				<Slider
-					Grid.Row="6" Grid.Column="1"
+					Grid.Row="8" Grid.Column="1"
 					Margin="8 0 8 0"
 					Minimum="0.0" Maximum="3.0"
 					SmallChange="1" LargeChange="1.0"
@@ -254,7 +282,7 @@
 					/>
 				<TextBlock
 					IsVisible="False"
-					Grid.Row="6" Grid.Column="2"
+					Grid.Row="8" Grid.Column="2"
 					Text="{Binding StyleValue}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Left" VerticalAlignment="Center"

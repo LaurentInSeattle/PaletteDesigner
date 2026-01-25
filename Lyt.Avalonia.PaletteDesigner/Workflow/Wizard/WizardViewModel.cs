@@ -60,6 +60,14 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
     private double wheelAngleStep;
 
     [ObservableProperty]
+    private double lightnessSliderValue;
+
+    [ObservableProperty]
+    private string lightnessValue = string.Empty;
+
+    private double lightness;
+
+    [ObservableProperty]
     private double highlightsSliderValue;
 
     [ObservableProperty]
@@ -221,6 +229,18 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
         this.paletteDesignerModel.WizardPaletteSetHighlights(value);
     }
 
+    partial void OnLightnessSliderValueChanged(double value)
+    {
+        if (this.isProgrammaticUpdate)
+        {
+            return;
+        }
+
+        this.lightness = value;
+        this.UpdateLabels();
+        this.paletteDesignerModel.WizardPaletteSetLightness(value);
+    }
+
     partial void OnShadowsSliderValueChanged(double value)
     {
         if (this.isProgrammaticUpdate)
@@ -251,6 +271,7 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
         this.CurvePowerValue = string.Format("{0:F1}", this.curvePower);
         this.CurveAngleStepValue = string.Format("{0:D}", this.curveAngleStep);
         this.WheelAngleStepValue = string.Format("{0:F1} \u00B0", this.wheelAngleStep);
+        this.LightnessValue = string.Format("{0:D} %", (int)(100.0 * this.highlights));
         this.HighlightsValue = string.Format("{0:D} %", (int)(100.0 * this.highlights));
         this.ShadowsValue = string.Format("{0:D} %", (int)(100.0 * this.shadows));
 
