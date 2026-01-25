@@ -141,7 +141,7 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
             return;
         }
 
-        for (int row = 0; row < 3; row++)
+        for (int row = 0; row < 5; row++)
         {
             var swatchKind = (SwatchKind)row;
             for (int index = 0; index < WizardPalette.PaletteWidth; index++)

@@ -41,6 +41,9 @@ public sealed partial class WizardPalette : IExportAble
     private Dictionary<int, Vector3> CurveLookup { get; set; } = [];
 
     [JsonIgnore]
+    public HsvColor[] LighterColors { get; set; } = new HsvColor[PaletteWidth];
+
+    [JsonIgnore]
     public HsvColor[] LightColors { get; set; } = new HsvColor[PaletteWidth];
 
     [JsonIgnore]
@@ -48,6 +51,9 @@ public sealed partial class WizardPalette : IExportAble
 
     [JsonIgnore]
     public HsvColor[] DarkColors { get; set; } = new HsvColor[PaletteWidth];
+
+    [JsonIgnore]
+    public HsvColor[] DarkerColors { get; set; } = new HsvColor[PaletteWidth];
 
     public WizardPalette() { }
 
@@ -57,9 +63,11 @@ public sealed partial class WizardPalette : IExportAble
         int index = swatchIndex.Index;
         return swatchKind switch
         {
+            SwatchKind.Lighter => this.LighterColors[index],
             SwatchKind.Light => this.LightColors[index],
             SwatchKind.Base => this.BaseColors[index],
             SwatchKind.Dark => this.DarkColors[index],
+            SwatchKind.Darker => this.DarkerColors[index],
             _ => throw new InvalidOperationException($"Invalid SwatchKind {swatchKind}"),
         };
     }
@@ -200,17 +208,31 @@ public sealed partial class WizardPalette : IExportAble
                 var baseColor = new HsvColor(hue, saturation, value);
                 this.BaseColors[i] = baseColor;
 
-                // Brighter and less saturated 
-                double highlightSaturation = (saturation / this.Highlights).Clip();
-                double highlightValue = (value * this.Highlights).Clip();
-                var lightColor = new HsvColor(hue, highlightSaturation, highlightValue);
-                this.LightColors[i] = lightColor;
+                HsvColor Enlighten (double light)
+                {
+                    double highlightSaturation = (saturation / light).Clip();
+                    double highlightValue = (value * light).Clip();
+                    return new HsvColor(hue, highlightSaturation, highlightValue);
+                }
 
-                // Darker and more saturated 
-                double shadowSaturation = (saturation * this.Shadows).Clip();
-                double shadowValue = (value / this.Shadows).Clip();
-                var darkColor = new HsvColor(hue, shadowSaturation, shadowValue);
-                this.DarkColors[i] = darkColor;
+                HsvColor Darken(double dark)
+                {
+                    double shadowSaturation = (saturation * dark).Clip();
+                    double shadowValue = (value / dark).Clip();
+                    return new HsvColor(hue, shadowSaturation, shadowValue);
+                }
+
+                // Bright and less saturated 
+                this.LightColors[i] = Enlighten (this.Highlights * 0.80) ;
+
+                // Brighter and even less saturated 
+                this.LighterColors[i] = Enlighten(this.Highlights * 1.20);
+
+                // Dark and more saturated 
+                this.DarkColors[i] = Darken(this.Shadows * 0.80);
+
+                // Darker and even more saturated 
+                this.DarkerColors[i] = Darken(this.Shadows * 1.20);
             }
             else
             {

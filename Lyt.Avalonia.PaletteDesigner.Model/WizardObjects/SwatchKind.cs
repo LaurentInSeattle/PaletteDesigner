@@ -3,7 +3,9 @@
 // Indexed for positioning in the wizard view
 public enum SwatchKind : int 
 {
-    Light = 0 ,
-    Base = 1,
-    Dark = 2 ,
+    Lighter, 
+    Light,
+    Base,
+    Dark,
+    Darker,
 }
