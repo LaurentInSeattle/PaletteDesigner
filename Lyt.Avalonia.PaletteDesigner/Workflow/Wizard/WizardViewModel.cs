@@ -14,13 +14,13 @@ public sealed partial class WizardViewModel :
     private bool isProgrammaticUpdate;
     private bool isFirstActivate;
 
-    //[ObservableProperty]
-    //private ImagingToolbarViewModel imagingToolbarViewModel;
-
-    //[ObservableProperty]
-    //private ExportToolbarViewModel exportToolbarViewModel;
-
     #region Observable Properties 
+
+    [ObservableProperty]
+    private WizardToolbarViewModel wizardToolbarViewModel;
+
+    [ObservableProperty]
+    private ExportToolbarViewModel exportToolbarViewModel;
 
     [ObservableProperty]
     private WizardThemeViewModel lightThemeViewModel;
@@ -103,8 +103,8 @@ public sealed partial class WizardViewModel :
         this.isFirstActivate = true;
         this.Subscribe<ModelWizardUpdatedMessage>(); 
 
-        //this.ImagingToolbarViewModel = new();
-        //this.ExportToolbarViewModel = new(PaletteFamily.Image);
+        this.WizardToolbarViewModel = new();
+        this.ExportToolbarViewModel = new(PaletteFamily.Wizard);
     }
 
     public override void OnViewLoaded()

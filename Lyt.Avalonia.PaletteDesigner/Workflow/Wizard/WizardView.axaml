@@ -323,7 +323,6 @@
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 			/>
 		<!-- Top toolbars -->
-		<!-- Top toolbars 
 		<StackPanel
 			Grid.Row="0" Grid.ColumnSpan="5"
 			HorizontalAlignment="Center"
@@ -338,7 +337,6 @@
 				DataContext="{Binding ExportToolbarViewModel}"
 				/>
 		</StackPanel>
-		-->
 
 	</Grid>
 </UserControl>

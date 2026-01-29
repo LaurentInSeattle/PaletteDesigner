@@ -142,6 +142,9 @@
 	  <Compile Update="Workflow\TextSamples\TextPreviewView.axaml.cs">
 	    <DependentUpon>TextPreviewView.axaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Workflow\Wizard\WizardToolbarView.axaml.cs">
+	    <DependentUpon>WizardToolbarView.axaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Workflow\Wizard\WizardSwatchView.axaml.cs">
 	    <DependentUpon>WizardSwatchView.axaml</DependentUpon>
 	  </Compile>

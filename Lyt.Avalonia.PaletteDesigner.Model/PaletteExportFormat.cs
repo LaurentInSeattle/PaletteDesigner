@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
+using System.Xml;
+
 public enum PaletteExportFormat
 {
     None,
@@ -30,47 +32,91 @@ public static class PaletteExportFormatExtensions
             _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
         };
 
-    public static string ResourceFileName (
-        this PaletteExportFormat paletteExportFormat, PaletteFamily paletteFamily = PaletteFamily.Designed)
-        => paletteExportFormat switch
+    // No need to localize, 
+    public static string ResourceFileName(
+        this PaletteExportFormat paletteExportFormat, PaletteFamily paletteFamily)
+    {
+        string formatString = paletteExportFormat switch
         {
-            // Binary, Not template based
-            PaletteExportFormat.AdobeAse => string.Empty,
+            // Dont need resources: Binary, Not template based
+            PaletteExportFormat.AdobeAse => "Adobe",
+            // Text, Not template based
+            PaletteExportFormat.ApplicationJSon => "Json",
 
-            // Not template based
-            PaletteExportFormat.ApplicationJSon => string.Empty,
+            PaletteExportFormat.AvaloniaAxaml => "Avalonia",
+            PaletteExportFormat.MicrosoftXaml => "MsftXaml",
+            PaletteExportFormat.CssStyleSheet => "Css",
 
-            // No need to localize 
-            PaletteExportFormat.AvaloniaAxaml =>
-                paletteFamily == PaletteFamily.Designed ?
-                    "AvaloniaPaletteTemplate.csx" :
-                    paletteFamily == PaletteFamily.Image ? 
-                        "AvaloniaImagePaletteTemplate.csx" : "AvaloniaWizardPaletteTemplate.csx",
-            PaletteExportFormat.MicrosoftXaml =>
-                paletteFamily == PaletteFamily.Designed ?
-                    "MsftXamlPaletteTemplate.csx":
-                    paletteFamily == PaletteFamily.Image ? 
-                        "MsftXamlImagePaletteTemplate.csx" : "MsftXamlWizardPaletteTemplate.csx",
-            PaletteExportFormat.CssStyleSheet => 
-                paletteFamily == PaletteFamily.Designed ? 
-                    "CssPaletteTemplate.csx" :
-                    paletteFamily == PaletteFamily.Image ? 
-                        "CssImagePaletteTemplate.csx" : "CssWizardPaletteTemplate.csx",
             _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
         };
 
-    public static string TargetFileName(this PaletteExportFormat paletteExportFormat)
-        => paletteExportFormat switch
+        string familyString = paletteFamily switch
+        {
+            PaletteFamily.Designed => "Designer",
+            PaletteFamily.Image => "Image",
+            PaletteFamily.Wizard => "Wizard",
+
+            _ => throw new ArgumentException(null, nameof(paletteFamily)),
+        };
+
+
+        // TODO: Rename resource files 
+        return string.Concat(formatString, "_", familyString, "_", "Template.csx");
+
+        //=> paletteExportFormat switch
+        //   {
+        //       // Binary, Not template based
+        //       PaletteExportFormat.AdobeAse => string.Empty,
+
+        //       // Not template based
+        //       PaletteExportFormat.ApplicationJSon => string.Empty,
+
+        //       // No need to localize 
+        //       PaletteExportFormat.AvaloniaAxaml =>
+        //           paletteFamily == PaletteFamily.Designed ?
+        //               "AvaloniaPaletteTemplate.csx" :
+        //               paletteFamily == PaletteFamily.Image ?
+        //                   "AvaloniaImagePaletteTemplate.csx" : "AvaloniaWizardPaletteTemplate.csx",
+        //       PaletteExportFormat.MicrosoftXaml =>
+        //           paletteFamily == PaletteFamily.Designed ?
+        //               "MsftXamlPaletteTemplate.csx" :
+        //               paletteFamily == PaletteFamily.Image ?
+        //                   "MsftXamlImagePaletteTemplate.csx" : "MsftXamlWizardPaletteTemplate.csx",
+        //       PaletteExportFormat.CssStyleSheet =>
+        //           paletteFamily == PaletteFamily.Designed ?
+        //               "CssPaletteTemplate.csx" :
+        //               paletteFamily == PaletteFamily.Image ?
+        //                   "CssImagePaletteTemplate.csx" : "CssWizardPaletteTemplate.csx",
+        //       _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
+        //   };
+    }
+
+    public static string ExportTargetFileName(
+        this PaletteExportFormat paletteExportFormat, PaletteFamily paletteFamily)
+    {  
+        string formatString = paletteExportFormat switch
         {
             // No need to localize 
-            PaletteExportFormat.AdobeAse => "AdobePalette",
-            PaletteExportFormat.AvaloniaAxaml => "AvaloniaPalette",
-            PaletteExportFormat.MicrosoftXaml => "MicrosoftPalette",
-            PaletteExportFormat.CssStyleSheet => "CssPalette",
-            PaletteExportFormat.ApplicationJSon => "DesignerPalette",
+            PaletteExportFormat.AdobeAse => "Adobe",
+            PaletteExportFormat.AvaloniaAxaml => "Avalonia",
+            PaletteExportFormat.MicrosoftXaml => "Microsoft",
+            PaletteExportFormat.CssStyleSheet => "Css",
+            PaletteExportFormat.ApplicationJSon => "Json",
 
             _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
         };
+
+        string familyString = paletteFamily switch
+        {
+            PaletteFamily.Designed => "Designer",
+            PaletteFamily.Image => "Image",
+            PaletteFamily.Wizard => "Wizard",
+
+            _ => throw new ArgumentException(null, nameof(paletteFamily)),
+        };
+
+        return string.Concat(formatString, "_" , familyString); 
+    } 
 
     public static string ExtensionFileName(this PaletteExportFormat paletteExportFormat)
         => paletteExportFormat switch
@@ -84,6 +130,7 @@ public static class PaletteExportFormatExtensions
             _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
         };
 
+    // For use by UI drop down 
     public static string ToFriendlyName(this PaletteExportFormat paletteExportFormat)
         => paletteExportFormat switch
         {

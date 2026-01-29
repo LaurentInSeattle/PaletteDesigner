@@ -32,16 +32,20 @@ public sealed partial class PaletteDesignerModel : ModelBase
             return false;
         } 
 
-        return this.Export(exportable, exportFormat, out message);
+        return this.Export(exportable, exportFormat, paletteFamily, out message);
     }
 
-    private bool Export(IExportAble exportable, PaletteExportFormat exportFormat, out string message)
+    private bool Export(
+        IExportAble exportable, 
+        PaletteExportFormat exportFormat,
+        PaletteFamily paletteFamily,
+        out string message)
     {
         string? newPath = string.Empty;
 
         try
         {
-            string targetName = exportFormat.TargetFileName();
+            string targetName = exportFormat.ExportTargetFileName(paletteFamily);
             string name = string.Concat(targetName, "_", TimestampString());
 
             if (exportFormat == PaletteExportFormat.AdobeAse)
@@ -58,18 +62,19 @@ public sealed partial class PaletteDesignerModel : ModelBase
             else if (exportFormat == PaletteExportFormat.ApplicationJSon)
             {
                 // Create a JSON directly from the palette, save on disk with time stamp
-                string json = exportable.ToJsonString();
+                string serializedJson = exportable.ToJsonString();
                 string path = this.fileManager.MakePath(Area.User, Kind.Json, name);
-                newPath = path.ChangeFileExtension(FileManagerModel.JsonExtension);
+                File.WriteAllText(path, serializedJson);
+                newPath = path;
                 return true;
             }
             else
             {
                 Parameters parameters = exportable.ToTemplateParameters();
-
                 ResourcesUtilities.SetResourcesPath(exportFormat.ResourcePath());
                 string template =
-                    ResourcesUtilities.LoadEmbeddedTextResource(exportFormat.ResourceFileName(), out string? _);
+                    ResourcesUtilities.LoadEmbeddedTextResource(
+                        exportFormat.ResourceFileName(paletteFamily), out string? _);
                 var templator = new TextGenerator(template);
                 var result = templator.Generate(parameters);
                 if (result.Item1)
@@ -81,6 +86,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
                     string extension = exportFormat.ExtensionFileName();
                     string path = this.fileManager.MakePath(Area.User, Kind.Text, name);
                     newPath = path.ChangeFileExtension(extension);
+                    return true;
                 }
                 else
                 {
@@ -88,8 +94,6 @@ public sealed partial class PaletteDesignerModel : ModelBase
                     return false;
                 }
             }
-
-            return true;
         }
         catch (Exception ex)
         {

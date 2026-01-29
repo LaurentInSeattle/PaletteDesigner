@@ -1,0 +1,97 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Wizard.WizardToolbarView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Wizard"
+	x:DataType="vm:WizardToolbarViewModel" 
+			 
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="1680" d:DesignHeight="90"
+	
+	xmlns:glyphs="using:Lyt.Avalonia.Controls.Glyphs"	
+	xmlns:toggle="using:Lyt.Avalonia.Controls.Toggle"	
+	xmlns:controls="clr-namespace:Lyt.Avalonia.PaletteDesigner.Controls"
+	>
+	
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="72" />
+			<RowDefinition Height="16" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<!-- Spacer -->
+			<ColumnDefinition Width="0" />
+			<!-- Toggle-->
+			<ColumnDefinition Width="220" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="20" />
+			<!-- Colour slider + value -->
+			<ColumnDefinition Width="300" />
+			<ColumnDefinition Width="8" />
+			<ColumnDefinition Width="32" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="20" />
+			<!-- Recalc Button -->
+			<ColumnDefinition Width="140" />
+		</Grid.ColumnDefinitions>
+
+		<!--
+		<toggle:ToggleSwitch
+			Grid.Row="0" Grid.Column="1"
+			Style="{StaticResource StandardToggleSwitch}"
+			TrueText="{DynamicResource Imaging.Toolbar.AlgorithmStrength.Deep}"
+			FalseText="{DynamicResource Imaging.Toolbar.AlgorithmStrength.Shallow}"
+			Height="80" Width="190"
+			Orientation="Vertical"
+			HorizontalAlignment="Center" VerticalAlignment="Center"
+			Value="{Binding IsDeepAlgorithmStrength}"
+			/>
+
+		<controls:ExtendedTextBlock
+			Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="1"
+			Text="{DynamicResource Imaging.Toolbar.AlgorithmStrength}"
+			Typography="{StaticResource Medium}"
+			/>
+		-->
+		<!--
+		<Slider
+			Grid.Column="3"
+			Margin="12 4 0 0"
+			Minimum="5" Maximum="42"
+			SmallChange="1" LargeChange="5"
+			TickFrequency="1.0" 
+			IsSnapToTickEnabled="True"
+			TickPlacement="BottomRight"
+			Value="{Binding ClustersSliderValue}"
+			HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+			/>
+		<TextBlock
+			Grid.Row="0" Grid.Column="5" 
+			Margin="0 -20 0 0"
+			Text="{Binding ClustersValue}"
+			Theme="{StaticResource Large}"
+			HorizontalAlignment="Left" VerticalAlignment="Center"
+			/>
+		<controls:ExtendedTextBlock
+			Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="1"
+			Text="{DynamicResource Imaging.Toolbar.PaletteEntries}"
+			Typography="{StaticResource Medium}"
+			/>
+		-->
+
+		<glyphs:GlyphButton
+			Grid.Column="7"
+			Style="{StaticResource AppToolbarIconButton}"
+			GlyphSource="color"
+			GlyphStrokeThickness="0.1"
+			Text="{DynamicResource Imaging.Toolbar.Recalculate}"
+			Command="{Binding OnRecalculate}"
+			/>
+		<controls:ExtendedTextBlock
+			Grid.Column="7" Grid.ColumnSpan="1" Grid.Row="1"
+			Text="{DynamicResource Imaging.Toolbar.UpdateRecalculate}"
+			Typography="{StaticResource Medium}"
+			/>
+	</Grid>
+</UserControl>
