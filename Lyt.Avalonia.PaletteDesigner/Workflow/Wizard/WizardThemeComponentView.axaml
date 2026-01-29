@@ -22,14 +22,25 @@
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 			DragDrop.AllowDrop="True"
 			>
-			<Rectangle 				
-				x:Name="DropRectangle"
-				StrokeDashArray="2, 2" 
-				Stroke="{StaticResource LightAqua_1_100}" 
-				StrokeThickness="2" 
-				RadiusX="2" RadiusY="2"  
-				Fill="Transparent"
-				/>
+			<Grid>
+				<Rectangle 				
+					x:Name="DropRectangle"
+					StrokeDashArray="2, 2" 
+					Stroke="{StaticResource LightAqua_1_100}" 
+					StrokeThickness="2" 
+					RadiusX="2" RadiusY="2"  
+					Fill="Transparent"
+					/>
+				<Rectangle 				
+					x:Name="InnerRectangle"
+					Margin="2"
+					StrokeDashArray="2, 2" 
+					Stroke="{StaticResource LightAqua_1_100}" 
+					StrokeThickness="2" 
+					RadiusX="2" RadiusY="2"  
+					Fill="Transparent"
+					/>
+			</Grid>
 		</Border>
 	</Grid>
 </UserControl>

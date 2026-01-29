@@ -6,6 +6,7 @@ public partial class WizardThemeComponentView : View
 {
     private static readonly SolidColorBrush normalBrush;
     private static readonly SolidColorBrush? hotBrush;
+    private static readonly SolidColorBrush? darkBrush;
 
     static WizardThemeComponentView()
     {
@@ -16,15 +17,17 @@ public partial class WizardThemeComponentView : View
         {
             hotBrush = brush;
         }
+
+        TryFindResource<SolidColorBrush>("DeepBlue_0_080", out brush);
+        if (brush is not null)
+        {
+            darkBrush = brush;
+        }
     }
 
     public WizardThemeComponentView() : base()
     {
-        if (normalBrush is not null)
-        {
-            this.DropRectangle.Stroke = normalBrush;
-        }
-
+        this.ClearDropVisuals();
         DragDrop.SetAllowDrop(this.DropBorder, true);
         this.DropBorder.AddHandler(DragDrop.DragEnterEvent, this.OnDragEnter);
         this.DropBorder.AddHandler(DragDrop.DragLeaveEvent, this.OnDragLeave);
@@ -41,17 +44,31 @@ public partial class WizardThemeComponentView : View
         this.DropBorder.RemoveHandler(DragDrop.DropEvent, this.OnDrop);
     }
 
-    private void OnDragEnter(object? _, DragEventArgs e)
+    private void OnDragEnter(object? _, DragEventArgs e) => this.HighlightDropVisuals();
+
+    private void OnDragLeave(object? _, DragEventArgs e) => this.ClearDropVisuals();
+
+    private void OnDrop(object? _, DragEventArgs dragEventArgs) => this.ClearDropVisuals();
+
+    private void HighlightDropVisuals()
     {
         if (hotBrush is not null)
         {
             this.DropRectangle.Stroke = hotBrush;
         }
+
+        if (darkBrush is not null)
+        {
+            this.InnerRectangle.Stroke = darkBrush;
+        }
     }
 
-    private void OnDragLeave(object? _, DragEventArgs e)
-        => this.DropRectangle.Stroke = normalBrush;
-
-    private void OnDrop(object? _, DragEventArgs dragEventArgs)
-        => this.DropRectangle.Stroke = normalBrush;
-  }
+    private void ClearDropVisuals()
+    {
+        if (normalBrush is not null)
+        {
+            this.DropRectangle.Stroke = normalBrush;
+            this.InnerRectangle.Stroke = normalBrush;
+        }
+    }
+}

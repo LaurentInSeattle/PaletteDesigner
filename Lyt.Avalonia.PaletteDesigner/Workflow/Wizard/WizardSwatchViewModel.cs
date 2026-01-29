@@ -5,7 +5,7 @@ using HsvColor = Lyt.ImageProcessing.ColorObjects.HsvColor;
 public sealed partial class WizardSwatchViewModel : 
     ViewModel <WizardSwatchView>,
     IDragAbleViewModel,
-    IRecipient<LanguageChangedMessage>,
+    // IRecipient<LanguageChangedMessage>,
     IRecipient<ModelWizardUpdatedMessage>
 {
     public const string CustomDragAndDropFormat = "WizardSwatchViewModel";
@@ -40,8 +40,8 @@ public sealed partial class WizardSwatchViewModel :
             this.DragAble = new DragAble(dragCanvas);
         }
 
-        this.Localize();
-        this.Subscribe<LanguageChangedMessage>();
+        // this.Localize();
+        // this.Subscribe<LanguageChangedMessage>();
         this.Subscribe<ModelWizardUpdatedMessage>();
     }
 
@@ -62,7 +62,7 @@ public sealed partial class WizardSwatchViewModel :
 
     public int Index { get; private set; }
 
-    public void Receive(LanguageChangedMessage message) => this.Localize();
+    // public void Receive(LanguageChangedMessage message) => this.Localize();
 
     public void Receive(ModelWizardUpdatedMessage message)
     {
@@ -72,9 +72,9 @@ public sealed partial class WizardSwatchViewModel :
         //this.RgbDec = string.Format("\u2022 {0}", rgbColor.ToRgbDecString());
     }
 
-    private void Localize() 
-    {
-    }
+    //private void Localize() 
+    //{
+    //}
 
     #region IDraggableBindable Implementation 
 
@@ -108,7 +108,8 @@ public sealed partial class WizardSwatchViewModel :
             this.paletteDesignerModel,
             isGhost: true,
             this.DragAble.DragCanvas,
-            this.SwatchIndex.Kind, this.SwatchIndex.Index)
+            this.SwatchIndex.Kind, 
+            this.SwatchIndex.Index)
         {
             ColorBrush = this.ColorBrush,
         };
@@ -118,5 +119,4 @@ public sealed partial class WizardSwatchViewModel :
     }
 
     #endregion IDraggableBindable Implementation 
-
 }
