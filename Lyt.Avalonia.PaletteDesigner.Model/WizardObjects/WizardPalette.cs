@@ -129,8 +129,6 @@ public sealed partial class WizardPalette : IExportAble
 
     internal void Reset()
     {
-        this.IsReset = true;
-
         this.BaseWheel = 150.0;
         this.CurvePower = 3.0;
         this.CurveAngleStep = 6;
@@ -142,6 +140,9 @@ public sealed partial class WizardPalette : IExportAble
         this.UpdateThemeVariants();
         this.BuildCurveLookup();
         this.Update();
+
+        this.IsReset = true;
+        new ModelWizardUpdatedMessage().Publish();
     }
 
     private void UpdateThemeVariants()

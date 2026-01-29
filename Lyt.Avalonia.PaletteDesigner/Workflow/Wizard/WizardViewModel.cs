@@ -4,14 +4,15 @@ using global::Avalonia.Media.Imaging;
 
 using HsvColor = Lyt.ImageProcessing.ColorObjects.HsvColor;
 
-public sealed partial class WizardViewModel : ViewModel<WizardView>
+public sealed partial class WizardViewModel :
+    ViewModel<WizardView>,
+    IRecipient<ModelWizardUpdatedMessage>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
 
     private bool isLoaded;
     private bool isProgrammaticUpdate;
     private bool isFirstActivate;
-
 
     //[ObservableProperty]
     //private ImagingToolbarViewModel imagingToolbarViewModel;
@@ -100,6 +101,7 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
         this.DarkThemeViewModel = new WizardThemeViewModel(this.paletteDesignerModel, PaletteThemeVariant.Dark);
 
         this.isFirstActivate = true;
+        this.Subscribe<ModelWizardUpdatedMessage>(); 
 
         //this.ImagingToolbarViewModel = new();
         //this.ExportToolbarViewModel = new(PaletteFamily.Image);
@@ -108,24 +110,7 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
     public override void OnViewLoaded()
     {
         base.OnViewLoaded();
-
         this.CreateSwatches();
-        //if (this.paletteDesignerModel.ActiveProject is not Project project)
-        //{
-        //    return;
-        //}
-
-        //if (project.Swatches is not ColorSwatches swatches)
-        //{
-        //    return;
-        //}
-
-        //if (string.IsNullOrWhiteSpace(swatches.ImagePath))
-        //{
-        //    return;
-        //}
-
-        //this.ImagingToolbarViewModel.ProgrammaticUpdate(swatches);
     }
 
     public override void Activate(object? activationParameters)
@@ -133,13 +118,37 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
         base.Activate(activationParameters);
 
         // DEBUG !
-        if ( this.isFirstActivate)
+        if (this.isFirstActivate)
         {
             this.isFirstActivate = false;
             Schedule.OnUiThread(
                 120, this.paletteDesignerModel.WizardPaletteReset, DispatcherPriority.Background);
             return;
         }
+    }
+
+    public void Receive(ModelWizardUpdatedMessage message)
+    {
+        if (this.paletteDesignerModel.ActiveProject is null)
+        {
+            return;
+        }
+
+        var palette = this.paletteDesignerModel.ActiveProject.WizardPalette;
+        if (palette.IsReset)
+        {
+            GeneralExtensions.With(ref this.isProgrammaticUpdate, () =>
+            {
+                this.WheelSliderValue = palette.BaseWheel;
+                this.CurvePowerSliderValue = palette.CurvePower;
+                this.CurveAngleStepSliderValue = palette.CurveAngleStep;
+                this.WheelAngleStepSliderValue = palette.WheelAngleStep;
+                this.LightnessSliderValue = palette.Lightness;
+                this.HighlightsSliderValue = palette.Highlights;
+                this.ShadowsSliderValue = palette.Shadows;
+                this.StyleSliderValue = palette.ThemeVariantStyleIndex;
+            });
+        } 
     }
 
     private void CreateSwatches()
@@ -154,12 +163,12 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
             var swatchKind = (SwatchKind)row;
             for (int index = 0; index < WizardPalette.PaletteWidth; index++)
             {
-                var swatchViewModel = 
+                var swatchViewModel =
                     new WizardSwatchViewModel(
                         this.paletteDesignerModel,
                         isGhost: false,
                         this.View.DragCanvas,
-                        swatchKind, 
+                        swatchKind,
                         index);
                 var swatchView = swatchViewModel.CreateViewAndBind();
                 this.View.AddSwatchView(swatchView, swatchKind, index);
@@ -171,97 +180,105 @@ public sealed partial class WizardViewModel : ViewModel<WizardView>
 
     partial void OnWheelSliderValueChanged(double value)
     {
+        this.wheel = value;
+        this.UpdateLabels();
+
         if (this.isProgrammaticUpdate)
         {
             return;
         }
 
-        this.wheel = value;
-        this.UpdateLabels();
         this.paletteDesignerModel.WizardPaletteSetWheel(value);
     }
 
     partial void OnCurvePowerSliderValueChanged(double value)
     {
+        this.curvePower = value;
+        this.UpdateLabels();
+
         if (this.isProgrammaticUpdate)
         {
             return;
         }
 
-        this.curvePower = value;
-        this.UpdateLabels();
         this.paletteDesignerModel.WizardPaletteSetCurvePower(value);
     }
 
     partial void OnCurveAngleStepSliderValueChanged(double value)
     {
+        this.curveAngleStep = (int)value;
+        this.UpdateLabels();
+
         if (this.isProgrammaticUpdate)
         {
             return;
         }
 
-        this.curveAngleStep = (int)value;
-        this.UpdateLabels();
         this.paletteDesignerModel.WizardPaletteSetCurveAngleStep(this.curveAngleStep);
     }
 
     partial void OnWheelAngleStepSliderValueChanged(double value)
     {
+        this.wheelAngleStep = value;
+        this.UpdateLabels();
+
         if (this.isProgrammaticUpdate)
         {
             return;
         }
 
-        this.wheelAngleStep = value;
-        this.UpdateLabels();
         this.paletteDesignerModel.WizardPaletteSetWheelAngleStep(value);
     }
 
     partial void OnHighlightsSliderValueChanged(double value)
     {
+        this.highlights = value;
+        this.UpdateLabels();
+
         if (this.isProgrammaticUpdate)
         {
             return;
         }
 
-        this.highlights = value;
-        this.UpdateLabels();
         this.paletteDesignerModel.WizardPaletteSetHighlights(value);
     }
 
     partial void OnLightnessSliderValueChanged(double value)
     {
+        this.lightness = value;
+        this.UpdateLabels();
+
         if (this.isProgrammaticUpdate)
         {
             return;
         }
 
-        this.lightness = value;
-        this.UpdateLabels();
         this.paletteDesignerModel.WizardPaletteSetLightness(value);
     }
 
     partial void OnShadowsSliderValueChanged(double value)
     {
+        this.shadows = value;
+        this.UpdateLabels();
+
         if (this.isProgrammaticUpdate)
         {
             return;
         }
 
-        this.shadows = value;
-        this.UpdateLabels();
         this.paletteDesignerModel.WizardPaletteSetShadows(value);
     }
 
     partial void OnStyleSliderValueChanged(double value)
     {
+        this.style = (int)value;
+        this.UpdateLabels();
+
         if (this.isProgrammaticUpdate)
         {
             return;
         }
 
-        this.style = (int)value;
-        this.UpdateLabels();
         this.paletteDesignerModel.WizardPaletteSetStyle(this.style);
     }
 
