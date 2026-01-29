@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.ProjectObjects;
 
+using Lyt.Avalonia.PaletteDesigner.Model;
+
 public sealed class Project
 {
     public Project() { /* Required for serialization */ }

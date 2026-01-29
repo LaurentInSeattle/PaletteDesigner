@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Shared;
 
+using Lyt.Avalonia.PaletteDesigner.Model;
+
 public sealed partial class ExportToolbarViewModel : ViewModel<ExportToolbarView>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;

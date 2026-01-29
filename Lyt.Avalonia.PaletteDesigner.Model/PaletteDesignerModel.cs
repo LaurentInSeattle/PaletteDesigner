@@ -1,7 +1,9 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
 using CommunityToolkit.Mvvm.Messaging;
+
 using Lyt.Avalonia.PaletteDesigner.Model.ProjectObjects;
+
 using static Lyt.Persistence.FileManagerModel;
 
 public sealed partial class PaletteDesignerModel : ModelBase

@@ -1,4 +1,4 @@
-﻿namespace Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
+﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
 public enum PaletteExportFormat
 {
