@@ -26,20 +26,109 @@ $@"
 	<Style>
 		<Style.Resources>
 
+			<!-- Light Theme -->
+			<Color x:Key=""LightTheme_Background_Color"">{LightTheme_Background_ColorValue}</Color>
+			<SolidColorBrush x:Key=""LightTheme_Background"" Color =""{{StaticResource LightTheme_Background_Color}}"" />
+
+			<Color x:Key=""LightTheme_Foreground_Color"">{LightTheme_Foreground_ColorValue}</Color>
+			<SolidColorBrush x:Key=""LightTheme_Foreground"" Color =""{{StaticResource LightTheme_Foreground_Color}}"" />
+
+			<Color x:Key=""LightTheme_Accent_Color"">{LightTheme_Accent_ColorValue}</Color>
+			<SolidColorBrush x:Key=""LightTheme_Accent"" Color =""{{StaticResource LightTheme_Accent_Color}}"" />
+
+			<Color x:Key=""LightTheme_Discordant_Color"">{LightTheme_Discordant_ColorValue}</Color>
+			<SolidColorBrush x:Key=""LightTheme_Discordant"" Color =""{{StaticResource LightTheme_Discordant_Color}}"" />
+
+
+			<!-- Dark Theme -->
+			<Color x:Key=""DarkTheme_Background_Color"">{DarkTheme_Background_ColorValue}</Color>
+			<SolidColorBrush x:Key=""DarkTheme_Background"" Color =""{{StaticResource DarkTheme_Background_Color}}"" />
+
+			<Color x:Key=""DarkTheme_Foreground_Color"">{DarkTheme_Foreground_ColorValue}</Color>
+			<SolidColorBrush x:Key=""DarkTheme_Foreground"" Color =""{{StaticResource DarkTheme_Foreground_Color}}"" />
+
+			<Color x:Key=""DarkTheme_Accent_Color"">{DarkTheme_Accent_ColorValue}</Color>
+			<SolidColorBrush x:Key=""DarkTheme_Accent"" Color =""{{StaticResource DarkTheme_Accent_Color}}"" />
+
+			<Color x:Key=""DarkTheme_Discordant_Color"">{DarkTheme_Discordant_ColorValue}</Color>
+			<SolidColorBrush x:Key=""DarkTheme_Discordant"" Color =""{{StaticResource DarkTheme_Discordant_Color}}"" />
+
+			<!-- Lighter Colors -->
 		{
 			string.Join
 			(
-                Environment.NewLine,
-                Colors.Select(entry => 
+				Environment.NewLine,
+				LighterColors.Select(entry => 
 					string.Format(
-						"<Color x:Key=\"Color_{0}\">{1}</Color>" +
+						"<Color x:Key=\"LighterColor_{0}\">{1}</Color>" +
 						Environment.NewLine +
-						"<SolidColorBrush x:Key=\"Brush_{0}\" Color =\"{{StaticResource Color_{0}}}\" />" +
+						"<SolidColorBrush x:Key=\"LighterBrush_{0}\" Color =\"{{StaticResource LighterColor_{0}}}\" />" +
 						Environment.NewLine ,
-						Colors.IndexOf(entry), entry))
+						LighterColors.IndexOf(entry), entry))
 			)
 		}
 
+			<!-- Light Colors -->
+		{
+			string.Join
+			(
+				Environment.NewLine,
+				LightColors.Select(entry =>
+					string.Format(
+						"<Color x:Key=\"LightColor_{0}\">{1}</Color>" +
+						Environment.NewLine +
+						"<SolidColorBrush x:Key=\"LightBrush_{0}\" Color =\"{{StaticResource LightColor_{0}}}\" />" +
+						Environment.NewLine,
+						LightColors.IndexOf(entry), entry))
+			)
+		}
+		
+			<!-- Base Colors -->
+		{
+			string.Join
+			(
+				Environment.NewLine,
+				BaseColors.Select(entry =>
+					string.Format(
+						"<Color x:Key=\"BaseColor_{0}\">{1}</Color>" +
+						Environment.NewLine +
+						"<SolidColorBrush x:Key=\"BaseBrush_{0}\" Color =\"{{StaticResource BaseColor_{0}}}\" />" +
+						Environment.NewLine,
+						BaseColors.IndexOf(entry), entry))
+			)
+		}
+		
+			<!-- Dark Colors -->
+		{
+			string.Join
+			(
+				Environment.NewLine,
+				DarkColors.Select(entry =>
+					string.Format(
+						"<Color x:Key=\"DarkColor_{0}\">{1}</Color>" +
+						Environment.NewLine +
+						"<SolidColorBrush x:Key=\"DarkBrush_{0}\" Color =\"{{StaticResource DarkColor_{0}}}\" />" +
+						Environment.NewLine,
+						DarkColors.IndexOf(entry), entry))
+			)
+		}
+		
+			<!-- Darker Colors -->
+		{
+			string.Join
+			(
+				Environment.NewLine,
+				DarkerColors.Select(entry =>
+					string.Format(
+						"<Color x:Key=\"DarkerColor_{0}\">{1}</Color>" +
+						Environment.NewLine +
+						"<SolidColorBrush x:Key=\"DarkerBrush_{0}\" Color =\"{{StaticResource DarkerColor_{0}}}\" />" +
+						Environment.NewLine,
+						DarkerColors.IndexOf(entry), entry))
+			)}
+
+
+		
 		<!-- Five Shades of Gray, excluding Pure White and Pure Black  -->
 		<Color x:Key=""Gray_Lighter_Color"">#FFD5D5D5</Color>
 		<SolidColorBrush x:Key=""Gray_Lighter"" Color =""{{StaticResource Gray_Lighter_Color}}"" />
