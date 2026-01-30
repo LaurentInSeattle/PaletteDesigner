@@ -58,27 +58,8 @@ public sealed partial class WizardPalette : IExportAble
         ];
     }
 
-    public string ToJsonString()
+    public string ToJsonString(FileManagerModel fileManager)
     {
-        var jsonSerializerOptions =
-            new JsonSerializerOptions
-            {
-                AllowTrailingCommas = true,
-                WriteIndented = true,
-                IndentSize = 4,
-                ReadCommentHandling = JsonCommentHandling.Skip,
-                IgnoreReadOnlyFields = true,
-                IgnoreReadOnlyProperties = true,
-
-                // TODO: Check if needed
-                // .Net 9 properties 
-                //
-                // AllowOutOfOrderMetadataProperties = true,
-                // RespectRequiredConstructorParameters = true,
-                // RespectNullableAnnotations= true,
-            };
-        jsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-
         // Create temprary object for serialization
         var serializablePalette = new JSonExportableWizardPalette()
         {
@@ -91,12 +72,6 @@ public sealed partial class WizardPalette : IExportAble
             DarkThemeColors = this.GetThemeColors(PaletteThemeVariant.Dark),
         }; 
 
-        string serializedJson = JsonSerializer.Serialize(serializablePalette);
-        if (!string.IsNullOrWhiteSpace(serializedJson))
-        {
-            return serializedJson;
-        }
-
-        throw new Exception("Failed to serialize wizard palette");
+        return fileManager.Serialize(serializablePalette);
     }
 }

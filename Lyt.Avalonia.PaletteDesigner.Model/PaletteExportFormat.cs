@@ -1,7 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
-using System.Xml;
-
 public enum PaletteExportFormat
 {
     None,

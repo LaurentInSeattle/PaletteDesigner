@@ -23,34 +23,8 @@ public sealed partial class Palette : IExportAble
         return document;
     }
 
-    public string ToJsonString()
-    {
-        var jsonSerializerOptions =
-            new JsonSerializerOptions
-            {
-                AllowTrailingCommas = true,
-                WriteIndented = true,
-                IndentSize = 4,
-                ReadCommentHandling = JsonCommentHandling.Skip,
-                IgnoreReadOnlyFields = true,
-                IgnoreReadOnlyProperties = true,
-
-                // TODO: Check if needed
-                // .Net 9 properties 
-                //
-                // AllowOutOfOrderMetadataProperties = true,
-                // RespectRequiredConstructorParameters = true,
-                // RespectNullableAnnotations= true,
-            };
-        jsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-        string serializedJson = JsonSerializer.Serialize(this);
-        if (!string.IsNullOrWhiteSpace(serializedJson))
-        {
-            return serializedJson;
-        }
-
-        throw new Exception("Failed to serialize designed palette");
-    }
+    public string ToJsonString(FileManagerModel fileManager)
+        => fileManager.Serialize(this);
 
     public Parameters ToTemplateParameters()
     {

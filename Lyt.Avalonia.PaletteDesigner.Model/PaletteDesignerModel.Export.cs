@@ -62,7 +62,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
             else if (exportFormat == PaletteExportFormat.ApplicationJSon)
             {
                 // Create a JSON directly from the palette, save on disk with time stamp
-                string serializedJson = exportable.ToJsonString();
+                string serializedJson = exportable.ToJsonString(this.fileManager);
                 string path = this.fileManager.MakePath(Area.User, Kind.Json, name);
                 File.WriteAllText(path, serializedJson);
                 newPath = path;

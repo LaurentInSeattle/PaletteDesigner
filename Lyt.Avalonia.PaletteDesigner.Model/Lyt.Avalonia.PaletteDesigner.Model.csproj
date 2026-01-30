@@ -31,13 +31,15 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\ColorWheel.json" />
-    <EmbeddedResource Include="Resources\PaletteExportTemplates\AvaloniaWizardPaletteTemplate.csx" />
-    <EmbeddedResource Include="Resources\PaletteExportTemplates\AvaloniaImagePaletteTemplate.csx" />
-    <EmbeddedResource Include="Resources\PaletteExportTemplates\MsftXamlImagePaletteTemplate.csx" />
-    <EmbeddedResource Include="Resources\PaletteExportTemplates\MsftXamlPaletteTemplate.csx" />
-    <EmbeddedResource Include="Resources\PaletteExportTemplates\AvaloniaPaletteTemplate.csx" />
-    <EmbeddedResource Include="Resources\PaletteExportTemplates\CssImagePaletteTemplate.csx" />
-    <EmbeddedResource Include="Resources\PaletteExportTemplates\CssPaletteTemplate.csx" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\Avalonia_Wizard_Template.csx" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\Avalonia_Image_Template.csx" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\Css_Wizard_Template.csx" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\MsftXaml_Wizard_Template.csx" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\MsftXaml_Image_Template.csx" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\MsftXaml_Designer_Template.csx" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\Avalonia_Designer_Template.csx" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\Css_Image_Template.csx" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\Css_Designer_Template.csx" />
     <EmbeddedResource Include="Resources\ShadesPresets\Contrasted.json" />
     <EmbeddedResource Include="Resources\ShadesPresets\Dark.json" />
     <EmbeddedResource Include="Resources\ShadesPresets\DarkGray.json" />

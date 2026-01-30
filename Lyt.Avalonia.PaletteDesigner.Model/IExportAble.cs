@@ -6,7 +6,7 @@ public interface IExportAble
     AseDocument ToAseDocument();
 
     // Can export to JSon string
-    string ToJsonString();
+    string ToJsonString(FileManagerModel fileManager);
 
     // Can export to text formats using CSX and produce CSX TemplateParameters
     // for use with Lyt.Templator TemplateEngine
