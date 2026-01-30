@@ -20,25 +20,17 @@
 		<Grid.ColumnDefinitions>
 			<!-- Spacer -->
 			<ColumnDefinition Width="0" />
-			<!-- Button -->
-			<ColumnDefinition Width="116" />
-			<!-- Spacer -->
-			<ColumnDefinition Width="8" />
 			<!-- Combo -->
 			<ColumnDefinition Width="200" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="8" />
+			<!-- Button -->
+			<ColumnDefinition Width="116" />
 		</Grid.ColumnDefinitions>
 
-		<glyphs:GlyphButton
-			Grid.Column="1"
-			Style="{StaticResource AppToolbarIconButton}"
-			GlyphSource="share"
-			GlyphStrokeThickness="0.1"
-			Text="{DynamicResource Design.Toolbar.Export}"
-			Command="{Binding OnExport}"
-			/>
 		<ComboBox
 			x:Name="FormatComboBox"
-			Grid.Column="3" Grid.Row="0"
+			Grid.Column="1" Grid.Row="0"
 			VerticalAlignment="Center" HorizontalAlignment="Right"
 			ItemsSource="{Binding FileFormats}"
 			SelectedIndex="{Binding SelectedFileFormatIndex}"
@@ -55,6 +47,15 @@
 				</DataTemplate>
 			</ComboBox.ItemTemplate>
 		</ComboBox>
+
+		<glyphs:GlyphButton
+			Grid.Column="3"
+			Style="{StaticResource AppToolbarIconButton}"
+			GlyphSource="share"
+			GlyphStrokeThickness="0.1"
+			Text="{DynamicResource Design.Toolbar.Export}"
+			Command="{Binding OnExport}"
+			/>
 
 		<controls:ExtendedTextBlock
 			Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1"

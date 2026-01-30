@@ -1,10 +1,14 @@
-﻿namespace Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
+﻿// #define DEBUG_VERBOSE 
+
+namespace Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 
 public sealed partial class Palette : IExportAble
 {
     public AseDocument ToAseDocument()
     {
         AseDocument document = new();
+        // CONSIDER
+        // Do not export all colors for palettes that do not have all four components.
         this.ForAllShades((wheelKind, shades) =>
         {
             ColorGroup colorGroup = new(wheelKind.ToString());
@@ -60,6 +64,7 @@ public sealed partial class Palette : IExportAble
                 parameters.Add(color);
 
 #if DEBUG 
+#if DEBUG_VERBOSE 
                 //string colorStringFormat =
                 //    "<Color x:Key=\"{0}_Color\"><# {0}_ColorValue #></Color>";
                 //Debug.WriteLine(string.Format(colorStringFormat, colorName));
@@ -67,14 +72,17 @@ public sealed partial class Palette : IExportAble
                 //    "<SolidColorBrush x:Key=\"{0}\" Color =\"{{StaticResource {0}_Color}}\" />";
                 //Debug.WriteLine(string.Format(brushStringFormat, colorName));
 #endif
+#endif
             }
         }
 
 #if DEBUG 
+#if DEBUG_VERBOSE 
         //foreach (Parameter parameter in parameters )
         //{
         //    Debug.WriteLine(parameter.Tag + " :   " + parameter.Value); 
         //}
+#endif
 #endif // DEBUG 
 
         return parameters;
