@@ -164,7 +164,6 @@
 			Value="{Binding ShowShadesPresets}"
 			/>
 
-
 		<controls:ExtendedTextBlock
 			Grid.Column="10" Grid.ColumnSpan="4" Grid.Row="1"
 			Text="{DynamicResource Design.Toolbar.Shade.Values}"
@@ -184,6 +183,7 @@
 			/>
 
 		<glyphs:SelectionGroup x:Name="ShadesDisplaySelectionGroup" />
+
 		<glyphs:GlyphButton
 			Style="{StaticResource ToolbarIconButton}"
 			Layout="TextOnly"

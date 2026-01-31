@@ -17,71 +17,91 @@
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="72" />
-			<RowDefinition Height="16" />
+			<RowDefinition Height="18" />
 		</Grid.RowDefinitions>
 		<Grid.ColumnDefinitions>
 			<!-- Spacer -->
 			<ColumnDefinition Width="0" />
-			<!-- Toggle-->
-			<ColumnDefinition Width="220" />
+			<!-- Values-->
+			<ColumnDefinition Width="170" />
+			<ColumnDefinition Width="48" />
+			<ColumnDefinition Width="48" />
+			<ColumnDefinition Width="48" />
 			<!-- Spacer -->
 			<ColumnDefinition Width="20" />
-			<!-- Colour slider + value -->
-			<ColumnDefinition Width="300" />
-			<ColumnDefinition Width="8" />
-			<ColumnDefinition Width="32" />
-			<!-- Spacer -->
-			<ColumnDefinition Width="20" />
-			<!-- Recalc Button -->
+			<!-- Randomize Button -->
 			<ColumnDefinition Width="140" />
 		</Grid.ColumnDefinitions>
 
-		<!--
+		<controls:ExtendedTextBlock
+			Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="1"
+			Text="{DynamicResource Design.Toolbar.Shade.Values}"
+			Typography="{StaticResource Medium}"
+			/>
+
 		<toggle:ToggleSwitch
 			Grid.Row="0" Grid.Column="1"
+			Margin="8 0 0 0"
+			Height="80" Width="160"
 			Style="{StaticResource StandardToggleSwitch}"
-			TrueText="{DynamicResource Imaging.Toolbar.AlgorithmStrength.Deep}"
-			FalseText="{DynamicResource Imaging.Toolbar.AlgorithmStrength.Shallow}"
-			Height="80" Width="190"
+			TrueText="{DynamicResource Shared.Show}"
+			FalseText="{DynamicResource Shared.Hide}"
 			Orientation="Vertical"
 			HorizontalAlignment="Center" VerticalAlignment="Center"
-			Value="{Binding IsDeepAlgorithmStrength}"
+			Value="{Binding ShowShadesValues}"
 			/>
 
-		<controls:ExtendedTextBlock
-			Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="1"
-			Text="{DynamicResource Imaging.Toolbar.AlgorithmStrength}"
-			Typography="{StaticResource Medium}"
-			/>
-		-->
-		<!--
-		<Slider
-			Grid.Column="3"
-			Margin="12 4 0 0"
-			Minimum="5" Maximum="42"
-			SmallChange="1" LargeChange="5"
-			TickFrequency="1.0" 
-			IsSnapToTickEnabled="True"
-			TickPlacement="BottomRight"
-			Value="{Binding ClustersSliderValue}"
-			HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-			/>
-		<TextBlock
-			Grid.Row="0" Grid.Column="5" 
-			Margin="0 -20 0 0"
-			Text="{Binding ClustersValue}"
-			Theme="{StaticResource Large}"
-			HorizontalAlignment="Left" VerticalAlignment="Center"
-			/>
-		<controls:ExtendedTextBlock
-			Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="1"
-			Text="{DynamicResource Imaging.Toolbar.PaletteEntries}"
-			Typography="{StaticResource Medium}"
-			/>
-		-->
+		<glyphs:SelectionGroup x:Name="ShadesDisplaySelectionGroup" />
 
 		<glyphs:GlyphButton
-			Grid.Column="7"
+			Style="{StaticResource ToolbarIconButton}"
+			Layout="TextOnly"
+			FontSize="18"
+			Text="#"
+			Behaviour="Tap"
+			Grid.Column="2"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="40" Height="32"
+			Margin="0 -8 0 0"
+			ButtonBackground="BorderlessRectangle"
+			IsSelected="True"
+			Group="{Binding ElementName=ShadesDisplaySelectionGroup}"
+			Command="{Binding OnDisplayMode}"
+			CommandParameter="Hex"
+			/>
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Layout="TextOnly"
+			FontSize="18"
+			Text="%"
+			Behaviour="Tap"
+			Grid.Column="3"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="40" Height="32"
+			Margin="0 -8 0 0"
+			ButtonBackground="BorderlessRectangle"
+			Group="{Binding ElementName=ShadesDisplaySelectionGroup}"
+			Command="{Binding OnDisplayMode}"
+			CommandParameter="Percent"
+			/>
+		<glyphs:GlyphButton
+			Style="{StaticResource ToolbarIconButton}"
+			Layout="TextOnly"
+			FontSize="18"
+			Text="123"
+			Behaviour="Tap"
+			Grid.Column="4"
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Width="40" Height="32"
+			Margin="0 -8 0 0"
+			ButtonBackground="BorderlessRectangle"
+			Group="{Binding ElementName=ShadesDisplaySelectionGroup}"
+			Command="{Binding OnDisplayMode}"
+			CommandParameter="Decimal"
+			/>
+
+		<glyphs:GlyphButton
+			Grid.Column="6"
 			Style="{StaticResource AppToolbarIconButton}"
 			GlyphSource="color"
 			GlyphStrokeThickness="0.1"

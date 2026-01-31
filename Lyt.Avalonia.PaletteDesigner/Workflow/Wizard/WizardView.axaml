@@ -20,12 +20,14 @@
 		>
 		<Grid.RowDefinitions>
 			<!-- Toolbar -->
-			<RowDefinition Height="92" />
+			<RowDefinition Height="100" />
+			<!-- Spacer -->
+			<RowDefinition Height="20" />
 			<!-- Content -->
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 		<Grid
-			Grid.Row="1"
+			Grid.Row="2"
 			>
 			<Grid.ColumnDefinitions>
 				<!-- Spacer -->
@@ -319,12 +321,12 @@
 
 		<Canvas
 			x:Name="DragCanvas"
-			Grid.Row="1" 
+			Grid.Row="2" 
 			VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 			/>
 		<!-- Top toolbars -->
 		<StackPanel
-			Grid.Row="0" Grid.ColumnSpan="5"
+			Grid.Row="0" 
 			HorizontalAlignment="Center"
 			Orientation="Horizontal"
 			>
@@ -333,7 +335,7 @@
 				DataContext="{Binding WizardToolbarViewModel}"
 				/>
 			<shared:ExportToolbarView
-				Margin="12 0 0 0"
+				Margin="20 0 0 0"
 				DataContext="{Binding ExportToolbarViewModel}"
 				/>
 		</StackPanel>
