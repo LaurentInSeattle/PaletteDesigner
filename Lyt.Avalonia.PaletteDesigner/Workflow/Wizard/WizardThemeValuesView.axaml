@@ -1,0 +1,99 @@
+<UserControl 
+	x:Class="Lyt.Avalonia.PaletteDesigner.Workflow.Wizard.WizardThemeValuesView"
+	xmlns:vm="clr-namespace:Lyt.Avalonia.PaletteDesigner.Workflow.Wizard"
+	x:DataType="vm:WizardThemeValuesViewModel" 
+
+	xmlns="https://github.com/avaloniaui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="400"
+	>
+	<Grid
+		Width="300" Height="160"
+		IsVisible="{Binding ShowValues}"
+		>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="120" />
+			<!-- Spacer -->
+			<ColumnDefinition Width="10" />
+			<ColumnDefinition Width="170" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+			<!-- Spacer -->
+			<RowDefinition Height="10" />
+		</Grid.RowDefinitions>
+
+		<!-- Theme Name -->
+		<TextBlock
+			Grid.ColumnSpan="3"
+			Text="{Binding Name}"
+			Theme="{StaticResource H3}"
+			Margin="0"
+			HorizontalAlignment="Center" VerticalAlignment="Center"
+			/>
+		<!-- Theme Labels -->
+		<TextBlock
+			Grid.Row="1" Grid.Column="0"
+			Text="Background"
+			Theme="{StaticResource Medium}"
+			FontWeight="SemiBold"
+			HorizontalAlignment="Right" VerticalAlignment="Center"
+			/>
+		<TextBlock
+			Grid.Row="2" Grid.Column="0"
+			Text="Foreground"
+			Theme="{StaticResource Medium}"
+			FontWeight="SemiBold"
+			HorizontalAlignment="Right" VerticalAlignment="Center"
+			/>
+		<TextBlock
+			Grid.Row="3" Grid.Column="0"
+			Text="Accent"
+			Theme="{StaticResource Medium}"
+			FontWeight="SemiBold"
+			HorizontalAlignment="Right" VerticalAlignment="Center"
+			/>
+		<TextBlock
+			Grid.Row="4" Grid.Column="0"
+			Text="Discordant"
+			Theme="{StaticResource Medium}"
+			FontWeight="SemiBold"
+			HorizontalAlignment="Right" VerticalAlignment="Center"
+			/>
+		<!-- Theme Values-->
+		<TextBlock
+			Grid.Row="1" Grid.Column="2"
+			Text="{Binding Background}"
+			Theme="{StaticResource LargeMono}"
+			TextAlignment="Left"
+			HorizontalAlignment="Left"
+			/>
+		<TextBlock
+			Grid.Row="2" Grid.Column="2"
+			Text="{Binding Foreground}"
+			Theme="{StaticResource LargeMono}"
+			TextAlignment="Left"
+			HorizontalAlignment="Left"
+			/>
+		<TextBlock
+			Grid.Row="3" Grid.Column="2"
+			Text="{Binding Accent}"
+			Theme="{StaticResource LargeMono}"
+			TextAlignment="Left"
+			HorizontalAlignment="Left"
+			/>
+		<TextBlock
+			Grid.Row="4" Grid.Column="2"
+			Text="{Binding Discordant}"
+			Theme="{StaticResource LargeMono}"
+			TextAlignment="Left"
+			HorizontalAlignment="Left"
+			/>
+	</Grid>
+</UserControl>

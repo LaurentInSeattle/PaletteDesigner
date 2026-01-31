@@ -81,12 +81,19 @@
 					<RowDefinition Height="60" /> 
 					<RowDefinition Height="60" /> 
 				    <!-- Was Lighness Slider -->
-					<RowDefinition Height="40" /> 
+					<RowDefinition Height="20" /> 
 					<RowDefinition Height="60" /> 
 					<RowDefinition Height="60" /> 
 				    <!-- Second spacer -->
-					<RowDefinition Height="40" /> 
+					<RowDefinition Height="20" /> 
 					<RowDefinition Height="60" /> 
+				    <!-- Third spacer -->
+					<RowDefinition Height="20" /> 
+				    <!-- Values -->
+					<RowDefinition Height="Auto" /> 
+				    <!-- Fourth spacer -->
+					<RowDefinition Height="20" /> 
+					<RowDefinition Height="Auto" /> 
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="120" />
@@ -98,8 +105,8 @@
 					Grid.Row="0"
 					Text="Center Hue"
 					Theme="{StaticResource Medium}"
-					HorizontalAlignment="Right" VerticalAlignment="Center"
 					FontWeight="SemiBold"
+					HorizontalAlignment="Right" VerticalAlignment="Center"
 					/>
 				<Slider
 					Grid.Row="0" Grid.Column="1"
@@ -289,6 +296,17 @@
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Left" VerticalAlignment="Center"
 					FontWeight="SemiBold"
+					/>
+				<!-- Theme Values View -->
+				<vm:WizardThemeValuesView
+					Grid.Row="10" Grid.ColumnSpan="3"
+					DataContext="{Binding LightThemeValuesViewModel}"
+					HorizontalAlignment="Left"
+					/>
+				<vm:WizardThemeValuesView
+					Grid.Row="12" Grid.ColumnSpan="3"
+					HorizontalAlignment="Left"
+					DataContext="{Binding DarkThemeValuesViewModel}"
 					/>
 			</Grid>
 

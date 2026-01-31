@@ -69,22 +69,19 @@ public sealed partial class WizardThemeViewModel :
 
     public void Receive(ModelWizardUpdatedMessage message)
     {
-        HsvColor[] hsvColors = this.paletteDesignerModel.ActiveProject!.WizardPalette.GetThemeColors(this.themeVariant);
+        if (this.paletteDesignerModel.ActiveProject is not Project project)
+        {
+            return;
+        }
+
+        HsvColor[] hsvColors = project.WizardPalette.GetThemeColors(this.themeVariant);
         this.BackgroundBrush = hsvColors[0].ToBrush();
         this.ForegroundBrush = hsvColors[1].ToBrush();
         this.AccentBrush = hsvColors[2].ToBrush();
         this.DiscordantBrush = hsvColors[3].ToBrush();
     }
 
-    private void Localize() 
-    {
-    }
-
-    private void Update()
-    {
-        //RgbColor rgbColor = cluster.Payload.ToRgb();
-        //this.ColorBrush = rgbColor.ToBrush();
-        //this.RgbHex = string.Format("# {0}", rgbColor.ToRgbHexString());
-        //this.RgbDec = string.Format("\u2022 {0}", rgbColor.ToRgbDecString());
-    }
+    private void Localize()
+        // TODO: Localize theme names
+        => this.Name = this.themeVariant == PaletteThemeVariant.Light ? "Light" : "Dark";
 }

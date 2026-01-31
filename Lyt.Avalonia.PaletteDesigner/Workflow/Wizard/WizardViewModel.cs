@@ -29,6 +29,12 @@ public sealed partial class WizardViewModel :
     private WizardThemeViewModel darkThemeViewModel;
 
     [ObservableProperty]
+    private WizardThemeValuesViewModel lightThemeValuesViewModel;
+
+    [ObservableProperty]
+    private WizardThemeValuesViewModel darkThemeValuesViewModel; 
+
+    [ObservableProperty]
     private double wheelSliderValue;
 
     [ObservableProperty]
@@ -97,8 +103,15 @@ public sealed partial class WizardViewModel :
     public WizardViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;
-        this.LightThemeViewModel = new WizardThemeViewModel(this.paletteDesignerModel, PaletteThemeVariant.Light);
-        this.DarkThemeViewModel = new WizardThemeViewModel(this.paletteDesignerModel, PaletteThemeVariant.Dark);
+        this.LightThemeViewModel = 
+            new WizardThemeViewModel(this.paletteDesignerModel, PaletteThemeVariant.Light);
+        this.DarkThemeViewModel = 
+            new WizardThemeViewModel(this.paletteDesignerModel, PaletteThemeVariant.Dark);
+        this.LightThemeValuesViewModel =
+            new WizardThemeValuesViewModel(this.paletteDesignerModel, PaletteThemeVariant.Light);
+        this.DarkThemeValuesViewModel =
+            new WizardThemeValuesViewModel(this.paletteDesignerModel, PaletteThemeVariant.Dark);
+
 
         this.isFirstActivate = true;
         this.Subscribe<ModelWizardUpdatedMessage>(); 

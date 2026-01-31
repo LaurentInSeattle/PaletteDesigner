@@ -35,6 +35,9 @@ public sealed partial class PaletteDesignerModel : ModelBase
     public TextSamplesDisplayMode TextSamplesDisplayMode { get; set; } = TextSamplesDisplayMode.Dark;
 
     [JsonIgnore]
+    public ThemeValuesDisplayMode ThemeValuesDisplayMode { get; set; } = ThemeValuesDisplayMode.Hex;
+
+    [JsonIgnore]
     public WheelKind TextSamplesSelectedWheel { get; set; } = WheelKind.Primary;
 
     [JsonIgnore]

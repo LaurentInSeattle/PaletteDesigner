@@ -8,14 +8,11 @@ public sealed partial class WizardToolbarViewModel : ViewModel<WizardToolbarView
     private bool showShadesValues;
 
 
-    public WizardToolbarViewModel()
-    {
-        this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();
-    }
+    public WizardToolbarViewModel() 
+        => this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();
 
     partial void OnShowShadesValuesChanged(bool value)
-        => new ShadesValuesVisibilityMessage(value).Publish();
-
+        => new ThemeValuesVisibilityMessage(value).Publish();
 
 #pragma warning disable CA1822  
     // Mark members as static
@@ -27,10 +24,10 @@ public sealed partial class WizardToolbarViewModel : ViewModel<WizardToolbarView
         if (parameter is string tag)
         {
             // Update model 
-            ShadesValuesDisplayMode mode =
-                Enum.TryParse(tag, out ShadesValuesDisplayMode kind) ? kind : ShadesValuesDisplayMode.Hex;
-            this.paletteDesignerModel.ShadesValuesDisplayMode = mode;
-            new ModelShadesDisplayModeUpdated().Publish();
+            ThemeValuesDisplayMode mode =
+                Enum.TryParse(tag, out ThemeValuesDisplayMode kind) ? kind : ThemeValuesDisplayMode.Hex;
+            this.paletteDesignerModel.ThemeValuesDisplayMode = mode;
+            new ModelThemeDisplayModeUpdated().Publish();
         }
     }
 
