@@ -137,6 +137,26 @@ public sealed partial class WizardPalette : IExportAble
         this.Highlights = 2.15;
         this.Shadows = 1.4;
         this.ThemeVariantStyleIndex = 2;
+
+        this.ReInitialize();
+    }
+
+    internal void Randomize(Random random)
+    {
+        this.BaseWheel = random.NextDouble() * 360.0;
+        this.CurvePower = 1 + random.NextDouble() * 3.0;
+        this.CurveAngleStep = 2 + random.Next(6);
+        this.WheelAngleStep = 4 + random.NextDouble() * 20.0; ;
+        this.Lightness = 1.0;
+        this.Highlights = 1.0 + random.NextDouble() * 3.0;
+        this.Shadows = 1 + random.NextDouble() * 2.5 ;
+        this.ThemeVariantStyleIndex = random.Next(3);
+
+        this.ReInitialize(); 
+    }
+
+    private void ReInitialize()
+    {
         this.UpdateThemeVariants();
         this.BuildCurveLookup();
         this.Update();

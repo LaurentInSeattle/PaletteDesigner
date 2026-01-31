@@ -9,6 +9,13 @@ public sealed partial class PaletteDesignerModel : ModelBase
             return true;
         });
 
+    public void WizardPaletteRandomize()
+        => this.ActionWizard(palette =>
+        {
+            palette.Randomize(this.random);
+            return true;
+        });
+
     public void WizardPaletteSetWheel(double baseWheel)
         => this.ActionWizard(palette =>
         {

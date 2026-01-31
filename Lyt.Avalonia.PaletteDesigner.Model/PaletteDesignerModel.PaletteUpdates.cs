@@ -2,8 +2,9 @@
 
 public sealed partial class PaletteDesignerModel : ModelBase
 {
+    internal Random random = new((int)DateTime.Now.Ticks);
+
     private bool suspendPaletteUpdates;
-    private Random random = new((int)DateTime.Now.Ticks);
 
     private double RandomizeWheel(Palette palette)
     {

@@ -35,11 +35,7 @@ public sealed partial class WizardToolbarViewModel : ViewModel<WizardToolbarView
     }
 
     [RelayCommand]
-    public void OnRecalculate()
-    {
-        var viewModel = App.GetRequiredService<ImagingViewModel>();
-        viewModel.ReProcessBitmap();
-    }
+    public void OnRandomize() => this.paletteDesignerModel.WizardPaletteRandomize();
 
 #pragma warning restore CA1822 // Mark members as static
 }
