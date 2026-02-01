@@ -17,9 +17,16 @@ Can export the palette to the following formats: Avalonia aXAML, WPF XAML, Uno X
 Uses KMeans algorithm to extract the most dominant colors from any image. 
 Images are converted to the CIELAB color space for better and more accurate results.
 
+# New ! A 'Wizard' mode to create palettes, very easy to use...
+
+<p align="left"><img src="Screenshots/WizardMode.png" height="600"/>
+
+Create colorful palettes and themes by just moving a few sliders!
+
 # Localization
 
 - Human translated: Italian, French and English.
+
 - Machine translated: Spanish, Ukrainian, Bulgarian, Armenian, Greek, German, Japanese, Chinese, Korean, Magyar, Hindi and Bengali. 
  
 <p align="left"><img src="Screenshots/Screenshot 2026-01-08 095906.png" height="600"/>
