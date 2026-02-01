@@ -157,11 +157,39 @@
 
     <system:String x:Key="Settings.ReminderText">Si consiglia di utilizzare le immagini scaricate solo come sfondo.  Per qualsiasi altro utilizzo, commerciale o in altro modo, si prega di contattare il titolare del copyright.</system:String>
 
+    <system:String x:Key="Wizard.Theme.Dark">Tema Oscuro</system:String>
+
+    <system:String x:Key="Wizard.Theme.Light">Tema Chiaro</system:String>
+
+    <system:String x:Key="Wizard.Theme.Background">Sfondo</system:String>
+
+    <system:String x:Key="Wizard.Theme.Foreground">Primo piano</system:String>
+
+    <system:String x:Key="Wizard.Theme.Accent">Accento</system:String>
+
+    <system:String x:Key="Wizard.Theme.Discordant">Discordante</system:String>
+
+    <system:String x:Key="Wizard.Labels.CenterHue">Tonalità centrale</system:String>
+
+    <system:String x:Key="Wizard.Labels.Intensity">Intensità</system:String>
+
+    <system:String x:Key="Wizard.Labels.IntensitySteps">Passi di intensità</system:String>
+
+    <system:String x:Key="Wizard.Labels.ColorAnalogy">Analogia dei colori</system:String>
+
+    <system:String x:Key="Wizard.Labels.Highlights">Illuminazione</system:String>
+
+    <system:String x:Key="Wizard.Labels.Shadows">Ombre</system:String>
+
+    <system:String x:Key="Wizard.Labels.Variations">Variazioni</system:String>
+
+    <system:String x:Key="Wizard.Labels.DragDrop">Trascina e rilascia i campioni di colori nell'anteprima del tema per creare più varianti.</system:String>
+
     <system:String x:Key="Imaging.Occurences">Occorrenze</system:String>
 
     <system:String x:Key="Imaging.DropZone">Zona di Trascinare e Rilasciare.</system:String>
 
-    <system:String x:Key="Imaging.DropZoneHelp">Trascina e lascia cadere i file qui.</system:String>
+    <system:String x:Key="Imaging.DropZoneHelp">Trascina e rilascia i file qui.</system:String>
 
     <system:String x:Key="Imaging.InProgress">Calcoli in corso</system:String>
 

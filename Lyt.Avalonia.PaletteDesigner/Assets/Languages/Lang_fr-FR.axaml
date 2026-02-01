@@ -157,6 +157,34 @@
 
     <system:String x:Key="Settings.ReminderText">Il vous est recommandé d'utiliser les images téléchargées uniquement comme fond d'écran. Pour toute autre utilisation, commerciale ou non, veuillez contacter le détenteur des droits d'auteur.</system:String>
 
+    <system:String x:Key="Wizard.Theme.Dark">Mode Sombre</system:String>
+
+    <system:String x:Key="Wizard.Theme.Light">Mode Clair</system:String>
+
+    <system:String x:Key="Wizard.Theme.Background">Arrière-plan</system:String>
+
+    <system:String x:Key="Wizard.Theme.Foreground">Premier plan</system:String>
+
+    <system:String x:Key="Wizard.Theme.Accent">Accent</system:String>
+
+    <system:String x:Key="Wizard.Theme.Discordant">Discordant</system:String>
+
+    <system:String x:Key="Wizard.Labels.CenterHue">Teinte Centrale</system:String>
+
+    <system:String x:Key="Wizard.Labels.Intensity">Intensité</system:String>
+
+    <system:String x:Key="Wizard.Labels.IntensitySteps">Pas d'intensité</system:String>
+
+    <system:String x:Key="Wizard.Labels.ColorAnalogy">Analogie des couleurs</system:String>
+
+    <system:String x:Key="Wizard.Labels.Highlights">Illumination</system:String>
+
+    <system:String x:Key="Wizard.Labels.Shadows">Ombres</system:String>
+
+    <system:String x:Key="Wizard.Labels.Variations">Variantes</system:String>
+
+    <system:String x:Key="Wizard.Labels.DragDrop">Faites glisser et déposez les couleurs du nuancier sur l'aperçu du thème pour créer plus de variations.</system:String>
+
     <system:String x:Key="Imaging.Occurences">Occurences</system:String>
 
     <system:String x:Key="Imaging.DropZone">Zone de Glisser-déposer</system:String>

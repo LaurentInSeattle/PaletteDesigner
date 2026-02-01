@@ -157,6 +157,34 @@
 
     <system:String x:Key="Settings.ReminderText">Вам рекомендується використовувати завантажені зображення лише як шпалери.  Для будь -якого іншого використання, комерційного чи іншим способом зверніться до власника авторських прав.</system:String>
 
+    <system:String x:Key="Wizard.Theme.Dark">Темний</system:String>
+
+    <system:String x:Key="Wizard.Theme.Light">світло</system:String>
+
+    <system:String x:Key="Wizard.Theme.Background">Фон</system:String>
+
+    <system:String x:Key="Wizard.Theme.Foreground">Передній план</system:String>
+
+    <system:String x:Key="Wizard.Theme.Accent">Акцент</system:String>
+
+    <system:String x:Key="Wizard.Theme.Discordant">Дискордантний</system:String>
+
+    <system:String x:Key="Wizard.Labels.CenterHue">Центральний відтінок</system:String>
+
+    <system:String x:Key="Wizard.Labels.Intensity">Інтенсивність</system:String>
+
+    <system:String x:Key="Wizard.Labels.IntensitySteps">Кроки інтенсивності</system:String>
+
+    <system:String x:Key="Wizard.Labels.ColorAnalogy">Кольорова аналогія</system:String>
+
+    <system:String x:Key="Wizard.Labels.Highlights">Основні моменти</system:String>
+
+    <system:String x:Key="Wizard.Labels.Shadows">Тіні</system:String>
+
+    <system:String x:Key="Wizard.Labels.Variations">Варіації</system:String>
+
+    <system:String x:Key="Wizard.Labels.DragDrop">Перетягніть зразки кольорів до попереднього перегляду теми, щоб створити більше варіантів.</system:String>
+
     <system:String x:Key="Imaging.Occurences">Трапляється</system:String>
 
     <system:String x:Key="Imaging.DropZone">Зона перетягування</system:String>

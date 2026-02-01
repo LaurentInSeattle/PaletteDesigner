@@ -157,6 +157,34 @@
 
     <system:String x:Key="Settings.ReminderText">Ձեզ խորհուրդ է տրվում ներբեռնված պատկերները օգտագործել միայն որպես պաստառ:  Any անկացած այլ օգտագործման, առեւտրային կամ այլ կերպ դիմեք Հեղինակային իրավունքի սեփականատիրոջը:</system:String>
 
+    <system:String x:Key="Wizard.Theme.Dark">Մութ</system:String>
+
+    <system:String x:Key="Wizard.Theme.Light">Լույս</system:String>
+
+    <system:String x:Key="Wizard.Theme.Background">Նախապատմություն</system:String>
+
+    <system:String x:Key="Wizard.Theme.Foreground">Առաջին պլան</system:String>
+
+    <system:String x:Key="Wizard.Theme.Accent">Առոգանություն</system:String>
+
+    <system:String x:Key="Wizard.Theme.Discordant">Անհամաձայնություն</system:String>
+
+    <system:String x:Key="Wizard.Labels.CenterHue">Կենտրոնական երանգ</system:String>
+
+    <system:String x:Key="Wizard.Labels.Intensity">Ինտենսիվություն</system:String>
+
+    <system:String x:Key="Wizard.Labels.IntensitySteps">Ինտենսիվության քայլեր</system:String>
+
+    <system:String x:Key="Wizard.Labels.ColorAnalogy">Գույնի անալոգիա</system:String>
+
+    <system:String x:Key="Wizard.Labels.Highlights">Առանձնահատկություններ</system:String>
+
+    <system:String x:Key="Wizard.Labels.Shadows">Ստվերներ</system:String>
+
+    <system:String x:Key="Wizard.Labels.Variations">Վարիացիաներ</system:String>
+
+    <system:String x:Key="Wizard.Labels.DragDrop">Քաշեք և գցեք գույների նմուշները թեմայի նախադիտում՝ ավելի շատ տատանումներ ստեղծելու համար:</system:String>
+
     <system:String x:Key="Imaging.Occurences">Տեղի են ունենում</system:String>
 
     <system:String x:Key="Imaging.DropZone">Քաշեք եւ կաթիլային գոտի</system:String>

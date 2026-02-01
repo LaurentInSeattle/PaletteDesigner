@@ -62,8 +62,13 @@ public sealed partial class WizardThemeValuesViewModel :
     public void Receive(ThemeValuesVisibilityMessage message) 
         => this.ShowValues = message.Show;
 
+    // Localize theme names
     private void Localize()
-        => this.Name = this.themeVariant == PaletteThemeVariant.Light? "Light" : "Dark";
+        => this.Name =
+            this.Localize(
+                this.themeVariant == PaletteThemeVariant.Light ?
+                "Wizard.Theme.Light" :
+                "Wizard.Theme.Dark");
 
     private void Update()
     {

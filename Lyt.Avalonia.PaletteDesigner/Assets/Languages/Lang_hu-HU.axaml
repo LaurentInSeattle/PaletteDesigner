@@ -157,6 +157,34 @@
 
     <system:String x:Key="Settings.ReminderText">Javasoljuk, hogy a letöltött képeket csak háttérképként használja.  Bármely más felhasználáshoz, kereskedelmi vagy más módon, kérjük, vegye fel a kapcsolatot a szerzői jogtulajdonossal.</system:String>
 
+    <system:String x:Key="Wizard.Theme.Dark">Sötét</system:String>
+
+    <system:String x:Key="Wizard.Theme.Light">Fény</system:String>
+
+    <system:String x:Key="Wizard.Theme.Background">Háttér</system:String>
+
+    <system:String x:Key="Wizard.Theme.Foreground">Előtér</system:String>
+
+    <system:String x:Key="Wizard.Theme.Accent">Hangsúly</system:String>
+
+    <system:String x:Key="Wizard.Theme.Discordant">Diszkordáns</system:String>
+
+    <system:String x:Key="Wizard.Labels.CenterHue">Center Hue</system:String>
+
+    <system:String x:Key="Wizard.Labels.Intensity">Intenzitás</system:String>
+
+    <system:String x:Key="Wizard.Labels.IntensitySteps">Intenzitás lépései</system:String>
+
+    <system:String x:Key="Wizard.Labels.ColorAnalogy">Színanalógia</system:String>
+
+    <system:String x:Key="Wizard.Labels.Highlights">Kiemelések</system:String>
+
+    <system:String x:Key="Wizard.Labels.Shadows">Árnyak</system:String>
+
+    <system:String x:Key="Wizard.Labels.Variations">Variációk</system:String>
+
+    <system:String x:Key="Wizard.Labels.DragDrop">Húzza át a színmintákat a téma előnézetére, hogy további változatokat hozzon létre.</system:String>
+
     <system:String x:Key="Imaging.Occurences">Előfordulás</system:String>
 
     <system:String x:Key="Imaging.DropZone">Drag and Drop Zone</system:String>

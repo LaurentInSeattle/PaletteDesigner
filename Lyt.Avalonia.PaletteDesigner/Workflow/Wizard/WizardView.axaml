@@ -37,7 +37,7 @@
 				<!-- Spacer -->
 				<ColumnDefinition Width="12" />
 				<!-- Controls -->
-				<ColumnDefinition Width="450" />
+				<ColumnDefinition Width="470" />
 				<!-- Spacer -->
 				<ColumnDefinition Width="12" />
 				<!-- Results -->
@@ -87,8 +87,8 @@
 				    <!-- Second spacer -->
 					<RowDefinition Height="20" /> 
 					<RowDefinition Height="60" /> 
-				    <!-- Third spacer -->
-					<RowDefinition Height="20" /> 
+				    <!-- Drag Drop Help -->
+					<RowDefinition Height="60" /> 
 				    <!-- Values -->
 					<RowDefinition Height="Auto" /> 
 				    <!-- Fourth spacer -->
@@ -96,14 +96,14 @@
 					<RowDefinition Height="Auto" /> 
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="120" />
+					<ColumnDefinition Width="160" />
 					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="60" />
+					<ColumnDefinition Width="45" />
 				</Grid.ColumnDefinitions>
-				<!-- Base Wheel Color Text="{DynamicResource Design.Palette.WheelHue}" -->
+				<!-- Base Wheel -->
 				<TextBlock
 					Grid.Row="0"
-					Text="Center Hue"
+					Text="{DynamicResource Wizard.Labels.CenterHue}"
 					Theme="{StaticResource Medium}"
 					FontWeight="SemiBold"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
@@ -124,10 +124,10 @@
 					HorizontalAlignment="Left" VerticalAlignment="Center"
 					FontWeight="SemiBold"
 					/>
-				<!-- Curve Power Text="{DynamicResource Design.Palette.CurvePower}" -->
+				<!-- Curve Power -->
 				<TextBlock
 					Grid.Row="1"					
-					Text="Intensity"
+					Text="{DynamicResource Wizard.Labels.Intensity}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
 					FontWeight="SemiBold"
@@ -148,10 +148,10 @@
 					HorizontalAlignment="Left" VerticalAlignment="Center"
 					FontWeight="SemiBold"
 					/>
-				<!-- Curve Angle Step Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
+				<!-- Curve Angle Step -->
 				<TextBlock
 					Grid.Row="2"					
-					Text="Intensity Steps"
+					Text="{DynamicResource Wizard.Labels.IntensitySteps}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
 					FontWeight="SemiBold"
@@ -173,10 +173,10 @@
 					HorizontalAlignment="Left" VerticalAlignment="Center"
 					FontWeight="SemiBold"
 					/>
-				<!-- Wheel Angle Step Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
+				<!-- Wheel Angle Step -->
 				<TextBlock
 					Grid.Row="3"					
-					Text="Color Analogy"
+					Text="{DynamicResource Wizard.Labels.ColorAnalogy}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
 					FontWeight="SemiBold"
@@ -197,7 +197,7 @@
 					HorizontalAlignment="Left" VerticalAlignment="Center"
 					FontWeight="SemiBold"
 					/>
-				<!-- Highlights  Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
+				<!-- Lightness LATER  -->
 				<!--
 				<TextBlock
 					Grid.Row="4"					
@@ -223,10 +223,10 @@
 					FontWeight="SemiBold"
 					/>
 				-->
-				<!-- Highlights  Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
+				<!-- Highlights  -->
 				<TextBlock
 					Grid.Row="5"					
-					Text="Highlights"
+					Text="{DynamicResource Wizard.Labels.Highlights}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
 					FontWeight="SemiBold"
@@ -247,10 +247,10 @@
 					HorizontalAlignment="Left" VerticalAlignment="Center"
 					FontWeight="SemiBold"
 					/>
-				<!-- Shadows  Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
+				<!-- Shadows -->
 				<TextBlock
 					Grid.Row="6"					
-					Text="Shadows"
+					Text="{DynamicResource Wizard.Labels.Shadows}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
 					FontWeight="SemiBold"
@@ -271,10 +271,10 @@
 					HorizontalAlignment="Left" VerticalAlignment="Center"
 					FontWeight="SemiBold"
 					/>
-				<!-- Style  Text="{DynamicResource Design.Palette.CurveAngleStep}" -->
+				<!-- Style -->
 				<TextBlock
 					Grid.Row="8"					
-					Text="Variations"
+					Text="{DynamicResource Wizard.Labels.Variations}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
 					FontWeight="SemiBold"
@@ -297,15 +297,22 @@
 					HorizontalAlignment="Left" VerticalAlignment="Center"
 					FontWeight="SemiBold"
 					/>
-				<!-- Theme Values View -->
+				<TextBlock
+					Grid.Row="9" Grid.ColumnSpan="3"
+					Text="{DynamicResource Wizard.Labels.DragDrop}"
+					Theme="{StaticResource Medium}"
+					HorizontalAlignment="Center" VerticalAlignment="Center"
+					FontWeight="Normal"
+					/>
+				<!-- Theme Values Views -->
 				<vm:WizardThemeValuesView
 					Grid.Row="10" Grid.ColumnSpan="3"
 					DataContext="{Binding LightThemeValuesViewModel}"
-					HorizontalAlignment="Left"
+					HorizontalAlignment="Center"
 					/>
 				<vm:WizardThemeValuesView
 					Grid.Row="12" Grid.ColumnSpan="3"
-					HorizontalAlignment="Left"
+					HorizontalAlignment="Center"
 					DataContext="{Binding DarkThemeValuesViewModel}"
 					/>
 			</Grid>
@@ -321,10 +328,10 @@
 				    <!-- Light Theme -->
 					<RowDefinition Height="400" />
 					<!-- Spacer -->
-					<RowDefinition Height="24" />
+					<RowDefinition Height="*" />
 				    <!-- Dark  Theme -->
 					<RowDefinition Height="400" />
-					<RowDefinition Height="*" />
+					<RowDefinition Height="8" />
 				</Grid.RowDefinitions>
 				<vm:WizardThemeView
 					Grid.Row="1"

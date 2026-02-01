@@ -157,6 +157,34 @@
 
     <system:String x:Key="Settings.ReminderText">Препоръчваме ви да използвате изтеглените изображения само като тапет.  За всяка друга употреба, търговска или по друг начин, моля, свържете се с притежателя на авторските права.</system:String>
 
+    <system:String x:Key="Wizard.Theme.Dark">Тъмно</system:String>
+
+    <system:String x:Key="Wizard.Theme.Light">светлина</system:String>
+
+    <system:String x:Key="Wizard.Theme.Background">Фон</system:String>
+
+    <system:String x:Key="Wizard.Theme.Foreground">Преден план</system:String>
+
+    <system:String x:Key="Wizard.Theme.Accent">Акцент</system:String>
+
+    <system:String x:Key="Wizard.Theme.Discordant">Дискордантен</system:String>
+
+    <system:String x:Key="Wizard.Labels.CenterHue">Централен нюанс</system:String>
+
+    <system:String x:Key="Wizard.Labels.Intensity">Интензивност</system:String>
+
+    <system:String x:Key="Wizard.Labels.IntensitySteps">Стъпки на интензивност</system:String>
+
+    <system:String x:Key="Wizard.Labels.ColorAnalogy">Цветова аналогия</system:String>
+
+    <system:String x:Key="Wizard.Labels.Highlights">Акценти</system:String>
+
+    <system:String x:Key="Wizard.Labels.Shadows">Сенки</system:String>
+
+    <system:String x:Key="Wizard.Labels.Variations">Вариации</system:String>
+
+    <system:String x:Key="Wizard.Labels.DragDrop">Плъзнете и пуснете цветни образци към визуализацията на темата, за да създадете повече варианти.</system:String>
+
     <system:String x:Key="Imaging.Occurences">Събития</system:String>
 
     <system:String x:Key="Imaging.DropZone">Плъзнете и пуснете зона</system:String>

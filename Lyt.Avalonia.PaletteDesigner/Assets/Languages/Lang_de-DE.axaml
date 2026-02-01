@@ -157,6 +157,34 @@
 
     <system:String x:Key="Settings.ReminderText">Sie werden empfohlen, die heruntergeladenen Bilder nur als Hintergrundbild zu verwenden.  Für eine andere Verwendung, kommerziell oder auf andere Weise wenden Sie sich bitte an den Inhaber des Urheberrechts.</system:String>
 
+    <system:String x:Key="Wizard.Theme.Dark">Dunkel</system:String>
+
+    <system:String x:Key="Wizard.Theme.Light">Licht</system:String>
+
+    <system:String x:Key="Wizard.Theme.Background">Hintergrund</system:String>
+
+    <system:String x:Key="Wizard.Theme.Foreground">Vordergrund</system:String>
+
+    <system:String x:Key="Wizard.Theme.Accent">Akzent</system:String>
+
+    <system:String x:Key="Wizard.Theme.Discordant">Nicht übereinstimmend</system:String>
+
+    <system:String x:Key="Wizard.Labels.CenterHue">Zentraler Farbton</system:String>
+
+    <system:String x:Key="Wizard.Labels.Intensity">Intensität</system:String>
+
+    <system:String x:Key="Wizard.Labels.IntensitySteps">Intensitätsschritte</system:String>
+
+    <system:String x:Key="Wizard.Labels.ColorAnalogy">Farbanalogie</system:String>
+
+    <system:String x:Key="Wizard.Labels.Highlights">Höhepunkte</system:String>
+
+    <system:String x:Key="Wizard.Labels.Shadows">Schatten</system:String>
+
+    <system:String x:Key="Wizard.Labels.Variations">Variationen</system:String>
+
+    <system:String x:Key="Wizard.Labels.DragDrop">Ziehen Sie Farbfelder per Drag-and-Drop in die Designvorschau, um weitere Variationen zu erstellen.</system:String>
+
     <system:String x:Key="Imaging.Occurences">Vorkommen</system:String>
 
     <system:String x:Key="Imaging.DropZone">Drag -and -Drop -Zone</system:String>

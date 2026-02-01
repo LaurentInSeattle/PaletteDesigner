@@ -157,6 +157,34 @@
 
     <system:String x:Key="Settings.ReminderText">建議您僅將下載的圖像用作牆紙。對於任何其他用途，商業或其他用途，請聯繫版權持有人。</system:String>
 
+    <system:String x:Key="Wizard.Theme.Dark">黑暗的</system:String>
+
+    <system:String x:Key="Wizard.Theme.Light">光</system:String>
+
+    <system:String x:Key="Wizard.Theme.Background">背景</system:String>
+
+    <system:String x:Key="Wizard.Theme.Foreground">前景</system:String>
+
+    <system:String x:Key="Wizard.Theme.Accent">口音</system:String>
+
+    <system:String x:Key="Wizard.Theme.Discordant">不和諧</system:String>
+
+    <system:String x:Key="Wizard.Labels.CenterHue">中心色調</system:String>
+
+    <system:String x:Key="Wizard.Labels.Intensity">強度</system:String>
+
+    <system:String x:Key="Wizard.Labels.IntensitySteps">強度步驟</system:String>
+
+    <system:String x:Key="Wizard.Labels.ColorAnalogy">色彩類比</system:String>
+
+    <system:String x:Key="Wizard.Labels.Highlights">亮點</system:String>
+
+    <system:String x:Key="Wizard.Labels.Shadows">陰影</system:String>
+
+    <system:String x:Key="Wizard.Labels.Variations">變化</system:String>
+
+    <system:String x:Key="Wizard.Labels.DragDrop">將顏色樣本拖放到主題預覽中以創建更多變化。</system:String>
+
     <system:String x:Key="Imaging.Occurences">發生</system:String>
 
     <system:String x:Key="Imaging.DropZone">拖動區</system:String>

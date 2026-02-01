@@ -157,6 +157,34 @@
 
     <system:String x:Key="Settings.ReminderText">আপনাকে ডাউনলোড করা চিত্রগুলি কেবল ওয়ালপেপার হিসাবে ব্যবহার করার পরামর্শ দেওয়া হচ্ছে।  বাণিজ্যিক বা অন্য কোনও ব্যবহারের জন্য দয়া করে কপিরাইট ধারকটির সাথে যোগাযোগ করুন।</system:String>
 
+    <system:String x:Key="Wizard.Theme.Dark">অন্ধকার</system:String>
+
+    <system:String x:Key="Wizard.Theme.Light">আলো</system:String>
+
+    <system:String x:Key="Wizard.Theme.Background">পটভূমি</system:String>
+
+    <system:String x:Key="Wizard.Theme.Foreground">ফোরগ্রাউন্ড</system:String>
+
+    <system:String x:Key="Wizard.Theme.Accent">উচ্চারণ</system:String>
+
+    <system:String x:Key="Wizard.Theme.Discordant">অসঙ্গতিপূর্ণ</system:String>
+
+    <system:String x:Key="Wizard.Labels.CenterHue">কেন্দ্র হিউ</system:String>
+
+    <system:String x:Key="Wizard.Labels.Intensity">তীব্রতা</system:String>
+
+    <system:String x:Key="Wizard.Labels.IntensitySteps">তীব্রতা পদক্ষেপ</system:String>
+
+    <system:String x:Key="Wizard.Labels.ColorAnalogy">রঙের সাদৃশ্য</system:String>
+
+    <system:String x:Key="Wizard.Labels.Highlights">হাইলাইট</system:String>
+
+    <system:String x:Key="Wizard.Labels.Shadows">ছায়া</system:String>
+
+    <system:String x:Key="Wizard.Labels.Variations">বৈচিত্র</system:String>
+
+    <system:String x:Key="Wizard.Labels.DragDrop">আরও বৈচিত্র তৈরি করতে থিম প্রিভিউতে রঙের সোয়াচগুলি টেনে আনুন।</system:String>
+
     <system:String x:Key="Imaging.Occurences">ঘটনা</system:String>
 
     <system:String x:Key="Imaging.DropZone">টানুন এবং ড্রপ জোন</system:String>

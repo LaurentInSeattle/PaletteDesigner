@@ -107,6 +107,24 @@
 
 	<!-- Model / Service -->
 
+	<!-- Wizard  -->
+	<system:String x:Key="Wizard.Theme.Dark">Dark</system:String>
+	<system:String x:Key="Wizard.Theme.Light">Light</system:String>
+
+	<system:String x:Key="Wizard.Theme.Background">Background</system:String>
+	<system:String x:Key="Wizard.Theme.Foreground">Foreground</system:String>
+	<system:String x:Key="Wizard.Theme.Accent">Accent</system:String>
+	<system:String x:Key="Wizard.Theme.Discordant">Discordant</system:String>
+
+	<system:String x:Key="Wizard.Labels.CenterHue">Center Hue</system:String>
+	<system:String x:Key="Wizard.Labels.Intensity">Intensity</system:String>
+	<system:String x:Key="Wizard.Labels.IntensitySteps">Intensity Steps</system:String>
+	<system:String x:Key="Wizard.Labels.ColorAnalogy">Color Analogy</system:String>
+	<system:String x:Key="Wizard.Labels.Highlights">Highlights</system:String>
+	<system:String x:Key="Wizard.Labels.Shadows">Shadows</system:String>
+	<system:String x:Key="Wizard.Labels.Variations">Variations</system:String>
+	<system:String x:Key="Wizard.Labels.DragDrop">Drag and drop colors swatches to the theme preview to create more variations.</system:String>
+
 	<!-- Imaging  -->
 	<system:String x:Key="Imaging.Occurences">Occurences</system:String>
 	<system:String x:Key="Imaging.DropZone">Drag and Drop Zone</system:String>

@@ -30,7 +30,7 @@
 			/>
 		<TextBlock
 			Grid.Column="0"
-			Text="Accent"
+			Text="{DynamicResource Wizard.Theme.Accent}"
 			Theme="{StaticResource H2}"
 			Foreground="{Binding AccentBrush}"
 			Margin="0 0 0 16"
@@ -38,7 +38,7 @@
 			/>
 		<TextBlock
 			Grid.Column="1"
-			Text="Discordant"
+			Text="{DynamicResource Wizard.Theme.Discordant}"
 			Theme="{StaticResource H2}"
 			Foreground="{Binding DiscordantBrush}"
 			Margin="0 0 0 16"
@@ -68,22 +68,6 @@
 				Grid.Row="1" Grid.RowSpan="1" Grid.Column="1"
 				DataContext="{Binding DiscordantComponent}"
 				/>
-			<!--
-			<TextBlock
-				Grid.Row="0"
-				Text="{Binding RgbHex}"
-				Theme="{StaticResource LargeMono}"
-				TextAlignment="Left"
-				HorizontalAlignment="Left"
-		        />
-			<TextBlock
-				Grid.Row="1"
-				Text="{Binding RgbDec}"
-				Theme="{StaticResource LargeMono}"
-				TextAlignment="Left"
-				HorizontalAlignment="Left"
-		        />
-			-->
 		</Grid>
 	</Grid>
 </UserControl>

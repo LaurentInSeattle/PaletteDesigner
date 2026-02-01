@@ -157,6 +157,34 @@
 
     <system:String x:Key="Settings.ReminderText">Σας συμβουλεύουμε να χρησιμοποιήσετε τις εικόνες που κατεβάσουν μόνο ως ταπετσαρία.  Για οποιαδήποτε άλλη χρήση, εμπορική ή άλλως, επικοινωνήστε με τον κάτοχο των πνευματικών δικαιωμάτων.</system:String>
 
+    <system:String x:Key="Wizard.Theme.Dark">Σκοτάδι</system:String>
+
+    <system:String x:Key="Wizard.Theme.Light">Φως</system:String>
+
+    <system:String x:Key="Wizard.Theme.Background">Φόντο</system:String>
+
+    <system:String x:Key="Wizard.Theme.Foreground">Προσκήνιο</system:String>
+
+    <system:String x:Key="Wizard.Theme.Accent">Προφορά</system:String>
+
+    <system:String x:Key="Wizard.Theme.Discordant">Παράφωνος</system:String>
+
+    <system:String x:Key="Wizard.Labels.CenterHue">Κεντρική απόχρωση</system:String>
+
+    <system:String x:Key="Wizard.Labels.Intensity">Ενταση</system:String>
+
+    <system:String x:Key="Wizard.Labels.IntensitySteps">Βήματα Έντασης</system:String>
+
+    <system:String x:Key="Wizard.Labels.ColorAnalogy">Αναλογία χρώματος</system:String>
+
+    <system:String x:Key="Wizard.Labels.Highlights">Ανταύγειες</system:String>
+
+    <system:String x:Key="Wizard.Labels.Shadows">Σκιές</system:String>
+
+    <system:String x:Key="Wizard.Labels.Variations">Παραλλαγές</system:String>
+
+    <system:String x:Key="Wizard.Labels.DragDrop">Σύρετε και αποθέστε δείγματα χρωμάτων στην προεπισκόπηση του θέματος για να δημιουργήσετε περισσότερες παραλλαγές.</system:String>
+
     <system:String x:Key="Imaging.Occurences">Εμφανίσεις</system:String>
 
     <system:String x:Key="Imaging.DropZone">Σύνθεση και πτώση ζώνης</system:String>

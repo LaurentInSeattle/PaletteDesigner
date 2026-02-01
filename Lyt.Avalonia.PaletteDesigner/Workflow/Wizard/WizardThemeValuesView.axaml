@@ -40,28 +40,28 @@
 		<!-- Theme Labels -->
 		<TextBlock
 			Grid.Row="1" Grid.Column="0"
-			Text="Background"
+			Text="{DynamicResource Wizard.Theme.Background}"
 			Theme="{StaticResource Medium}"
 			FontWeight="SemiBold"
 			HorizontalAlignment="Right" VerticalAlignment="Center"
 			/>
 		<TextBlock
 			Grid.Row="2" Grid.Column="0"
-			Text="Foreground"
+			Text="{DynamicResource Wizard.Theme.Foreground}"
 			Theme="{StaticResource Medium}"
 			FontWeight="SemiBold"
 			HorizontalAlignment="Right" VerticalAlignment="Center"
 			/>
 		<TextBlock
 			Grid.Row="3" Grid.Column="0"
-			Text="Accent"
+			Text="{DynamicResource Wizard.Theme.Accent}"			
 			Theme="{StaticResource Medium}"
 			FontWeight="SemiBold"
 			HorizontalAlignment="Right" VerticalAlignment="Center"
 			/>
 		<TextBlock
 			Grid.Row="4" Grid.Column="0"
-			Text="Discordant"
+			Text="{DynamicResource Wizard.Theme.Discordant}"
 			Theme="{StaticResource Medium}"
 			FontWeight="SemiBold"
 			HorizontalAlignment="Right" VerticalAlignment="Center"

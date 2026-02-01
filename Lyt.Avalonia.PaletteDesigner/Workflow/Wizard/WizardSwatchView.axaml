@@ -16,29 +16,5 @@
 			RadiusX="4" RadiusY="4"
 			Fill="{Binding ColorBrush}"
 			/>
-		<Grid
-			Grid.Column="2"
-			>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="*" />
-				<RowDefinition Height="*" />
-			</Grid.RowDefinitions>
-			<!--
-			<TextBlock
-				Grid.Row="0"
-				Text="{Binding RgbHex}"
-				Theme="{StaticResource LargeMono}"
-				TextAlignment="Left"
-				HorizontalAlignment="Left"
-		        />
-			<TextBlock
-				Grid.Row="1"
-				Text="{Binding RgbDec}"
-				Theme="{StaticResource LargeMono}"
-				TextAlignment="Left"
-				HorizontalAlignment="Left"
-		        />
-			-->
-		</Grid>
 	</Grid>
 </UserControl>

@@ -157,6 +157,34 @@
 
     <system:String x:Key="Settings.ReminderText">Se aconseja que use las imágenes descargadas solo como fondo de pantalla.  Para cualquier otro uso, comercial o de otra manera, comuníquese con el titular de los derechos de autor.</system:String>
 
+    <system:String x:Key="Wizard.Theme.Dark">Oscuro</system:String>
+
+    <system:String x:Key="Wizard.Theme.Light">Luz</system:String>
+
+    <system:String x:Key="Wizard.Theme.Background">Fondo</system:String>
+
+    <system:String x:Key="Wizard.Theme.Foreground">Primer plano</system:String>
+
+    <system:String x:Key="Wizard.Theme.Accent">Acento</system:String>
+
+    <system:String x:Key="Wizard.Theme.Discordant">Discordante</system:String>
+
+    <system:String x:Key="Wizard.Labels.CenterHue">Tono central</system:String>
+
+    <system:String x:Key="Wizard.Labels.Intensity">Intensidad</system:String>
+
+    <system:String x:Key="Wizard.Labels.IntensitySteps">Pasos de intensidad</system:String>
+
+    <system:String x:Key="Wizard.Labels.ColorAnalogy">Analogía de color</system:String>
+
+    <system:String x:Key="Wizard.Labels.Highlights">Reflejos</system:String>
+
+    <system:String x:Key="Wizard.Labels.Shadows">Oscuridad</system:String>
+
+    <system:String x:Key="Wizard.Labels.Variations">Variaciones</system:String>
+
+    <system:String x:Key="Wizard.Labels.DragDrop">Arrastre y suelte muestras de colores en la vista previa del tema para crear más variaciones.</system:String>
+
     <system:String x:Key="Imaging.Occurences">Ocurrencias</system:String>
 
     <system:String x:Key="Imaging.DropZone">Zona de arrastre y caída</system:String>

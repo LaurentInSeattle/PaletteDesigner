@@ -157,6 +157,34 @@
 
     <system:String x:Key="Settings.ReminderText">ダウンロードした画像を壁紙としてのみ使用することをお勧めします。 コマーシャルまたはその他のその他の使用については、著作権所有者にお問い合わせください。</system:String>
 
+    <system:String x:Key="Wizard.Theme.Dark">暗い</system:String>
+
+    <system:String x:Key="Wizard.Theme.Light">ライト</system:String>
+
+    <system:String x:Key="Wizard.Theme.Background">背景</system:String>
+
+    <system:String x:Key="Wizard.Theme.Foreground">前景</system:String>
+
+    <system:String x:Key="Wizard.Theme.Accent">アクセント</system:String>
+
+    <system:String x:Key="Wizard.Theme.Discordant">不調和</system:String>
+
+    <system:String x:Key="Wizard.Labels.CenterHue">センターヒュー</system:String>
+
+    <system:String x:Key="Wizard.Labels.Intensity">強度</system:String>
+
+    <system:String x:Key="Wizard.Labels.IntensitySteps">強度ステップ</system:String>
+
+    <system:String x:Key="Wizard.Labels.ColorAnalogy">色の類似性</system:String>
+
+    <system:String x:Key="Wizard.Labels.Highlights">ハイライト</system:String>
+
+    <system:String x:Key="Wizard.Labels.Shadows">影</system:String>
+
+    <system:String x:Key="Wizard.Labels.Variations">バリエーション</system:String>
+
+    <system:String x:Key="Wizard.Labels.DragDrop">色見本をテーマのプレビューにドラッグ アンド ドロップして、さらにバリエーションを作成します。</system:String>
+
     <system:String x:Key="Imaging.Occurences">発生</system:String>
 
     <system:String x:Key="Imaging.DropZone">ドラッグアンドドロップゾーン</system:String>

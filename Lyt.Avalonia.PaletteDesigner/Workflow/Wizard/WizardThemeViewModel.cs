@@ -46,7 +46,7 @@ public sealed partial class WizardThemeViewModel :
     {
         this.paletteDesignerModel = paletteDesignerModel;
         this.themeVariant = themeVariant;
-        this.Name = this.themeVariant == PaletteThemeVariant.Light ? "Light" : "Dark";
+        this.Name = string.Empty; 
         this.BackgroundBrush = new SolidColorBrush(Colors.Gray);
         this.ForegroundBrush = new SolidColorBrush(Colors.LightPink);
         this.AccentBrush = new SolidColorBrush(Colors.Firebrick);
@@ -81,7 +81,11 @@ public sealed partial class WizardThemeViewModel :
         this.DiscordantBrush = hsvColors[3].ToBrush();
     }
 
+    // Localize theme names
     private void Localize()
-        // TODO: Localize theme names
-        => this.Name = this.themeVariant == PaletteThemeVariant.Light ? "Light" : "Dark";
+        => this.Name =            
+            this.Localize(
+                this.themeVariant == PaletteThemeVariant.Light ? 
+                "Wizard.Theme.Light" : 
+                "Wizard.Theme.Dark");
 }

@@ -157,6 +157,34 @@
 
     <system:String x:Key="Settings.ReminderText">आपको केवल वॉलपेपर के रूप में डाउनलोड की गई छवियों का उपयोग करने की सलाह दी जाती है।  किसी अन्य उपयोग के लिए, वाणिज्यिक या अन्यथा, कृपया कॉपीराइट धारक से संपर्क करें।</system:String>
 
+    <system:String x:Key="Wizard.Theme.Dark">अँधेरा</system:String>
+
+    <system:String x:Key="Wizard.Theme.Light">रोशनी</system:String>
+
+    <system:String x:Key="Wizard.Theme.Background">पृष्ठभूमि</system:String>
+
+    <system:String x:Key="Wizard.Theme.Foreground">अग्रभूमि</system:String>
+
+    <system:String x:Key="Wizard.Theme.Accent">लहज़ा</system:String>
+
+    <system:String x:Key="Wizard.Theme.Discordant">बेताल</system:String>
+
+    <system:String x:Key="Wizard.Labels.CenterHue">केंद्र रंग</system:String>
+
+    <system:String x:Key="Wizard.Labels.Intensity">तीव्रता</system:String>
+
+    <system:String x:Key="Wizard.Labels.IntensitySteps">तीव्रता के चरण</system:String>
+
+    <system:String x:Key="Wizard.Labels.ColorAnalogy">रंग सादृश्य</system:String>
+
+    <system:String x:Key="Wizard.Labels.Highlights">हाइलाइट</system:String>
+
+    <system:String x:Key="Wizard.Labels.Shadows">छैया छैया</system:String>
+
+    <system:String x:Key="Wizard.Labels.Variations">बदलाव</system:String>
+
+    <system:String x:Key="Wizard.Labels.DragDrop">अधिक विविधताएं बनाने के लिए थीम पूर्वावलोकन में रंगों के नमूने खींचें और छोड़ें।</system:String>
+
     <system:String x:Key="Imaging.Occurences">पुनरावृत्तियां</system:String>
 
     <system:String x:Key="Imaging.DropZone">ड्रैग एंड ड्रॉप ज़ोन</system:String>
