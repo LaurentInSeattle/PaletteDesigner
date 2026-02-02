@@ -32,16 +32,25 @@ public sealed partial class WizardThemeComponentViewModel :
     {
         if (droppedObject is WizardSwatchViewModel wizardSwatchViewModel)
         {
-            this.paletteDesignerModel.ActiveProject!.WizardPalette.SetThemeComponentColor(
+            if ( this.paletteDesignerModel.ActiveProject is not Project project)
+            {
+                return;
+            }
+
+            project.WizardPalette.SetThemeComponentColor(
                 this.themeVariant, this.themeComponent,wizardSwatchViewModel.SwatchIndex);
         }
     }
 
     public void Receive(ModelWizardUpdatedMessage message)
     {
+        if (this.paletteDesignerModel.ActiveProject is not Project project)
+        {
+            return;
+        }
+
         HsvColor hsvColor = 
-            this.paletteDesignerModel.ActiveProject!.WizardPalette.GetThemeComponentColor(
-                this.themeVariant, this.themeComponent);
+            project.WizardPalette.GetThemeComponentColor(this.themeVariant, this.themeComponent);
         this.ColorBrush = hsvColor.ToBrush();
     }
 }
