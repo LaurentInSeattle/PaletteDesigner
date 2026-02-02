@@ -1,5 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.WizardObjects;
 
+using System.Collections.Generic;
+
 public sealed partial class WizardPalette : IExportAble
 {
     public const int PaletteWidth = 9;
@@ -239,7 +241,7 @@ public sealed partial class WizardPalette : IExportAble
                 var baseColor = new HsvColor(hue, saturation, value);
                 this.BaseColors[i] = baseColor;
 
-                HsvColor Enlighten (double light)
+                HsvColor Enlighten(double light)
                 {
                     double highlightSaturation = (saturation / light).Clip();
                     double highlightValue = (value * light).Clip();
@@ -253,17 +255,38 @@ public sealed partial class WizardPalette : IExportAble
                     return new HsvColor(hue, shadowSaturation, shadowValue);
                 }
 
+                //var hsl = baseColor.ToHsl();
+                //double luminance = hsl.L;
+
+                //HsvColor Enlighten (double light)
+                //{
+                //    double highlightSaturation = (saturation / light).Clip();
+                //    double luminanceFactor = light / 2.0; 
+                //    double highlightLuminance = (luminance * luminanceFactor).Clip();
+                //    var lightColor = new HslColor(hue, highlightSaturation, highlightLuminance);
+                //    return lightColor.ToHsv();
+                //}
+
+                //HsvColor Darken(double dark)
+                //{
+                //    double shadowSaturation = (saturation * dark).Clip();
+                //    double luminanceFactor = dark / 2.0;
+                //    double shadowLuminance = (luminance / luminanceFactor).Clip();
+                //    var darkColor = new HslColor(hue, shadowSaturation, shadowLuminance);
+                //    return darkColor.ToHsv();
+                //}
+
                 // Bright and less saturated 
                 this.LightColors[i] = Enlighten (this.Highlights) ;
 
                 // Brighter and even less saturated 
-                this.LighterColors[i] = Enlighten(this.Highlights * 1.35);
+                this.LighterColors[i] = Enlighten(this.Highlights * 1.30);
 
                 // Dark and more saturated 
                 this.DarkColors[i] = Darken(this.Shadows);
 
                 // Darker and even more saturated 
-                this.DarkerColors[i] = Darken(this.Shadows * 1.25);
+                this.DarkerColors[i] = Darken(this.Shadows * 1.20);
             }
             else
             {
