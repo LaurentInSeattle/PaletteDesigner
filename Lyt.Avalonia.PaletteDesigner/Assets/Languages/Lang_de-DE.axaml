@@ -177,6 +177,8 @@
 
     <system:String x:Key="Wizard.Labels.ColorAnalogy">Farbanalogie</system:String>
 
+    <system:String x:Key="Wizard.Labels.Brightness">Helligkeit</system:String>
+
     <system:String x:Key="Wizard.Labels.Highlights">Höhepunkte</system:String>
 
     <system:String x:Key="Wizard.Labels.Shadows">Schatten</system:String>

@@ -177,6 +177,8 @@
 
     <system:String x:Key="Wizard.Labels.ColorAnalogy">रंग सादृश्य</system:String>
 
+    <system:String x:Key="Wizard.Labels.Brightness">चमक</system:String>
+
     <system:String x:Key="Wizard.Labels.Highlights">हाइलाइट</system:String>
 
     <system:String x:Key="Wizard.Labels.Shadows">छैया छैया</system:String>

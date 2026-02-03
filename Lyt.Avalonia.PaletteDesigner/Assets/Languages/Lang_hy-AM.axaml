@@ -177,6 +177,8 @@
 
     <system:String x:Key="Wizard.Labels.ColorAnalogy">Գույնի անալոգիա</system:String>
 
+    <system:String x:Key="Wizard.Labels.Brightness">Պայծառություն</system:String>
+
     <system:String x:Key="Wizard.Labels.Highlights">Առանձնահատկություններ</system:String>
 
     <system:String x:Key="Wizard.Labels.Shadows">Ստվերներ</system:String>

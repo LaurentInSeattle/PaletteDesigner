@@ -177,6 +177,8 @@
 
     <system:String x:Key="Wizard.Labels.ColorAnalogy">রঙের সাদৃশ্য</system:String>
 
+    <system:String x:Key="Wizard.Labels.Brightness">উজ্জ্বলতা</system:String>
+
     <system:String x:Key="Wizard.Labels.Highlights">হাইলাইট</system:String>
 
     <system:String x:Key="Wizard.Labels.Shadows">ছায়া</system:String>

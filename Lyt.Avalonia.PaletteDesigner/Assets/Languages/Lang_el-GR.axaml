@@ -177,6 +177,8 @@
 
     <system:String x:Key="Wizard.Labels.ColorAnalogy">Αναλογία χρώματος</system:String>
 
+    <system:String x:Key="Wizard.Labels.Brightness">Λάμψη</system:String>
+
     <system:String x:Key="Wizard.Labels.Highlights">Ανταύγειες</system:String>
 
     <system:String x:Key="Wizard.Labels.Shadows">Σκιές</system:String>

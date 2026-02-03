@@ -177,6 +177,8 @@
 
     <system:String x:Key="Wizard.Labels.ColorAnalogy">Színanalógia</system:String>
 
+    <system:String x:Key="Wizard.Labels.Brightness">Fényesség</system:String>
+
     <system:String x:Key="Wizard.Labels.Highlights">Kiemelések</system:String>
 
     <system:String x:Key="Wizard.Labels.Shadows">Árnyak</system:String>

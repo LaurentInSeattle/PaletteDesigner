@@ -80,12 +80,13 @@
 					<RowDefinition Height="60" /> 
 					<RowDefinition Height="60" /> 
 					<RowDefinition Height="60" /> 
-				    <!-- Was Lighness Slider -->
-					<RowDefinition Height="20" /> 
 					<RowDefinition Height="60" /> 
+					<RowDefinition Height="60" /> 
+				    <!-- Lighness Slider -->
 					<RowDefinition Height="60" /> 
 				    <!-- Second spacer -->
 					<RowDefinition Height="20" /> 
+				    <!-- Variations -->
 					<RowDefinition Height="60" /> 
 				    <!-- Drag Drop Help -->
 					<RowDefinition Height="60" /> 
@@ -197,11 +198,10 @@
 					HorizontalAlignment="Left" VerticalAlignment="Center"
 					FontWeight="SemiBold"
 					/>
-				<!-- Lightness LATER  -->
-				<!--
+				<!-- Highlights  -->
 				<TextBlock
 					Grid.Row="4"					
-					Text="Lightness"
+					Text="{DynamicResource Wizard.Labels.Highlights}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
 					FontWeight="SemiBold"
@@ -209,24 +209,23 @@
 				<Slider
 					Grid.Row="4" Grid.Column="1"
 					Margin="8 0 8 0"
-					Minimum="1.0" Maximum="1.5"
-					SmallChange="0.05" LargeChange="0.1"
-					TickFrequency="0.05" TickPlacement="BottomRight"
-					Value="{Binding LightnessSliderValue}"
+					Minimum="1.0" Maximum="4.0"
+					SmallChange="0.1" LargeChange="0.5"
+					TickFrequency="0.5" TickPlacement="BottomRight"
+					Value="{Binding HighlightsSliderValue}"
 					HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
 					/>
 				<TextBlock
 					Grid.Row="4" Grid.Column="2"
-					Text="{Binding LightnessValue}"
+					Text="{Binding HighlightsValue}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Left" VerticalAlignment="Center"
 					FontWeight="SemiBold"
 					/>
-				-->
-				<!-- Highlights  -->
+				<!-- Shadows -->
 				<TextBlock
 					Grid.Row="5"					
-					Text="{DynamicResource Wizard.Labels.Highlights}"
+					Text="{DynamicResource Wizard.Labels.Shadows}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
 					FontWeight="SemiBold"
@@ -237,20 +236,20 @@
 					Minimum="1.0" Maximum="4.0"
 					SmallChange="0.1" LargeChange="0.5"
 					TickFrequency="0.5" TickPlacement="BottomRight"
-					Value="{Binding HighlightsSliderValue}"
+					Value="{Binding ShadowsSliderValue}"
 					HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
 					/>
 				<TextBlock
 					Grid.Row="5" Grid.Column="2"
-					Text="{Binding HighlightsValue}"
+					Text="{Binding ShadowsValue}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Left" VerticalAlignment="Center"
 					FontWeight="SemiBold"
 					/>
-				<!-- Shadows -->
+				<!-- Lightness  -->
 				<TextBlock
 					Grid.Row="6"					
-					Text="{DynamicResource Wizard.Labels.Shadows}"
+					Text="{DynamicResource Wizard.Labels.Brightness}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Right" VerticalAlignment="Center"
 					FontWeight="SemiBold"
@@ -258,15 +257,15 @@
 				<Slider
 					Grid.Row="6" Grid.Column="1"
 					Margin="8 0 8 0"
-					Minimum="1.0" Maximum="4.0"
-					SmallChange="0.1" LargeChange="0.5"
-					TickFrequency="0.5" TickPlacement="BottomRight"
-					Value="{Binding ShadowsSliderValue}"
+					Minimum="0.8" Maximum="1.2"
+					SmallChange="0.05" LargeChange="0.1"
+					TickFrequency="0.05" TickPlacement="BottomRight"
+					Value="{Binding LightnessSliderValue}"
 					HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
 					/>
 				<TextBlock
 					Grid.Row="6" Grid.Column="2"
-					Text="{Binding ShadowsValue}"
+					Text="{Binding LightnessValue}"
 					Theme="{StaticResource Medium}"
 					HorizontalAlignment="Left" VerticalAlignment="Center"
 					FontWeight="SemiBold"

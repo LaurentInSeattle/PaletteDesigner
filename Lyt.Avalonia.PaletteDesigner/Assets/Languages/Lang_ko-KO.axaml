@@ -177,6 +177,8 @@
 
     <system:String x:Key="Wizard.Labels.ColorAnalogy">색상 비유</system:String>
 
+    <system:String x:Key="Wizard.Labels.Brightness">명도</system:String>
+
     <system:String x:Key="Wizard.Labels.Highlights">하이라이트</system:String>
 
     <system:String x:Key="Wizard.Labels.Shadows">그림자</system:String>

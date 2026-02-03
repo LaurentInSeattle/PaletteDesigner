@@ -120,6 +120,7 @@
 	<system:String x:Key="Wizard.Labels.Intensity">Intensity</system:String>
 	<system:String x:Key="Wizard.Labels.IntensitySteps">Intensity Steps</system:String>
 	<system:String x:Key="Wizard.Labels.ColorAnalogy">Color Analogy</system:String>
+	<system:String x:Key="Wizard.Labels.Brightness">Brightness</system:String>
 	<system:String x:Key="Wizard.Labels.Highlights">Highlights</system:String>
 	<system:String x:Key="Wizard.Labels.Shadows">Shadows</system:String>
 	<system:String x:Key="Wizard.Labels.Variations">Variations</system:String>

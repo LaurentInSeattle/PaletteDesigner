@@ -1,8 +1,8 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Wizard;
 
-using global::Avalonia.Media.Imaging;
+//using global::Avalonia.Media.Imaging;
 
-using HsvColor = Lyt.ImageProcessing.ColorObjects.HsvColor;
+//using HsvColor = Lyt.ImageProcessing.ColorObjects.HsvColor;
 
 public sealed partial class WizardViewModel :
     ViewModel<WizardView>,
@@ -301,11 +301,11 @@ public sealed partial class WizardViewModel :
         this.CurvePowerValue = string.Format("{0:F1}", this.curvePower);
         this.CurveAngleStepValue = string.Format("{0:D}", this.curveAngleStep);
         this.WheelAngleStepValue = string.Format("{0:F1} \u00B0", this.wheelAngleStep);
-        this.LightnessValue = string.Format("{0:D} %", (int)(100.0 * this.highlights));
+        this.LightnessValue = string.Format("{0:D} %", (int)(100.0 * this.lightness));
         this.HighlightsValue = string.Format("{0:D} %", (int)(100.0 * this.highlights));
         this.ShadowsValue = string.Format("{0:D} %", (int)(100.0 * this.shadows));
 
-        // TODO ~ Needed ? 
+        // No Need to show a value for the Style slider 
         // this.StyleValue = ...
     }
 }

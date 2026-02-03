@@ -177,6 +177,8 @@
 
     <system:String x:Key="Wizard.Labels.ColorAnalogy">Analogie des couleurs</system:String>
 
+    <system:String x:Key="Wizard.Labels.Brightness">Luminosité</system:String>
+
     <system:String x:Key="Wizard.Labels.Highlights">Illumination</system:String>
 
     <system:String x:Key="Wizard.Labels.Shadows">Ombres</system:String>

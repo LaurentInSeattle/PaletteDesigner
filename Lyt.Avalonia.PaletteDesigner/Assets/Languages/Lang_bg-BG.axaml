@@ -177,6 +177,8 @@
 
     <system:String x:Key="Wizard.Labels.ColorAnalogy">Цветова аналогия</system:String>
 
+    <system:String x:Key="Wizard.Labels.Brightness">Яркост</system:String>
+
     <system:String x:Key="Wizard.Labels.Highlights">Акценти</system:String>
 
     <system:String x:Key="Wizard.Labels.Shadows">Сенки</system:String>

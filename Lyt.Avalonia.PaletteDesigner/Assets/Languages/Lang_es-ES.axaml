@@ -177,6 +177,8 @@
 
     <system:String x:Key="Wizard.Labels.ColorAnalogy">Analogía de color</system:String>
 
+    <system:String x:Key="Wizard.Labels.Brightness">Brillo</system:String>
+
     <system:String x:Key="Wizard.Labels.Highlights">Reflejos</system:String>
 
     <system:String x:Key="Wizard.Labels.Shadows">Oscuridad</system:String>

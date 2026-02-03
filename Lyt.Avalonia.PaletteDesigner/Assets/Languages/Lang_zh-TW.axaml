@@ -177,6 +177,8 @@
 
     <system:String x:Key="Wizard.Labels.ColorAnalogy">色彩類比</system:String>
 
+    <system:String x:Key="Wizard.Labels.Brightness">亮度</system:String>
+
     <system:String x:Key="Wizard.Labels.Highlights">亮點</system:String>
 
     <system:String x:Key="Wizard.Labels.Shadows">陰影</system:String>

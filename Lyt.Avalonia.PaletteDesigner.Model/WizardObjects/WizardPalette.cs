@@ -1,6 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.WizardObjects;
 
 using System.Collections.Generic;
+using System.Drawing;
 
 public sealed partial class WizardPalette : IExportAble
 {
@@ -60,7 +61,19 @@ public sealed partial class WizardPalette : IExportAble
     [JsonIgnore]
     public HsvColor[] DarkerColors { get; set; } = new HsvColor[PaletteWidth];
 
-    public WizardPalette() { }
+    private HsvColor[][] allColors; 
+    
+    public WizardPalette() 
+    {
+        this.allColors =
+        [
+            this.LighterColors ,
+            this.LightColors ,
+            this.BaseColors ,
+            this.DarkColors ,
+            this.DarkerColors
+        ];
+    }
 
     public HsvColor GetColor(SwatchIndex swatchIndex)
     {
@@ -148,8 +161,8 @@ public sealed partial class WizardPalette : IExportAble
         this.BaseWheel = random.NextDouble() * 360.0;
         this.CurvePower = 1 + random.NextDouble() * 3.0;
         this.CurveAngleStep = 2 + random.Next(6);
-        this.WheelAngleStep = 4 + random.NextDouble() * 20.0; ;
-        this.Lightness = 1.0;
+        this.WheelAngleStep = 4 + random.NextDouble() * 20.0;
+        this.Lightness = 1.0 + ( random.NextDouble() - 0.5) / 12.0;
         this.Highlights = 1.0 + random.NextDouble() * 3.0;
         this.Shadows = 1 + random.NextDouble() * 2.5 ;
         this.ThemeVariantStyleIndex = random.Next(3);
@@ -255,27 +268,6 @@ public sealed partial class WizardPalette : IExportAble
                     return new HsvColor(hue, shadowSaturation, shadowValue);
                 }
 
-                //var hsl = baseColor.ToHsl();
-                //double luminance = hsl.L;
-
-                //HsvColor Enlighten (double light)
-                //{
-                //    double highlightSaturation = (saturation / light).Clip();
-                //    double luminanceFactor = light / 2.0; 
-                //    double highlightLuminance = (luminance * luminanceFactor).Clip();
-                //    var lightColor = new HslColor(hue, highlightSaturation, highlightLuminance);
-                //    return lightColor.ToHsv();
-                //}
-
-                //HsvColor Darken(double dark)
-                //{
-                //    double shadowSaturation = (saturation * dark).Clip();
-                //    double luminanceFactor = dark / 2.0;
-                //    double shadowLuminance = (luminance / luminanceFactor).Clip();
-                //    var darkColor = new HslColor(hue, shadowSaturation, shadowLuminance);
-                //    return darkColor.ToHsv();
-                //}
-
                 // Bright and less saturated 
                 this.LightColors[i] = Enlighten (this.Highlights) ;
 
@@ -291,6 +283,20 @@ public sealed partial class WizardPalette : IExportAble
             else
             {
                 throw new InvalidOperationException($"HueWheel does not contain angle {wheelAngle}");
+            }
+        }
+
+        double light = this.Lightness;
+        for (int k = 0; k < 5; ++k)
+        {
+            var colors = this.allColors[k];
+            for (int j = 0; j < PaletteWidth; ++j)
+            {
+                var color = colors[j];
+                var hsl = color.ToHsl();
+                double luminance = Math.Clamp(hsl.L * light, 0.0, 1.0);
+                var corrected = new HslColor(hsl.H, hsl.S, luminance);
+                colors[j] = corrected.ToHsv();
             }
         }
 
