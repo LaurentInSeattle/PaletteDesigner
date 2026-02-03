@@ -1,8 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.WizardObjects;
 
-using System.Collections.Generic;
-using System.Drawing;
-
 public sealed partial class WizardPalette : IExportAble
 {
     public const int PaletteWidth = 9;

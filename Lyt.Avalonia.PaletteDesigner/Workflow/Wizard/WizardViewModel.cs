@@ -1,9 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Wizard;
 
-//using global::Avalonia.Media.Imaging;
-
-//using HsvColor = Lyt.ImageProcessing.ColorObjects.HsvColor;
-
 public sealed partial class WizardViewModel :
     ViewModel<WizardView>,
     IRecipient<ModelWizardUpdatedMessage>
