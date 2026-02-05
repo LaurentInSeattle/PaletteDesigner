@@ -11,6 +11,41 @@ public enum PaletteExportFormat
     ApplicationJSon,
 }
 
+/*
+ * 
+
+TODO 
+
+Paint.NET Palette File
+
+Palette files are simple text (*.txt) files, that can be created and edited in most word processors.  
+Each file contains color information listed one shade per row in eight digit hexadecimal notation. 
+The format used is aarrggbb where aa is the Alpha value, rr is the Red value, gg is the Green value and bb 
+the Blue value. 
+
+; Paint.NET Palette File
+; Lines that start with a semicolon are comments
+; Colors are written as 8-digit hexadecimal numbers: aarrggbb
+; For example, this would specify green: FF00FF00
+; The alpha ('aa') value specifies how transparent a color is. FF is fully opaque, 00 is fully transparent.
+; A palette usually consists of ninety six (96) colors. If there are less than this, the remaining color
+; slots will be set to white (FFFFFFFF). If there are more, then the remaining colors will be ignored.
+FF000000
+FF404040
+FFFF0000
+FFFF6A00
+FF23FFBD
+FFB6FF00
+FF4CFF00
+FF00FF21
+FF00FF90
+FF00FFFF
+FFFFFA7C
+FF0026FF
+FF4800FF
+ 
+ */
+
 public static class PaletteExportFormatExtensions
 {
     public static string ResourcePath(this PaletteExportFormat paletteExportFormat)
@@ -58,35 +93,7 @@ public static class PaletteExportFormatExtensions
         };
 
 
-        // TODO: Rename resource files 
         return string.Concat(formatString, "_", familyString, "_", "Template.csx");
-
-        //=> paletteExportFormat switch
-        //   {
-        //       // Binary, Not template based
-        //       PaletteExportFormat.AdobeAse => string.Empty,
-
-        //       // Not template based
-        //       PaletteExportFormat.ApplicationJSon => string.Empty,
-
-        //       // No need to localize 
-        //       PaletteExportFormat.AvaloniaAxaml =>
-        //           paletteFamily == PaletteFamily.Designed ?
-        //               "AvaloniaPaletteTemplate.csx" :
-        //               paletteFamily == PaletteFamily.Image ?
-        //                   "AvaloniaImagePaletteTemplate.csx" : "AvaloniaWizardPaletteTemplate.csx",
-        //       PaletteExportFormat.MicrosoftXaml =>
-        //           paletteFamily == PaletteFamily.Designed ?
-        //               "MsftXamlPaletteTemplate.csx" :
-        //               paletteFamily == PaletteFamily.Image ?
-        //                   "MsftXamlImagePaletteTemplate.csx" : "MsftXamlWizardPaletteTemplate.csx",
-        //       PaletteExportFormat.CssStyleSheet =>
-        //           paletteFamily == PaletteFamily.Designed ?
-        //               "CssPaletteTemplate.csx" :
-        //               paletteFamily == PaletteFamily.Image ?
-        //                   "CssImagePaletteTemplate.csx" : "CssWizardPaletteTemplate.csx",
-        //       _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
-        //   };
     }
 
     public static string ExportTargetFileName(

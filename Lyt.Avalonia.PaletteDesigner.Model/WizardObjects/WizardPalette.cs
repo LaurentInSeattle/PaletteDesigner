@@ -58,7 +58,7 @@ public sealed partial class WizardPalette : IExportAble
     [JsonIgnore]
     public HsvColor[] DarkerColors { get; set; } = new HsvColor[PaletteWidth];
 
-    private HsvColor[][] allColors; 
+    private readonly HsvColor[][] allColors; 
     
     public WizardPalette() 
     {
