@@ -1,6 +1,6 @@
 # Palette Designer
 
-An Avalonia baed Interactive tool to generate color palettes and themes, exporting design projects to 
+An Avalonia based interactive tool to generate color palettes and themes, exporting design projects to 
 ADOBE ASE / ACO formats, CSS for use on the web, 
 and also XAML, AXAML, plain text and JSON for use in various desktop or mobile applications, such as Uno, Avalonia or WPF applications.
 
@@ -8,16 +8,16 @@ and also XAML, AXAML, plain text and JSON for use in various desktop or mobile a
 
 <p align="left"><img src="Screenshots/Screenshot 2026-01-08 095700.png" height="600"/>
 
-Can export the palettes to the following formats: Avalonia aXAML, WPF uWP UNO XAML, Paint.Net , CSS, Adobe ASE / ACO, JSON.
+Can export the palettes to the following formats: Avalonia aXAML, WPF / UWP / UNO XAML, Paint.Net , CSS, Adobe ASE / ACO, JSON.
 
 # Palette from any Image Shades
 
 <p align="left"><img src="Screenshots/Screenshot 2026-01-08 095833.png" height="600"/>
 
-Uses KMeans algorithm to extract the most dominant colors from any image. 
+Uses the KMeans algorithm to extract the most dominant colors from any image. 
 Images are converted to the CIELAB color space for better and more accurate results.
 
-# New ! A 'Wizard' mode to create palettes, very easy to use...
+# A 'Wizard' mode to create palettes, very easy to use...
 
 <p align="left"><img src="Screenshots/WizardMode.png" height="600"/>
 
