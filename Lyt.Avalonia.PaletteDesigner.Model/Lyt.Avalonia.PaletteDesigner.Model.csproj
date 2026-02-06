@@ -33,6 +33,9 @@
     <EmbeddedResource Include="Resources\ColorWheel.json" />
     <EmbeddedResource Include="Resources\PaletteExportTemplates\Avalonia_Wizard_Template.csx" />
     <EmbeddedResource Include="Resources\PaletteExportTemplates\Avalonia_Image_Template.csx" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\PaintNet_Designer_Template.csx" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\PaintNet_Image_Template.csx" />
+    <EmbeddedResource Include="Resources\PaletteExportTemplates\PaintNet_Wizard_Template.csx" />
     <EmbeddedResource Include="Resources\PaletteExportTemplates\Css_Wizard_Template.csx" />
     <EmbeddedResource Include="Resources\PaletteExportTemplates\MsftXaml_Wizard_Template.csx" />
     <EmbeddedResource Include="Resources\PaletteExportTemplates\MsftXaml_Image_Template.csx" />

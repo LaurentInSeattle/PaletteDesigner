@@ -8,6 +8,7 @@ public enum PaletteExportFormat
     MicrosoftXaml,
     CssStyleSheet,
     AdobeAse,
+    PaintNet,
     ApplicationJSon,
 }
 
@@ -58,8 +59,9 @@ public static class PaletteExportFormatExtensions
             PaletteExportFormat.ApplicationJSon => string.Empty,
 
             // No need to localize 
-            PaletteExportFormat.AvaloniaAxaml or 
+            PaletteExportFormat.AvaloniaAxaml or
             PaletteExportFormat.MicrosoftXaml or
+            PaletteExportFormat.PaintNet or
             PaletteExportFormat.CssStyleSheet
                 => "Lyt.Avalonia.PaletteDesigner.Resources.PaletteExportTemplates",
             _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
@@ -78,6 +80,7 @@ public static class PaletteExportFormatExtensions
 
             PaletteExportFormat.AvaloniaAxaml => "Avalonia",
             PaletteExportFormat.MicrosoftXaml => "MsftXaml",
+            PaletteExportFormat.PaintNet => "PaintNet",
             PaletteExportFormat.CssStyleSheet => "Css",
 
             _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
@@ -106,6 +109,7 @@ public static class PaletteExportFormatExtensions
             PaletteExportFormat.AvaloniaAxaml => "Avalonia",
             PaletteExportFormat.MicrosoftXaml => "Microsoft",
             PaletteExportFormat.CssStyleSheet => "Css",
+            PaletteExportFormat.PaintNet => "PaintNet",
             PaletteExportFormat.ApplicationJSon => "Json",
 
             _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
@@ -131,6 +135,7 @@ public static class PaletteExportFormatExtensions
             PaletteExportFormat.AvaloniaAxaml => ".axaml",
             PaletteExportFormat.MicrosoftXaml => ".xaml",
             PaletteExportFormat.CssStyleSheet=> ".css",
+            PaletteExportFormat.PaintNet => ".txt",
             PaletteExportFormat.ApplicationJSon => ".json",
             _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
         };
@@ -143,6 +148,7 @@ public static class PaletteExportFormatExtensions
             PaletteExportFormat.AdobeAse => "Adobe ASE",
             PaletteExportFormat.AvaloniaAxaml => "Avalonia aXaml",
             PaletteExportFormat.MicrosoftXaml => "Microsoft Xaml",
+            PaletteExportFormat.PaintNet => "Paint.Net (*.txt)",
             PaletteExportFormat.CssStyleSheet => "CSS Style Sheet",
             PaletteExportFormat.ApplicationJSon => "JSon",
             _ => throw new ArgumentException(null, nameof(paletteExportFormat)),
@@ -154,6 +160,7 @@ public static class PaletteExportFormatExtensions
                 PaletteExportFormat.MicrosoftXaml, 
                 PaletteExportFormat.CssStyleSheet,
                 PaletteExportFormat.AdobeAse,
+                PaletteExportFormat.PaintNet,
                 PaletteExportFormat.ApplicationJSon,
            ];
 }
