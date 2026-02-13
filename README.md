@@ -47,7 +47,7 @@ You can also download the latest release from the Releases section.
 - => Clone the "Lyt.Avalonia" repo' side by side. (https://github.com/LaurentInSeattle/Lyt.Avalonia)
 - Open the solution in Visual Studio, restore nugets, then clean and build.
 
-Developed and tested with .Net 10, Visual Studio 2026 18.2 and Avalonia 11.3.11.
+Developed and tested with .Net 10, Visual Studio 2026 18.3 and Avalonia 11.3.12.
 Also builds with Jet Brains Rider. On Mac and Linux, you should disable the post build event, as it is Windows specific.
 
 # Dependencies
