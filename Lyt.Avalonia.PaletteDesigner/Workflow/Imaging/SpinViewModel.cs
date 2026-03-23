@@ -3,10 +3,10 @@
 public sealed partial class SpinViewModel : ViewModel<SpinView>
 {
     [ObservableProperty]
-    private bool isVisible;
+    public partial bool IsVisible { get; set; }
 
     [ObservableProperty]
-    private bool isActive;
+    public partial bool IsActive { get; set; }
 
     // Important ! 
     // 

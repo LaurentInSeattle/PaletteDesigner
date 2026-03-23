@@ -5,8 +5,7 @@ public sealed partial class WizardToolbarViewModel : ViewModel<WizardToolbarView
     private readonly PaletteDesignerModel paletteDesignerModel;
 
     [ObservableProperty]
-    private bool showShadesValues;
-
+    public partial bool ShowShadesValues { get; set; }
 
     public WizardToolbarViewModel() 
         => this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();

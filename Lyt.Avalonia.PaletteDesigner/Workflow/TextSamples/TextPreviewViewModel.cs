@@ -14,14 +14,14 @@ public sealed partial class TextPreviewViewModel :
     private ShadeKind shadeKindBackground;
 
     [ObservableProperty]
-    SolidColorBrush foregroundBrush;
+    public partial SolidColorBrush ForegroundBrush { get; set; }
 
     [ObservableProperty]
-    SolidColorBrush backgroundBrush;
+    public partial SolidColorBrush BackgroundBrush { get; set; }
 
     [ObservableProperty]
-    string setupText;
-    
+    public partial string SetupText { get; set; }
+
     public TextPreviewViewModel(PaletteDesignerModel paletteDesignerModel)
     {
         this.paletteDesignerModel = paletteDesignerModel;

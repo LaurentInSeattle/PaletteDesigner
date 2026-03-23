@@ -7,7 +7,7 @@ public sealed partial class FileFormatViewModel : ViewModel<FileFormatView>
     private readonly PaletteExportFormat paletteExportFormat;
 
     [ObservableProperty]
-    private string name;
+    public partial string Name { get; set; }
 
     public FileFormatViewModel(PaletteExportFormat resourceFormat)
     {

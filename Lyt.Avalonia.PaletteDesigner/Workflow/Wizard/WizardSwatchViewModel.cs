@@ -13,16 +13,16 @@ public sealed partial class WizardSwatchViewModel :
     private readonly PaletteDesignerModel paletteDesignerModel;
 
     [ObservableProperty]
-    public SolidColorBrush colorBrush;
+    public partial SolidColorBrush ColorBrush { get; set; }
 
     [ObservableProperty]
-    private string rgbHex = string.Empty;
+    public partial string RgbHex { get; set; } = string.Empty;
 
     [ObservableProperty]
-    private string rgbDec = string.Empty;
+    public partial string RgbDec { get; set; } = string.Empty;
 
     [ObservableProperty]
-    private string hsv = string.Empty;
+    public partial string Hsv { get; set; } = string.Empty;
 
     public WizardSwatchViewModel(
         PaletteDesignerModel paletteDesignerModel, 

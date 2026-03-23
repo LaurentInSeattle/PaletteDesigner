@@ -17,28 +17,28 @@ public partial class PalettePreviewViewModel :
     private readonly ShadesValuesViewModel ComplementaryShadesValues;
 
     [ObservableProperty]
-    private ShadesValuesViewModel topLeftShadesValues;
+    public partial ShadesValuesViewModel TopLeftShadesValues { get; set; }
 
     [ObservableProperty]
-    private ShadesValuesViewModel bottomLeftShadesValues;
+    public partial ShadesValuesViewModel BottomLeftShadesValues { get; set; }
 
     [ObservableProperty]
-    private ShadesValuesViewModel topRightShadesValues;
+    public partial ShadesValuesViewModel TopRightShadesValues { get; set; }
 
     [ObservableProperty]
-    private ShadesValuesViewModel bottomRightShadesValues;
+    public partial ShadesValuesViewModel BottomRightShadesValues { get; set; }
 
     [ObservableProperty]
-    private MiniPaletteViewModel miniPaletteViewModel;
+    public partial MiniPaletteViewModel MiniPaletteViewModel { get; set; }
 
     [ObservableProperty]
-    private MaxiPaletteViewModel maxiPaletteViewModel;
+    public partial MaxiPaletteViewModel MaxiPaletteViewModel { get; set; }
 
     [ObservableProperty]
-    private double wheelSliderValue;
+    public partial double WheelSliderValue { get; set; }
 
     [ObservableProperty]
-    private string wheelValue = string.Empty;
+    public partial string WheelValue { get; set; } = string.Empty;
 
     private readonly PaletteDesignerModel paletteDesignerModel;
 

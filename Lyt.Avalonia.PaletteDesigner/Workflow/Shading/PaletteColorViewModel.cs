@@ -3,30 +3,30 @@
 public partial class PaletteColorViewModel : ViewModel<PaletteColorView>
 {
     [ObservableProperty]
-    private SolidColorBrush baseBrush;
+    public partial SolidColorBrush BaseBrush { get; set; }
 
     [ObservableProperty]
-    private SolidColorBrush lighterBrush;
+    public partial SolidColorBrush LighterBrush { get; set; }
 
     [ObservableProperty]
-    private SolidColorBrush lightBrush;
+    public partial SolidColorBrush LightBrush { get; set; }
 
     [ObservableProperty]
-    private SolidColorBrush darkBrush;
+    public partial SolidColorBrush DarkBrush { get; set; }
 
     [ObservableProperty]
-    private SolidColorBrush darkerBrush;
+    public partial SolidColorBrush DarkerBrush { get; set; }
 
     [ObservableProperty]
-    private bool isVisible;
+    public partial bool IsVisible { get; set; }
 
     public PaletteColorViewModel()
     {
-        this.lighterBrush = new SolidColorBrush(Colors.AntiqueWhite);
-        this.lightBrush = new SolidColorBrush(Colors.LightBlue);
-        this.baseBrush = new SolidColorBrush(Colors.Blue);
-        this.darkBrush = new SolidColorBrush(Colors.DarkSlateBlue);
-        this.darkerBrush = new SolidColorBrush(Colors.DarkBlue);
+        LighterBrush = new SolidColorBrush(Colors.AntiqueWhite);
+        LightBrush = new SolidColorBrush(Colors.LightBlue);
+        BaseBrush = new SolidColorBrush(Colors.Blue);
+        DarkBrush = new SolidColorBrush(Colors.DarkSlateBlue);
+        DarkerBrush = new SolidColorBrush(Colors.DarkBlue);
 
         this.Show();
     }

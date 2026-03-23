@@ -1,31 +1,29 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Workflow.Design;
 
 public sealed partial class DesignViewModel : ViewModel<DesignView> , IRecipient<ModelPaletteUpdatedMessage>
-
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
 
     [ObservableProperty]
-    private ColorWheelViewModel colorWheelViewModel;
+    public partial ColorWheelViewModel ColorWheelViewModel { get; set; }
 
     [ObservableProperty]
-    private PalettePreviewViewModel palettePreviewViewModel;
+    public partial PalettePreviewViewModel PalettePreviewViewModel { get; set; }
 
     [ObservableProperty]
-    private TextPreviewPanelViewModel textPreviewPanelViewModel;
+    public partial TextPreviewPanelViewModel TextPreviewPanelViewModel { get; set; }
 
     [ObservableProperty]
-    private ModelSelectionToolbarViewModel modelSelectionToolbarViewModel;
+    public partial ModelSelectionToolbarViewModel ModelSelectionToolbarViewModel { get; set; }
 
     [ObservableProperty]
-    private ExportToolbarViewModel exportToolbarViewModel;
+    public partial ExportToolbarViewModel ExportToolbarViewModel { get; set; }
 
     [ObservableProperty]
-    private ShadeSelectionToolbarViewModel shadeSelectionToolbarViewModel;
+    public partial ShadeSelectionToolbarViewModel ShadeSelectionToolbarViewModel { get; set; }
 
     [ObservableProperty]
-    private ShadesPresetsToolbarViewModel shadesPresetsToolbarViewModel;
-
+    public partial ShadesPresetsToolbarViewModel ShadesPresetsToolbarViewModel { get; set; }
 
     public DesignViewModel(PaletteDesignerModel paletteDesignerModel)
     {

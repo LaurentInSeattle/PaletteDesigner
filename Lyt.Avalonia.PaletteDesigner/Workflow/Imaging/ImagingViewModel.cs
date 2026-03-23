@@ -18,34 +18,34 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
     private string swatchesName;
 
     [ObservableProperty]
-    private ObservableCollection<ImageSwatchViewModel> swatchesViewModels;
+    public partial ObservableCollection<ImageSwatchViewModel> SwatchesViewModels { get; set; }
 
     [ObservableProperty]
-    private DropViewModel dropViewModel;
+    public partial DropViewModel DropViewModel { get; set; }
 
     [ObservableProperty]
-    private SpinViewModel spinViewModel;
+    public partial SpinViewModel SpinViewModel { get; set; }
 
     [ObservableProperty]
-    private ImagingToolbarViewModel imagingToolbarViewModel;
+    public partial ImagingToolbarViewModel ImagingToolbarViewModel { get; set; }
 
     [ObservableProperty]
-    private ExportToolbarViewModel exportToolbarViewModel;
+    public partial ExportToolbarViewModel ExportToolbarViewModel { get; set; }
 
     [ObservableProperty]
-    private Bitmap? sourceImage;
+    public partial Bitmap? SourceImage { get; set; }
 
     [ObservableProperty]
-    private double swatchesOpacity;
+    public partial double SwatchesOpacity { get; set; }
 
     [ObservableProperty]
-    private bool calculationInProgress;
+    public partial bool CalculationInProgress { get; set; }
 
     [ObservableProperty]
-    private string imageTitle = string.Empty;
+    public partial string ImageTitle { get; set; } = string.Empty;
 
     [ObservableProperty]
-    private string imagePath = string.Empty;
+    public partial string ImagePath { get; set; } = string.Empty;
 
     public ImagingViewModel(PaletteDesignerModel paletteDesignerModel)
     {

@@ -5,16 +5,16 @@ public sealed partial class LanguageInfoViewModel : ViewModel<LanguageInfoView>
     private const string UriPath = "avares://Lyt.Avalonia.PaletteDesigner/Assets/Images/Flags/";
 
     [ObservableProperty]
-    private string key;
+    public partial string Key { get; set; }
 
     [ObservableProperty]
-    private string name;
+    public partial string Name { get; set; }
 
     [ObservableProperty]
-    private Bitmap? flagOne;
+    public partial Bitmap? FlagOne { get; set; }
 
     [ObservableProperty]
-    private Bitmap flagTwo;
+    public partial Bitmap FlagTwo { get; set; }
 
     public LanguageInfoViewModel(string key, string name, string flagOne, string flagTwo)
     {

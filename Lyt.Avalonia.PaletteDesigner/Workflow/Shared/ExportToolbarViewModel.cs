@@ -9,11 +9,10 @@ public sealed partial class ExportToolbarViewModel : ViewModel<ExportToolbarView
     private readonly IToaster toaster;
 
     [ObservableProperty]
-    private int selectedFileFormatIndex;
+    public partial int SelectedFileFormatIndex { get; set; }
 
     [ObservableProperty]
-    private ObservableCollection<FileFormatViewModel> fileFormats;
-
+    public partial ObservableCollection<FileFormatViewModel> FileFormats { get; set; }
 
     public ExportToolbarViewModel(PaletteFamily paletteFamily)
     {

@@ -5,25 +5,25 @@ public sealed partial class ShadesValuesViewModel : ViewModel<ShadesValuesView>
     private readonly PaletteDesignerModel paletteDesignerModel;
 
     [ObservableProperty]
-    private string name = string.Empty;
+    public partial string Name { get; set; } = string.Empty;
 
     [ObservableProperty]
-    private bool isVisible = true;
+    public partial bool IsVisible { get; set; } = true;
 
     [ObservableProperty]
-    private string lighter = string.Empty;
+    public partial string Lighter { get; set; } = string.Empty;
 
     [ObservableProperty]
-    private string light = string.Empty;
+    public partial string Light { get; set; } = string.Empty;
 
     [ObservableProperty]
-    private string medium = string.Empty;
+    public partial string Medium { get; set; } = string.Empty;
 
     [ObservableProperty]
-    private string dark = string.Empty;
+    public partial string Dark { get; set; } = string.Empty;
 
     [ObservableProperty]
-    private string darker = string.Empty;
+    public partial string Darker { get; set; } = string.Empty;
 
     public ShadesValuesViewModel(string name)
     {

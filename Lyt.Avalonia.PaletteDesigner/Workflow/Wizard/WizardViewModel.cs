@@ -13,84 +13,84 @@ public sealed partial class WizardViewModel :
     #region Observable Properties 
 
     [ObservableProperty]
-    private WizardToolbarViewModel wizardToolbarViewModel;
+    public partial WizardToolbarViewModel WizardToolbarViewModel { get; set; }
 
     [ObservableProperty]
-    private ExportToolbarViewModel exportToolbarViewModel;
+    public partial ExportToolbarViewModel ExportToolbarViewModel { get; set; }
 
     [ObservableProperty]
-    private WizardThemeViewModel lightThemeViewModel;
+    public partial WizardThemeViewModel LightThemeViewModel { get; set; }
 
     [ObservableProperty]
-    private WizardThemeViewModel darkThemeViewModel;
+    public partial WizardThemeViewModel DarkThemeViewModel { get; set; }
 
     [ObservableProperty]
-    private WizardThemeValuesViewModel lightThemeValuesViewModel;
+    public partial WizardThemeValuesViewModel LightThemeValuesViewModel { get; set; }
 
     [ObservableProperty]
-    private WizardThemeValuesViewModel darkThemeValuesViewModel; 
+    public partial WizardThemeValuesViewModel DarkThemeValuesViewModel { get; set; }
 
     [ObservableProperty]
     private double wheelSliderValue;
 
     [ObservableProperty]
-    private string wheelValue = string.Empty;
+    public partial string WheelValue { get; set; } = string.Empty;
 
     private double wheel;
 
     [ObservableProperty]
-    private double curvePowerSliderValue;
+    public partial double CurvePowerSliderValue { get; set; }
 
     [ObservableProperty]
-    private string curvePowerValue = string.Empty;
+    public partial string CurvePowerValue { get; set; } = string.Empty;
 
     private double curvePower;
 
     [ObservableProperty]
-    private double curveAngleStepSliderValue;
+    public partial double CurveAngleStepSliderValue { get; set; }
 
     [ObservableProperty]
-    private string curveAngleStepValue = string.Empty;
+    public partial string CurveAngleStepValue { get; set; } = string.Empty;
 
     private int curveAngleStep;
 
     [ObservableProperty]
-    private double wheelAngleStepSliderValue;
+    public partial double WheelAngleStepSliderValue { get; set; }
 
     [ObservableProperty]
-    private string wheelAngleStepValue = string.Empty;
+    public partial string WheelAngleStepValue { get; set; } = string.Empty;
 
     private double wheelAngleStep;
 
     [ObservableProperty]
-    private double lightnessSliderValue;
+    public partial double LightnessSliderValue { get; set; }
 
     [ObservableProperty]
-    private string lightnessValue = string.Empty;
+    public partial string LightnessValue { get; set; } = string.Empty;
 
     private double lightness;
 
     [ObservableProperty]
-    private double highlightsSliderValue;
+    public partial double HighlightsSliderValue { get; set; }
 
     [ObservableProperty]
-    private string highlightsValue = string.Empty;
+    public partial string HighlightsValue { get; set; } = string.Empty;
 
     private double highlights;
 
     [ObservableProperty]
-    private double shadowsSliderValue;
+    public partial double ShadowsSliderValue { get; set; }
 
     [ObservableProperty]
-    private string shadowsValue = string.Empty;
+    public partial string ShadowsValue { get; set; } = string.Empty;
 
     private double shadows;
 
     [ObservableProperty]
-    private double styleSliderValue;
+    public partial double StyleSliderValue { get; set; }
 
     [ObservableProperty]
-    private string styleValue = string.Empty;
+    public partial string StyleValue { get; set; } = string.Empty;
 
     private int style;
 

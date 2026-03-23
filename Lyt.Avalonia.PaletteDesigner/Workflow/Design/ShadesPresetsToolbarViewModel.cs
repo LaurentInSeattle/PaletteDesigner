@@ -7,10 +7,10 @@ public sealed partial class ShadesPresetsToolbarViewModel :
     private readonly PaletteDesignerModel paletteDesignerModel;
 
     [ObservableProperty]
-    private bool visible;
+    public partial bool Visible { get; set; }
 
     [ObservableProperty]
-    private ObservableCollection<ShadesPresetViewModel> presets;
+    public partial ObservableCollection<ShadesPresetViewModel> Presets { get; set; }
 
     public ShadesPresetsToolbarViewModel()
     {

@@ -12,41 +12,41 @@ public sealed partial class ShadeSelectionToolbarViewModel :
     private bool isProgrammaticUpdate;
 
     [ObservableProperty]
-    private SolidColorBrush primaryBaseBrush = new();
+    public partial SolidColorBrush PrimaryBaseBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush complementaryBaseBrush = new();
+    public partial SolidColorBrush ComplementaryBaseBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondary1BaseBrush = new();
+    public partial SolidColorBrush Secondary1BaseBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondary2BaseBrush = new();
+    public partial SolidColorBrush Secondary2BaseBrush { get; set; } = new();
 
     [ObservableProperty]
-    private bool isPrimaryVisible;
+    public partial bool IsPrimaryVisible { get; set; }
 
     [ObservableProperty]
-    private bool isComplementaryVisible;
+    public partial bool IsComplementaryVisible { get; set; }
 
     [ObservableProperty]
-    private bool isSecondary1Visible;
+    public partial bool IsSecondary1Visible { get; set; }
 
     [ObservableProperty]
-    private bool isSecondary2Visible;
+    public partial bool IsSecondary2Visible { get; set; }
 
     [ObservableProperty]
-    private bool isShadingDisabled;
+    public partial bool IsShadingDisabled { get; set; }
 
     [ObservableProperty]
-    private bool showShadesPresets;
+    public partial bool ShowShadesPresets { get; set; }
 
     [ObservableProperty]
-    private bool showShadesValues;
+    public partial bool ShowShadesValues { get; set; }
 
     [ObservableProperty]
-    private bool showTextSamples;
-      
+    public partial bool ShowTextSamples { get; set; }
+
     public ShadeSelectionToolbarViewModel()
     {
         this.paletteDesignerModel = App.GetRequiredService<PaletteDesignerModel>();

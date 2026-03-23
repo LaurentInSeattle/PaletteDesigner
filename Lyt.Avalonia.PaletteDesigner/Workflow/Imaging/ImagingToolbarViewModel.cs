@@ -5,13 +5,13 @@ public sealed partial class ImagingToolbarViewModel : ViewModel<ImagingToolbarVi
     private readonly PaletteDesignerModel paletteDesignerModel;
 
     [ObservableProperty]
-    private bool isDeepAlgorithmStrength;
+    public partial bool IsDeepAlgorithmStrength { get; set; }
 
     [ObservableProperty]
-    private double clustersSliderValue;
+    public partial double ClustersSliderValue { get; set; }
 
     [ObservableProperty]
-    private string clustersValue = string.Empty;
+    public partial string ClustersValue { get; set; } = string.Empty;
 
     public ImagingToolbarViewModel()
     {

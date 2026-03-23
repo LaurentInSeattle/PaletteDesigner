@@ -2,22 +2,22 @@
 
 public sealed partial class ImageSwatchViewModel : ViewModel <ImageSwatchView>, IRecipient<LanguageChangedMessage>
 {
-    public readonly Cluster<LabColor> Cluster; 
-        
-    [ObservableProperty]
-    public SolidColorBrush colorBrush;
+    public readonly Cluster<LabColor> Cluster;
 
     [ObservableProperty]
-    private string frequency = string.Empty;
+    public partial SolidColorBrush ColorBrush { get; set; }
 
     [ObservableProperty]
-    private string rgbHex = string.Empty;
+    public partial string Frequency { get; set; } = string.Empty;
 
     [ObservableProperty]
-    private string rgbDec = string.Empty;
+    public partial string RgbHex { get; set; } = string.Empty;
 
     [ObservableProperty]
-    private string hsv = string.Empty;
+    public partial string RgbDec { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial string Hsv { get; set; } = string.Empty;
 
     public ImageSwatchViewModel(Cluster<LabColor> cluster)
     {

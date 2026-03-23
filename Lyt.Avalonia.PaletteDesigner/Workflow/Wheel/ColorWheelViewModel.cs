@@ -14,25 +14,25 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
     private double hue;
 
     [ObservableProperty]
-    private WriteableBitmap shades;
+    public partial WriteableBitmap Shades { get; set; }
 
     [ObservableProperty]
-    private bool hasComplementaryMarker;
+    public partial bool HasComplementaryMarker { get; set; }
 
     [ObservableProperty]
-    private bool hasSecondary1Marker;
+    public partial bool HasSecondary1Marker { get; set; }
 
     [ObservableProperty]
-    private bool hasSecondary2Marker;
+    public partial bool HasSecondary2Marker { get; set; }
 
     [ObservableProperty]
-    private bool canMoveComplementary;
+    public partial bool CanMoveComplementary { get; set; }
 
     [ObservableProperty]
-    private bool canMoveSecondary1;
+    public partial bool CanMoveSecondary1 { get; set; }
 
     [ObservableProperty]
-    private bool canMoveSecondary2;
+    public partial bool CanMoveSecondary2 { get; set; }
 
     public ColorWheelViewModel(PaletteDesignerModel paletteDesignerModel)
     {
@@ -41,7 +41,7 @@ public sealed partial class ColorWheelViewModel : ViewModel<ColorWheelView>
         var pixelSize = new PixelSize(width, height);
         var dpi = new Vector(96, 96);
         var bitmap = new WriteableBitmap(pixelSize, dpi, PixelFormat.Bgra8888, AlphaFormat.Opaque);
-        this.shades = bitmap;
+        Shades = bitmap;
         this.hue = double.NaN;
         this.HasComplementaryMarker = false;
         this.CanMoveComplementary = false;

@@ -12,7 +12,7 @@ public sealed partial class WizardThemeComponentViewModel :
     private readonly ThemeComponent themeComponent;
 
     [ObservableProperty]
-    private SolidColorBrush colorBrush;
+    public partial SolidColorBrush ColorBrush { get; set; }
 
     public WizardThemeComponentViewModel(
         PaletteDesignerModel paletteDesignerModel,

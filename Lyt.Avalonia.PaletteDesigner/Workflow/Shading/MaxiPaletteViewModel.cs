@@ -5,64 +5,64 @@ public sealed partial class MaxiPaletteViewModel : ViewModel<MaxiPaletteView>
     #region The 20 observable brush properties 
 
     [ObservableProperty]
-    private SolidColorBrush primaryBaseBrush = new();
+    public partial SolidColorBrush PrimaryBaseBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush primaryLighterBrush = new();
+    public partial SolidColorBrush PrimaryLighterBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush primaryLightBrush = new();
+    public partial SolidColorBrush PrimaryLightBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush primaryDarkBrush = new();
+    public partial SolidColorBrush PrimaryDarkBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush primaryDarkerBrush = new();
+    public partial SolidColorBrush PrimaryDarkerBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush complementaryBaseBrush = new();
+    public partial SolidColorBrush ComplementaryBaseBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush complementaryLighterBrush = new();
+    public partial SolidColorBrush ComplementaryLighterBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush complementaryLightBrush = new();
+    public partial SolidColorBrush ComplementaryLightBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush complementaryDarkBrush = new();
+    public partial SolidColorBrush ComplementaryDarkBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush complementaryDarkerBrush = new();
+    public partial SolidColorBrush ComplementaryDarkerBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryTopBaseBrush = new();
+    public partial SolidColorBrush SecondaryTopBaseBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryTopLighterBrush = new();
+    public partial SolidColorBrush SecondaryTopLighterBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryTopLightBrush = new();
+    public partial SolidColorBrush SecondaryTopLightBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryTopDarkBrush = new();
+    public partial SolidColorBrush SecondaryTopDarkBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryTopDarkerBrush = new();
+    public partial SolidColorBrush SecondaryTopDarkerBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryBotBaseBrush = new();
+    public partial SolidColorBrush SecondaryBotBaseBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryBotLighterBrush = new();
+    public partial SolidColorBrush SecondaryBotLighterBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryBotLightBrush = new();
+    public partial SolidColorBrush SecondaryBotLightBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryBotDarkBrush = new();
+    public partial SolidColorBrush SecondaryBotDarkBrush { get; set; } = new();
 
     [ObservableProperty]
-    private SolidColorBrush secondaryBotDarkerBrush = new();
+    public partial SolidColorBrush SecondaryBotDarkerBrush { get; set; } = new();
 
     #endregion 20 observable brush properties 
 

@@ -9,13 +9,13 @@ public sealed partial class TextPreviewPanelViewModel :
     private readonly PaletteDesignerModel paletteDesignerModel;
 
     [ObservableProperty]
-    private bool visible;
+    public partial bool Visible { get; set; }
 
     [ObservableProperty]
-    private ObservableCollection<TextPreviewViewModel> textPreviewViewModels;
+    public partial ObservableCollection<TextPreviewViewModel> TextPreviewViewModels { get; set; }
 
     [ObservableProperty]
-    private TextPreviewToolbarViewModel textPreviewToolbarViewModel; 
+    public partial TextPreviewToolbarViewModel TextPreviewToolbarViewModel { get; set; }
 
     public TextPreviewPanelViewModel(PaletteDesignerModel paletteDesignerModel)
     {

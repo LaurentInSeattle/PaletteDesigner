@@ -13,25 +13,25 @@ public sealed partial class WizardThemeValuesViewModel :
     private readonly PaletteThemeVariant themeVariant;
 
     [ObservableProperty]
-    private bool showValues;
+    public partial bool ShowValues { get; set; }
 
     [ObservableProperty]
-    private string name = string.Empty;
+    public partial string Name { get; set; } = string.Empty;
 
     [ObservableProperty]
-    private string background;
+    public partial string Background { get; set; }
 
     [ObservableProperty]
-    private string foreground;
+    public partial string Foreground { get; set; }
 
     [ObservableProperty]
-    private string accent;
+    public partial string Accent { get; set; }
 
     [ObservableProperty]
-    private string discordant;
+    public partial string Discordant { get; set; }
 
     [ObservableProperty]
-    private string hsv = string.Empty;
+    public partial string Hsv { get; set; } = string.Empty;
 
     public WizardThemeValuesViewModel(
         PaletteDesignerModel paletteDesignerModel,

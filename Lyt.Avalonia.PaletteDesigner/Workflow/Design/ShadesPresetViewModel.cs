@@ -9,10 +9,10 @@ public sealed partial class ShadesPresetViewModel :
     private readonly ShadesPreset shadesPreset;
 
     [ObservableProperty]
-    private string presetName = string.Empty;
+    public partial string PresetName { get; set; } = string.Empty;
 
     [ObservableProperty]
-    private MiniPaletteViewModel miniPaletteViewModel;
+    public partial MiniPaletteViewModel MiniPaletteViewModel { get; set; }
 
     public ShadesPresetViewModel(ShadesPreset shadesPreset)
     {

@@ -10,16 +10,16 @@ public sealed partial class MiniPaletteViewModel : ViewModel<MiniPaletteView>
     private readonly PaletteColorViewModel Secondary2Shades;
 
     [ObservableProperty]
-    private PaletteColorViewModel leftShades;
+    public partial PaletteColorViewModel LeftShades { get; set; }
 
     [ObservableProperty]
-    private PaletteColorViewModel middleLeftShades;
+    public partial PaletteColorViewModel MiddleLeftShades { get; set; }
 
     [ObservableProperty]
-    private PaletteColorViewModel middleRightShades;
+    public partial PaletteColorViewModel MiddleRightShades { get; set; }
 
     [ObservableProperty]
-    private PaletteColorViewModel rightShades;
+    public partial PaletteColorViewModel RightShades { get; set; }
 
     // Cannot be an observable property because DataContext is set programmatically 
     private int PrimaryShadesColumnSpan

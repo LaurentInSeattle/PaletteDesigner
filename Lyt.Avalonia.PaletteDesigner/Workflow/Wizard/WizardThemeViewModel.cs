@@ -11,31 +11,31 @@ public sealed partial class WizardThemeViewModel :
     private readonly PaletteThemeVariant themeVariant;
 
     [ObservableProperty]
-    private string name = string.Empty;
+    public partial string Name { get; set; } = string.Empty;
 
     [ObservableProperty]
-    private SolidColorBrush backgroundBrush;
+    public partial SolidColorBrush BackgroundBrush { get; set; }
 
     [ObservableProperty]
-    private SolidColorBrush foregroundBrush;
+    public partial SolidColorBrush ForegroundBrush { get; set; }
 
     [ObservableProperty]
-    private SolidColorBrush accentBrush;
+    public partial SolidColorBrush AccentBrush { get; set; }
 
     [ObservableProperty]
-    private SolidColorBrush discordantBrush;
+    public partial SolidColorBrush DiscordantBrush { get; set; }
 
     [ObservableProperty]
-    private WizardThemeComponentViewModel backgroundComponent;
-    
+    public partial WizardThemeComponentViewModel BackgroundComponent { get; set; }
+
     [ObservableProperty]    
     private WizardThemeComponentViewModel foregroundComponent;
 
     [ObservableProperty]
-    private WizardThemeComponentViewModel accentComponent;
+    public partial WizardThemeComponentViewModel AccentComponent { get; set; }
 
     [ObservableProperty]
-    private WizardThemeComponentViewModel discordantComponent; 
+    public partial WizardThemeComponentViewModel DiscordantComponent { get; set; }
 
     [ObservableProperty]
     private string hsv = string.Empty;
