@@ -136,7 +136,7 @@
 				 />
 				<TextBox
 					Text="shared:Loc TestContentTextbox}"
-					Watermark="shared:Loc TestContentTextboxPlaceholderText}"
+					PlaceholderText="shared:Loc TestContentTextboxPlaceholderText}"
 					Width="200"
 					Margin="0,0,0,28"
 					HorizontalAlignment="Left" />

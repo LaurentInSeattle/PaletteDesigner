@@ -23,13 +23,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AvaloniaResource Remove="Assets\Fonts\Nunito-Regular.ttf" />
-	  <AvaloniaResource Remove="Assets\Icons\Unused_FluentSvgResourceDictionaryCopy.axaml" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <AvaloniaXaml Remove="Assets\Icons\Unused_FluentSvgResourceDictionaryCopy.axaml" />
-	  <AvaloniaXaml Remove="Assets\Languages\Lang_fr-FR.axaml" />
 	  <AvaloniaXaml Remove="Workflow\Mapping\ColorDragView.axaml" />
 	  <AvaloniaXaml Remove="Workflow\Mapping\ColorsDragPanelView.axaml" />
 	  <AvaloniaXaml Remove="Workflow\Mapping\DraggableColorBoxView.axaml" />
@@ -60,18 +53,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Assets\Fonts\Nunito-Regular.ttf" />
-	  <None Remove="Resources\Images\wheel.png" />
-	  <None Remove="Samples\BaseColorsPalette.xaml" />
-	  <None Remove="Samples\BaseResources.xaml" />
-	  <None Remove="Samples\FluentControlResources.xaml" />
-	  <None Remove="Samples\InvariantResources.xaml" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Avalonia" Version="12.0.1" />
-		<PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.1" />
-		<PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.1" />
+		<PackageReference Include="Avalonia" Version="12.0.4" />
+		<PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.4" />
+		<PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.4" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -88,80 +72,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AvaloniaResource Update="Assets\Languages\Lang_fr-FR.axaml">
-	    <SubType>Designer</SubType>
-	  </AvaloniaResource>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Controls\QuattroChromeControl.axaml.cs">
-	    <DependentUpon>QuattroChromeControl.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Controls\TriChromeControl.axaml.cs">
-	    <DependentUpon>TriChromeControl.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Controls\SquareControl.axaml.cs">
-	    <DependentUpon>SquareControl.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Controls\TriadComplementaryControl.axaml.cs">
-	    <DependentUpon>TriadComplementaryControl.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Controls\TriadControl.axaml.cs">
-	    <DependentUpon>TriadControl.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Controls\DuoChromeControl.axaml.cs">
-	    <DependentUpon>DuoChromeControl.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Controls\MonoChromeComplementaryControl.axaml.cs">
-	    <DependentUpon>MonoChromeComplementaryControl.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Imaging\ImagingToolbarView.axaml.cs">
-	    <DependentUpon>ImagingToolbarView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Shared\ExportToolbarView.axaml.cs">
-	    <DependentUpon>ExportToolbarView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Design\ShadeSelectionToolbarView.axaml.cs">
-	    <DependentUpon>ShadeSelectionToolbarView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Imaging\ImagingView.axaml.cs">
-	    <DependentUpon>ImagingView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Shading\PalettePreviewView.axaml.cs">
-	    <DependentUpon>PalettePreviewView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Shading\PaletteColorView.axaml.cs">
-	    <DependentUpon>PaletteColorView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Shading\ShadesValuesView.axaml.cs">
-	    <DependentUpon>ShadesValuesView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\TextSamples\TextPreviewToolbarView.axaml.cs">
-	    <DependentUpon>TextPreviewToolbarView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\TextSamples\TextPreviewView.axaml.cs">
-	    <DependentUpon>TextPreviewView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Wizard\WizardThemeValuesView.axaml.cs">
-	    <DependentUpon>WizardThemeValuesView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Wizard\WizardToolbarView.axaml.cs">
-	    <DependentUpon>WizardToolbarView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Wizard\WizardSwatchView.axaml.cs">
-	    <DependentUpon>WizardSwatchView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Wizard\WizardThemeComponentView.axaml.cs">
-	    <DependentUpon>WizardThemeComponentView.axaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Workflow\Wizard\WizardView.axaml.cs">
-	    <DependentUpon>WizardView.axaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Resources\Images\" />
-	  <Folder Include="Samples\" />
 	  <Folder Include="Workflow\Mapping\" />
 	</ItemGroup>
+
 </Project>

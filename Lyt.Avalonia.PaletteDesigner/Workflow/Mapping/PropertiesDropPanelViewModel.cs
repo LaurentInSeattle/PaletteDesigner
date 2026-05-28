@@ -21,15 +21,15 @@ public sealed partial class PropertiesDropPanelViewModel : ViewModel<PropertiesD
         this.ThemeVariantName = string.Empty;
     }
 
-    public ColorTheme ColorTheme =>
-        this.paletteDesignerModel.ActiveProject == null ?
-            throw new Exception("No active project") :
-            this.paletteDesignerModel.ActiveProject.ColorTheme;
+    //public ColorTheme ColorTheme =>
+    //    this.paletteDesignerModel.ActiveProject == null ?
+    //        throw new Exception("No active project") :
+    //        this.paletteDesignerModel.ActiveProject.ColorTheme;
 
-    public ColorThemeVariant ColorThemeVariant =>
-        this.paletteDesignerModel.ActiveProject == null ?
-            throw new Exception("No active project") :
-            this.ColorTheme.Variants.Values.First();
+    //public ColorThemeVariant ColorThemeVariant =>
+    //    this.paletteDesignerModel.ActiveProject == null ?
+    //        throw new Exception("No active project") :
+    //        this.ColorTheme.Variants.Values.First();
 
     // MAy not need the palette 
     //
@@ -42,18 +42,18 @@ public sealed partial class PropertiesDropPanelViewModel : ViewModel<PropertiesD
     {
         base.OnViewLoaded();
 
-        this.ThemeName = this.ColorTheme.FriendlyName;
-        this.ThemeVariantName = this.ColorThemeVariant.Name;
+        //this.ThemeName = this.ColorTheme.FriendlyName;
+        //this.ThemeVariantName = this.ColorThemeVariant.Name;
 
-        List<PropertyDropViewModel> list = [];
-        foreach( var property in this.ColorTheme.Properties)
-        {
-            string propertyName = property.Key;
-            var propertyDropViewModel = new PropertyDropViewModel(this.paletteDesignerModel, propertyName);
-            list.Add(propertyDropViewModel);
-        }
+        //List<PropertyDropViewModel> list = [];
+        //foreach( var property in this.ColorTheme.Properties)
+        //{
+        //    string propertyName = property.Key;
+        //    var propertyDropViewModel = new PropertyDropViewModel(this.paletteDesignerModel, propertyName);
+        //    list.Add(propertyDropViewModel);
+        //}
 
-        this.PropertyDropViewModels = new(list);
+        //this.PropertyDropViewModels = new(list);
     }
 }
 

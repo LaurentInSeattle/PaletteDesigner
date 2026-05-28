@@ -47,15 +47,15 @@ public sealed partial class PropertyDropViewModel :
         this.InitializeColorWithTheme();
     }
 
-    public ColorTheme ColorTheme =>
-        this.paletteDesignerModel.ActiveProject == null ?
-            throw new Exception("No active project") :
-            this.paletteDesignerModel.ActiveProject.ColorTheme;
+    //public ColorTheme ColorTheme =>
+    //    this.paletteDesignerModel.ActiveProject == null ?
+    //        throw new Exception("No active project") :
+    //        this.paletteDesignerModel.ActiveProject.ColorTheme;
 
-    public ColorThemeVariant ColorThemeVariant =>
-        this.paletteDesignerModel.ActiveProject == null ?
-            throw new Exception("No active project") :
-            this.ColorTheme.Variants.Values.First();
+    //public ColorThemeVariant ColorThemeVariant =>
+    //    this.paletteDesignerModel.ActiveProject == null ?
+    //        throw new Exception("No active project") :
+    //        this.ColorTheme.Variants.Values.First();
 
     public bool CanDrop(Point point, object droppedObject)
     {
@@ -124,9 +124,9 @@ public sealed partial class PropertyDropViewModel :
             return;
         }
 
-        this.paletteDesignerModel.UpdateThemeProperty(
-            this.ColorThemeVariant, this.sourcePropertyName, 
-            this.wheelKind, this.shadeKind, this.ShadeOpacity);
+        //this.paletteDesignerModel.UpdateThemeProperty(
+        //    this.ColorThemeVariant, this.sourcePropertyName, 
+        //    this.wheelKind, this.shadeKind, this.ShadeOpacity);
     }
 
     private void InitializeColorWithTheme()
