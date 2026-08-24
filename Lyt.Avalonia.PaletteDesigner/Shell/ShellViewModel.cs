@@ -126,7 +126,7 @@ public sealed partial class ShellViewModel : ViewModel<ShellView>, IRecipient<La
         void SetupNoToolbar<TViewModel, TControl>(
                 ActivatedView activatedView, Control control)
             where TViewModel : ViewModel<TControl>
-            where TControl : Control, IView, new()
+            where TControl : UserControl, IView, new()
         {
             var vm = App.GetRequiredService<TViewModel>();
             vm.CreateViewAndBind();

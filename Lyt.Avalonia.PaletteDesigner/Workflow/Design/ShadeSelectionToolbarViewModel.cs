@@ -140,7 +140,7 @@ public sealed partial class ShadeSelectionToolbarViewModel :
         GlyphButton? glyphButtonUnlocked = this.View.FindChildControlParametrized<GlyphButton>(ShadeMode.Unlocked.ToString());
         if ((glyphButtonLocked is not null)&& (glyphButtonUnlocked is not null))
         {
-            With(ref this.isProgrammaticUpdate, () =>
+            With.Flag(ref this.isProgrammaticUpdate, () =>
             {
                 glyphButtonLocked.IsSelected = palette.AreShadesLocked;
                 glyphButtonUnlocked.IsSelected = !palette.AreShadesLocked;
@@ -153,7 +153,7 @@ public sealed partial class ShadeSelectionToolbarViewModel :
             GlyphButton? glyphButtonWheel = this.View.FindChildControlParametrized<GlyphButton>(parameterWheel);
             if (glyphButtonWheel is not null)
             {
-                With(ref this.isProgrammaticUpdate, () =>
+                With.Flag(ref this.isProgrammaticUpdate, () =>
                 {
                     if (glyphButtonWheel.Group is SelectionGroup group)
                     {

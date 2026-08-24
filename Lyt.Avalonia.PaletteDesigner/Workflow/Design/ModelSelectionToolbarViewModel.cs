@@ -45,7 +45,7 @@ public sealed partial class ModelSelectionToolbarViewModel : ViewModel<ModelSele
         GlyphButton? glyphButton = this.View.FindChildControlParametrized<GlyphButton>(parameter);
         if (glyphButton is not null)
         {
-            With(ref this.isProgrammaticUpdate, () =>
+            With.Flag(ref this.isProgrammaticUpdate, () =>
             {
                 if (glyphButton.Group is SelectionGroup group)
                 {

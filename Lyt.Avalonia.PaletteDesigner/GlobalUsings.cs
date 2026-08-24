@@ -86,7 +86,6 @@ global using Lyt.Avalonia.Localizer;
 
 global using Lyt.Model;
 global using Lyt.Persistence;
-global using Lyt.Mvvm;
 global using Lyt.Utilities.Extensions;
 global using Lyt.Utilities.Profiling;
 global using Lyt.Utilities.Randomizing;
@@ -107,6 +106,8 @@ global using Lyt.Avalonia.PaletteDesigner.Workflow.Design;
 global using Lyt.Avalonia.PaletteDesigner.Workflow.Imaging;
 global using Lyt.Avalonia.PaletteDesigner.Workflow.Wizard;
 global using Lyt.Avalonia.PaletteDesigner.Workflow.Language;
+global using Lyt.Avalonia.PaletteDesigner.Workflow.Settings;
+
 // global using Lyt.Avalonia.PaletteDesigner.Workflow.Mapping;
 // global using Lyt.Avalonia.PaletteDesigner.Workflow.Settings;
 global using Lyt.Avalonia.PaletteDesigner.Workflow.Shading;

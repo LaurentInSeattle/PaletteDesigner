@@ -146,7 +146,7 @@ public sealed partial class WizardViewModel :
         var palette = this.paletteDesignerModel.ActiveProject.WizardPalette;
         if (palette.IsReset)
         {
-            GeneralExtensions.With(ref this.isProgrammaticUpdate, () =>
+            With.Flag(ref this.isProgrammaticUpdate, () =>
             {
                 this.WheelSliderValue = palette.BaseWheel;
                 this.CurvePowerSliderValue = palette.CurvePower;

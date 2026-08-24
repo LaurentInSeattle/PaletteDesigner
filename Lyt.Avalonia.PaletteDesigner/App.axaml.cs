@@ -12,43 +12,8 @@ public partial class App : ApplicationBase
         App.Organization,
         App.Application,
         App.RootNamespace,
-        typeof(MainWindow),
-        typeof(ApplicationModelBase), // Top level model 
-        [
-            // Models 
-            typeof(FileManagerModel),
-            typeof(PaletteDesignerModel),
-        ],
-        [
-           // Singletons
-           typeof(ShellViewModel),
-
-           typeof(LanguageViewModel),
-           
-           typeof(DesignViewModel),
-           typeof(PaletteColorViewModel),
-           typeof(PalettePreviewViewModel),
-           typeof(ColorWheelViewModel),
-
-
-           typeof(ImagingViewModel),
-           typeof(WizardViewModel),
-
-           // Disabled for now
-           // typeof(SettingsViewModel),
-           // typeof(MappingViewModel),
-        ],
-        [
-            // Services 
-            App.LoggerService,
-            new Tuple<Type, Type>(typeof(IAnimationService), typeof(AnimationService)),
-            new Tuple<Type, Type>(typeof(ILocalizer), typeof(LocalizerModel)),
-            new Tuple<Type, Type>(typeof(IDialogService), typeof(DialogService)),
-            new Tuple<Type, Type>(typeof(IDispatch), typeof(Dispatch)),
-            new Tuple<Type, Type>(typeof(IProfiler), typeof(Profiler)),
-            new Tuple<Type, Type>(typeof(IToaster), typeof(Toaster)),
-            new Tuple<Type, Type>(typeof(IRandomizer), typeof(Randomizer)),
-        ],
+        InitializeHosting,
+        GetModelTypes,
         singleInstanceRequested: false,
         splashImageUri: null,
         appSplashWindow: new SplashWindow()
@@ -69,6 +34,64 @@ public partial class App : ApplicationBase
                 new Tuple<Type, Type>(typeof(ILogger), typeof(Logger));
 
     public bool RestartRequired { get; set; }
+
+    public static List<Type> GetModelTypes()
+        => [typeof(FileManagerModel), typeof(PaletteDesignerModel)];
+
+    public static IHost InitializeHosting()
+    {
+        IServiceCollection? registeredServices = null;
+        var host = Host.CreateDefaultBuilder()
+            .ConfigureServices((_0, services) =>
+            {
+                // Register the app
+                _ = services.AddSingleton<IApplicationBase>(App.Instance);
+
+                // Always Main Window 
+                _ = services.AddSingleton<Window, MainWindow>();
+
+                // The Application Model, also  a singleton, no need here to also add it without the inferface  
+                _ = services.AddSingleton<IApplicationModel, ApplicationModelBase>(); // Top level model
+
+                // Models 
+                _ = services.AddSingleton<FileManagerModel>();
+                _ = services.AddSingleton<PaletteDesignerModel>();
+
+                // Singletons, they do not need an interface. 
+                //
+                // Shell 
+                _ = services.AddSingleton<ShellViewModel>();
+
+                // Views and ViewModels from the main view selector            
+                // Singletons
+                _ = services.AddSingleton<DesignViewModel>();
+                _ = services.AddSingleton<PaletteColorViewModel>();
+                _ = services.AddSingleton<PalettePreviewViewModel>();
+                _ = services.AddSingleton<ColorWheelViewModel>();
+
+                _ = services.AddSingleton<ImagingViewModel>();
+                _ = services.AddSingleton<SettingsViewModel>();
+                _ = services.AddSingleton<WizardViewModel>();
+                _ = services.AddSingleton<LanguageViewModel>();
+                _ = services.AddSingleton<LanguageToolbarViewModel>();
+
+                // Services 
+                 _ = services.AddSingleton<ILogger, BasicLogger>();
+                // _ = services.AddSingleton<ILogger, LogViewerWindow>();
+                _ = services.AddSingleton<IFocuser, Focuser>();
+                _ = services.AddSingleton<IAnimationService, AnimationService>();
+                _ = services.AddSingleton<ILocalizer, LocalizerModel>();
+                _ = services.AddSingleton<IDialogService, DialogService>();
+                _ = services.AddSingleton<IDispatch, Dispatch>();
+                _ = services.AddSingleton<IProfiler, Profiler>();
+                _ = services.AddSingleton<IToaster, Toaster>();
+                _ = services.AddSingleton<IRandomizer, Randomizer>();
+
+                registeredServices = services;
+            }).Build();
+
+        return host;
+    }
 
     protected override async Task OnStartupBegin()
     {

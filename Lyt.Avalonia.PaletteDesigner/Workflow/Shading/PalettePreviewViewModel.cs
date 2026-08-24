@@ -122,7 +122,7 @@ public partial class PalettePreviewViewModel :
             return;
         }
 
-        With(ref this.isProgrammaticUpdate, () =>
+        With.Flag(ref this.isProgrammaticUpdate, () =>
         {
             this.wheel = palette.Primary.Wheel; 
             this.WheelSliderValue = palette.Primary.Wheel;
