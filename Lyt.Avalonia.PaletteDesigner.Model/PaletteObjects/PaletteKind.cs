@@ -5,6 +5,7 @@
 // https://color.adobe.com/create/color-wheel/
 
 
+[JsonConverter(typeof(JsonStringEnumConverter<PaletteKind>))]
 public enum PaletteKind
 {
     Unknown,

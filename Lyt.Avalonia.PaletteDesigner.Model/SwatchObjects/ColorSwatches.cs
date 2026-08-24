@@ -2,10 +2,13 @@
 
 public sealed class ColorSwatches : IExportAble
 {
+    [JsonIgnore]
     public string ImagePath { get; set; } = string.Empty;
 
+    [JsonIgnore]
     public string Name { get; set; } = string.Empty;
 
+    [JsonIgnore]
     public bool IsDeepAlgorithmStrength { get; set; }
 
     public List<Swatch> Swatches { get; set; } = [];
@@ -51,7 +54,7 @@ public sealed class ColorSwatches : IExportAble
     }
 
     public string ToJsonString(FileManagerModel fileManager)
-        => fileManager.Serialize(this.Swatches);
+        => fileManager.Serialize(this, AppJsonContext.Default.ColorSwatches);
 
     public Parameters ToTemplateParameters()
     {

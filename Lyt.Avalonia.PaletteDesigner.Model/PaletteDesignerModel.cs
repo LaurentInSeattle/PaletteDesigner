@@ -72,10 +72,12 @@ public sealed partial class PaletteDesignerModel : ModelBase
         {
             if (!this.fileManager.Exists(this.modelFileId))
             {
-                this.fileManager.Save(this.modelFileId, PaletteDesignerModel.DefaultData);
+                this.fileManager.Save(
+                    this.modelFileId, PaletteDesignerModel.DefaultData, AppJsonContext.Default.PaletteDesignerModel);
             }
 
-            PaletteDesignerModel model = this.fileManager.Load<PaletteDesignerModel>(this.modelFileId);
+            PaletteDesignerModel model = 
+                this.fileManager.Load<PaletteDesignerModel>(this.modelFileId, AppJsonContext.Default.PaletteDesignerModel);
 
             // Copy all properties with attribute [JsonRequired]
             base.CopyJSonRequiredProperties<PaletteDesignerModel>(model);
@@ -132,7 +134,8 @@ public sealed partial class PaletteDesignerModel : ModelBase
         ResourcesUtilities.SetResourcesPath("Lyt.Avalonia.PaletteDesigner.Model.Resources");
         string serializedColorWheel = ResourcesUtilities.LoadEmbeddedTextResource("ColorWheel.json", out string? _);
         var colorWheel = 
-            ResourcesUtilities.Deserialize<Dictionary<int, RgbColor>>(serializedColorWheel) ?? 
+            ResourcesUtilities.Deserialize<Dictionary<int, RgbColor>>(
+                serializedColorWheel, AppJsonContext.Default.DictionaryInt32RgbColor) ?? 
             throw new Exception("Failed to load color wheel");
         var hueWheel = colorWheel.ToDictionary(kvp => kvp.Key, kvp => kvp.Value.ToHsv().H);
         var shadeMap = new ShadeMap(PaletteDesignerModel.ShadesImageDimension);
@@ -144,7 +147,8 @@ public sealed partial class PaletteDesignerModel : ModelBase
         foreach (string presetFile in presetFiles)
         {
             string serializedPreset = ResourcesUtilities.LoadEmbeddedTextResource(presetFile, out string? _);
-            var preset = ResourcesUtilities.Deserialize<ShadesPreset>(serializedPreset);
+            var preset = 
+                ResourcesUtilities.Deserialize<ShadesPreset>(serializedPreset, AppJsonContext.Default.ShadesPreset);
             shadesPresets.Add(preset.Name, preset);
         } 
 
@@ -167,7 +171,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
             //}
 #endif // DEBUG 
 
-            this.fileManager.Save(this.modelFileId, this);
+            this.fileManager.Save(this.modelFileId, this, AppJsonContext.Default.PaletteDesignerModel);
 
 #if DEBUG 
             try

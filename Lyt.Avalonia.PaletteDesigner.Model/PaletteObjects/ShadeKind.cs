@@ -1,11 +1,13 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 
+[JsonConverter(typeof(JsonStringEnumConverter<ShadeMode>))]
 public enum ShadeMode
 {
     Locked,
     Unlocked,
 }
 
+[JsonConverter(typeof(JsonStringEnumConverter<ShadeKind>))]
 public enum ShadeKind
 {
     None,

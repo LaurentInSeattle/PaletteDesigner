@@ -58,7 +58,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
     public void RandomizePalette()
         => this.UpdatePalette(palette =>
         {
-            GeneralExtensions.With(ref this.suspendPaletteUpdates, () =>
+            With.Flag(ref this.suspendPaletteUpdates, () =>
             {
                 try
                 {
@@ -82,9 +82,10 @@ public sealed partial class PaletteDesignerModel : ModelBase
                     double secondary2 = this.RandomizeWheel(palette);
                     this.UpdatePaletteSecondary2Wheel(secondary2);
                 }
-                catch 
+                catch (Exception ex) 
                 {
                     // Swallow silently
+                    Debug.WriteLine(ex);
                 }
             });
 

@@ -28,7 +28,7 @@ public sealed partial class Palette : IExportAble
     }
 
     public string ToJsonString(FileManagerModel fileManager)
-        => fileManager.Serialize(this);
+        => fileManager.Serialize(this, AppJsonContext.Default.Palette);
 
     public Parameters ToTemplateParameters()
     {

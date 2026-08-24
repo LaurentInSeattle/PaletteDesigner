@@ -117,6 +117,6 @@ public sealed partial class Palette : IExportAble
         var preset = new ShadesPreset("Medium", this.Primary);
         string name = "Medium_" + FileManagerModel.TimestampString();
         fm.Save<ShadesPreset>(
-            FileManagerModel.Area.User, FileManagerModel.Kind.Json, name, preset);
+            FileManagerModel.Area.User, FileManagerModel.Kind.Json, name, preset, AppJsonContext.Default.ShadesPreset);
     }
 }

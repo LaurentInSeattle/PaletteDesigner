@@ -1,9 +1,5 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.WizardObjects;
 
-using Lyt.ImageProcessing.ColorObjects;
-
-using System.Drawing;
-
 public sealed partial class WizardPalette : IExportAble
 {
     // AseDocument conversion
@@ -113,6 +109,6 @@ public sealed partial class WizardPalette : IExportAble
             DarkThemeColors = this.GetThemeColors(PaletteThemeVariant.Dark),
         };
 
-        return fileManager.Serialize(serializablePalette);
+        return fileManager.Serialize(serializablePalette, AppJsonContext.Default.JSonExportableWizardPalette);
     }
 }

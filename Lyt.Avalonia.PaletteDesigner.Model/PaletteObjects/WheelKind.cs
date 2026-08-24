@@ -1,6 +1,7 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.PaletteObjects;
 
 // Identify the wheel marker 
+[JsonConverter(typeof(JsonStringEnumConverter<WheelKind>))]
 public enum WheelKind
 {
     Unknown,

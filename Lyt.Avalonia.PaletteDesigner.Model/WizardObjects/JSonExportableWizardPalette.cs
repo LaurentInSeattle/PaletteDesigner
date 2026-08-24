@@ -1,6 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.WizardObjects;
 
-internal sealed class JSonExportableWizardPalette
+public sealed class JSonExportableWizardPalette
 {
     public HsvColor[] LighterColors { get; set; } = new HsvColor[WizardPalette.PaletteWidth];
 

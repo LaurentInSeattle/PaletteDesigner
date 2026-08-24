@@ -122,7 +122,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
         {
             var projectFileId =
                 new FileId(FileManagerModel.Area.User, FileManagerModel.Kind.Json, project.Name);
-            this.fileManager.Save(projectFileId, project);
+            this.fileManager.Save(projectFileId, project, AppJsonContext.Default.Project);
         }
         catch (Exception ex)
         {
@@ -135,7 +135,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
         try
         {
             string serialized = File.ReadAllText(path);
-            object? deserialized = this.fileManager.Deserialize<Project>(serialized);
+            object? deserialized = this.fileManager.Deserialize<Project>(serialized, AppJsonContext.Default.Project);
             if (deserialized is Project project)
             {
                 return project;
