@@ -7,8 +7,8 @@
 		<ApplicationIcon>Assets\Images\Designer.ico</ApplicationIcon>
 		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <IsAotCompatible>true</IsAotCompatible>
-  </PropertyGroup>
+		<IsAotCompatible>true</IsAotCompatible>
+	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<NoWarn>IDE0079</NoWarn>
@@ -20,37 +20,55 @@
 
 	<ItemGroup>
 		<AvaloniaResource Include="Assets\**" />
-		<AvaloniaResource Include="Assets\Languages\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AvaloniaXaml Remove="Workflow\Mapping\ColorDragView.axaml" />
-	  <AvaloniaXaml Remove="Workflow\Mapping\ColorsDragPanelView.axaml" />
-	  <AvaloniaXaml Remove="Workflow\Mapping\DraggableColorBoxView.axaml" />
-	  <AvaloniaXaml Remove="Workflow\Mapping\MappingView.axaml" />
-	  <AvaloniaXaml Remove="Workflow\Mapping\PropertiesDropPanelView.axaml" />
-	  <AvaloniaXaml Remove="Workflow\Mapping\PropertyDropView.axaml" />
-	  <AvaloniaXaml Remove="Workflow\Mapping\ShadeDragView.axaml" />
-	  <AvaloniaXaml Remove="Workflow\Mapping\WidgetsPreviewView.axaml" />
+		<AvaloniaXaml Remove="Workflow\Mapping\ColorDragView.axaml" />
+		<AvaloniaXaml Remove="Workflow\Mapping\ColorsDragPanelView.axaml" />
+		<AvaloniaXaml Remove="Workflow\Mapping\DraggableColorBoxView.axaml" />
+		<AvaloniaXaml Remove="Workflow\Mapping\MappingView.axaml" />
+		<AvaloniaXaml Remove="Workflow\Mapping\PropertiesDropPanelView.axaml" />
+		<AvaloniaXaml Remove="Workflow\Mapping\PropertyDropView.axaml" />
+		<AvaloniaXaml Remove="Workflow\Mapping\ShadeDragView.axaml" />
+		<AvaloniaXaml Remove="Workflow\Mapping\WidgetsPreviewView.axaml" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Workflow\Mapping\ColorDragView.axaml.cs" />
-	  <Compile Remove="Workflow\Mapping\ColorDragViewModel.cs" />
-	  <Compile Remove="Workflow\Mapping\ColorsDragPanelView.axaml.cs" />
-	  <Compile Remove="Workflow\Mapping\ColorsDragPanelViewModel.cs" />
-	  <Compile Remove="Workflow\Mapping\DraggableColorBoxView.axaml.cs" />
-	  <Compile Remove="Workflow\Mapping\DraggableColorBoxViewModel.cs" />
-	  <Compile Remove="Workflow\Mapping\MappingView.axaml.cs" />
-	  <Compile Remove="Workflow\Mapping\MappingViewModel.cs" />
-	  <Compile Remove="Workflow\Mapping\PropertiesDropPanelView.axaml.cs" />
-	  <Compile Remove="Workflow\Mapping\PropertiesDropPanelViewModel.cs" />
-	  <Compile Remove="Workflow\Mapping\PropertyDropView.axaml.cs" />
-	  <Compile Remove="Workflow\Mapping\PropertyDropViewModel.cs" />
-	  <Compile Remove="Workflow\Mapping\ShadeDragView.axaml.cs" />
-	  <Compile Remove="Workflow\Mapping\ShadeDragViewModel.cs" />
-	  <Compile Remove="Workflow\Mapping\WidgetsPreviewView.axaml.cs" />
-	  <Compile Remove="Workflow\Mapping\WidgetsPreviewViewModel.cs" />
+		<Compile Remove="Workflow\Mapping\ColorDragView.axaml.cs" />
+		<Compile Remove="Workflow\Mapping\ColorDragViewModel.cs" />
+		<Compile Remove="Workflow\Mapping\ColorsDragPanelView.axaml.cs" />
+		<Compile Remove="Workflow\Mapping\ColorsDragPanelViewModel.cs" />
+		<Compile Remove="Workflow\Mapping\DraggableColorBoxView.axaml.cs" />
+		<Compile Remove="Workflow\Mapping\DraggableColorBoxViewModel.cs" />
+		<Compile Remove="Workflow\Mapping\MappingView.axaml.cs" />
+		<Compile Remove="Workflow\Mapping\MappingViewModel.cs" />
+		<Compile Remove="Workflow\Mapping\PropertiesDropPanelView.axaml.cs" />
+		<Compile Remove="Workflow\Mapping\PropertiesDropPanelViewModel.cs" />
+		<Compile Remove="Workflow\Mapping\PropertyDropView.axaml.cs" />
+		<Compile Remove="Workflow\Mapping\PropertyDropViewModel.cs" />
+		<Compile Remove="Workflow\Mapping\ShadeDragView.axaml.cs" />
+		<Compile Remove="Workflow\Mapping\ShadeDragViewModel.cs" />
+		<Compile Remove="Workflow\Mapping\WidgetsPreviewView.axaml.cs" />
+		<Compile Remove="Workflow\Mapping\WidgetsPreviewViewModel.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Languages\Lang_bg-BG.lang" />
+		<EmbeddedResource Include="Languages\Lang_bn-BD.lang" />
+		<EmbeddedResource Include="Languages\Lang_de-DE.lang" />
+		<EmbeddedResource Include="Languages\Lang_el-GR.lang" />
+		<EmbeddedResource Include="Languages\Lang_en-US.lang" />
+		<EmbeddedResource Include="Languages\Lang_es-ES.lang" />
+		<EmbeddedResource Include="Languages\Lang_fr-FR.lang" />
+		<EmbeddedResource Include="Languages\Lang_hi-IN.lang" />
+		<EmbeddedResource Include="Languages\Lang_hu-HU.lang" />
+		<EmbeddedResource Include="Languages\Lang_hy-AM.lang" />
+		<EmbeddedResource Include="Languages\Lang_it-IT.lang" />
+		<EmbeddedResource Include="Languages\Lang_jp-JP.lang" />
+		<EmbeddedResource Include="Languages\Lang_ko-KO.lang" />
+		<EmbeddedResource Include="Languages\Lang_uk-UA.lang" />
+		<EmbeddedResource Include="Languages\Lang_zh-CN.lang" />
+		<EmbeddedResource Include="Languages\Lang_zh-TW.lang" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -64,6 +82,7 @@
 		<ProjectReference Include="..\..\Lyt.Avalonia\Lyt.Avalonia.Interfaces\Lyt.Avalonia.Interfaces.csproj" />
 		<ProjectReference Include="..\..\Lyt.Avalonia\Lyt.Avalonia.Localizer\Lyt.Avalonia.Localizer.csproj" />
 		<ProjectReference Include="..\..\Lyt.Avalonia\Lyt.Avalonia.Mvvm\Lyt.Avalonia.Mvvm.csproj" />
+		<ProjectReference Include="..\..\Lyt.Framework\Lyt.FileLogger\Lyt.FileLogger.csproj" />
 		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Framework.Interfaces\Lyt.Framework.Interfaces.csproj" />
 		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Model\Lyt.Model.csproj" />
 		<ProjectReference Include="..\..\Lyt.Framework\Lyt.Persistence\Lyt.Persistence.csproj" />
@@ -72,7 +91,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Workflow\Mapping\" />
+		<Folder Include="Workflow\Mapping\" />
 	</ItemGroup>
 
 </Project>

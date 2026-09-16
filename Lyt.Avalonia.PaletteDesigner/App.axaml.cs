@@ -8,6 +8,8 @@ public partial class App : ApplicationBase
     public const string AssemblyName = "Lyt.Avalonia.PaletteDesigner";
     public const string AssetsFolder = "Assets";
 
+    public const string Version = "Alessandra";
+
     public App() : base(
         App.Organization,
         App.Application,
@@ -27,11 +29,6 @@ public partial class App : ApplicationBase
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
     public static App Instance { get; private set; }
 #pragma warning restore CS8618 
-
-    private static Tuple<Type, Type> LoggerService =>
-            Debugger.IsAttached ?
-                new Tuple<Type, Type>(typeof(ILogger), typeof(LogViewerWindow)) :
-                new Tuple<Type, Type>(typeof(ILogger), typeof(Logger));
 
     public bool RestartRequired { get; set; }
 
@@ -75,9 +72,21 @@ public partial class App : ApplicationBase
                 _ = services.AddSingleton<LanguageViewModel>();
                 _ = services.AddSingleton<LanguageToolbarViewModel>();
 
+                // Logging Services, pick one 
+#if DEBUG
+                if (Debugger.IsAttached)
+                {
+                    _ = services.AddSingleton<ILogger, BasicLogger>();
+                }
+                else
+                {
+                    _ = services.AddSingleton<ILogger, LogViewerWindow>();
+                }
+#else
+                _ = services.AddSingleton<ILogger, Lyt.FileLogger.FileLogger>();
+#endif
+ 
                 // Services 
-                 _ = services.AddSingleton<ILogger, BasicLogger>();
-                // _ = services.AddSingleton<ILogger, LogViewerWindow>();
                 _ = services.AddSingleton<IFocuser, Focuser>();
                 _ = services.AddSingleton<IAnimationService, AnimationService>();
                 _ = services.AddSingleton<ILocalizer, LocalizerModel>();
@@ -98,6 +107,9 @@ public partial class App : ApplicationBase
         ViewModel.TypeInitialize(ApplicationBase.AppHost);
 
         var logger = App.GetRequiredService<ILogger>();
+        logger.Info("***      \\_o|o_/          ***");
+        logger.Info("***  " + Application + "  ***");
+        logger.Info("***  " + Version + "  ***"); 
         logger.Debug("OnStartupBegin begins");
 
         // This needs to complete before all models are initialized.
@@ -111,6 +123,7 @@ public partial class App : ApplicationBase
         await localizer.Configure(
             new LocalizerConfiguration
             {
+                Assembly = Assembly.GetExecutingAssembly(),
                 AssemblyName = App.AssemblyName,
                 Languages =
                 [

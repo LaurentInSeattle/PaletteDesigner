@@ -84,6 +84,7 @@ global using Lyt.Avalonia.Mvvm.Utilities;
 
 global using Lyt.Avalonia.Localizer;
 
+global using Lyt.FileLogger; 
 global using Lyt.Model;
 global using Lyt.Persistence;
 global using Lyt.Utilities.Extensions;
