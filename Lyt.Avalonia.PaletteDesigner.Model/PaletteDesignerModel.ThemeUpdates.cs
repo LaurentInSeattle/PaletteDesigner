@@ -1,61 +1,61 @@
-﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
+﻿//namespace Lyt.Avalonia.PaletteDesigner.Model;
 
-public sealed partial class PaletteDesignerModel : ModelBase
-{
-    public void UpdateThemeProperty(
-        ColorThemeVariant themeVariant, string propertyName, 
-        WheelKind wheelKind, ShadeKind shadeKind, double opacity)
-        => this.UpdateTheme(colorTheme =>
-        {
-            if ( this.ActiveProject is null)
-            {
-                return false;
-            }
+//public sealed partial class PaletteDesignerModel : ModelBase
+//{
+//    public void UpdateThemeProperty(
+//        ColorThemeVariant themeVariant, string propertyName, 
+//        WheelKind wheelKind, ShadeKind shadeKind, double opacity)
+//        => this.UpdateTheme(colorTheme =>
+//        {
+//            if ( this.ActiveProject is null)
+//            {
+//                return false;
+//            }
 
-            colorTheme.SetShade(themeVariant.Name, propertyName, this.ActiveProject.Palette, wheelKind, shadeKind);
-            colorTheme.SetOpacity(themeVariant.Name, propertyName, opacity);
-            return true;
-        });
+//            colorTheme.SetShade(themeVariant.Name, propertyName, this.ActiveProject.Palette, wheelKind, shadeKind);
+//            colorTheme.SetOpacity(themeVariant.Name, propertyName, opacity);
+//            return true;
+//        });
 
-    private bool UpdateTheme(Func<ColorTheme, bool> action)
-    {
-        bool result = this.ActionTheme(action);
-        if (result)
-        {
-            new ModelThemeUpdatedMessage().Publish();
-        }
+//    private bool UpdateTheme(Func<ColorTheme, bool> action)
+//    {
+//        bool result = this.ActionTheme(action);
+//        if (result)
+//        {
+//            new ModelThemeUpdatedMessage().Publish();
+//        }
 
-        return result;
-    }
+//        return result;
+//    }
 
-    private bool ActionTheme(Func<ColorTheme, bool> action)
-    {
-        if (this.ActiveProject is null)
-        {
-            return false;
-        }
+//    private bool ActionTheme(Func<ColorTheme, bool> action)
+//    {
+//        if (this.ActiveProject is null)
+//        {
+//            return false;
+//        }
 
-        var theme = this.ActiveProject.ColorTheme;
-        if (theme is null)
-        {
-            return false;
-        }
+//        var theme = this.ActiveProject.ColorTheme;
+//        if (theme is null)
+//        {
+//            return false;
+//        }
 
-        // CONSIDER: Similar, needed ? 
-        //if ((Palette.ColorWheel is null) || (Palette.ShadeMap is null))
-        //{
-        //    throw new Exception("Palette class has not been setup");
-        //}
+//        // CONSIDER: Similar, needed ? 
+//        //if ((Palette.ColorWheel is null) || (Palette.ShadeMap is null))
+//        //{
+//        //    throw new Exception("Palette class has not been setup");
+//        //}
 
-        return action(theme);
-    }
+//        return action(theme);
+//    }
 
-    /*
-<FluentTheme>
-  <FluentTheme.Palettes>
-    <ColorPaletteResources x:Key="Light" Accent="#ff0073cf" AltHigh="White" AltLow="White" AltMedium="White" AltMediumHigh="White" AltMediumLow="White" BaseHigh="Black" BaseLow="#ffcccccc" BaseMedium="#ff898989" BaseMediumHigh="#ff5d5d5d" BaseMediumLow="#ff737373" ChromeAltLow="#ff5d5d5d" ChromeBlackHigh="Black" ChromeBlackLow="#ffcccccc" ChromeBlackMedium="#ff5d5d5d" ChromeBlackMediumLow="#ff898989" ChromeDisabledHigh="#ffcccccc" ChromeDisabledLow="#ff898989" ChromeGray="#ff737373" ChromeHigh="#ffcccccc" ChromeLow="#ffececec" ChromeMedium="#ffe6e6e6" ChromeMediumLow="#ffececec" ChromeWhite="White" ListLow="#ffe6e6e6" ListMedium="#ffcccccc" RegionColor="#ffff4a09" />
-    <ColorPaletteResources x:Key="Dark" Accent="#ff0073cf" AltHigh="Black" AltLow="Black" AltMedium="Black" AltMediumHigh="Black" AltMediumLow="Black" BaseHigh="White" BaseLow="#ff333333" BaseMedium="#ff9a9a9a" BaseMediumHigh="#ffb4b4b4" BaseMediumLow="#ff676767" ChromeAltLow="#ffb4b4b4" ChromeBlackHigh="Black" ChromeBlackLow="#ffb4b4b4" ChromeBlackMedium="Black" ChromeBlackMediumLow="Black" ChromeDisabledHigh="#ff333333" ChromeDisabledLow="#ff9a9a9a" ChromeGray="Gray" ChromeHigh="Gray" ChromeLow="#ff151515" ChromeMedium="#ff1d1d1d" ChromeMediumLow="#ff2c2c2c" ChromeWhite="White" ListLow="#ff1d1d1d" ListMedium="#ff333333" RegionColor="Black" />
-  </FluentTheme.Palettes>
-</FluentTheme>
-    */
-}
+//    /*
+//<FluentTheme>
+//  <FluentTheme.Palettes>
+//    <ColorPaletteResources x:Key="Light" Accent="#ff0073cf" AltHigh="White" AltLow="White" AltMedium="White" AltMediumHigh="White" AltMediumLow="White" BaseHigh="Black" BaseLow="#ffcccccc" BaseMedium="#ff898989" BaseMediumHigh="#ff5d5d5d" BaseMediumLow="#ff737373" ChromeAltLow="#ff5d5d5d" ChromeBlackHigh="Black" ChromeBlackLow="#ffcccccc" ChromeBlackMedium="#ff5d5d5d" ChromeBlackMediumLow="#ff898989" ChromeDisabledHigh="#ffcccccc" ChromeDisabledLow="#ff898989" ChromeGray="#ff737373" ChromeHigh="#ffcccccc" ChromeLow="#ffececec" ChromeMedium="#ffe6e6e6" ChromeMediumLow="#ffececec" ChromeWhite="White" ListLow="#ffe6e6e6" ListMedium="#ffcccccc" RegionColor="#ffff4a09" />
+//    <ColorPaletteResources x:Key="Dark" Accent="#ff0073cf" AltHigh="Black" AltLow="Black" AltMedium="Black" AltMediumHigh="Black" AltMediumLow="Black" BaseHigh="White" BaseLow="#ff333333" BaseMedium="#ff9a9a9a" BaseMediumHigh="#ffb4b4b4" BaseMediumLow="#ff676767" ChromeAltLow="#ffb4b4b4" ChromeBlackHigh="Black" ChromeBlackLow="#ffb4b4b4" ChromeBlackMedium="Black" ChromeBlackMediumLow="Black" ChromeDisabledHigh="#ff333333" ChromeDisabledLow="#ff9a9a9a" ChromeGray="Gray" ChromeHigh="Gray" ChromeLow="#ff151515" ChromeMedium="#ff1d1d1d" ChromeMediumLow="#ff2c2c2c" ChromeWhite="White" ListLow="#ff1d1d1d" ListMedium="#ff333333" RegionColor="Black" />
+//  </FluentTheme.Palettes>
+//</FluentTheme>
+//    */
+//}

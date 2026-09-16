@@ -98,7 +98,7 @@ public sealed partial class PaletteDesignerModel : ModelBase
                         Name = "Default",
                         Kind = PaletteKind.Triad,
                     },
-                    ColorTheme = new(ColorThemeDefinition.CreateFluent()),
+                    //ColorTheme = new(ColorThemeDefinition.CreateFluent()),
                 };
 
                 mustResetPalette = true;

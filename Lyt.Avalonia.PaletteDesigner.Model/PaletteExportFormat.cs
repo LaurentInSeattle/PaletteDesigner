@@ -1,5 +1,6 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
+[JsonConverter(typeof(JsonStringEnumConverter<PaletteExportFormat>))]
 public enum PaletteExportFormat
 {
     None,

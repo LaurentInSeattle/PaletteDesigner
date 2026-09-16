@@ -1,6 +1,11 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model;
 
-[JsonSourceGenerationOptions(WriteIndented = true)]
+[JsonSourceGenerationOptions(
+    WriteIndented = true,
+    AllowTrailingCommas = true,
+    IgnoreReadOnlyProperties = true,
+    IgnoreReadOnlyFields = true
+    )]
 
 [JsonSerializable(typeof(PaletteDesignerModel))]
 

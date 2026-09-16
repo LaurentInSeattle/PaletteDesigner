@@ -1,20 +1,20 @@
 ﻿namespace Lyt.Avalonia.PaletteDesigner.Model.ThemeObjects;
 
-public sealed class ColorPropertyValue
-{
-    public WheelKind WheelKind { get; set; } = WheelKind.Primary;
+//public sealed class ColorPropertyValue
+//{
+//    public WheelKind WheelKind { get; set; } = WheelKind.Primary;
 
-    public ShadeKind ShadeKind { get; set; } = ShadeKind.Base;
+//    public ShadeKind ShadeKind { get; set; } = ShadeKind.Base;
 
-    // defaults to dark gray 
-    public uint Rgb { get; set; } = 0x00_40_40_40;
+//    // defaults to dark gray 
+//    public uint Rgb { get; set; } = 0x00_40_40_40;
 
-    // defaults to fully opaque 
-    public double Opacity { get; set; } = 1.0;
+//    // defaults to fully opaque 
+//    public double Opacity { get; set; } = 1.0;
 
-    public uint ToUintArgb () 
-    {
-        uint opacity = (uint) Math.Round(this.Opacity * 255.0);
-        return this.Rgb | (opacity << 24); 
-    }
-}
+//    public uint ToUintArgb () 
+//    {
+//        uint opacity = (uint) Math.Round(this.Opacity * 255.0);
+//        return this.Rgb | (opacity << 24); 
+//    }
+//}

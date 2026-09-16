@@ -23,7 +23,7 @@ public sealed class Project
 
     public ColorSwatches Swatches { get; set; } = new();
 
-    public ColorTheme ColorTheme { get; set; } = new();
+    // public ColorTheme ColorTheme { get; set; } = new();
 
     public WizardPalette WizardPalette { get; set; } = new();
 
