@@ -12,13 +12,13 @@
 		Height="60" Width="80"
 		>
 		<Border
-			BorderBrush="{ReflectionBinding $parent[UserControl].Foreground}"
+			BorderBrush="{Binding $parent[UserControl].Foreground}"
 			BorderThickness="3"
 			Background="Transparent"
 			>
 			<Rectangle
 				Margin="8"
-				Fill="{ReflectionBinding $parent[UserControl].BorderBrush}"
+				Fill="{Binding $parent[UserControl].BorderBrush}"
 				/>
 		</Border>
 	</Grid>
