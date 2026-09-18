@@ -35,6 +35,6 @@ Create colorful palettes and themes by just moving a few sliders!
  
 <p align="left"><img src="Screenshots/Screenshot 2026-01-08 095906.png" height="600"/>
 
-Fixes for the machine translations are welcome! 
-The translation files are in the "Assets\Languages" folder.
+Help to fix the machine translations are very welcome! 
+The translation files are in the "Languages" folder.
 

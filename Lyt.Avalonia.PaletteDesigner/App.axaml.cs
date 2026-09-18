@@ -83,6 +83,7 @@ public partial class App : ApplicationBase
                     _ = services.AddSingleton<ILogger, LogViewerWindow>();
                 }
 #else
+                Lyt.FileLogger.FileLogger.AppName = Application; 
                 _ = services.AddSingleton<ILogger, Lyt.FileLogger.FileLogger>();
 #endif
  
