@@ -13,10 +13,6 @@ public sealed partial class WizardToolbarViewModel : ViewModel<WizardToolbarView
     partial void OnShowShadesValuesChanged(bool value)
         => new ThemeValuesVisibilityMessage(value).Publish();
 
-#pragma warning disable CA1822  
-    // Mark members as static
-    // Relay commands cannot be static
-
     [RelayCommand]
     public void OnDisplayMode(object? parameter)
     {
@@ -32,6 +28,4 @@ public sealed partial class WizardToolbarViewModel : ViewModel<WizardToolbarView
 
     [RelayCommand]
     public void OnRandomize() => this.paletteDesignerModel.WizardPaletteRandomize();
-
-#pragma warning restore CA1822 // Mark members as static
 }

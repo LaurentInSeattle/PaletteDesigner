@@ -29,8 +29,8 @@ $@"
 		{
 			string.Join
 			(
-                Environment.NewLine,
-                Colors.Select(entry => 
+				Environment.NewLine,
+				Colors.Select(entry => 
 					string.Format(
 						"<Color x:Key=\"Color_{0}\">{1}</Color>" +
 						Environment.NewLine +

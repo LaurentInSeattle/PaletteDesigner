@@ -9,10 +9,23 @@
     <IsAotCompatible>true</IsAotCompatible>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     <PublishAot>true</PublishAot>
-    <Platforms>AnyCPU;x64</Platforms>
+    <Platforms>x64</Platforms>
+    <AssemblyName>PaletteDesigner</AssemblyName>
+    <Title>Palette Designer</Title>
+    <Company>Lyt Games</Company>
+    <Product>Palette Designer</Product>
+    <PackageIcon>Designer.png</PackageIcon>
+    <Description>An interactive tool to generate beautiful color palettes and themes, exporting projects to Adobe ASE, XAML, AXAML and JSON for use in various applications</Description>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Designer.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Lyt.Avalonia.PaletteDesigner\Assets\Images\Designer.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
     <ItemGroup>
