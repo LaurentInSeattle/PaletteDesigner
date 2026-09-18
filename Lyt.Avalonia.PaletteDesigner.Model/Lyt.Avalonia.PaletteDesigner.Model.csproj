@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <IsAotCompatible>true</IsAotCompatible>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

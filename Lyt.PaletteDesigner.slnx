@@ -1,0 +1,76 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Folder Name="/Avalonia/">
+    <Project Path="../Lyt.Avalonia/Lyt.Avalonia.Controls/Lyt.Avalonia.Controls.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="../Lyt.Avalonia/Lyt.Avalonia.Interfaces/Lyt.Avalonia.Interfaces.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="../Lyt.Avalonia/Lyt.Avalonia.Localizer/Lyt.Avalonia.Localizer.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="../Lyt.Avalonia/Lyt.Avalonia.Mvvm/Lyt.Avalonia.Mvvm.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="../Lyt.Framework/Lyt.Resources/Lyt.Resources.csproj">
+      <Platform Project="x64" />
+    </Project>
+  </Folder>
+  <Folder Name="/Framework/">
+    <Project Path="../Lyt.Framework/Lyt.AdobeSwatchExchange/Lyt.AdobeSwatchExchange.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="../Lyt.Framework/Lyt.Collections/Lyt.Collections.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="../Lyt.Framework/Lyt.FileLogger/Lyt.FileLogger.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="../Lyt.Framework/Lyt.FileSystem/Lyt.FileSystem.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="../Lyt.Framework/Lyt.Framework.Interfaces/Lyt.Framework.Interfaces.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="../Lyt.Framework/Lyt.ImageProcessing/Lyt.ImageProcessing.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="../Lyt.Framework/Lyt.Model/Lyt.Model.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="../Lyt.Framework/Lyt.Persistence/Lyt.Persistence.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="../Lyt.Framework/Lyt.Templator/Lyt.Templator.csproj">
+      <Platform Project="x64" />
+    </Project>
+    <Project Path="../Lyt.Framework/Lyt.Utilities/Lyt.Utilities.csproj">
+      <Platform Project="x64" />
+    </Project>
+  </Folder>
+  <Folder Name="/Screenshots/" />
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/Tools/">
+    <File Path="Tools/Lyt.Translator.Cli.exe" />
+    <File Path="Tools/PaletteDesignerLanguages.json" />
+    <File Path="Tools/prebuild.bat" />
+  </Folder>
+  <Project Path="Lyt.Avalonia.PaletteDesigner.Desktop/Lyt.Avalonia.PaletteDesigner.Desktop.csproj">
+    <Platform Project="x64" />
+  </Project>
+  <Project Path="Lyt.Avalonia.PaletteDesigner.Model/Lyt.Avalonia.PaletteDesigner.Model.csproj">
+    <Platform Project="x64" />
+  </Project>
+  <Project Path="Lyt.Avalonia.PaletteDesigner/Lyt.Avalonia.PaletteDesigner.csproj">
+    <Platform Project="x64" />
+  </Project>
+  <Project Path="Packaging/Packaging.wapproj" Type="c7167f0d-bc9f-4e6e-afe1-012c56b48db5">
+    <Deploy />
+  </Project>
+</Solution>

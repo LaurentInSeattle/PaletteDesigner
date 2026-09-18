@@ -9,6 +9,7 @@
     <IsAotCompatible>true</IsAotCompatible>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     <PublishAot>true</PublishAot>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Designer.ico" />
