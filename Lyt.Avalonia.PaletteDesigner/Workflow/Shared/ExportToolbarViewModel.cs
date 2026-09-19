@@ -2,10 +2,12 @@
 
 using Lyt.Avalonia.PaletteDesigner.Model;
 
+using static Lyt.Persistence.FileManagerModel;
+
 public sealed partial class ExportToolbarViewModel : ViewModel<ExportToolbarView>
 {
     private readonly PaletteDesignerModel paletteDesignerModel;
-    private readonly PaletteFamily paletteFamily; 
+    private readonly PaletteFamily paletteFamily;
     private readonly IToaster toaster;
 
     [ObservableProperty]
@@ -53,4 +55,12 @@ public sealed partial class ExportToolbarViewModel : ViewModel<ExportToolbarView
                 dismissDelay: 12_000, InformationLevel.Error);
         }
     }
-}
+
+    [RelayCommand]
+    public void OnNavigate()
+    {
+        var fileManager = App.GetRequiredService<FileManagerModel>(); 
+        string folder = fileManager.PathFromArea(Area.User);
+        CrossPlatformFileExplorer.OpenInExplorer(folder); 
+    }
+} 

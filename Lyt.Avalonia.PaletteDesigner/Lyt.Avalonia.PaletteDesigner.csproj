@@ -24,6 +24,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AvaloniaResource Remove="Assets\Icons\Unused_FluentSvgResourceDictionaryCopy.axaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<AvaloniaXaml Remove="Assets\Icons\Unused_FluentSvgResourceDictionaryCopy.axaml" />
 		<AvaloniaXaml Remove="Workflow\Mapping\ColorDragView.axaml" />
 		<AvaloniaXaml Remove="Workflow\Mapping\ColorsDragPanelView.axaml" />
 		<AvaloniaXaml Remove="Workflow\Mapping\DraggableColorBoxView.axaml" />

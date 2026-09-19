@@ -32,9 +32,10 @@
 
 	<!-- Design  -->
 	<system:String x:Key="Design.Toolbar.Export">Export</system:String>
+	<system:String x:Key="Design.Toolbar.Navigate">Navigate</system:String>
 	<system:String x:Key="Design.Toolbar.Randomize">Randomize</system:String>
 	<system:String x:Key="Design.Toolbar.ExportPalette">Export Palette</system:String>
-
+	
 	<system:String x:Key="Design.Toolbar.Models.Complementary">Complementary</system:String>
 	<system:String x:Key="Design.Toolbar.Models.Triad">Triad</system:String>
 	<system:String x:Key="Design.Toolbar.Models.TriadComplementary">Triad Compl.</system:String>

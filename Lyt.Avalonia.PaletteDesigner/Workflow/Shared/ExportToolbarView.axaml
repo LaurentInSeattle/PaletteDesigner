@@ -24,7 +24,9 @@
 			<ColumnDefinition Width="220" />
 			<!-- Spacer -->
 			<ColumnDefinition Width="8" />
-			<!-- Button -->
+			<!-- Export Button -->
+			<ColumnDefinition Width="116" />
+			<!-- Folder Button -->
 			<ColumnDefinition Width="116" />
 		</Grid.ColumnDefinitions>
 
@@ -57,8 +59,17 @@
 			Command="{Binding OnExport}"
 			/>
 
+		<glyphs:GlyphButton
+			Grid.Column="4"
+			Style="{StaticResource AppToolbarIconButton}"
+			GlyphSource="folder_open"
+			GlyphStrokeThickness="0.1"
+			Text="{DynamicResource Design.Toolbar.Navigate}"
+			Command="{Binding OnNavigate}"
+			/>
+
 		<controls:ExtendedTextBlock
-			Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1"
+			Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="1"
 			Text="{DynamicResource Design.Toolbar.ExportPalette}"
 			Typography="{StaticResource Medium}"
 			/>
