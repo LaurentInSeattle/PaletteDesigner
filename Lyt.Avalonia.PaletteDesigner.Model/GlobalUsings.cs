@@ -36,9 +36,9 @@ global using Lyt.ImageProcessing.Algorithms.ContrastEqualization;
 global using Lyt.ImageProcessing.Algorithms.KMeans;
 global using Lyt.ImageProcessing.Algorithms.KMeans.Generic;
 
+global using Lyt.AotTemplator;
 global using Lyt.Model;
 global using Lyt.Persistence;
-global using Lyt.Templator;
 global using Lyt.Utilities.Extensions;
 global using Lyt.Utilities.Parallel;
 

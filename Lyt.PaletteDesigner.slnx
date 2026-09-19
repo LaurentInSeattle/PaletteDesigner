@@ -23,6 +23,9 @@
     <Project Path="../Lyt.Framework/Lyt.AdobeSwatchExchange/Lyt.AdobeSwatchExchange.csproj">
       <Platform Project="x64" />
     </Project>
+    <Project Path="../Lyt.Framework/Lyt.AotTemplator/Lyt.AotTemplator.csproj">
+      <Platform Project="x64" />
+    </Project>
     <Project Path="../Lyt.Framework/Lyt.Collections/Lyt.Collections.csproj">
       <Platform Project="x64" />
     </Project>

@@ -97,7 +97,7 @@ public static class PaletteExportFormatExtensions
         };
 
 
-        return string.Concat(formatString, "_", familyString, "_", "Template.csx");
+        return string.Concat(formatString, "_", familyString, ".template");
     }
 
     public static string ExportTargetFileName(
