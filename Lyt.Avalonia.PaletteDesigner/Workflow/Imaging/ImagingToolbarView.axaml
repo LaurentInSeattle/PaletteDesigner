@@ -58,7 +58,7 @@
 			Margin="12 4 0 0"
 			Minimum="5" Maximum="64"
 			SmallChange="1" LargeChange="5"
-			TickFrequency="2.0" 
+			TickFrequency="1.0" 
 			IsSnapToTickEnabled="True"
 			TickPlacement="BottomRight"
 			Value="{Binding ClustersSliderValue}"

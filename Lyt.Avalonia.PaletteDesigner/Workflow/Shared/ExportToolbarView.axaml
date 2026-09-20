@@ -55,7 +55,7 @@
 			Style="{StaticResource AppToolbarIconButton}"
 			GlyphSource="share"
 			GlyphStrokeThickness="0.1"
-			Text="{DynamicResource Design.Toolbar.Export}"
+			Text=""
 			Command="{Binding OnExport}"
 			/>
 
@@ -64,7 +64,7 @@
 			Style="{StaticResource AppToolbarIconButton}"
 			GlyphSource="folder_open"
 			GlyphStrokeThickness="0.1"
-			Text="{DynamicResource Design.Toolbar.Navigate}"
+			Text=""
 			Command="{Binding OnNavigate}"
 			/>
 
