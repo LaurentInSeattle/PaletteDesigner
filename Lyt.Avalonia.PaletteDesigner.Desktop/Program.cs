@@ -19,7 +19,7 @@ class Program
             .UsePlatformDetect()
             .WithInterFont()
             .UseSkia()
-            .With(new SkiaOptions() { MaxGpuResourceSizeBytes = 2L * 1024L * 1024L * 1024L }) // 2 GB 
+            .With(new SkiaOptions() { MaxGpuResourceSizeBytes = 256L * 1024L * 1024L }) // 256 MB 
 #if DEBUG
             .WithDeveloperTools()
 #endif

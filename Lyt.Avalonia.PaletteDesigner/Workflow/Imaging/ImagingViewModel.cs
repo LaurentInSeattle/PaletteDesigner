@@ -2,16 +2,21 @@
 
 using global::Avalonia.Media.Imaging;
 
+using Lyt.FileSystem;
+
 using HsvColor = Lyt.ImageProcessing.ColorObjects.HsvColor;
 
 public sealed partial class ImagingViewModel : ViewModel<ImagingView>
 {
+    private const long ImageFileMaxLength = 60L * 1024L * 1024L;
+
     private const int PixelCountMax = 1920 * 1080 / 4; // HD size divided by 4, about 1/2 Mega pixels 
     private const int DepthAnalysis = 250; // Iterations for KMeans 
     private const double BrightnessMin = 0.05;
     private const double BrightnessMax = 0.98;
 
     private readonly PaletteDesignerModel paletteDesignerModel;
+    private readonly IToaster toaster; 
 
     private WriteableBitmap? bitmapToProcess;
 
@@ -47,9 +52,11 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
     [ObservableProperty]
     public partial string ImagePath { get; set; } = string.Empty;
 
-    public ImagingViewModel(PaletteDesignerModel paletteDesignerModel)
+    public ImagingViewModel(PaletteDesignerModel paletteDesignerModel, IToaster toaster)
     {
         this.paletteDesignerModel = paletteDesignerModel;
+        this.toaster = toaster; 
+
         this.SpinViewModel = new SpinViewModel()
         {
             IsVisible = false,
@@ -90,21 +97,86 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         }
 
         this.ImagingToolbarViewModel.ProgrammaticUpdate(swatches);
-        this.OnDropOrReload(swatches.ImagePath);
+        this.OnDropOrReload(swatches.ImagePath, isReload: true);
     }
 
-    public bool OnDropOrReload(string path)
+
+    public bool OnDropOrReload(string path, bool isReload = false)
     {
+        void LogAndMessageUser(string logMessage, string userMessage)
+        {
+            Debug.WriteLine(logMessage);
+            this.Logger.Warning(logMessage);
+            if (!isReload)
+            {
+                Dispatch.OnUiThread(() =>
+                {
+                    // Localize and toast userMessage 
+                    string errorMessage = this.Localize("Error");
+                    string displayedMessage = this.Localize(userMessage);
+                    this.toaster.Show(errorMessage, displayedMessage, 12, InformationLevel.Warning); 
+                }, DispatcherPriority.Background);
+            }
+        }
+
+        /*
+                    string errorMessage = this.Localize("Error");
+                LogAndMessageUser($"File does not exist: {path}", "File does not exist.");
+                LogAndMessageUser($"File length is too small: {path}", "File is too small.");
+                LogAndMessageUser($"File length is too large: {path}", "File is too big.");
+                LogAndMessageUser($"Image File format not supported: {path}", "Image File format not supported");
+                LogAndMessageUser($"File cannot be read: {path}", "File is protected.");
+                LogAndMessageUser($"Failed to read image from disk: {path}", "Failed to read.");
+                LogAndMessageUser($"Failed to decode image: {path}", "Not a supported image file.");
+            LogAndMessageUser($"Exception thrown while processing: {ex}", "Error while processing image file.");
+        */
+
         try
         {
-            byte[] imageBytes = File.ReadAllBytes(path);
-            if ((imageBytes is null) || (imageBytes.Length < 256))
+            FileInfo fileInfo = new(path);
+            if (!fileInfo.Exists)
             {
-                throw new Exception("Failed to read image from disk: " + path);
+                LogAndMessageUser($"File does not exist: {path}", "File does not exist.");
+                return false;
+            }
+
+            long length = fileInfo.Length;
+            if ((length == 0) || (length < 256L))
+            {
+                LogAndMessageUser($"File length is too small: {path}", "File is too small.");
+                return false;
+            }
+
+            if (length > ImageFileMaxLength)
+            {
+                LogAndMessageUser($"File length is too large: {path}", "File is too big.");
+                return false;
+            }
+
+            string extension = fileInfo.Extension.ToLowerInvariant();
+            bool supported =
+                extension == ".jpg" || extension == ".jpeg" || extension == ".bmp" ||
+                extension == ".png" || extension == ".webp";
+            if (!supported)
+            {
+                LogAndMessageUser($"Image File format not supported: {path}", "Image File format not supported");
+                return false;
+            }
+
+            if (!FileSystemExtensions.IsReadable(path))
+            {
+                LogAndMessageUser($"File cannot be read: {path}", "File is protected.");
+                return false;
+            }
+
+            byte[] imageBytes = File.ReadAllBytes(path);
+            if ((imageBytes is null) || (imageBytes.Length < 256) || imageBytes.Length != length)
+            {
+                LogAndMessageUser($"Failed to read image from disk: {path}", "Failed to read.");
+                return false;
             }
 
             this.ImagePath = path;
-            FileInfo fileInfo = new(path);
             this.swatchesName = fileInfo.Name;
             if (string.IsNullOrWhiteSpace(this.swatchesName))
             {
@@ -112,7 +184,6 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
             }
             else
             {
-                string extension = fileInfo.Extension;
                 this.swatchesName = this.swatchesName.Replace(extension, string.Empty);
                 this.swatchesName = this.swatchesName.Replace("_", " ");
                 this.swatchesName = this.swatchesName.Replace("-", " ");
@@ -121,9 +192,13 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
             }
 
             // Keep the original to display on the UI at best resolution 
-            var sourceBitmap =
-                WriteableBitmap.Decode(new MemoryStream(imageBytes)) ??
-                throw new Exception("Failed to decode image: " + path);
+            var sourceBitmap = WriteableBitmap.Decode(new MemoryStream(imageBytes));
+            if ( sourceBitmap is null )
+            {
+                LogAndMessageUser($"Failed to decode image: {path}", "Not a supported image file.");
+                return false;
+            }
+
             int pixelCount = sourceBitmap.PixelSize.Width * sourceBitmap.PixelSize.Height;
             int pixelCountMax =
                 Debugger.IsAttached ? ImagingViewModel.PixelCountMax / 2 : ImagingViewModel.PixelCountMax;
@@ -149,8 +224,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
         }
         catch (Exception ex)
         {
-            Debug.WriteLine(ex);
-            this.Logger.Warning(ex.ToString());
+            LogAndMessageUser($"Exception thrown while processing: {ex}", "Error while processing image file.");
             return false;
         }
     }

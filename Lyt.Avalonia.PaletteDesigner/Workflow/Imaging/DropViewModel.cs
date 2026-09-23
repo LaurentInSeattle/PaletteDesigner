@@ -10,12 +10,6 @@ public sealed partial class DropViewModel : ViewModel<DropView>
     {
         try             
         {
-            byte[] imageBytes = File.ReadAllBytes(path);
-            if ((imageBytes is null) || (imageBytes.Length < 256))
-            {
-                throw new Exception("Failed to read image from disk: " + path);
-            }
-
             var viewModel = App.GetRequiredService<ImagingViewModel>(); 
             return viewModel.OnDropOrReload(path);
 

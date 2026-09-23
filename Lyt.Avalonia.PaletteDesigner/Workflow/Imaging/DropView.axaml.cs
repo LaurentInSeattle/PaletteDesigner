@@ -22,7 +22,7 @@ public partial class DropView : View
         }
     }
 
-    public DropView() : base ()
+    public DropView() : base()
     {
         if (normalBrush is not null)
         {
@@ -67,7 +67,7 @@ public partial class DropView : View
         }
 
         IDataTransfer dataTransfer = dragEventArgs.DataTransfer;
-        var files = dataTransfer.TryGetFiles(); 
+        var files = dataTransfer.TryGetFiles();
         if (files is not null)
         {
             foreach (IStorageItem file in files)
@@ -78,10 +78,11 @@ public partial class DropView : View
                 {
                     if (this.DataContext is DropViewModel dropViewModel)
                     {
-                        if (dropViewModel.OnDrop(path))
-                        {
-                            break; 
-                        } 
+                        Schedule.OnUiThread(
+                            50,
+                            () => { dropViewModel.OnDrop(path); },
+                            DispatcherPriority.Background);
+                        break;
                     }
                 }
             }
