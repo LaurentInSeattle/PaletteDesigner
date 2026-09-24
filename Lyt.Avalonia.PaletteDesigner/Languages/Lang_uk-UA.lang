@@ -7,6 +7,8 @@
 
     <system:String x:Key="Toast.Dismiss">Закривати</system:String>
 
+    <system:String x:Key="Toast.Error">Помилка</system:String>
+
     <system:String x:Key="Shared.Show">Показувати</system:String>
 
     <system:String x:Key="Shared.Hide">Сховати</system:String>
@@ -18,6 +20,22 @@
     <system:String x:Key="Shared.FileErrorTitle">Помилка файлової системи.</system:String>
 
     <system:String x:Key="Shared.FileErrorText">Не вдалося зберегти дані на диск.</system:String>
+
+    <system:String x:Key="File.NotExist">Цей файл не існує.</system:String>
+
+    <system:String x:Key="File.TooSmall">Цей файл занадто невеликий.</system:String>
+
+    <system:String x:Key="File.TooBig">Цей файл занадто великий.</system:String>
+
+    <system:String x:Key="File.ImageNotSupported">Цей формат файлів не підтримується.</system:String>
+
+    <system:String x:Key="File.CantRead">Цей файл не можна прочитати.</system:String>
+
+    <system:String x:Key="File.FailRead">Щоб відкрити і читати цей файл.</system:String>
+
+    <system:String x:Key="File.ImageNotDecoded">Цей файл зображень можливо пошкоджений.</system:String>
+
+    <system:String x:Key="File.Exception">Похибка сталася при обробці цього файлу зображень.</system:String>
 
     <system:String x:Key="Shell.AppName">Дизайнер палітри</system:String>
 
@@ -46,6 +64,8 @@
     <system:String x:Key="Shell.Dump">Смітник</system:String>
 
     <system:String x:Key="Design.Toolbar.Export">Експорт</system:String>
+
+    <system:String x:Key="Design.Toolbar.Navigate">Навігація</system:String>
 
     <system:String x:Key="Design.Toolbar.Randomize">Рандомізувати</system:String>
 

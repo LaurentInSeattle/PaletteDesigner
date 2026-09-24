@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Lyt.Avalonia.PaletteDesigner.Desktop": {
+      "commandName": "Project",
+      "debugEngines": "managed,native"
+    }
+  }
+}

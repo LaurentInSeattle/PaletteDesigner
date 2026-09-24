@@ -8,7 +8,7 @@ public partial class App : ApplicationBase
     public const string AssemblyName = "Lyt.Avalonia.PaletteDesigner";
     public const string AssetsFolder = "Assets";
 
-    public const string Version = "Alessandra";
+    public const string Version = "Bianca";
 
     public App() : base(
         App.Organization,
@@ -130,7 +130,7 @@ public partial class App : ApplicationBase
                 [
                     "en-US", "hu-HU",
                     "fr-FR", "it-IT", "es-ES", "de-DE",
-                    "uk-UA", "bg-BG", "el-GR", "hy-AM",
+                    "uk-UA", "bg-BG", "el-GR", 
                     "jp-JP", "ko-KO", "zh-CN", "zh-TW",
                     "hi-IN", "bn-BD"
                 ],

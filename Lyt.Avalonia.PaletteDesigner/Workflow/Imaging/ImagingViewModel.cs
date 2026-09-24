@@ -112,44 +112,32 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
                 Dispatch.OnUiThread(() =>
                 {
                     // Localize and toast userMessage 
-                    string errorMessage = this.Localize("Error");
+                    string errorMessage = this.Localize("Toast.Error");
                     string displayedMessage = this.Localize(userMessage);
-                    this.toaster.Show(errorMessage, displayedMessage, 12, InformationLevel.Warning); 
+                    this.toaster.Show(errorMessage, displayedMessage, 3_500, InformationLevel.Warning); 
                 }, DispatcherPriority.Background);
             }
         }
-
-        /*
-                    string errorMessage = this.Localize("Error");
-                LogAndMessageUser($"File does not exist: {path}", "File does not exist.");
-                LogAndMessageUser($"File length is too small: {path}", "File is too small.");
-                LogAndMessageUser($"File length is too large: {path}", "File is too big.");
-                LogAndMessageUser($"Image File format not supported: {path}", "Image File format not supported");
-                LogAndMessageUser($"File cannot be read: {path}", "File is protected.");
-                LogAndMessageUser($"Failed to read image from disk: {path}", "Failed to read.");
-                LogAndMessageUser($"Failed to decode image: {path}", "Not a supported image file.");
-            LogAndMessageUser($"Exception thrown while processing: {ex}", "Error while processing image file.");
-        */
 
         try
         {
             FileInfo fileInfo = new(path);
             if (!fileInfo.Exists)
             {
-                LogAndMessageUser($"File does not exist: {path}", "File does not exist.");
+                LogAndMessageUser($"File does not exist: {path}", "File.NotExist");
                 return false;
             }
 
             long length = fileInfo.Length;
             if ((length == 0) || (length < 256L))
             {
-                LogAndMessageUser($"File length is too small: {path}", "File is too small.");
+                LogAndMessageUser($"File length is too small: {path}", "File.TooSmall");
                 return false;
             }
 
             if (length > ImageFileMaxLength)
             {
-                LogAndMessageUser($"File length is too large: {path}", "File is too big.");
+                LogAndMessageUser($"File length is too large: {path}", "File.TooBig");
                 return false;
             }
 
@@ -159,20 +147,20 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
                 extension == ".png" || extension == ".webp";
             if (!supported)
             {
-                LogAndMessageUser($"Image File format not supported: {path}", "Image File format not supported");
+                LogAndMessageUser($"Image File format not supported: {path}", "File.ImageNotSupported");
                 return false;
             }
 
             if (!FileSystemExtensions.IsReadable(path))
             {
-                LogAndMessageUser($"File cannot be read: {path}", "File is protected.");
+                LogAndMessageUser($"File cannot be read: {path}", "File.CantRead");
                 return false;
             }
 
             byte[] imageBytes = File.ReadAllBytes(path);
             if ((imageBytes is null) || (imageBytes.Length < 256) || imageBytes.Length != length)
             {
-                LogAndMessageUser($"Failed to read image from disk: {path}", "Failed to read.");
+                LogAndMessageUser($"Failed to read image from disk: {path}", "File.FailRead");
                 return false;
             }
 
@@ -195,7 +183,7 @@ public sealed partial class ImagingViewModel : ViewModel<ImagingView>
             var sourceBitmap = WriteableBitmap.Decode(new MemoryStream(imageBytes));
             if ( sourceBitmap is null )
             {
-                LogAndMessageUser($"Failed to decode image: {path}", "Not a supported image file.");
+                LogAndMessageUser($"Failed to decode image: {path}", "File.Exception");
                 return false;
             }
 

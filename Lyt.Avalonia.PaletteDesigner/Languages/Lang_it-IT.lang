@@ -7,6 +7,8 @@
 
     <system:String x:Key="Toast.Dismiss">Chiudi</system:String>
 
+    <system:String x:Key="Toast.Error">Errore</system:String>
+
     <system:String x:Key="Shared.Show">Mostra</system:String>
 
     <system:String x:Key="Shared.Hide">Nascondi</system:String>
@@ -18,6 +20,22 @@
     <system:String x:Key="Shared.FileErrorTitle">Errore del file system.</system:String>
 
     <system:String x:Key="Shared.FileErrorText">Impossibile salvare i dati sul disco.</system:String>
+
+    <system:String x:Key="File.NotExist">Questo file non esiste.</system:String>
+
+    <system:String x:Key="File.TooSmall">Questo file è troppo piccolo.</system:String>
+
+    <system:String x:Key="File.TooBig">Questo file è troppo grande.</system:String>
+
+    <system:String x:Key="File.ImageNotSupported">Questo formato di file immagine non è supportato.</system:String>
+
+    <system:String x:Key="File.CantRead">Questo file non può essere letto.</system:String>
+
+    <system:String x:Key="File.FailRead">Non ha aperto e letto questo file.</system:String>
+
+    <system:String x:Key="File.ImageNotDecoded">Questo file immagine è probabilmente danneggiato.</system:String>
+
+    <system:String x:Key="File.Exception">Si è verificato un errore durante l'elaborazione di questo file immagine.</system:String>
 
     <system:String x:Key="Shell.AppName">Designer di Tavolozze</system:String>
 
@@ -46,6 +64,8 @@
     <system:String x:Key="Shell.Dump">Scarico</system:String>
 
     <system:String x:Key="Design.Toolbar.Export">Esportare</system:String>
+
+    <system:String x:Key="Design.Toolbar.Navigate">Navigare</system:String>
 
     <system:String x:Key="Design.Toolbar.Randomize">Randomizzare</system:String>
 

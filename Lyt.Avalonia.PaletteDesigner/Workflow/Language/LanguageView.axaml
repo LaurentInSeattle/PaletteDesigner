@@ -110,13 +110,6 @@
 				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
 				/>
 			<TextBlock
-				Grid.Column="1" Grid.Row="3"
-				Margin="20 0 0 0"
-				Text="Ընտրեք օգտվողի միջերեսի լեզուն:"
-				Theme="{StaticResource H2}"
-				VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-				/>
-			<TextBlock
 				Grid.Column="1" Grid.Row="4"
 				Margin="20 0 0 0"
 				Text="사용자 인터페이스 언어를 선택하십시오."
@@ -163,6 +156,7 @@
 				/>
 			<ComboBox
 				Grid.Column="1" Grid.Row="1" 
+				Margin="20 8 0 0"
 				VerticalAlignment="Center" HorizontalAlignment="Left"
 				x:Name="LanguageComboBox"
 				ItemsSource="{Binding Languages}"

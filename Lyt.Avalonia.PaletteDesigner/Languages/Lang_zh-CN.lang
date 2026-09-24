@@ -7,6 +7,8 @@
 
     <system:String x:Key="Toast.Dismiss">关闭</system:String>
 
+    <system:String x:Key="Toast.Error">错误</system:String>
+
     <system:String x:Key="Shared.Show">展示</system:String>
 
     <system:String x:Key="Shared.Hide">隐藏</system:String>
@@ -18,6 +20,22 @@
     <system:String x:Key="Shared.FileErrorTitle">文件系统错误。</system:String>
 
     <system:String x:Key="Shared.FileErrorText">无法将数据保存到磁盘。</system:String>
+
+    <system:String x:Key="File.NotExist">此文件不存在 .</system:String>
+
+    <system:String x:Key="File.TooSmall">这个文件太小了.</system:String>
+
+    <system:String x:Key="File.TooBig">这个文件太大了.</system:String>
+
+    <system:String x:Key="File.ImageNotSupported">不支持此图像文件格式 .</system:String>
+
+    <system:String x:Key="File.CantRead">此文件无法读取 .</system:String>
+
+    <system:String x:Key="File.FailRead">打开并读取此文件失败 .</system:String>
+
+    <system:String x:Key="File.ImageNotDecoded">此图像文件可能损坏 .</system:String>
+
+    <system:String x:Key="File.Exception">处理此图像文件时发生错误 .</system:String>
 
     <system:String x:Key="Shell.AppName">调色板设计师</system:String>
 
@@ -46,6 +64,8 @@
     <system:String x:Key="Shell.Dump">倾倒</system:String>
 
     <system:String x:Key="Design.Toolbar.Export">出口</system:String>
+
+    <system:String x:Key="Design.Toolbar.Navigate">导航</system:String>
 
     <system:String x:Key="Design.Toolbar.Randomize">随机化</system:String>
 

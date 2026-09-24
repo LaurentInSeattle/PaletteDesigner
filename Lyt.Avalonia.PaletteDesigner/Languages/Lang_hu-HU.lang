@@ -7,6 +7,8 @@
 
     <system:String x:Key="Toast.Dismiss">Közeli</system:String>
 
+    <system:String x:Key="Toast.Error">Hiba</system:String>
+
     <system:String x:Key="Shared.Show">Megmutat</system:String>
 
     <system:String x:Key="Shared.Hide">Elrejt</system:String>
@@ -18,6 +20,22 @@
     <system:String x:Key="Shared.FileErrorTitle">Fájlrendszer hiba.</system:String>
 
     <system:String x:Key="Shared.FileErrorText">Nem tudta elmenteni az adatokat a lemezre.</system:String>
+
+    <system:String x:Key="File.NotExist">Ez a fájl nem létezik.</system:String>
+
+    <system:String x:Key="File.TooSmall">Ez az akta túl kicsi.</system:String>
+
+    <system:String x:Key="File.TooBig">Ez az akta túl nagy.</system:String>
+
+    <system:String x:Key="File.ImageNotSupported">Ez a fájlformátum nem támogatott.</system:String>
+
+    <system:String x:Key="File.CantRead">Ez a fájl nem olvasható.</system:String>
+
+    <system:String x:Key="File.FailRead">Nem sikerült megnyitni és elolvasni ezt a fájlt.</system:String>
+
+    <system:String x:Key="File.ImageNotDecoded">Ez a képfájl valószínűleg hibás.</system:String>
+
+    <system:String x:Key="File.Exception">Hiba történt a képfájl feldolgozása közben.</system:String>
 
     <system:String x:Key="Shell.AppName">Paletta tervező</system:String>
 
@@ -46,6 +64,8 @@
     <system:String x:Key="Shell.Dump">Dump</system:String>
 
     <system:String x:Key="Design.Toolbar.Export">Export</system:String>
+
+    <system:String x:Key="Design.Toolbar.Navigate">Naiv</system:String>
 
     <system:String x:Key="Design.Toolbar.Randomize">Véletlenszerűsít</system:String>
 

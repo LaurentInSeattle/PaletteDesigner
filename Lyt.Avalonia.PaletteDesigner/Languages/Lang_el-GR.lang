@@ -7,6 +7,8 @@
 
     <system:String x:Key="Toast.Dismiss">Κοντά</system:String>
 
+    <system:String x:Key="Toast.Error">Σφάλμα</system:String>
+
     <system:String x:Key="Shared.Show">Επίδειξη</system:String>
 
     <system:String x:Key="Shared.Hide">Κρύβω</system:String>
@@ -18,6 +20,22 @@
     <system:String x:Key="Shared.FileErrorTitle">Σφάλμα συστήματος αρχείων.</system:String>
 
     <system:String x:Key="Shared.FileErrorText">Δεν ήταν δυνατή η αποθήκευση των δεδομένων στο δίσκο.</system:String>
+
+    <system:String x:Key="File.NotExist">Αυτό το αρχείο δεν υπάρχει.</system:String>
+
+    <system:String x:Key="File.TooSmall">Αυτός ο φάκελος είναι πολύ μικρός.</system:String>
+
+    <system:String x:Key="File.TooBig">Αυτός ο φάκελος είναι πολύ μεγάλος.</system:String>
+
+    <system:String x:Key="File.ImageNotSupported">Αυτή η μορφή αρχείου εικόνας δεν υποστηρίζεται.</system:String>
+
+    <system:String x:Key="File.CantRead">Αυτό το αρχείο δεν μπορεί να διαβαστεί.</system:String>
+
+    <system:String x:Key="File.FailRead">Αποτυχία ανοίγματος και ανάγνωσης αυτού του αρχείου.</system:String>
+
+    <system:String x:Key="File.ImageNotDecoded">Αυτό το αρχείο εικόνας είναι πιθανώς κατεστραμμένο.</system:String>
+
+    <system:String x:Key="File.Exception">Συνέβη ένα σφάλμα κατά την επεξεργασία αυτού του αρχείου εικόνας.</system:String>
 
     <system:String x:Key="Shell.AppName">Παλέτα σχεδιαστή</system:String>
 
@@ -46,6 +64,8 @@
     <system:String x:Key="Shell.Dump">Σκουπιδότοπος</system:String>
 
     <system:String x:Key="Design.Toolbar.Export">Εξαγωγή</system:String>
+
+    <system:String x:Key="Design.Toolbar.Navigate">Πλοήγηση</system:String>
 
     <system:String x:Key="Design.Toolbar.Randomize">Τυχαιοποιώ</system:String>
 

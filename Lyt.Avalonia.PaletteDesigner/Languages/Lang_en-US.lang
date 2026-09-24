@@ -5,6 +5,7 @@
 	>
 	<!-- Toast-->
 	<system:String x:Key="Toast.Dismiss">Close</system:String>
+	<system:String x:Key="Toast.Error">Error</system:String>
 
 	<!-- Shared -->
 	<system:String x:Key="Shared.Show">Show</system:String>
@@ -13,6 +14,15 @@
 	<system:String x:Key="Shared.Recent">Recent</system:String>
 	<system:String x:Key="Shared.FileErrorTitle">File system error.</system:String>
 	<system:String x:Key="Shared.FileErrorText">Could not save the data to disk.</system:String>
+
+	<system:String x:Key="File.NotExist">This file does not exist.</system:String>
+	<system:String x:Key="File.TooSmall">This file is too small.</system:String>
+	<system:String x:Key="File.TooBig">This file is too big.</system:String>
+	<system:String x:Key="File.ImageNotSupported">This file is not an image file or the image file format is not supported.</system:String>
+	<system:String x:Key="File.CantRead">This file cannot be read, is maybe locked.</system:String>
+	<system:String x:Key="File.FailRead">Failed to open and read this file.</system:String>
+	<system:String x:Key="File.ImageNotDecoded">This image file is possibly corrupted or the image file format is does not match the file extension.</system:String>
+	<system:String x:Key="File.Exception">An error occurred while processing this image file.</system:String>
 
 	<!-- Shell -->
 	<system:String x:Key="Shell.AppName">Palette Designer</system:String>

@@ -7,6 +7,8 @@
 
     <system:String x:Key="Toast.Dismiss">বন্ধ</system:String>
 
+    <system:String x:Key="Toast.Error">ত্রুটি</system:String>
+
     <system:String x:Key="Shared.Show">শো</system:String>
 
     <system:String x:Key="Shared.Hide">লুকান</system:String>
@@ -18,6 +20,22 @@
     <system:String x:Key="Shared.FileErrorTitle">ফাইল সিস্টেম ত্রুটি।</system:String>
 
     <system:String x:Key="Shared.FileErrorText">ডিস্কে ডেটা সংরক্ষণ করতে পারেনি।</system:String>
+
+    <system:String x:Key="File.NotExist">এই নামে ফাইল অনুপস্থিত।.</system:String>
+
+    <system:String x:Key="File.TooSmall">ফাইলটি অতিরিক্ত বড়।.</system:String>
+
+    <system:String x:Key="File.TooBig">ফাইলটি অতিরিক্ত বড়।.</system:String>
+
+    <system:String x:Key="File.ImageNotSupported">এই ছবির ফাইল ফরম্যাট সমর্থিত নয়।.</system:String>
+
+    <system:String x:Key="File.CantRead">এই ফাইলটি পড়া যাচ্ছে না।.</system:String>
+
+    <system:String x:Key="File.FailRead">এই ফাইলটি খুলতে ব্যর্থ।.</system:String>
+
+    <system:String x:Key="File.ImageNotDecoded">এই ফাইলটি সম্ভবত ক্ষতিগ্রস্ত।.</system:String>
+
+    <system:String x:Key="File.Exception">এই ফাইলটি প্রক্রিয়াকরণের সময় ত্রুটি দেখা দিয়েছে।.</system:String>
 
     <system:String x:Key="Shell.AppName">প্যালেট ডিজাইনার</system:String>
 
@@ -46,6 +64,8 @@
     <system:String x:Key="Shell.Dump">ডাম্প</system:String>
 
     <system:String x:Key="Design.Toolbar.Export">রফতানি</system:String>
+
+    <system:String x:Key="Design.Toolbar.Navigate">প্রতিলিপি</system:String>
 
     <system:String x:Key="Design.Toolbar.Randomize">এলোমেলোভাবে</system:String>
 
